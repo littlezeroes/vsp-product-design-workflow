@@ -3,17 +3,17 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import {
-  MapPin, Users, Clock, Lock, Bell,
-  ShieldCheck, Wallet, CheckCircle, ChevronRight,
-  Loader2, XCircle, RefreshCw, BookOpen, Tag, Info,
-  Building2, ArrowDownLeft,
+  MapPin, Users, Bell,
+  CheckCircle, ChevronRight,
+  BookOpen, Tag, Info,
+  Building2,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { PROJECTS, HOLDINGS, USER, formatVND } from "../data"
+import { Tip } from "@/components/ui/tip"
+import { PROJECTS, HOLDINGS, USER, formatVND, formatVNDShort, getUserCommitment } from "../data"
 import { useAppState, type CardState, type ProjectCardState } from "./layout"
 
-const FEATURED = PROJECTS.find((p) => p.status === "open") ?? PROJECTS[0]
 
 /* ── Balance Card (compact — link to portfolio) ──────────────────── */
 function BalanceCard({ invested }: { invested: boolean }) {
@@ -28,147 +28,26 @@ function BalanceCard({ invested }: { invested: boolean }) {
             {formatVND(USER.totalBalance)}
           </p>
         </div>
-        <Button
-          variant="secondary"
-          size="32"
-          onClick={() => router.push("/rwa/tai-san")}
-        >
-          Xem tài sản
-          <ChevronRight size={14} />
-        </Button>
+        <div className="flex items-center gap-[8px]">
+          <Button
+            variant="secondary"
+            size="32"
+            onClick={() => router.push("/rwa/tai-san")}
+          >
+            Xem tài sản
+            <ChevronRight size={14} />
+          </Button>
+        </div>
       </div>
     </div>
   )
 }
 
 /* ══════════════════════════════════════════════════════════════════════
-   WALLET CARD — 6 states, 1 component
+   WALLET CARD — always shows balance
    ══════════════════════════════════════════════════════════════════════ */
 function WalletCard({ state }: { state: CardState }) {
-  const router = useRouter()
-  const [hideBalance, setHideBalance] = React.useState(false)
-
-  const totalValue = HOLDINGS.reduce((s, h) => s + h.currentValue, 0) + USER.totalBalance
-  const totalTokens = HOLDINGS.reduce((s, h) => s + h.shares, 0)
-
-  /* ── invested + exploring + purchase flow: balance card ── */
-  if (state === "invested" || state === "exploring" || state === "received"
-    || state === "registered" || state === "escrow" || state === "pending-alloc") {
-    return <BalanceCard invested={state !== "exploring"} />
-  }
-
-  /* ── onboarding states: card with progress bar ── */
-  const step1 = state === "new" ? "empty"
-    : state === "verifying" ? "active"
-    : state === "kyc-failed" ? "error"
-    : "done"
-
-  const step2 = (state === "new" || state === "verifying" || state === "kyc-failed") ? "locked"
-    : state === "kyc-done" ? "empty"
-    : "done"
-
-  const stepsDone = (step1 === "done" ? 1 : 0) + (step2 === "done" ? 1 : 0)
-
-  return (
-    <div className="bg-secondary rounded-[28px] px-[22px] py-[20px]">
-      {/* Title */}
-      <p className="text-sm font-bold text-foreground">Mở khóa ví đầu tư</p>
-      <p className="text-xs text-foreground-secondary mb-[16px]">{stepsDone} / 2 hoàn tất</p>
-
-      {/* Vertical progress */}
-      <div className="flex gap-[14px] mb-[16px]">
-        {/* Bars */}
-        <div className="flex flex-col items-center gap-[6px] py-[4px]">
-          <div className={cn("w-[4px] flex-1 rounded-full",
-            step1 === "done" ? "bg-success"
-              : step1 === "active" ? "bg-warning"
-              : step1 === "error" ? "bg-danger"
-              : "bg-foreground/10"
-          )} />
-          <div className={cn("w-[4px] flex-1 rounded-full",
-            step2 === "done" ? "bg-success"
-              : step2 === "locked" ? "bg-foreground/5"
-              : "bg-foreground/10"
-          )} />
-        </div>
-        {/* Steps */}
-        <div className="flex-1 flex flex-col gap-[14px]">
-          <div>
-            <p className={cn("text-sm font-semibold leading-tight",
-              step1 === "done" ? "text-success"
-                : step1 === "active" ? "text-warning"
-                : step1 === "error" ? "text-danger"
-                : "text-foreground"
-            )}>
-              {step1 === "done" ? "✓ Xác minh danh tính"
-                : step1 === "active" ? "Đang xử lý..."
-                : step1 === "error" ? "Xác thực thất bại"
-                : "Xác minh danh tính (eKYC)"
-              }
-            </p>
-            <p className={cn("text-xs mt-[3px]",
-              step1 === "error" ? "text-danger/70" : "text-foreground-secondary"
-            )}>
-              {step1 === "done" ? "CCCD + selfie đã xác minh"
-                : step1 === "active" ? "Thường hoàn tất trong 5–10 phút"
-                : step1 === "error" ? "Ảnh không rõ hoặc thông tin không khớp"
-                : "CCCD + selfie · khoảng 5 phút"
-              }
-            </p>
-          </div>
-          <div className={cn(step2 === "locked" && "opacity-35")}>
-            <p className={cn("text-sm font-semibold leading-tight",
-              step2 === "done" ? "text-success" : "text-foreground"
-            )}>
-              {step2 === "done" ? "✓ Kết nối ví đầu tư" : "Kết nối ví đầu tư"}
-            </p>
-            <p className="text-xs text-foreground-secondary mt-[3px]">
-              {step2 === "done" ? "Ví VSP đã kết nối"
-                : step2 === "locked" ? "Hoàn tất eKYC trước"
-                : "Ví VSP bảo mật bởi Fireblocks"
-              }
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* CTA */}
-      {state === "new" && (
-        <Button variant="primary" size="48" className="w-full"
-          onClick={() => router.push("/rwa/onbo/kyc-gate")}>
-          <ShieldCheck size={16} />
-          Xác minh danh tính
-        </Button>
-      )}
-      {state === "kyc-failed" && (
-        <Button variant="secondary" size="48" className="w-full"
-          onClick={() => router.push("/rwa/onbo/kyc-gate")}>
-          <RefreshCw size={16} />
-          Thử lại
-        </Button>
-      )}
-      {state === "kyc-done" && (
-        <Button variant="primary" size="48" className="w-full"
-          onClick={() => router.push("/rwa/onbo/wallet-setup")}>
-          <Wallet size={16} />
-          Kết nối ví đầu tư
-        </Button>
-      )}
-      {/* verifying: reassurance box */}
-      {state === "verifying" && (
-        <div className="bg-warning/5 rounded-[16px] px-[14px] py-[12px]">
-          <div className="flex items-center gap-[8px] mb-[6px]">
-            <Loader2 size={14} className="text-warning animate-spin" />
-            <span className="text-xs font-semibold text-warning">Bước 1/3 · Đang xác minh CCCD</span>
-          </div>
-          <p className="text-[11px] text-foreground-secondary leading-snug">
-            Thường hoàn tất trong 5–10 phút. Bạn sẽ nhận thông báo khi xong.
-          </p>
-        </div>
-      )}
-
-    </div>
-  )
+  return <BalanceCard invested={state !== "exploring"} />
 }
 
 /* ══════════════════════════════════════════════════════════════════════
@@ -187,29 +66,16 @@ function getProjectCTA(
   projectState: ProjectCardState,
   cardState: CardState,
 ): { label: string; variant: "primary" | "secondary"; icon: React.ReactNode } | null {
-  // Closed → no CTA
   if (projectState === "closed") return null
-
-  // User chưa verify → chỉ cho tìm hiểu (browse trước, đăng ký sau)
-  if (cardState === "new" || cardState === "verifying" || cardState === "kyc-failed") {
-    return { label: "Tìm hiểu dự án", variant: "secondary", icon: <ChevronRight size={14} /> }
-  }
-
-  // KYC done nhưng chưa có ví → nhắc kết nối ví
-  if (cardState === "kyc-done") {
-    return { label: "Kết nối ví để đầu tư", variant: "secondary", icon: <Wallet size={14} /> }
-  }
 
   // Purchase flow states → xem chi tiết
   if (cardState === "registered" || cardState === "escrow" || cardState === "pending-alloc" || cardState === "received") {
     return { label: "Xem chi tiết đặt mua", variant: "secondary", icon: <ChevronRight size={14} /> }
   }
 
-  // Exploring / Invested → full CTA theo projectState
   if (projectState === "coming-soon") return { label: "Đăng ký nhận thông báo", variant: "secondary", icon: <Bell size={14} /> }
   if (projectState === "whitelisted") return { label: "Đặt mua ngay", variant: "primary", icon: <Tag size={14} /> }
   if (projectState === "committed") return { label: "Xem chi tiết đặt mua", variant: "secondary", icon: <ChevronRight size={14} /> }
-  // open — exploring/invested user ready to invest
   return { label: "Tìm hiểu và đầu tư", variant: "primary", icon: <ChevronRight size={14} /> }
 }
 
@@ -244,6 +110,29 @@ function ProjectCard({ project, state, cardState }: { project: typeof PROJECTS[0
             <MapPin size={12} className="text-foreground-secondary shrink-0" />
             <p className="text-xs text-foreground-secondary">{project.location}</p>
           </div>
+
+          {/* Developer + price range */}
+          <div className="mt-[10px]">
+            <div className="flex items-center gap-[6px] flex-wrap">
+              <span className="text-[11px] font-semibold text-foreground">{project.developer}</span>
+              {project.properties.length > 0 && (
+                <span className="text-[11px] text-foreground-secondary">· {project.properties.length} BĐS</span>
+              )}
+              {project.properties.length > 0 && (() => {
+                const prices = project.properties.map((p) => p.price)
+                const min = Math.min(...prices)
+                const max = Math.max(...prices)
+                return (
+                  <span className="text-[11px] text-foreground-secondary">
+                    · {min === max
+                      ? formatVNDShort(min)
+                      : `${formatVNDShort(min)} – ${formatVNDShort(max)}`} / căn
+                  </span>
+                )
+              })()}
+            </div>
+          </div>
+
           <div className="flex items-center justify-between mt-[14px]">
             <div className="relative">
               <div className="flex items-center gap-[3px]"
@@ -265,7 +154,7 @@ function ProjectCard({ project, state, cardState }: { project: typeof PROJECTS[0
               )}
             </div>
             <div className="text-right">
-              <p className="text-[10px] text-foreground-secondary uppercase tracking-wide">Lợi suất</p>
+              <p className="text-[10px] text-foreground-secondary uppercase tracking-wide"><Tip text="Tỷ lệ lợi nhuận dự kiến mỗi năm từ cho thuê và tăng giá trị BĐS">Lợi suất</Tip></p>
               <p className="text-sm font-bold text-success">{project.expectedYield}%/năm</p>
             </div>
           </div>
@@ -287,12 +176,6 @@ function ProjectCard({ project, state, cardState }: { project: typeof PROJECTS[0
               <div className="flex items-center gap-[3px]">
                 <Users size={11} className="text-foreground-secondary" />
                 <span className="text-[11px] text-foreground-secondary">{project.investors.toLocaleString()}</span>
-              </div>
-            )}
-            {project.daysLeft > 0 && state !== "closed" && (
-              <div className="flex items-center gap-[3px]">
-                <Clock size={11} className="text-foreground-secondary" />
-                <span className="text-[11px] text-foreground-secondary">Còn {project.daysLeft} ngày</span>
               </div>
             )}
             {/* Committed: show user's commitment */}
@@ -336,7 +219,7 @@ function PurchaseFlowCard({ state }: { state: CardState }) {
 
   return (
     <div className="px-[22px] pt-[16px]">
-      <div className="bg-[#fff0f3] dark:bg-[#2a1419] rounded-[20px] px-[18px] py-[16px]">
+      <div className="bg-card-accent rounded-[20px] px-[18px] py-[16px]">
         <div className="flex items-center gap-[8px] mb-[2px]">
           <Building2 size={14} className="text-foreground-secondary" />
           <p className="text-[10px] text-foreground-secondary uppercase tracking-wide">BĐS đang mua</p>
@@ -431,16 +314,22 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* ── Featured Project — always visible ─────────────── */}
+      {/* ── Featured Projects ─────────────────────────────── */}
       <div className="px-[22px] pt-[32px] pb-[12px]">
-        <p className="text-lg font-bold text-foreground">
-          {(cardState === "invested" || cardState === "received") ? "Dự án đang mở"
-            : (cardState === "registered" || cardState === "escrow" || cardState === "pending-alloc") ? "Dự án đang mua"
-            : "Dự án nổi bật"}
-        </p>
+        <p className="text-lg font-bold text-foreground">Dự án nổi bật</p>
       </div>
-      <div className="px-[22px]">
-        <ProjectCard project={FEATURED} state={projectState} cardState={cardState} />
+      <div className="px-[22px] space-y-[14px]">
+        {PROJECTS.map((project) => {
+          const pState: ProjectCardState =
+            project.status === "coming-soon" ? "coming-soon"
+            : project.status === "closed" ? "closed"
+            : getUserCommitment(project.id).status === "committed" ? "committed"
+            : getUserCommitment(project.id).status === "whitelisted" ? "whitelisted"
+            : "open"
+          return (
+            <ProjectCard key={project.id} project={project} state={pState} cardState={cardState} />
+          )
+        })}
       </div>
 
       {/* Calculator teaser + Risk disclosure moved to project detail page */}

@@ -92,7 +92,7 @@ export default function OnboSuccessPage() {
 
           {/* ── Project hook — close the loop with intent ─────────── */}
           <div className="pt-[12px] px-[22px]">
-            <div className="bg-blue-50 rounded-[14px] px-[14px] py-[12px]">
+            <div className="bg-info/8 rounded-[14px] px-[14px] py-[12px]">
               <p className="text-xs font-semibold text-foreground-secondary uppercase tracking-widest mb-[4px]">
                 Dự án bạn quan tâm trước đó
               </p>
@@ -101,7 +101,7 @@ export default function OnboSuccessPage() {
               </p>
               <button
                 type="button"
-                onClick={() => router.push("/rwa/preo")}
+                onClick={() => router.push("/rwa")}
                 className="text-xs font-semibold text-success focus-visible:outline-none focus-visible:underline"
               >
                 Xem lại dự án →
@@ -117,7 +117,7 @@ export default function OnboSuccessPage() {
             variant="primary"
             size="48"
             className="w-full"
-            onClick={() => router.push("/rwa/preo")}
+            onClick={() => router.push("/rwa")}
           >
             Khám phá dự án đầu tư
           </Button>

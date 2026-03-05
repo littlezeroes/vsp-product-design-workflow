@@ -4,9 +4,9 @@ import * as React from "react"
 import { useParams, useRouter } from "next/navigation"
 import {
   ChevronLeft, ChevronRight, MapPin, AlertTriangle,
-  ShieldCheck, FileText, Building2, ChevronDown,
+  ShieldCheck, FileText, Building2,
   CheckCircle, Plus, X, Calculator, Clock,
-  Loader2, ArrowDownLeft
+  Loader2
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -172,9 +172,12 @@ function CampaignRow({ project, campaign }: {
     <div className="px-[22px] pt-[14px]">
       <div className="flex items-center justify-between mb-[6px]">
         <CampaignBadge status={campaign.status} />
-        {project.daysLeft > 0 && (
-          <span className="text-[11px] font-semibold text-foreground tabular-nums">Còn {project.daysLeft} ngày</span>
-        )}
+        {(() => {
+          const days = Math.ceil((new Date(project.endDate).getTime() - Date.now()) / 86_400_000)
+          return days > 0 ? (
+            <span className="text-[11px] font-semibold text-foreground tabular-nums">Còn {days} ngày</span>
+          ) : null
+        })()}
       </div>
       <div className="flex items-center gap-[8px]">
         <div className="flex-1 h-[3px] bg-secondary rounded-full overflow-hidden">
@@ -186,118 +189,178 @@ function CampaignRow({ project, campaign }: {
   )
 }
 
-/* ── About Section ────────────────────────────────────────────────── */
-/* AboutSection removed — merged into InfoSection as accordion */
-
-/* ── Accordion Item ───────────────────────────────────────────────── */
-function Accordion({ title, icon: Icon, iconColor, children, defaultOpen = false }: {
-  title: string; icon: typeof Clock; iconColor: string; children: React.ReactNode; defaultOpen?: boolean
+/* ── Info Sheet Overlay ───────────────────────────────────────────── */
+function InfoSheet({ title, icon: Icon, iconColor, children, onClose }: {
+  title: string; icon: typeof Clock; iconColor: string; children: React.ReactNode; onClose: () => void
 }) {
-  const [open, setOpen] = React.useState(defaultOpen)
   return (
-    <div className="border-b border-border last:border-b-0">
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center gap-[10px] py-[14px]"
+    <div className="absolute inset-0 z-50 flex items-end" onClick={onClose}>
+      <div className="absolute inset-0 bg-foreground/40" />
+      <div
+        className="relative w-full bg-background rounded-t-[28px] px-[22px] pt-[14px] pb-[34px] max-h-[75%] flex flex-col animate-in slide-in-from-bottom duration-300"
+        onClick={(e) => e.stopPropagation()}
       >
-        <Icon size={16} className={iconColor} />
-        <span className="flex-1 text-sm font-semibold text-foreground text-left">{title}</span>
-        <ChevronDown size={16} className={cn(
-          "text-foreground-secondary transition-transform duration-200",
-          open && "rotate-180"
-        )} />
-      </button>
-      {open && <div className="pb-[14px]">{children}</div>}
+        {/* Handle */}
+        <div className="flex justify-center mb-[12px]">
+          <div className="w-[36px] h-[4px] rounded-full bg-border" />
+        </div>
+
+        <div className="flex items-center gap-[10px] mb-[16px]">
+          <Icon size={18} className={iconColor} />
+          <p className="text-md font-bold text-foreground flex-1">{title}</p>
+          <button type="button" onClick={onClose} className="w-[32px] h-[32px] rounded-full bg-secondary flex items-center justify-center shrink-0">
+            <X size={16} className="text-foreground" />
+          </button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto">{children}</div>
+      </div>
     </div>
   )
 }
 
-/* ── Info Accordions ─────────────────────────────────────────────── */
-function InfoSection({ project }: { project: typeof PROJECTS[0] }) {
+/* ── Info Section — Tappable rows that open overlay sheets ────────── */
+type SheetKey = "about" | "risk" | "safety" | "faq" | null
+
+const INFO_ROWS: { key: Exclude<SheetKey, null>; icon: typeof Clock; iconColor: string; title: string; subtitle: string }[] = [
+  { key: "about", icon: Building2, iconColor: "text-foreground", title: "Giới thiệu dự án", subtitle: "Chủ đầu tư · Tài sản cơ sở · Vị trí" },
+  { key: "risk",  icon: AlertTriangle, iconColor: "text-warning", title: "Rủi ro & Điều kiện", subtitle: "Khóa vốn · Biến động giá · Hoàn tiền" },
+  { key: "safety", icon: ShieldCheck, iconColor: "text-success", title: "An toàn & Pháp lý", subtitle: "Fireblocks · SPV · eKYC · ERC-3643" },
+  { key: "faq",   icon: FileText, iconColor: "text-foreground-secondary", title: "Câu hỏi thường gặp", subtitle: "Token là gì · An toàn · Lợi nhuận" },
+]
+
+function InfoSection({ project, activeSheet, onOpenSheet }: {
+  project: typeof PROJECTS[0]; activeSheet: SheetKey; onOpenSheet: (key: SheetKey) => void
+}) {
   return (
-    <div className="px-[22px] pt-[32px]">
-      <Accordion title="Giới thiệu dự án" icon={Building2} iconColor="text-foreground" defaultOpen>
+    <>
+      {/* Tappable rows */}
+      <div className="px-[22px] pt-[32px]">
+        <p className="text-[11px] font-bold text-foreground-secondary uppercase tracking-wide mb-[4px]">Tìm hiểu thêm</p>
         <div>
-          <p className="text-xs text-foreground-secondary leading-relaxed">{project.description}</p>
-          <div className="flex items-center gap-[6px] mt-[8px]">
-            <span className="text-[11px] font-semibold text-foreground">{project.developer}</span>
-            <span className="text-[11px] text-foreground-secondary">· {project.area}</span>
-          </div>
+          {INFO_ROWS.map((row) => {
+            const Icon = row.icon
+            return (
+              <button
+                key={row.key}
+                type="button"
+                onClick={() => onOpenSheet(row.key)}
+                className="w-full flex items-center gap-[12px] py-[14px] border-b border-border last:border-b-0"
+              >
+                <div className={cn("w-[36px] h-[36px] rounded-[10px] flex items-center justify-center shrink-0",
+                  row.key === "about" ? "bg-foreground/5" :
+                  row.key === "risk" ? "bg-warning/10" :
+                  row.key === "safety" ? "bg-success/10" : "bg-secondary"
+                )}>
+                  <Icon size={16} className={row.iconColor} />
+                </div>
+                <div className="flex-1 min-w-0 text-left">
+                  <p className="text-sm font-semibold text-foreground">{row.title}</p>
+                  <p className="text-[11px] text-foreground-secondary mt-[1px]">{row.subtitle}</p>
+                </div>
+                <ChevronRight size={16} className="text-foreground-secondary/40 shrink-0" />
+              </button>
+            )
+          })}
+        </div>
+      </div>
 
-          {project.properties.length > 0 && (
-            <div className="mt-[12px]">
-              <p className="text-[10px] text-foreground-secondary mb-[6px]">Tài sản cơ sở — token đại diện quyền lợi tài chính chung, không chọn căn cụ thể</p>
-              <div className="space-y-[6px]">
-                {project.properties.map((p) => (
-                  <div key={p.id} className="flex items-center gap-[10px] bg-secondary rounded-[14px] px-[12px] py-[10px]">
-                    <div className="w-[36px] h-[36px] rounded-[8px] bg-border/30 flex items-center justify-center shrink-0">
-                      <Building2 size={14} className="text-foreground-secondary/40" />
+      {/* Overlay sheets */}
+      {activeSheet === "about" && (
+        <InfoSheet title="Giới thiệu dự án" icon={Building2} iconColor="text-foreground" onClose={() => onOpenSheet(null)}>
+          <div>
+            <p className="text-sm text-foreground-secondary leading-relaxed">{project.description}</p>
+            <div className="flex items-center gap-[6px] mt-[12px]">
+              <span className="text-xs font-semibold text-foreground">{project.developer}</span>
+              <span className="text-xs text-foreground-secondary">· {project.area}</span>
+            </div>
+
+            {project.properties.length > 0 && (
+              <div className="mt-[16px]">
+                <p className="text-[11px] text-foreground-secondary mb-[8px]">Tài sản cơ sở — token đại diện quyền lợi tài chính chung</p>
+                <div className="space-y-[6px]">
+                  {project.properties.map((p) => (
+                    <div key={p.id} className="flex items-center gap-[10px] bg-secondary rounded-[14px] px-[12px] py-[10px]">
+                      <div className="w-[36px] h-[36px] rounded-[8px] bg-border/30 flex items-center justify-center shrink-0">
+                        <Building2 size={14} className="text-foreground-secondary/40" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-semibold text-foreground truncate">{p.name}</p>
+                        <p className="text-[11px] text-foreground-secondary">{p.area} m² · {p.bedrooms} PN · {formatVND(p.price)}</p>
+                      </div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs font-semibold text-foreground truncate">{p.name}</p>
-                      <p className="text-[11px] text-foreground-secondary">{p.area} m² · {p.bedrooms} PN · {formatVND(p.price)}</p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-      </Accordion>
+            )}
+          </div>
+        </InfoSheet>
+      )}
 
-      <Accordion title="Rủi ro & Điều kiện" icon={AlertTriangle} iconColor="text-warning">
-        <div className="space-y-[8px]">
-          {[
-            { icon: Clock, color: "text-warning", bg: "bg-warning/10", text: "Khóa tối thiểu 12 tháng · Sau đó có thể bán lại trên sàn V-Smart Pay" },
-            { icon: AlertTriangle, color: "text-danger", bg: "bg-danger/10", text: `Lợi suất ${project.expectedYield}%/năm là kỳ vọng, không cam kết · Giá BĐS có thể giảm · Bạn có thể mất vốn` },
-            { icon: ShieldCheck, color: "text-success", bg: "bg-success/10", text: "Tiền được ngân hàng giữ bảo vệ · Không phân bổ → hoàn 100% về ví trong 1-2 ngày" },
-          ].map((item, i) => (
-            <div key={i} className="flex items-start gap-[8px]">
-              <div className={cn("w-[24px] h-[24px] rounded-[6px] flex items-center justify-center shrink-0 mt-[1px]", item.bg)}>
-                <item.icon size={12} className={item.color} />
+      {activeSheet === "risk" && (
+        <InfoSheet title="Rủi ro & Điều kiện" icon={AlertTriangle} iconColor="text-warning" onClose={() => onOpenSheet(null)}>
+          <div className="space-y-[10px]">
+            {[
+              { icon: Clock, color: "text-warning", bg: "bg-warning/10", text: "Khóa tối thiểu 12 tháng · Sau đó có thể bán lại trên sàn V-Smart Pay" },
+              { icon: AlertTriangle, color: "text-danger", bg: "bg-danger/10", text: `Lợi suất ${project.expectedYield}%/năm là kỳ vọng, không cam kết · Giá BĐS có thể giảm · Bạn có thể mất vốn` },
+              { icon: ShieldCheck, color: "text-success", bg: "bg-success/10", text: "Tiền được ngân hàng giữ bảo vệ · Không phân bổ → hoàn 100% về ví trong 1-2 ngày" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-[10px]">
+                <div className={cn("w-[28px] h-[28px] rounded-[8px] flex items-center justify-center shrink-0 mt-[1px]", item.bg)}>
+                  <item.icon size={14} className={item.color} />
+                </div>
+                <p className="text-sm text-foreground-secondary leading-snug pt-[4px]">{item.text}</p>
               </div>
-              <p className="text-[11px] text-foreground-secondary leading-snug">{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </Accordion>
+            ))}
+          </div>
+        </InfoSheet>
+      )}
 
-      <Accordion title="An toàn & Pháp lý" icon={ShieldCheck} iconColor="text-success">
-        <div className="space-y-[8px]">
-          <div className="flex items-start gap-[8px]">
-            <ShieldCheck size={12} className="text-foreground-secondary mt-[2px] shrink-0" />
-            <p className="text-[11px] text-foreground-secondary leading-snug">Bảo mật cấp ngân hàng (Fireblocks) · Chỉ nhà đầu tư đã xác minh danh tính mới giao dịch được</p>
-          </div>
-          <div className="flex items-start gap-[8px]">
-            <FileText size={12} className="text-foreground-secondary mt-[2px] shrink-0" />
-            <p className="text-[11px] text-foreground-secondary leading-snug">Tài sản được giữ bởi pháp nhân riêng biệt — nếu công ty vận hành gặp vấn đề, tài sản của bạn vẫn an toàn</p>
-          </div>
-          <div className="flex items-start gap-[8px]">
-            <CheckCircle size={12} className="text-success mt-[2px] shrink-0" />
-            <p className="text-[11px] text-foreground-secondary leading-snug">Xác minh danh tính qua VNPT eKYC · Tuân chuẩn quốc tế ERC-3643</p>
-          </div>
-        </div>
-      </Accordion>
-
-      <Accordion title="Câu hỏi thường gặp" icon={FileText} iconColor="text-foreground-secondary">
-        <div className="space-y-[12px]">
-          {[
-            { q: "\"Token\" là gì?", a: "1 token = 1 đơn vị quyền lợi tài chính từ BĐS (cho thuê + tăng giá). Bạn sở hữu thật, ghi nhận trên hợp đồng số không thể sửa xóa." },
-            { q: "Tối thiểu bao nhiêu?", a: `Từ 1 token (${formatVND(project.tokenPrice)}). Không cần mua cả căn hộ.` },
-            { q: "Tiền tôi có an toàn không?", a: "Tiền được ngân hàng giữ trong tài khoản Escrow. Nếu đợt bán không thành công, hoàn 100% tự động trong 1-2 ngày." },
-            { q: "Khi nào tôi nhận được lợi nhuận?", a: "Lợi nhuận cho thuê được phân phối hàng quý sau khi BĐS bắt đầu vận hành. Lợi nhuận từ tăng giá nhận khi bán token." },
-            { q: "Tôi có thể bán lại không?", a: "Sau thời gian khóa (12 tháng), bạn có thể bán lại trên sàn V-Smart Pay cho nhà đầu tư khác." },
-            { q: "Nếu công ty vận hành gặp vấn đề thì sao?", a: "Tài sản được giữ bởi pháp nhân riêng (SPV). Tài sản của bạn tách biệt hoàn toàn, không bị ảnh hưởng." },
-          ].map((item, i) => (
-            <div key={i}>
-              <p className="text-xs font-semibold text-foreground">{item.q}</p>
-              <p className="text-[11px] text-foreground-secondary leading-snug mt-[3px]">{item.a}</p>
+      {activeSheet === "safety" && (
+        <InfoSheet title="An toàn & Pháp lý" icon={ShieldCheck} iconColor="text-success" onClose={() => onOpenSheet(null)}>
+          <div className="space-y-[10px]">
+            <div className="flex items-start gap-[10px]">
+              <div className="w-[28px] h-[28px] rounded-[8px] bg-success/10 flex items-center justify-center shrink-0">
+                <ShieldCheck size={14} className="text-success" />
+              </div>
+              <p className="text-sm text-foreground-secondary leading-snug pt-[4px]">Bảo mật cấp ngân hàng (Fireblocks) · Chỉ nhà đầu tư đã xác minh danh tính mới giao dịch được</p>
             </div>
-          ))}
-        </div>
-      </Accordion>
-    </div>
+            <div className="flex items-start gap-[10px]">
+              <div className="w-[28px] h-[28px] rounded-[8px] bg-foreground/5 flex items-center justify-center shrink-0">
+                <FileText size={14} className="text-foreground-secondary" />
+              </div>
+              <p className="text-sm text-foreground-secondary leading-snug pt-[4px]">Tài sản được giữ bởi pháp nhân riêng biệt (SPV) — nếu công ty vận hành gặp vấn đề, tài sản của bạn vẫn an toàn</p>
+            </div>
+            <div className="flex items-start gap-[10px]">
+              <div className="w-[28px] h-[28px] rounded-[8px] bg-success/10 flex items-center justify-center shrink-0">
+                <CheckCircle size={14} className="text-success" />
+              </div>
+              <p className="text-sm text-foreground-secondary leading-snug pt-[4px]">Xác minh danh tính qua VNPT eKYC · Tuân chuẩn quốc tế ERC-3643</p>
+            </div>
+          </div>
+        </InfoSheet>
+      )}
+
+      {activeSheet === "faq" && (
+        <InfoSheet title="Câu hỏi thường gặp" icon={FileText} iconColor="text-foreground-secondary" onClose={() => onOpenSheet(null)}>
+          <div className="space-y-[14px]">
+            {[
+              { q: "\"Token\" là gì?", a: "1 token = 1 đơn vị quyền lợi tài chính từ BĐS (cho thuê + tăng giá). Bạn sở hữu thật, ghi nhận trên hợp đồng số không thể sửa xóa." },
+              { q: "Tối thiểu bao nhiêu?", a: `Từ 1 token (${formatVND(project.tokenPrice)}). Không cần mua cả căn hộ.` },
+              { q: "Tiền tôi có an toàn không?", a: "Tiền được ngân hàng giữ trong tài khoản Escrow. Nếu đợt bán không thành công, hoàn 100% tự động trong 1-2 ngày." },
+              { q: "Khi nào tôi nhận được lợi nhuận?", a: "Lợi nhuận cho thuê được phân phối hàng quý sau khi BĐS bắt đầu vận hành. Lợi nhuận từ tăng giá nhận khi bán token." },
+              { q: "Tôi có thể bán lại không?", a: "Sau thời gian khóa (12 tháng), bạn có thể bán lại trên sàn V-Smart Pay cho nhà đầu tư khác." },
+              { q: "Nếu công ty vận hành gặp vấn đề thì sao?", a: "Tài sản được giữ bởi pháp nhân riêng (SPV). Tài sản của bạn tách biệt hoàn toàn, không bị ảnh hưởng." },
+            ].map((item, i) => (
+              <div key={i}>
+                <p className="text-sm font-semibold text-foreground">{item.q}</p>
+                <p className="text-xs text-foreground-secondary leading-snug mt-[4px]">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </InfoSheet>
+      )}
+    </>
   )
 }
 
@@ -308,6 +371,7 @@ export default function ProjectDetailPage() {
   const params = useParams()
   const router = useRouter()
   const [showCalc, setShowCalc] = React.useState(false)
+  const [activeSheet, setActiveSheet] = React.useState<SheetKey>(null)
 
   const project = getProject(params.id as string)
   const campaigns = getCampaignsForProject(params.id as string)
@@ -317,11 +381,7 @@ export default function ProjectDetailPage() {
   // Dev: state switcher overrides
   const [devOverride, setDevOverride] = React.useState<UserProjectStatus | null>(null)
   const [devCommitStep, setDevCommitStep] = React.useState(3)
-
-  type KycState = "no-kyc" | "no-wallet" | "ready"
-  const [kycState, setKycState] = React.useState<KycState>("ready")
-  const isGated = kycState !== "ready"
-  const userStatus = isGated ? "none" as UserProjectStatus : (devOverride ?? realCommitment.status)
+  const userStatus = devOverride ?? realCommitment.status
 
   if (!project) {
     return (
@@ -337,45 +397,23 @@ export default function ProjectDetailPage() {
       {/* ── DEV: State controls — OUTSIDE phone frame ──── */}
       <div className="w-full max-w-[800px] px-[16px] py-[10px] space-y-[6px]">
         <div className="flex items-center gap-[6px]">
-          <span className="text-[10px] font-medium text-foreground-secondary shrink-0">Xác thực:</span>
+          <span className="text-[10px] font-medium text-foreground-secondary shrink-0">Dự án:</span>
           <div className="flex gap-[4px] flex-wrap">
-            {(["no-kyc", "no-wallet", "ready"] as const).map((s) => (
+            {(["none", "whitelisted", "committed"] as const).map((s) => (
               <button
                 key={s} type="button"
-                onClick={() => {
-                  setKycState(s)
-                  if (s !== "ready") setDevOverride("none")
-                }}
+                onClick={() => setDevOverride(s)}
                 className={cn(
                   "px-[8px] py-[3px] rounded-full text-[10px] font-semibold transition-colors",
-                  kycState === s ? "bg-foreground text-background" : "bg-secondary text-foreground-secondary"
+                  userStatus === s ? "bg-foreground text-background" : "bg-secondary text-foreground-secondary"
                 )}
               >
-                {s === "no-kyc" ? "Chưa KYC" : s === "no-wallet" ? "Chưa ví" : "Sẵn sàng"}
+                {s === "none" ? "Mới" : s === "whitelisted" ? "Đã tham gia" : "Đã đặt mua"}
               </button>
             ))}
           </div>
         </div>
-        {kycState === "ready" && (
-          <div className="flex items-center gap-[6px]">
-            <span className="text-[10px] font-medium text-foreground-secondary shrink-0">Dự án:</span>
-            <div className="flex gap-[4px] flex-wrap">
-              {(["none", "whitelisted", "committed"] as const).map((s) => (
-                <button
-                  key={s} type="button"
-                  onClick={() => setDevOverride(s)}
-                  className={cn(
-                    "px-[8px] py-[3px] rounded-full text-[10px] font-semibold transition-colors",
-                    userStatus === s ? "bg-foreground text-background" : "bg-secondary text-foreground-secondary"
-                  )}
-                >
-                  {s === "none" ? "Mới" : s === "whitelisted" ? "Đã tham gia" : "Đã đặt mua"}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-        {kycState === "ready" && userStatus === "committed" && (
+        {userStatus === "committed" && (
           <div className="flex items-center gap-[6px]">
             <span className="text-[10px] font-medium text-foreground-secondary shrink-0">Bước:</span>
             <div className="flex gap-[4px] flex-wrap">
@@ -460,17 +498,25 @@ export default function ProjectDetailPage() {
             <CampaignRow project={project} campaign={activeCampaign} />
           )}
 
-          {/* Whitelisted banner */}
-          {userStatus === "whitelisted" && (
-            <div className="px-[22px] pt-[14px]">
-              <div className="bg-success/5 rounded-[16px] px-[14px] py-[10px] flex items-center gap-[8px]">
-                <CheckCircle size={14} className="text-success shrink-0" />
-                <p className="text-xs text-foreground-secondary"><span className="font-semibold text-foreground">Đã đăng ký</span> · Đặt mua để giữ chỗ</p>
+          {/* Whitelisted banner → link to holding */}
+          {userStatus === "whitelisted" && (() => {
+            const holding = HOLDINGS.find((h) => h.projectId === project.id)
+            return (
+              <div className="px-[22px] pt-[14px]">
+                <button
+                  type="button"
+                  onClick={() => holding && router.push(`/rwa/holding/${holding.id}`)}
+                  className="w-full flex items-center gap-[10px] bg-success/5 rounded-[16px] px-[14px] py-[10px]"
+                >
+                  <CheckCircle size={14} className="text-success shrink-0" />
+                  <p className="text-xs text-foreground-secondary flex-1 text-left"><span className="font-semibold text-foreground">Đã đăng ký</span> · Đặt mua để giữ chỗ</p>
+                  <ChevronRight size={14} className="text-foreground-secondary/40 shrink-0" />
+                </button>
               </div>
-            </div>
-          )}
+            )
+          })()}
 
-          {/* Committed — link to holding detail */}
+          {/* Committed — black card → holding detail */}
           {userStatus === "committed" && realCommitment.shares && realCommitment.amount && (() => {
             const holding = HOLDINGS.find((h) => h.projectId === project.id)
             return (
@@ -478,32 +524,38 @@ export default function ProjectDetailPage() {
                 <button
                   type="button"
                   onClick={() => holding && router.push(`/rwa/holding/${holding.id}`)}
-                  className="w-full flex items-center gap-[12px] bg-[#fff0f3] dark:bg-[#2a1419] rounded-[16px] px-[14px] py-[12px]"
+                  className="w-full bg-foreground rounded-[20px] px-[16px] py-[14px] overflow-hidden relative"
                 >
-                  <div className="w-[36px] h-[36px] rounded-[10px] bg-warning/10 flex items-center justify-center shrink-0">
-                    <Loader2 size={16} className="text-warning animate-spin" />
+                  {/* Decorative circles */}
+                  <div className="absolute -top-[20px] -right-[20px] w-[80px] h-[80px] rounded-full border border-background/10" />
+                  <div className="absolute -bottom-[10px] -left-[10px] w-[50px] h-[50px] rounded-full border border-background/10" />
+
+                  <div className="relative flex items-center gap-[12px]">
+                    <div className="w-[40px] h-[40px] rounded-full bg-background/10 flex items-center justify-center shrink-0">
+                      <Loader2 size={18} className="text-warning animate-spin" />
+                    </div>
+                    <div className="flex-1 min-w-0 text-left">
+                      <p className="text-sm font-bold text-background">
+                        {realCommitment.shares} token · {formatVND(realCommitment.amount)}
+                      </p>
+                      <p className="text-xs text-background/60 mt-[2px]">Đang chờ phân bổ · Xem chi tiết</p>
+                    </div>
+                    <ChevronRight size={16} className="text-background/40 shrink-0" />
                   </div>
-                  <div className="flex-1 min-w-0 text-left">
-                    <p className="text-sm font-semibold text-foreground">
-                      {realCommitment.shares} token · {formatVND(realCommitment.amount)}
-                    </p>
-                    <p className="text-xs text-foreground-secondary mt-[1px]">Đang chờ phân bổ · Xem chi tiết</p>
-                  </div>
-                  <ChevronRight size={16} className="text-foreground-secondary/40 shrink-0" />
                 </button>
               </div>
             )
           })()}
 
-          {/* Info accordions: About, Risks, Safety, FAQ */}
-          <InfoSection project={project} />
+          {/* Info rows → overlay sheets */}
+          <InfoSection project={project} activeSheet={activeSheet} onOpenSheet={setActiveSheet} />
         </div>
 
         {/* ── Sticky CTA ─────────────────────────────────────── */}
         <div className="absolute bottom-0 inset-x-0 bg-background border-t border-border px-[22px] pb-[34px] pt-[12px]">
 
           {/* Calculator link */}
-          {!isGated && project.status === "open" && (
+          {project.status === "open" && (
             <button
               type="button" onClick={() => setShowCalc(true)}
               className="w-full flex items-center justify-center gap-[6px] mb-[10px]"
@@ -513,31 +565,8 @@ export default function ProjectDetailPage() {
             </button>
           )}
 
-          {/* Gated: chưa KYC/ví */}
-          {isGated && project.status === "open" && (
-            <>
-              <div className="flex items-center gap-[8px] mb-[10px] justify-center">
-                <ShieldCheck size={14} className="text-warning" />
-                <p className="text-xs text-foreground-secondary">
-                  {kycState === "no-kyc"
-                    ? "Hoàn tất xác minh danh tính để đầu tư"
-                    : "Kết nối ví đầu tư để tiếp tục"
-                  }
-                </p>
-              </div>
-              <Button
-                variant="primary" size="48" className="w-full"
-                onClick={() => router.push(
-                  kycState === "no-kyc" ? "/rwa/onbo/kyc-gate" : "/rwa/onbo/wallet-setup"
-                )}
-              >
-                {kycState === "no-kyc" ? "Xác minh danh tính" : "Kết nối ví đầu tư"}
-              </Button>
-            </>
-          )}
-
-          {/* Ready: CTA by user status */}
-          {!isGated && project.status === "open" && userStatus === "none" && (
+          {/* CTA by user status */}
+          {project.status === "open" && userStatus === "none" && (
             <>
               <p className="text-[10px] text-foreground-secondary text-center mb-[6px]">Đăng ký miễn phí, chưa cần chuyển tiền</p>
               <Button variant="primary" size="48" className="w-full"
@@ -546,13 +575,13 @@ export default function ProjectDetailPage() {
               </Button>
             </>
           )}
-          {!isGated && project.status === "open" && userStatus === "whitelisted" && (
+          {project.status === "open" && userStatus === "whitelisted" && (
             <Button variant="primary" size="48" className="w-full"
               onClick={() => router.push(`/rwa/invest/${project.id}`)}>
               Đặt mua ngay
             </Button>
           )}
-          {!isGated && project.status === "open" && userStatus === "committed" && (
+          {project.status === "open" && userStatus === "committed" && (
             <Button variant="secondary" size="48" className="w-full"
               onClick={() => router.push(`/rwa/invest/${project.id}`)}>
               <Plus size={18} />

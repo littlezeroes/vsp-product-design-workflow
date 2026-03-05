@@ -2,26 +2,22 @@
 
 import * as React from "react"
 import { usePathname, useRouter } from "next/navigation"
-import { Building2, Wallet, Receipt, UserCircle } from "lucide-react"
+import { Building2, Wallet, Home, UserCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 /* ── Tab config ────────────────────────────────────────────────────── */
 const TABS = [
   { href: "/rwa", label: "Dự án", icon: Building2 },
   { href: "/rwa/tai-san", label: "Portfolio", icon: Wallet },
-  { href: "/rwa/giao-dich", label: "Giao dịch", icon: Receipt },
+  { href: "/rwa/bat-dong-san", label: "Bất động sản", icon: Home },
   { href: "/rwa/tai-khoan", label: "Tài khoản", icon: UserCircle },
 ]
 
 /* ── State config ─────────────────────────────────────────────────── */
-export type CardState = "new" | "verifying" | "kyc-failed" | "kyc-done" | "exploring" | "registered" | "escrow" | "pending-alloc" | "received" | "invested"
+export type CardState = "exploring" | "registered" | "escrow" | "pending-alloc" | "received" | "invested"
 export type ProjectCardState = "coming-soon" | "open" | "whitelisted" | "committed" | "closed"
 
 export const CARD_STATES: { key: CardState; label: string }[] = [
-  { key: "new", label: "Mới" },
-  { key: "verifying", label: "Đang KYC" },
-  { key: "kyc-failed", label: "KYC Fail" },
-  { key: "kyc-done", label: "Đã KYC" },
   { key: "exploring", label: "Sẵn sàng" },
   { key: "registered", label: "Đăng ký" },
   { key: "escrow", label: "Escrow" },
@@ -47,7 +43,7 @@ interface AppCtx {
 }
 
 export const AppStateContext = React.createContext<AppCtx>({
-  cardState: "new", setCardState: () => {},
+  cardState: "exploring", setCardState: () => {},
   projectState: "open", setProjectState: () => {},
 })
 
@@ -86,7 +82,7 @@ function StatePills<T extends string>({ label, options, value, onChange }: {
 export default function RwaTabsLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const router = useRouter()
-  const [cardState, setCardState] = React.useState<CardState>("new")
+  const [cardState, setCardState] = React.useState<CardState>("exploring")
   const [projectState, setProjectState] = React.useState<ProjectCardState>("open")
 
   return (

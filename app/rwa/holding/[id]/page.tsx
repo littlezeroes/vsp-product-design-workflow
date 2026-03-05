@@ -3,40 +3,27 @@
 import * as React from "react"
 import { useParams, useRouter } from "next/navigation"
 import {
-  ChevronLeft, ChevronRight, TrendingUp, Lock, Loader2,
-  Layers, Calendar, ArrowUpRight, MapPin,
-  ArrowDownLeft, ArrowUpFromLine, Receipt,
+  ChevronLeft, TrendingUp, Lock, Loader2,
+  Layers, Calendar, MapPin,
+  Receipt,
   ShieldCheck, Clock, BookOpen, Plus, Send, Repeat2,
-  BadgeCheck, Stamp, Award, CheckCircle, Wallet, Building2,
+  BadgeCheck, Building2,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Tip } from "@/components/ui/tip"
 import {
-  HOLDINGS, TRANSACTIONS,
+  HOLDINGS,
   getProject, formatVND, getCampaignsForProject,
 } from "../../data"
 
-const SPINE_COLORS = ["bg-success", "bg-[#6366f1]", "bg-[#f59e0b]", "bg-danger"]
+const SPINE_COLORS = ["bg-success", "bg-indigo-500", "bg-yellow-500", "bg-danger"]
 const PASSBOOK_COLORS = [
   { spine: "bg-success",   dot: "bg-success/20",   text: "text-success" },
-  { spine: "bg-[#6366f1]", dot: "bg-[#6366f1]/20", text: "text-[#6366f1]" },
-  { spine: "bg-[#f59e0b]", dot: "bg-[#f59e0b]/20", text: "text-[#f59e0b]" },
+  { spine: "bg-indigo-500", dot: "bg-indigo-500/20", text: "text-indigo-500" },
+  { spine: "bg-yellow-500", dot: "bg-yellow-500/20", text: "text-yellow-500" },
   { spine: "bg-danger",    dot: "bg-danger/20",     text: "text-danger" },
 ]
 
-/* ── Transaction type config ─────────────────────────────────────── */
-const TX_CONFIG: Record<string, { label: string; icon: typeof Receipt; color: string; bg: string }> = {
-  register: { label: "Đăng ký mua", icon: ArrowUpFromLine, color: "text-foreground", bg: "bg-foreground/5" },
-  allocate: { label: "Nhận token", icon: ArrowDownLeft, color: "text-success", bg: "bg-success/10" },
-  refund:   { label: "Hoàn tiền", icon: ArrowDownLeft, color: "text-info", bg: "bg-info/10" },
-  transfer: { label: "Chuyển", icon: ArrowUpFromLine, color: "text-foreground", bg: "bg-foreground/5" },
-}
-
-const TX_STATUS: Record<string, { label: string; color: string }> = {
-  pending:  { label: "Đang xử lý", color: "text-warning" },
-  success:  { label: "Thành công", color: "text-success" },
-  refunded: { label: "Đã hoàn", color: "text-info" },
-  failed:   { label: "Thất bại", color: "text-danger" },
-}
 
 export default function HoldingDetailPage() {
   const params = useParams()
@@ -64,9 +51,6 @@ export default function HoldingDetailPage() {
   const profit = holding.currentValue - invested
   const color = PASSBOOK_COLORS[holdingIndex % PASSBOOK_COLORS.length]
   const spineColor = SPINE_COLORS[holdingIndex % SPINE_COLORS.length]
-
-  // Transactions for this project
-  const txs = TRANSACTIONS.filter((t) => t.projectId === holding.projectId)
 
   return (
     <div className="min-h-screen bg-grey-100 dark:bg-grey-900 flex flex-col items-center">
@@ -216,7 +200,11 @@ export default function HoldingDetailPage() {
                                     : s.active ? "text-background"
                                     : "text-background/25"
                                 )}>
-                                  {s.done ? `✓ ${s.label}` : s.label}
+                                  {s.done ? `✓ ${s.label}`
+                                    : s.key === "escrow" ? <span><Tip text="Tài khoản trung gian do ngân hàng quản lý — không ai tự ý rút được cho đến khi phân bổ xong">Escrow</Tip> · Techcombank</span>
+                                    : s.key === "alloc" ? <span>Chờ <Tip text="Chia token cho nhà đầu tư theo tỷ lệ sau khi đợt bán kết thúc">phân bổ</Tip></span>
+                                    : s.key === "token" ? <span>Nhận <Tip text="Đơn vị sở hữu số — đại diện cho phần BĐS bạn mua">token</Tip> vào ví</span>
+                                    : s.label}
                                 </p>
                                 {(s.done || s.active) && (
                                   <p className="text-[10px] text-background/40 mt-[2px]">{s.desc}</p>
@@ -225,8 +213,8 @@ export default function HoldingDetailPage() {
                                 {/* Bank logo inline for escrow step */}
                                 {s.bank && (s.done || s.active) && (
                                   <div className="flex items-center gap-[8px] mt-[6px] bg-background/[0.07] rounded-[10px] px-[10px] py-[7px]">
-                                    <div className="w-[28px] h-[28px] rounded-[7px] bg-[#e31937]/20 flex items-center justify-center shrink-0">
-                                      <span className="text-[8px] font-extrabold text-[#e31937]">TCB</span>
+                                    <div className="w-[28px] h-[28px] rounded-[7px] bg-red-500/20 flex items-center justify-center shrink-0">
+                                      <span className="text-[8px] font-extrabold text-red-500">TCB</span>
                                     </div>
                                     <p className="text-[10px] font-medium text-background/60">Techcombank Escrow</p>
                                     <ShieldCheck size={12} className="text-success ml-auto shrink-0" />
@@ -240,23 +228,58 @@ export default function HoldingDetailPage() {
                                   const estRcv = Math.round(holding.shares * ratio / 100)
                                   const estRef = holding.shares - estRcv
                                   return (
-                                    <div className="mt-[6px] space-y-[6px]">
-                                      {/* Progress bar */}
+                                    <div className="mt-[8px] bg-background/[0.07] rounded-[12px] px-[12px] py-[10px] space-y-[10px]">
+                                      {/* Bar 1: Tiến độ đăng ký */}
                                       <div>
-                                        <div className="h-[3px] bg-background/10 rounded-full overflow-hidden">
-                                          <div className="h-full bg-warning rounded-full" style={{ width: `${Math.min(demandPct, 100)}%` }} />
+                                        <div className="flex items-center justify-between mb-[4px]">
+                                          <span className="text-[9px] text-background/50">Tiến độ đăng ký</span>
+                                          <span className={cn(
+                                            "text-[10px] font-bold tabular-nums",
+                                            isOver ? "text-warning" : "text-success"
+                                          )}>{demandPct}%{isOver ? " · Vượt mức" : ""}</span>
+                                        </div>
+                                        <div className="h-[4px] bg-background/10 rounded-full overflow-hidden">
+                                          <div className={cn(
+                                            "h-full rounded-full",
+                                            isOver ? "bg-warning" : "bg-success"
+                                          )} style={{ width: `${Math.min(demandPct, 100)}%` }} />
                                         </div>
                                       </div>
-                                      {/* Allocation breakdown */}
+
+                                      {/* Bar 2: Ước tính phân bổ — split green + blue */}
                                       {isOver && (
-                                        <div className="bg-background/[0.07] rounded-[10px] px-[10px] py-[7px] space-y-[4px]">
-                                          <div className="flex items-center justify-between">
-                                            <span className="text-[9px] text-background/50">Ước nhận</span>
-                                            <span className="text-[10px] font-bold text-success tabular-nums">~{estRcv} token</span>
+                                        <div>
+                                          <div className="flex items-center justify-between mb-[4px]">
+                                            <span className="text-[9px] text-background/50">Ước tính phân bổ</span>
+                                            <span className="text-[10px] font-bold text-background/70 tabular-nums">{ratio}%</span>
                                           </div>
-                                          <div className="flex items-center justify-between">
-                                            <span className="text-[9px] text-background/50">Hoàn tiền</span>
-                                            <span className="text-[10px] font-bold text-info tabular-nums">~{formatVND(estRef * holding.avgPrice)}</span>
+                                          <div className="h-[4px] bg-background/10 rounded-full overflow-hidden flex">
+                                            <div className="h-full bg-success" style={{ width: `${ratio}%` }} />
+                                            <div className="h-full bg-info" style={{ width: `${100 - ratio}%` }} />
+                                          </div>
+                                          <div className="flex items-center gap-[10px] mt-[4px]">
+                                            <div className="flex items-center gap-[4px]">
+                                              <div className="w-[6px] h-[6px] rounded-full bg-success" />
+                                              <span className="text-[9px] text-background/40">Nhận token</span>
+                                            </div>
+                                            <div className="flex items-center gap-[4px]">
+                                              <div className="w-[6px] h-[6px] rounded-full bg-info" />
+                                              <span className="text-[9px] text-background/40">Hoàn tiền</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      )}
+
+                                      {/* Ước nhận + Hoàn tiền */}
+                                      {isOver && (
+                                        <div className="flex gap-[8px] pt-[4px]">
+                                          <div className="flex-1 bg-success/10 rounded-[10px] px-[10px] py-[8px]">
+                                            <p className="text-[9px] text-background/40">Ước nhận</p>
+                                            <p className="text-[13px] font-bold text-success tabular-nums mt-[2px]">~{estRcv} token</p>
+                                          </div>
+                                          <div className="flex-1 bg-info/10 rounded-[10px] px-[10px] py-[8px]">
+                                            <p className="text-[9px] text-background/40">Hoàn tiền</p>
+                                            <p className="text-[13px] font-bold text-info tabular-nums mt-[2px]">~{formatVND(estRef * holding.avgPrice)}</p>
                                           </div>
                                         </div>
                                       )}
@@ -337,7 +360,7 @@ export default function HoldingDetailPage() {
                   >
                     {/* ─── FRONT ───────────────────────────────── */}
                     <div
-                      className="absolute inset-0 w-full h-full rounded-[20px] overflow-hidden bg-[#fff0f3] dark:bg-[#2a1419]"
+                      className="absolute inset-0 w-full h-full rounded-[20px] overflow-hidden bg-card-accent"
                       style={{ backfaceVisibility: "hidden" }}
                     >
                       <div className={cn("h-[4px] w-full", color.spine)} />
@@ -378,7 +401,7 @@ export default function HoldingDetailPage() {
 
                     {/* ─── BACK ────────────────────────────────── */}
                     <div
-                      className="absolute inset-0 w-full h-full rounded-[20px] overflow-hidden bg-[#fff0f3] dark:bg-[#2a1419]"
+                      className="absolute inset-0 w-full h-full rounded-[20px] overflow-hidden bg-card-accent"
                       style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                     >
                       <div className={cn("h-[4px] w-full", color.spine)} />
@@ -466,39 +489,6 @@ export default function HoldingDetailPage() {
                 </div>
               )}
             </>
-          )}
-
-          {/* ── Transaction History ────────────────────────── */}
-          {txs.length > 0 && (
-            <div className="px-[22px] pt-[24px]">
-              <p className="text-[11px] font-bold text-foreground-secondary uppercase tracking-wide mb-[8px]">Lịch sử giao dịch</p>
-              <div className="space-y-[2px]">
-                {txs.map((tx) => {
-                  const cfg = TX_CONFIG[tx.type] ?? TX_CONFIG.register
-                  const st = TX_STATUS[tx.status] ?? TX_STATUS.pending
-                  const Icon = cfg.icon
-                  return (
-                    <div key={tx.id} className="flex items-center gap-[12px] py-[12px]">
-                      <div className={cn("w-[36px] h-[36px] rounded-[10px] flex items-center justify-center shrink-0", cfg.bg)}>
-                        <Icon size={16} className={cfg.color} />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-foreground">{cfg.label}</p>
-                        <p className="text-[11px] text-foreground-secondary mt-[1px]">
-                          {tx.date} {tx.shares ? `· ${tx.shares} token` : ""}
-                        </p>
-                      </div>
-                      <div className="text-right shrink-0">
-                        <p className="text-sm font-semibold text-foreground tabular-nums">
-                          {tx.type === "refund" || tx.type === "allocate" ? "+" : "-"}{formatVND(tx.amount)}
-                        </p>
-                        <p className={cn("text-[10px] font-medium", st.color)}>{st.label}</p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
           )}
 
         </div>

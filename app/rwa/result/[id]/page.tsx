@@ -124,7 +124,7 @@ export default function ResultPage() {
           {/* Allocation explanation */}
           {ratio < 100 && (
             <div className="px-[22px] pt-[16px]">
-              <div className="px-[14px] py-[12px] bg-blue-50 dark:bg-blue-950 rounded-[14px]">
+              <div className="px-[14px] py-[12px] bg-info/8 rounded-[14px]">
                 <div className="flex gap-[10px]">
                   <AlertCircle size={16} className="text-info shrink-0 mt-[1px]" />
                   <div>

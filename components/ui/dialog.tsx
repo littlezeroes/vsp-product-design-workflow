@@ -114,7 +114,7 @@ function Dialog({
             )}
             {description && (
               /* sm (14px) / regular (400) / leading-5 */
-              <p className="text-sm font-normal leading-5 text-foreground">
+              <p className="text-sm font-normal leading-5 text-foreground whitespace-pre-line">
                 {description}
               </p>
             )}

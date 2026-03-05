@@ -3,6 +3,7 @@
 export interface RwaProject {
   id: string
   name: string
+  tokenName: string
   location: string
   image: string
   tokenPrice: number
@@ -10,7 +11,8 @@ export interface RwaProject {
   totalSupply: number
   soldCount: number
   investors: number
-  daysLeft: number
+  startDate: string
+  endDate: string
   status: "open" | "coming-soon" | "closed"
   description: string
   area: string
@@ -24,7 +26,13 @@ export interface RwaProperty {
   price: number
   area: number
   bedrooms: number
+  bathrooms: number
+  floor: number
+  type: "apartment" | "villa" | "penthouse" | "shophouse"
+  projectId: string
   image: string
+  tokensRequired: number
+  redemptionStatus: "coming-soon" | "available" | "redeemed"
 }
 
 export interface RwaCampaign {
@@ -64,10 +72,6 @@ export interface RwaTransaction {
 export interface RwaUserProfile {
   name: string
   phone: string
-  kycStatus: "verified" | "pending" | "not-started"
-  kycLevel: number
-  walletAddress: string
-  walletStatus: "connected" | "not-connected"
   totalBalance: number
 }
 
@@ -76,6 +80,7 @@ export const PROJECTS: RwaProject[] = [
   {
     id: "vgp-s12",
     name: "Vinhomes Grand Park Tower S12",
+    tokenName: "VGP-S12",
     location: "Quận 9, TP. Hồ Chí Minh",
     image: "/rwa/vgp-s12.jpg",
     tokenPrice: 5_000_000,
@@ -83,7 +88,8 @@ export const PROJECTS: RwaProject[] = [
     totalSupply: 10_000,
     soldCount: 7_850,
     investors: 1_247,
-    daysLeft: 5,
+    startDate: "2026-03-01",
+    endDate: "2026-04-30",
     status: "open",
     description:
       "Tòa S12 thuộc phân khu The Origami, Vinhomes Grand Park. Vị trí đắc địa, tiện ích đầy đủ, kết nối thuận lợi đến trung tâm TP.HCM.",
@@ -96,7 +102,13 @@ export const PROJECTS: RwaProject[] = [
         price: 3_500_000_000,
         area: 68.5,
         bedrooms: 2,
+        bathrooms: 2,
+        floor: 12,
+        type: "apartment",
+        projectId: "vgp-s12",
         image: "/rwa/prop-1.jpg",
+        tokensRequired: 700,
+        redemptionStatus: "coming-soon",
       },
       {
         id: "s12-08-t15",
@@ -104,13 +116,20 @@ export const PROJECTS: RwaProject[] = [
         price: 4_200_000_000,
         area: 82,
         bedrooms: 3,
+        bathrooms: 2,
+        floor: 15,
+        type: "apartment",
+        projectId: "vgp-s12",
         image: "/rwa/prop-2.jpg",
+        tokensRequired: 840,
+        redemptionStatus: "coming-soon",
       },
     ],
   },
   {
     id: "eco-b6",
     name: "Ecopark Hai Dương Villa B6",
+    tokenName: "ECO-B6",
     location: "Văn Giang, Hưng Yên",
     image: "/rwa/eco-b6.jpg",
     tokenPrice: 10_000_000,
@@ -118,7 +137,8 @@ export const PROJECTS: RwaProject[] = [
     totalSupply: 5_000,
     soldCount: 2_100,
     investors: 432,
-    daysLeft: 18,
+    startDate: "2026-02-15",
+    endDate: "2026-06-30",
     status: "open",
     description:
       "Biệt thự B6 thuộc khu đô thị sinh thái Ecopark Hải Dương, không gian xanh, chuẩn resort 5 sao.",
@@ -131,13 +151,20 @@ export const PROJECTS: RwaProject[] = [
         price: 8_500_000_000,
         area: 220,
         bedrooms: 4,
+        bathrooms: 3,
+        floor: 1,
+        type: "villa",
+        projectId: "eco-b6",
         image: "/rwa/prop-3.jpg",
+        tokensRequired: 850,
+        redemptionStatus: "coming-soon",
       },
     ],
   },
   {
     id: "masteri-t5",
     name: "Masteri Thảo Điền T5",
+    tokenName: "MST-T5",
     location: "Quận 2, TP. Hồ Chí Minh",
     image: "/rwa/masteri-t5.jpg",
     tokenPrice: 8_000_000,
@@ -145,7 +172,8 @@ export const PROJECTS: RwaProject[] = [
     totalSupply: 8_000,
     soldCount: 8_000,
     investors: 890,
-    daysLeft: 0,
+    startDate: "2025-11-01",
+    endDate: "2026-01-31",
     status: "closed",
     description:
       "Tòa T5 Masteri Thảo Điền, dự án cao cấp tại trung tâm Thảo Điền, Quận 2.",
@@ -156,6 +184,7 @@ export const PROJECTS: RwaProject[] = [
   {
     id: "lm81-sky",
     name: "Landmark 81 SkyVilla",
+    tokenName: "LM81-SKY",
     location: "Bình Thạnh, TP. Hồ Chí Minh",
     image: "/rwa/lm81.jpg",
     tokenPrice: 20_000_000,
@@ -163,7 +192,8 @@ export const PROJECTS: RwaProject[] = [
     totalSupply: 3_000,
     soldCount: 0,
     investors: 0,
-    daysLeft: 30,
+    startDate: "2026-05-01",
+    endDate: "2026-08-31",
     status: "coming-soon",
     description:
       "SkyVilla tầng cao tại Landmark 81, tòa nhà cao nhất Việt Nam. Dự án siêu cao cấp dành cho nhà đầu tư lớn.",
@@ -287,10 +317,6 @@ export const TRANSACTIONS: RwaTransaction[] = [
 export const USER: RwaUserProfile = {
   name: "Trần Mai Linh",
   phone: "0912 *** 789",
-  kycStatus: "verified",
-  kycLevel: 2,
-  walletAddress: "0x1a2b...9f8e",
-  walletStatus: "connected",
   totalBalance: 499_000_000,
 }
 
@@ -332,4 +358,8 @@ export function getProject(id: string) {
 
 export function getCampaignsForProject(projectId: string) {
   return CAMPAIGNS.filter((c) => c.projectId === projectId)
+}
+
+export function getAllProperties(): RwaProperty[] {
+  return PROJECTS.flatMap((p) => p.properties)
 }

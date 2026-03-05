@@ -2,9 +2,10 @@
 
 import * as React from "react"
 import { useParams, useRouter } from "next/navigation"
-import { ChevronLeft, CheckCircle, AlertTriangle, X, ShieldCheck } from "lucide-react"
+import { CheckCircle, AlertTriangle, X, ShieldCheck, Minus, Plus, MapPin } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { Tip } from "@/components/ui/tip"
 import { getProject, USER, formatVND } from "../../data"
 
 /* ── Confirm Sheet ───────────────────────────────────────────────── */
@@ -19,10 +20,10 @@ function ConfirmSheet({ project, shares, totalAmount, onConfirm, onClose, confir
   if (!project) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center" onClick={onClose}>
+    <div className="absolute inset-0 z-50 flex items-end" onClick={onClose}>
       <div className="absolute inset-0 bg-foreground/40" />
       <div
-        className="relative w-full max-w-[390px] bg-background rounded-t-[28px] px-[22px] pt-[14px] pb-[34px] animate-in slide-in-from-bottom duration-300"
+        className="relative w-full bg-background rounded-t-[28px] px-[22px] pt-[14px] pb-[34px] animate-in slide-in-from-bottom duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Handle */}
@@ -77,20 +78,10 @@ function ConfirmSheet({ project, shares, totalAmount, onConfirm, onClose, confir
 
         {/* CTA */}
         <div className="mt-[16px] flex flex-col gap-[10px]">
-          <Button
-            variant="primary"
-            size="48"
-            className="w-full"
-            isLoading={confirming}
-            onClick={onConfirm}
-          >
+          <Button variant="primary" size="48" className="w-full" isLoading={confirming} onClick={onConfirm}>
             Xác nhận · {formatVND(totalAmount)}
           </Button>
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-sm font-medium text-foreground-secondary text-center py-[4px]"
-          >
+          <button type="button" onClick={onClose} className="text-sm font-medium text-foreground-secondary text-center py-[4px]">
             Quay lại
           </button>
         </div>
@@ -99,7 +90,7 @@ function ConfirmSheet({ project, shares, totalAmount, onConfirm, onClose, confir
   )
 }
 
-/* ── Investment Flow ─────────────────────────────────────────────── */
+/* ── Investment Sheet Page ───────────────────────────────────────── */
 export default function InvestPage() {
   const params = useParams()
   const router = useRouter()
@@ -112,7 +103,7 @@ export default function InvestPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-grey-100 dark:bg-grey-900 flex items-center justify-center">
         <p className="text-foreground-secondary">Không tìm thấy dự án</p>
       </div>
     )
@@ -120,6 +111,7 @@ export default function InvestPage() {
 
   const totalAmount = shares * project.tokenPrice
   const hasBalance = USER.totalBalance >= totalAmount
+  const maxAffordable = Math.min(100, Math.floor(USER.totalBalance / project.tokenPrice))
 
   function handleConfirm() {
     setConfirming(true)
@@ -131,8 +123,8 @@ export default function InvestPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex justify-center">
-      <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
+    <div className="min-h-screen bg-grey-100 dark:bg-grey-900 flex flex-col items-center">
+      <div className="relative w-[390px] h-[844px] bg-background text-foreground flex flex-col rounded-[40px] shadow-xl overflow-hidden mt-[16px]">
 
         {/* Status bar */}
         <div className="w-full shrink-0 flex items-center px-6 h-[44px]" aria-hidden="true">
@@ -158,67 +150,99 @@ export default function InvestPage() {
           </div>
         </div>
 
-        {/* Nav — hide on success */}
+        {/* ── Background: Project peek ───────────────────────── */}
         {!done && (
-          <div className="flex items-center gap-2 pl-[14px] pr-[22px] h-[56px]">
-            <button
-              type="button"
-              onClick={() => router.back()}
-              className="w-[44px] h-[44px] flex items-center justify-center rounded-full"
-            >
-              <ChevronLeft size={24} className="text-foreground" />
-            </button>
-            <p className="text-[18px] font-bold leading-7 text-foreground flex-1">Đăng ký mua</p>
+          <div className="px-[22px] pt-[8px] pb-[16px]">
+            <div className="flex items-center gap-[10px]">
+              <div className="w-[40px] h-[40px] rounded-[10px] bg-secondary flex items-center justify-center shrink-0">
+                <MapPin size={16} className="text-foreground-secondary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-[15px] font-semibold text-foreground truncate">{project.name}</p>
+                <p className="text-xs text-foreground-secondary">{project.location}</p>
+              </div>
+              <button type="button" onClick={() => router.back()}
+                className="w-[32px] h-[32px] rounded-full bg-secondary flex items-center justify-center shrink-0">
+                <X size={16} className="text-foreground" />
+              </button>
+            </div>
           </div>
         )}
 
-        {/* ── Main: Choose amount ──────────────────────────── */}
+        {/* ── Sheet: Amount selector ─────────────────────────── */}
         {!done && (
-          <div className="flex-1 flex flex-col">
-            <div className="flex-1 px-[22px] pt-[24px]">
-              <p className="text-sm text-foreground-secondary mb-[4px]">{project.name}</p>
-              <p className="text-xs text-foreground-secondary mb-[32px]">
-                {formatVND(project.tokenPrice)} / token
-              </p>
+          <div className="flex-1 flex flex-col bg-secondary rounded-t-[28px]">
+            {/* Handle */}
+            <div className="flex justify-center pt-[10px] pb-[6px]">
+              <div className="w-[36px] h-[4px] rounded-full bg-border" />
+            </div>
 
-              {/* Large number */}
-              <div className="text-center py-[24px]">
-                <p className="text-[48px] font-bold text-foreground leading-none tabular-nums">
-                  {shares}
-                </p>
-                <p className="text-sm text-foreground-secondary mt-[8px]">token</p>
-                <p className="text-md font-semibold text-foreground mt-[12px] tabular-nums">
+            <div className="flex-1 flex flex-col px-[22px]">
+              <p className="text-[11px] font-bold text-foreground-secondary uppercase tracking-wide">Đăng ký mua</p>
+
+              {/* Token count — big live number */}
+              <div className="flex-1 flex flex-col items-center justify-center py-[16px]">
+                <div className="flex items-center gap-[20px]">
+                  <button
+                    type="button"
+                    onClick={() => setShares(Math.max(1, shares - 1))}
+                    className="w-[44px] h-[44px] rounded-full bg-background flex items-center justify-center active:scale-95 transition-transform"
+                  >
+                    <Minus size={18} className="text-foreground" />
+                  </button>
+                  <div className="text-center min-w-[140px]">
+                    <p className="text-[56px] font-bold text-foreground leading-none tabular-nums">
+                      {shares}
+                    </p>
+                    <p className="text-xs text-foreground-secondary mt-[4px]">
+                      <Tip text="Đơn vị sở hữu số — đại diện cho phần BĐS bạn mua">token</Tip>
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShares(Math.min(100, shares + 1))}
+                    className="w-[44px] h-[44px] rounded-full bg-background flex items-center justify-center active:scale-95 transition-transform"
+                  >
+                    <Plus size={18} className="text-foreground" />
+                  </button>
+                </div>
+
+                {/* Live total */}
+                <p className="text-lg font-bold text-foreground tabular-nums mt-[12px]">
                   {formatVND(totalAmount)}
+                </p>
+                <p className="text-[11px] text-foreground-secondary mt-[2px]">
+                  {formatVND(project.tokenPrice)} / token
                 </p>
               </div>
 
               {/* Slider */}
-              <div className="mt-[24px] px-[4px]">
+              <div className="px-[4px]">
                 <input
                   type="range"
                   min={1}
                   max={100}
                   value={shares}
                   onChange={(e) => setShares(Number(e.target.value))}
-                  className="w-full h-[6px] rounded-full appearance-none cursor-pointer bg-secondary accent-foreground
+                  className="w-full h-[6px] rounded-full appearance-none cursor-pointer
                     [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-[28px] [&::-webkit-slider-thumb]:h-[28px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-foreground [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:border-[3px] [&::-webkit-slider-thumb]:border-background
                     [&::-moz-range-thumb]:w-[28px] [&::-moz-range-thumb]:h-[28px] [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-foreground [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:border-[3px] [&::-moz-range-thumb]:border-background [&::-moz-range-thumb]:border-0"
                   style={{
-                    background: `linear-gradient(to right, var(--color-foreground) 0%, var(--color-foreground) ${((shares - 1) / 99) * 100}%, var(--color-secondary) ${((shares - 1) / 99) * 100}%, var(--color-secondary) 100%)`,
+                    background: `linear-gradient(to right, var(--color-foreground) 0%, var(--color-foreground) ${((shares - 1) / 99) * 100}%, var(--color-border) ${((shares - 1) / 99) * 100}%, var(--color-border) 100%)`,
                   }}
                 />
                 {/* Quick presets */}
                 <div className="flex justify-between mt-[12px]">
-                  {[1, 10, 25, 50, 100].map((n) => (
+                  {[1, 5, 10, 25, 50].map((n) => (
                     <button
                       key={n}
                       type="button"
                       onClick={() => setShares(n)}
                       className={cn(
-                        "px-[10px] py-[4px] rounded-full text-xs font-semibold transition-colors",
+                        "px-[12px] py-[5px] rounded-full text-xs font-semibold transition-colors",
                         shares === n
                           ? "bg-foreground text-background"
-                          : "bg-secondary text-foreground-secondary"
+                          : "bg-background text-foreground-secondary"
                       )}
                     >
                       {n}
@@ -227,28 +251,26 @@ export default function InvestPage() {
                 </div>
               </div>
 
-              {/* Balance */}
-              <div className="mt-[24px] text-center">
+              {/* Balance + note */}
+              <div className="mt-[20px] flex items-center justify-between">
                 <p className="text-xs text-foreground-secondary">
                   Số dư ví: <span className="font-semibold text-foreground">{formatVND(USER.totalBalance)}</span>
                 </p>
                 {!hasBalance && (
-                  <p className="text-xs text-danger mt-[4px]">Số dư không đủ</p>
+                  <p className="text-xs font-medium text-danger">Không đủ</p>
                 )}
               </div>
 
-              {/* Note */}
-              <div className="mt-[24px] px-[14px] py-[10px] bg-secondary rounded-[14px]">
-                <div className="flex gap-[8px]">
-                  <ShieldCheck size={14} className="text-foreground-secondary shrink-0 mt-[1px]" />
-                  <p className="text-xs text-foreground-secondary leading-relaxed">
-                    Tiền được ngân hàng giữ bảo vệ. Bạn có thể đăng ký nhiều lần trong cùng đợt.
-                  </p>
-                </div>
+              <div className="mt-[10px] flex items-start gap-[6px]">
+                <ShieldCheck size={12} className="text-foreground-secondary shrink-0 mt-[1px]" />
+                <p className="text-[11px] text-foreground-secondary leading-snug">
+                  Tiền được <Tip text="Tài khoản trung gian do ngân hàng quản lý — không ai tự ý rút được">Escrow</Tip> ngân hàng bảo vệ
+                </p>
               </div>
             </div>
 
-            <div className="px-[22px] pb-[34px] pt-[12px]">
+            {/* CTA */}
+            <div className="px-[22px] pb-[34px] pt-[14px]">
               <Button
                 variant="primary"
                 size="48"
@@ -256,13 +278,13 @@ export default function InvestPage() {
                 disabled={!hasBalance || shares === 0}
                 onClick={() => setShowConfirm(true)}
               >
-                Tiếp tục · {shares} token
+                Tiếp tục · {shares} token · {formatVND(totalAmount)}
               </Button>
             </div>
           </div>
         )}
 
-        {/* ── Success ──────────────────────────────────────── */}
+        {/* ── Success ──────────────────────────────────────────── */}
         {done && (
           <div className="flex-1 flex flex-col">
             <div className="flex-1 px-[22px] pt-[60px] flex flex-col items-center">
@@ -297,25 +319,11 @@ export default function InvestPage() {
               </p>
             </div>
 
-            <div className="px-[22px] pb-[34px] pt-[12px] flex flex-col gap-[10px]">
-              <Button
-                variant="secondary"
-                size="48"
-                className="w-full"
-                onClick={() => {
-                  setDone(false)
-                  setShares(10)
-                }}
-              >
-                Đăng ký thêm
+            <div className="px-[22px] pb-[34px] pt-[12px]">
+              <Button variant="primary" size="48" className="w-full"
+                onClick={() => router.push("/rwa/holding/hold-2")}>
+                Hoàn tất
               </Button>
-              <button
-                type="button"
-                onClick={() => router.push(`/rwa/project/${project.id}`)}
-                className="text-sm font-medium text-foreground-secondary text-center py-[8px]"
-              >
-                Về trang dự án
-              </button>
             </div>
           </div>
         )}

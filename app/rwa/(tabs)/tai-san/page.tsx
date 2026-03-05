@@ -5,11 +5,12 @@ import { useRouter } from "next/navigation"
 import {
   TrendingUp, Lock,
   Loader2, ChevronRight,
+  ArrowDownLeft, ArrowUpRight, CheckCircle,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import {
-  HOLDINGS,
-  getProject, formatVND,
+  HOLDINGS, TRANSACTIONS,
+  getProject, formatVND, formatVNDShort,
 } from "../../data"
 
 /* ── Portfolio Summary Card ────────────────────────────────────────── */
@@ -62,8 +63,8 @@ function PortfolioCard() {
 /* ── Passbook Colors ──────────────────────────────────────────────── */
 const PASSBOOK_COLORS = [
   { spine: "bg-success",     dot: "bg-success/20",     text: "text-success" },
-  { spine: "bg-[#6366f1]",   dot: "bg-[#6366f1]/20",   text: "text-[#6366f1]" },
-  { spine: "bg-[#f59e0b]",   dot: "bg-[#f59e0b]/20",   text: "text-[#f59e0b]" },
+  { spine: "bg-indigo-500",   dot: "bg-indigo-500/20",   text: "text-indigo-500" },
+  { spine: "bg-yellow-500",   dot: "bg-yellow-500/20",   text: "text-yellow-500" },
   { spine: "bg-danger",      dot: "bg-danger/20",       text: "text-danger" },
 ]
 
@@ -90,7 +91,7 @@ function HoldingRow({
       onClick={() => router.push(`/rwa/holding/${holding.id}`)}
       className={cn(
         "w-full rounded-[20px] overflow-hidden text-left",
-        holding.status === "active" ? "bg-[#fff0f3] dark:bg-[#2a1419]" : "bg-background border border-border"
+        holding.status === "active" ? "bg-card-accent" : "bg-background border border-border"
       )}
     >
       {/* Spine accent */}
@@ -158,6 +159,65 @@ function HoldingRow({
   )
 }
 
+/* ── Transaction Row (inline) ──────────────────────────────────────── */
+const ON_CHAIN_TYPES = new Set(["allocate", "transfer"])
+
+function TransactionRow({ tx }: { tx: typeof TRANSACTIONS[0] }) {
+  const project = getProject(tx.projectId)
+  if (!project) return null
+
+  const typeLabels: Record<string, string> = {
+    register: "Đăng ký mua",
+    allocate: "Nhận token",
+    refund: "Hoàn tiền",
+    transfer: "Chuyển nhượng",
+  }
+
+  const typeIcons: Record<string, React.ReactNode> = {
+    register: <ArrowUpRight size={14} className="text-foreground" />,
+    allocate: <CheckCircle size={14} className="text-success" />,
+    refund: <ArrowDownLeft size={14} className="text-info" />,
+    transfer: <ArrowUpRight size={14} className="text-foreground" />,
+  }
+
+  const statusColors: Record<string, string> = {
+    pending: "text-warning",
+    success: "text-success",
+    refunded: "text-info",
+    failed: "text-danger",
+  }
+
+  const isOnChain = ON_CHAIN_TYPES.has(tx.type)
+
+  return (
+    <div className="flex items-center gap-[12px] py-[12px]">
+      <div className="w-[36px] h-[36px] rounded-full bg-secondary flex items-center justify-center shrink-0">
+        {typeIcons[tx.type]}
+      </div>
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-[6px]">
+          <p className="text-sm font-medium text-foreground truncate">{typeLabels[tx.type]}</p>
+          <span className={cn(
+            "text-[9px] font-semibold uppercase tracking-wide px-[5px] py-[1px] rounded",
+            isOnChain
+              ? "bg-success/10 text-success"
+              : "bg-foreground/5 text-foreground-secondary"
+          )}>
+            {isOnChain ? "on-chain" : "off-chain"}
+          </span>
+        </div>
+        <p className="text-xs text-foreground-secondary mt-[1px]">{project.name}</p>
+      </div>
+      <div className="text-right shrink-0">
+        <p className={cn("text-sm font-semibold tabular-nums", statusColors[tx.status])}>
+          {tx.type === "refund" || tx.type === "allocate" ? "+" : "-"}{formatVNDShort(tx.amount)}
+        </p>
+        <p className="text-[10px] text-foreground-secondary">{tx.date}</p>
+      </div>
+    </div>
+  )
+}
+
 /* ── Page ───────────────────────────────────────────────────────────── */
 export default function PortfolioPage() {
   return (
@@ -181,6 +241,26 @@ export default function PortfolioPage() {
             </p>
           </div>
         )}
+      </div>
+
+      {/* Transaction History */}
+      <div className="pt-[32px]">
+        <div className="px-[22px]">
+          <p className="text-[15px] font-bold text-foreground">Lịch sử giao dịch</p>
+        </div>
+        <div className="px-[22px] pt-[4px]">
+          {TRANSACTIONS.length > 0 ? (
+            <div className="divide-y divide-border">
+              {TRANSACTIONS.map((tx) => (
+                <TransactionRow key={tx.id} tx={tx} />
+              ))}
+            </div>
+          ) : (
+            <div className="py-[24px] text-center">
+              <p className="text-sm text-foreground-secondary">Chưa có giao dịch nào</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

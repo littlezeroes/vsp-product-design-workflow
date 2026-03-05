@@ -2,45 +2,9 @@
 
 import * as React from "react"
 import {
-  Copy, Check,
-  Wallet, CheckCircle,
-  ChevronRight, HelpCircle, ShieldCheck, FileText, Building2, BarChart3,
+  ChevronRight, HelpCircle, ShieldCheck, FileText, Building2, BarChart3, Wallet,
 } from "lucide-react"
-import { cn } from "@/lib/utils"
 import { USER } from "../../data"
-
-/* ── Copy button ──────────────────────────────────────────────────── */
-function CopyBtn({ text }: { text: string }) {
-  const [copied, setCopied] = React.useState(false)
-  return (
-    <button
-      type="button"
-      onClick={() => { navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 1500) }}
-      className="w-[28px] h-[28px] rounded-full bg-foreground/10 flex items-center justify-center shrink-0"
-    >
-      {copied ? <Check size={12} className="text-success" /> : <Copy size={12} className="text-foreground-secondary" />}
-    </button>
-  )
-}
-
-/* ── Info Row ──────────────────────────────────────────────────────── */
-function InfoRow({ label, value, badge }: {
-  label: string; value?: string; badge?: { text: string; color: string }
-}) {
-  return (
-    <div className="flex items-center justify-between py-[14px]">
-      <span className="text-sm text-foreground-secondary">{label}</span>
-      {badge ? (
-        <span className={cn(
-          "inline-flex items-center gap-[3px] px-[8px] py-[3px] rounded-full text-[11px] font-semibold",
-          badge.color
-        )}>{badge.text}</span>
-      ) : (
-        <span className="text-sm font-medium text-foreground">{value}</span>
-      )}
-    </div>
-  )
-}
 
 /* ── FAQ Data ─────────────────────────────────────────────────────── */
 const FAQ_CATEGORIES = [
@@ -109,16 +73,6 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 
 /* ── Page ──────────────────────────────────────────────────────────── */
 export default function AccountTabPage() {
-  const kycBadge = USER.kycStatus === "verified"
-    ? { text: "Đã xác minh", color: "bg-success/10 text-success" }
-    : USER.kycStatus === "pending"
-    ? { text: "Đang xử lý", color: "bg-warning/10 text-warning" }
-    : { text: "Chưa xác minh", color: "bg-danger/10 text-danger" }
-
-  const walletBadge = USER.walletStatus === "connected"
-    ? { text: "Đã kết nối", color: "bg-success/10 text-success" }
-    : { text: "Chưa kết nối", color: "bg-danger/10 text-danger" }
-
   return (
     <div>
       {/* Avatar + Name */}
@@ -129,41 +83,6 @@ export default function AccountTabPage() {
         <div>
           <p className="text-md font-bold text-foreground">{USER.name}</p>
           <p className="text-xs text-foreground-secondary mt-[1px]">{USER.phone}</p>
-        </div>
-      </div>
-
-      {/* Wallet card */}
-      <div className="px-[22px]">
-        <div className="bg-secondary rounded-[20px] px-[16px] py-[14px]">
-          <div className="flex items-center justify-between mb-[10px]">
-            <div className="flex items-center gap-[6px]">
-              <Wallet size={14} className="text-foreground-secondary" />
-              <span className="text-[11px] font-bold text-foreground-secondary uppercase tracking-wide">Ví đầu tư</span>
-            </div>
-            <span className={cn(
-              "inline-flex items-center gap-[3px] px-[6px] py-[2px] rounded-full text-[10px] font-semibold",
-              walletBadge.color
-            )}>
-              <CheckCircle size={8} />
-              {walletBadge.text}
-            </span>
-          </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-[10px] text-foreground-secondary">Địa chỉ ví</p>
-              <p className="text-sm font-mono font-medium text-foreground mt-[1px]">{USER.walletAddress}</p>
-            </div>
-            <CopyBtn text={USER.walletAddress} />
-          </div>
-        </div>
-      </div>
-
-      {/* Account info */}
-      <div className="px-[22px] pt-[24px]">
-        <p className="text-[11px] font-bold text-foreground-secondary uppercase tracking-wide mb-[2px]">Tài khoản</p>
-        <div className="divide-y divide-border">
-          <InfoRow label="eKYC" badge={kycBadge} />
-          <InfoRow label="Cấp xác minh" value={`Level ${USER.kycLevel}`} />
         </div>
       </div>
 

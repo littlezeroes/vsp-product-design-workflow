@@ -124,7 +124,7 @@ export default function VPayEntryPage() {
             variant="primary"
             size="48"
             className="w-full"
-            onClick={() => router.push("/rwa/onbo/kyc-gate")}
+            onClick={() => router.push("/rwa")}
           >
             Tiếp tục vào POLARIS
           </Button>

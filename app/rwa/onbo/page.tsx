@@ -158,7 +158,7 @@ export default function OnboardingPage() {
             </div>
             <button
               type="button"
-              onClick={() => router.push("/rwa/preo")}
+              onClick={() => router.push("/rwa")}
               className="text-sm text-white/50 focus-visible:outline-none py-[6px]"
             >
               Bỏ qua
@@ -182,7 +182,7 @@ export default function OnboardingPage() {
             variant="primary"
             size="48"
             className="w-full"
-            onClick={() => isLast ? router.push("/rwa/preo") : setSlide(s => s + 1)}
+            onClick={() => isLast ? router.push("/rwa") : setSlide(s => s + 1)}
           >
             {isLast ? "Khám phá ngay" : "Tiếp theo"}
           </Button>
