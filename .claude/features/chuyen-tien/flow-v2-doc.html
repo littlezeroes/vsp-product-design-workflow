@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VSP Chuyển tiền — Flow v2 Proposal</title>
+  <style>
+    :root { --red: #E31837; --green: #34C759; --blue: #007AFF; --text: #1a1a2e; --text2: #8e8e93; --bg2: #f5f5f7; --bg3: #e8e8ed; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 40px 32px 80px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); line-height: 1.6; background: #fff; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    h1 { font-size: 32px; font-weight: 800; margin: 0; }
+    h2 { font-size: 22px; margin: 56px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #eee; }
+    h3 { font-size: 17px; margin: 40px 0 8px; }
+    p { font-size: 15px; margin: 8px 0; }
+    .meta { color: var(--text2); font-size: 14px; margin: 4px 0 40px; }
+    .badge { display: inline-block; background: #E8F5E9; color: #2E7D32; padding: 2px 10px; border-radius: 4px; font-weight: 600; font-size: 12px; }
+    .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .tag-old { background: #FFEBEE; color: #C62828; }
+    .tag-new { background: #E8F5E9; color: #2E7D32; }
+    .tag-p2p { background: #FFF0F2; color: var(--red); }
+    .tag-bank { background: #EEF2FF; color: #4F46E5; }
+    .tag-edge { background: #FFF8E1; color: #F57F17; }
+    .highlight { background: #FFFDE7; padding: 16px 20px; border-left: 4px solid #FDD835; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 14px; }
+    .highlight strong { color: #F57F17; }
+
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th { background: var(--bg2); text-align: left; padding: 10px 12px; font-weight: 600; border-bottom: 2px solid #ddd; }
+    td { padding: 10px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 6px; font-size: 14px; }
+
+    /* ── Flow comparison block ─────────────── */
+    .flow-compare {
+      margin: 20px 0;
+      border: 1px solid #eee;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .flow-compare-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: var(--bg2);
+      border-bottom: 1px solid #eee;
+    }
+    .flow-compare-header h4 { margin: 0; font-size: 16px; }
+    .flow-compare-header .stats { font-size: 13px; color: var(--text2); }
+
+    .flow-row {
+      padding: 20px;
+    }
+    .flow-row + .flow-row { border-top: 1px solid #eee; }
+    .flow-row-label {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+    }
+    .flow-row-label .ver { font-size: 13px; font-weight: 700; }
+    .flow-row-label .taps {
+      margin-left: auto;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .flow-row-label .taps.old { color: #E53935; }
+    .flow-row-label .taps.new { color: #2E7D32; }
+    .flow-row-label .taps-unit { font-size: 12px; color: var(--text2); font-weight: 600; margin-left: 4px; }
+    .saved-badge {
+      background: #E8F5E9; color: #2E7D32; font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px; margin-left: 8px;
+    }
+
+    /* ── Step boxes (horizontal flow) ─────── */
+    .steps {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .step-box {
+      flex-shrink: 0;
+      width: 140px;
+      border: 1.5px solid #eee;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .step-box.removed {
+      border-color: #FFCDD2;
+      background: #FFF5F5;
+      opacity: 0.6;
+    }
+    .step-box.improved {
+      border-color: #C8E6C9;
+      background: #F0FDF4;
+    }
+    .step-box.new-step {
+      border-color: #C8E6C9;
+      border-style: dashed;
+      background: #F0FDF4;
+    }
+    .step-head {
+      padding: 8px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      background: var(--bg2);
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .step-box.removed .step-head { background: #FFEBEE; color: #C62828; }
+    .step-box.improved .step-head { background: #E8F5E9; color: #2E7D32; }
+    .step-box.new-step .step-head { background: #E8F5E9; color: #2E7D32; }
+
+    .step-body {
+      padding: 10px;
+      font-size: 11px;
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 60px;
+    }
+    .step-body .screen-name { font-weight: 600; margin-bottom: 4px; }
+    .step-body .screen-desc { color: var(--text2); font-size: 10px; }
+    .step-type { font-size: 9px; font-weight: 600; padding: 1px 5px; border-radius: 3px; }
+    .step-type.page { background: #E3F2FD; color: #1565C0; }
+    .step-type.sheet { background: #EDE7F6; color: #4527A0; }
+    .step-type.dialog { background: #FFF3E0; color: #E65100; }
+    .step-type.auth { background: #FCE4EC; color: #AD1457; }
+
+    .step-arrow {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      padding: 0 4px;
+      color: #ccc;
+      font-size: 16px;
+    }
+
+    /* ── Phone mockups ────────────────────── */
+    .phones-section { margin: 24px 0; }
+    .phones-row {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 16px 0;
+    }
+    .phone-col { flex-shrink: 0; text-align: center; }
+    .phone-col-label { font-size: 10px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .ph {
+      width: 280px;
+      height: 606px;
+      border-radius: 36px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 0 0 8px #1D1D1F, 0 0 0 10px #3A3A3C, 0 16px 40px rgba(0,0,0,0.18);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+    }
+    .ph * { box-sizing: border-box; margin: 0; padding: 0; }
+    .ph-island { width: 90px; height: 26px; background: #1D1D1F; border-radius: 14px; margin: 0 auto; flex-shrink: 0; }
+    .ph-body { flex: 1; overflow: hidden; display: flex; flex-direction: column; padding-top: 2px; }
+    .ph-nav { display: flex; align-items: center; padding: 6px 16px; gap: 10px; }
+    .ph-back { width: 28px; height: 28px; border-radius: 50%; background: var(--bg2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ph-title { font-size: 22px; font-weight: 700; color: var(--text); padding: 2px 16px 6px; line-height: 1.2; }
+    .ph-search { margin: 0 16px; padding: 10px 12px; background: var(--bg2); border-radius: 10px; font-size: 12px; color: #aaa; display: flex; align-items: center; gap: 8px; }
+    .ph-tabs { display: flex; margin: 10px 16px 0; background: var(--bg2); border-radius: 8px; padding: 3px; }
+    .ph-tab { flex: 1; text-align: center; padding: 6px 0; font-size: 11px; font-weight: 600; color: #888; border-radius: 6px; }
+    .ph-tab.on { background: #fff; color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .ph-section { font-size: 10px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.4px; padding: 12px 16px 4px; }
+    .ph-row { display: flex; align-items: center; gap: 10px; padding: 8px 16px; }
+    .ph-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--text); flex-shrink: 0; }
+    .ph-avatar.red { background: #FFF0F2; color: var(--red); }
+    .ph-avatar.bank { background: #EEF2FF; color: #4F46E5; font-size: 8px; font-weight: 800; }
+    .ph-avatar.dark { background: var(--text); color: #fff; }
+    .ph-info { flex: 1; min-width: 0; }
+    .ph-name { font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ph-sub { font-size: 10px; color: #888; margin-top: 1px; }
+    .ph-badge { font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px; background: var(--bg2); color: var(--text2); }
+    .ph-badge.vsp { background: #FFF0F2; color: var(--red); }
+    .ph-divider { height: 1px; background: #f0f0f0; margin: 6px 16px; }
+    .ph-manual { display: flex; align-items: center; gap: 10px; padding: 8px 16px; }
+    .ph-manual-icon { width: 36px; height: 36px; border-radius: 50%; border: 1.5px dashed #ccc; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ph-home { width: 100px; height: 4px; background: var(--text); border-radius: 2px; margin: auto auto 8px; }
+    .ph-home.light { background: rgba(255,255,255,0.35); }
+
+    /* Swap card */
+    .ph-swap { margin: 6px 16px; background: var(--bg2); border-radius: 20px; overflow: hidden; position: relative; }
+    .ph-swap-side { padding: 14px; display: flex; align-items: center; gap: 10px; }
+    .ph-swap-side.to { background: #fff; border: 1.5px solid #f0f0f0; border-radius: 0 0 20px 20px; }
+    .ph-swap-arrow { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 28px; height: 28px; border-radius: 50%; background: var(--text); display: flex; align-items: center; justify-content: center; z-index: 2; }
+    .ph-swap-arrow.red { background: var(--red); }
+    .ph-swap-label { font-size: 10px; color: #888; }
+    .ph-swap-name { font-size: 12px; font-weight: 600; color: var(--text); }
+
+    /* Amount */
+    .ph-amount { text-align: center; padding: 18px 16px 6px; }
+    .ph-amount-val { font-size: 34px; font-weight: 700; color: var(--text); line-height: 1; }
+    .ph-amount-val.red { color: var(--red); }
+    .ph-amount-val .unit { font-size: 20px; color: #aaa; }
+    .ph-amount-bal { font-size: 11px; color: #888; margin-top: 4px; }
+    .ph-amount-err { font-size: 11px; color: var(--red); margin-top: 4px; }
+    .ph-chips { display: flex; gap: 6px; justify-content: center; padding: 8px 16px; }
+    .ph-chip { padding: 5px 12px; border-radius: 14px; background: var(--bg2); font-size: 11px; font-weight: 600; color: var(--text); }
+    .ph-chip.on { background: var(--text); color: #fff; }
+    .ph-note { margin: 4px 16px; padding: 10px 12px; background: var(--bg2); border-radius: 10px; font-size: 11px; color: var(--text); display: flex; align-items: center; gap: 8px; }
+    .ph-numpad { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; padding: 6px 16px; margin-top: auto; }
+    .ph-key { display: flex; align-items: center; justify-content: center; height: 38px; font-size: 18px; font-weight: 500; color: var(--text); }
+    .ph-cta { margin: 8px 16px 0; padding: 12px; background: var(--text); color: #fff; border-radius: 12px; text-align: center; font-size: 13px; font-weight: 600; }
+    .ph-cta.off { background: var(--bg3); color: #aaa; }
+
+    /* Sheet */
+    .ph-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.35); border-radius: 36px; z-index: 10; }
+    .ph-sheet { position: absolute; bottom: 0; left: 0; right: 0; background: #fff; border-radius: 20px 20px 0 0; z-index: 11; padding-bottom: 12px; }
+    .ph-sheet-handle { width: 28px; height: 4px; background: #ddd; border-radius: 2px; margin: 8px auto 0; }
+    .ph-sheet-title { font-size: 16px; font-weight: 700; padding: 12px 16px 4px; color: var(--text); }
+    .ph-field { margin: 8px 16px 0; }
+    .ph-field-label { font-size: 10px; color: #888; margin-bottom: 4px; }
+    .ph-field-input { padding: 10px 12px; background: var(--bg2); border: 1.5px solid transparent; border-radius: 10px; font-size: 12px; color: var(--text); display: flex; align-items: center; justify-content: space-between; }
+    .ph-field-input.focus { border-color: var(--blue); background: #fff; }
+    .ph-field-input.ok { border-color: var(--green); background: #EAFBEF; }
+    .ph-field-input.err { border-color: var(--red); background: #FFF0F2; }
+    .ph-field-hint { font-size: 9px; margin-top: 3px; color: #888; }
+    .ph-field-hint.ok { color: var(--green); }
+    .ph-field-hint.err { color: var(--red); }
+    .ph-toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; font-size: 12px; }
+    .ph-toggle { width: 36px; height: 22px; border-radius: 11px; background: var(--green); position: relative; }
+    .ph-toggle::after { content: ''; position: absolute; top: 2px; right: 2px; width: 18px; height: 18px; border-radius: 50%; background: #fff; }
+
+    /* Confirm */
+    .ph-confirm-amount { text-align: center; padding: 12px 0 4px; font-size: 24px; font-weight: 700; color: var(--text); }
+    .ph-confirm-sub { text-align: center; font-size: 11px; color: #888; }
+    .ph-confirm-card { margin: 10px 16px; background: var(--bg2); border-radius: 12px; padding: 2px 0; }
+    .ph-confirm-row { display: flex; justify-content: space-between; padding: 8px 14px; font-size: 11px; }
+    .ph-confirm-row .l { color: #888; }
+    .ph-confirm-row .r { font-weight: 600; color: var(--text); text-align: right; max-width: 55%; }
+    .ph-pin-label { text-align: center; font-size: 10px; color: #888; margin-top: 10px; }
+    .ph-pin-dots { display: flex; gap: 10px; justify-content: center; padding: 12px 0; }
+    .ph-pin-dot { width: 12px; height: 12px; border-radius: 50%; background: #e0e0e0; }
+    .ph-pin-dot.on { background: var(--text); }
+
+    /* Result */
+    .ph-result { background: var(--text); flex: 1; display: flex; flex-direction: column; align-items: center; color: #fff; }
+    .ph-result-check { width: 56px; height: 56px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; margin-top: 56px; }
+    .ph-result-label { font-size: 12px; opacity: 0.6; margin-top: 12px; }
+    .ph-result-amount { font-size: 28px; font-weight: 700; margin-top: 4px; }
+    .ph-result-to { font-size: 12px; opacity: 0.6; margin-top: 2px; }
+    .ph-result-rows { width: 100%; padding: 20px 16px 0; }
+    .ph-result-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 11px; }
+    .ph-result-row .l { opacity: 0.5; }
+    .ph-result-row .r { font-weight: 600; text-align: right; }
+    .ph-result-btn { margin: auto 16px 0; padding: 12px; background: rgba(255,255,255,0.1); border-radius: 12px; text-align: center; font-size: 13px; font-weight: 600; color: #fff; }
+
+    /* Bank picker */
+    .ph-bank-row { display: flex; align-items: center; gap: 10px; padding: 8px 16px; }
+    .ph-bank-logo { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 800; color: #fff; flex-shrink: 0; }
+
+    /* Compare summary cards */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+    .compare-card { border: 1px solid #eee; border-radius: 12px; padding: 20px; }
+    .compare-card.old { border-color: #ffcdd2; }
+    .compare-card.new { border-color: #c8e6c9; }
+    .compare-card h4 { margin: 0 0 8px; font-size: 15px; }
+    .compare-card .num { font-size: 40px; font-weight: 800; }
+    .compare-card.old .num { color: #E53935; }
+    .compare-card.new .num { color: #2E7D32; }
+    .compare-card .label { color: #888; font-size: 13px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+<h1>Chuyển tiền — Flow v2</h1>
+<div class="meta">Vi (Design Lead) &middot; 09/03/2026 &nbsp; <span class="badge">Draft</span></div>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>1. Tổng quan thay đổi</h2>
+
+<table>
+  <tr><th style="width:28%">Thay đổi</th><th>Cũ</th><th>Mới</th><th style="width:15%">Ref</th></tr>
+  <tr><td><strong>Nhập người nhận</strong></td><td>Navigate sang page mới (full-screen bank picker &rarr; back)</td><td>Bottom sheet (giữ nguyên context)</td><td>Cake, TCB</td></tr>
+  <tr><td><strong>Hiển thị nguồn &rarr; đích</strong></td><td>Chỉ show recipient ở 1 dòng text</td><td>Swap card A&rarr;B (Ví VSP &rarr; Người nhận)</td><td>OKX, Uniswap</td></tr>
+  <tr><td><strong>Xác nhận + Auth</strong></td><td>Confirm page riêng &rarr; PIN page riêng</td><td>1 sheet gộp: review + PIN</td><td>Cake, Revolut</td></tr>
+  <tr><td><strong>Bank recipients đã lưu</strong></td><td>Không có &mdash; nhập lại mỗi lần</td><td>Hiện chung "Gần đây", 1-tap chọn</td><td>Tất cả bank</td></tr>
+  <tr><td><strong>Auto-detect ngân hàng</strong></td><td>Chọn thủ công từ danh sách</td><td>Tự nhận diện từ prefix STK</td><td>Cake, LioBank</td></tr>
+</table>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>2. So sánh từng flow: Cũ vs Mới</h2>
+
+<!-- ── FLOW A: P2P người cũ ──────────────────── -->
+<div class="flow-compare">
+  <div class="flow-compare-header">
+    <h4><span class="tag tag-p2p">P2P</span> &nbsp; Flow A — Người nhận cũ</h4>
+    <div class="stats">Cải thiện: <strong style="color:#2E7D32;">-40% taps</strong></div>
+  </div>
+
+  <div class="flow-row" style="background:#FFF5F5;">
+    <div class="flow-row-label">
+      <span class="tag tag-old">CŨ</span> <span class="ver">v1</span>
+      <span class="taps old">5</span><span class="taps-unit">taps</span>
+    </div>
+    <div class="steps">
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> Step 1</div><div class="step-body"><div class="screen-name">Chuyển tiền đến</div><div class="screen-desc">Tìm SĐT / chọn gần đây</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> Step 2</div><div class="step-body"><div class="screen-name">Nhập số tiền</div><div class="screen-desc">Numpad + nội dung</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type sheet">SHEET</span> Step 3</div><div class="step-body"><div class="screen-name">Xác nhận chuyển</div><div class="screen-desc">Review chi tiết</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type auth">AUTH</span> Step 4</div><div class="step-body"><div class="screen-name">Nhập PIN</div><div class="screen-desc">6 chữ số</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> Step 5</div><div class="step-body"><div class="screen-name">Kết quả</div><div class="screen-desc">Thành công / thất bại</div></div></div>
+    </div>
+  </div>
+
+  <div class="flow-row" style="background:#F0FDF4;">
+    <div class="flow-row-label">
+      <span class="tag tag-new">MỚI</span> <span class="ver">v2</span>
+      <span class="taps new">3</span><span class="taps-unit">taps</span>
+      <span class="saved-badge">&darr; 2 taps</span>
+    </div>
+    <div class="steps">
+      <div class="step-box improved"><div class="step-head"><span class="step-type page">PAGE</span> Step 1</div><div class="step-body"><div class="screen-name">Chuyển tiền</div><div class="screen-desc">Unified entry + tabs filter + gần đây (P2P &amp; NH)</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box new-step"><div class="step-head"><span class="step-type page">PAGE</span> Step 2</div><div class="step-body"><div class="screen-name">Nhập số tiền</div><div class="screen-desc">Swap card A&rarr;B + numpad + nội dung</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box improved"><div class="step-head"><span class="step-type sheet">SHEET</span> Step 3</div><div class="step-body"><div class="screen-name">Confirm + PIN</div><div class="screen-desc">Review + PIN gộp 1 sheet</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> Step 4</div><div class="step-body"><div class="screen-name">Kết quả</div><div class="screen-desc">Thành công / thất bại</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FLOW B: P2P người mới ─────────────────── -->
+<div class="flow-compare">
+  <div class="flow-compare-header">
+    <h4><span class="tag tag-p2p">P2P</span> &nbsp; Flow B — Người nhận mới (SĐT)</h4>
+    <div class="stats">Cải thiện: <strong style="color:#2E7D32;">-17% taps</strong></div>
+  </div>
+
+  <div class="flow-row" style="background:#FFF5F5;">
+    <div class="flow-row-label"><span class="tag tag-old">CŨ</span> <span class="ver">v1</span><span class="taps old">6</span><span class="taps-unit">taps</span></div>
+    <div class="steps">
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S1</div><div class="step-body"><div class="screen-name">Chuyển tiền đến</div><div class="screen-desc">Nhập SĐT + chờ resolve</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S2</div><div class="step-body"><div class="screen-name">Nhập số tiền</div><div class="screen-desc">Numpad + nội dung</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type sheet">SHEET</span> S3</div><div class="step-body"><div class="screen-name">Xác nhận</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type auth">AUTH</span> S4</div><div class="step-body"><div class="screen-name">PIN</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S5</div><div class="step-body"><div class="screen-name">Kết quả</div></div></div>
+    </div>
+  </div>
+
+  <div class="flow-row" style="background:#F0FDF4;">
+    <div class="flow-row-label"><span class="tag tag-new">MỚI</span> <span class="ver">v2</span><span class="taps new">5</span><span class="taps-unit">taps</span><span class="saved-badge">&darr; 1 tap</span></div>
+    <div class="steps">
+      <div class="step-box improved"><div class="step-head"><span class="step-type page">PAGE</span> S1</div><div class="step-body"><div class="screen-name">Entry</div><div class="screen-desc">Tap "Nhập SĐT"</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box new-step"><div class="step-head"><span class="step-type sheet">SHEET</span> S1.5</div><div class="step-body"><div class="screen-name">Sheet nhập SĐT</div><div class="screen-desc">Nhập + auto resolve tên</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box new-step"><div class="step-head"><span class="step-type page">PAGE</span> S2</div><div class="step-body"><div class="screen-name">Số tiền (A&rarr;B)</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box improved"><div class="step-head"><span class="step-type sheet">SHEET</span> S3</div><div class="step-body"><div class="screen-name">Confirm+PIN</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S4</div><div class="step-body"><div class="screen-name">Kết quả</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FLOW D: Bank người cũ ─────────────────── -->
+<div class="flow-compare">
+  <div class="flow-compare-header">
+    <h4><span class="tag tag-bank">BANK</span> &nbsp; Flow D — Người nhận cũ (saved)</h4>
+    <div class="stats">Cải thiện: <strong style="color:#2E7D32;">-70% taps !!!</strong></div>
+  </div>
+
+  <div class="flow-row" style="background:#FFF5F5;">
+    <div class="flow-row-label"><span class="tag tag-old">CŨ</span> <span class="ver">v1</span><span class="taps old">10</span><span class="taps-unit">taps</span></div>
+    <div class="steps">
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S1</div><div class="step-body"><div class="screen-name">Thông tin người nhận</div><div class="screen-desc">Tap dropdown NH</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S2</div><div class="step-body"><div class="screen-name">Chọn ngân hàng</div><div class="screen-desc">Full-screen list, search</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S3</div><div class="step-body"><div class="screen-name">Nhập STK</div><div class="screen-desc">Nhập lại mỗi lần!</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head">S4</div><div class="step-body"><div class="screen-name">Chờ lookup tên</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box removed"><div class="step-head"><span class="step-type dialog">DIALOG</span> S5</div><div class="step-body"><div class="screen-name">Xác nhận thông tin?</div><div class="screen-desc">"Bạn chắc chắn?" &mdash; THỪA</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S6</div><div class="step-body"><div class="screen-name">Nhập số tiền</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type sheet">SHEET</span> S7</div><div class="step-body"><div class="screen-name">Xác nhận</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type auth">AUTH</span> S8</div><div class="step-body"><div class="screen-name">PIN</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S9</div><div class="step-body"><div class="screen-name">Kết quả</div></div></div>
+    </div>
+  </div>
+
+  <div class="flow-row" style="background:#F0FDF4;">
+    <div class="flow-row-label"><span class="tag tag-new">MỚI</span> <span class="ver">v2</span><span class="taps new">3</span><span class="taps-unit">taps</span><span class="saved-badge">&darr; 7 taps !!!</span></div>
+    <div class="steps">
+      <div class="step-box improved"><div class="step-head"><span class="step-type page">PAGE</span> S1</div><div class="step-body"><div class="screen-name">Entry</div><div class="screen-desc">Tap saved bank recipient (1-tap!)</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box new-step"><div class="step-head"><span class="step-type page">PAGE</span> S2</div><div class="step-body"><div class="screen-name">Số tiền (A&rarr;B)</div><div class="screen-desc">Swap card show bank info</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box improved"><div class="step-head"><span class="step-type sheet">SHEET</span> S3</div><div class="step-body"><div class="screen-name">Confirm+PIN</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S4</div><div class="step-body"><div class="screen-name">Kết quả</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FLOW E: Bank người mới ────────────────── -->
+<div class="flow-compare">
+  <div class="flow-compare-header">
+    <h4><span class="tag tag-bank">BANK</span> &nbsp; Flow E — Người nhận mới (nhập tay)</h4>
+    <div class="stats">Cải thiện: <strong style="color:#2E7D32;">-40% taps</strong></div>
+  </div>
+
+  <div class="flow-row" style="background:#FFF5F5;">
+    <div class="flow-row-label"><span class="tag tag-old">CŨ</span> <span class="ver">v1</span><span class="taps old">10</span><span class="taps-unit">taps</span></div>
+    <div class="steps">
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S1</div><div class="step-body"><div class="screen-name">Thông tin người nhận</div><div class="screen-desc">Tap dropdown NH</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box removed"><div class="step-head"><span class="step-type page">PAGE</span> S2</div><div class="step-body"><div class="screen-name">Chọn ngân hàng</div><div class="screen-desc">Full-screen &rarr; back</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S3</div><div class="step-body"><div class="screen-name">Nhập STK</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head">S4</div><div class="step-body"><div class="screen-name">Lookup tên</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box removed"><div class="step-head"><span class="step-type dialog">DIALOG</span> S5</div><div class="step-body"><div class="screen-name">Dialog xác nhận</div><div class="screen-desc">THỪA</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S6</div><div class="step-body"><div class="screen-name">Nhập số tiền</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type sheet">SHEET</span> S7</div><div class="step-body"><div class="screen-name">Xác nhận</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type auth">AUTH</span> S8</div><div class="step-body"><div class="screen-name">PIN</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S9</div><div class="step-body"><div class="screen-name">Kết quả</div></div></div>
+    </div>
+  </div>
+
+  <div class="flow-row" style="background:#F0FDF4;">
+    <div class="flow-row-label"><span class="tag tag-new">MỚI</span> <span class="ver">v2</span><span class="taps new">6</span><span class="taps-unit">taps</span><span class="saved-badge">&darr; 4 taps</span></div>
+    <div class="steps">
+      <div class="step-box improved"><div class="step-head"><span class="step-type page">PAGE</span> S1</div><div class="step-body"><div class="screen-name">Entry</div><div class="screen-desc">Tap "Nhập STK"</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box new-step"><div class="step-head"><span class="step-type sheet">SHEET</span> S1.5</div><div class="step-body"><div class="screen-name">Sheet nhập bank</div><div class="screen-desc">STK &rarr; auto bank &rarr; auto tên</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box new-step"><div class="step-head"><span class="step-type page">PAGE</span> S2</div><div class="step-body"><div class="screen-name">Số tiền (A&rarr;B)</div><div class="screen-desc">Swap card + numpad</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box improved"><div class="step-head"><span class="step-type sheet">SHEET</span> S3</div><div class="step-body"><div class="screen-name">Confirm+PIN</div><div class="screen-desc">Gộp review + auth</div></div></div>
+      <div class="step-arrow">&rarr;</div>
+      <div class="step-box"><div class="step-head"><span class="step-type page">PAGE</span> S4</div><div class="step-body"><div class="screen-name">Kết quả</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>3. UI Wireframes — Flow mới</h2>
+<p>Xem đầy đủ wireframe interactive: <code>crypto/wireframes/investor/xfer/transfer-hub.html</code></p>
+
+<!-- P2P Flow -->
+<h3><span class="tag tag-p2p">P2P</span> Flow A — Người nhận cũ (4 screens)</h3>
+<div class="phones-row">
+  <!-- S1: Entry -->
+  <div class="phone-col">
+    <div class="phone-col-label">S1 — Entry</div>
+    <div class="ph">
+      <div class="ph-island"></div>
+      <div class="ph-body">
+        <div class="ph-nav"><div class="ph-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></div></div>
+        <div class="ph-title">Chuyển tiền</div>
+        <div class="ph-search"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg> Tìm tên, SĐT, STK</div>
+        <div class="ph-tabs"><div class="ph-tab on">Tất cả</div><div class="ph-tab">Ví VSP</div><div class="ph-tab">Ngân hàng</div></div>
+        <div class="ph-section">Gần đây</div>
+        <div class="ph-row"><div class="ph-avatar">PN</div><div class="ph-info"><div class="ph-name">Phạm Văn Nam</div><div class="ph-sub">0983 882 233</div></div><div class="ph-badge vsp">VSP</div></div>
+        <div class="ph-row"><div class="ph-avatar">ĐN</div><div class="ph-info"><div class="ph-name">Đào Văn Nam</div><div class="ph-sub">0901 232 512</div></div><div class="ph-badge vsp">VSP</div></div>
+        <div class="ph-row"><div class="ph-avatar bank">TCB</div><div class="ph-info"><div class="ph-name">Nguyễn Văn Mạnh</div><div class="ph-sub">8288 8121 &middot; Techcombank</div></div><div class="ph-badge">NH</div></div>
+        <div class="ph-row"><div class="ph-avatar bank">VCB</div><div class="ph-info"><div class="ph-name">Trần Thị Lan</div><div class="ph-sub">1023 4567 &middot; Vietcombank</div></div><div class="ph-badge">NH</div></div>
+        <div class="ph-divider"></div>
+        <div class="ph-section">Người nhận mới</div>
+        <div class="ph-manual"><div class="ph-manual-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="ph-info"><div class="ph-name" style="color:#888">Nhập số điện thoại</div><div class="ph-sub">Ví VSP</div></div></div>
+        <div class="ph-manual"><div class="ph-manual-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg></div><div class="ph-info"><div class="ph-name" style="color:#888">Nhập số tài khoản</div><div class="ph-sub">Ngân hàng</div></div></div>
+        <div class="ph-home"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S2: Amount -->
+  <div class="phone-col">
+    <div class="phone-col-label">S2 — Nhập số tiền</div>
+    <div class="ph">
+      <div class="ph-island"></div>
+      <div class="ph-body">
+        <div class="ph-nav"><div class="ph-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></div></div>
+        <div class="ph-swap">
+          <div class="ph-swap-side"><div class="ph-avatar dark"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 10H18a2 2 0 0 0 0 4h4"/></svg></div><div><div class="ph-swap-label">Từ</div><div class="ph-swap-name">Ví V-Smart Pay</div><div class="ph-sub">Số dư: <b>250.000 ₫</b></div></div></div>
+          <div class="ph-swap-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg></div>
+          <div class="ph-swap-side to"><div class="ph-avatar red">PN</div><div><div class="ph-swap-label">Đến</div><div class="ph-swap-name">Phạm Văn Nam</div><div class="ph-sub">0983 882 233 &middot; Ví VSP</div></div></div>
+        </div>
+        <div class="ph-amount"><div class="ph-amount-val">100.000 <span class="unit">₫</span></div><div class="ph-amount-bal">Số dư khả dụng: <b>250.000 ₫</b></div></div>
+        <div class="ph-chips"><div class="ph-chip on">100.000</div><div class="ph-chip">200.000</div><div class="ph-chip">500.000</div></div>
+        <div class="ph-note">&#9998; Phạm Văn Nam chuyển tiền</div>
+        <div class="ph-numpad"><div class="ph-key">1</div><div class="ph-key">2</div><div class="ph-key">3</div><div class="ph-key">4</div><div class="ph-key">5</div><div class="ph-key">6</div><div class="ph-key">7</div><div class="ph-key">8</div><div class="ph-key">9</div><div class="ph-key">000</div><div class="ph-key">0</div><div class="ph-key">&larr;</div></div>
+        <div class="ph-cta">Tiếp tục</div>
+        <div class="ph-home"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S3: Confirm+PIN -->
+  <div class="phone-col">
+    <div class="phone-col-label">S3 — Confirm + PIN</div>
+    <div class="ph">
+      <div class="ph-island"></div>
+      <div class="ph-body" style="position:relative;">
+        <div style="opacity:0.1; padding:40px 16px;"><div style="height:100px; background:var(--bg2); border-radius:14px;"></div><div style="text-align:center; padding-top:16px; font-size:24px; font-weight:700;">100.000 ₫</div></div>
+        <div class="ph-overlay"></div>
+        <div class="ph-sheet" style="height: 430px;">
+          <div class="ph-sheet-handle"></div>
+          <div class="ph-confirm-amount">100.000 <span style="font-size:15px; color:#888;">₫</span></div>
+          <div class="ph-confirm-sub">Xác nhận chuyển tiền</div>
+          <div class="ph-confirm-card">
+            <div class="ph-confirm-row"><span class="l">Người nhận</span><span class="r">Phạm Văn Nam</span></div>
+            <div class="ph-confirm-row"><span class="l">SĐT</span><span class="r">0983 882 233</span></div>
+            <div class="ph-confirm-row"><span class="l">Loại</span><span class="r">Ví VSP</span></div>
+            <div class="ph-confirm-row"><span class="l">Nội dung</span><span class="r">Chuyển tiền</span></div>
+            <div class="ph-confirm-row"><span class="l">Phí</span><span class="r" style="color:#34C759;">Miễn phí</span></div>
+          </div>
+          <div class="ph-pin-label">Nhập PIN để xác nhận</div>
+          <div class="ph-pin-dots"><div class="ph-pin-dot on"></div><div class="ph-pin-dot on"></div><div class="ph-pin-dot on"></div><div class="ph-pin-dot"></div><div class="ph-pin-dot"></div><div class="ph-pin-dot"></div></div>
+          <div class="ph-numpad" style="padding:0 16px;"><div class="ph-key" style="font-size:15px;">1</div><div class="ph-key" style="font-size:15px;">2</div><div class="ph-key" style="font-size:15px;">3</div><div class="ph-key" style="font-size:15px;">4</div><div class="ph-key" style="font-size:15px;">5</div><div class="ph-key" style="font-size:15px;">6</div><div class="ph-key" style="font-size:15px;">7</div><div class="ph-key" style="font-size:15px;">8</div><div class="ph-key" style="font-size:15px;">9</div><div class="ph-key"></div><div class="ph-key" style="font-size:15px;">0</div><div class="ph-key">&larr;</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S4: Result -->
+  <div class="phone-col">
+    <div class="phone-col-label">S4 — Kết quả</div>
+    <div class="ph">
+      <div class="ph-island" style="background:transparent;"></div>
+      <div class="ph-result">
+        <div class="ph-result-check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="ph-result-label">Giao dịch thành công</div>
+        <div class="ph-result-amount">100.000 ₫</div>
+        <div class="ph-result-to">đến Phạm Văn Nam</div>
+        <div class="ph-result-rows">
+          <div class="ph-result-row"><span class="l">Mã GD</span><span class="r">TXN240309001</span></div>
+          <div class="ph-result-row"><span class="l">Thời gian</span><span class="r">09/03 14:35</span></div>
+          <div class="ph-result-row"><span class="l">Loại</span><span class="r">VSP &rarr; VSP</span></div>
+          <div class="ph-result-row"><span class="l">Phí</span><span class="r" style="color:#34C759;">Miễn phí</span></div>
+        </div>
+        <div class="ph-result-btn">Về trang chủ</div>
+        <div class="ph-home light"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bank Flow wireframes -->
+<h3><span class="tag tag-bank">BANK</span> Flow E — Người nhận mới (5 screens)</h3>
+<div class="phones-row">
+  <!-- Sheet empty -->
+  <div class="phone-col">
+    <div class="phone-col-label">S1.5 — Sheet empty</div>
+    <div class="ph">
+      <div class="ph-island"></div>
+      <div class="ph-body" style="position:relative;">
+        <div style="opacity:0.1; padding:12px 16px;"><div class="ph-title">Chuyển tiền</div></div>
+        <div class="ph-overlay"></div>
+        <div class="ph-sheet" style="height: 400px;">
+          <div class="ph-sheet-handle"></div>
+          <div class="ph-sheet-title">Thông tin người nhận</div>
+          <div class="ph-field"><div class="ph-field-label">Số tài khoản</div><div class="ph-field-input focus"><span style="color:#aaa;">Nhập số tài khoản</span></div><div class="ph-field-hint">Tự nhận diện ngân hàng từ STK</div></div>
+          <div class="ph-field"><div class="ph-field-label">Ngân hàng</div><div class="ph-field-input"><span style="color:#aaa;">Tự động nhận diện</span><span style="color:#aaa;">&#9662;</span></div></div>
+          <div class="ph-field"><div class="ph-field-label">Tên người nhận</div><div class="ph-field-input"><span style="color:#aaa;">—</span></div></div>
+          <div class="ph-toggle-row"><span>Lưu người nhận</span><div class="ph-toggle"></div></div>
+          <div style="padding:8px 16px 0;"><div class="ph-cta off">Tiếp tục</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sheet verified -->
+  <div class="phone-col">
+    <div class="phone-col-label">S1.5 — Verified</div>
+    <div class="ph">
+      <div class="ph-island"></div>
+      <div class="ph-body" style="position:relative;">
+        <div style="opacity:0.1; padding:12px 16px;"><div class="ph-title">Chuyển tiền</div></div>
+        <div class="ph-overlay"></div>
+        <div class="ph-sheet" style="height: 400px;">
+          <div class="ph-sheet-handle"></div>
+          <div class="ph-sheet-title">Thông tin người nhận</div>
+          <div class="ph-field"><div class="ph-field-label">Số tài khoản</div><div class="ph-field-input ok">19038291832 <span style="color:#34C759;">&#10003;</span></div></div>
+          <div class="ph-field"><div class="ph-field-label">Ngân hàng</div><div class="ph-field-input ok"><span style="display:inline-flex;align-items:center;gap:5px;"><span style="display:inline-block;width:18px;height:18px;border-radius:5px;background:#1A1F71;color:#fff;font-size:7px;font-weight:800;text-align:center;line-height:18px;">TCB</span> Techcombank</span><span style="color:#aaa;">&#9662;</span></div><div class="ph-field-hint ok">&#10003; Tự nhận diện từ STK</div></div>
+          <div class="ph-field"><div class="ph-field-label">Tên người nhận</div><div class="ph-field-input ok"><b>NGUYEN VAN MANH</b></div><div class="ph-field-hint ok">&#10003; Đã xác minh</div></div>
+          <div class="ph-toggle-row"><span>Lưu người nhận</span><div class="ph-toggle"></div></div>
+          <div style="padding:8px 16px 0;"><div class="ph-cta">Tiếp tục</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Amount bank -->
+  <div class="phone-col">
+    <div class="phone-col-label">S2 — Số tiền (A&rarr;B)</div>
+    <div class="ph">
+      <div class="ph-island"></div>
+      <div class="ph-body">
+        <div class="ph-nav"><div class="ph-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></div></div>
+        <div class="ph-swap">
+          <div class="ph-swap-side"><div class="ph-avatar dark"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 10H18a2 2 0 0 0 0 4h4"/></svg></div><div><div class="ph-swap-label">Từ</div><div class="ph-swap-name">Ví V-Smart Pay</div><div class="ph-sub">Số dư: <b>1.250.000 ₫</b></div></div></div>
+          <div class="ph-swap-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg></div>
+          <div class="ph-swap-side to"><div class="ph-avatar bank">TCB</div><div><div class="ph-swap-label">Đến</div><div class="ph-swap-name">NGUYEN VAN MANH</div><div class="ph-sub">1903 8291 &middot; Techcombank</div></div></div>
+        </div>
+        <div class="ph-amount"><div class="ph-amount-val">2.400.000 <span class="unit">₫</span></div><div class="ph-amount-bal">Số dư khả dụng: <b>1.250.000 ₫</b></div></div>
+        <div class="ph-chips"><div class="ph-chip">100.000</div><div class="ph-chip">500.000</div><div class="ph-chip">1.000.000</div></div>
+        <div class="ph-note">&#9998; NGUYEN VAN MANH chuyen tien</div>
+        <div class="ph-numpad"><div class="ph-key">1</div><div class="ph-key">2</div><div class="ph-key">3</div><div class="ph-key">4</div><div class="ph-key">5</div><div class="ph-key">6</div><div class="ph-key">7</div><div class="ph-key">8</div><div class="ph-key">9</div><div class="ph-key">000</div><div class="ph-key">0</div><div class="ph-key">&larr;</div></div>
+        <div class="ph-cta">Tiếp tục</div>
+        <div class="ph-home"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edge cases -->
+<h3><span class="tag tag-edge">EDGE</span> Edge Cases</h3>
+<div class="phones-row">
+  <!-- E1: Bank picker -->
+  <div class="phone-col">
+    <div class="phone-col-label">Bank Picker (sheet)</div>
+    <div class="ph">
+      <div class="ph-island"></div>
+      <div class="ph-body" style="position:relative;">
+        <div style="opacity:0.08; padding:12px 16px;"><div class="ph-title">Chuyển tiền</div></div>
+        <div class="ph-overlay"></div>
+        <div class="ph-sheet" style="height: 440px;">
+          <div class="ph-sheet-handle"></div>
+          <div class="ph-sheet-title">Chọn ngân hàng</div>
+          <div style="margin:8px 16px;"><div class="ph-field-input focus" style="display:flex;align-items:center;gap:8px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><span style="color:#aaa;">Tìm ngân hàng</span></div></div>
+          <div style="font-size:9px;font-weight:700;color:#888;padding:10px 16px 4px;text-transform:uppercase;letter-spacing:0.4px;">Phổ biến</div>
+          <div class="ph-bank-row"><div class="ph-bank-logo" style="background:#1A1F71;">TCB</div><div><div class="ph-name">Techcombank</div><div class="ph-sub">NH Kỹ Thương</div></div></div>
+          <div class="ph-bank-row"><div class="ph-bank-logo" style="background:#006A4E;">VCB</div><div><div class="ph-name">Vietcombank</div><div class="ph-sub">NH Ngoại Thương</div></div></div>
+          <div class="ph-bank-row"><div class="ph-bank-logo" style="background:#1E3A5F;">MB</div><div><div class="ph-name">MB Bank</div><div class="ph-sub">NH Quân Đội</div></div></div>
+          <div class="ph-bank-row"><div class="ph-bank-logo" style="background:#7B2D8E;">TPB</div><div><div class="ph-name">TPBank</div><div class="ph-sub">NH Tiên Phong</div></div></div>
+          <div class="ph-bank-row"><div class="ph-bank-logo" style="background:#0066B3;">BIDV</div><div><div class="ph-name">BIDV</div><div class="ph-sub">NH ĐT&amp;PT VN</div></div></div>
+          <div class="ph-bank-row"><div class="ph-bank-logo" style="background:#00875A;">VPB</div><div><div class="ph-name">VPBank</div><div class="ph-sub">NH Thịnh Vượng</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- E2: Over balance -->
+  <div class="phone-col">
+    <div class="phone-col-label">Số dư không đủ</div>
+    <div class="ph">
+      <div class="ph-island"></div>
+      <div class="ph-body">
+        <div class="ph-nav"><div class="ph-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></div></div>
+        <div class="ph-swap">
+          <div class="ph-swap-side"><div class="ph-avatar dark"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 10H18a2 2 0 0 0 0 4h4"/></svg></div><div><div class="ph-swap-label">Từ</div><div class="ph-swap-name">Ví V-Smart Pay</div><div class="ph-sub" style="color:var(--red);">Số dư: <b>250.000 ₫</b></div></div></div>
+          <div class="ph-swap-arrow red"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg></div>
+          <div class="ph-swap-side to"><div class="ph-avatar red">PN</div><div><div class="ph-swap-label">Đến</div><div class="ph-swap-name">Phạm Văn Nam</div><div class="ph-sub">0983 882 233</div></div></div>
+        </div>
+        <div class="ph-amount"><div class="ph-amount-val red">20.000.000 <span class="unit">₫</span></div><div class="ph-amount-err">Số dư không đủ &middot; <span style="color:var(--blue);font-weight:600;">Nạp tiền ngay</span></div></div>
+        <div class="ph-chips"><div class="ph-chip">100.000</div><div class="ph-chip">200.000</div><div class="ph-chip">500.000</div></div>
+        <div class="ph-note">&#9998; Phạm Văn Nam chuyển tiền</div>
+        <div class="ph-numpad"><div class="ph-key">1</div><div class="ph-key">2</div><div class="ph-key">3</div><div class="ph-key">4</div><div class="ph-key">5</div><div class="ph-key">6</div><div class="ph-key">7</div><div class="ph-key">8</div><div class="ph-key">9</div><div class="ph-key">000</div><div class="ph-key">0</div><div class="ph-key">&larr;</div></div>
+        <div class="ph-cta off">Số dư không đủ</div>
+        <div class="ph-home"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- E3: STK error -->
+  <div class="phone-col">
+    <div class="phone-col-label">STK không tồn tại</div>
+    <div class="ph">
+      <div class="ph-island"></div>
+      <div class="ph-body" style="position:relative;">
+        <div style="opacity:0.08; padding:12px 16px;"><div class="ph-title">Chuyển tiền</div></div>
+        <div class="ph-overlay"></div>
+        <div class="ph-sheet" style="height: 360px;">
+          <div class="ph-sheet-handle"></div>
+          <div class="ph-sheet-title">Thông tin người nhận</div>
+          <div class="ph-field"><div class="ph-field-label">Số tài khoản</div><div class="ph-field-input err">99999999999 <span style="color:var(--red);">&#10007;</span></div><div class="ph-field-hint err">Số tài khoản không tồn tại</div></div>
+          <div class="ph-field"><div class="ph-field-label">Ngân hàng</div><div class="ph-field-input"><span style="display:inline-flex;align-items:center;gap:5px;"><span style="display:inline-block;width:18px;height:18px;border-radius:5px;background:#1A1F71;color:#fff;font-size:7px;font-weight:800;text-align:center;line-height:18px;">TCB</span> Techcombank</span><span style="color:#aaa;">&#9662;</span></div></div>
+          <div class="ph-field"><div class="ph-field-label">Tên người nhận</div><div class="ph-field-input"><span style="color:#aaa;">Không tìm thấy</span></div></div>
+          <div style="padding:16px 16px 0;"><div class="ph-cta off">Tiếp tục</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>4. Benchmark vs Bank Apps VN</h2>
+
+<table>
+  <tr><th>App</th><th>Flow bank transfer (new)</th><th>Screens</th><th>Taps</th></tr>
+  <tr><td><b>Cake</b></td><td>Single-page &rarr; Confirm &rarr; OTP</td><td>3-4</td><td>4-5</td></tr>
+  <tr><td><b>Techcombank</b></td><td>Inline &rarr; Amount &rarr; Confirm &rarr; OTP</td><td>4-5</td><td>5-6</td></tr>
+  <tr><td><b>TPBank FT</b></td><td>Bank &rarr; STK &rarr; Verify &rarr; Amount &rarr; Confirm &rarr; OTP</td><td>5-6</td><td>7-8</td></tr>
+  <tr><td><b>MBBank</b></td><td>Tương tự TPBank</td><td>5-6</td><td>7-8</td></tr>
+  <tr><td><b>VPBank Neo</b></td><td>Tương tự TPBank</td><td>5-6</td><td>7-8</td></tr>
+  <tr><td><b>LioBank</b></td><td>Cake-style compact</td><td>4</td><td>5-6</td></tr>
+  <tr style="background:#ffebee;"><td><b>VSP v1</b></td><td>Bank picker &rarr; STK &rarr; Dialog &rarr; Amount &rarr; Confirm &rarr; PIN</td><td style="color:#E53935;font-weight:700;">7-8</td><td style="color:#E53935;font-weight:700;">10</td></tr>
+  <tr style="background:#e8f5e9;"><td><b>VSP v2 (new)</b></td><td>Sheet &rarr; Amount (A&rarr;B) &rarr; Confirm+PIN</td><td style="color:#2E7D32;font-weight:700;">5</td><td style="color:#2E7D32;font-weight:700;">6</td></tr>
+  <tr style="background:#e8f5e9;"><td><b>VSP v2 (saved)</b></td><td>Tap saved &rarr; Amount &rarr; Confirm+PIN</td><td style="color:#2E7D32;font-weight:700;">4</td><td style="color:#2E7D32;font-weight:700;">3</td></tr>
+</table>
+
+<div class="compare-grid">
+  <div class="compare-card old"><h4>VSP v1 — Bank mới</h4><div class="num">10 taps</div><div class="label">8 screens &middot; 3 round-trips</div></div>
+  <div class="compare-card new"><h4>VSP v2 — Bank mới</h4><div class="num">6 taps</div><div class="label">5 screens &middot; 0 round-trips</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>5. Edge Cases</h2>
+<table>
+  <tr><th style="width:6%">ID</th><th style="width:25%">Case</th><th>Xử lý</th></tr>
+  <tr><td><span class="tag tag-edge">E1</span></td><td>STK không tồn tại</td><td>Field đỏ + hint error &middot; CTA disabled</td></tr>
+  <tr><td><span class="tag tag-edge">E2</span></td><td>Bank không auto-detect</td><td>Tap dropdown &rarr; inline bank picker sheet</td></tr>
+  <tr><td><span class="tag tag-edge">E3</span></td><td>Name lookup fail</td><td>Warning + user tự nhập tên</td></tr>
+  <tr><td><span class="tag tag-edge">E4</span></td><td>Số dư không đủ</td><td>Amount đỏ &middot; arrow đỏ &middot; CTA disabled + "Nạp tiền ngay"</td></tr>
+  <tr><td><span class="tag tag-edge">E5</span></td><td>SĐT chưa có VSP</td><td>"Chưa đăng ký" + gửi invite</td></tr>
+  <tr><td><span class="tag tag-edge">E6</span></td><td>GD giá trị lớn</td><td>Sau PIN &rarr; Face verification</td></tr>
+  <tr><td><span class="tag tag-edge">E7</span></td><td>Mất mạng</td><td>Giữ state &middot; retry</td></tr>
+  <tr><td><span class="tag tag-edge">E8</span></td><td>Back từ Amount</td><td>Sheet re-open data cũ</td></tr>
+  <tr><td><span class="tag tag-edge">E9</span></td><td>Chuyển cho mình</td><td>Warning nhưng cho phép</td></tr>
+  <tr><td><span class="tag tag-edge">E10</span></td><td>Vượt hạn mức</td><td>Warning + CTA disabled</td></tr>
+</table>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>6. Component mới cần build</h2>
+<table>
+  <tr><th>Component</th><th>Mô tả</th><th>Dùng ở</th></tr>
+  <tr><td><b>SwapCard</b> <span class="tag tag-new">NEW</span></td><td>Card From/To + arrow, kiểu token swap</td><td>Amount screen</td></tr>
+  <tr><td><b>RecipientSheet</b> <span class="tag tag-new">NEW</span></td><td>Sheet nhập người nhận (P2P &amp; Bank variant)</td><td>Step 1.5</td></tr>
+  <tr><td><b>BankPickerSheet</b> <span class="tag tag-new">NEW</span></td><td>Sheet chọn NH (search + popular)</td><td>Trong RecipientSheet</td></tr>
+  <tr><td><b>ConfirmPinSheet</b> <span class="tag tag-new">NEW</span></td><td>Review + PIN gộp 1 sheet</td><td>Step 3</td></tr>
+  <tr><td><b>AmountInput</b> <span class="tag tag-new">NEW</span></td><td>Số tiền + balance + chips + numpad</td><td>Step 2</td></tr>
+</table>
+
+<h2>7. Open Questions</h2>
+<ul>
+  <li>QR scan shortcut trên Entry screen?</li>
+  <li>Quick amount chips: cố định hay smart suggestion?</li>
+  <li>Confirm + PIN gộp 1 sheet hay tách?</li>
+  <li>Saved recipients max bao nhiêu? (suggest: 5 + "Xem tất cả")</li>
+</ul>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VSP — Chuyển tiền (Flow Mới)</title>
+  <style>
+    /* ── VSP Design Tokens ─────────────────────────── */
+    :root {
+      --bg: #FFFFFF;
+      --bg-2: #F5F5F7;
+      --bg-3: #E8E8ED;
+      --text: #1A1A1A;
+      --text-2: #8E8E93;
+      --text-3: #AEAEB2;
+      --red: #E31837;
+      --red-light: #FFF0F2;
+      --green: #34C759;
+      --green-light: #EAFBEF;
+      --blue: #007AFF;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 -4px 24px rgba(0,0,0,0.12);
+      --r28: 28px;
+      --r16: 16px;
+      --r12: 12px;
+      --pad: 22px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #111;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 32px 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── Phone Frame ──────────────────────────────── */
+    .phone {
+      width: 375px;
+      height: 812px;
+      border-radius: 44px;
+      overflow: hidden;
+      background: var(--bg);
+      box-shadow:
+        0 0 0 11px #1D1D1F,
+        0 0 0 13px #3A3A3C,
+        0 30px 60px -15px rgba(0,0,0,0.5);
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Dynamic Island */
+    .island {
+      width: 126px;
+      height: 36px;
+      background: #1D1D1F;
+      border-radius: 20px;
+      margin: 0 auto;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    /* Screen label */
+    .screen-label {
+      position: absolute;
+      bottom: -28px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 11px;
+      color: #888;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .phone { position: relative; margin-bottom: 36px; }
+
+    /* ── Scrollable content ───────────────────────── */
+    .screen { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+    .screen::-webkit-scrollbar { display: none; }
+
+    /* ── NavBar ───────────────────────────────────── */
+    .navbar {
+      display: flex;
+      align-items: center;
+      padding: 8px var(--pad);
+      gap: 12px;
+    }
+    .btn-back {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: var(--bg-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .large-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      padding: 4px var(--pad) 8px;
+      line-height: 1.2;
+    }
+
+    /* ── Search Bar ───────────────────────────────── */
+    .search-bar {
+      margin: 0 var(--pad);
+      padding: 12px 16px;
+      background: var(--bg-2);
+      border-radius: var(--r12);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text-3);
+    }
+
+    /* ── Tab Toggle ───────────────────────────────── */
+    .tab-toggle {
+      display: flex;
+      margin: 16px var(--pad) 0;
+      background: var(--bg-2);
+      border-radius: 10px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .tab-item {
+      flex: 1;
+      text-align: center;
+      padding: 8px 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-2);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-item.active {
+      background: var(--bg);
+      color: var(--text);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    /* ── Section ──────────────────────────────────── */
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 20px var(--pad) 8px;
+    }
+
+    /* ── Recipient Row ────────────────────────────── */
+    .recipient-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px var(--pad);
+    }
+    .recipient-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+    .recipient-avatar.bank {
+      background: var(--red-light);
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .recipient-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .recipient-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .recipient-sub {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-top: 1px;
+    }
+    .recipient-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--bg-2);
+      color: var(--text-2);
+      flex-shrink: 0;
+    }
+    .recipient-badge.vsp { background: var(--red-light); color: var(--red); }
+
+    /* ── Manual Input Button ──────────────────────── */
+    .manual-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px var(--pad);
+      cursor: pointer;
+    }
+    .manual-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px dashed var(--text-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Bottom Sheet ─────────────────────────────── */
+    .sheet-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 50;
+      border-radius: 44px;
+    }
+    .sheet {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-radius: 28px 28px 0 0;
+      z-index: 51;
+      padding-bottom: 34px;
+      max-height: 75%;
+      overflow-y: auto;
+    }
+    .sheet-handle {
+      width: 36px;
+      height: 5px;
+      background: var(--bg-3);
+      border-radius: 3px;
+      margin: 10px auto 0;
+    }
+    .sheet-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      padding: 16px var(--pad) 4px;
+    }
+
+    /* ── Form Field ───────────────────────────────── */
+    .field {
+      margin: 12px var(--pad) 0;
+    }
+    .field-label {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 6px;
+    }
+    .field-input {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg-2);
+      border: 2px solid transparent;
+      border-radius: var(--r12);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      outline: none;
+    }
+    .field-input:focus, .field-input.focus {
+      border-color: var(--text);
+      background: var(--bg);
+    }
+    .field-input.has-value {
+      border-color: var(--green);
+      background: var(--green-light);
+    }
+    .field-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .field-row .field-input { flex: 1; }
+    .field-chevron {
+      color: var(--text-2);
+      flex-shrink: 0;
+    }
+    .field-hint {
+      font-size: 12px;
+      color: var(--text-2);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .field-hint.success { color: var(--green); }
+    .field-hint.error { color: var(--red); }
+
+    /* ── Toggle ───────────────────────────────────── */
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px var(--pad);
+    }
+    .toggle-label { font-size: 15px; color: var(--text); }
+    .toggle {
+      width: 51px;
+      height: 31px;
+      border-radius: 16px;
+      background: var(--green);
+      position: relative;
+    }
+    .toggle::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* ── CTA Button ───────────────────────────────── */
+    .btn-primary {
+      margin: auto var(--pad) 0;
+      padding: 16px;
+      background: var(--text);
+      color: white;
+      border: none;
+      border-radius: var(--r16);
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      width: calc(100% - 44px);
+    }
+    .btn-primary.disabled {
+      background: var(--bg-3);
+      color: var(--text-3);
+      cursor: default;
+    }
+
+    /* ── Home Indicator ───────────────────────────── */
+    .home-indicator {
+      width: 139px;
+      height: 5px;
+      background: var(--text);
+      border-radius: 3px;
+      margin: 12px auto 8px;
+      flex-shrink: 0;
+    }
+
+    /* ── Swap Card (A→B) ──────────────────────────── */
+    .swap-card {
+      margin: 0 var(--pad);
+      background: var(--bg-2);
+      border-radius: var(--r28);
+      overflow: hidden;
+      position: relative;
+    }
+    .swap-side {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .swap-side.from { background: var(--bg-2); }
+    .swap-side.to { background: var(--bg); border: 2px solid var(--bg-2); border-radius: 0 0 var(--r28) var(--r28); }
+    .swap-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .swap-icon-wrap.wallet-icon {
+      background: var(--text);
+      color: white;
+    }
+    .swap-icon-wrap.recipient-icon {
+      background: var(--red-light);
+      color: var(--red);
+    }
+    .swap-icon-wrap.bank-icon {
+      background: #EEF2FF;
+      color: #4F46E5;
+    }
+    .swap-label {
+      font-size: 12px;
+      color: var(--text-2);
+      margin-bottom: 2px;
+    }
+    .swap-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .swap-sub {
+      font-size: 13px;
+      color: var(--text-2);
+    }
+    .swap-arrow {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    /* ── Amount Display ───────────────────────────── */
+    .amount-display {
+      text-align: center;
+      padding: 24px var(--pad) 8px;
+    }
+    .amount-value {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+    .amount-value .cursor {
+      color: var(--blue);
+      font-weight: 300;
+    }
+    .amount-value .unit {
+      font-size: 24px;
+      color: var(--text-3);
+      font-weight: 500;
+    }
+    .amount-balance {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-top: 6px;
+    }
+    .amount-balance strong { color: var(--text); font-weight: 600; }
+    .amount-error {
+      font-size: 13px;
+      color: var(--red);
+      margin-top: 6px;
+    }
+
+    /* ── Quick Amount Chips ────────────────────────── */
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      padding: 12px var(--pad);
+      justify-content: center;
+    }
+    .chip {
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: var(--bg-2);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    /* ── Note Field ───────────────────────────────── */
+    .note-field {
+      margin: 4px var(--pad);
+      padding: 12px 16px;
+      background: var(--bg-2);
+      border-radius: var(--r12);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-2);
+    }
+    .note-field .text { flex: 1; color: var(--text); }
+
+    /* ── Numpad ───────────────────────────────────── */
+    .numpad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      padding: 8px var(--pad);
+      margin-top: auto;
+    }
+    .numpad-key {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 56px;
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      border-radius: var(--r12);
+    }
+    .numpad-key:active { background: var(--bg-2); }
+
+    /* ── Confirm Sheet Items ──────────────────────── */
+    .confirm-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px var(--pad);
+    }
+    .confirm-label { font-size: 14px; color: var(--text-2); }
+    .confirm-value { font-size: 14px; font-weight: 600; color: var(--text); text-align: right; max-width: 55%; }
+
+    /* ── PIN Screen ───────────────────────────────── */
+    .pin-dots {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      padding: 32px 0;
+    }
+    .pin-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg-3);
+    }
+    .pin-dot.filled { background: var(--text); }
+
+    /* ── Result Screen ────────────────────────────── */
+    .result-screen {
+      background: var(--text);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+    }
+    .result-check {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 80px;
+    }
+    .result-amount {
+      font-size: 36px;
+      font-weight: 700;
+      margin-top: 20px;
+    }
+    .result-label {
+      font-size: 15px;
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+    .result-detail {
+      width: 100%;
+      margin-top: 32px;
+      padding: 0 var(--pad);
+    }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .result-row .label { font-size: 13px; opacity: 0.6; }
+    .result-row .value { font-size: 13px; font-weight: 600; text-align: right; max-width: 60%; }
+    .btn-secondary {
+      margin: auto var(--pad) 0;
+      padding: 16px;
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: none;
+      border-radius: var(--r16);
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      width: calc(100% - 44px);
+    }
+    .home-indicator.light { background: rgba(255,255,255,0.4); }
+
+    /* ── Row Divider ──────────────────────────────── */
+    .divider { height: 1px; background: var(--bg-2); margin: 0 var(--pad); }
+
+    /* ── Inline Bank Picker ───────────────────────── */
+    .bank-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px var(--pad);
+      cursor: pointer;
+    }
+    .bank-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--bg-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+    .bank-logo.tcb { background: #1A1F71; color: white; }
+    .bank-logo.vcb { background: #006A4E; color: white; }
+    .bank-logo.mb { background: #1E3A5F; color: white; }
+    .bank-logo.tpb { background: #7B2D8E; color: white; }
+    .bank-logo.bidv { background: #0066B3; color: white; }
+    .bank-logo.vpb { background: #00875A; color: white; }
+    .bank-name { font-size: 15px; font-weight: 600; color: var(--text); }
+    .bank-sub { font-size: 12px; color: var(--text-2); }
+
+    /* ── State Label (for wireframe annotation) ───── */
+    .state-tag {
+      position: absolute;
+      top: 50px;
+      right: 12px;
+      font-size: 10px;
+      font-weight: 700;
+      background: var(--red);
+      color: white;
+      padding: 3px 8px;
+      border-radius: 6px;
+      z-index: 99;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Flow separator ───────────────────────────── */
+    .flow-sep {
+      width: 100%;
+      text-align: center;
+      padding: 40px 0 20px;
+      color: #555;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* ── Arrow connector ──────────────────────────── */
+    .arrow-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      margin-bottom: 36px;
+    }
+    .arrow-connector svg { color: #555; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     FLOW 1: P2P — NGƯỜI NHẬN CŨ (3 taps to send!)
+     ════════════════════════════════════════════════════════════════════ -->
+
+<div class="flow-sep" style="margin-top: 0;">── FLOW P2P: NGƯỜI NHẬN CŨ ── 4 screens · 3 taps ──</div>
+
+<!-- S1.1: Entry — Recent/Saved -->
+<div class="phone">
+  <div class="state-tag">STEP 1</div>
+  <div class="island"></div>
+  <div class="screen">
+    <div class="navbar">
+      <div class="btn-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="large-title">Chuyển tiền</div>
+
+    <!-- Search -->
+    <div class="search-bar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      Tìm tên, SĐT, số tài khoản
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-toggle">
+      <div class="tab-item active">Tất cả</div>
+      <div class="tab-item">Ví VSP</div>
+      <div class="tab-item">Ngân hàng</div>
+    </div>
+
+    <!-- Recent -->
+    <div class="section-title">Gần đây</div>
+
+    <div class="recipient-row" style="background: var(--red-light); border-radius: var(--r12); margin: 0 var(--pad);">
+      <div class="recipient-avatar">PN</div>
+      <div class="recipient-info">
+        <div class="recipient-name">Phạm Văn Nam</div>
+        <div class="recipient-sub">0983 882 233</div>
+      </div>
+      <div class="recipient-badge vsp">VSP</div>
+    </div>
+    <div style="font-size:10px; color:var(--red); text-align:center; margin-top:4px; font-weight:600;">↑ TAP CHỌN = SKIP ĐẾN STEP 2</div>
+
+    <div class="recipient-row">
+      <div class="recipient-avatar">ĐN</div>
+      <div class="recipient-info">
+        <div class="recipient-name">Đào Văn Nam</div>
+        <div class="recipient-sub">0901 232 512</div>
+      </div>
+      <div class="recipient-badge vsp">VSP</div>
+    </div>
+
+    <div class="recipient-row">
+      <div class="recipient-avatar bank">TCB</div>
+      <div class="recipient-info">
+        <div class="recipient-name">Nguyễn Văn Mạnh</div>
+        <div class="recipient-sub">8288 812 121 · Techcombank</div>
+      </div>
+      <div class="recipient-badge">NH</div>
+    </div>
+
+    <div class="recipient-row">
+      <div class="recipient-avatar bank">VCB</div>
+      <div class="recipient-info">
+        <div class="recipient-name">Trần Thị Lan</div>
+        <div class="recipient-sub">1023 456 789 · Vietcombank</div>
+      </div>
+      <div class="recipient-badge">NH</div>
+    </div>
+
+    <div class="divider" style="margin-top: 8px;"></div>
+
+    <!-- Manual -->
+    <div class="section-title">Người nhận mới</div>
+
+    <div class="manual-btn">
+      <div class="manual-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-2)" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="recipient-info">
+        <div class="recipient-name" style="color: var(--text-2);">Nhập số điện thoại</div>
+        <div class="recipient-sub">Chuyển đến ví VSP</div>
+      </div>
+    </div>
+
+    <div class="manual-btn">
+      <div class="manual-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-2)" stroke-width="2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+      </div>
+      <div class="recipient-info">
+        <div class="recipient-name" style="color: var(--text-2);">Nhập số tài khoản</div>
+        <div class="recipient-sub">Chuyển đến ngân hàng</div>
+      </div>
+    </div>
+
+    <div class="home-indicator"></div>
+  </div>
+  <div class="screen-label">S1 — Entry (chọn / nhập)</div>
+</div>
+
+<!-- S1.2: Amount — Swap Style -->
+<div class="phone">
+  <div class="state-tag">STEP 2</div>
+  <div class="island"></div>
+  <div class="screen">
+    <div class="navbar">
+      <div class="btn-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </div>
+    </div>
+
+    <!-- Swap Card A→B -->
+    <div class="swap-card">
+      <div class="swap-side from">
+        <div class="swap-icon-wrap wallet-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 10H18a2 2 0 0 0 0 4h4"/></svg>
+        </div>
+        <div>
+          <div class="swap-label">Từ</div>
+          <div class="swap-name">Ví V-Smart Pay</div>
+          <div class="swap-sub">Số dư: <strong style="color:var(--text)">250.000 ₫</strong></div>
+        </div>
+      </div>
+      <div class="swap-arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg>
+      </div>
+      <div class="swap-side to">
+        <div class="swap-icon-wrap recipient-icon">PN</div>
+        <div>
+          <div class="swap-label">Đến</div>
+          <div class="swap-name">Phạm Văn Nam</div>
+          <div class="swap-sub">0983 882 233 · Ví VSP</div>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+    </div>
+
+    <!-- Amount -->
+    <div class="amount-display">
+      <div class="amount-value"><span class="cursor">|</span>0 <span class="unit">₫</span></div>
+      <div class="amount-balance">Số dư khả dụng: <strong>250.000 ₫</strong></div>
+    </div>
+
+    <!-- Chips -->
+    <div class="chip-row">
+      <div class="chip">100.000</div>
+      <div class="chip">200.000</div>
+      <div class="chip">500.000</div>
+    </div>
+
+    <!-- Note -->
+    <div class="note-field">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      <span class="text">Phạm Văn Nam chuyển tiền</span>
+    </div>
+
+    <!-- Numpad -->
+    <div class="numpad">
+      <div class="numpad-key">1</div><div class="numpad-key">2</div><div class="numpad-key">3</div>
+      <div class="numpad-key">4</div><div class="numpad-key">5</div><div class="numpad-key">6</div>
+      <div class="numpad-key">7</div><div class="numpad-key">8</div><div class="numpad-key">9</div>
+      <div class="numpad-key">000</div><div class="numpad-key">0</div>
+      <div class="numpad-key"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg></div>
+    </div>
+
+    <div class="btn-primary disabled">Tiếp tục</div>
+    <div class="home-indicator"></div>
+  </div>
+  <div class="screen-label">S2 — Nhập số tiền (empty)</div>
+</div>
+
+<!-- S1.3: Amount Filled -->
+<div class="phone">
+  <div class="state-tag">STEP 2 filled</div>
+  <div class="island"></div>
+  <div class="screen">
+    <div class="navbar">
+      <div class="btn-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </div>
+    </div>
+
+    <!-- Swap Card -->
+    <div class="swap-card">
+      <div class="swap-side from">
+        <div class="swap-icon-wrap wallet-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 10H18a2 2 0 0 0 0 4h4"/></svg>
+        </div>
+        <div>
+          <div class="swap-label">Từ</div>
+          <div class="swap-name">Ví V-Smart Pay</div>
+          <div class="swap-sub">Số dư: <strong style="color:var(--text)">250.000 ₫</strong></div>
+        </div>
+      </div>
+      <div class="swap-arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg>
+      </div>
+      <div class="swap-side to">
+        <div class="swap-icon-wrap recipient-icon">PN</div>
+        <div>
+          <div class="swap-label">Đến</div>
+          <div class="swap-name">Phạm Văn Nam</div>
+          <div class="swap-sub">0983 882 233 · Ví VSP</div>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+    </div>
+
+    <!-- Amount FILLED -->
+    <div class="amount-display">
+      <div class="amount-value">100.000 <span class="unit">₫</span></div>
+      <div class="amount-balance">Số dư khả dụng: <strong>250.000 ₫</strong></div>
+    </div>
+
+    <div class="chip-row">
+      <div class="chip" style="background:var(--text); color:white;">100.000</div>
+      <div class="chip">200.000</div>
+      <div class="chip">500.000</div>
+    </div>
+
+    <div class="note-field">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      <span class="text">Phạm Văn Nam chuyển tiền</span>
+    </div>
+
+    <div class="numpad">
+      <div class="numpad-key">1</div><div class="numpad-key">2</div><div class="numpad-key">3</div>
+      <div class="numpad-key">4</div><div class="numpad-key">5</div><div class="numpad-key">6</div>
+      <div class="numpad-key">7</div><div class="numpad-key">8</div><div class="numpad-key">9</div>
+      <div class="numpad-key">000</div><div class="numpad-key">0</div>
+      <div class="numpad-key"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg></div>
+    </div>
+
+    <div class="btn-primary">Tiếp tục</div>
+    <div class="home-indicator"></div>
+  </div>
+  <div class="screen-label">S2 — Nhập số tiền (filled)</div>
+</div>
+
+<!-- S1.4: Confirm + Auth overlay -->
+<div class="phone">
+  <div class="state-tag">STEP 3</div>
+  <div class="island"></div>
+  <div class="screen" style="position:relative;">
+    <div class="navbar" style="opacity:0.3;">
+      <div class="btn-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </div>
+    </div>
+
+    <!-- Dimmed background -->
+    <div style="opacity:0.15; pointer-events:none;">
+      <div class="swap-card">
+        <div class="swap-side from">
+          <div class="swap-icon-wrap wallet-icon">V</div>
+          <div><div class="swap-label">Từ</div><div class="swap-name">Ví V-Smart Pay</div></div>
+        </div>
+        <div class="swap-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg></div>
+        <div class="swap-side to">
+          <div class="swap-icon-wrap recipient-icon">PN</div>
+          <div><div class="swap-label">Đến</div><div class="swap-name">Phạm Văn Nam</div></div>
+        </div>
+      </div>
+      <div class="amount-display"><div class="amount-value">100.000 ₫</div></div>
+    </div>
+
+    <!-- Confirm Sheet -->
+    <div class="sheet-overlay"></div>
+    <div class="sheet" style="position:absolute;">
+      <div class="sheet-handle"></div>
+      <div style="text-align:center; padding: 16px 0 0;">
+        <div style="font-size:28px; font-weight:700; color:var(--text);">100.000 <span style="font-size:18px; color:var(--text-2)">₫</span></div>
+        <div style="font-size:13px; color:var(--text-2); margin-top:2px;">Xác nhận chuyển tiền</div>
+      </div>
+
+      <div style="margin: 16px var(--pad); background: var(--bg-2); border-radius: var(--r16); padding: 4px 0;">
+        <div class="confirm-row"><span class="confirm-label">Người nhận</span><span class="confirm-value">Phạm Văn Nam</span></div>
+        <div class="confirm-row"><span class="confirm-label">SĐT</span><span class="confirm-value">0983 882 233</span></div>
+        <div class="confirm-row"><span class="confirm-label">Loại</span><span class="confirm-value">Ví VSP</span></div>
+        <div class="confirm-row"><span class="confirm-label">Nội dung</span><span class="confirm-value">Phạm Văn Nam chuyển tiền</span></div>
+        <div class="confirm-row"><span class="confirm-label">Phí</span><span class="confirm-value" style="color:var(--green)">Miễn phí</span></div>
+      </div>
+
+      <div style="text-align:center; padding: 8px 0;">
+        <div style="font-size:13px; color:var(--text-2); margin-bottom:16px;">Nhập PIN để xác nhận</div>
+        <div class="pin-dots">
+          <div class="pin-dot filled"></div>
+          <div class="pin-dot filled"></div>
+          <div class="pin-dot filled"></div>
+          <div class="pin-dot"></div>
+          <div class="pin-dot"></div>
+          <div class="pin-dot"></div>
+        </div>
+      </div>
+
+      <div class="numpad" style="padding-bottom: 0;">
+        <div class="numpad-key" style="font-size:20px;">1</div><div class="numpad-key" style="font-size:20px;">2</div><div class="numpad-key" style="font-size:20px;">3</div>
+        <div class="numpad-key" style="font-size:20px;">4</div><div class="numpad-key" style="font-size:20px;">5</div><div class="numpad-key" style="font-size:20px;">6</div>
+        <div class="numpad-key" style="font-size:20px;">7</div><div class="numpad-key" style="font-size:20px;">8</div><div class="numpad-key" style="font-size:20px;">9</div>
+        <div class="numpad-key"></div><div class="numpad-key" style="font-size:20px;">0</div>
+        <div class="numpad-key"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg></div>
+      </div>
+    </div>
+  </div>
+  <div class="screen-label">S3 — Confirm + PIN (sheet)</div>
+</div>
+
+<!-- S1.5: Result -->
+<div class="phone">
+  <div class="state-tag">DONE</div>
+  <div class="island" style="background: transparent;"></div>
+  <div class="screen">
+    <div class="result-screen">
+      <div class="result-check">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div style="font-size:15px; opacity:0.7; margin-top:16px;">Giao dịch thành công</div>
+      <div class="result-amount">100.000 ₫</div>
+      <div class="result-label">đến Phạm Văn Nam</div>
+
+      <div class="result-detail">
+        <div class="result-row"><span class="label">Mã giao dịch</span><span class="value">TXN240309001</span></div>
+        <div class="result-row"><span class="label">Thời gian</span><span class="value">09/03/2026 14:35</span></div>
+        <div class="result-row"><span class="label">Người nhận</span><span class="value">Phạm Văn Nam</span></div>
+        <div class="result-row"><span class="label">SĐT</span><span class="value">0983 882 233</span></div>
+        <div class="result-row"><span class="label">Loại</span><span class="value">Ví VSP → Ví VSP</span></div>
+        <div class="result-row"><span class="label">Nội dung</span><span class="value">Phạm Văn Nam chuyển tiền</span></div>
+        <div class="result-row" style="border:none;"><span class="label">Phí</span><span class="value" style="color:var(--green);">Miễn phí</span></div>
+      </div>
+
+      <div class="btn-secondary" style="margin-top:24px;">Về trang chủ</div>
+      <div class="home-indicator light"></div>
+    </div>
+  </div>
+  <div class="screen-label">S4 — Kết quả</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     FLOW 2: BANK TRANSFER — NGƯỜI NHẬN MỚI (sheet nhập tay)
+     ════════════════════════════════════════════════════════════════════ -->
+
+<div class="flow-sep">── FLOW BANK: NGƯỜI NHẬN MỚI ── 5 screens · 6 taps ──</div>
+
+<!-- S2.1: Entry (same as S1.1) — tap "Nhập số tài khoản" -->
+<div class="phone">
+  <div class="state-tag">STEP 1</div>
+  <div class="island"></div>
+  <div class="screen">
+    <div class="navbar">
+      <div class="btn-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="large-title">Chuyển tiền</div>
+    <div class="search-bar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      Tìm tên, SĐT, số tài khoản
+    </div>
+    <div class="tab-toggle">
+      <div class="tab-item active">Tất cả</div>
+      <div class="tab-item">Ví VSP</div>
+      <div class="tab-item">Ngân hàng</div>
+    </div>
+
+    <div class="section-title">Gần đây</div>
+    <div class="recipient-row">
+      <div class="recipient-avatar">PN</div>
+      <div class="recipient-info"><div class="recipient-name">Phạm Văn Nam</div><div class="recipient-sub">0983 882 233</div></div>
+      <div class="recipient-badge vsp">VSP</div>
+    </div>
+    <div class="recipient-row">
+      <div class="recipient-avatar bank">TCB</div>
+      <div class="recipient-info"><div class="recipient-name">Nguyễn Văn Mạnh</div><div class="recipient-sub">8288 812 121 · Techcombank</div></div>
+      <div class="recipient-badge">NH</div>
+    </div>
+
+    <div class="divider" style="margin-top: 8px;"></div>
+    <div class="section-title">Người nhận mới</div>
+
+    <div class="manual-btn">
+      <div class="manual-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-2)" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="recipient-info"><div class="recipient-name" style="color: var(--text-2);">Nhập số điện thoại</div><div class="recipient-sub">Chuyển đến ví VSP</div></div>
+    </div>
+
+    <div class="manual-btn" style="background: var(--bg-2); border-radius: var(--r12); margin: 0 var(--pad);">
+      <div class="manual-icon" style="border-color: var(--text);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+      </div>
+      <div class="recipient-info"><div class="recipient-name">Nhập số tài khoản</div><div class="recipient-sub">Chuyển đến ngân hàng</div></div>
+    </div>
+    <div style="font-size:10px; color:var(--red); text-align:center; margin-top:4px; font-weight:600;">↑ TAP = MỞ SHEET NHẬP TAY</div>
+
+    <div class="home-indicator"></div>
+  </div>
+  <div class="screen-label">S1 — Entry (tap nhập tay)</div>
+</div>
+
+<!-- S2.2: Sheet — Nhập thông tin NH (empty) -->
+<div class="phone">
+  <div class="state-tag">SHEET</div>
+  <div class="island"></div>
+  <div class="screen" style="position:relative;">
+    <div class="navbar" style="opacity:0.3;">
+      <div class="btn-back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></div>
+    </div>
+    <div class="large-title" style="opacity:0.15;">Chuyển tiền</div>
+
+    <div class="sheet-overlay"></div>
+    <div class="sheet" style="position:absolute; max-height:82%;">
+      <div class="sheet-handle"></div>
+      <div class="sheet-title">Thông tin người nhận</div>
+
+      <div class="field">
+        <div class="field-label">Số tài khoản</div>
+        <div class="field-input focus" style="border-color: var(--blue);">
+          <span style="color:var(--text-3);">Nhập số tài khoản</span>
+        </div>
+        <div class="field-hint">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          Hệ thống sẽ tự nhận diện ngân hàng
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Ngân hàng</div>
+        <div class="field-input" style="display:flex; align-items:center; justify-content:space-between; color:var(--text-3);">
+          <span>Tự động nhận diện</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Tên người nhận</div>
+        <div class="field-input" style="color:var(--text-3);">—</div>
+      </div>
+
+      <div class="toggle-row">
+        <span class="toggle-label">Lưu người nhận</span>
+        <div class="toggle"></div>
+      </div>
+
+      <div style="padding: 8px var(--pad) 0;">
+        <div class="btn-primary disabled" style="width:100%; margin:0;">Tiếp tục</div>
+      </div>
+    </div>
+  </div>
+  <div class="screen-label">S1.5 — Sheet nhập (empty)</div>
+</div>
+
+<!-- S2.3: Sheet — Đã nhập STK, auto-detect bank -->
+<div class="phone">
+  <div class="state-tag">SHEET filled</div>
+  <div class="island"></div>
+  <div class="screen" style="position:relative;">
+    <div class="navbar" style="opacity:0.3;">
+      <div class="btn-back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></div>
+    </div>
+    <div class="large-title" style="opacity:0.15;">Chuyển tiền</div>
+
+    <div class="sheet-overlay"></div>
+    <div class="sheet" style="position:absolute; max-height:82%;">
+      <div class="sheet-handle"></div>
+      <div class="sheet-title">Thông tin người nhận</div>
+
+      <div class="field">
+        <div class="field-label">Số tài khoản</div>
+        <div class="field-input has-value" style="display:flex; align-items:center; justify-content:space-between;">
+          <span>19038291832</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Ngân hàng</div>
+        <div class="field-input has-value" style="display:flex; align-items:center; gap:10px;">
+          <div style="width:24px; height:24px; border-radius:6px; background:#1A1F71; display:flex; align-items:center; justify-content:center; color:white; font-size:8px; font-weight:800;">TCB</div>
+          <span style="flex:1;">Techcombank</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="field-hint success">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Tự động nhận diện từ số tài khoản
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Tên người nhận</div>
+        <div class="field-input has-value">
+          <span style="font-weight:600;">NGUYEN VAN MANH</span>
+        </div>
+        <div class="field-hint success">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Đã xác minh
+        </div>
+      </div>
+
+      <div class="toggle-row">
+        <span class="toggle-label">Lưu người nhận</span>
+        <div class="toggle"></div>
+      </div>
+
+      <div style="padding: 8px var(--pad) 0;">
+        <div class="btn-primary" style="width:100%; margin:0;">Tiếp tục</div>
+      </div>
+    </div>
+  </div>
+  <div class="screen-label">S1.5 — Sheet nhập (verified)</div>
+</div>
+
+<!-- S2.4: Amount — Bank Transfer (swap style) -->
+<div class="phone">
+  <div class="state-tag">STEP 2</div>
+  <div class="island"></div>
+  <div class="screen">
+    <div class="navbar">
+      <div class="btn-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </div>
+    </div>
+
+    <div class="swap-card">
+      <div class="swap-side from">
+        <div class="swap-icon-wrap wallet-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 10H18a2 2 0 0 0 0 4h4"/></svg>
+        </div>
+        <div>
+          <div class="swap-label">Từ</div>
+          <div class="swap-name">Ví V-Smart Pay</div>
+          <div class="swap-sub">Số dư: <strong style="color:var(--text)">1.250.000 ₫</strong></div>
+        </div>
+      </div>
+      <div class="swap-arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg>
+      </div>
+      <div class="swap-side to">
+        <div class="swap-icon-wrap bank-icon">
+          <div style="font-size:9px; font-weight:800;">TCB</div>
+        </div>
+        <div>
+          <div class="swap-label">Đến</div>
+          <div class="swap-name">NGUYEN VAN MANH</div>
+          <div class="swap-sub">1903 829 1832 · Techcombank</div>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+    </div>
+
+    <div class="amount-display">
+      <div class="amount-value">2.400.000 <span class="unit">₫</span></div>
+      <div class="amount-balance">Số dư khả dụng: <strong>1.250.000 ₫</strong></div>
+    </div>
+
+    <div class="chip-row">
+      <div class="chip">100.000</div>
+      <div class="chip">500.000</div>
+      <div class="chip">1.000.000</div>
+    </div>
+
+    <div class="note-field">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      <span class="text">NGUYEN VAN MANH chuyen tien</span>
+    </div>
+
+    <div class="numpad">
+      <div class="numpad-key">1</div><div class="numpad-key">2</div><div class="numpad-key">3</div>
+      <div class="numpad-key">4</div><div class="numpad-key">5</div><div class="numpad-key">6</div>
+      <div class="numpad-key">7</div><div class="numpad-key">8</div><div class="numpad-key">9</div>
+      <div class="numpad-key">000</div><div class="numpad-key">0</div>
+      <div class="numpad-key"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg></div>
+    </div>
+
+    <div class="btn-primary">Tiếp tục</div>
+    <div class="home-indicator"></div>
+  </div>
+  <div class="screen-label">S2 — Nhập số tiền (bank)</div>
+</div>
+
+<!-- S2.5: Confirm + PIN -->
+<div class="phone">
+  <div class="state-tag">STEP 3</div>
+  <div class="island"></div>
+  <div class="screen" style="position:relative;">
+    <div class="navbar" style="opacity:0.3;"><div class="btn-back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></div></div>
+    <div style="opacity:0.15; pointer-events:none;">
+      <div class="swap-card"><div class="swap-side from"><div class="swap-icon-wrap wallet-icon">V</div><div><div class="swap-name">Ví VSP</div></div></div></div>
+    </div>
+
+    <div class="sheet-overlay"></div>
+    <div class="sheet" style="position:absolute; max-height:85%;">
+      <div class="sheet-handle"></div>
+      <div style="text-align:center; padding: 16px 0 0;">
+        <div style="font-size:28px; font-weight:700; color:var(--text);">2.400.000 <span style="font-size:18px; color:var(--text-2)">₫</span></div>
+        <div style="font-size:13px; color:var(--text-2); margin-top:2px;">Xác nhận chuyển tiền</div>
+      </div>
+
+      <div style="margin: 16px var(--pad); background: var(--bg-2); border-radius: var(--r16); padding: 4px 0;">
+        <div class="confirm-row"><span class="confirm-label">Người nhận</span><span class="confirm-value">NGUYEN VAN MANH</span></div>
+        <div class="confirm-row"><span class="confirm-label">Số tài khoản</span><span class="confirm-value">1903 829 1832</span></div>
+        <div class="confirm-row"><span class="confirm-label">Ngân hàng</span><span class="confirm-value">Techcombank</span></div>
+        <div class="confirm-row"><span class="confirm-label">Nội dung</span><span class="confirm-value">NGUYEN VAN MANH chuyen tien</span></div>
+        <div class="confirm-row"><span class="confirm-label">Phí</span><span class="confirm-value" style="color:var(--green)">Miễn phí</span></div>
+      </div>
+
+      <div style="text-align:center; padding: 8px 0;">
+        <div style="font-size:13px; color:var(--text-2); margin-bottom:16px;">Nhập PIN để xác nhận</div>
+        <div class="pin-dots">
+          <div class="pin-dot filled"></div>
+          <div class="pin-dot filled"></div>
+          <div class="pin-dot"></div>
+          <div class="pin-dot"></div>
+          <div class="pin-dot"></div>
+          <div class="pin-dot"></div>
+        </div>
+      </div>
+
+      <div class="numpad" style="padding-bottom: 0;">
+        <div class="numpad-key" style="font-size:20px;">1</div><div class="numpad-key" style="font-size:20px;">2</div><div class="numpad-key" style="font-size:20px;">3</div>
+        <div class="numpad-key" style="font-size:20px;">4</div><div class="numpad-key" style="font-size:20px;">5</div><div class="numpad-key" style="font-size:20px;">6</div>
+        <div class="numpad-key" style="font-size:20px;">7</div><div class="numpad-key" style="font-size:20px;">8</div><div class="numpad-key" style="font-size:20px;">9</div>
+        <div class="numpad-key"></div><div class="numpad-key" style="font-size:20px;">0</div>
+        <div class="numpad-key"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg></div>
+      </div>
+    </div>
+  </div>
+  <div class="screen-label">S3 — Confirm + PIN (bank)</div>
+</div>
+
+<!-- S2.6: Result — Bank -->
+<div class="phone">
+  <div class="state-tag">DONE</div>
+  <div class="island" style="background: transparent;"></div>
+  <div class="screen">
+    <div class="result-screen">
+      <div class="result-check">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div style="font-size:15px; opacity:0.7; margin-top:16px;">Giao dịch thành công</div>
+      <div class="result-amount">2.400.000 ₫</div>
+      <div class="result-label">đến NGUYEN VAN MANH</div>
+
+      <div class="result-detail">
+        <div class="result-row"><span class="label">Mã giao dịch</span><span class="value">TXN240309002</span></div>
+        <div class="result-row"><span class="label">Thời gian</span><span class="value">09/03/2026 14:42</span></div>
+        <div class="result-row"><span class="label">Người nhận</span><span class="value">NGUYEN VAN MANH</span></div>
+        <div class="result-row"><span class="label">Số tài khoản</span><span class="value">1903 829 1832</span></div>
+        <div class="result-row"><span class="label">Ngân hàng</span><span class="value">Techcombank</span></div>
+        <div class="result-row"><span class="label">Nội dung</span><span class="value">NGUYEN VAN MANH chuyen tien</span></div>
+        <div class="result-row"><span class="label">Nguồn</span><span class="value">Ví V-Smart Pay</span></div>
+        <div class="result-row" style="border:none;"><span class="label">Phí</span><span class="value" style="color:var(--green);">Miễn phí</span></div>
+      </div>
+
+      <div class="btn-secondary" style="margin-top:16px;">Về trang chủ</div>
+      <div class="home-indicator light"></div>
+    </div>
+  </div>
+  <div class="screen-label">S4 — Kết quả (bank)</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     FLOW 3: EDGE CASES
+     ════════════════════════════════════════════════════════════════════ -->
+
+<div class="flow-sep">── EDGE CASES ──</div>
+
+<!-- E1: Bank sheet — chọn bank thủ công (inline) -->
+<div class="phone">
+  <div class="state-tag">BANK PICKER</div>
+  <div class="island"></div>
+  <div class="screen" style="position:relative;">
+    <div class="navbar" style="opacity:0.15;"><div class="btn-back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></div></div>
+
+    <div class="sheet-overlay"></div>
+    <div class="sheet" style="position:absolute; max-height:85%;">
+      <div class="sheet-handle"></div>
+      <div class="sheet-title">Chọn ngân hàng</div>
+
+      <div style="margin: 8px var(--pad);">
+        <div class="field-input focus" style="display:flex; align-items:center; gap:10px; border-color:var(--blue);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <span style="color:var(--text-3);">Tìm ngân hàng</span>
+        </div>
+      </div>
+
+      <div style="font-size:12px; color:var(--text-2); font-weight:600; padding:12px var(--pad) 4px; text-transform:uppercase; letter-spacing:0.5px;">Phổ biến</div>
+
+      <div class="bank-row">
+        <div class="bank-logo tcb">TCB</div>
+        <div><div class="bank-name">Techcombank</div><div class="bank-sub">NH TMCP Kỹ Thương VN</div></div>
+      </div>
+      <div class="bank-row">
+        <div class="bank-logo vcb">VCB</div>
+        <div><div class="bank-name">Vietcombank</div><div class="bank-sub">NH TMCP Ngoại Thương VN</div></div>
+      </div>
+      <div class="bank-row">
+        <div class="bank-logo mb">MB</div>
+        <div><div class="bank-name">MB Bank</div><div class="bank-sub">NH TMCP Quân Đội</div></div>
+      </div>
+      <div class="bank-row">
+        <div class="bank-logo tpb">TPB</div>
+        <div><div class="bank-name">TPBank</div><div class="bank-sub">NH TMCP Tiên Phong</div></div>
+      </div>
+      <div class="bank-row">
+        <div class="bank-logo bidv">BIDV</div>
+        <div><div class="bank-name">BIDV</div><div class="bank-sub">NH Đầu Tư & Phát Triển VN</div></div>
+      </div>
+      <div class="bank-row">
+        <div class="bank-logo vpb">VPB</div>
+        <div><div class="bank-name">VPBank</div><div class="bank-sub">NH TMCP Việt Nam Thịnh Vượng</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="screen-label">E1 — Bank picker (inline sheet)</div>
+</div>
+
+<!-- E2: Amount vượt số dư -->
+<div class="phone">
+  <div class="state-tag">OVER LIMIT</div>
+  <div class="island"></div>
+  <div class="screen">
+    <div class="navbar">
+      <div class="btn-back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div>
+    </div>
+
+    <div class="swap-card">
+      <div class="swap-side from">
+        <div class="swap-icon-wrap wallet-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 10H18a2 2 0 0 0 0 4h4"/></svg>
+        </div>
+        <div>
+          <div class="swap-label">Từ</div>
+          <div class="swap-name">Ví V-Smart Pay</div>
+          <div class="swap-sub">Số dư: <strong style="color:var(--red)">250.000 ₫</strong></div>
+        </div>
+      </div>
+      <div class="swap-arrow" style="background:var(--red);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg>
+      </div>
+      <div class="swap-side to">
+        <div class="swap-icon-wrap recipient-icon">PN</div>
+        <div><div class="swap-label">Đến</div><div class="swap-name">Phạm Văn Nam</div><div class="swap-sub">0983 882 233 · Ví VSP</div></div>
+      </div>
+    </div>
+
+    <div class="amount-display">
+      <div class="amount-value" style="color:var(--red);">20.000.000 <span class="unit">₫</span></div>
+      <div class="amount-error">Số dư không đủ · <a style="color:var(--blue); font-weight:600; text-decoration:none;">Nạp tiền ngay</a></div>
+    </div>
+
+    <div class="chip-row">
+      <div class="chip">100.000</div>
+      <div class="chip">200.000</div>
+      <div class="chip">500.000</div>
+    </div>
+
+    <div class="note-field">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      <span class="text">Phạm Văn Nam chuyển tiền</span>
+    </div>
+
+    <div class="numpad">
+      <div class="numpad-key">1</div><div class="numpad-key">2</div><div class="numpad-key">3</div>
+      <div class="numpad-key">4</div><div class="numpad-key">5</div><div class="numpad-key">6</div>
+      <div class="numpad-key">7</div><div class="numpad-key">8</div><div class="numpad-key">9</div>
+      <div class="numpad-key">000</div><div class="numpad-key">0</div>
+      <div class="numpad-key"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg></div>
+    </div>
+
+    <div class="btn-primary disabled">Số dư không đủ</div>
+    <div class="home-indicator"></div>
+  </div>
+  <div class="screen-label">E2 — Số dư không đủ</div>
+</div>
+
+<!-- E3: Lookup failed -->
+<div class="phone">
+  <div class="state-tag">LOOKUP FAIL</div>
+  <div class="island"></div>
+  <div class="screen" style="position:relative;">
+    <div class="navbar" style="opacity:0.3;"><div class="btn-back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></div></div>
+    <div class="large-title" style="opacity:0.15;">Chuyển tiền</div>
+
+    <div class="sheet-overlay"></div>
+    <div class="sheet" style="position:absolute; max-height:82%;">
+      <div class="sheet-handle"></div>
+      <div class="sheet-title">Thông tin người nhận</div>
+
+      <div class="field">
+        <div class="field-label">Số tài khoản</div>
+        <div class="field-input" style="border-color:var(--red); background:var(--red-light); display:flex; align-items:center; justify-content:space-between;">
+          <span>99999999999</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg>
+        </div>
+        <div class="field-hint error">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg>
+          Số tài khoản không tồn tại
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Ngân hàng</div>
+        <div class="field-input" style="display:flex; align-items:center; gap:10px;">
+          <div style="width:24px; height:24px; border-radius:6px; background:#1A1F71; display:flex; align-items:center; justify-content:center; color:white; font-size:8px; font-weight:800;">TCB</div>
+          <span style="flex:1;">Techcombank</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Tên người nhận</div>
+        <div class="field-input" style="color:var(--text-3);">Không tìm thấy</div>
+      </div>
+
+      <div style="padding: 20px var(--pad) 0;">
+        <div class="btn-primary disabled" style="width:100%; margin:0;">Tiếp tục</div>
+      </div>
+    </div>
+  </div>
+  <div class="screen-label">E3 — STK không tồn tại</div>
+</div>
+
+</body>
+</html>
