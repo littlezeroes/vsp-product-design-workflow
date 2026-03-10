@@ -7,7 +7,7 @@ import { Header } from "@/components/ui/header"
 import { ItemList, ItemListItem } from "@/components/ui/item-list"
 import { FeedbackState } from "@/components/ui/feedback-state"
 
-/* ── Mock data ─────────────────────────────────────────────────── */
+/* ── Types ────────────────────────────────────────────────────── */
 type TxType = "deposit" | "withdraw" | "link" | "unlink"
 type TxStatus = "success" | "pending" | "failed"
 
@@ -18,14 +18,16 @@ interface Transaction {
   status: TxStatus
   date: string
   bank: string
+  group: string
 }
 
+/* ── Mock data ─────────────────────────────────────────────────── */
 const MOCK_TXS: Transaction[] = [
-  { id: "1", type: "deposit", amount: 200000, status: "success", date: "09/03 14:30", bank: "BIDV" },
-  { id: "2", type: "withdraw", amount: 100000, status: "pending", date: "09/03 12:15", bank: "BIDV" },
-  { id: "3", type: "link", amount: 0, status: "success", date: "09/03 10:00", bank: "BIDV" },
-  { id: "4", type: "deposit", amount: 500000, status: "failed", date: "08/03 16:45", bank: "BIDV" },
-  { id: "5", type: "withdraw", amount: 300000, status: "success", date: "08/03 09:30", bank: "BIDV" },
+  { id: "1", type: "deposit", amount: 200000, status: "success", date: "09/03 14:30", bank: "BIDV", group: "Hôm nay" },
+  { id: "2", type: "withdraw", amount: 100000, status: "pending", date: "09/03 12:15", bank: "BIDV", group: "Hôm nay" },
+  { id: "3", type: "link", amount: 0, status: "success", date: "09/03 10:00", bank: "BIDV", group: "Hôm nay" },
+  { id: "4", type: "deposit", amount: 500000, status: "failed", date: "08/03 16:45", bank: "BIDV", group: "Hôm qua" },
+  { id: "5", type: "withdraw", amount: 300000, status: "success", date: "08/03 09:30", bank: "BIDV", group: "Hôm qua" },
 ]
 
 const FILTERS = [
@@ -36,6 +38,7 @@ const FILTERS = [
   { label: "Hủy", value: "unlink" },
 ]
 
+/* ── Helpers ───────────────────────────────────────────────────── */
 function getTxLabel(type: TxType) {
   switch (type) {
     case "deposit": return "Nạp tiền"
@@ -55,6 +58,15 @@ function getTxIcon(type: TxType) {
   }
 }
 
+function getIconBg(type: TxType) {
+  switch (type) {
+    case "deposit": return "bg-green-50 dark:bg-green-950"
+    case "withdraw": return "bg-red-50 dark:bg-red-950"
+    case "link": return "bg-secondary"
+    case "unlink": return "bg-secondary"
+  }
+}
+
 function getStatusText(status: TxStatus) {
   switch (status) {
     case "success": return "Thành công"
@@ -71,19 +83,45 @@ function getStatusColor(status: TxStatus) {
   }
 }
 
+function getAmountColor(type: TxType) {
+  switch (type) {
+    case "deposit": return "text-success"
+    case "withdraw": return "text-danger"
+    default: return "text-foreground"
+  }
+}
+
 function formatTxAmount(type: TxType, amount: number) {
   if (type === "link" || type === "unlink") return ""
   const prefix = type === "deposit" ? "+" : "-"
   return `${prefix}${amount.toLocaleString("vi-VN")}đ`
 }
 
+/** Group transactions by their `group` field, preserving order */
+function groupTransactions(txs: Transaction[]): { group: string; items: Transaction[] }[] {
+  const groups: { group: string; items: Transaction[] }[] = []
+  for (const tx of txs) {
+    const last = groups[groups.length - 1]
+    if (last && last.group === tx.group) {
+      last.items.push(tx)
+    } else {
+      groups.push({ group: tx.group, items: [tx] })
+    }
+  }
+  return groups
+}
+
 /* ── Page ──────────────────────────────────────────────────────── */
-export default function TransactionsPage() {
+function TransactionsContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const state = searchParams.get("state") ?? "loaded"
 
-  const [activeFilter, setActiveFilter] = React.useState("all")
+  const [activeFilter, setActiveFilter] = React.useState(
+    state === "filtered" ? "deposit"
+      : state === "filtered-empty" ? "unlink"
+      : "all"
+  )
 
   const filtered = activeFilter === "all"
     ? MOCK_TXS
@@ -91,6 +129,7 @@ export default function TransactionsPage() {
 
   const isEmpty = state === "empty" || filtered.length === 0
   const isFilteredEmpty = activeFilter !== "all" && filtered.length === 0
+  const grouped = groupTransactions(filtered)
 
   return (
     <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
@@ -133,7 +172,17 @@ export default function TransactionsPage() {
         {state === "loading" && (
           <div className="pt-[32px] px-[22px] space-y-4">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="h-[68px] bg-secondary rounded-[14px] animate-pulse" />
+              <div key={i} className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-full bg-secondary animate-pulse shrink-0" />
+                <div className="flex-1 space-y-2">
+                  <div className="h-4 w-3/4 bg-secondary rounded-full animate-pulse" />
+                  <div className="h-3 w-1/2 bg-secondary rounded-full animate-pulse" />
+                </div>
+                <div className="space-y-2">
+                  <div className="h-4 w-16 bg-secondary rounded-full animate-pulse" />
+                  <div className="h-3 w-12 bg-secondary rounded-full animate-pulse ml-auto" />
+                </div>
+              </div>
             ))}
           </div>
         )}
@@ -143,7 +192,7 @@ export default function TransactionsPage() {
           <div className="pt-[32px] px-[22px]">
             <FeedbackState
               icon={
-                <div className="w-16 h-16 rounded-full bg-danger/10 flex items-center justify-center">
+                <div className="w-16 h-16 rounded-full bg-red-50 dark:bg-red-950 flex items-center justify-center">
                   <FileText size={32} className="text-danger" />
                 </div>
               }
@@ -169,29 +218,51 @@ export default function TransactionsPage() {
           </div>
         )}
 
-        {/* Loaded / Filtered */}
+        {/* Loaded / Filtered — grouped by date */}
         {state !== "loading" && state !== "error" && !isEmpty && (
           <div className="pt-[16px]">
-            <div className="px-[22px]">
-              <ItemList>
-                {filtered.map((tx, idx) => (
-                  <ItemListItem
-                    key={tx.id}
-                    prefix={
-                      <div className="w-full h-full flex items-center justify-center">
-                        {getTxIcon(tx.type)}
-                      </div>
-                    }
-                    label={getTxLabel(tx.type)}
-                    sublabel={tx.date}
-                    metadata={formatTxAmount(tx.type, tx.amount)}
-                    subMetadata={getStatusText(tx.status)}
-                    divider={idx < filtered.length - 1}
-                    onPress={() => router.push(`/bidv-link/transaction-detail?id=${tx.id}`)}
-                  />
-                ))}
-              </ItemList>
-            </div>
+            {grouped.map((section, sIdx) => (
+              <div key={section.group}>
+                {/* Date group header */}
+                <div className="px-[22px] pt-[16px] pb-[8px]">
+                  <p className="text-sm font-semibold leading-5 text-foreground-secondary">
+                    {section.group}
+                  </p>
+                </div>
+
+                {/* Transaction items */}
+                <div className="px-[22px]">
+                  <ItemList>
+                    {section.items.map((tx, idx) => (
+                      <ItemListItem
+                        key={tx.id}
+                        prefix={
+                          <div className={`w-full h-full rounded-full flex items-center justify-center ${getIconBg(tx.type)}`}>
+                            {getTxIcon(tx.type)}
+                          </div>
+                        }
+                        label={getTxLabel(tx.type)}
+                        sublabel={tx.date}
+                        suffix={
+                          <div className="shrink-0 flex flex-col gap-1 items-end">
+                            {formatTxAmount(tx.type, tx.amount) && (
+                              <span className={`text-md font-semibold leading-6 ${getAmountColor(tx.type)}`}>
+                                {formatTxAmount(tx.type, tx.amount)}
+                              </span>
+                            )}
+                            <span className={`text-sm font-normal leading-5 ${getStatusColor(tx.status)}`}>
+                              {getStatusText(tx.status)}
+                            </span>
+                          </div>
+                        }
+                        divider={idx < section.items.length - 1}
+                        onPress={() => router.push(`/bidv-link/transaction-detail?id=${tx.id}&txStatus=${tx.status}`)}
+                      />
+                    ))}
+                  </ItemList>
+                </div>
+              </div>
+            ))}
           </div>
         )}
       </div>
@@ -201,5 +272,13 @@ export default function TransactionsPage() {
         <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
       </div>
     </div>
+  )
+}
+
+export default function TransactionsPage() {
+  return (
+    <React.Suspense fallback={null}>
+      <TransactionsContent />
+    </React.Suspense>
   )
 }

@@ -2,47 +2,67 @@
 
 import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { ChevronLeft, Loader2 } from "lucide-react"
+import { ChevronLeft, ChevronRight, MoreHorizontal, Link2, Info } from "lucide-react"
 import { Header } from "@/components/ui/header"
 import { ItemList, ItemListItem } from "@/components/ui/item-list"
 import { Button } from "@/components/ui/button"
 import { BottomSheet } from "@/components/ui/bottom-sheet"
 import { Dialog } from "@/components/ui/dialog"
+import { InformMessage } from "@/components/ui/inform-message"
 import { FeedbackState } from "@/components/ui/feedback-state"
 
+/* ── Bank brand colors ────────────────────────────────────────── */
+const BANK_BRANDS: Record<string, { bg: string; text: string; name: string; account: string }> = {
+  techcombank: { bg: "bg-red-600", text: "text-white", name: "Techcombank", account: "****5678" },
+  vietcombank: { bg: "bg-green-700", text: "text-white", name: "Vietcombank", account: "****9999" },
+  tpbank: { bg: "bg-purple-600", text: "text-white", name: "TPbank", account: "****3456" },
+  bidv: { bg: "bg-red-700", text: "text-white", name: "BIDV", account: "****1234" },
+}
+
 /* ── Page ──────────────────────────────────────────────────────── */
-export default function BankDetailPage() {
+function BankDetailContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const state = searchParams.get("state") ?? "loaded"
+  const bankId = searchParams.get("bank") ?? "vietcombank"
 
-  const [unlinkSheet, setUnlinkSheet] = React.useState(
-    state === "confirm-normal" || state === "confirm-last"
+  const bank = BANK_BRANDS[bankId] ?? BANK_BRANDS.vietcombank
+
+  const [menuSheet, setMenuSheet] = React.useState(false)
+  const [confirmDialog, setConfirmDialog] = React.useState(
+    state === "confirm-normal"
+  )
+  const [lastBankDialog, setLastBankDialog] = React.useState(
+    state === "confirm-last"
   )
   const [pendingDialog, setPendingDialog] = React.useState(state === "pending-block")
-  const [isChecking, setIsChecking] = React.useState(state === "unlink-check")
 
   const isLastBank = state === "confirm-last"
 
-  const handleUnlink = () => {
-    setIsChecking(true)
-    // Simulate check for pending transactions
-    setTimeout(() => {
-      setIsChecking(false)
-      setUnlinkSheet(true)
-    }, 800)
+  const handleMenuDots = () => {
+    setMenuSheet(true)
+  }
+
+  const handleUnlinkTap = () => {
+    setMenuSheet(false)
+    if (isLastBank) {
+      setLastBankDialog(true)
+    } else {
+      setConfirmDialog(true)
+    }
   }
 
   const handleConfirmUnlink = () => {
-    setUnlinkSheet(false)
+    setConfirmDialog(false)
+    setLastBankDialog(false)
     router.push("/bidv-link/unlink-waiting")
   }
 
   return (
     <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
       <Header
-        variant="large-title"
-        largeTitle="BIDV"
+        variant="default"
+        title="Chi tiết tài khoản"
         leading={
           <button
             type="button"
@@ -54,7 +74,7 @@ export default function BankDetailPage() {
         }
       />
 
-      <div className="flex-1 overflow-y-auto pb-[120px]">
+      <div className="flex-1 overflow-y-auto pb-[40px]">
         {/* Error state */}
         {state === "error" && (
           <div className="pt-[32px] px-[22px]">
@@ -69,87 +89,164 @@ export default function BankDetailPage() {
 
         {state !== "error" && (
           <>
-            {/* Bank card */}
-            <div className="pt-[32px]">
-              <div className="px-[22px]">
-                <div className="bg-secondary rounded-[14px] p-[14px] flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full bg-background flex items-center justify-center">
-                    <span className="text-[11px] font-bold text-foreground">BI</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-md font-semibold leading-6 text-foreground">BIDV</p>
-                    <p className="text-sm font-normal leading-5 text-foreground-secondary">****1234</p>
-                  </div>
+            {/* ── Bank card ── */}
+            <div className="pt-[32px] px-[22px]">
+              <div className="bg-secondary rounded-[28px] p-[20px] flex items-center gap-3 relative">
+                {/* Bank logo */}
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${bank.bg}`}>
+                  <span className={`text-[14px] font-bold ${bank.text}`}>
+                    {bank.name.slice(0, 2).toUpperCase()}
+                  </span>
                 </div>
+                {/* Bank info */}
+                <div className="flex-1 min-w-0">
+                  <p className="text-md font-semibold leading-6 text-foreground">{bank.name}</p>
+                  <p className="text-sm font-normal leading-5 text-foreground-secondary">
+                    STK {bank.account}
+                  </p>
+                </div>
+                {/* Three-dot menu */}
+                <button
+                  type="button"
+                  onClick={handleMenuDots}
+                  className="w-[44px] h-[44px] flex items-center justify-center rounded-full shrink-0"
+                >
+                  <MoreHorizontal size={20} className="text-foreground-secondary" />
+                </button>
               </div>
             </div>
 
-            {/* Detail rows */}
-            <div className="pt-[32px]">
-              <div className="px-[22px]">
-                <ItemList>
-                  <ItemListItem label="Tên ngân hàng" metadata="BIDV" divider />
-                  <ItemListItem label="Số tài khoản" metadata="****1234" divider />
-                  <ItemListItem label="Ngày liên kết" metadata="09/03/2026" />
-                </ItemList>
-              </div>
+            {/* ── Hạn mức giao dịch ── */}
+            <div className="pt-[32px] px-[22px]">
+              <p className="text-sm font-semibold leading-5 text-foreground-secondary mb-2">
+                Hạn mức giao dịch
+              </p>
+              <ItemList>
+                <ItemListItem
+                  label="Nạp tiền tối thiểu"
+                  metadata="10.000 đ"
+                  divider
+                />
+                <ItemListItem
+                  label="Nạp tiền tối đa"
+                  metadata="50.000.000 đ"
+                />
+              </ItemList>
+            </div>
+
+            {/* ── Dịch vụ hỗ trợ ── */}
+            <div className="pt-[32px] px-[22px]">
+              <p className="text-sm font-semibold leading-5 text-foreground-secondary mb-2">
+                Dịch vụ hỗ trợ
+              </p>
+              <ItemList>
+                <ItemListItem
+                  label="Nạp tiền vào ví"
+                  suffix={
+                    <span className="text-md font-semibold leading-6 text-success">
+                      Miễn phí
+                    </span>
+                  }
+                  divider
+                />
+                <ItemListItem
+                  label="Rút tiền"
+                  suffix={
+                    <span className="text-md font-semibold leading-6 text-foreground-secondary">
+                      Chưa hỗ trợ
+                    </span>
+                  }
+                />
+              </ItemList>
             </div>
           </>
         )}
       </div>
 
-      {/* Fixed CTA — destructive */}
-      {state !== "error" && (
-        <div className="absolute bottom-0 inset-x-0 bg-background px-[22px] pb-[34px] pt-[12px]">
-          <Button
-            variant="secondary"
-            intent="danger"
-            size="48"
-            className="w-full"
-            disabled={isChecking}
-            isLoading={isChecking}
-            onClick={handleUnlink}
+      {/* ── Menu Bottom Sheet ── */}
+      <BottomSheet open={menuSheet} onClose={() => setMenuSheet(false)}>
+        <div className="pt-[8px] pb-[8px]">
+          {/* Unlink option */}
+          <button
+            type="button"
+            onClick={handleUnlinkTap}
+            className="w-full flex items-center gap-3 py-3 text-left cursor-pointer"
           >
-            Hủy liên kết
-          </Button>
-        </div>
-      )}
+            <div className="w-6 h-6 flex items-center justify-center shrink-0">
+              <Link2 size={20} className="text-danger" />
+            </div>
+            <span className="flex-1 text-md font-semibold leading-6 text-danger">
+              Hủy liên kết tài khoản
+            </span>
+            <ChevronRight size={20} className="text-foreground-secondary shrink-0" />
+          </button>
 
-      {/* Unlink Confirm BottomSheet */}
-      <BottomSheet open={unlinkSheet} onClose={() => setUnlinkSheet(false)}>
-        <div className="pt-[16px] pb-[16px]">
-          <h3 className="text-lg font-semibold leading-6 text-foreground mb-[8px]">
-            Hủy liên kết BIDV?
-          </h3>
-          <p className="text-sm font-normal leading-5 text-foreground mb-[24px]">
-            {isLastBank
-              ? "Đây là ngân hàng liên kết cuối cùng. Sau khi hủy, bạn sẽ không thể nạp/rút tiền cho đến khi liên kết ngân hàng mới."
-              : "Bạn có thể liên kết lại sau."
-            }
-          </p>
-          <div className="space-y-3">
-            <Button
-              variant="primary"
-              intent="danger"
-              size="48"
-              className="w-full"
-              onClick={handleConfirmUnlink}
-            >
-              Hủy liên kết
-            </Button>
-            <Button
-              variant="secondary"
-              size="48"
-              className="w-full"
-              onClick={() => setUnlinkSheet(false)}
-            >
-              Giữ lại
-            </Button>
+          {/* Inform message */}
+          <div className="mt-3">
+            <InformMessage
+              hierarchy="secondary"
+              icon={<Info size={20} />}
+              body="Khi hủy liên kết ngân hàng cuối cùng, tài khoản sẽ không thể tiếp tục sử dụng các dịch vụ của V-Smart Pay"
+            />
           </div>
         </div>
       </BottomSheet>
 
-      {/* Pending Block Dialog */}
+      {/* ── Confirm Unlink Dialog (normal) ── */}
+      <Dialog
+        open={confirmDialog}
+        onClose={() => setConfirmDialog(false)}
+        type="icon"
+        icon={
+          <div className="flex items-center gap-2">
+            {/* VSP logo placeholder */}
+            <div className="w-9 h-9 rounded-full bg-foreground flex items-center justify-center">
+              <span className="text-[10px] font-bold text-background">VSP</span>
+            </div>
+            <Link2 size={16} className="text-foreground-secondary" />
+            {/* Bank logo */}
+            <div className={`w-9 h-9 rounded-full flex items-center justify-center ${bank.bg}`}>
+              <span className={`text-[10px] font-bold ${bank.text}`}>
+                {bank.name.slice(0, 2).toUpperCase()}
+              </span>
+            </div>
+          </div>
+        }
+        title="Hủy liên kết ví trên ứng dụng ngân hàng điện tử"
+        description="Bạn sẽ được chuyển sang ứng dụng ngân hàng để thực hiện thao tác hủy liên kết ví."
+        primaryLabel="Xác thực để hủy liên kết"
+        secondaryLabel="Hủy bỏ"
+        footerProps={{
+          primaryProps: {
+            intent: "danger",
+            onClick: handleConfirmUnlink,
+          },
+          secondaryProps: {
+            onClick: () => setConfirmDialog(false),
+          },
+        }}
+      />
+
+      {/* ── Last Bank Dialog ── */}
+      <Dialog
+        open={lastBankDialog}
+        onClose={() => setLastBankDialog(false)}
+        title="Hủy liên kết ngân hàng cuối cùng"
+        description="Sau khi hủy liên kết, số dư ví sẽ không dùng để nạp, rút, thanh toán, chuyển tiền hoặc nhận tiền."
+        primaryLabel="Hủy liên kết"
+        secondaryLabel="Quay lại"
+        footerProps={{
+          primaryProps: {
+            intent: "danger",
+            onClick: handleConfirmUnlink,
+          },
+          secondaryProps: {
+            onClick: () => setLastBankDialog(false),
+          },
+        }}
+      />
+
+      {/* ── Pending Block Dialog ── */}
       <Dialog
         open={pendingDialog}
         onClose={() => setPendingDialog(false)}
@@ -167,5 +264,13 @@ export default function BankDetailPage() {
         <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
       </div>
     </div>
+  )
+}
+
+export default function BankDetailPage() {
+  return (
+    <React.Suspense fallback={null}>
+      <BankDetailContent />
+    </React.Suspense>
   )
 }

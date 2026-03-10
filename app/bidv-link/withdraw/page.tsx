@@ -2,41 +2,109 @@
 
 import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { ChevronLeft } from "lucide-react"
+import { ChevronLeft, Delete } from "lucide-react"
 import { Header } from "@/components/ui/header"
 import { Button } from "@/components/ui/button"
 
 /* ── Helpers ───────────────────────────────────────────────────── */
-function formatAmount(value: number): string {
-  return value.toLocaleString("vi-VN") + "đ"
+function formatVND(value: number): string {
+  if (value === 0) return "0"
+  return value.toLocaleString("vi-VN")
 }
 
-function BankDestCard() {
+function formatChip(value: number): string {
+  return value.toLocaleString("vi-VN")
+}
+
+const QUICK_AMOUNTS = [100000, 200000, 500000]
+
+/* ── Tab Switcher (pill toggle) ────────────────────────────────── */
+function TabSwitcher({ active }: { active: "deposit" | "withdraw" }) {
+  const router = useRouter()
   return (
-    <div className="bg-secondary rounded-[14px] px-[14px] py-[12px] flex items-center gap-3">
-      <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center">
-        <span className="text-[10px] font-bold text-foreground">BI</span>
-      </div>
-      <div className="flex-1 min-w-0">
-        <p className="text-sm font-semibold leading-5 text-foreground">BIDV</p>
-        <p className="text-xs font-normal leading-5 text-foreground-secondary">****1234</p>
+    <div className="flex items-center justify-center py-[8px]">
+      <div className="flex items-center bg-secondary rounded-full p-[3px]">
+        <button
+          type="button"
+          onClick={() => router.replace("/bidv-link/deposit")}
+          className={`px-[16px] py-[6px] rounded-full text-sm font-semibold leading-5 transition-colors ${
+            active === "deposit"
+              ? "bg-foreground text-background"
+              : "text-foreground"
+          }`}
+        >
+          Nạp tiền
+        </button>
+        <button
+          type="button"
+          onClick={() => router.replace("/bidv-link/withdraw")}
+          className={`px-[16px] py-[6px] rounded-full text-sm font-semibold leading-5 transition-colors ${
+            active === "withdraw"
+              ? "bg-foreground text-background"
+              : "text-foreground"
+          }`}
+        >
+          Rút tiền
+        </button>
       </div>
     </div>
   )
 }
 
-const QUICK_AMOUNTS = [100000, 200000, 500000, 1000000]
+/* ── Bank Destination Card ─────────────────────────────────────── */
+function BankDestCard() {
+  return (
+    <div className="px-[22px]">
+      <p className="text-xs font-normal leading-5 text-foreground-secondary mb-[8px]">
+        Rút tiền về
+      </p>
+      <div className="bg-secondary rounded-[14px] px-[14px] py-[12px] flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center">
+          <span className="text-[10px] font-bold text-foreground">TCB</span>
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-semibold leading-5 text-foreground">Techcombank</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ── Custom Numpad ─────────────────────────────────────────────── */
+function Numpad({ onInput }: { onInput: (key: string) => void }) {
+  const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "000", "0", "backspace"]
+  return (
+    <div className="grid grid-cols-3">
+      {keys.map((key) => (
+        <button
+          key={key}
+          type="button"
+          onClick={() => onInput(key)}
+          className="h-[52px] flex items-center justify-center text-[20px] font-semibold text-foreground active:bg-secondary rounded-[8px] transition-colors"
+        >
+          {key === "backspace" ? (
+            <Delete size={24} className="text-foreground" />
+          ) : (
+            key
+          )}
+        </button>
+      ))}
+    </div>
+  )
+}
 
 /* ── Page ──────────────────────────────────────────────────────── */
-export default function WithdrawPage() {
+function WithdrawContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const state = searchParams.get("state") ?? "empty"
 
-  const [amount, setAmount] = React.useState(state === "valid" ? 200000 : 0)
+  const [amount, setAmount] = React.useState(
+    state === "valid" ? 200000 : state === "quick-select" ? 100000 : 0
+  )
   const [isLoading, setIsLoading] = React.useState(state === "loading")
 
-  const walletBalance = 1500000
+  const walletBalance = 125000
 
   const getError = () => {
     if (amount === 0) return undefined
@@ -62,17 +130,23 @@ export default function WithdrawPage() {
     if (digit === "backspace") {
       setAmount((prev) => Math.floor(prev / 10))
     } else if (digit === "000") {
-      setAmount((prev) => prev * 1000)
+      setAmount((prev) => {
+        const next = prev * 1000
+        return next > 999999999 ? prev : next
+      })
     } else {
-      setAmount((prev) => prev * 10 + parseInt(digit))
+      setAmount((prev) => {
+        const next = prev * 10 + parseInt(digit)
+        return next > 999999999 ? prev : next
+      })
     }
   }
 
   return (
     <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
+      {/* Header: default variant with back arrow */}
       <Header
-        variant="large-title"
-        largeTitle="Rút tiền"
+        variant="default"
         leading={
           <button
             type="button"
@@ -84,75 +158,63 @@ export default function WithdrawPage() {
         }
       />
 
-      <div className="flex-1 overflow-y-auto pb-[120px]">
-        {/* Balance */}
-        <div className="px-[22px] pt-[8px]">
+      {/* Tab switcher */}
+      <TabSwitcher active="withdraw" />
+
+      <div className="flex-1 flex flex-col pb-[100px]">
+        {/* Balance display — centered */}
+        <div className="px-[22px] pt-[16px] flex justify-center">
           <p className="text-sm font-normal leading-5 text-foreground-secondary">
-            Số dư ví: {formatAmount(walletBalance)}
+            Số dư ví{" "}
+            <span className="font-bold text-foreground-secondary">{formatVND(walletBalance)}đ</span>
           </p>
         </div>
 
-        {/* Destination */}
-        <div className="pt-[32px]">
-          <div className="px-[22px]">
-            <p className="text-xs font-normal leading-5 text-foreground-secondary mb-[8px]">Tài khoản nhận</p>
-            <BankDestCard />
-          </div>
+        {/* Bank destination card */}
+        <div className="pt-[20px]">
+          <BankDestCard />
         </div>
 
-        {/* Amount input */}
-        <div className="pt-[32px]">
-          <div className="px-[22px] flex flex-col items-center">
+        {/* Amount display */}
+        <div className="px-[22px] pt-[24px] flex flex-col items-center">
+          <div className="flex items-center gap-[2px]">
             <p className="text-[40px] font-bold tabular-nums text-foreground leading-tight">
-              {amount === 0 ? "0đ" : formatAmount(amount)}
+              {amount === 0 ? "0" : formatVND(amount)}đ
             </p>
-            {error && (
-              <p className="text-xs font-normal leading-5 text-danger mt-[4px]">{error}</p>
-            )}
+            {/* Blue cursor line */}
+            <div className="w-[2px] h-[36px] bg-info animate-pulse rounded-full" />
           </div>
+          {error && (
+            <p className="text-xs font-normal leading-5 text-danger mt-[4px]">{error}</p>
+          )}
         </div>
 
-        {/* Quick chips */}
+        {/* Quick amount chips */}
         <div className="pt-[24px]">
           <div className="px-[22px]">
-            <div className="flex gap-[8px] justify-center flex-wrap">
+            <div className="flex gap-[8px] justify-center">
               {QUICK_AMOUNTS.map((val) => (
                 <button
                   key={val}
                   type="button"
                   onClick={() => setAmount(val)}
                   className={`px-[16px] py-[8px] rounded-full text-sm font-semibold leading-5 transition-colors ${
-                    amount === val ? "bg-foreground text-background" : "bg-secondary text-foreground"
+                    amount === val
+                      ? "bg-foreground text-background"
+                      : "bg-secondary text-foreground"
                   }`}
                 >
-                  {val >= 1000000 ? `${val / 1000000}M` : `${val / 1000}K`}
+                  {formatChip(val)}
                 </button>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Numpad */}
-        <div className="pt-[32px]">
+        {/* Custom Numpad */}
+        <div className="pt-[32px] mt-auto">
           <div className="px-[22px]">
-            <div className="grid grid-cols-3 gap-[1px]">
-              {["1","2","3","4","5","6","7","8","9","000","0","backspace"].map((key) => (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => handleAmountInput(key)}
-                  className="h-[52px] flex items-center justify-center text-lg font-semibold text-foreground active:bg-secondary rounded-[8px] transition-colors"
-                >
-                  {key === "backspace" ? (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" />
-                      <line x1="18" y1="9" x2="12" y2="15" />
-                      <line x1="12" y1="9" x2="18" y2="15" />
-                    </svg>
-                  ) : key}
-                </button>
-              ))}
-            </div>
+            <Numpad onInput={handleAmountInput} />
           </div>
         </div>
       </div>
@@ -176,5 +238,13 @@ export default function WithdrawPage() {
         <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
       </div>
     </div>
+  )
+}
+
+export default function WithdrawPage() {
+  return (
+    <React.Suspense fallback={null}>
+      <WithdrawContent />
+    </React.Suspense>
   )
 }

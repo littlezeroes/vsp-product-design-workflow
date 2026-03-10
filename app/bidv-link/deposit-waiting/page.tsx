@@ -2,13 +2,13 @@
 
 import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { Shield } from "lucide-react"
+import { Smartphone } from "lucide-react"
 import { Header } from "@/components/ui/header"
 import { Button } from "@/components/ui/button"
 import { Dialog } from "@/components/ui/dialog"
 
 /* ── Page ──────────────────────────────────────────────────────── */
-export default function DepositWaitingPage() {
+function DepositWaitingContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const state = searchParams.get("state") ?? "waiting"
@@ -58,8 +58,10 @@ export default function DepositWaitingPage() {
 
       <div className="flex-1 overflow-y-auto pb-[21px]">
         <div className="flex flex-col items-center justify-center px-[22px] pt-[80px]">
-          <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center mb-[24px]">
-            <Shield size={32} className="text-foreground" />
+          {/* Smartphone icon with spinning ring */}
+          <div className="relative w-[80px] h-[80px] flex items-center justify-center mb-[24px]">
+            <div className="absolute inset-0 border-[3px] border-secondary border-t-foreground rounded-full animate-spin" />
+            <Smartphone size={32} className="text-foreground" />
           </div>
 
           <h2 className="text-lg font-semibold leading-6 tracking-[-0.005em] text-foreground text-center mb-[8px]">
@@ -93,7 +95,7 @@ export default function DepositWaitingPage() {
         </Button>
       </div>
 
-      {/* Cancel Dialog — S7 cancel → S5 (PO decision) */}
+      {/* Cancel Dialog */}
       <Dialog
         open={cancelDialog}
         onClose={() => setCancelDialog(false)}
@@ -129,5 +131,13 @@ export default function DepositWaitingPage() {
         <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
       </div>
     </div>
+  )
+}
+
+export default function DepositWaitingPage() {
+  return (
+    <React.Suspense fallback={null}>
+      <DepositWaitingContent />
+    </React.Suspense>
   )
 }

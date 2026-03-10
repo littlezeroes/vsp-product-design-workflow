@@ -25,7 +25,7 @@ function StepIndicator({ step, total }: { step: number; total: number }) {
 }
 
 /* ── Page ──────────────────────────────────────────────────────── */
-export default function BidvFormPage() {
+function BidvFormContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const state = searchParams.get("state") ?? "empty"
@@ -218,5 +218,13 @@ export default function BidvFormPage() {
         <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
       </div>
     </div>
+  )
+}
+
+export default function BidvFormPage() {
+  return (
+    <React.Suspense fallback={null}>
+      <BidvFormContent />
+    </React.Suspense>
   )
 }

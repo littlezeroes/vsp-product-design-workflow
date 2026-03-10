@@ -2,23 +2,23 @@
 
 import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { ChevronLeft, Loader2, Building2 } from "lucide-react"
+import { ChevronLeft, ChevronRight, Building2 } from "lucide-react"
 import { Header } from "@/components/ui/header"
-import { ItemList, ItemListItem } from "@/components/ui/item-list"
 import { FeedbackState } from "@/components/ui/feedback-state"
-import { Button } from "@/components/ui/button"
 
-/* ── Mock data ─────────────────────────────────────────────────── */
+/* ── Bank data ────────────────────────────────────────────────── */
 const BANKS = [
-  { id: "bidv", name: "BIDV", fullName: "Ngân hàng TMCP Đầu tư và Phát triển VN", linked: false },
-  { id: "vcb", name: "Vietcombank", fullName: "Ngân hàng TMCP Ngoại thương VN", linked: false },
-  { id: "tcb", name: "Techcombank", fullName: "Ngân hàng TMCP Kỹ thương VN", linked: false },
+  { id: "bidv", name: "BIDV", fullName: "Ngân hàng TMCP Đầu tư và Phát triển VN", colorClass: "bg-danger" },
+  { id: "vcb", name: "Vietcombank", fullName: "Ngân hàng TMCP Ngoại thương VN", colorClass: "bg-success" },
+  { id: "tcb", name: "Techcombank", fullName: "Ngân hàng TMCP Kỹ thương VN", colorClass: "bg-danger" },
+  { id: "tpb", name: "TPBank", fullName: "Ngân hàng TMCP Tiên Phong", colorClass: "bg-info" },
 ]
 
-function BankLogo({ name }: { name: string }) {
+/* ── Bank Logo ────────────────────────────────────────────────── */
+function BankLogo({ name, colorClass }: { name: string; colorClass: string }) {
   return (
-    <div className="w-full h-full flex items-center justify-center bg-secondary rounded-full">
-      <span className="text-[11px] font-bold text-foreground">{name.slice(0, 2).toUpperCase()}</span>
+    <div className={`w-[40px] h-[40px] rounded-full flex items-center justify-center ${colorClass}`}>
+      <span className="text-[11px] font-bold text-white">{name.slice(0, 2).toUpperCase()}</span>
     </div>
   )
 }
@@ -37,13 +37,35 @@ function StepIndicator({ step, total }: { step: number; total: number }) {
   )
 }
 
+/* ── Bank Card ────────────────────────────────────────────────── */
+function BankCard({
+  bank,
+  onPress,
+}: {
+  bank: (typeof BANKS)[number]
+  onPress: () => void
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onPress}
+      className="w-full flex items-center gap-[12px] bg-secondary rounded-[28px] p-[16px] text-left active:opacity-80 transition-opacity"
+    >
+      <BankLogo name={bank.name} colorClass={bank.colorClass} />
+      <div className="flex-1 min-w-0">
+        <p className="text-[15px] font-semibold leading-5 text-foreground">{bank.name}</p>
+        <p className="text-[13px] font-normal leading-[18px] text-foreground-secondary truncate">{bank.fullName}</p>
+      </div>
+      <ChevronRight size={18} className="text-foreground-secondary shrink-0" />
+    </button>
+  )
+}
+
 /* ── Page ──────────────────────────────────────────────────────── */
-export default function BankListPage() {
+function BankListContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const state = searchParams.get("state") ?? "loaded"
-
-  const availableBanks = BANKS.filter((b) => !b.linked)
 
   return (
     <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
@@ -65,9 +87,9 @@ export default function BankListPage() {
 
       <div className="flex-1 overflow-y-auto pb-[21px]">
         {state === "loading" && (
-          <div className="pt-[32px] px-[22px] space-y-4">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="h-[68px] bg-secondary rounded-[14px] animate-pulse" />
+          <div className="pt-[32px] px-[22px] space-y-3">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="h-[72px] bg-secondary rounded-[28px] animate-pulse" />
             ))}
           </div>
         )}
@@ -103,24 +125,21 @@ export default function BankListPage() {
 
         {state === "loaded" && (
           <div className="pt-[32px]">
-            <div className="px-[22px]">
-              <ItemList>
-                {availableBanks.map((bank, idx) => (
-                  <ItemListItem
-                    key={bank.id}
-                    prefix={<BankLogo name={bank.name} />}
-                    label={bank.name}
-                    sublabel={bank.fullName}
-                    showChevron
-                    divider={idx < availableBanks.length - 1}
-                    onPress={() => {
-                      if (bank.id === "bidv") {
-                        router.push("/bidv-link/bidv-form")
-                      }
-                    }}
-                  />
-                ))}
-              </ItemList>
+            <p className="px-[22px] text-[13px] font-semibold leading-[18px] text-foreground-secondary uppercase tracking-wide mb-[12px]">
+              Chọn ngân hàng
+            </p>
+            <div className="px-[22px] space-y-3">
+              {BANKS.map((bank) => (
+                <BankCard
+                  key={bank.id}
+                  bank={bank}
+                  onPress={() => {
+                    if (bank.id === "bidv") {
+                      router.push("/bidv-link/bidv-form")
+                    }
+                  }}
+                />
+              ))}
             </div>
           </div>
         )}
@@ -131,5 +150,13 @@ export default function BankListPage() {
         <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
       </div>
     </div>
+  )
+}
+
+export default function BankListPage() {
+  return (
+    <React.Suspense fallback={null}>
+      <BankListContent />
+    </React.Suspense>
   )
 }

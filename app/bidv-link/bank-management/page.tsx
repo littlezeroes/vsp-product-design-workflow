@@ -2,36 +2,60 @@
 
 import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { ChevronLeft, Building2 } from "lucide-react"
+import { ChevronLeft, Building2, Check } from "lucide-react"
 import { Header } from "@/components/ui/header"
-import { ItemList, ItemListItem } from "@/components/ui/item-list"
 import { FeedbackState } from "@/components/ui/feedback-state"
 import { Button } from "@/components/ui/button"
+import { ToastBar } from "@/components/ui/toast-bar"
+
+/* ── Bank brand colors ────────────────────────────────────────── */
+const BANK_BRANDS: Record<string, { bg: string; text: string }> = {
+  techcombank: { bg: "bg-red-600", text: "text-white" },
+  vietcombank: { bg: "bg-green-700", text: "text-white" },
+  tpbank: { bg: "bg-purple-600", text: "text-white" },
+  bidv: { bg: "bg-red-700", text: "text-white" },
+}
 
 /* ── Mock data ─────────────────────────────────────────────────── */
 const LINKED_BANKS = [
-  { id: "bidv", name: "BIDV", account: "****1234", linkedDate: "09/03/2026" },
+  { id: "techcombank", name: "Techcombank", account: "****5678" },
+  { id: "vietcombank", name: "Vietcombank", account: "****9999" },
+  { id: "tpbank", name: "TPbank", account: "****3456" },
+  { id: "bidv", name: "BIDV", account: "****1234" },
 ]
 
-function BankLogo({ name }: { name: string }) {
+function BankLogo({ id, name }: { id: string; name: string }) {
+  const brand = BANK_BRANDS[id] ?? { bg: "bg-foreground-secondary", text: "text-white" }
   return (
-    <div className="w-full h-full flex items-center justify-center bg-secondary rounded-full">
-      <span className="text-[11px] font-bold text-foreground">{name.slice(0, 2).toUpperCase()}</span>
+    <div className={`w-11 h-11 rounded-full flex items-center justify-center ${brand.bg}`}>
+      <span className={`text-[13px] font-bold ${brand.text}`}>
+        {name.slice(0, 2).toUpperCase()}
+      </span>
     </div>
   )
 }
 
 /* ── Page ──────────────────────────────────────────────────────── */
-export default function BankManagementPage() {
+function BankManagementContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const state = searchParams.get("state") ?? "loaded"
+
+  const [showSnackbar, setShowSnackbar] = React.useState(state === "unlinked")
+
+  // Auto-dismiss snackbar
+  React.useEffect(() => {
+    if (showSnackbar) {
+      const t = setTimeout(() => setShowSnackbar(false), 3000)
+      return () => clearTimeout(t)
+    }
+  }, [showSnackbar])
 
   return (
     <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
       <Header
         variant="large-title"
-        largeTitle="Quản lý thanh toán"
+        largeTitle="Quản lý tài khoản"
         leading={
           <button
             type="button"
@@ -46,9 +70,9 @@ export default function BankManagementPage() {
       <div className="flex-1 overflow-y-auto pb-[120px]">
         {/* Loading */}
         {state === "loading" && (
-          <div className="pt-[32px] px-[22px] space-y-4">
-            {[1, 2].map((i) => (
-              <div key={i} className="h-[68px] bg-secondary rounded-[14px] animate-pulse" />
+          <div className="pt-[32px] px-[22px] flex flex-col gap-3">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-[68px] bg-secondary rounded-[28px] animate-pulse" />
             ))}
           </div>
         )}
@@ -79,41 +103,48 @@ export default function BankManagementPage() {
                   <Building2 size={32} className="text-foreground-secondary" />
                 </div>
               }
-              title="Chưa liên kết ngân hàng nào"
-              actionLabel="Liên kết ngay"
+              title="Chưa có ngân hàng liên kết"
+              description="Liên kết ngân hàng để nạp, rút tiền và sử dụng các dịch vụ của V-Smart Pay."
+              actionLabel="Thêm ngân hàng"
               actionProps={{ onClick: () => router.push("/bidv-link/bank-list") }}
             />
           </div>
         )}
 
-        {/* Loaded */}
-        {state === "loaded" && (
-          <div className="pt-[32px]">
-            <div className="px-[22px]">
-              <ItemList>
-                {LINKED_BANKS.map((bank, idx) => (
-                  <ItemListItem
-                    key={bank.id}
-                    prefix={<BankLogo name={bank.name} />}
-                    label={bank.name}
-                    sublabel={bank.account}
-                    metadata="Đã liên kết"
-                    showChevron
-                    divider={idx < LINKED_BANKS.length - 1}
-                    onPress={() => router.push("/bidv-link/bank-detail")}
-                  />
-                ))}
-              </ItemList>
+        {/* Loaded / Unlinked */}
+        {(state === "loaded" || state === "unlinked") && (
+          <div className="pt-[32px] px-[22px]">
+            {/* Section label */}
+            <p className="text-sm font-normal leading-5 text-foreground-secondary mb-3">
+              Ngân hàng liên kết
+            </p>
+
+            {/* Bank cards */}
+            <div className="flex flex-col gap-3">
+              {LINKED_BANKS.map((bank) => (
+                <button
+                  key={bank.id}
+                  type="button"
+                  onClick={() => router.push(`/bidv-link/bank-detail?bank=${bank.id}`)}
+                  className="w-full bg-secondary rounded-[28px] px-[14px] py-[14px] flex items-center gap-3 text-left cursor-pointer active:opacity-80 transition-opacity"
+                >
+                  <BankLogo id={bank.id} name={bank.name} />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-md font-semibold leading-6 text-foreground">{bank.name}</p>
+                    <p className="text-sm font-normal leading-5 text-foreground-secondary">{bank.account}</p>
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
         )}
       </div>
 
-      {/* Add bank CTA */}
-      {(state === "loaded") && (
+      {/* Add bank CTA — fixed bottom */}
+      {(state === "loaded" || state === "unlinked") && (
         <div className="absolute bottom-0 inset-x-0 bg-background px-[22px] pb-[34px] pt-[12px]">
           <Button
-            variant="secondary"
+            variant="primary"
             size="48"
             className="w-full"
             onClick={() => router.push("/bidv-link/bank-list")}
@@ -123,10 +154,30 @@ export default function BankManagementPage() {
         </div>
       )}
 
+      {/* Snackbar — unlink success */}
+      {showSnackbar && (
+        <div className="absolute bottom-[100px] inset-x-0 px-[22px] z-40 animate-in fade-in slide-in-from-bottom-4">
+          <ToastBar
+            type="success"
+            icon={<Check size={20} className="text-success" />}
+            title="Hủy liên kết thành công"
+            onClose={() => setShowSnackbar(false)}
+          />
+        </div>
+      )}
+
       {/* Home indicator */}
       <div className="absolute bottom-0 inset-x-0 h-[21px] flex items-end justify-center pb-[4px] pointer-events-none">
         <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
       </div>
     </div>
+  )
+}
+
+export default function BankManagementPage() {
+  return (
+    <React.Suspense fallback={null}>
+      <BankManagementContent />
+    </React.Suspense>
   )
 }

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { Shield } from "lucide-react"
+import { Smartphone } from "lucide-react"
 import { Header } from "@/components/ui/header"
 import { Button } from "@/components/ui/button"
 import { Dialog } from "@/components/ui/dialog"
@@ -22,7 +22,7 @@ function StepIndicator({ step, total }: { step: number; total: number }) {
 }
 
 /* ── Page ──────────────────────────────────────────────────────── */
-export default function BidvWaitingPage() {
+function BidvWaitingContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const state = searchParams.get("state") ?? "waiting"
@@ -82,9 +82,10 @@ export default function BidvWaitingPage() {
       <div className="flex-1 overflow-y-auto pb-[21px]">
         {/* Centered content */}
         <div className="flex flex-col items-center justify-center px-[22px] pt-[80px]">
-          {/* Icon */}
-          <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center mb-[24px]">
-            <Shield size={32} className="text-foreground" />
+          {/* Smartphone icon with spinning ring */}
+          <div className="relative w-[80px] h-[80px] flex items-center justify-center mb-[24px]">
+            <div className="absolute inset-0 border-[3px] border-secondary border-t-foreground rounded-full animate-spin" />
+            <Smartphone size={32} className="text-foreground" />
           </div>
 
           {/* Title */}
@@ -164,5 +165,13 @@ export default function BidvWaitingPage() {
         <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
       </div>
     </div>
+  )
+}
+
+export default function BidvWaitingPage() {
+  return (
+    <React.Suspense fallback={null}>
+      <BidvWaitingContent />
+    </React.Suspense>
   )
 }

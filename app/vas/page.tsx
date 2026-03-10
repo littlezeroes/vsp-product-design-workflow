@@ -103,7 +103,7 @@ function SkeletonPage() {
 }
 
 /* ── Page ─────────────────────────────────────────────────────────────── */
-export default function VasHomePage() {
+function VasHomeContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const state = searchParams.get("state") ?? "loaded"
@@ -330,5 +330,13 @@ export default function VasHomePage() {
         <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
       </div>
     </div>
+  )
+}
+
+export default function VasHomePage() {
+  return (
+    <React.Suspense fallback={null}>
+      <VasHomeContent />
+    </React.Suspense>
   )
 }
