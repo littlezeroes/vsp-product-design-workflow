@@ -1,0 +1,13 @@
+Review xong. File saved tại `.claude/features/bidv-link/review.md`.
+
+**Tóm tắt:**
+
+**Verdict: REWORK** — 4 issues 🔴 block ship:
+1. **Store redirect dead end** — user cài BIDV SmartBanking xong quay lại VSP mất state, cần persist + auto-resume
+2. **3 lần confirm liên tiếp Epic 2** — S6 confirm → Auth PIN → BIDV deeplink quá nhiều step, đề xuất merge confirm vào auth
+3. **Rút tiền PENDING thiếu info** — tiền đã trừ ví nhưng NH timeout, user hoảng vì không biết hoàn khi nào, cần thời gian cụ thể + hotline
+4. **S3/S7/S13 không có Cancel** — user bị trap 3 phút countdown, vi phạm "quay lại phải dễ như đi tới"
+
+**8 issues 🟡** + **5 gaps chưa cover** (accessibility, biometric enrollment, retry cooldown, landscape, multi-account BIDV).
+
+**4 điểm PO cần chốt** trước khi Nate update flow → Đức review lần 2.

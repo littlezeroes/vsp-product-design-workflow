@@ -1,0 +1,11 @@
+**flow.md đã xong** — `.claude/features/bidv-link/flow.md`
+
+Tóm tắt:
+- **5 epics** mapped đầy đủ: Liên kết → Nạp → Rút → Hủy → Quản lý
+- **17 screens** (chỉ **3 cần design mới**, 14 reuse existing)
+- **42 edge cases** covered (cross-ref edge-case-library + BRD + PO answers)
+- **3 deeplink flows** (liên kết, nạp, hủy — rút không cần deeplink)
+- **~45 unique UI states** across all epics
+- Max depth: 4 levels
+- Callback states + retry schedule documented
+- Sẵn sàng dispatch 👹 Đức review (step-04).

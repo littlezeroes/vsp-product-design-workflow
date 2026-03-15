@@ -1,0 +1,13 @@
+DONE
+
+**🔍 Nate — BRD Analysis hoàn tất:** `.claude/features/bidv-link/analysis.md`
+
+Tóm tắt:
+- **5 MUST questions** block flow — quan trọng nhất: BIDV dùng deeplink hay OTP? Threshold GD loại A/C/D? User chưa cài BIDV SmartBanking?
+- **5 SHOULD questions** block UI detail
+- **10 AI assumptions** sẽ dùng nếu PO skip
+- **3 personas** + **5 user journeys** đã map
+- **~15 edge cases** cross-ref từ edge-case-library
+- **BRD quality 7/10** — thiếu deeplink/OTP clarity, refund flow, redirect logic
+
+Vi relay 5 câu MUST cho PO. Chờ answers → Nate design flow.md.
