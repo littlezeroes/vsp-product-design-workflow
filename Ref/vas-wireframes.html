@@ -202,17 +202,17 @@
 <!-- ════════════════════ FLOW MAP ════════════════════ -->
 <h2>Flow Map</h2>
 
-<div class="flow">① Returning user (đã lưu):
-Home → Quick Pay card → [Thanh toán] → Confirm sheet → Auth → Result
-<strong>3 taps, &lt;15 giây</strong>
+<div class="flow">① Returning user (auto-fetched):
+Home → Tap "TT 501.500đ" → Confirm sheet → Auth → Result
+<strong>2 taps, &lt;10 giây</strong>
 
 ② First-time (hóa đơn mới):
-Home → Danh mục → Chọn NCC → Nhập mã → Bill Detail → Confirm → Auth → Result
-                                                └─ ☑ "Lưu hóa đơn này"
+Home → Danh mục → Chọn NCC → Nhập mã (📷 scan hoặc thủ công) → Bill Detail → Confirm → Auth → Result
+                                                                   └─ ☑ "Lưu hóa đơn này"
 ③ Quản lý:
 Home → Swipe row → Xóa
-Home → Tap row → V4 (Bill Detail) → pay / xem info
-"Xem tất cả (N)" → overflow list (nếu >5 items)
+Home → Tap row (no amount) → V4 xem info
+"Xem tất cả (N)" nếu >5 items
 </div>
 
 <!-- ════════════════════ WIREFRAMES ════════════════════ -->
@@ -220,7 +220,7 @@ Home → Tap row → V4 (Bill Detail) → pay / xem info
 
 <!-- ──────── V1: VAS HOME ──────── -->
 <h3>V1 — VAS Home <span class="phase phase-1">P1</span></h3>
-<p>Danh mục trên (context) → Đã lưu dưới (vertical list, tabs HĐ/SĐT). Tap row → V4 pay. Swipe → xóa.</p>
+<p>Search bar + Danh mục + Đã lưu (auto-fetch, smart sort, 1-tap pay). Returning user: 2 taps to pay.</p>
 
 <div class="phone-row">
 
@@ -237,7 +237,10 @@ Home → Tap row → V4 (Bill Detail) → pay / xem info
     <span class="action">⏱</span>
   </div>
   <div class="content">
-    <!-- Category Grid — lên trên -->
+    <!-- Search bar -->
+    <div class="search-bar">🔍 Tìm dịch vụ, nhà cung cấp...</div>
+
+    <!-- Category Grid -->
     <div class="section">
       <div class="section-title" style="margin-bottom:12px;">Thanh toán hóa đơn mới</div>
       <div class="cat-grid">
@@ -252,56 +255,55 @@ Home → Tap row → V4 (Bill Detail) → pay / xem info
       </div>
     </div>
 
-    <!-- Đã lưu — xuống dưới, có 2 tabs -->
+    <!-- Đã lưu — auto-fetch, smart sort, 1-tap pay -->
     <div class="section" style="margin-top:24px;">
       <div class="section-header">
         <span class="section-title">Đã lưu</span>
         <span class="section-link">Xem tất cả (3) →</span>
       </div>
-      <!-- Segment tabs -->
       <div style="display:flex; background:#f0f0f0; border-radius:10px; padding:2px; gap:2px; margin-bottom:12px;">
         <div style="flex:1; text-align:center; padding:6px 0; border-radius:8px; font-size:10px; font-weight:600; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.1);">Hóa đơn</div>
         <div style="flex:1; text-align:center; padding:6px 0; border-radius:8px; font-size:10px; font-weight:600; color:#888;">Số điện thoại</div>
       </div>
-      <!-- Tab: Hóa đơn (vertical list) -->
+      <!-- Smart sort: quá hạn → có HĐ mới → chưa có -->
+      <!-- Row 1: Quá hạn (red) -->
       <div class="list-item" style="padding:10px 0;">
-        <div class="list-icon" style="border:2px solid #e0e0e0; background:#fff;">⚡</div>
+        <div class="list-icon" style="border:2px solid #e74c3c; background:#fff;">⚡</div>
         <div class="list-body">
-          <div style="display:flex; align-items:center; gap:4px;"><span class="list-title">EVN Hồ Chí Minh</span><span class="qp-badge">Mới</span></div>
-          <div class="list-sub">PE05000199088</div>
+          <div style="display:flex; align-items:center; gap:4px;"><span class="list-title">EVN Hồ Chí Minh</span><span style="background:#e74c3c; color:#fff; font-size:7px; font-weight:700; padding:1px 5px; border-radius:8px;">Quá hạn</span></div>
+          <div class="list-sub">PE05000199088 · T11/2025</div>
         </div>
-        <div style="text-align:right; flex-shrink:0;">
-          <div style="font-size:12px; font-weight:700;">501.500đ</div>
-          <div style="font-size:9px; color:#2196F3; font-weight:600; margin-top:2px;">Thanh toán ›</div>
+        <div style="flex-shrink:0;">
+          <div style="background:#111; color:#fff; font-size:9px; font-weight:700; padding:6px 10px; border-radius:14px; text-align:center;">TT 501.500đ</div>
         </div>
       </div>
+      <!-- Row 2: Có HĐ mới (auto-fetched) -->
       <div class="list-item" style="padding:10px 0;">
+        <div class="list-icon" style="border:2px solid #e0e0e0; background:#fff;">📶</div>
+        <div class="list-body">
+          <div style="display:flex; align-items:center; gap:4px;"><span class="list-title">FPT Telecom</span><span class="qp-badge">Mới</span></div>
+          <div class="list-sub">FPT-HCM-20941 · T11/2025</div>
+        </div>
+        <div style="flex-shrink:0;">
+          <div style="background:#111; color:#fff; font-size:9px; font-weight:700; padding:6px 10px; border-radius:14px; text-align:center;">TT 299.000đ</div>
+        </div>
+      </div>
+      <!-- Row 3: Chưa có HĐ (fetched, no bill) -->
+      <div class="list-item" style="padding:10px 0; border-bottom:none;">
         <div class="list-icon" style="border:2px solid #e0e0e0; background:#fff;">💧</div>
         <div class="list-body">
           <div class="list-title">Cấp nước SG – Củ Chi</div>
           <div class="list-sub">NW08120034561</div>
         </div>
-        <div style="text-align:right; flex-shrink:0;">
-          <div style="font-size:10px; color:#aaa;">Chưa có HĐ</div>
-          <div style="font-size:9px; color:#888; font-weight:600; margin-top:2px;">Tra cứu ›</div>
-        </div>
-      </div>
-      <div class="list-item" style="padding:10px 0; border-bottom:none;">
-        <div class="list-icon" style="border:2px solid #e0e0e0; background:#fff;">📶</div>
-        <div class="list-body">
-          <div class="list-title">FPT Telecom</div>
-          <div class="list-sub">FPT-HCM-20941</div>
-        </div>
-        <div style="text-align:right; flex-shrink:0;">
-          <div style="font-size:12px; font-weight:700;">299.000đ</div>
-          <div style="font-size:9px; color:#2196F3; font-weight:600; margin-top:2px;">Thanh toán ›</div>
+        <div style="flex-shrink:0;">
+          <div style="font-size:9px; color:#aaa; text-align:center;">Chưa có HĐ</div>
         </div>
       </div>
     </div>
   </div>
   <div class="home-ind"></div>
 </div>
-<div class="phone-label">V1 — Home (tab Hóa đơn)</div>
+<div class="phone-label">V1 — Home (auto-fetch, smart sort, 1-tap pay)</div>
 </div>
 
 <!-- V1 tab SĐT -->
@@ -318,6 +320,7 @@ Home → Tap row → V4 (Bill Detail) → pay / xem info
     <span class="action">⏱</span>
   </div>
   <div class="content">
+    <div class="search-bar">🔍 Tìm dịch vụ, nhà cung cấp...</div>
     <div class="section">
       <div class="section-title" style="margin-bottom:12px;">Thanh toán hóa đơn mới</div>
       <div class="cat-grid">
@@ -385,7 +388,8 @@ Home → Tap row → V4 (Bill Detail) → pay / xem info
     <span class="action">⏱</span>
   </div>
   <div class="content">
-    <div style="font-size:20px; font-weight:800; line-height:1.4; margin-bottom:20px;">Điện, nước, internet<br><span style="color:#888; font-weight:600;">thanh toán tại đây</span></div>
+    <div style="font-size:20px; font-weight:800; line-height:1.4; margin-bottom:16px;">Điện, nước, internet<br><span style="color:#888; font-weight:600;">thanh toán tại đây</span></div>
+    <div class="search-bar">🔍 Tìm dịch vụ, nhà cung cấp...</div>
     <div class="cat-grid">
       <div class="cat-item"><div class="cat-icon">⚡</div><div class="cat-label">Điện</div></div>
       <div class="cat-item"><div class="cat-icon">💧</div><div class="cat-label">Nước</div></div>
@@ -405,10 +409,11 @@ Home → Tap row → V4 (Bill Detail) → pay / xem info
 </div>
 
 <div class="anno">
-  <strong>Section "Đã lưu"</strong> có 2 tabs: Hóa đơn | Số điện thoại. Chỉ xuất hiện khi user có saved items. New user chỉ thấy Category Grid.<br>
-  <strong>Tab Hóa đơn:</strong> Quick Pay cards (EVN, Nước, FPT...) — tap → Bill Detail → pay hoặc quản lý.<br>
-  <strong>Tab SĐT:</strong> Saved phone cards — tap "Nạp tiền" → Topup flow pre-filled.<br>
-  <strong>"Xem tất cả (N)"</strong> chỉ hiện khi >5 items → overflow list cùng format. Tap row → V4 pay. Swipe left → xóa.
+  <strong>Auto-fetch:</strong> Khi mở Home, system tự query tất cả saved billers → amount hiện sẵn, không cần bấm "Tra cứu".<br>
+  <strong>Smart sort:</strong> Quá hạn (đỏ, đầu list) → Có HĐ mới → Chưa có HĐ. User thấy bill urgent nhất trước.<br>
+  <strong>1-tap pay:</strong> Tap nút "TT 501.500đ" → thẳng Confirm sheet. Skip V4 cho returning user. <strong>2 taps to pay.</strong><br>
+  <strong>Search:</strong> Tìm cross-category (NCC + saved billers). Gõ "EVN" → kết quả ngay.<br>
+  <strong>Swipe left →</strong> xóa. <strong>"Xem tất cả (N)"</strong> chỉ hiện khi >5 items.
 </div>
 
 <!-- ──────── V2: Chọn NCC ──────── -->
@@ -505,8 +510,12 @@ Home → Tap row → V4 (Bill Detail) → pay / xem info
           <div class="label">Mã khách hàng</div>
           <div class="value">NW08120034561</div>
         </div>
-        <div class="helper">? Hướng dẫn</div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="width:28px; height:28px; border-radius:8px; background:#f0f0f0; display:flex; align-items:center; justify-content:center; font-size:14px;">📷</div>
+          <div class="helper">? Hướng dẫn</div>
+        </div>
       </div>
+      <div style="font-size:9px; color:#888; margin-top:4px;">Chụp hóa đơn để tự động điền mã</div>
     </div>
     <div style="flex:1;"></div>
   </div>
@@ -521,8 +530,9 @@ Home → Tap row → V4 (Bill Detail) → pay / xem info
 </div>
 
 <div class="anno">
-  <strong>V3 Hybrid:</strong> Conversational header (PO prototype) + standard input field + "? Hướng dẫn" link (per BRD).<br>
-  <strong>Tài chính:</strong> NCC có 2+ loại input → thêm segment tab [Mã HĐ] [Số CCCD] phía trên input.
+  <strong>V3 Hybrid:</strong> Conversational header + input field + 📷 camera scan (OCR) + "? Hướng dẫn" per BRD.<br>
+  <strong>Camera scan:</strong> Tap 📷 → chụp hóa đơn giấy → OCR auto-fill mã KH. Giảm friction first-time từ cao → thấp.<br>
+  <strong>Tài chính:</strong> NCC có 2+ loại input → segment tab [Mã HĐ] [Số CCCD] phía trên input.
 </div>
 
 <!-- ──────── V4: Bill Detail ──────── -->
