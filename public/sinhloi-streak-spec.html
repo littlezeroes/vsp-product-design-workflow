@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VSP — Sinh lời Streak Gamification Spec</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Georgia,'Times New Roman',serif;background:#fff;color:#111;line-height:1.75;max-width:960px;margin:0 auto;padding:48px 24px 120px;font-size:15px}
+  h1{font-family:-apple-system,sans-serif;font-size:28px;font-weight:800;margin-bottom:2px;letter-spacing:-0.4px}
+  .subtitle{font-family:-apple-system,sans-serif;font-size:14px;font-weight:600;color:#555;margin-bottom:2px}
+  .meta{font-size:12px;color:#999;margin-bottom:40px;font-family:-apple-system,sans-serif}
+  h2{font-family:-apple-system,sans-serif;font-size:19px;font-weight:700;margin:48px 0 12px;padding-bottom:5px;border-bottom:2px solid #111}
+  h3{font-family:-apple-system,sans-serif;font-size:15px;font-weight:700;margin:24px 0 8px}
+  p{margin-bottom:10px}
+  ul,ol{margin:4px 0 10px 24px}li{margin-bottom:3px}
+  strong{font-weight:700}
+  blockquote{border-left:3px solid #111;padding:10px 16px;margin:14px 0;font-family:-apple-system,sans-serif;font-size:14px;font-weight:600;line-height:1.5;background:#fafafa}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;font-family:-apple-system,sans-serif}
+  th{text-align:left;padding:6px 8px;border-bottom:2px solid #111;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.5px}
+  td{padding:6px 8px;border-bottom:1px solid #eee;vertical-align:top}
+  tr:hover td{background:#fafafa}
+  .callout{background:#f8f8f8;border-left:3px solid #111;padding:10px 14px;margin:14px 0;font-family:-apple-system,sans-serif;font-size:13px;line-height:1.55}
+  pre{font-family:'SF Mono',monospace;font-size:12px;background:#fafafa;padding:14px;margin:12px 0;border-left:3px solid #ddd;white-space:pre;overflow-x:auto;line-height:1.5;color:#333}
+  .fn{font-size:11px;color:#999;margin-top:52px;padding-top:14px;border-top:2px solid #111;font-family:-apple-system,sans-serif}
+</style>
+</head>
+<body>
+
+<h1>Sinh lời tự động — Streak Gamification</h1>
+<div class="subtitle">Product Analysis & Design Proposal</div>
+<div class="meta">Version 1.0 &middot; 22/03/2026 &middot; by Huy Kieu &copy; 2026</div>
+
+<h2>1. Vấn đề</h2>
+
+<p>Sinh lời tự động hiện có flow activation tốt (one-click) nhưng <strong>không có daily engagement loop</strong>. User kích hoạt xong → quên. Không có lý do quay lại mỗi ngày.</p>
+
+<table>
+  <tr><th>Gap</th><th>Mô tả</th><th>Mức độ</th></tr>
+  <tr><td><strong>Không có daily engagement</strong></td><td>User kích hoạt xong → quên. Dashboard chỉ show số liệu tĩnh.</td><td>Critical</td></tr>
+  <tr><td><strong>Gamification rời rạc</strong></td><td>Interest Tiers + Membership Ranks là 2 hệ thống tách rời, chưa kết nối.</td><td>High</td></tr>
+  <tr><td><strong>Không social proof</strong></td><td>Không leaderboard, không thấy bạn bè đang tiết kiệm.</td><td>High</td></tr>
+  <tr><td><strong>Không milestone</strong></td><td>Đạt 1 triệu tiền lời — không confetti, không badge.</td><td>Medium</td></tr>
+</table>
+
+<h2>2. Mental Model người dùng VN</h2>
+
+<table>
+  <tr><th>Khái niệm</th><th>Cảm xúc</th><th>Hành vi</th></tr>
+  <tr><td><strong>Tiết kiệm</strong> ("Gửi tiết kiệm")</td><td>An toàn, kỷ luật</td><td>Gửi NH 6-12 tháng, chấp nhận khoá tiền</td></tr>
+  <tr><td><strong>Đầu tư</strong></td><td>Rủi ro, kỳ vọng cao</td><td>Chứng khoán, vàng, BĐS. Phân tích trước.</td></tr>
+  <tr><td><strong>Tiền nhàn rỗi</strong> ("Tiền để đó")</td><td>Tiếc nuối nhưng không hành động</td><td>Trong ví, không sinh lời. KHÔNG có trigger hàng ngày.</td></tr>
+</table>
+
+<blockquote>Sinh lời tự động nằm giữa "tiết kiệm" và "tiền nhàn rỗi" — user biết nên làm nhưng không có trigger hành vi hàng ngày. Streak giải quyết đúng vấn đề này.</blockquote>
+
+<h3>Tâm lý học hành vi áp dụng</h3>
+
+<table>
+  <tr><th>Nguyên tắc</th><th>Áp dụng</th></tr>
+  <tr><td><strong>Loss Aversion</strong> (Kahneman)</td><td>"Mất streak" đau hơn "được streak". Streak 30 ngày sắp mất → động lực nạp tiền.</td></tr>
+  <tr><td><strong>Endowed Progress</strong></td><td>Cho user bắt đầu streak = 1 ngày (đã có tiền). Họ đã "ở giữa hành trình".</td></tr>
+  <tr><td><strong>Variable Reward</strong> (Nir Eyal)</td><td>Milestone bất ngờ: ngày 7 = badge, ngày 15 = bonus lãi suất, ngày 30 = badge vàng.</td></tr>
+  <tr><td><strong>Social Comparison</strong></td><td>"Bạn đã tiết kiệm nhiều hơn 73% cư dân Vinhomes".</td></tr>
+  <tr><td><strong>Sunk Cost</strong></td><td>Streak càng dài → càng không muốn mất.</td></tr>
+</table>
+
+<h2>3. Đề xuất: Streak + Savings Challenge</h2>
+
+<h3>3.1 Daily Savings Streak</h3>
+
+<p>Mỗi ngày có số dư &gt; 0 trong Ví sinh lời = 1 ngày streak. <strong>Passive</strong> — user không cần làm gì nếu đã có tiền.</p>
+
+<table>
+  <tr><th></th><th>Duolingo</th><th>VSP Sinh lời</th><th>Lý do điều chỉnh</th></tr>
+  <tr><td><strong>Điều kiện</strong></td><td>Hoàn thành 1 bài học/ngày</td><td>Có tiền sinh lời cuối ngày</td><td>Passive &gt; Active. Không ép user.</td></tr>
+  <tr><td><strong>Mất streak</strong></td><td>Không học = mất</td><td>Rút hết tiền = mất</td><td>Chỉ phạt khi rút SẠCH, không phạt khi không nạp thêm.</td></tr>
+  <tr><td><strong>Streak Freeze</strong></td><td>1 lần/tháng miễn phí</td><td>2 lần/tháng</td><td>Fintech cần lenient hơn education app.</td></tr>
+  <tr><td><strong>Phần thưởng</strong></td><td>XP (ảo)</td><td>Bonus lãi suất 0.01-0.05%</td><td>Phần thưởng có giá trị thực.</td></tr>
+</table>
+
+<h3>3.2 Savings Challenge (1K Challenge)</h3>
+
+<p>Lấy cảm hứng từ <strong>Monzo 1p Saving Challenge</strong>. Điều chỉnh cho VND:</p>
+
+<table>
+  <tr><th>Ngày</th><th>Số tiền</th><th>Tổng tích luỹ</th></tr>
+  <tr><td>Ngày 1</td><td>1.000 đ</td><td>1.000 đ</td></tr>
+  <tr><td>Ngày 7</td><td>7.000 đ</td><td>28.000 đ</td></tr>
+  <tr><td>Ngày 30</td><td>30.000 đ</td><td>465.000 đ</td></tr>
+  <tr><td>Ngày 100</td><td>100.000 đ</td><td>5.050.000 đ</td></tr>
+  <tr><td>Ngày 365</td><td>365.000 đ</td><td><strong>66.795.000 đ</strong></td></tr>
+</table>
+
+<table>
+  <tr><th>Hệ số</th><th>Tháng 1</th><th>Cả năm</th><th>Đối tượng</th></tr>
+  <tr><td><strong>x1</strong> (1K/ngày)</td><td>465.000 đ</td><td>66.795.000 đ</td><td>Sinh viên</td></tr>
+  <tr><td><strong>x5</strong> (5K/ngày)</td><td>2.325.000 đ</td><td>333.975.000 đ</td><td>Nhân viên VP</td></tr>
+  <tr><td><strong>x10</strong> (10K/ngày)</td><td>4.650.000 đ</td><td>667.950.000 đ</td><td>Thu nhập cao</td></tr>
+</table>
+
+<div class="callout"><strong>Auto-debit:</strong> Tự động chuyển từ ví chính sang ví sinh lời. User chọn hệ số lúc đăng ký. Có thể tắt bất kỳ lúc nào. Catch-up tối đa 3 ngày bỏ lỡ.</div>
+
+<h3>3.3 Milestone Celebrations</h3>
+
+<table>
+  <tr><th>Milestone</th><th>Phần thưởng</th><th>Hiển thị</th></tr>
+  <tr><td><strong>3 ngày</strong></td><td>Confetti nhẹ + "Bạn đã bắt đầu!"</td><td>Toast</td></tr>
+  <tr><td><strong>7 ngày</strong></td><td>Badge "1 Tuần Sinh Lời" + 0.01% bonus</td><td>Full-screen celebration</td></tr>
+  <tr><td><strong>30 ngày</strong></td><td>Badge "1 Tháng Kỷ Luật" + 0.03% bonus</td><td>Full-screen + share card</td></tr>
+  <tr><td><strong>100 ngày</strong></td><td>Badge "Cao Thủ" + 0.05% bonus vĩnh viễn</td><td>Full-screen + leaderboard</td></tr>
+  <tr><td><strong>365 ngày</strong></td><td>Badge "Huyền Thoại" + 0.1% bonus vĩnh viễn</td><td>Special animation + share</td></tr>
+</table>
+
+<div class="callout"><strong>Bonus lãi suất là có thật</strong> — khác Duolingo (chỉ cho XP ảo). User được lãi NHIỀU HƠN khi giữ streak. Đây là phần thưởng có giá trị thực sự.</div>
+
+<h3>3.4 Leaderboard</h3>
+
+<table>
+  <tr><th>Loại</th><th>Phạm vi</th><th>Quy tắc</th></tr>
+  <tr><td><strong>Bạn bè</strong></td><td>User tự thêm qua SĐT</td><td>Top 10, ẩn số dư, chỉ hiện streak</td></tr>
+  <tr><td><strong>Cư dân Vinhomes</strong></td><td>Auto-match theo địa chỉ KYC</td><td>Top 50, anonymized</td></tr>
+  <tr><td><strong>Thành phố</strong></td><td>HCM, Hà Nội, Đà Nẵng...</td><td>Top 100, streak + tier</td></tr>
+</table>
+
+<h2>4. Dashboard mới — Tích hợp Streak</h2>
+
+<pre>
+Dashboard hiện tại          Dashboard + Streak
+─────────────────          ──────────────────
+Hero: Số dư + lãi          Hero: Số dư + lãi + 🔥 23 ngày streak
+Quick actions               Quick actions
+                            ★ Challenge Card (progress ring + "Nạp 23K hôm nay")
+Lời 7 ngày (chart)         Lời 7 ngày (chart)
+                            ★ Milestone: "Còn 7 ngày đạt 30 ngày! 🏆"
+Giao dịch gần đây          Giao dịch gần đây
+Nudge CTA                  ★ Leaderboard preview (#12/50 cư dân)
+Nâng cấp mức SL            Nâng cấp mức SL
+</pre>
+
+<h2>5. Rủi ro</h2>
+
+<table>
+  <tr><th>Rủi ro</th><th>Mức</th><th>Giải pháp</th></tr>
+  <tr><td><strong>Over-gamification — user cảm thấy bị ép</strong></td><td>High</td><td>Streak passive (chỉ cần có tiền). Challenge opt-in. Mọi thứ tắt được.</td></tr>
+  <tr><td><strong>SBV — bonus lãi suất có phải "khuyến mãi"?</strong></td><td>High</td><td>Bonus = phần của lãi suất hợp đồng, không phải khuyến mãi. Làm việc Legal trước launch.</td></tr>
+  <tr><td><strong>User fatigue sau 60 ngày</strong></td><td>Medium</td><td>Variable reward: milestone bất ngờ ngày 42, 77, 150. Seasonal challenge (Tết, 1/6).</td></tr>
+  <tr><td><strong>Leaderboard privacy</strong></td><td>Medium</td><td>Anonymize mặc định. Opt-in. Không share số dư.</td></tr>
+</table>
+
+<h2>6. Metrics</h2>
+
+<table>
+  <tr><th>Metric</th><th>Hiện tại (ước tính)</th><th>Với Streak</th></tr>
+  <tr><td><strong>Activation rate</strong></td><td>10-12%</td><td><strong>20-25%</strong> (+100%)</td></tr>
+  <tr><td><strong>DAU/MAU ratio</strong></td><td>15-20%</td><td><strong>40-50%</strong></td></tr>
+  <tr><td><strong>AUM retention 30 ngày</strong></td><td>60-65%</td><td><strong>80-85%</strong></td></tr>
+  <tr><td><strong>Average balance</strong></td><td>8-10 triệu</td><td><strong>15-20 triệu</strong></td></tr>
+  <tr><td><strong>Streak &gt;7 ngày</strong></td><td>N/A</td><td>60% active users</td></tr>
+  <tr><td><strong>Streak &gt;30 ngày</strong></td><td>N/A</td><td>30% active users</td></tr>
+</table>
+
+<h3>AUM Impact (100K users kích hoạt Challenge x1)</h3>
+
+<table>
+  <tr><th>Thời điểm</th><th>% còn hoạt động</th><th>AUM mới từ Challenge</th></tr>
+  <tr><td>Ngày 7</td><td>80%</td><td><strong>2,24 tỷ</strong></td></tr>
+  <tr><td>Ngày 30</td><td>50%</td><td><strong>23,25 tỷ</strong></td></tr>
+  <tr><td>Ngày 100</td><td>25%</td><td><strong>126,25 tỷ</strong></td></tr>
+  <tr><td>Ngày 365</td><td>10%</td><td><strong>667,95 tỷ</strong></td></tr>
+</table>
+
+<h3>Benchmark</h3>
+
+<table>
+  <tr><th>Nguồn</th><th>Số liệu</th></tr>
+  <tr><td>Duolingo streak &gt;7 ngày</td><td>55% DAU (Annual Report 2024)</td></tr>
+  <tr><td>Monzo 1p Challenge completion</td><td>23% hoàn thành 365 ngày (Monzo Blog 2025)</td></tr>
+  <tr><td>Monzo 1p Challenge AUM</td><td>+£290 average balance tăng</td></tr>
+  <tr><td>Streak contribution to Duolingo revenue</td><td>45% paid conversions (Lenny's Newsletter 2024)</td></tr>
+</table>
+
+<h2>7. Lợi thế cạnh tranh — First Mover</h2>
+
+<table>
+  <tr><th>App</th><th>Savings</th><th>Gamification</th><th>Streak</th></tr>
+  <tr><td><strong>MoMo</strong></td><td>Heo đất, Tiết kiệm</td><td>Badge, spinning wheel</td><td>Không</td></tr>
+  <tr><td><strong>ZaloPay</strong></td><td>Tiết kiệm online</td><td>Voucher rewards</td><td>Không</td></tr>
+  <tr><td><strong>Cake</strong></td><td>Tiết kiệm linh hoạt</td><td>Referral rewards</td><td>Không</td></tr>
+  <tr><td><strong>Timo</strong></td><td>Goal savings</td><td>Progress bar</td><td>Không</td></tr>
+  <tr><td><strong>VSP (đề xuất)</strong></td><td>Sinh lời tự động</td><td><strong>Streak + Challenge + Leaderboard</strong></td><td><strong>Có — First mover VN</strong></td></tr>
+</table>
+
+<div style="background:#111;color:#fff;border-radius:20px;padding:24px;margin:20px 0;font-family:-apple-system,sans-serif;">
+  <h3 style="color:#fff;margin:0 0 12px;font-size:17px;border:none;padding:0;">Tại sao VSP thắng</h3>
+  <p style="color:rgba(255,255,255,0.7);font-size:13px;line-height:1.6;">Không fintech VN nào có streak savings. VSP là first mover. Chi phí phát triển thấp (UI + logic đơn giản), tác động lên retention và AUM rất lớn. Streak history tạo lock-in — user có streak 100 ngày sẽ KHÔNG chuyển sang app khác và bắt đầu lại từ 0.</p>
+</div>
+
+<h2>8. Phasing</h2>
+
+<table>
+  <tr><th>Phase</th><th>Nội dung</th><th>Timeline</th></tr>
+  <tr><td><strong>MVP</strong></td><td>Streak counter + 1K Challenge + Milestone celebrations + Streak Freeze</td><td>4 tuần</td></tr>
+  <tr><td><strong>Phase 2</strong></td><td>Leaderboard + Catch-up + Bonus lãi suất + Share card</td><td>4 tuần</td></tr>
+  <tr><td><strong>Phase 3</strong></td><td>Seasonal challenges (Tết, 1/6) + Family streak + Tích hợp Membership Ranks</td><td>On-going</td></tr>
+</table>
+
+<div class="fn">V-Smart Pay — Sinh lời Streak Gamification Spec v1.0 &mdash; 22/03/2026 &mdash; by Huy Kieu &copy; 2026<br>Sources: Duolingo Annual Report 2024 &middot; Monzo Blog 2025 (1p Challenge) &middot; Lenny's Newsletter &middot; VSP PRD Confluence &middot; Daniel Kahneman (Loss Aversion) &middot; Nir Eyal (Hooked)</div>
+
+</body>
+</html>
