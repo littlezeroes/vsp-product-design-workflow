@@ -65,9 +65,8 @@
   <div style="display:flex; flex-direction:column; gap:4px;">
     <a href="#s1" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">1. Vấn đề</a>
     <a href="#s3" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">2. Phân tích cạnh tranh</a>
-    <a href="#s4" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">3. Nghiên cứu người dùng</a>
-    <a href="#s5" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">4. Phân tích hiện trạng</a>
-    <a href="#s6" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">5. Kiến trúc thông tin đề xuất</a>
+    <a href="#s4" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">3. Nhu cầu người dùng &amp; Quyết định</a>
+    <a href="#s6" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">4. Kiến trúc thông tin đề xuất</a>
     <a href="#s8" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">6. Wireframe &amp; Thiết kế</a>
     <a href="#s9" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">7. Chỉ số thành công</a>
     <a href="#s11" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">8. Phụ lục</a>
@@ -276,23 +275,15 @@
 <em>Disclaimer: Số liệu proprietary (ARPU, churn nội bộ) ước tính từ industry benchmarks, không phải dữ liệu chính thức.</em>
 </p>
 
-<!-- ═══ 4. NGƯỜI DÙNG ═══ -->
+<!-- ═══ 4. NGƯỜI DÙNG + HIỆN TRẠNG + QUYẾT ĐỊNH (gộp) ═══ -->
 <span class="sn">4</span>
-<h2 id="s4">Nghiên cứu người dùng</h2>
-
-<p>3 nhu cầu cốt lõi (Jobs-to-be-Done) &rarr; map trực tiếp thành quyết định kiến trúc. Xem chi tiết tại Mục 6.</p>
-
-
-<!-- ═══ 5. HIỆN TRẠNG (cuối — đánh giá cụ thể VSP) ═══ -->
-<span class="sn">5</span>
-<h2 id="s5">Phân tích hiện trạng</h2>
+<h2 id="s4">Nhu cầu người dùng &amp; Quyết định kiến trúc</h2>
 
 <table>
-  <tr><th>Tab</th><th>Tần suất</th><th>Vấn đề</th><th>Quyết định</th></tr>
-  <tr><td><strong>Trang chủ</strong></td><td>Mỗi phiên</td><td>Thiếu widget tài sản, thiếu Chuyển tiền ở quick actions</td><td>Giữ + nâng cấp</td></tr>
-  <tr><td><strong>Chuyển tiền</strong></td><td>2-3/tuần</td><td>User khó tìm vì Chuyển tiền nằm ở tab riêng, lệch với suy nghĩ tự nhiên (ngang hàng Nạp/Rút)</td><td><strong>&rarr; Thanh toán</strong></td></tr>
-  <tr><td><strong>Giao dịch</strong></td><td>1-2/tuần</td><td>Lịch sử = ngữ cảnh ví</td><td><strong>Gộp vào Trang chủ</strong></td></tr>
-  <tr><td><strong>Tài khoản</strong></td><td>1/tháng</td><td>Người dùng chỉ mở khoảng 1 lần/tháng (đổi mật khẩu, cập nhật thông tin)</td><td><strong>&rarr; Avatar</strong></td></tr>
+  <tr><th>Nhu cầu (JTBD)</th><th>Tần suất</th><th>Vấn đề v1.0.6</th><th>Quyết định</th></tr>
+  <tr><td><strong>Daily usage</strong> &mdash; Chuyển/Nạp/Rút &le;3 chạm</td><td>Hàng ngày</td><td>Chuyển tiền ở tab riêng, khó tìm vì user quen tìm ở Home. 20 dịch vụ mới không có chỗ.</td><td>Chuyển tiền &rarr; <strong>Thanh toán</strong>. Chuyển tiền lên quick actions.</td></tr>
+  <tr><td><strong>Đầu tư &amp; Bảo vệ</strong> &mdash; Sinh lời, bảo vệ tài sản</td><td>2-4/tháng</td><td>Tài khoản dùng 1 lần/tháng chiếm slot. 6 sản phẩm tài chính không có điểm đến. Balance lớn không biết có Sinh lời.</td><td>Tài khoản &rarr; <strong>Tài chính</strong> + Profile lên avatar. <strong>Widget tài sản</strong> trên Trang chủ.</td></tr>
+  <tr><td><strong>Ưu đãi &amp; Loyalty</strong> &mdash; Tiết kiệm khi chi tiêu</td><td>Hàng tuần</td><td>Lịch sử giao dịch chiếm tab nhưng chỉ là ngữ cảnh ví. V-Point + voucher chưa có nhà.</td><td>Giao dịch &rarr; <strong>Ưu đãi</strong>. Lịch sử gộp vào chạm thẻ ví.</td></tr>
 </table>
 
 <!-- ═══ 6 ═══ -->
@@ -300,15 +291,6 @@
 <h2 id="s6">Kiến trúc thông tin đề xuất</h2>
 
 <blockquote>V-Smart Pay là nền tảng tài chính cá nhân tích hợp hệ sinh thái Vingroup. Tiện ích trước, quảng cáo sau. Hiển thị dần theo hành vi. Giao diện tạo niềm tin.</blockquote>
-
-<h3>Nhu cầu người dùng &rarr; Quyết định kiến trúc</h3>
-
-<table>
-  <tr><th>Nhu cầu (JTBD)</th><th>Vấn đề v1.0.6</th><th>Quyết định</th></tr>
-  <tr><td><strong>Daily usage</strong> &mdash; Chuyển/Nạp/Rút &le;3 chạm (hàng ngày)</td><td>Chuyển tiền ở tab riêng, khó tìm vì user quen tìm ở Home. 20 dịch vụ mới không có chỗ.</td><td>Chuyển tiền &rarr; <strong>Thanh toán</strong>. Chuyển tiền lên quick actions.</td></tr>
-  <tr><td><strong>Đầu tư &amp; Bảo vệ</strong> &mdash; Sinh lời, bảo vệ tài sản (2-4/tháng)</td><td>Tài khoản dùng 1 lần/tháng chiếm slot. 6 sản phẩm tài chính không có điểm đến.</td><td>Tài khoản &rarr; <strong>Tài chính</strong> + Profile lên avatar. Widget tài sản trên Trang chủ.</td></tr>
-  <tr><td><strong>Ưu đãi &amp; Loyalty</strong> &mdash; Tiết kiệm khi chi tiêu</td><td>Lịch sử = ngữ cảnh ví, không phải destination. V-Point + voucher chưa có nhà.</td><td>Giao dịch &rarr; <strong>Ưu đãi</strong>. Lịch sử gộp vào chạm thẻ ví.</td></tr>
-</table>
 
 <h3>Lộ trình điều hướng &amp; Triển khai</h3>
 
