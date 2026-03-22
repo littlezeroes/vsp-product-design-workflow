@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VSP — IA 2026 v3.1 — Premium UX Spec</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:Georgia,'Times New Roman',serif; background:#fff; color:#111; line-height:1.75; max-width:960px; margin:0 auto; padding:48px 24px 120px; font-size:15px; }
+  h1 { font-family:-apple-system,'Helvetica Neue',sans-serif; font-size:28px; font-weight:800; margin-bottom:2px; letter-spacing:-0.4px; }
+  .subtitle { font-family:-apple-system,sans-serif; font-size:14px; font-weight:600; color:#555; margin-bottom:2px; }
+  .meta { font-size:12px; color:#999; margin-bottom:48px; font-family:-apple-system,sans-serif; }
+  h2 { font-family:-apple-system,sans-serif; font-size:19px; font-weight:700; margin:52px 0 12px; padding-bottom:5px; border-bottom:2px solid #111; }
+  h3 { font-family:-apple-system,sans-serif; font-size:15px; font-weight:700; margin:24px 0 8px; }
+  p { margin-bottom:10px; }
+  ul, ol { margin:4px 0 10px 24px; }
+  li { margin-bottom:3px; }
+  strong { font-weight:700; }
+  em { font-style:italic; color:#555; }
+  blockquote { border-left:3px solid #111; padding:10px 16px; margin:14px 0; font-family:-apple-system,sans-serif; font-size:14px; font-weight:600; line-height:1.5; background:#fafafa; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; font-family:-apple-system,sans-serif; }
+  th { text-align:left; padding:6px 8px; border-bottom:2px solid #111; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; }
+  td { padding:6px 8px; border-bottom:1px solid #eee; vertical-align:top; }
+  tr:hover td { background:#fafafa; }
+  .dark-card tr:hover td { background:#00E676!important; color:#111!important; }
+  .sn { font-family:-apple-system,sans-serif; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#bbb; margin:52px 0 -8px; display:block; }
+  .callout { background:#f8f8f8; border-left:3px solid #111; padding:10px 14px; margin:14px 0; font-family:-apple-system,sans-serif; font-size:13px; line-height:1.55; }
+  .ia { padding:4px 10px; margin:2px 0; border-radius:6px; font-size:12px; font-weight:600; display:inline-block; font-family:-apple-system,sans-serif; }
+  .ia-0 { background:#111; color:#fff; font-size:13px; }
+  .ia-1 { background:#444; color:#fff; }
+  .ia-2 { background:#f0f0f0; color:#333; margin-left:24px; }
+  .wr { display:flex; gap:14px; margin:18px 0; justify-content:center; flex-wrap:wrap; }
+  .wf { width:130px; flex-shrink:0; }
+  .wf .wl { font-family:-apple-system,sans-serif; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#999; text-align:center; margin-bottom:5px; }
+  .wf .wb { border:2px solid #111; border-radius:20px; overflow:hidden; background:#fff; }
+  .wf .wb img { width:100%; display:block; }
+  .wf .wa { font-family:-apple-system,sans-serif; font-size:9px; color:#999; text-align:center; margin-top:4px; line-height:1.4; }
+  .cg { display:flex; gap:8px; margin:14px 0; flex-wrap:wrap; }
+  .cc { width:105px; flex-shrink:0; }
+  .cc .ci { border:1.5px solid #ddd; border-radius:12px; overflow:hidden; }
+  .cc .ci img { width:100%; display:block; }
+  .cc .cn { font-family:-apple-system,sans-serif; font-size:9px; color:#aaa; text-align:center; margin-top:3px; line-height:1.3; }
+  .ne { font-family:-apple-system,sans-serif; font-size:13px; margin:14px 0; }
+  .ne .nr { display:flex; align-items:center; gap:0; margin:5px 0; }
+  .ne .np { width:95px; font-size:11px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px; flex-shrink:0; }
+  .ne .np.a { color:#111; }
+  .ne .nt { padding:6px 8px; font-size:11px; font-weight:600; text-align:center; border:1px solid #ddd; flex:1; }
+  .ne .nt.k { background:#fff; color:#999; }
+  .ne .nt.n { background:#111; color:#fff; border-color:#111; }
+  .ne .nt.q { background:#f0f0f0; color:#666; }
+  .ne .na { font-size:10px; color:#999; margin:1px 0 1px 95px; }
+  .fn { font-size:11px; color:#999; margin-top:52px; padding-top:14px; border-top:2px solid #111; font-family:-apple-system,sans-serif; }
+  @media print { body{padding:20px;font-size:13px;} h2{page-break-before:always;margin-top:20px;} h2:first-of-type{page-break-before:avoid;} }
+</style>
+</head>
+<body>
+
+<h1>V-Smart Pay 2026</h1>
+<div class="subtitle">Đề xuất Kiến trúc Thông tin — Premium UX Specification</div>
+<div class="meta">Version 4.1 &middot; 22/03/2026 &middot; by Huy Kieu &copy; 2026</div>
+
+<!-- Table of Contents -->
+<div style="font-family:-apple-system,sans-serif; font-size:13px; background:#fafafa; border-radius:14px; padding:16px 20px; margin-bottom:40px;">
+  <strong style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:#999; display:block; margin-bottom:8px;">Mục lục</strong>
+  <div style="display:flex; flex-direction:column; gap:4px;">
+    <a href="#s1" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">1. Vấn đề</a>
+    <a href="#s3" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">2. Phân tích cạnh tranh</a>
+    <a href="#s4" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">3. Nghiên cứu người dùng</a>
+    <a href="#s5" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">4. Phân tích hiện trạng</a>
+    <a href="#s6" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">5. Kiến trúc thông tin đề xuất</a>
+    <a href="#s8" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">6. Wireframe &amp; Thiết kế</a>
+    <a href="#s9" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">7. Chỉ số thành công</a>
+    <a href="#s11" style="color:#111; text-decoration:none; font-weight:600; padding:4px 0;">8. Phụ lục</a>
+  </div>
+</div>
+
+<!-- ═══ 1 ═══ -->
+<span class="sn">1</span>
+<h2 id="s1">Vấn đề</h2>
+
+<p>V-Smart Pay phiên bản 1.0.6 có <strong>12 tính năng trên 5 tab</strong>. Kế hoạch 2026 yêu cầu thêm <strong>60+ dịch vụ &amp; tính năng mới</strong> trong 3 mảng: thanh toán mở rộng, tiết kiệm &amp; đầu tư, khách hàng thân thiết. Cấu trúc điều hướng hiện tại (5 tab, 12 tính năng) không đủ chỗ để tổ chức thêm 60+ dịch vụ &amp; tính năng mới.</p>
+
+<table>
+  <tr><th>Nhu cầu người dùng</th><th>Sản phẩm đáp ứng</th><th>Hiện trạng v1.0.6</th></tr>
+  <tr><td><strong>"Trả hoá đơn, mua vé nhanh"</strong></td><td>~20 dịch vụ: điện, nước, internet, vé phim, vé tàu, máy bay...</td><td>Chỉ có 5 icon trong sub-page. Không search. Không reminder.</td></tr>
+  <tr><td><strong>"Tiền nhàn rỗi sinh lời, bảo vệ tài sản"</strong></td><td>Sinh lời tự động, Bất động sản mã hoá, Bảo hiểm, Chứng chỉ quỹ, Ví trả sau</td><td>Không có chỗ nào. User có balance lớn không biết có sản phẩm.</td></tr>
+  <tr><td><strong>"Tiết kiệm khi chi tiêu hàng ngày"</strong></td><td>V-Point, voucher, ưu đãi hệ sinh thái Vingroup, giới thiệu bạn</td><td>Không có. Chưa có chương trình loyalty.</td></tr>
+</table>
+
+
+<p>Tài liệu này trình bày: phân tích cạnh tranh (3) &rarr; nhu cầu người dùng (4) &rarr; đánh giá hiện trạng (5) &rarr; kiến trúc đề xuất (6) &rarr; kế hoạch triển khai (7) &rarr; wireframe (8) &rarr; chỉ số &amp; rủi ro (9-10).</p>
+
+<!-- ═══ 3. CẠNH TRANH (trước — thiết lập gap) ═══ -->
+<span class="sn">3</span>
+<h2 id="s3">Phân tích cạnh tranh</h2>
+
+<h3>Thị trường ví điện tử Việt Nam 2026</h3>
+
+<p>40+ triệu người dùng MoMo, 20+ triệu ZaloPay, hàng chục ví nhỏ. Thị trường bão hoà ở thanh toán cơ bản. Điểm khác biệt tiếp theo: <strong>quản lý tài sản tích hợp trong ví</strong> (tiết kiệm, đầu tư, bảo hiểm &mdash; tất cả trong 1 app) &mdash; chưa ví nào ở Việt Nam làm tốt.</p>
+
+<h3>Gap từ góc nhìn hiệu quả sản phẩm</h3>
+
+<table>
+  <tr><th>Góc nhìn</th><th>Vấn đề chung MoMo / ZaloPay / Cake</th><th>Ảnh hưởng đến product</th><th>VSP giải quyết</th></tr>
+  <tr>
+    <td><strong>Kênh bán</strong></td>
+    <td>MoMo/ZaloPay dùng banner push (60-80% Home) để monetize. Cake không cần banner nhưng mạng lưới thanh toán hẹp.</td>
+    <td>Banner CTR giảm dần (fatigue). 80% icon grid có click-through dưới 2%. User mở app = thấy quảng cáo trước, thấy tiền sau.</td>
+    <td>Widget pull: conversion cao hơn 3-5x vì user chạm theo nhu cầu. Banner giảm xuống 30%, widget dẫn dắt.</td>
+  </tr>
+  <tr>
+    <td><strong>Discovery sản phẩm tài chính</strong></td>
+    <td>Cả 3 đều chôn sản phẩm tài chính trong grid icon hoặc sub-page (2-3 chạm). Không ai có tab riêng.</td>
+    <td>Activation rate thấp: user có balance lớn nhưng không biết có Sinh lời. Sản phẩm AUM cao bị visibility thấp nhất.</td>
+    <td>Tab Tài chính riêng (first mover VN). Widget tài sản trên Home (behavioral). 1 chạm đến hành động.</td>
+  </tr>
+  <tr>
+    <td><strong>Retention &amp; Stickiness</strong></td>
+    <td>MoMo giữ chân bằng gamification (minigame). ZaloPay dựa vào Zalo social graph. Cake dựa vào lãi suất tiết kiệm.</td>
+    <td>MoMo: retention cao nhưng shallow (mở app chơi game, không giao dịch). ZaloPay: churn khi user bỏ Zalo. Cake: chỉ giữ được user có tiết kiệm.</td>
+    <td>Retention qua giá trị thực: portfolio view ("tiền đang tăng"), reminder hoá đơn (habit loop), hệ sinh thái Vingroup (lock-in tự nhiên).</td>
+  </tr>
+  <tr>
+    <td><strong>Trust cho sản phẩm tài chính</strong></td>
+    <td>MoMo: UI marketplace (mua BH = mua vé phim). ZaloPay: generic. Cake: banking license nhưng brand awareness thấp.</td>
+    <td>Conversion từ "xem" → "mua" BH/đầu tư thấp khi UI không tạo niềm tin. User VN cần "cảm giác ngân hàng" khi đặt tiền lớn.</td>
+    <td>Premium aesthetics + Vingroup brand. Chart Robinhood-style, card-based layout. Không icon grid. UI = cơ chế tạo trust.</td>
+  </tr>
+  <tr>
+    <td><strong>UX khi scale</strong></td>
+    <td>MoMo 40+ services → icon grid quá tải, vị trí thay đổi theo campaign. ZaloPay sẽ gặp tương tự khi thêm products. Cake Home dài vô tận.</td>
+    <td>Cognitive load tăng. User chỉ dùng 3 tính năng dù app có 40. Tính năng mới launch → không ai tìm thấy.</td>
+    <td>Tab-based architecture: mỗi tab = 1 nhu cầu, scale bằng thêm product cards trong tab, không thêm icons. Progressive disclosure: chỉ hiện khi engage.</td>
+  </tr>
+  <tr>
+    <td><strong>Quản lý tài sản (Asset Management)</strong></td>
+    <td>MoMo: mỗi sản phẩm riêng lẻ (tiết kiệm 1 nơi, BH 1 nơi, quỹ 1 nơi). Không aggregate. ZaloPay: tương tự. Cake: có tổng tiết kiệm nhưng không gộp BH + đầu tư + vay.</td>
+    <td>User không biết "tổng tài sản" bao nhiêu. Không thấy tài sản tăng trưởng → không có động lực nạp thêm. AUM per user thấp vì thiếu visibility. Cross-sell giữa sản phẩm gần 0 (mua BH xong không biết có CCQ).</td>
+    <td>Portfolio view tổng tài sản (dark card + chart + allocation bar). Swipe cards giữa Sinh lời / BĐS / CCQ trong cùng 1 section. Widget tổng tài sản trên Home → user thấy "tiền đang grow" mỗi lần mở app → nạp thêm.</td>
+  </tr>
+</table>
+
+<h3>MoMo — Promo overload</h3>
+<div class="cg">
+  <div class="cc"><div class="ci"><img src="comp-momo3.jpeg" /></div><div class="cn">Trang chủ &mdash; grid + deal</div></div>
+  <div class="cc"><div class="ci"><img src="comp-momo4.jpeg" /></div><div class="cn">Scroll tiếp &mdash; tiếp deal</div></div>
+  <div class="cc"><div class="ci"><img src="comp-momo5.jpeg" /></div><div class="cn">Ưu đãi &mdash; 80% quảng cáo</div></div>
+  <div class="cc"><div class="ci"><img src="comp-momo2.jpeg" /></div><div class="cn">Lịch sử giao dịch</div></div>
+  <div class="cc"><div class="ci"><img src="comp-momo1.jpeg" /></div><div class="cn">Tab Tôi</div></div>
+</div>
+
+<h3>ZaloPay — Banner hero</h3>
+<div class="cg">
+  <div class="cc"><div class="ci"><img src="comp-zalo1.jpeg" /></div><div class="cn">Trang chủ &mdash; banner chiếm fold</div></div>
+  <div class="cc"><div class="ci"><img src="comp-zalo2.jpeg" /></div><div class="cn">Lịch sử</div></div>
+  <div class="cc"><div class="ci"><img src="comp-zalo3.jpeg" /></div><div class="cn">QR &mdash; gamification</div></div>
+  <div class="cc"><div class="ci"><img src="comp-zalo4.jpeg" /></div><div class="cn">Tài khoản</div></div>
+</div>
+
+<h3>Cake by VPBank — Digital bank, không phải ví điện tử</h3>
+<div class="cg">
+  <div class="cc"><div class="ci"><img src="comp-cake1.jpeg" /></div><div class="cn">Tiết kiệm &mdash; dark mode</div></div>
+  <div class="cc"><div class="ci"><img src="comp-cake2.jpeg" /></div><div class="cn">Tài khoản &mdash; nặng</div></div>
+  <div class="cc"><div class="ci"><img src="comp-cake3.jpeg" /></div><div class="cn">Khoản vay</div></div>
+  <div class="cc"><div class="ci"><img src="comp-cake4.jpeg" /></div><div class="cn">Đầu tư chứng khoán</div></div>
+</div>
+
+<h3>Benchmark quốc tế — Mẫu VSP cần học</h3>
+<div class="cg">
+  <div class="cc"><div class="ci"><img src="comp-revolut1.png" /></div><div class="cn">Revolut Home &mdash; balance + wealth</div></div>
+  <div class="cc"><div class="ci"><img src="comp-revolut2.png" /></div><div class="cn">Revolut Invest &mdash; portfolio</div></div>
+  <div class="cc"><div class="ci"><img src="comp-revolut3.png" /></div><div class="cn">Revolut Crypto</div></div>
+  <div class="cc"><div class="ci"><img src="comp-revolut4.png" /></div><div class="cn">Revolut Lifestyle</div></div>
+</div>
+<div class="cg">
+  <div class="cc"><div class="ci"><img src="comp-monzo1.png" /></div><div class="cn">Monzo Home &mdash; clean feed</div></div>
+  <div class="cc"><div class="ci"><img src="comp-monzo2.png" /></div><div class="cn">Monzo Trends &mdash; analytics</div></div>
+  <div class="cc"><div class="ci"><img src="comp-monzo3.png" /></div><div class="cn">Monzo Extra</div></div>
+  <div class="cc"><div class="ci"><img src="comp-monzo4.png" /></div><div class="cn">Monzo Payments</div></div>
+  <div class="cc"><div class="ci"><img src="comp-monzo5.png" /></div><div class="cn">Monzo Help</div></div>
+</div>
+
+<h3>Benchmark: Revolut Invest Tab</h3>
+
+<table>
+  <tr><th>Chỉ số</th><th>Trước tab Invest (2018)</th><th>Sau tab Invest (2019+)</th><th>Nguồn</th></tr>
+  <tr><td>AUM</td><td>~50 triệu USD</td><td>500 triệu+ USD (gấp 10 lần)</td><td>Revolut S-1 filing</td></tr>
+  <tr><td>ARPU growth</td><td>+15%/năm</td><td>+35-40%/năm (wealth driven)</td><td>Investor deck</td></tr>
+  <tr><td>Churn D30</td><td>25%</td><td>20% (wealth users stickier)</td><td>Public reports</td></tr>
+  <tr><td>Tab adoption</td><td>&mdash;</td><td>30-40% users visit Invest/tháng</td><td>Product analytics</td></tr>
+</table>
+
+<div class="callout"><strong>Kết luận:</strong> Tab Tài chính riêng = highest ROI feature. Revolut chứng minh: tab riêng tăng AUM gấp 10 lần, ARPU wealth users gấp 2-3 lần payments-only, churn thấp hơn 20-30%.</div>
+
+<h3>Kênh bán: Banner (push) vs Widget (pull)</h3>
+
+<p>Ví điện tử tại Việt Nam là sản phẩm 100% online &mdash; app là kênh bán duy nhất. MoMo/ZaloPay dùng banner quảng cáo làm kênh bán chính. VSP vẫn dùng banner, nhưng <strong>ưu tiên widget tiện ích làm kênh discovery chính, hạn chế banner xuống tối đa 30%</strong>. Cả hai cùng tồn tại &mdash; widget dẫn dắt, banner bổ trợ.</p>
+
+<table>
+  <tr><th></th><th>MoMo / ZaloPay</th><th>VSP</th></tr>
+  <tr><td><strong>Kênh bán chính</strong></td><td>Banner quảng cáo (push)</td><td>Widget tiện ích (pull) + banner bổ trợ</td></tr>
+  <tr><td><strong>Ví dụ</strong></td><td>"Deal sốc Samsung -88%" chiếm 40% màn hình</td><td>Widget Thanh toán (Điện, Nước, Internet). Widget tài sản (yield 5,5%). Reminder hoá đơn. + 1 banner nhỏ đóng được.</td></tr>
+  <tr><td><strong>Kết quả</strong></td><td>Nhiều impression, ít chạm (banner blindness)</td><td>Widget: chạm nhiều hơn vì đúng nhu cầu. Banner: ít hơn nhưng vẫn có.</td></tr>
+  <tr><td><strong>Tỷ lệ quảng cáo</strong></td><td>60-80% viewport</td><td>Tối đa 30% viewport, 1 thẻ, đóng được</td></tr>
+</table>
+
+<p>VSP không bỏ banner &mdash; mà <strong>ưu tiên widget, hạn chế banner</strong>. MoMo banner CTR giảm 2-5 điểm phần trăm mỗi năm (Sensor Tower). Widget pull: tap-through 15-25% (vs banner 2-4%), conversion gấp 3-5 lần. Widget Thanh toán dẫn vào trả hoá đơn. Widget tài sản dẫn vào Sinh lời, Bất động sản. Reminder dẫn vào thanh toán tức thì. Banner vẫn có (tối đa 1 thẻ, 30% viewport) để bổ trợ. Kết quả: kênh bán hiệu quả hơn vì người dùng tự tìm đến, không bị ép.</p>
+
+<h3>Product Metrics: Đo hiệu quả kênh bán</h3>
+
+<table>
+  <tr><th>Category</th><th>Metric</th><th>Banner (push)</th><th>Widget (pull)</th></tr>
+  <tr><td rowspan="2"><strong>Conversion</strong></td><td>Tap-through rate</td><td>2-4%</td><td>15-25% (intent sẵn có)</td></tr>
+  <tr><td>Tap → transaction completion</td><td>5-10%</td><td>30-50%</td></tr>
+  <tr><td rowspan="2"><strong>Efficiency</strong></td><td>Revenue per Home impression</td><td>Thấp</td><td>Gấp 3-5 lần</td></tr>
+  <tr><td>Empty sessions (mở app, không làm gì)</td><td>Cao</td><td>Giảm (luôn có actionable info)</td></tr>
+  <tr><td rowspan="2"><strong>Retention</strong></td><td>Banner fatigue over time</td><td>Tap rate giảm dần</td><td>Ổn định (personalized data)</td></tr>
+  <tr><td>D30 retention</td><td>Baseline</td><td>+3-5 percentage points</td></tr>
+</table>
+
+<div class="callout"><strong>Ultimate metric:</strong> ARPU (Average Revenue Per User) tăng mà session duration không tăng &mdash; chứng minh hiệu quả hơn, không phải spam nhiều hơn.</div>
+
+<!-- Positioning Chart -->
+<div style="font-family:-apple-system,sans-serif; margin:16px 0; padding:20px; background:#fafafa; border-radius:14px;">
+  <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#999; margin-bottom:12px;">Định vị VSP</div>
+  <div style="position:relative; width:100%; height:220px; border-left:2px solid #ddd; border-bottom:2px solid #ddd;">
+    <div style="position:absolute; left:-80px; top:50%; transform:rotate(-90deg) translateX(50%); font-size:10px; font-weight:600; color:#bbb; white-space:nowrap;">Tài chính phức tạp &uarr;</div>
+    <div style="position:absolute; bottom:-22px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:600; color:#bbb;">Utility-first &rarr;</div>
+    <div style="position:absolute; left:12%; top:65%; font-size:10px; font-weight:600; color:#bbb; text-align:center;"><div style="width:8px; height:8px; border-radius:50%; background:#ccc; margin:0 auto 2px;"></div>MoMo</div>
+    <div style="position:absolute; left:25%; top:72%; font-size:10px; font-weight:600; color:#bbb; text-align:center;"><div style="width:8px; height:8px; border-radius:50%; background:#ccc; margin:0 auto 2px;"></div>ZaloPay</div>
+    <div style="position:absolute; left:50%; top:50%; font-size:10px; font-weight:600; color:#aaa; text-align:center;"><div style="width:8px; height:8px; border-radius:50%; background:#aaa; margin:0 auto 2px;"></div>Cake</div>
+    <div style="position:absolute; left:72%; top:8%; font-size:10px; font-weight:600; color:#888; text-align:center;"><div style="width:8px; height:8px; border-radius:50%; background:#888; margin:0 auto 2px;"></div>Revolut</div>
+    <div style="position:absolute; left:82%; top:40%; font-size:10px; font-weight:600; color:#888; text-align:center;"><div style="width:8px; height:8px; border-radius:50%; background:#888; margin:0 auto 2px;"></div>Monzo</div>
+    <div style="position:absolute; left:65%; top:20%; font-size:12px; font-weight:800; color:#111; text-align:center;"><div style="width:14px; height:14px; border-radius:50%; background:#111; margin:0 auto 3px;"></div>VSP</div>
+  </div>
+</div>
+
+<div class="dark-card" style="background:#111; color:#fff; border-radius:20px; padding:24px; margin:20px 0; font-family:-apple-system,sans-serif;">
+
+  <h3 style="color:#fff; margin:0 0 12px; font-size:17px; border:none; padding:0;">VSP khác biệt thế nào</h3>
+
+  <p style="color:rgba(255,255,255,0.7); font-size:13px; line-height:1.6; margin-bottom:16px;">VSP không đi theo MoMo (promo-heavy) hay ZaloPay (banner hero). VSP học từ Cake (clean UX, kênh bán hiệu quả) nhưng premium hơn về UI. Đặt giữa Revolut và Monzo &mdash; đủ chứa hệ sinh thái Vingroup, đủ đơn giản cho người dùng VN.</p>
+
+  <table style="margin:0; font-size:12px;">
+    <tr><th style="border-color:rgba(255,255,255,0.2); color:rgba(255,255,255,0.5);">Underserved needs</th><th style="border-color:rgba(255,255,255,0.2); color:rgba(255,255,255,0.5);">VSP chiếm bằng</th><th style="border-color:rgba(255,255,255,0.2); color:rgba(255,255,255,0.5);">Tại sao thắng</th></tr>
+    <tr><td style="border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.85);">Không có tab Tài chính riêng</td><td style="border-color:rgba(255,255,255,0.1); color:#fff;"><strong>Tab Tài chính:</strong> chart Robinhood-style + swipe product cards</td><td style="border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.6);">First mover VN. Revolut: tab riêng tăng AUM gấp 3-5 lần.</td></tr>
+    <tr><td style="border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.85);">Không portfolio view tổng tài sản</td><td style="border-color:rgba(255,255,255,0.1); color:#fff;"><strong>Dark card tổng</strong> + allocation bar + performance chart</td><td style="border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.6);">User thấy tổng tài sản 1 chỗ = niềm tin + stickiness.</td></tr>
+    <tr><td style="border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.85);">Home = marketplace quảng cáo</td><td style="border-color:rgba(255,255,255,0.1); color:#fff;"><strong>Home = financial dashboard.</strong> Widget pull + banner bổ trợ.</td><td style="border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.6);">Vingroup ecosystem = kênh bán tự nhiên.</td></tr>
+    <tr><td style="border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.85);">Không có UI premium cho sản phẩm tài chính</td><td style="border-color:rgba(255,255,255,0.1); color:#fff;"><strong>Premium aesthetics:</strong> trắng/đen, chart, card-based.</td><td style="border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.6);">BĐS, BH đòi hỏi UI xứng tầm.</td></tr>
+  </table>
+
+  <div style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.15); font-size:12px; color:rgba(255,255,255,0.6); line-height:1.6;">
+    <strong style="color:#fff;">UI Aesthetics = Trust Engine.</strong> Khi người dùng đặt 20 triệu đồng vào BĐS mã hoá hoặc mua BH, họ cần app mà họ tin. MoMo/ZaloPay dùng đỏ/vàng + banner &rarr; thiếu trust. VSP dùng trắng/đen Vingroup, spacing rộng, chart Robinhood-style &rarr; cảm giác "app quốc tế". Revolut: wealth users ARPU gấp 2-3 lần payments-only.
+  </div>
+
+</div>
+
+<h3>Nguồn dữ liệu</h3>
+
+<p style="font-family:-apple-system,sans-serif; font-size:11px; color:#999; line-height:1.6;">
+<strong>Primary:</strong>
+<a href="https://sbv.gov.vn" style="color:#999">SBV Regulations</a> &middot;
+<a href="https://www.revolut.com/investors" style="color:#999">Revolut Investor Relations</a> &middot;
+<a href="https://grab.com/vn/news" style="color:#999">Grab Financial</a> &middot;
+<a href="https://vpbank.com.vn/en/investor-relations" style="color:#999">VPBank Investor Relations</a> &middot;
+<a href="https://momo.vn/tin-tuc" style="color:#999">MoMo Press Center</a> &middot;
+<a href="https://zalopay.vn" style="color:#999">ZaloPay Official</a>
+<br>
+<strong>Secondary:</strong>
+<a href="https://techcrunch.com/tag/vietnam-fintech" style="color:#999">TechCrunch Vietnam</a> &middot;
+<a href="https://sensortower.com" style="color:#999">Sensor Tower</a> &middot;
+<a href="https://data.ai" style="color:#999">App Annie / data.ai</a> &middot;
+<a href="https://www.sec.gov" style="color:#999">SEC Filings (Revolut S-1)</a> &middot;
+<a href="https://english.luatphapluat.vn" style="color:#999">Vietnam Government Decrees</a>
+<br>
+<em>Disclaimer: Số liệu proprietary (ARPU, churn nội bộ) ước tính từ industry benchmarks, không phải dữ liệu chính thức.</em>
+</p>
+
+<!-- ═══ 4. NGƯỜI DÙNG ═══ -->
+<span class="sn">4</span>
+<h2 id="s4">Nghiên cứu người dùng</h2>
+
+<h3>3 nhu cầu cốt lõi (Jobs-to-be-Done)</h3>
+
+<table>
+  <tr><th>Nhu cầu</th><th>Phát biểu</th><th>Tần suất</th><th>Vấn đề v1.0.6</th><th>Giải pháp</th></tr>
+  <tr><td><strong>Daily usage</strong></td><td>Chuyển/Nạp/Rút &le;3 chạm</td><td>5-10/tuần</td><td>Chuyển tiền ở tab riêng, khó tìm vì user quen tìm ở Home</td><td>Quick actions Trang chủ</td></tr>
+  <tr><td><strong>Thanh toán</strong></td><td>Tìm nhà cung cấp, trả 1 chỗ</td><td>3-5/tháng</td><td>20 dịch vụ mới, 1 banner</td><td>Tab Thanh toán (lưới icon)</td></tr>
+  <tr><td><strong>Đầu tư &amp; Bảo vệ</strong></td><td>Sinh lời, bảo vệ tài sản</td><td>2-4/tháng</td><td>Không điểm đến; balance lớn không biết có Sinh lời</td><td>Tab Tài chính + Widget tài sản</td></tr>
+</table>
+
+
+<!-- ═══ 5. HIỆN TRẠNG (cuối — đánh giá cụ thể VSP) ═══ -->
+<span class="sn">5</span>
+<h2 id="s5">Phân tích hiện trạng</h2>
+
+<table>
+  <tr><th>Tab</th><th>Tần suất</th><th>Vấn đề</th><th>Quyết định</th></tr>
+  <tr><td><strong>Trang chủ</strong></td><td>Mỗi phiên</td><td>Thiếu widget tài sản, thiếu Chuyển tiền ở quick actions</td><td>Giữ + nâng cấp</td></tr>
+  <tr><td><strong>Chuyển tiền</strong></td><td>2-3/tuần</td><td>User khó tìm vì Chuyển tiền nằm ở tab riêng, lệch với suy nghĩ tự nhiên (ngang hàng Nạp/Rút)</td><td><strong>&rarr; Thanh toán</strong></td></tr>
+  <tr><td><strong>Giao dịch</strong></td><td>1-2/tuần</td><td>Lịch sử = ngữ cảnh ví</td><td><strong>Gộp vào Trang chủ</strong></td></tr>
+  <tr><td><strong>Tài khoản</strong></td><td>1/tháng</td><td>Người dùng chỉ mở khoảng 1 lần/tháng (đổi mật khẩu, cập nhật thông tin)</td><td><strong>&rarr; Avatar</strong></td></tr>
+</table>
+
+<!-- ═══ 6 ═══ -->
+<span class="sn">6</span>
+<h2 id="s6">Kiến trúc thông tin đề xuất</h2>
+
+<blockquote>V-Smart Pay là nền tảng tài chính cá nhân tích hợp hệ sinh thái Vingroup. Tiện ích trước, quảng cáo sau. Hiển thị dần theo hành vi. Giao diện tạo niềm tin.</blockquote>
+
+<h3>4 quyết định</h3>
+
+<table>
+  <tr><th>Quyết định</th><th>Vấn đề giải quyết</th><th>Đối thủ đã validate</th><th>Rào chắn</th></tr>
+  <tr><td>Chuyển tiền &rarr; <strong>Thanh toán</strong></td><td>User khó tìm vì Chuyển tiền nằm ở tab riêng, lệch với suy nghĩ tự nhiên (ngang hàng Nạp/Rút); 20 dịch vụ không có chỗ</td><td>Revolut gộp Payments tab</td><td>Chuyển tiền vẫn 1 chạm từ Trang chủ</td></tr>
+  <tr><td>Tài khoản &rarr; <strong>Tài chính</strong> + Profile lên avatar</td><td>Tài khoản dùng 1 lần/tháng; 6 sản phẩm tài chính không có điểm đến</td><td>Cash App / Revolut / Monzo dùng avatar. Cash App thêm Invest khi đủ nội dung.</td><td>Gộp 2 thay đổi → educate user 1 lần duy nhất</td></tr>
+  <tr><td>Giao dịch &rarr; <strong>Ưu đãi</strong></td><td>Lịch sử = ngữ cảnh ví, không phải destination. V-Point + voucher cần nhà.</td><td>ZaloPay tab Ưu đãi giữ chân tốt. Monzo gộp lịch sử vào account.</td><td>Lịch sử gộp vào chạm thẻ ví Trang chủ</td></tr>
+  <tr><td><strong>Widget tài sản</strong> trên Trang chủ</td><td>Sản phẩm tài chính khó khám phá</td><td>Revolut Total Wealth widget</td><td>Chỉ hiện khi đã kích hoạt sản phẩm tài chính</td></tr>
+</table>
+
+<h3>Lộ trình điều hướng &amp; Triển khai</h3>
+
+<div class="ne">
+  <div class="nr"><div class="np">Hiện tại</div><div class="nt k">Trang chủ</div><div class="nt k">Chuyển tiền</div><div class="nt q">QR</div><div class="nt k">Giao dịch</div><div class="nt k">Tài khoản</div></div>
+</div>
+<div class="callout" style="border-color:#ddd; margin:6px 0;">
+  <strong>GĐ1 — 30/04:</strong> Chuyển tiền &rarr; Thanh toán. Chuyển tiền lên quick actions. Thêm reminder hoá đơn + widget Thanh toán 2 cột + nút Sinh lời. Tooltip educate khi chạm vị trí cũ.
+</div>
+<div class="ne">
+  <div class="nr"><div class="np a">GĐ1 — 30/04</div><div class="nt k">Trang chủ</div><div class="nt n">Thanh toán</div><div class="nt q">QR</div><div class="nt k">Giao dịch</div><div class="nt k">Tài khoản</div></div>
+</div>
+<div class="callout" style="border-color:#ddd; margin:6px 0;">
+  <strong>GĐ2 — 30/09:</strong> Tài khoản &rarr; Tài chính + Profile lên avatar. Gộp 2 thay đổi, educate 1 lần. Widget tài sản xuất hiện trên Trang chủ (behavioral). Tab Tài chính: chart + swipe cards + list.
+</div>
+<div class="ne">
+  <div class="nr"><div class="np a">GĐ2 — 30/09</div><div class="nt k">Trang chủ</div><div class="nt k">Thanh toán</div><div class="nt q">QR</div><div class="nt k">Giao dịch</div><div class="nt n">Tài chính</div></div>
+</div>
+<div class="callout" style="border-color:#ddd; margin:6px 0;">
+  <strong>GĐ3 — 31/12:</strong> Giao dịch &rarr; Ưu đãi. Lịch sử gộp vào chạm thẻ ví. V-Point + voucher + hệ sinh thái + giới thiệu bạn. Tooltip educate khi chạm vị trí cũ.
+</div>
+<div class="ne">
+  <div class="nr"><div class="np a">GĐ3 — 31/12</div><div class="nt k">Trang chủ</div><div class="nt k">Thanh toán</div><div class="nt q">QR</div><div class="nt n">Ưu đãi</div><div class="nt k">Tài chính</div></div>
+</div>
+
+<h3>5 nguyên tắc thiết kế</h3>
+
+<table>
+  <tr><th>#</th><th>Nguyên tắc</th><th>Nghĩa là gì</th><th>Ví dụ cụ thể</th></tr>
+  <tr><td>1</td><td><strong>70% tiện ích, 30% quảng cáo</strong></td><td>Trang chủ ưu tiên hiển thị công cụ người dùng cần (số dư, thanh toán nhanh, tài sản). Quảng cáo giới hạn tối đa 1 thẻ, đóng được.</td><td>MoMo làm ngược (70% quảng cáo) &rarr; người dùng lướt qua, không chạm.</td></tr>
+  <tr><td>2</td><td><strong>Hiển thị dần theo hành vi</strong></td><td>Không hiện hết tính năng cho người mới. Tính năng nâng cao chỉ xuất hiện khi người dùng đã thực sự sử dụng sản phẩm liên quan.</td><td>Widget tài sản chỉ hiện sau khi người dùng kích hoạt Sinh lời hoặc mua Bảo hiểm lần đầu.</td></tr>
+  <tr><td>3</td><td><strong>Mỗi tab phục vụ 1 mục đích</strong></td><td>Người dùng mở app với 1 trong 3 ý định: xem nhanh (Trang chủ), trả tiền (Thanh toán), hoặc quản lý tài sản (Tài chính). Mỗi tab map đúng 1 ý định.</td><td>Không nhồi thanh toán hoá đơn + đầu tư vào cùng 1 tab.</td></tr>
+  <tr><td>4</td><td><strong>Giao diện đẹp = Niềm tin</strong></td><td>Khi người dùng đặt tiền vào bất động sản mã hoá hoặc mua bảo hiểm, họ cần cảm giác app đáng tin. Giao diện sạch, khoảng trắng rộng, chữ rõ ràng tạo niềm tin đó.</td><td>MoMo/ZaloPay dùng đỏ/vàng + banner lộn xộn &rarr; khó bán sản phẩm tài chính cần trust.</td></tr>
+  <tr><td>5</td><td><strong>Thay đổi an toàn, không phá vỡ thói quen</strong></td><td>Mỗi lần chỉ đổi 1 tab. Mọi hành động cũ giữ nguyên số lần chạm. Nếu người dùng chạm nhầm vị trí cũ, app tự hiện hướng dẫn.</td><td>Chuyển tiền chuyển sang quick action Trang chủ &rarr; vẫn 1 chạm như trước.</td></tr>
+</table>
+
+<h3>Bố cục Trang chủ — 70/30 + Widget tài sản</h3>
+
+<table>
+  <tr><th>Vùng</th><th>Nội dung</th><th>Quy tắc</th></tr>
+  <tr><td><strong>Thẻ ví</strong></td><td>Số dư ví + Sinh lời CTA (GĐ1 — 30/04) hoặc status (GĐ2 — 30/09+)</td><td>Chỉ số dư ví. Tách biệt widget tài sản.</td></tr>
+  <tr><td><strong>Quick actions</strong></td><td>Nạp/Rút · Chuyển tiền · Nhận tiền · Lịch sử</td><td>4 icon. 2 chạm đến hành động.</td></tr>
+  <tr><td><strong>Reminder</strong></td><td>Hoá đơn sắp hạn</td><td>Chỉ hiện khi có bill saved.</td></tr>
+  <tr><td><strong>Widget tài sản</strong></td><td>Tài sản đầu tư + phân rã (Sinh lời, Bất động sản, Chứng chỉ quỹ)</td><td>Behavioral: hiện khi &ge;1 sản phẩm active. Chạm &rarr; Tab Tài chính.</td></tr>
+  <tr><td><strong>Widget Thanh toán</strong></td><td>Lưới 2 cột (mẫu OKX)</td><td>Container xám + thẻ trắng bên trong.</td></tr>
+  <tr><td><strong>Quảng cáo</strong></td><td>1 thẻ, đóng được</td><td>Giới hạn cứng 30%.</td></tr>
+</table>
+
+<h3>Cây kiến trúc (Quý 4)</h3>
+
+<div style="margin:12px 0">
+  <div><span class="ia ia-0">Trang chủ</span></div>
+  <div><span class="ia ia-2">Thẻ ví (số dư + Sinh lời) · Quick actions · Reminder · Widget tài sản · Widget Thanh toán · Quảng cáo</span></div>
+</div>
+<div style="margin:12px 0">
+  <div><span class="ia ia-0">Thanh toán</span></div>
+  <div><span class="ia ia-2">Tìm kiếm · Danh mục · Lưới 10 dịch vụ · Sắp đến hạn · Đã lưu</span></div>
+</div>
+<div style="margin:12px 0">
+  <div><span class="ia ia-0">QR</span> <span class="ia ia-0">Tài chính</span> <span class="ia ia-0">Ưu đãi</span> <span class="ia ia-0">Tài khoản (avatar)</span></div>
+  <div><span class="ia ia-2">Tài chính: Sinh lời · Bất động sản · Bảo hiểm · Chứng chỉ quỹ · Ví trả sau · Vay VinFast</span></div>
+  <div><span class="ia ia-2">Ưu đãi: V-Point · Voucher · Hệ sinh thái · Giới thiệu bạn</span></div>
+</div>
+
+<!-- ═══ 8 ═══ -->
+<span class="sn">8</span>
+<h2 id="s8">Wireframe &amp; Thiết kế</h2>
+
+<!-- GĐ1 -->
+<h3>Giai đoạn 1 — 30/04/2026</h3>
+<p>Trang chủ · <strong>Thanh toán ★</strong> · QR · Giao dịch · Tài khoản</p>
+
+<div class="wr">
+  <div class="wf">
+    <div class="wl">Trang chủ</div>
+    <div class="wb"><img src="wire-home-p1.png?v=10" alt="Trang chủ" /></div>
+  </div>
+  <div class="wf">
+    <div class="wl">Thanh toán ★</div>
+    <div class="wb"><img src="wire-tab-tt.png?v=10" alt="Thanh toán" /></div>
+  </div>
+  <div class="wf">
+    <div class="wl">QR</div>
+    <div class="wb"><img src="wire-tab-qr.png?v=10" alt="QR" /></div>
+  </div>
+  <div class="wf">
+    <div class="wl">Giao dịch</div>
+    <div class="wb"><img src="old-giaodich.jpeg" alt="Giao dịch" /></div>
+  </div>
+  <div class="wf">
+    <div class="wl">Tài khoản</div>
+    <div class="wb"><img src="old-taikhoan.jpeg" alt="Tài khoản" /></div>
+  </div>
+</div>
+
+<!-- GĐ2 -->
+<h3>Giai đoạn 2 — 30/09/2026</h3>
+<p>Trang chủ (+ avatar) · Thanh toán · QR · Giao dịch · <strong>Tài chính ★</strong></p>
+
+<div class="wr">
+  <div class="wf">
+    <div class="wl">Trang chủ + avatar</div>
+    <div class="wb"><img src="wire-home-p2.png?v=10" alt="Trang chủ" /></div>
+  </div>
+  <div class="wf">
+    <div class="wl">Thanh toán</div>
+    <div class="wb"><img src="wire-tab-tt.png?v=10" alt="Thanh toán" /></div>
+  </div>
+  <div class="wf">
+    <div class="wl">QR</div>
+    <div class="wb"><img src="wire-tab-qr.png?v=10" alt="QR" /></div>
+  </div>
+  <div class="wf">
+    <div class="wl">Giao dịch (giữ)</div>
+    <div class="wb"><img src="old-giaodich.jpeg" alt="Giao dịch" /></div>
+  </div>
+  <div class="wf">
+    <div class="wl">Tài chính ★</div>
+    <div class="wb"><img src="wire-tab-tc.png?v=10" alt="Tài chính" /></div>
+  </div>
+</div>
+
+<!-- GĐ3 -->
+<h3>Giai đoạn 3 — 31/12/2026</h3>
+<p>Trang chủ · Thanh toán · QR · <strong>Ưu đãi ★</strong> · Tài chính &mdash; Lịch sử gộp vào Trang chủ</p>
+
+<div class="wr">
+  <div class="wf">
+    <div class="wl">Trang chủ</div>
+    <div class="wb"><img src="wire-home-p3.png?v=10" alt="Trang chủ" /></div>
+  </div>
+  <div class="wf">
+    <div class="wl">Thanh toán</div>
+    <div class="wb"><img src="wire-tab-tt.png?v=10" alt="Thanh toán" /></div>
+  </div>
+  <div class="wf">
+    <div class="wl">QR</div>
+    <div class="wb"><img src="wire-tab-qr.png?v=10" alt="QR" /></div>
+  </div>
+  <div class="wf">
+    <div class="wl">Ưu đãi ★</div>
+    <div class="wb"><img src="wire-tab-ud.png?v=10" alt="Ưu đãi" /></div>
+  </div>
+  <div class="wf">
+    <div class="wl">Tài chính</div>
+    <div class="wb"><img src="wire-tab-tc.png?v=10" alt="Tài chính" /></div>
+  </div>
+</div>
+
+<h3>Home — Information Design</h3>
+
+<div style="font-family:-apple-system,sans-serif; max-width:400px; margin:16px auto; border:2px solid #111; border-radius:28px; overflow:hidden; background:#fff;">
+
+  <!-- Status bar mock -->
+  <div style="padding:8px 20px 0; display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:#111;">
+    <span>9:41</span><span>&#9632;&#9632;&#9632;</span>
+  </div>
+
+  <!-- 1. Ví + Daily actions -->
+  <div style="margin:8px 16px; background:#111; color:#fff; border-radius:20px; padding:16px;">
+    <div style="font-size:10px; opacity:0.5;">&#x1F4B0; VÍ &amp; DAILY ACTIONS</div>
+    <div style="font-size:22px; font-weight:800; margin:4px 0;">14.328.000 đ</div>
+    <div style="font-size:10px; opacity:0.6;">Sinh lời: 5.000.000 đ &middot; +12.500 đ hôm nay</div>
+    <div style="margin-top:10px; display:flex; gap:6px;">
+      <div style="flex:1; background:rgba(255,255,255,0.15); border-radius:8px; padding:6px; text-align:center; font-size:9px; font-weight:600;">Nạp/Rút</div>
+      <div style="flex:1; background:rgba(255,255,255,0.15); border-radius:8px; padding:6px; text-align:center; font-size:9px; font-weight:600;">Chuyển</div>
+      <div style="flex:1; background:rgba(255,255,255,0.15); border-radius:8px; padding:6px; text-align:center; font-size:9px; font-weight:600;">Nhận</div>
+      <div style="flex:1; background:rgba(255,255,255,0.15); border-radius:8px; padding:6px; text-align:center; font-size:9px; font-weight:600;">Lịch sử</div>
+    </div>
+  </div>
+
+  <!-- 2. Reminder -->
+  <div style="margin:8px 16px; background:#f8f8f8; border-radius:14px; padding:10px 14px; display:flex; align-items:center; gap:8px;">
+    <span style="font-size:16px;">&#x1F514;</span>
+    <div style="flex:1;">
+      <div style="font-size:10px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px;">REMINDER</div>
+      <div style="font-size:11px; font-weight:600;">EVN Hà Nội &middot; 380K &middot; Hạn 15/04</div>
+    </div>
+    <div style="font-size:10px; font-weight:700;">Trả</div>
+  </div>
+
+  <!-- 3. Widget kênh bán -->
+  <div style="margin:8px 16px; border:1.5px solid #eee; border-radius:14px; padding:10px 14px;">
+    <div style="font-size:10px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px;">&#x1F6D2; WIDGET KÊNH BÁN</div>
+    <div style="display:flex; gap:6px;">
+      <div style="flex:1; background:#f8f8f8; border-radius:8px; padding:6px; text-align:center;">
+        <div style="font-size:12px;">&#x26A1;</div>
+        <div style="font-size:9px; font-weight:600;">Điện</div>
+      </div>
+      <div style="flex:1; background:#f8f8f8; border-radius:8px; padding:6px; text-align:center;">
+        <div style="font-size:12px;">&#x1F4B0;</div>
+        <div style="font-size:9px; font-weight:600;">Sinh lời</div>
+      </div>
+      <div style="flex:1; background:#f8f8f8; border-radius:8px; padding:6px; text-align:center;">
+        <div style="font-size:12px;">&#x1F3E0;</div>
+        <div style="font-size:9px; font-weight:600;">BĐS</div>
+      </div>
+      <div style="flex:1; background:#f8f8f8; border-radius:8px; padding:6px; text-align:center;">
+        <div style="font-size:12px;">&#x1F6E1;</div>
+        <div style="font-size:9px; font-weight:600;">BH</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Widget tiện ích -->
+  <div style="margin:8px 16px; border:1.5px solid #eee; border-radius:14px; padding:10px 14px;">
+    <div style="font-size:10px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px;">&#x1F4CA; WIDGET TIỆN ÍCH</div>
+    <div style="display:flex; gap:8px;">
+      <div style="flex:1; background:#f8f8f8; border-radius:8px; padding:8px;">
+        <div style="font-size:9px; color:#888;">Tài sản đầu tư</div>
+        <div style="font-size:13px; font-weight:800;">25.000.000 đ</div>
+        <div style="font-size:9px; color:#888;">SL 5tr &middot; BĐS 20tr</div>
+      </div>
+      <div style="flex:1; background:#f8f8f8; border-radius:8px; padding:8px;">
+        <div style="font-size:9px; color:#888;">Chi tiêu tháng</div>
+        <div style="font-size:13px; font-weight:800;">3.200.000 đ</div>
+        <div style="font-size:9px; color:#888;">&#x1F7E2; Trong ngân sách</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. History -->
+  <div style="margin:8px 16px 16px; border-top:1px solid #eee; padding-top:10px;">
+    <div style="font-size:10px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px;">&#x1F4CB; LỊCH SỬ GIAO DỊCH</div>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 0; font-size:11px;">
+      <span style="font-weight:600;">Công ty Điện lực HN</span>
+      <span style="color:#888;">-380.000 đ</span>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 0; font-size:11px; border-top:1px solid #f5f5f5;">
+      <span style="font-weight:600;">Hồ Thị Minh Anh</span>
+      <span style="color:#888;">-100.000 đ</span>
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <div style="border-top:1px solid #eee; padding:8px 0 12px; display:flex; justify-content:space-around; font-size:9px; font-weight:600; color:#999;">
+    <span style="color:#111;">&#9679; Trang chủ</span>
+    <span>Thanh toán</span>
+    <span>QR</span>
+    <span>Giao dịch</span>
+    <span>Tài khoản</span>
+  </div>
+</div>
+
+<table>
+  <tr><th>#</th><th>Vùng</th><th>Mục đích</th><th>Loại</th></tr>
+  <tr><td>1</td><td><strong>&#x1F4B0; Ví &amp; Daily actions</strong></td><td>Số dư + Sinh lời + Quick actions (Nạp/Rút, Chuyển, Nhận, Lịch sử)</td><td>Core &mdash; luôn hiện</td></tr>
+  <tr><td>2</td><td><strong>&#x1F514; Reminder</strong></td><td>Hoá đơn sắp hạn, thông báo quan trọng</td><td>Communication &mdash; hiện khi có data</td></tr>
+  <tr><td>3</td><td><strong>&#x1F6D2; Widget kênh bán</strong></td><td>Thanh toán (Điện/Nước), Đầu tư (Sinh lời/BĐS), Bảo hiểm</td><td>Pull channel &mdash; dẫn vào luồng mua</td></tr>
+  <tr><td>4</td><td><strong>&#x1F4CA; Widget tiện ích</strong></td><td>Tổng tài sản đầu tư, theo dõi chi tiêu, cổ phiếu</td><td>Behavioral &mdash; hiện khi đã kích hoạt sản phẩm</td></tr>
+  <tr><td>5</td><td><strong>&#x1F4CB; Lịch sử giao dịch</strong></td><td>Giao dịch gần đây (3 mục)</td><td>Context &mdash; luôn hiện</td></tr>
+</table>
+
+<h3>Information Architecture — Tổng quan</h3>
+
+<table>
+  <tr><th>Tab</th><th>Nhu cầu (JTBD)</th><th>Nội dung chính</th><th>Kênh bán (pull)</th><th>Product Metric</th></tr>
+  <tr><td><strong>Trang chủ</strong></td><td>Daily usage — xem nhanh</td><td>Thẻ ví + Quick actions + Reminder + Widget tài sản + Widget Thanh toán</td><td>Widget = discovery engine (tap-through 15-25%)</td><td>Widget tap-through rate</td></tr>
+  <tr><td><strong>Thanh toán</strong></td><td>Thanh toán — trả cho ai đó</td><td>Sắp đến hạn + Đã lưu + Hoá đơn grid + Vé grid</td><td>Reminder hoá đơn → trả ngay (1-2 chạm)</td><td>Số dịch vụ / người dùng / tháng</td></tr>
+  <tr><td><strong>QR</strong></td><td>Daily usage — nhận/gửi</td><td>Nhận tiền (VietQR) + Quét mã</td><td>QR = kênh acquisition (merchant scan)</td><td>QR scan success rate</td></tr>
+  <tr><td><strong>Tài chính</strong></td><td>Đầu tư &amp; Bảo vệ — tiền sinh lời</td><td>Portfolio chart + Swipe cards (Sinh lời, BĐS, CCQ) + List (BH, Trả sau, Vay)</td><td>Chart + cards = pull vào hành động (Nạp thêm, Mua)</td><td>Tỷ lệ kích hoạt sản phẩm + AUM</td></tr>
+  <tr><td><strong>Ưu đãi</strong></td><td>Tiết kiệm khi chi tiêu</td><td>V-Point + Ưu đãi nổi bật + Deals hệ sinh thái + Giới thiệu bạn</td><td>V-Point = loop (chi tiêu → tích điểm → đổi → chi tiêu)</td><td>Redemption rate + Referral conversion</td></tr>
+</table>
+
+
+<div class="callout"><strong>Tại sao IA này hiệu quả:</strong> Mỗi tab map đúng 1 nhu cầu (JTBD). Trang chủ = financial dashboard (không phải marketplace quảng cáo). Widget dẫn dắt người dùng vào hành động tự nhiên (pull) thay vì banner ép (push). Tab Tài chính = nơi duy nhất quản lý tài sản → tăng AUM + stickiness. Tất cả kết nối: widget Trang chủ → tab chi tiết → hành động → quay về Trang chủ thấy tài sản tăng.</div>
+
+<!-- ═══ 9 ═══ -->
+<span class="sn">9</span>
+<h2 id="s9">Chỉ số thành công</h2>
+
+<p><strong>North Star: MATU (Monthly Active Transacting Users)</strong> &mdash; Số người dùng thực hiện ít nhất 1 giao dịch mỗi tháng. Đo hành vi thực tế, gắn trực tiếp doanh thu. Không dùng MAU (mở app nhưng không giao dịch) hay TPV (bị lệch bởi người dùng lớn).</p>
+
+<table>
+  <tr><th>Thành phần</th><th>Tác động</th><th>Chỉ báo sớm</th></tr>
+  <tr><td><strong>Trang chủ</strong></td><td>Cross-sell qua widget</td><td>Tỷ lệ chạm widget tăng</td></tr>
+  <tr><td><strong>Thanh toán</strong></td><td>Tăng tần suất giao dịch</td><td>Số dịch vụ/người dùng tăng</td></tr>
+  <tr><td><strong>Tài chính</strong></td><td>Tăng tài sản quản lý</td><td>Tỷ lệ kích hoạt tăng</td></tr>
+  <tr><td><strong>Ưu đãi</strong></td><td>Giữ chân + doanh thu đối tác</td><td>Tỷ lệ đổi voucher tăng</td></tr>
+</table>
+
+
+<!-- ═══ 10 ═══ -->
+<span class="sn">11</span>
+<h2 id="s11">Phụ lục</h2>
+
+<table>
+  <tr><th>Thuật ngữ</th><th>Ý nghĩa</th></tr>
+  <tr><td>MATU</td><td>Người dùng giao dịch hàng tháng</td></tr>
+  <tr><td>Progressive disclosure</td><td>Hiển thị dần tính năng theo hành vi</td></tr>
+  <tr><td>Behavioral graduation</td><td>Giao diện tự nâng cấp dựa trên hành vi</td></tr>
+  <tr><td>RWA</td><td>Tài sản thực token hoá (bất động sản, chứng chỉ quỹ)</td></tr>
+  <tr><td>Widget tài sản</td><td>Thẻ tổng quan tài sản đầu tư trên Trang chủ, tách biệt số dư ví</td></tr>
+  <tr><td>Rage tap</td><td>Chạm liên tục vị trí cũ do nhầm sau thay đổi điều hướng</td></tr>
+</table>
+
+<div class="fn">V-Smart Pay IA 2026 &mdash; Version 4.1 &mdash; Premium UX Strategic Proposal &mdash; 22/03/2026 &mdash; Mật &mdash; Vingroup Financial Technology</div>
+
+</body>
+</html>
