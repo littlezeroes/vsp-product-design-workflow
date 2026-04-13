@@ -1,12 +1,3 @@
 {
-  "mcpServers": {
-    "obsidian": {
-      "type": "stdio",
-      "command": "obsidian-mcp",
-      "args": [
-        "/Users/huykieu/Documents/vsp-docs"
-      ],
-      "env": {}
-    }
-  }
+  "mcpServers": {}
 }
