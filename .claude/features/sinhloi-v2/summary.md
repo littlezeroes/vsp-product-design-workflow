@@ -129,3 +129,6 @@
 - **TypeScript:** No errors
 - **Routes:** 16 pages + 1 states page = 17 routes
 - **Mock data:** Vietnamese realistic (VND amounts, names, phone numbers)
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-v2/status|sinhloi-v2]]

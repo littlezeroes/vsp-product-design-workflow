@@ -56,3 +56,6 @@ Log task nhanh cho team qua Telegram. Parse message, goi API, xac nhan.
 cp -r .claude/skills/* ~/.openclaw/workspace/skills/
 openclaw gateway restart
 ```
+
+---
+Back: [[agents/index|Agents]]

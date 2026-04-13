@@ -1,0 +1,148 @@
+{
+  "$schema": "vsp-registry/1.0",
+  "name": "VSP Design System",
+  "description": "V-Smart Pay mobile-first component registry — monochrome, token-based",
+  "framework": "next",
+  "styling": "tailwind-v4-css",
+  "tokenFile": "app/globals.css",
+  "baseWidth": 390,
+
+  "layout": {
+    "contentPadding": "px-[22px]",
+    "sectionTitleSpacing": "pt-[24px] pb-[12px]",
+    "sectionGap": "gap-[16px]",
+    "elementGap": "gap-[8px]",
+    "cardGap": "gap-[12px]",
+    "screenWrapper": "relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col",
+    "scrollContent": "flex-1 overflow-y-auto",
+    "homeIndicator": "w-[139px] h-[5px] rounded-full bg-foreground"
+  },
+
+  "typography": {
+    "heading-l":  { "class": "text-xl font-semibold leading-8",  "size": 24, "weight": 600, "lineHeight": 32, "use": "Result screens, large titles" },
+    "title-m":    { "class": "text-lg font-semibold leading-6",  "size": 20, "weight": 600, "lineHeight": 24, "use": "Hero, product name" },
+    "title-s":    { "class": "text-md font-semibold leading-6",  "size": 16, "weight": 600, "lineHeight": 24, "use": "Section title, button" },
+    "title-xs":   { "class": "text-sm font-semibold leading-5",  "size": 14, "weight": 600, "lineHeight": 20, "use": "Card title, label" },
+    "body-m":     { "class": "text-md font-normal leading-6",    "size": 16, "weight": 400, "lineHeight": 24, "use": "Body text" },
+    "body-s":     { "class": "text-sm font-normal leading-5",    "size": 14, "weight": 400, "lineHeight": 20, "use": "Secondary text" },
+    "body-xs":    { "class": "text-xs font-normal leading-5",    "size": 12, "weight": 400, "lineHeight": 20, "use": "Help text" },
+    "caption-m":  { "class": "text-xs font-medium leading-5",    "size": 12, "weight": 500, "lineHeight": 20, "use": "Footnotes" },
+    "caption-s":  { "class": "text-[10px] font-medium leading-4","size": 10, "weight": 500, "lineHeight": 16, "use": "Date badge" }
+  },
+
+  "colors": {
+    "foreground":           { "light": "#080808", "dark": "#ffffff", "use": "Primary text, icons" },
+    "foreground-secondary": { "light": "#262626", "dark": "#a1a1a1", "use": "Secondary text" },
+    "background":           { "light": "#ffffff", "dark": "#080808", "use": "Page background" },
+    "secondary":            { "light": "#f3f3f3", "dark": "#262626", "use": "Card surfaces, section bg" },
+    "success":              { "light": "#00b182", "dark": "#00dda3", "use": "Success states" },
+    "danger":               { "light": "#eb002b", "dark": "#ef3355", "use": "Error states" },
+    "border":               { "light": "#e5e5e5", "dark": "#262626", "use": "Borders, dividers" }
+  },
+
+  "components": {
+    "button": {
+      "file": "components/ui/button.tsx",
+      "figmaNode": "3549:5585",
+      "variants": { "variant": ["primary", "secondary", "surface"], "intent": ["default", "danger"], "size": ["48", "32"] },
+      "props": ["isLoading", "leftIcon", "disabled"],
+      "defaults": { "variant": "primary", "size": "48" },
+      "rules": ["Max 1 primary per screen", "Size 48 for main CTA, 32 for secondary actions"],
+      "usage": "<Button variant=\"primary\">Label</Button>"
+    },
+    "button-group": {
+      "file": "components/ui/button-group.tsx",
+      "usage": "<ButtonGroup><Button variant=\"secondary\">Cancel</Button><Button variant=\"primary\">Confirm</Button></ButtonGroup>"
+    },
+    "header": {
+      "file": "components/ui/header.tsx",
+      "figmaNode": "3922:994",
+      "variants": { "variant": ["default", "large-title"] },
+      "props": ["title", "largeTitle", "onBack", "rightAction"],
+      "rules": ["large-title variant: page name in largeTitle prop, NOT title", "Always use ChevronLeft for back"],
+      "usage": "<Header variant=\"large-title\" largeTitle=\"Page Name\" onBack={() => router.back()} />"
+    },
+    "text-field": {
+      "file": "components/ui/text-field.tsx",
+      "figmaNode": "5256:8737",
+      "height": 58,
+      "radius": "rounded-14",
+      "props": ["label", "placeholder", "error", "type", "value", "onChange"],
+      "usage": "<TextField label=\"Email\" placeholder=\"example@email.com\" />"
+    },
+    "checkbox": {
+      "file": "components/ui/checkbox.tsx",
+      "figmaNode": "4608:7076",
+      "size": 24,
+      "radius": "rounded-8",
+      "usage": "<Checkbox checked={v} onCheckedChange={setV}>Label text</Checkbox>"
+    },
+    "item-list": {
+      "file": "components/ui/item-list.tsx",
+      "figmaNode": "5120:11342",
+      "props": ["children"],
+      "rules": ["Values/metadata always text-right", "Row height 44-72px"],
+      "usage": "<ItemList><ItemListItem label=\"Name\" value=\"John\" /><ItemListItem label=\"Amount\" value=\"100,000đ\" /></ItemList>"
+    },
+    "dialog": {
+      "file": "components/ui/dialog.tsx",
+      "figmaNode": "4457:722",
+      "usage": "<Dialog open={open} onOpenChange={setOpen}><Dialog.Title>Title</Dialog.Title><Dialog.Description>Body</Dialog.Description><Dialog.Actions><Button>OK</Button></Dialog.Actions></Dialog>"
+    },
+    "bottom-sheet": {
+      "file": "components/ui/bottom-sheet.tsx",
+      "figmaNode": "5122:13929",
+      "radius": "rounded-28 (top)",
+      "usage": "<BottomSheet open={open} onOpenChange={setOpen}>{content}</BottomSheet>"
+    },
+    "feedback-state": {
+      "file": "components/ui/feedback-state.tsx",
+      "figmaNode": "3844:2480",
+      "variants": { "variant": ["success", "error", "empty", "warning"] },
+      "usage": "<FeedbackState variant=\"success\" title=\"Done!\" description=\"Transaction completed\" />"
+    },
+    "inform-message": {
+      "file": "components/ui/inform-message.tsx",
+      "figmaNode": "3667:3587",
+      "usage": "<InformMessage variant=\"info\">Important information here</InformMessage>"
+    },
+    "toast-bar": {
+      "file": "components/ui/toast-bar.tsx",
+      "figmaNode": "5122:14467",
+      "usage": "<ToastBar variant=\"success\" message=\"Saved!\" />"
+    },
+    "section": {
+      "file": "components/ui/section.tsx",
+      "radius": "rounded-28",
+      "padding": "px-[16px] py-[16px]",
+      "usage": "<Section title=\"INFO\">{children}</Section>"
+    },
+    "fixed-bottom": {
+      "file": "components/ui/fixed-bottom.tsx",
+      "padding": "px-[22px] pt-[12px] pb-[34px]",
+      "usage": "<FixedBottom><Button variant=\"primary\">Continue</Button></FixedBottom>"
+    },
+    "tab": { "file": "components/ui/tab.tsx" },
+    "search-bar": { "file": "components/ui/search-bar.tsx" },
+    "badge": { "file": "components/ui/badge.tsx" },
+    "label": { "file": "components/ui/label.tsx" },
+    "tip": { "file": "components/ui/tip.tsx" },
+    "skeleton": { "file": "components/ui/skeleton.tsx" },
+    "divider": { "file": "components/ui/divider.tsx" },
+    "toggle": { "file": "components/ui/toggle.tsx" },
+    "radio": { "file": "components/ui/radio.tsx" },
+    "chip": { "file": "components/ui/chip.tsx" },
+    "pin-input": { "file": "components/ui/pin-input.tsx" },
+    "avatar": { "file": "components/ui/avatar.tsx" },
+    "card": { "file": "components/ui/card.tsx" },
+    "glass-bar": { "file": "components/ui/glass-bar.tsx" },
+    "image-frame": { "file": "components/ui/image-frame.tsx" },
+    "pagination": { "file": "components/ui/pagination.tsx" },
+    "terms": { "file": "components/ui/terms.tsx" },
+    "uploader": { "file": "components/ui/uploader.tsx" },
+    "dropdown": { "file": "components/ui/dropdown.tsx" },
+    "date-field": { "file": "components/ui/date-field.tsx" },
+    "special-text-field": { "file": "components/ui/special-text-field.tsx" },
+    "text-area": { "file": "components/ui/text-area.tsx" }
+  }
+}

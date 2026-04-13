@@ -54,3 +54,6 @@ Hóa đơn: Hub → Chọn dịch vụ → Mã KH → Fetch bill → Confirm →
 
 ## Design References (from BRD)
 - Techcombank, MoMo, ZaloPay, VNPay
+
+---
+Back: [[features/index|Features]] · [[features/vas-payment/status|vas-payment]]

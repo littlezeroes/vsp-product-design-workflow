@@ -257,3 +257,6 @@
 The 2 MEDIUM issues (pin-locked) are edge cases that only trigger after 3 wrong PIN attempts. The core flows, token compliance, component usage, and golden rules are 100% compliant. Feature is shippable with a follow-up ticket for pin-locked state handling.
 
 **Recommendation: SHIP with follow-up ticket for pin-locked states.**
+
+---
+Back: [[features/index|Features]] · [[features/bidv-link/status|bidv-link]]

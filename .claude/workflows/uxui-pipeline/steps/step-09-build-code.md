@@ -239,3 +239,6 @@ Tạo file `.claude/features/[name]/summary.md` cho PO review + vẽ Figma:
 - summary.md created
 - Notify: `openclaw system event --text "Ivy done: code built, localhost ready. Review: http://localhost:3000/[feature]. Summary: .claude/features/[name]/summary.md" --mode now`
 - Dispatch Khoa cho step-10 (full QA)
+
+---
+Back: [[workflows/index|Workflows]] · [[workflows/uxui-pipeline/workflow|Pipeline]]

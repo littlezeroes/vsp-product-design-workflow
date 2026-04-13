@@ -258,3 +258,6 @@ Nate nói merge vào dashboard tab. Tao nghĩ: PHẢI có screen riêng. Dashboa
 ---
 
 *👹 Đức — "Mày là user mày có hiểu cái này không?" — Review done. Ball is Nate's to fix P0s, then Vi routes to Ivy.*
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-auto/status|sinhloi-auto]]

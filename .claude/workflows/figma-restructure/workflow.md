@@ -296,3 +296,6 @@ Call 11: get_metadata → verify structure
 - [ ] Visual trước/sau giống nhau pixel-perfect
 - [ ] Design tokens (variables) được giữ nguyên qua restructure
 - [ ] Tất cả instances link đúng library (không local component khi có library version)
+
+---
+Back: [[workflows/index|Workflows]]

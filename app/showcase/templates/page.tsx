@@ -96,7 +96,7 @@ export default function TemplatesShowcasePage() {
               onTabChange={setTab}
             >
               <Section title="Today" action="See all">
-                <div className="bg-secondary rounded-[28px] px-[16px]">
+                <div className="bg-secondary rounded-28 px-[16px]">
                   <ItemList>
                     <ItemListItem
                       label="Transfer to Minh"
@@ -121,7 +121,7 @@ export default function TemplatesShowcasePage() {
               </Section>
 
               <Section title="Yesterday">
-                <div className="bg-secondary rounded-[28px] px-[16px]">
+                <div className="bg-secondary rounded-28 px-[16px]">
                   <ItemList>
                     <ItemListItem
                       label="Top up wallet"
@@ -145,7 +145,7 @@ export default function TemplatesShowcasePage() {
               onBack={() => router.back()}
             >
               <Section title="Account">
-                <div className="bg-background rounded-[28px] px-[16px]">
+                <div className="bg-background rounded-28 px-[16px]">
                   <ItemList>
                     <ItemListItem
                       label="Personal information"
@@ -173,7 +173,7 @@ export default function TemplatesShowcasePage() {
               </Section>
 
               <Section title="App">
-                <div className="bg-background rounded-[28px] px-[16px]">
+                <div className="bg-background rounded-28 px-[16px]">
                   <ItemList>
                     <ItemListItem
                       label="Notifications"
@@ -209,7 +209,7 @@ export default function TemplatesShowcasePage() {
               />
 
               <div className="pt-[32px]">
-                <div className="bg-background rounded-[28px] px-[16px]">
+                <div className="bg-background rounded-28 px-[16px]">
                   <ItemList>
                     <ItemListItem label="Account number" metadata="VSP-4892-001" />
                     <ItemListItem label="Interest rate" metadata="5.5% / year" />
@@ -242,7 +242,7 @@ export default function TemplatesShowcasePage() {
               />
 
               <div className="pt-[32px]">
-                <div className="bg-secondary rounded-[28px] px-[16px]">
+                <div className="bg-secondary rounded-28 px-[16px]">
                   <ItemList>
                     <ItemListItem label="Account number" metadata="VSP-4892-001" />
                     <ItemListItem label="Interest rate" metadata="5.5% / year" />

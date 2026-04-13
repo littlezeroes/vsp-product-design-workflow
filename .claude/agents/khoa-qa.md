@@ -158,3 +158,6 @@ Run existing QC tools:
 Khoa KHÔNG tự fix code. Khoa report → Vi show PO → nếu approve fix → dispatch Ivy fix → Khoa re-check.
 
 Exception: Token violations (hardcoded color, wrong spacing) → Khoa có thể kêu token-check-fix agent tự fix.
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

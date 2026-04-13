@@ -30,3 +30,6 @@
 - Epic 1: thêm step indicator (1/3, 2/3, 3/3)
 - Edge case 7: generic message "Không thể mở BIDV SmartBanking" thay vì assume version cũ
 - Ghi chú: Hủy liên kết KHÔNG yêu cầu auth VSP (confirmed by PO)
+
+---
+Back: [[features/index|Features]] · [[features/bidv-link/status|bidv-link]]

@@ -80,3 +80,6 @@ Triển khai tính năng sinh lời tự động cho phép người dùng tối 
 - Rút: amount ≠ 0, ≤ balance sinh lời, within daily limit
 - Hủy: balance must be 0
 - Error messages: inline, red text
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-auto/status|sinhloi-auto]]

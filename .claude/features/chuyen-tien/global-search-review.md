@@ -203,3 +203,6 @@ Flow này cần redesign lại từ IA level, không phải fix CSS. Vấn đề
 ---
 
 *Reviewed by Đức — 2026-03-09*
+
+---
+Back: [[features/index|Features]] · [[features/chuyen-tien/status|chuyen-tien]]

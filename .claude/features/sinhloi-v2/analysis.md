@@ -191,3 +191,6 @@ Sinh lời tự động cho phép người dùng VSP kích hoạt tính năng đ
 5. **AC 2.2.1, 2.2.2, 2.2.3:** Đều ghi "cập nhật sau" — thiếu content cho 3 bottom sheets quan trọng về trust.
 
 6. **PRD section trong cùng file:** Từ dòng ~2450 trở đi là PRD bảo hiểm TNDS, ghép nhầm vào file sinh lời. Gây confusion.
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-v2/status|sinhloi-v2]]

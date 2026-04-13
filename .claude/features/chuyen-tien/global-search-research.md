@@ -283,3 +283,6 @@
 ---
 
 *Research bởi Nate — "Khoan, 15 app rồi mà chưa thấy app nào hỏi số tiền trước khi hỏi gửi cho ai. Recipient-first là universal truth."*
+
+---
+Back: [[features/index|Features]] · [[features/chuyen-tien/status|chuyen-tien]]

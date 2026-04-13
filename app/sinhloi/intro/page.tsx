@@ -1,297 +1,198 @@
 "use client"
 
 import * as React from "react"
-import { useRouter, useSearchParams } from "next/navigation"
-import { ChevronLeft, TrendingUp, Shield, Zap, WifiOff, Info } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { ChevronLeft, ChevronRight, Shield, TrendingUp, Clock, Wallet } from "lucide-react"
 import { Header } from "@/components/ui/header"
-import { Button } from "@/components/ui/button"
-import { FeedbackState } from "@/components/ui/feedback-state"
-import { Dialog } from "@/components/ui/dialog"
+import { ButtonGroup } from "@/components/ui/button-group"
 import { InformMessage } from "@/components/ui/inform-message"
-import { SINHLOI_CONFIG, formatVND, calculateInterest } from "../data"
+import { ItemList, ItemListItem } from "@/components/ui/item-list"
 
-/* ── S1: Product Intro — Sinh loi tu dong ──────────────────────────── */
-export default function ProductPage() {
-  return <React.Suspense fallback={null}><ProductContent /></React.Suspense>
-}
-
-function ProductContent() {
+/* ── S1: Onboarding — Sinh lời tự động ────────────────────────────── */
+export default function OnboardingPage() {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const stateParam = searchParams.get("state")
-
-  const [sliderValue, setSliderValue] = React.useState(0)
-  const [isLoading, setIsLoading] = React.useState(true)
-  const [isEkyc, setIsEkyc] = React.useState(true)
-  const [error, setError] = React.useState(stateParam === "error")
-  const [rateChanged, setRateChanged] = React.useState(stateParam === "rate-changed")
-  const [showEkycDialog, setShowEkycDialog] = React.useState(false)
-  const [isReactivation] = React.useState(false)
-
-  const { interestRate, maxBalance } = SINHLOI_CONFIG
-  const estimatedInterest = calculateInterest(sliderValue, interestRate)
-
-  // Simulate loading
-  React.useEffect(() => {
-    if (stateParam === "no-ekyc") {
-      setIsEkyc(false)
-    }
-    const timer = setTimeout(() => setIsLoading(false), 600)
-    return () => clearTimeout(timer)
-  }, [stateParam])
-
-  /* ── Loading skeleton ────────────────────────────────────────── */
-  if (isLoading) {
-    return (
-      <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
-        <Header
-          variant="large-title"
-          largeTitle="Sinh loi"
-          leading={
-            <button type="button" onClick={() => router.back()} className="w-[44px] h-[44px] flex items-center justify-center">
-              <ChevronLeft size={24} className="text-foreground" />
-            </button>
-          }
-        />
-        <div className="flex-1 px-[22px]">
-          <div className="space-y-4 pt-[16px]">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-secondary animate-pulse shrink-0" />
-                <div className="flex-1 h-5 bg-secondary rounded-full animate-pulse" />
-              </div>
-            ))}
-          </div>
-          <div className="pt-[32px] space-y-3">
-            <div className="h-5 w-2/3 bg-secondary rounded-full animate-pulse" />
-            <div className="h-4 w-full bg-secondary rounded-full animate-pulse" />
-            <div className="h-4 w-3/4 bg-secondary rounded-full animate-pulse" />
-          </div>
-          <div className="pt-[32px] space-y-3">
-            <div className="h-5 w-1/2 bg-secondary rounded-full animate-pulse" />
-            <div className="h-[6px] w-full bg-secondary rounded-full animate-pulse" />
-            <div className="h-12 w-full bg-secondary rounded-[14px] animate-pulse" />
-          </div>
-        </div>
-        <div className="absolute bottom-0 inset-x-0 h-[21px] flex items-end justify-center pb-[4px] bg-background pointer-events-none">
-          <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
-        </div>
-      </div>
-    )
-  }
-
-  /* ── Error state ─────────────────────────────────────────────── */
-  if (error) {
-    return (
-      <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
-        <Header
-          variant="large-title"
-          largeTitle="Sinh loi"
-          leading={
-            <button type="button" onClick={() => router.back()} className="w-[44px] h-[44px] flex items-center justify-center">
-              <ChevronLeft size={24} className="text-foreground" />
-            </button>
-          }
-        />
-        <div className="flex-1 flex items-center justify-center">
-          <FeedbackState
-            icon={<WifiOff size={48} className="text-foreground-secondary" />}
-            title="Khong the tai thong tin"
-            description="Vui long thu lai"
-            actionLabel="Thu lai"
-            actionProps={{ onClick: () => setError(false) }}
-          />
-        </div>
-        <div className="absolute bottom-0 inset-x-0 h-[21px] flex items-end justify-center pb-[4px] bg-background pointer-events-none">
-          <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
-        </div>
-      </div>
-    )
-  }
-
-  const handleActivate = () => {
-    if (!isEkyc) {
-      setShowEkycDialog(true)
-      return
-    }
-    router.push("/sinhloi/activate")
-  }
 
   return (
-    <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
-      <Header
-        variant="large-title"
-        largeTitle="Sinh loi"
-        leading={
-          <button type="button" onClick={() => router.back()} className="w-[44px] h-[44px] flex items-center justify-center">
-            <ChevronLeft size={24} className="text-foreground" />
-          </button>
-        }
+    <div className="relative w-full max-w-[390px] min-h-screen text-foreground flex flex-col">
+      {/* Green gradient background — Brand gradient, not a semantic token */}
+      <div
+        className="absolute inset-x-0 top-0 h-[400px] pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, #e5fff8 0%, white 28%)" }}
       />
 
-      <div className="flex-1 overflow-y-auto pb-[100px]">
-        {/* Re-activation banner */}
-        {isReactivation && (
-          <div className="px-[22px] py-[8px]">
-            <InformMessage
-              hierarchy="primary"
-              icon={<Info size={24} />}
-              body="Chao mung ban quay lai!"
-            />
-          </div>
-        )}
+      {/* Header — transparent over gradient, back only */}
+      <div className="relative z-10">
+        <Header
+          variant="default"
+          showStatusBar={true}
+          className="bg-transparent"
+          leading={
+            <button
+              type="button"
+              onClick={() => router.back()}
+              className="w-[44px] h-[44px] flex items-center justify-center"
+            >
+              <ChevronLeft size={18} className="text-foreground" />
+            </button>
+          }
+        />
+      </div>
 
-        {/* Rate changed banner */}
-        {rateChanged && (
-          <div className="px-[22px] py-[8px]">
-            <InformMessage
-              hierarchy="primary"
-              icon={<Info size={24} />}
-              body={`Lai suat da cap nhat: ${interestRate}%/nam`}
-              actionLabel="Xem chi tiet"
-              onAction={() => setRateChanged(false)}
-            />
+      {/* Scrollable content */}
+      <div className="relative z-10 flex-1 overflow-y-auto pb-[160px]">
+        {/* Product icon */}
+        <div className="flex justify-center pt-[8px]">
+          <div className="w-[82px] h-[82px] rounded-full bg-success/10 flex items-center justify-center">
+            <Wallet size={40} className="text-success" />
           </div>
-        )}
+        </div>
 
-        {/* Tagline */}
-        <div className="px-[22px] pt-[16px]">
-          <p className="text-lg font-bold leading-6 text-foreground">
-            Tien nhan roi, sinh loi moi ngay
+        {/* Title section */}
+        <div className="px-[22px] pt-[16px] flex flex-col items-center gap-[8px]">
+          <p className="text-[20px] font-semibold leading-[24px] text-foreground text-center">
+            Sinh lời tự động
           </p>
-          <p className="text-sm text-foreground-secondary mt-[4px]">
-            Toi uu hoa so du voi lai suat canh tranh
+          <p className="text-[22px] font-bold leading-[32px] text-foreground text-center">
+            Lãi suất lên{" "}
+            <span className="text-success">đến</span>{" "}
+            <span className="text-success">5.75%/năm</span>
+          </p>
+          <p className="text-[16px] font-normal leading-[24px] text-foreground text-center">
+            Tiền nhàn rỗi sinh lời mỗi ngày, rút bất kỳ lúc nào
           </p>
         </div>
 
-        {/* USP Section */}
-        <div className="pt-[32px] px-[22px] space-y-3">
-          {[
-            { icon: <TrendingUp size={20} className="text-success" />, text: `Lai suat canh tranh len den ${interestRate}%/nam` },
-            { icon: <Shield size={20} className="text-info" />, text: "Rut tien bat ky luc nao ve Vi V-Smart Pay" },
-            { icon: <Zap size={20} className="text-warning" />, text: "Khong mat phi, khong cam ket thoi gian" },
-          ].map((usp, i) => (
-            <div key={i} className="flex items-center gap-3 py-2">
-              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center shrink-0">
-                {usp.icon}
-              </div>
-              <p className="text-md text-foreground">{usp.text}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Product info */}
-        <div className="pt-[32px] px-[22px] space-y-2">
-          <p className="text-md font-semibold text-foreground">Thong tin san pham</p>
-          <div className="flex justify-between">
-            <span className="text-md text-foreground-secondary">So du toi da</span>
-            <span className="text-md font-semibold text-foreground">{formatVND(maxBalance)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-md text-foreground-secondary">Rut tien ve vi</span>
-            <span className="text-md font-semibold text-foreground">{formatVND(SINHLOI_CONFIG.dailyWithdrawLimit)}/ngay</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-md text-foreground-secondary">Doi tac tai chinh</span>
-            <span className="text-md font-semibold text-foreground">{SINHLOI_CONFIG.provider}</span>
-          </div>
-        </div>
-
-        {/* How it works */}
-        <div className="pt-[32px] px-[22px]">
-          <p className="text-md font-semibold text-foreground mb-3">Cach thuc hoat dong</p>
-          <div className="space-y-3">
-            {[
-              { step: "1", label: "Kich hoat", desc: "Xac nhan thong tin va dong y dieu khoan" },
-              { step: "2", label: "Nap tien", desc: "Chuyen tien tu Vi V-Smart Pay" },
-              { step: "3", label: "Nhan lai", desc: "Lai tinh hang ngay, tra hang thang" },
-            ].map((item) => (
-              <div key={item.step} className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-full bg-success/10 flex items-center justify-center shrink-0">
-                  <span className="text-sm font-bold text-success">{item.step}</span>
+        {/* Benefits row — 3 items */}
+        <div className="px-[22px] pt-[24px]">
+          <div className="relative rounded-[24px] px-[22px] py-10 bg-secondary overflow-hidden">
+            <div className="flex items-start justify-between gap-[14px]">
+              {[
+                { icon: <Shield size={24} className="text-success" />, label: "An toàn &\nbảo đảm" },
+                { icon: <TrendingUp size={24} className="text-success" />, label: "Lợi suất\nhấp dẫn" },
+                { icon: <Clock size={24} className="text-success" />, label: "Thanh khoản\ntức thì" },
+              ].map((item, i) => (
+                <div key={i} className="flex flex-col items-center gap-[8px] flex-1">
+                  <div className="w-[56px] h-[56px] rounded-full bg-background/80 shadow-sm flex items-center justify-center">
+                    {item.icon}
+                  </div>
+                  <p className="text-[14px] font-semibold text-foreground text-center whitespace-pre-line leading-[18px]">
+                    {item.label}
+                  </p>
                 </div>
-                <div className="flex-1">
-                  <p className="text-md font-semibold text-foreground">{item.label}</p>
-                  <p className="text-sm text-foreground-secondary">{item.desc}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Dashed divider */}
+        <div className="px-[22px] pt-[32px]">
+          <div className="w-full border-t border-dashed border-border" />
+        </div>
+
+        {/* Comparison card */}
+        <div className="px-[22px] pt-[32px]">
+          <div className="rounded-[20px] shadow-sm bg-grey-25 p-[20px]">
+            <p className="text-[20px] font-semibold leading-[28px] text-foreground">
+              Thảnh thơi nhận tiền lời mỗi ngày
+            </p>
+            <p className="text-[14px] font-normal leading-[20px] text-foreground-secondary mt-[6px]">
+              Hãy để Sinh lời tự động giúp bạn sinh lời tối đa
+            </p>
+
+            {/* Bar chart comparison */}
+            <div className="flex items-end justify-center gap-[40px] mt-[24px]">
+              {/* Left — not registered */}
+              <div className="flex flex-col items-center gap-[8px]">
+                <span className="text-[12px] font-medium text-foreground-secondary">0%</span>
+                <div className="w-[48px] h-[24px] rounded-[4px] bg-secondary" />
+                <div className="flex flex-col items-center gap-[2px]">
+                  <span className="text-[14px] font-bold text-foreground">Chưa đăng ký</span>
+                  <span className="text-[12px] font-normal text-foreground-secondary">Sinh lời tự động</span>
                 </div>
               </div>
-            ))}
+
+              {/* Right — registered */}
+              <div className="flex flex-col items-center gap-[8px]">
+                <span className="text-[12px] font-semibold text-success">Lên đến 5.5%</span>
+                <div
+                  className="w-[48px] h-[113px] rounded-[4px]"
+                  style={{
+                    background: "linear-gradient(to bottom, var(--brand-secondary), rgba(0,177,130,0.2))",
+                  }}
+                />
+                <div className="flex flex-col items-center gap-[2px]">
+                  <span className="text-[14px] font-bold text-foreground">Đã đăng ký</span>
+                  <span className="text-[12px] font-normal text-foreground-secondary">Sinh lời tự động</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Interest calculator */}
-        <div className="pt-[32px] px-[22px]">
-          <p className="text-md font-semibold text-foreground mb-4">
-            Tinh thu loi nhuan voi lai suat {interestRate}%
-          </p>
+        {/* Dashed divider */}
+        <div className="px-[22px] pt-[32px]">
+          <div className="w-full border-t border-dashed border-border" />
+        </div>
 
-          <div className="space-y-3">
-            <input
-              type="range"
-              min={0}
-              max={maxBalance}
-              step={5_000_000}
-              value={sliderValue}
-              onChange={(e) => setSliderValue(Number(e.target.value))}
-              className="w-full h-[6px] rounded-full appearance-none bg-secondary accent-foreground cursor-pointer
-                [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-foreground [&::-webkit-slider-thumb]:cursor-pointer"
+        {/* FAQ items */}
+        <div className="px-[22px] pt-[20px]">
+          <ItemList>
+            <ItemListItem
+              label="Cách tính tiền lời"
+              showChevron
+              divider
+              onPress={() => {}}
+              className="h-[48px]"
             />
-            <div className="flex justify-between text-xs text-foreground-secondary">
-              <span>0</span>
-              <span>{formatVND(maxBalance)}</span>
-            </div>
-          </div>
-
-          <div className="mt-4 space-y-2">
-            <div>
-              <p className="text-md text-foreground-secondary">So tien trong vi sinh loi</p>
-              <p className="text-xl font-bold tabular-nums text-foreground">{formatVND(sliderValue)}</p>
-            </div>
-            <div>
-              <p className="text-md text-foreground-secondary">Tien lai du kien nhan duoc 1 nam</p>
-              <p className="text-xl font-bold tabular-nums text-success">+{formatVND(estimatedInterest)}</p>
-            </div>
-          </div>
+            <ItemListItem
+              label="Thời điểm nhận tiền lời"
+              showChevron
+              onPress={() => {}}
+              className="h-[48px]"
+            />
+          </ItemList>
         </div>
 
-        {/* Disclaimer */}
-        <div className="pt-[32px] px-[22px]">
-          <p className="text-xs text-foreground-secondary">
-            San pham hoat dong theo mo hinh cho vay. Lai suat co the thay doi theo thoa thuan voi doi tac.
+        {/* Inform message — partner disclaimer */}
+        <div className="px-[22px] pt-[32px]">
+          <div className="border border-border rounded-14 p-[12px] flex flex-col gap-[10px]">
+            <p className="text-[12px] font-normal leading-[18px] text-foreground-secondary">
+              Sản phẩm được cung cấp bởi đối tác tài chính hợp tác với V-Smart Pay.
+              Tiền của bạn được bảo vệ theo quy định pháp luật hiện hành.
+            </p>
+            {/* Partner logo placeholder */}
+            <div className="w-[104px] h-[14px] bg-secondary rounded-[2px]" />
+          </div>
+        </div>
+      </div>
+
+      {/* Fixed bottom */}
+      <div className="absolute bottom-0 inset-x-0 bg-background z-20">
+        {/* Disclaimer text */}
+        <div className="px-[22px] pt-[12px]">
+          <p className="text-[12px] font-medium leading-[18px] text-foreground-secondary text-center">
+            Bằng việc tiếp tục, bạn đồng ý với các điều khoản sử dụng dịch vụ
           </p>
         </div>
-      </div>
 
-      {/* Fixed bottom CTA */}
-      <div className="absolute bottom-0 inset-x-0 bg-background px-[22px] pb-[34px] pt-[12px]">
-        <Button
-          variant="primary"
-          size="48"
-          className="w-full"
-          onClick={handleActivate}
-        >
-          {isEkyc ? "Kich hoat sinh loi" : "Xac thuc ngay"}
-        </Button>
-      </div>
+        {/* Button group */}
+        <div className="px-[22px] pt-[12px] pb-[34px]">
+          <ButtonGroup
+            layout="horizontal"
+            size="48"
+            secondaryLabel="Tìm hiểu thêm"
+            primaryLabel="Tiếp tục"
+            primaryProps={{
+              onClick: () => router.push("/sinhloi/activate"),
+            }}
+          />
+        </div>
 
-      {/* Home indicator */}
-      <div className="absolute bottom-0 inset-x-0 h-[21px] flex items-end justify-center pb-[4px] pointer-events-none">
-        <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
+        {/* Home indicator */}
+        <div className="absolute bottom-0 inset-x-0 h-[21px] flex items-end justify-center pb-[4px] pointer-events-none">
+          <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
+        </div>
       </div>
-
-      {/* eKYC required dialog */}
-      <Dialog
-        open={showEkycDialog}
-        onClose={() => setShowEkycDialog(false)}
-        title="Xac thuc danh tinh"
-        description="Ban can hoan tat eKYC de su dung Sinh loi tu dong"
-        primaryLabel="Xac thuc ngay"
-        secondaryLabel="De sau"
-        footerProps={{
-          primaryProps: { onClick: () => { setShowEkycDialog(false); router.push("/ekyc") } },
-          secondaryProps: { onClick: () => { setShowEkycDialog(false); router.push("/") } },
-        }}
-      />
     </div>
   )
 }

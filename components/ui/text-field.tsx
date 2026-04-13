@@ -78,7 +78,7 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         {/* ── Container ── */}
         <div
           className={cn(
-            "w-full min-h-[58px] rounded-[14px] border",
+            "w-full min-h-[58px] rounded-14 border",
             "flex items-center gap-[16px] px-[14px] py-[10px]",
             "transition-colors duration-150",
             // Border states (priority: error > focus > default > disabled)

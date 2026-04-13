@@ -549,3 +549,6 @@ Tren S1 Product Page:
 | Push notifications | 3 | 5 | Them huy hoan tat + huy that bai |
 | UI states | ~45 | ~48 | Them huy fail state, dialog O7 states |
 | Max depth | 5 | 5 (4 neu merge S7+S8) | Optional merge |
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-v2/status|sinhloi-v2]]

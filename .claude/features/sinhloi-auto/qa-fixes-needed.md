@@ -19,3 +19,6 @@
 - File: `app/sinhloi/otp/page.tsx`
 - Add biometric prompt state as alternative to OTP (for devices with biometric)
 - Fallback: if biometric fails → show OTP input
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-auto/status|sinhloi-auto]]

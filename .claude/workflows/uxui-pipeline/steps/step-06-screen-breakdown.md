@@ -98,3 +98,6 @@ Nếu flow.md không nói rõ → check edge-case-library cho screen type đó.
 
 ## Handoff
 screens.md saved → dispatch Khoa cho step-07 (state coverage check).
+
+---
+Back: [[workflows/index|Workflows]] · [[workflows/uxui-pipeline/workflow|Pipeline]]

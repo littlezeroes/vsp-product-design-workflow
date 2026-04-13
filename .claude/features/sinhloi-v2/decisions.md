@@ -32,3 +32,6 @@
 - CTA "Không hủy" → "Giữ tính năng" + "Tắt sinh lời" (destructive, màu đỏ)
 - Quick chips: 500k | 1tr | 5tr | 10tr (bỏ 50tr)
 - Thêm note T-1 trong lịch sử GD + "3 GD gần nhất" trên tab Sản phẩm
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-v2/status|sinhloi-v2]]

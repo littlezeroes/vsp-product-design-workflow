@@ -62,7 +62,7 @@ import { cn } from "@/lib/utils"
 
 /* ── Status Bar (iOS mock) ───────────────────────────────────────────── */
 function StatusBar({ variant = "default" }: { variant?: "default" | "vp" }) {
-  const height = variant === "vp" ? "h-[54px]" : "h-[44px]"
+  const height = variant === "vp" ? "h-[54px]" : "h-[54px]"
   return (
     <div
       className={cn("w-full shrink-0 flex items-center px-6", height)}
@@ -89,7 +89,7 @@ function StatusBar({ variant = "default" }: { variant?: "default" | "vp" }) {
         </svg>
         {/* Battery */}
         <div className="flex items-center gap-[1px]">
-          <div className="w-[22px] h-[11px] rounded-[3px] border border-current flex items-center p-[1px]">
+          <div className="w-[22px] h-[11px] rounded-3 border border-current flex items-center p-[1px]">
             <div className="flex-1 h-full bg-current rounded-[1.5px]" />
           </div>
           <div className="w-[1px] h-[4px] bg-current opacity-40 rounded-full" />

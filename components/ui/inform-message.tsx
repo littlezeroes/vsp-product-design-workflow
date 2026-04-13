@@ -32,7 +32,7 @@ import { cn } from "@/lib/utils"
 const informMessageVariants = cva(
   [
     "w-full flex items-center gap-3",
-    "rounded-[14px] px-[14px] py-[12px]",
+    "rounded-14 px-[14px] py-[12px]",
   ],
   {
     variants: {

@@ -335,3 +335,6 @@ Phase 2 (dedup) is manual trigger only:
 ```
 /auto-research-figma --dedup https://figma.com/design/...
 ```
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

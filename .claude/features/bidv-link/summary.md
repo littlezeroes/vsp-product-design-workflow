@@ -156,3 +156,6 @@ app/bidv-link/
 8. Epic 1 step indicator (1/3, 2/3, 3/3)
 9. S16 filter chips with "Tat ca" first (default active)
 10. S7 cancel -> S5 (PO decision confirmed)
+
+---
+Back: [[features/index|Features]] · [[features/bidv-link/status|bidv-link]]

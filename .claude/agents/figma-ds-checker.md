@@ -107,3 +107,6 @@ return {
   - `NO_TEXT_STYLE` — text without textStyleId
   - `HARDCODED_TEXT_COLOR` — text fill not bound to variable
   - `UNKNOWN_COMPONENT` — instance from non-DS component
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

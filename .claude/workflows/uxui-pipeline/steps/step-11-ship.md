@@ -70,3 +70,6 @@ Vi copy-paste content từ file → gửi Telegram. KHÔNG summarize lại.
 - Vi dispatch Ivy fix (Claude Code) → Khoa re-check → Vi gửi lại
 
 ## Pipeline complete 🎉
+
+---
+Back: [[workflows/index|Workflows]] · [[workflows/uxui-pipeline/workflow|Pipeline]]

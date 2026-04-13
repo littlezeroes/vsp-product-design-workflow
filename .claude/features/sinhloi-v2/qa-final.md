@@ -216,3 +216,6 @@
 
 > QA Khoa — 2026-03-09
 > Estimate fix time: 15 phut cho 3 critical/major issues
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-v2/status|sinhloi-v2]]

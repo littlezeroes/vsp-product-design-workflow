@@ -319,3 +319,6 @@ screens.md có nền tảng tốt — 116 states cover phần lớn happy paths 
 ---
 
 *📋 Khoa — "116 states mà vẫn thiếu 22 cái. QA không thương ai." — Review done.*
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-auto/status|sinhloi-auto]]

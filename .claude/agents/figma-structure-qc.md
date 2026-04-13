@@ -218,3 +218,6 @@ Node: {nodeId}
 ### Before/After
 [Screenshots compared — pixel-perfect match]
 ```
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

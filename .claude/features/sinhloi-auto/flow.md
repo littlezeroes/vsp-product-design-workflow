@@ -471,3 +471,6 @@ flowchart TD
 ---
 
 *Nate — UX Researcher | V-Smart Pay Team*
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-auto/status|sinhloi-auto]]

@@ -80,7 +80,7 @@ function Dialog({
       {/* Modal card */}
       <div
         className={cn(
-          "w-full max-w-sm bg-background rounded-[28px] overflow-hidden shadow-xl",
+          "w-full max-w-sm bg-background rounded-28 overflow-hidden shadow-xl",
           className
         )}
         onClick={(e) => e.stopPropagation()}

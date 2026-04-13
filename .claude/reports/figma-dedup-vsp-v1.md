@@ -87,3 +87,6 @@ All variants currently named `State=1`, `State=2`, etc.
 - Screenshot comparison for state classification (eKYC group)
 - Text fingerprinting for duplicate detection
 - ~15 MCP calls for all merges
+
+---
+Back: [[Home]]

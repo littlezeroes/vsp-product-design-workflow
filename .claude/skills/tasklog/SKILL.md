@@ -70,3 +70,6 @@ curl -s -X POST https://vsp-ui-khaki.vercel.app/api/tasklog \
 
 ## Dashboard link
 https://vsp-ui-khaki.vercel.app/tasklog
+
+---
+Back: [[agents/index|Agents]]

@@ -56,7 +56,7 @@ const EPICS: Epic[] = [
       },
       {
         screen: "S4: Ket qua kich hoat",
-        route: "/sinhloi/result-activate",
+        route: "/sinhloi/result/activate",
         states: [
           { label: "success", param: "?status=success" },
           { label: "failed", param: "?status=failed" },
@@ -94,7 +94,7 @@ const EPICS: Epic[] = [
   {
     id: "e3",
     title: "Epic 3 — Nap/Rut tien",
-    desc: "S7 → S8 → S9 → S10",
+    desc: "S7 → S8 → S10",
     color: "#f59e0b",
     screens: [
       {
@@ -118,22 +118,19 @@ const EPICS: Epic[] = [
         ],
       },
       {
-        screen: "S9: Auth PIN/Biometric",
-        route: "/sinhloi/auth",
+        screen: "S10: Ket qua giao dich (Nap)",
+        route: "/sinhloi/result/deposit",
         states: [
-          { label: "auth-method", param: "?type=deposit&amount=5000000" },
-          { label: "pin-entry", param: "?type=deposit&amount=5000000&state=pin" },
-          { label: "pin-error", param: "?type=deposit&amount=5000000&state=pin-error" },
-          { label: "pin-locked", param: "?type=deposit&amount=5000000&state=pin-locked" },
+          { label: "success", param: "?amount=5000000&status=success" },
+          { label: "failed", param: "?amount=5000000&status=failed" },
         ],
       },
       {
-        screen: "S10: Ket qua giao dich",
-        route: "/sinhloi/result-tx/deposit",
+        screen: "S10: Ket qua giao dich (Rut)",
+        route: "/sinhloi/result/withdraw",
         states: [
-          { label: "success (Nap)", param: "?amount=5000000&status=success" },
-          { label: "processing (Rut)", param: "?amount=1000000&status=processing" },
-          { label: "failed (Nap)", param: "?amount=5000000&status=failed" },
+          { label: "processing", param: "?amount=1000000&status=processing" },
+          { label: "failed", param: "?amount=1000000&status=failed" },
         ],
       },
     ],
@@ -179,14 +176,9 @@ const EPICS: Epic[] = [
   {
     id: "e5",
     title: "Epic 5 — Huy sinh loi",
-    desc: "S14 → S15 → S3(cancel) → S16",
+    desc: "S15 → S3(cancel) → S16",
     color: "#ef4444",
     screens: [
-      {
-        screen: "S14: Dieu khoan & Hop dong",
-        route: "/sinhloi/terms",
-        states: [{ label: "default", param: "" }],
-      },
       {
         screen: "S15: Xac nhan huy",
         route: "/sinhloi/cancel",
@@ -197,7 +189,7 @@ const EPICS: Epic[] = [
       },
       {
         screen: "S16: Ket qua huy",
-        route: "/sinhloi/result-cancel",
+        route: "/sinhloi/result/cancel",
         states: [
           { label: "success", param: "?status=success" },
           { label: "failed", param: "?status=failed" },
@@ -207,24 +199,10 @@ const EPICS: Epic[] = [
   },
   {
     id: "e6",
-    title: "Epic 6 — Gamification & Hang",
-    desc: "S17 · S18 · S19",
+    title: "Epic 6 — Chi tiet tai khoan",
+    desc: "S19",
     color: "#f59e0b",
     screens: [
-      {
-        screen: "S17: Nang cap lai suat",
-        route: "/sinhloi/upgrade",
-        states: [
-          { label: "default", param: "" },
-        ],
-      },
-      {
-        screen: "S18: Hang thanh vien",
-        route: "/sinhloi/membership",
-        states: [
-          { label: "Hang Bac (current)", param: "" },
-        ],
-      },
       {
         screen: "S19: Chi tiet tai khoan",
         route: "/sinhloi/account-detail",
@@ -236,20 +214,13 @@ const EPICS: Epic[] = [
   },
   {
     id: "e7",
-    title: "Epic 7 — Cai dat & FAQ",
-    desc: "S20 · S21",
+    title: "Epic 7 — Cai dat (Merged)",
+    desc: "S20: Cai dat + Hang + FAQ",
     color: "#06b6d4",
     screens: [
       {
-        screen: "S20: Cai dat",
+        screen: "S20: Cai dat — Tab Cai dat",
         route: "/sinhloi/settings",
-        states: [
-          { label: "default", param: "" },
-        ],
-      },
-      {
-        screen: "S21: Cau hoi thuong gap",
-        route: "/sinhloi/faq",
         states: [
           { label: "default", param: "" },
         ],
@@ -319,17 +290,8 @@ const FLOW_CHARTS: Record<string, string> = {
   D7 -->|Yes| S8[S8: Xac nhan GD\\nSo tien + Phi]
   S8 --> D8{Xac nhan?}
   D8 -->|No| S7
-  D8 -->|Yes| S9[S9: Xac thuc\\nChon phuong thuc]
-  S9 --> D9{Phuong thuc?}
-  D9 -->|Face/Touch ID| D9B{OK?}
-  D9B -->|Yes| S10S[S10: THANH CONG]
-  D9B -->|No| S10F[S10: THAT BAI]
-  D9 -->|Ma PIN| PIN[Nhap 6 so PIN]
-  PIN --> D9P{PIN dung?}
-  D9P -->|Yes| S10S
-  D9P -->|No| D9L{Khoa TK?}
-  D9L -->|No| PIN
-  D9L -->|Yes| S10F
+  D8 -->|Yes| S10S[S10: THANH CONG]
+  S8 -->|That bai| S10F[S10: THAT BAI]
   S10S --> DASH((Dashboard))
   S10F --> DASH
   classDef st fill:#f59e0b,stroke:#d97706,color:#fff
@@ -338,8 +300,8 @@ const FLOW_CHARTS: Record<string, string> = {
   classDef ok fill:#052e16,stroke:#22c55e,color:#86efac
   classDef fl fill:#450a0a,stroke:#ef4444,color:#fca5a5
   class START,DASH st
-  class S7,S8,S9,PIN sc
-  class D7,D8,D9,D9B,D9P,D9L dc
+  class S7,S8 sc
+  class D7,D8 dc
   class S10S ok
   class S10F fl`,
 
@@ -357,8 +319,7 @@ const FLOW_CHARTS: Record<string, string> = {
   class D11 dc`,
 
   e5: `flowchart TD
-  START((Tu\\nQuan ly)) --> S14[S14: Dieu khoan\\n& Hop dong]
-  S14 --> S15[S15: Xac nhan huy\\nSo du + Lai du kien]
+  START((Tu\\nCai dat)) --> S15[S15: Xac nhan huy\\nSo du + Lai du kien]
   S15 --> D15{Quyet dinh?}
   D15 -->|Giu tinh nang| DASH((Dashboard))
   D15 -->|Tat sinh loi| S3[S3: Nhap OTP\\n6 so tu SMS]
@@ -382,64 +343,46 @@ const FLOW_CHARTS: Record<string, string> = {
   classDef ac fill:#162032,stroke:#3b82f6,color:#93c5fd
   class START st
   class DASH,HOME hm
-  class S14,S15,S3 sc
+  class S15,S3 sc
   class D15,D3,D3R,DB dc
   class S16S ok
   class S16F fl
   class REFUND,SKIP ac`,
 
   e6: `flowchart TD
-  START((Tu\\nDashboard)) --> S17[S17: Nang cap lai suat\\nTier + Nhiem vu]
-  S17 --> D17{Lam nhiem vu?}
-  D17 -->|Thanh toan 3 lan| T1[Unlock 4.6%]
-  D17 -->|Nap 5tr| T2[Unlock 4.8%]
-  D17 -->|Moi 2 ban be| T3[Unlock 5.0%]
-  T1 --> DASH((Dashboard))
-  T2 --> DASH
-  T3 --> DASH
-  START --> S18[S18: Hang thanh vien\\nBac · Vang · Kim cuong]
-  S18 --> DASH
-  START --> S19[S19: Chi tiet tai khoan\\nBreakdown + Settings]
+  START((Tu\\nDashboard)) --> S19[S19: Chi tiet tai khoan\\nBreakdown + Settings]
   S19 --> D19{Hanh dong?}
   D19 -->|Xem lich su| LS[Go Epic 4]
-  D19 -->|Bat Nhan tien TD| SET[Toggle ON]
-  D19 -->|Cai dat TT| S20[Go S20: Cai dat]
-  SET --> S19
+  D19 -->|Cai dat| S20[Go S20: Cai dat]
   classDef st fill:#f59e0b,stroke:#d97706,color:#fff
   classDef sc fill:#1a1a2e,stroke:#374151,color:#e5e5e5
   classDef dc fill:#0f172a,stroke:#f59e0b,color:#fde68a
-  classDef ok fill:#052e16,stroke:#22c55e,color:#86efac
   classDef lk fill:#162032,stroke:#3b82f6,color:#93c5fd
-  class START,DASH st
-  class S17,S18,S19 sc
-  class D17,D19 dc
-  class T1,T2,T3 ok
-  class LS,SET,S20 lk`,
+  class START st
+  class S19 sc
+  class D19 dc
+  class LS,S20 lk`,
 
   e7: `flowchart TD
-  START((Tu\\nDashboard)) --> S20[S20: Cai dat\\n3 toggles]
-  S20 --> D20{Thay doi?}
-  D20 -->|Toggle Nhan tien TD| ON1[Auto-receive ON/OFF]
-  D20 -->|Toggle TT tu SDSL| ON2[Pay-from-balance ON/OFF]
-  D20 -->|Toggle Hien thi| ON3[Show-balance ON/OFF]
-  ON1 --> S20
-  ON2 --> S20
-  ON3 --> S20
-  START --> S21[S21: FAQ\\nChon chu de]
-  S21 --> D21{Chon?}
-  D21 -->|Chu de| QA[Xem cau hoi + tra loi]
-  D21 -->|Chinh sach| TERMS[Go S14: Dieu khoan]
-  QA --> S21
+  START((Tu\\nDashboard)) --> S20[S20: Cai dat\\n3 tabs merged]
+  S20 --> D20{Tab?}
+  D20 -->|Cai dat| T1[Toggles + Phap ly\\n+ Huy dich vu]
+  D20 -->|Hang thanh vien| T2[Hang + Quyen loi\\n+ Nang cap lai suat]
+  D20 -->|FAQ| T3[Chu de + Q&A\\n+ Chinh sach]
+  T1 --> S20
+  T2 --> S20
+  T3 --> S20
+  T1 -->|Huy dich vu| HUY[Go Epic 5:\\nXac nhan huy]
   classDef st fill:#06b6d4,stroke:#0891b2,color:#fff
   classDef sc fill:#1a1a2e,stroke:#374151,color:#e5e5e5
   classDef dc fill:#0f172a,stroke:#06b6d4,color:#a5f3fc
   classDef ac fill:#162032,stroke:#3b82f6,color:#93c5fd
   classDef lk fill:#1e1b4b,stroke:#818cf8,color:#c7d2fe
   class START st
-  class S20,S21 sc
-  class D20,D21 dc
-  class ON1,ON2,ON3,QA ac
-  class TERMS lk`,
+  class S20 sc
+  class D20 dc
+  class T1,T2,T3 ac
+  class HUY lk`,
 }
 
 /* Flatten for Prev/Next navigation */
@@ -464,9 +407,9 @@ const tabStyle = (active: boolean): React.CSSProperties => ({
   fontWeight: 600,
   fontFamily: FONT,
   border: "none",
-  borderBottom: active ? "2px solid #fff" : "2px solid transparent",
+  borderBottom: active ? "2px solid var(--foreground)" : "2px solid transparent",
   background: "transparent",
-  color: active ? "#fff" : "#525252",
+  color: active ? "var(--foreground)" : "var(--muted-foreground)",
   cursor: "pointer",
   letterSpacing: "0.5px",
 })
@@ -479,10 +422,11 @@ function FlowRenderer({ chart, epicId }: { chart: string; epicId: string }) {
     let cancelled = false
     async function render() {
       const mermaid = (await import("mermaid")).default
+      const isDark = document.documentElement.classList.contains("dark")
       mermaid.initialize({
         startOnLoad: false,
-        theme: "dark",
-        themeVariables: {
+        theme: isDark ? "dark" : "neutral",
+        themeVariables: isDark ? {
           darkMode: true,
           primaryColor: "#6366f1",
           primaryTextColor: "#e5e5e5",
@@ -492,12 +436,41 @@ function FlowRenderer({ chart, epicId }: { chart: string; epicId: string }) {
           tertiaryColor: "#0f172a",
           fontSize: "13px",
           fontFamily: FONT,
+        } : {
+          darkMode: false,
+          primaryColor: "#f5f5f5",
+          primaryTextColor: "#080808",
+          primaryBorderColor: "#a3a3a3",
+          lineColor: "#a3a3a3",
+          secondaryColor: "#f5f5f5",
+          tertiaryColor: "#fafafa",
+          fontSize: "13px",
+          fontFamily: FONT,
         },
         flowchart: { htmlLabels: true, curve: "basis", padding: 14, nodeSpacing: 28, rankSpacing: 44 },
       })
       if (cancelled || !ref.current) return
+      /* Swap classDef fills for light mode — monochrome */
+      let finalChart = chart
+      if (!isDark) {
+        finalChart = finalChart.replace(/classDef\s+\w+\s+fill:[^;\n]+/g, (match) => {
+          const name = match.match(/classDef\s+(\w+)/)?.[1]
+          const mono: Record<string, string> = {
+            st: "classDef st fill:#080808,stroke:#080808,color:#fff",
+            sc: "classDef sc fill:#f5f5f5,stroke:#d4d4d4,color:#080808",
+            dc: "classDef dc fill:#fff,stroke:#080808,color:#080808",
+            ok: "classDef ok fill:#080808,stroke:#080808,color:#fff",
+            fl: "classDef fl fill:#fff,stroke:#080808,color:#080808,stroke-dasharray:5 3",
+            dl: "classDef dl fill:#e5e5e5,stroke:#a3a3a3,color:#080808",
+            lk: "classDef lk fill:#e5e5e5,stroke:#a3a3a3,color:#080808",
+            ac: "classDef ac fill:#e5e5e5,stroke:#a3a3a3,color:#080808",
+            hm: "classDef hm fill:#080808,stroke:#080808,color:#fff",
+          }
+          return name && mono[name] ? mono[name] : match
+        })
+      }
       const uid = `flow-${epicId}-${Date.now()}`
-      const { svg } = await mermaid.render(uid, chart)
+      const { svg } = await mermaid.render(uid, finalChart)
       if (cancelled || !ref.current) return
       ref.current.innerHTML = svg
       const svgEl = ref.current.querySelector("svg")
@@ -553,21 +526,21 @@ function Sidebar({
               style={{
                 display: "flex", alignItems: "center", gap: 8,
                 width: "100%", textAlign: "left", padding: "10px 16px",
-                background: isExpanded ? `${epic.color}10` : "transparent",
-                border: "none", borderLeft: `3px solid ${isExpanded ? epic.color : "transparent"}`,
-                color: isExpanded ? "#fff" : "#a3a3a3",
+                background: isExpanded ? "var(--secondary)" : "transparent",
+                border: "none", borderLeft: `3px solid ${isExpanded ? "var(--foreground)" : "transparent"}`,
+                color: isExpanded ? "var(--foreground)" : "var(--foreground-secondary)",
                 fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: FONT, letterSpacing: "0.3px",
               }}
             >
               <span style={{ transform: isExpanded ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.15s", fontSize: 10 }}>&#9654;</span>
               <span style={{ flex: 1 }}>{epic.title}</span>
-              <span style={{ fontSize: 10, color: "#525252", fontWeight: 400 }}>
+              <span style={{ fontSize: 10, color: "var(--foreground-secondary)", fontWeight: 400 }}>
                 {mode === "ui" ? epicStateCount : `${epic.screens.length} screens`}
               </span>
             </button>
 
             {isExpanded && (
-              <div style={{ padding: "0 16px 6px 30px", fontSize: 10, color: "#525252" }}>{epic.desc}</div>
+              <div style={{ padding: "0 16px 6px 30px", fontSize: 10, color: "var(--foreground-secondary)" }}>{epic.desc}</div>
             )}
 
             {/* UI mode: show screens + state pills */}
@@ -582,8 +555,8 @@ function Sidebar({
                       style={{
                         display: "block", width: "100%", textAlign: "left",
                         padding: "6px 16px 6px 30px",
-                        background: isActive ? `${epic.color}20` : "transparent",
-                        border: "none", color: isActive ? "#fff" : "#a3a3a3",
+                        background: isActive ? "var(--secondary)" : "transparent",
+                        border: "none", color: isActive ? "var(--foreground)" : "var(--foreground-secondary)",
                         fontSize: 12, fontWeight: isActive ? 600 : 400, cursor: "pointer", fontFamily: FONT,
                       }}
                     >
@@ -600,8 +573,8 @@ function Sidebar({
                               style={{
                                 padding: "3px 10px", borderRadius: 100, border: "none",
                                 fontSize: 10, fontWeight: isStateActive ? 600 : 400,
-                                background: isStateActive ? epic.color : "#262626",
-                                color: isStateActive ? "#fff" : "#a3a3a3",
+                                background: isStateActive ? "var(--foreground)" : "var(--secondary)",
+                                color: isStateActive ? "var(--background)" : "var(--foreground-secondary)",
                                 cursor: "pointer", fontFamily: FONT,
                               }}
                             >
@@ -622,7 +595,7 @@ function Sidebar({
                 <div
                   key={sIdx}
                   style={{
-                    padding: "4px 16px 4px 30px", fontSize: 11, color: "#737373", fontFamily: FONT,
+                    padding: "4px 16px 4px 30px", fontSize: 11, color: "var(--foreground-secondary)", fontFamily: FONT,
                   }}
                 >
                   {screen.screen}
@@ -639,6 +612,15 @@ function Sidebar({
 /* ── Page ──────────────────────────────────────────────────────── */
 export default function AllStatesPage() {
   const [tab, setTab] = useState<"ui" | "flow">("ui")
+  const [isDark, setIsDark] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsDark(document.documentElement.classList.contains("dark"))
+    check()
+    const obs = new MutationObserver(check)
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] })
+    return () => obs.disconnect()
+  }, [])
 
   /* UI mode state */
   const [screenIdx, setScreenIdx] = useState(0)
@@ -672,16 +654,16 @@ export default function AllStatesPage() {
     ALL_SCREENS.slice(0, screenIdx).reduce((acc, s) => acc + s.states.length, 0) + stateIdx + 1
 
   return (
-    <div style={{ display: "flex", height: "100vh", background: "#0a0a0a", color: "#e5e5e5", fontFamily: FONT }}>
+    <div style={{ display: "flex", height: "100vh", background: "var(--background)", color: "var(--foreground)", fontFamily: FONT }}>
       {/* ── Sidebar ── */}
-      <div style={{ width: 300, minWidth: 300, borderRight: "1px solid #262626", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      <div style={{ width: 300, minWidth: 300, borderRight: "1px solid var(--border)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
         {/* Header */}
-        <div style={{ padding: "20px 16px 0", borderBottom: "1px solid #262626" }}>
-          <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", letterSpacing: "0.5px" }}>
+        <div style={{ padding: "20px 16px 0", borderBottom: "1px solid var(--border)" }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "var(--foreground)", letterSpacing: "0.5px" }}>
             SINH LOI TU DONG v2
           </div>
-          <div style={{ fontSize: 11, color: "#737373", marginTop: 4 }}>
-            5 epics &middot; {ALL_SCREENS.length} screens &middot; {TOTAL_STATES} states
+          <div style={{ fontSize: 11, color: "var(--foreground-secondary)", marginTop: 4 }}>
+            7 epics &middot; {ALL_SCREENS.length} screens &middot; {TOTAL_STATES} states
           </div>
           {/* Tab bar */}
           <div style={{ display: "flex", gap: 0, marginTop: 12 }}>
@@ -718,15 +700,10 @@ export default function AllStatesPage() {
       {/* ── Main area ── */}
       {tab === "ui" ? (
         /* ── Device Preview ── */
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12, padding: "16px 32px", overflow: "hidden" }}>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", gap: 12, padding: "20px 32px", overflow: "auto" }}>
           <div style={{ textAlign: "center", flexShrink: 0 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-              <span style={{ fontSize: 10, fontWeight: 600, padding: "2px 8px", borderRadius: 100, background: `${currentEpic.color}20`, color: currentEpic.color, letterSpacing: "0.3px" }}>
-                {currentEpic.title.split(" — ")[0]}
-              </span>
-            </div>
-            <div style={{ fontSize: 14, fontWeight: 600, color: "#fff" }}>{currentScreen.screen}</div>
-            <div style={{ fontSize: 11, color: "#525252", marginTop: 2 }}>{currentState.label} &mdash; {iframeSrc}</div>
+            <div style={{ fontSize: 14, fontWeight: 600, color: "var(--foreground)" }}>{currentScreen.screen}</div>
+            <div style={{ fontSize: 11, color: "var(--foreground-secondary)", marginTop: 2 }}>{currentState.label} &mdash; {iframeSrc}</div>
           </div>
 
           {(() => {
@@ -734,7 +711,7 @@ export default function AllStatesPage() {
             const frameW = Math.round(W * SCALE) + PAD * 2
             const frameH = Math.round(H * SCALE) + PAD * 2
             return (
-              <div style={{ width: frameW, height: frameH, borderRadius: Math.round(52 * SCALE), background: "#1a1a1a", border: "1px solid #333", padding: PAD, boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05)", position: "relative", flexShrink: 0 }}>
+              <div style={{ width: frameW, height: frameH, borderRadius: Math.round(52 * SCALE), background: "#1a1a1a", border: "1px solid #333", padding: PAD, boxShadow: "0 25px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.1)", position: "relative", flexShrink: 0 }}>
                 <div style={{ position: "absolute", top: Math.round(12 * SCALE) + PAD, left: "50%", transform: "translateX(-50%)", width: Math.round(120 * SCALE), height: Math.round(36 * SCALE), borderRadius: 16, background: "#000", zIndex: 10 }} />
                 <div style={{ width: Math.round(W * SCALE), height: Math.round(H * SCALE), borderRadius: Math.round(44 * SCALE), overflow: "hidden", background: "#000" }}>
                   <iframe key={iframeSrc} src={iframeSrc} style={{ width: W, height: H, border: "none", transform: `scale(${SCALE})`, transformOrigin: "0 0" }} title={`${currentScreen.screen} — ${currentState.label}`} />
@@ -747,15 +724,15 @@ export default function AllStatesPage() {
             <button
               onClick={() => { if (stateIdx > 0) { setStateIdx(stateIdx - 1) } else if (screenIdx > 0) { const prev = ALL_SCREENS[screenIdx - 1]; selectScreen(screenIdx - 1); setStateIdx(prev.states.length - 1) } }}
               disabled={screenIdx === 0 && stateIdx === 0}
-              style={{ padding: "6px 16px", borderRadius: 8, border: "1px solid #333", background: "#1a1a1a", color: screenIdx === 0 && stateIdx === 0 ? "#404040" : "#e5e5e5", fontSize: 12, cursor: screenIdx === 0 && stateIdx === 0 ? "not-allowed" : "pointer", fontFamily: FONT }}
+              style={{ padding: "6px 16px", borderRadius: 8, border: "1px solid var(--border-bold)", background: "var(--secondary)", color: screenIdx === 0 && stateIdx === 0 ? "var(--muted-foreground)" : "var(--foreground)", fontSize: 12, cursor: screenIdx === 0 && stateIdx === 0 ? "not-allowed" : "pointer", fontFamily: FONT }}
             >
               ← Prev
             </button>
-            <span style={{ fontSize: 11, color: "#525252", minWidth: 60, textAlign: "center" }}>{globalStatePos} / {TOTAL_STATES}</span>
+            <span style={{ fontSize: 11, color: "var(--foreground-secondary)", minWidth: 60, textAlign: "center" }}>{globalStatePos} / {TOTAL_STATES}</span>
             <button
               onClick={() => { if (stateIdx < currentScreen.states.length - 1) { setStateIdx(stateIdx + 1) } else if (screenIdx < ALL_SCREENS.length - 1) { selectScreen(screenIdx + 1) } }}
               disabled={screenIdx === ALL_SCREENS.length - 1 && stateIdx === currentScreen.states.length - 1}
-              style={{ padding: "6px 16px", borderRadius: 8, border: "1px solid #333", background: "#1a1a1a", color: screenIdx === ALL_SCREENS.length - 1 && stateIdx === currentScreen.states.length - 1 ? "#404040" : "#e5e5e5", fontSize: 12, cursor: screenIdx === ALL_SCREENS.length - 1 && stateIdx === currentScreen.states.length - 1 ? "not-allowed" : "pointer", fontFamily: FONT }}
+              style={{ padding: "6px 16px", borderRadius: 8, border: "1px solid var(--border-bold)", background: "var(--secondary)", color: screenIdx === ALL_SCREENS.length - 1 && stateIdx === currentScreen.states.length - 1 ? "var(--muted-foreground)" : "var(--foreground)", fontSize: 12, cursor: screenIdx === ALL_SCREENS.length - 1 && stateIdx === currentScreen.states.length - 1 ? "not-allowed" : "pointer", fontFamily: FONT }}
             >
               Next →
             </button>
@@ -765,24 +742,22 @@ export default function AllStatesPage() {
         /* ── Flow view (no device frame) ── */
         <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
           {/* Flow header */}
-          <div style={{ padding: "20px 32px 16px", borderBottom: "1px solid #1a1a1a", flexShrink: 0 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-              <div style={{ width: 10, height: 10, borderRadius: "50%", background: flowEpic.color }} />
-              <span style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>{flowEpic.title}</span>
+          <div style={{ padding: "20px 32px 16px", borderBottom: "1px solid var(--border)", flexShrink: 0 }}>
+            <div style={{ marginBottom: 6 }}>
+              <span style={{ fontSize: 16, fontWeight: 700, color: "var(--foreground)" }}>{flowEpic.title}</span>
             </div>
-            <div style={{ fontSize: 12, color: "#737373" }}>{flowEpic.desc}</div>
+            <div style={{ fontSize: 12, color: "var(--foreground-secondary)" }}>{flowEpic.desc}</div>
             {/* Legend */}
             <div style={{ display: "flex", gap: 16, marginTop: 12, flexWrap: "wrap" }}>
               {[
-                { bg: "#1a1a2e", border: "#374151", label: "Screen" },
-                { bg: "#0f172a", border: "#6366f1", label: "Decision" },
-                { bg: "#052e16", border: "#22c55e", label: "Thanh cong" },
-                { bg: "#450a0a", border: "#ef4444", label: "That bai" },
-                { bg: "#162032", border: "#3b82f6", label: "Link epic" },
+                { style: "solid", label: "Screen" },
+                { style: "dashed", label: "Decision" },
+                { style: "double", label: "Thanh cong" },
+                { style: "dotted", label: "That bai" },
               ].map((item) => (
                 <div key={item.label} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11 }}>
-                  <div style={{ width: 12, height: 12, borderRadius: 3, background: item.bg, border: `1.5px solid ${item.border}` }} />
-                  <span style={{ color: "#737373" }}>{item.label}</span>
+                  <div style={{ width: 12, height: 12, borderRadius: item.style === "dashed" ? "50%" : 3, background: "var(--background)", border: `1.5px ${item.style === "double" ? "solid" : item.style} var(--foreground-secondary)`, ...(item.style === "double" ? { outline: "1.5px solid var(--foreground-secondary)", outlineOffset: 1 } : {}) }} />
+                  <span style={{ color: "var(--foreground-secondary)" }}>{item.label}</span>
                 </div>
               ))}
             </div>

@@ -920,3 +920,6 @@
 ---
 
 > screens.md done → dispatch Khoa cho step-07 (state coverage check).
+
+---
+Back: [[features/index|Features]] · [[features/bidv-link/status|bidv-link]]

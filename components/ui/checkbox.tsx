@@ -81,7 +81,7 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
         onClick={handleClick}
         className={cn(
           // Figma: 24×24px, radius 8px
-          "w-6 h-6 rounded-[8px] border shrink-0",
+          "w-6 h-6 rounded-8 border shrink-0",
           "inline-flex items-center justify-center p-[4px]",
           "transition-colors duration-150",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",

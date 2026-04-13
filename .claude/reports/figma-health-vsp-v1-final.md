@@ -94,3 +94,6 @@
 - Kết quả giao dịch — already uses COMPONENT
 - Dialog dùng chung — uses INSTANCE
 - Archive, KIT, Local Component, Draft pages — skipped intentionally
+
+---
+Back: [[Home]]

@@ -26,7 +26,7 @@ export function Tip({ children, text }: { children: React.ReactNode; text: strin
       </button>
       {open && (
         <span
-          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-[6px] w-[200px] bg-foreground text-background rounded-[10px] px-[10px] py-[8px] z-50 shadow-lg text-[11px] leading-snug font-normal text-center pointer-events-auto"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-[6px] w-[200px] bg-foreground text-background rounded-10 px-[10px] py-[8px] z-50 shadow-lg text-[11px] leading-snug font-normal text-center pointer-events-auto"
           onClick={(e) => e.stopPropagation()}
         >
           {text}

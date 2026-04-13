@@ -291,3 +291,6 @@ UX VIOLATIONS (from ref analysis)
 
 ## Trigger Keywords
 Use this agent when the user says: "design", "screen", "page", "layout", "figma", "implement design", "build screen", "component"
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

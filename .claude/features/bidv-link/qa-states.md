@@ -672,3 +672,6 @@
 ---
 
 > qa-states.md done — dispatch Vi show PO ở step-08.
+
+---
+Back: [[features/index|Features]] · [[features/bidv-link/status|bidv-link]]

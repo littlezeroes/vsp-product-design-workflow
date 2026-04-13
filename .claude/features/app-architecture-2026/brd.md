@@ -57,3 +57,6 @@ Mỗi phase cần:
 3. Screen breakdown: screens + states cần build
 4. Lofi wireframe: build bằng VSP DS
 5. QA: state coverage check
+
+---
+Back: [[features/index|Features]] · [[features/app-architecture-2026/status|app-architecture-2026]]

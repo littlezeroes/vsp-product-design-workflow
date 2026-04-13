@@ -107,3 +107,6 @@ Figma node: [node-id]
 |-----------|------|-----------|
 | Button | `components/ui/button.tsx` | `5256:8112` |
 | ButtonGroup | `components/ui/button-group.tsx` | `5256:8282` |
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

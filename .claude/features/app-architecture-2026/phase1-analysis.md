@@ -452,3 +452,6 @@ Row 2: Nap tien | The cao | Goi data | Tai chinh
 ---
 
 *"Khoan, case nay chua cover ne — user nap tien DT tu Tab Thanh toan xong, tap Home, thay quick action 'Nap' → nghi la nap DT → tap → vao flow nap vi → confused. Label PHAI khac nhau." — Nate*
+
+---
+Back: [[features/index|Features]] · [[features/app-architecture-2026/status|app-architecture-2026]]

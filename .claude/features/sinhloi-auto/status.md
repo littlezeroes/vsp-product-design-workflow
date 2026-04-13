@@ -15,3 +15,6 @@
 - step-11b ✅ Final build PASS
 ## Waiting: Nothing — pipeline complete
 ## Last update: 2026-03-22
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-auto/status|sinhloi-auto]]

@@ -5,8 +5,12 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { ChevronLeft, Delete, Info } from "lucide-react"
 import { Header } from "@/components/ui/header"
 import { Button } from "@/components/ui/button"
-import { Dialog } from "@/components/ui/dialog"
+import { ButtonGroup } from "@/components/ui/button-group"
+import { Tab } from "@/components/ui/tab"
+import { Chip } from "@/components/ui/chip"
+import { ItemList, ItemListItem } from "@/components/ui/item-list"
 import { InformMessage } from "@/components/ui/inform-message"
+import { Dialog } from "@/components/ui/dialog"
 import {
   SINHLOI_CONFIG,
   MOCK_USER,
@@ -26,45 +30,7 @@ function formatChip(value: number): string {
   return `${value / 1_000}k`
 }
 
-/* ── Tab Switcher (pill toggle) — BIDV pattern ─────────────────── */
-function TabSwitcher({
-  active,
-  onSwitch,
-}: {
-  active: "deposit" | "withdraw"
-  onSwitch: (tab: "deposit" | "withdraw") => void
-}) {
-  return (
-    <div className="flex items-center justify-center py-[8px]">
-      <div className="flex items-center bg-secondary rounded-full p-[3px]">
-        <button
-          type="button"
-          onClick={() => onSwitch("deposit")}
-          className={`px-[16px] py-[6px] rounded-full text-sm font-semibold leading-5 transition-colors ${
-            active === "deposit"
-              ? "bg-foreground text-background"
-              : "text-foreground"
-          }`}
-        >
-          Nap tien
-        </button>
-        <button
-          type="button"
-          onClick={() => onSwitch("withdraw")}
-          className={`px-[16px] py-[6px] rounded-full text-sm font-semibold leading-5 transition-colors ${
-            active === "withdraw"
-              ? "bg-foreground text-background"
-              : "text-foreground"
-          }`}
-        >
-          Rut tien
-        </button>
-      </div>
-    </div>
-  )
-}
-
-/* ── Custom Numpad — BIDV pattern ──────────────────────────────── */
+/* ── Custom Numpad ───────────────────────────────────────────────── */
 function Numpad({ onInput, disabled }: { onInput: (key: string) => void; disabled?: boolean }) {
   const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "000", "0", "backspace"]
   return (
@@ -75,7 +41,7 @@ function Numpad({ onInput, disabled }: { onInput: (key: string) => void; disable
           type="button"
           disabled={disabled}
           onClick={() => onInput(key)}
-          className="h-[52px] flex items-center justify-center text-[20px] font-semibold text-foreground active:bg-secondary rounded-[8px] transition-colors disabled:opacity-40"
+          className="h-[52px] flex items-center justify-center text-[20px] font-semibold text-foreground active:bg-secondary rounded-8 transition-colors disabled:opacity-40"
         >
           {key === "backspace" ? (
             <Delete size={24} className="text-foreground" />
@@ -88,7 +54,7 @@ function Numpad({ onInput, disabled }: { onInput: (key: string) => void; disable
   )
 }
 
-/* ── S7: Nap/Rut tien — BIDV deposit pattern ──────────────────── */
+/* ── S7: Nap/Rut tien ───────────────────────────────────────────── */
 export default function DepositWithdrawPage() {
   return <React.Suspense fallback={null}><DepositWithdrawContent /></React.Suspense>
 }
@@ -114,21 +80,21 @@ function DepositWithdrawContent() {
   // Validation — per decisions.md: min 10K, monthly limit, max balance
   const getError = (): string | undefined => {
     if (amount === 0) return undefined
-    if (amount < MIN_AMOUNT) return "So tien toi thieu la 10.000d"
+    if (amount < MIN_AMOUNT) return "Số tiền tối thiểu là 10.000₫"
 
     if (isDeposit) {
-      if (amount > walletBalance) return "So du vi khong du"
+      if (amount > walletBalance) return "Số dư ví không đủ"
       if (amount + sinhloiBalance > maxBalance) {
         const remaining = maxBalance - sinhloiBalance
-        return `Vuot han muc toi da 100.000.000d. Co the nap them: ${remaining.toLocaleString("vi-VN")}d`
+        return `Vượt hạn mức tối đa 100.000.000₫. Có thể nạp thêm: ${remaining.toLocaleString("vi-VN")}₫`
       }
       if (amount > monthlyRemaining) {
-        return `Da dat han muc nap thang. Han muc con lai: ${monthlyRemaining.toLocaleString("vi-VN")}d`
+        return `Đã đạt hạn mức nạp tháng. Hạn mức còn lại: ${monthlyRemaining.toLocaleString("vi-VN")}₫`
       }
     } else {
-      if (amount > sinhloiBalance) return "So du sinh loi khong du"
+      if (amount > sinhloiBalance) return "Số dư sinh lời không đủ"
       if (amount > dailyWithdrawLimit) {
-        return `Vuot han muc rut ${dailyWithdrawLimit.toLocaleString("vi-VN")}d/ngay`
+        return `Vượt hạn mức rút ${dailyWithdrawLimit.toLocaleString("vi-VN")}₫/ngày`
       }
     }
     return undefined
@@ -137,7 +103,7 @@ function DepositWithdrawContent() {
   const error = getError()
   const isValid = amount >= MIN_AMOUNT && !error
 
-  // Tiered auth per decisions.md: Nap <= 5M → skip auth, Nap > 5M → OTP, Rut → always OTP
+  // Tiered auth per decisions.md
   const handleContinue = () => {
     if (!isValid) return
     setLoading(true)
@@ -163,8 +129,8 @@ function DepositWithdrawContent() {
     }
   }
 
-  const handleTabSwitch = (tab: "deposit" | "withdraw") => {
-    setActiveTab(tab)
+  const handleTabSwitch = (tab: string) => {
+    setActiveTab(tab as "deposit" | "withdraw")
     setAmount(0)
   }
 
@@ -175,7 +141,6 @@ function DepositWithdrawContent() {
 
   const estimatedInterestYear = calculateInterest(amount, interestRate)
   const estimatedInterestDay = Math.round(estimatedInterestYear / 365)
-  const estimatedInterestMonth = Math.round(estimatedInterestYear / 12)
 
   const isWalletEmpty = isDeposit && walletBalance === 0
 
@@ -184,6 +149,7 @@ function DepositWithdrawContent() {
       {/* Header: default variant with back arrow */}
       <Header
         variant="default"
+        title="Nạp / Rút"
         leading={
           <button
             type="button"
@@ -195,8 +161,15 @@ function DepositWithdrawContent() {
         }
       />
 
-      {/* Tab switcher — BIDV pill pattern */}
-      <TabSwitcher active={activeTab} onSwitch={handleTabSwitch} />
+      {/* Tab component — deposit / withdraw */}
+      <Tab
+        tabs={[
+          { label: "Nạp tiền", value: "deposit" },
+          { label: "Rút tiền", value: "withdraw" },
+        ]}
+        activeTab={activeTab}
+        onTabChange={handleTabSwitch}
+      />
 
       <div className="flex-1 flex flex-col pb-[100px]">
         {/* Wallet empty warning */}
@@ -205,8 +178,8 @@ function DepositWithdrawContent() {
             <InformMessage
               hierarchy="primary"
               icon={<Info size={20} />}
-              body="So du vi khong du. Nap tien vao vi truoc."
-              actionLabel="Nap vi"
+              body="Số dư ví không đủ. Nạp tiền vào ví trước."
+              actionLabel="Nạp ví"
               onAction={() => router.push("/")}
             />
           </div>
@@ -215,29 +188,29 @@ function DepositWithdrawContent() {
         {/* Balance source display — centered */}
         <div className="px-[22px] pt-[16px] flex justify-center">
           <p className="text-sm font-normal leading-5 text-foreground-secondary">
-            {isDeposit ? "Tu Vi V-Smart Pay" : "Den Vi V-Smart Pay"}{" "}
+            {isDeposit ? "Từ Ví V-Smart Pay" : "Đến Ví V-Smart Pay"}{" "}
             <span className="font-bold text-foreground-secondary">
               {formatVND(isDeposit ? walletBalance : sinhloiBalance)}
             </span>
           </p>
         </div>
 
-        {/* Monthly limit display (deposit only) — per decisions.md C3 */}
+        {/* Monthly limit display (deposit only) */}
         {isDeposit && (
           <div className="px-[22px] pt-[4px] flex justify-center">
             <p className="text-xs font-normal leading-4 text-foreground-secondary">
-              Han muc con lai thang nay: {monthlyRemaining.toLocaleString("vi-VN")}d
+              Hạn mức còn lại tháng này: {monthlyRemaining.toLocaleString("vi-VN")}₫
             </p>
           </div>
         )}
 
-        {/* Amount display — BIDV big amount center */}
+        {/* Amount display — big amount center */}
         <div className="px-[22px] pt-[24px] flex flex-col items-center">
           <div className="flex items-center gap-[2px]">
             <p className="text-[40px] font-bold tabular-nums text-foreground leading-tight">
-              {amount === 0 ? "0" : amount.toLocaleString("vi-VN")}d
+              {amount === 0 ? "0" : amount.toLocaleString("vi-VN")}₫
             </p>
-            {/* Blue cursor line */}
+            {/* Cursor line */}
             <div className="w-[2px] h-[36px] bg-info animate-pulse rounded-full" />
           </div>
           {error && (
@@ -245,25 +218,20 @@ function DepositWithdrawContent() {
           )}
         </div>
 
-        {/* Quick amount chips — BIDV pattern */}
-        <div className="pt-[24px]">
-          <div className="px-[22px]">
-            <div className="flex gap-[8px] justify-center flex-wrap">
-              {QUICK_AMOUNTS.map((val) => (
-                <button
-                  key={val}
-                  type="button"
-                  onClick={() => setAmount(val)}
-                  className={`px-[16px] py-[8px] rounded-full text-sm font-semibold leading-5 transition-colors ${
-                    amount === val
-                      ? "bg-foreground text-background"
-                      : "bg-secondary text-foreground"
-                  }`}
-                >
-                  {formatChip(val)}
-                </button>
-              ))}
-            </div>
+        {/* Quick amount chips */}
+        <div className="pt-[24px] px-[22px]">
+          <div className="flex gap-[8px] justify-center flex-wrap">
+            {QUICK_AMOUNTS.map((val) => (
+              <Chip
+                key={val}
+                variant="filled"
+                size="md"
+                selected={amount === val}
+                onPress={() => setAmount(val)}
+              >
+                {formatChip(val)}
+              </Chip>
+            ))}
           </div>
         </div>
 
@@ -271,26 +239,32 @@ function DepositWithdrawContent() {
         {!isDeposit && (
           <div className="pt-[12px] flex justify-center">
             <button type="button" onClick={handleWithdrawAll} className="text-sm font-semibold text-success">
-              Rut tat ca
+              Rút tất cả
             </button>
           </div>
         )}
 
-        {/* Interest estimate info — per spec: estimated gain/loss */}
+        {/* Interest estimate — using ItemList */}
         {amount > 0 && !error && (
           <div className="px-[22px] pt-[12px]">
             {isDeposit ? (
-              <div className="flex flex-col items-center gap-[2px]">
-                <p className="text-sm text-foreground-secondary text-center">
-                  Uoc tinh lai them: <span className="text-success font-semibold">+{estimatedInterestYear.toLocaleString("vi-VN")}d/nam</span>
-                </p>
-              </div>
+              <InformMessage
+                hierarchy="secondary"
+                body={
+                  <span>
+                    Ước tính lãi thêm: <span className="text-success font-semibold">+{estimatedInterestYear.toLocaleString("vi-VN")}₫/năm</span>
+                  </span>
+                }
+              />
             ) : (
-              <div className="flex flex-col items-center gap-[2px]">
-                <p className="text-sm text-foreground-secondary text-center">
-                  Lai bi giam uoc tinh: <span className="text-danger font-semibold">-{estimatedInterestYear.toLocaleString("vi-VN")}d/nam</span>
-                </p>
-              </div>
+              <InformMessage
+                hierarchy="secondary"
+                body={
+                  <span>
+                    Lãi bị giảm ước tính: <span className="text-danger font-semibold">-{estimatedInterestYear.toLocaleString("vi-VN")}₫/năm</span>
+                  </span>
+                }
+              />
             )}
           </div>
         )}
@@ -298,13 +272,29 @@ function DepositWithdrawContent() {
         {/* Withdraw all warning */}
         {!isDeposit && amount > 0 && amount === sinhloiBalance && (
           <div className="px-[22px] pt-[8px]">
-            <p className="text-xs text-warning text-center">
-              Ban se mat tien lai hom nay: {estimatedInterestDay.toLocaleString("vi-VN")}d
-            </p>
+            <InformMessage
+              hierarchy="secondary"
+              icon={<Info size={20} className="text-warning" />}
+              body={`Bạn sẽ mất tiền lãi hôm nay: ${estimatedInterestDay.toLocaleString("vi-VN")}₫`}
+              className="bg-warning/10"
+            />
           </div>
         )}
 
-        {/* Custom Numpad — BIDV pattern */}
+        {/* Min/max limits info */}
+        <div className="px-[22px] pt-[16px]">
+          <InformMessage
+            hierarchy="secondary"
+            icon={<Info size={20} />}
+            body={
+              isDeposit
+                ? `Tối thiểu 10.000₫. Tối đa ${formatVND(maxBalance)}.`
+                : `Tối thiểu 10.000₫. Tối đa ${formatVND(dailyWithdrawLimit)}/ngày.`
+            }
+          />
+        </div>
+
+        {/* Custom Numpad */}
         <div className="pt-[32px] mt-auto">
           <div className="px-[22px]">
             <Numpad onInput={handleAmountInput} disabled={isWalletEmpty} />
@@ -314,16 +304,19 @@ function DepositWithdrawContent() {
 
       {/* Fixed CTA */}
       <div className="absolute bottom-0 inset-x-0 bg-background px-[22px] pb-[34px] pt-[12px]">
-        <Button
-          variant="primary"
-          size="48"
-          className="w-full"
-          disabled={!isValid || loading || isWalletEmpty}
-          isLoading={loading}
-          onClick={handleContinue}
-        >
-          Tiep tuc
-        </Button>
+        <ButtonGroup
+          layout="horizontal"
+          primaryLabel="Tiếp tục"
+          secondaryLabel="Huỷ"
+          primaryProps={{
+            disabled: !isValid || loading || isWalletEmpty,
+            isLoading: loading,
+            onClick: handleContinue,
+          }}
+          secondaryProps={{
+            onClick: () => router.back(),
+          }}
+        />
       </div>
 
       {/* Home indicator */}
@@ -334,10 +327,10 @@ function DepositWithdrawContent() {
       <Dialog
         open={networkDialog}
         onClose={() => setNetworkDialog(false)}
-        title="Khong co ket noi mang"
-        description="Vui long kiem tra Internet va thu lai"
-        primaryLabel="Thu lai"
-        secondaryLabel="Dong"
+        title="Không có kết nối mạng"
+        description="Vui lòng kiểm tra Internet và thử lại"
+        primaryLabel="Thử lại"
+        secondaryLabel="Đóng"
         footerProps={{
           primaryProps: { onClick: () => setNetworkDialog(false) },
           secondaryProps: { onClick: () => setNetworkDialog(false) },

@@ -501,3 +501,6 @@ Required states: 3 | Found: 3 | Missing: 0
 
 > QA Khoa — 2026-03-09
 > Next step: Gui lai cho Ivy bo sung 17 states thieu. Uu tien 4 critical gaps truoc.
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-v2/status|sinhloi-v2]]

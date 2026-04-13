@@ -95,3 +95,6 @@ Loop tối đa 3 lần. Nếu vẫn fail → escalate to PO.
 
 ## Handoff
 qa-final.md saved → Vi (OpenClaw) show PO ở step-11.
+
+---
+Back: [[workflows/index|Workflows]] · [[workflows/uxui-pipeline/workflow|Pipeline]]

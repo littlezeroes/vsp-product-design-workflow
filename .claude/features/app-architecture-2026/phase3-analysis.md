@@ -80,3 +80,6 @@ User mở Ưu đãi → thấy V-Point → "gần đủ 1000đ rồi, cố thêm
 - **Avatar risk chi tiết:** "Liên kết NH" có thể tăng 1 tap nếu avatar menu có nhiều items. Cần: avatar menu flat (không nested), max 7 items
 - **HST badge thay vì category riêng:** Deal HST có badge "Vingroup" trên card + filter pill "Vingroup". Không tách category riêng — giữ deal list unified
 - **Deals curation 3 tầng:** Q4 Manual → 2027 Q1 Rule-based (if XanhSM user → boost XanhSM deals) → 2027 Q3 ML personalized
+
+---
+Back: [[features/index|Features]] · [[features/app-architecture-2026/status|app-architecture-2026]]

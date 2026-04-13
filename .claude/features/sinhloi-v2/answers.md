@@ -30,3 +30,6 @@
 - **MVP 2:** US 3.3 (Chuyển tiền) + US 3.4 (Thanh toán) + AC 2.6.1 (Cài đặt nạp) + AC 2.6.2 (Số dư tối thiểu)
 - **eKYC gate:** Soft block — cho xem onboarding, disable button kích hoạt
 - **Hủy khi có balance:** AI assume tự động rút về ví
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-v2/status|sinhloi-v2]]

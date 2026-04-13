@@ -63,3 +63,6 @@ Tính năng cho phép user tối ưu số dư nhàn rỗi trong Ví V-SmartPay. 
 - VSP Component Library (11 components)
 - CVA for variants
 - Lucide React icons
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-auto/status|sinhloi-auto]]

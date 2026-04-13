@@ -115,3 +115,6 @@
 4. S3/S7/S13 phải có nút Cancel
 
 Sau khi Nate update flow.md theo PO decisions → Đức review lại lần 2.
+
+---
+Back: [[features/index|Features]] · [[features/bidv-link/status|bidv-link]]

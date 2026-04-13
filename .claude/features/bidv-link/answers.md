@@ -10,3 +10,6 @@
 - Timeline: W23–28/03/2026 (golive trong 3 tuần)
 - Compliance: Thông tư 40/2024/TT-NHNN
 - Target metrics: Completion rate ≥80%, User activation ≥90%
+
+---
+Back: [[features/index|Features]] · [[features/bidv-link/status|bidv-link]]

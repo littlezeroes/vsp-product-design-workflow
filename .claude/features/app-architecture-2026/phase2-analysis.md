@@ -67,3 +67,6 @@
 2. BNPL dư nợ hiện trong tổng tài sản hay tách riêng? (recommend: tách riêng — liability ≠ asset)
 3. Cross-sell max bao nhiêu cards? (recommend: 2, dismissible)
 4. GD merge Home: wallet card tap → fullscreen hay inline expand? (recommend: fullscreen push)
+
+---
+Back: [[features/index|Features]] · [[features/app-architecture-2026/status|app-architecture-2026]]

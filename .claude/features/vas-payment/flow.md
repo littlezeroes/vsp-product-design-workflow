@@ -142,3 +142,6 @@ Side flows:
 | Auto-pay config | **NEW** | Toggle + date picker + nguồn tiền |
 | Quản lý đã lưu | **NEW** | Tabbed list + CRUD |
 | Lịch sử GD VAS | **REFRESH** | Clone from bidv-link transactions |
+
+---
+Back: [[features/index|Features]] · [[features/vas-payment/status|vas-payment]]

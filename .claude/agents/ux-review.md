@@ -86,3 +86,6 @@ Figma: [URL]
 - Nếu design trông ổn → ghi rõ "✅ Không có vấn đề" ở từng section
 - Không chỉ ra vấn đề nếu không chắc — better to skip than false positive
 - Ưu tiên issues có impact cao nhất lên trước
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

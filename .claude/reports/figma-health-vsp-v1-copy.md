@@ -130,3 +130,6 @@
 - `figma.createComponentFromNode(frame)` — zero-copy conversion, preserves all fills/strokes/effects/fonts
 - No font loading needed (unlike appendChild approach)
 - 1 batch call per page group, ~5 MCP calls total for conversions
+
+---
+Back: [[Home]]

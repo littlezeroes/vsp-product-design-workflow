@@ -8,3 +8,6 @@
 - flow.md — 8 user flows + screen map + reuse analysis
 - screens.md — 14 screens breakdown (components, states, transitions)
 
+
+---
+Back: [[features/index|Features]] · [[features/vas-payment/status|vas-payment]]

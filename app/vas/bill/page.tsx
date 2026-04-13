@@ -2,87 +2,44 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { ChevronLeft, Zap, Droplets, Wifi, Tv } from "lucide-react"
+import { ChevronLeft, ChevronRight, Zap, Droplets, Wifi, Tv } from "lucide-react"
 import { Header } from "@/components/ui/header"
-import { ItemList, ItemListItem } from "@/components/ui/item-list"
 
-/* ── Sub-categories ──────────────────────────────────────────────────── */
-const SUB_CATEGORIES = [
-  {
-    label: "Dien",
-    type: "electric",
-    Icon: Zap,
-    bgColor: "bg-secondary",
-    iconColor: "text-success",
-  },
-  {
-    label: "Nuoc",
-    type: "water",
-    Icon: Droplets,
-    bgColor: "bg-secondary",
-    iconColor: "text-info",
-  },
-  {
-    label: "Internet",
-    type: "internet",
-    Icon: Wifi,
-    bgColor: "bg-secondary",
-    iconColor: "text-foreground",
-  },
-  {
-    label: "Truyen hinh",
-    type: "tv",
-    Icon: Tv,
-    bgColor: "bg-secondary",
-    iconColor: "text-warning",
-  },
-] as const
+const SUBCATEGORIES = [
+  { icon: Zap, label: "Điện", route: "/vas/bill/provider?type=electric" },
+  { icon: Droplets, label: "Nước", route: "/vas/bill/provider?type=water" },
+  { icon: Wifi, label: "Internet", route: "/vas/bill/provider?type=internet" },
+  { icon: Tv, label: "Truyền hình", route: "/vas/bill/provider?type=tv" },
+]
 
-/* ── Page ─────────────────────────────────────────────────────────────── */
-export default function BillCategoryPage() {
+export default function BillCategory() {
   const router = useRouter()
 
   return (
     <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
-      {/* ── Header ──────────────────────────────────────────────── */}
-      <Header
-        variant="large-title"
-        largeTitle="Thanh toan hoa don"
-        leading={
-          <button
-            type="button"
-            onClick={() => router.back()}
-            className="flex items-center justify-center p-[10px] min-h-[44px] rounded-full"
-          >
-            <ChevronLeft size={18} className="text-foreground" />
-          </button>
-        }
-      />
+      <Header variant="large-title" largeTitle="Thanh toán hóa đơn" leading={<ChevronLeft className="w-6 h-6" onClick={() => router.back()} />} />
 
-      {/* ── Scrollable content ──────────────────────────────────── */}
       <div className="flex-1 overflow-y-auto pb-[21px]">
-        <div className="pt-[32px] px-[22px]">
-          <ItemList>
-            {SUB_CATEGORIES.map((cat, idx) => (
-              <ItemListItem
-                key={cat.type}
-                label={cat.label}
-                prefix={
-                  <div className={`w-11 h-11 rounded-full ${cat.bgColor} flex items-center justify-center`}>
-                    <cat.Icon size={20} className={cat.iconColor} />
-                  </div>
-                }
-                showChevron
-                divider={idx < SUB_CATEGORIES.length - 1}
-                onPress={() => router.push(`/vas/bill/provider?type=${cat.type}`)}
-              />
+        <div className="pt-[24px]">
+          <div className="px-[22px] flex flex-col">
+            {SUBCATEGORIES.map((cat) => (
+              <button
+                key={cat.label}
+                onClick={() => router.push(cat.route)}
+                className="flex items-center gap-[12px] py-[14px] border-b border-border last:border-0"
+              >
+                <div className="w-[40px] h-[40px] rounded-14 bg-secondary flex items-center justify-center">
+                  <cat.icon className="w-5 h-5 text-foreground" />
+                </div>
+                <span className="text-md font-medium flex-1 text-left">{cat.label}</span>
+                <ChevronRight className="w-5 h-5 text-foreground-secondary" />
+              </button>
             ))}
-          </ItemList>
+          </div>
         </div>
       </div>
 
-      {/* ── Home indicator ──────────────────────────────────────── */}
-      <div className="absolute bottom-0 inset-x-0 h-[21px] flex items-end justify-center pb-[4px] bg-background pointer-events-none">
+      <div className="flex justify-center pb-[8px]">
         <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
       </div>
     </div>

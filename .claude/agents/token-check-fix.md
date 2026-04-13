@@ -244,3 +244,6 @@ Figma node: [nodeId]
 ...
 | TOTAL | N | N | N | ✅/❌ |
 ```
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

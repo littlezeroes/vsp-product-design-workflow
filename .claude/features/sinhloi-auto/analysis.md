@@ -308,3 +308,6 @@ Dựa trên codebase hiện tại (`app/sinhloi/`), các phần sau ĐÃ đượ
 ---
 
 *Nate — "Khoan, case này chưa cover nè" — Analysis complete. Chờ PO confirm Q1-Q10 trước khi Nate design flow.md.*
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-auto/status|sinhloi-auto]]

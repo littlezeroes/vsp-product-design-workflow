@@ -100,3 +100,6 @@ Mỗi file tuân thủ VSP page template:
 ## Workflow Steps
 1. `step-06-screen-breakdown.md` — Tạo screens.md từ approved flow
 2. `step-09-build-code.md` — Gen .tsx files + _states page + summary.md
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

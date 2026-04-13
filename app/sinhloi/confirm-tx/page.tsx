@@ -4,9 +4,10 @@ import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { ChevronLeft, Info } from "lucide-react"
 import { Header } from "@/components/ui/header"
-import { Button } from "@/components/ui/button"
 import { ItemList, ItemListItem } from "@/components/ui/item-list"
 import { InformMessage } from "@/components/ui/inform-message"
+import { ButtonGroup } from "@/components/ui/button-group"
+import { FixedBottom } from "@/components/ui/fixed-bottom"
 import { Dialog } from "@/components/ui/dialog"
 import { FeedbackState } from "@/components/ui/feedback-state"
 import { formatVND, SINHLOI_CONFIG, MOCK_USER, MOCK_BALANCE, calculateInterest } from "../data"
@@ -15,9 +16,13 @@ import { formatVND, SINHLOI_CONFIG, MOCK_USER, MOCK_BALANCE, calculateInterest }
 const STALE_TIMEOUT_MS = 5 * 60 * 1000 // 5 minutes
 const AUTH_THRESHOLD = 5_000_000 // Nap <= 5M skip auth per decisions.md
 
-/* ── S8: Xac nhan giao dich — BIDV deposit-auth pattern ─────────── */
+/* ── Confirm Transaction Screen ─────────────────────────────────── */
 export default function ConfirmTxPage() {
-  return <React.Suspense fallback={null}><ConfirmTxContent /></React.Suspense>
+  return (
+    <React.Suspense fallback={null}>
+      <ConfirmTxContent />
+    </React.Suspense>
+  )
 }
 
 function ConfirmTxContent() {
@@ -32,72 +37,82 @@ function ConfirmTxContent() {
   const [networkDialog, setNetworkDialog] = React.useState(false)
   const [sessionDialog, setSessionDialog] = React.useState(false)
   const [staleWarning, setStaleWarning] = React.useState(false)
-  const [balanceChanged, setBalanceChanged] = React.useState(false)
 
   const isDeposit = type === "deposit"
-  const serviceTitle = isDeposit ? "Nap tien sinh loi" : "Rut tien sinh loi"
+  const serviceTitle = isDeposit ? "Nạp tiền sinh lời" : "Rút tiền sinh lời"
 
   const estimatedInterestYear = calculateInterest(amount, SINHLOI_CONFIG.interestRate)
   const estimatedInterestDay = Math.round(estimatedInterestYear / 365)
   const estimatedInterestMonth = Math.round(estimatedInterestYear / 12)
 
-  // Simulate fresh balance fetch on mount — per decisions.md M3
+  // Simulate fresh balance fetch on mount
   React.useEffect(() => {
     const timer = setTimeout(() => setFetchLoading(false), 800)
     return () => clearTimeout(timer)
   }, [])
 
-  // Stale timeout — 5 minutes on confirm screen
+  // Stale timeout
   React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setStaleWarning(true)
-    }, STALE_TIMEOUT_MS)
+    const timer = setTimeout(() => setStaleWarning(true), STALE_TIMEOUT_MS)
     return () => clearTimeout(timer)
   }, [])
 
-  // Tiered auth per decisions.md:
-  // Nap <= 5M → skip auth → go directly to result
-  // Nap > 5M → OTP
-  // Rut (any) → always OTP
+  // Tiered auth per decisions.md
   const handleConfirm = () => {
-    if (loading) return // double-tap prevention
+    if (loading) return
     setLoading(true)
 
     setTimeout(() => {
       setLoading(false)
       if (isDeposit && amount <= AUTH_THRESHOLD) {
-        // Skip auth for small deposits — go directly to success result
-        router.push(`/sinhloi/result-tx/${type}?amount=${amount}&status=success`)
+        // Skip auth for small deposits
+        router.push(`/sinhloi/result/${type}?amount=${amount}&status=success`)
       } else {
         // Require OTP auth
-        router.push(`/sinhloi/auth?type=${type}&amount=${amount}`)
+        router.push(`/sinhloi/otp?type=${type}&amount=${amount}`)
       }
     }, 500)
+  }
+
+  const handleCancel = () => {
+    router.back()
   }
 
   // Balance after withdraw
   const balanceAfterWithdraw = MOCK_BALANCE.balance - amount
 
+  // Fetch error state
   if (fetchError) {
     return (
-      <div className="relative w-full max-w-[390px] min-h-screen bg-secondary text-foreground flex flex-col">
-        <Header variant="default" title={isDeposit ? "Xac nhan nap tien" : "Xac nhan rut tien"} leading={
-          <button type="button" onClick={() => router.back()} className="w-[44px] h-[44px] flex items-center justify-center rounded-full">
-            <ChevronLeft size={18} className="text-foreground" />
-          </button>
-        } />
+      <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
+        <Header
+          variant="default"
+          title="Xác nhận"
+          showStatusBar={true}
+          leading={
+            <button
+              type="button"
+              onClick={() => router.back()}
+              className="w-[44px] h-[44px] flex items-center justify-center rounded-full"
+            >
+              <ChevronLeft size={18} className="text-foreground" />
+            </button>
+          }
+        />
         <div className="flex-1 flex items-center justify-center px-[22px]">
           <FeedbackState
-            title="Khong the tai thong tin giao dich"
-            actionLabel="Thu lai"
-            actionProps={{ onClick: () => { setFetchError(false); setFetchLoading(true); setTimeout(() => setFetchLoading(false), 800) } }}
+            title="Không thể tải thông tin giao dịch"
+            actionLabel="Thử lại"
+            actionProps={{
+              onClick: () => {
+                setFetchError(false)
+                setFetchLoading(true)
+                setTimeout(() => setFetchLoading(false), 800)
+              },
+            }}
           />
         </div>
-        <div className="shrink-0 px-[22px] pb-[34px] pt-[12px]">
-          <Button variant="secondary" size="48" className="w-full" onClick={() => router.back()}>
-            Quay lai
-          </Button>
-        </div>
+        {/* Home indicator */}
         <div className="absolute bottom-0 inset-x-0 h-[21px] flex items-end justify-center pb-[4px] pointer-events-none">
           <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
         </div>
@@ -106,12 +121,12 @@ function ConfirmTxContent() {
   }
 
   return (
-    <div className="relative w-full max-w-[390px] min-h-screen bg-secondary text-foreground flex flex-col">
-      {/* Header with back button */}
+    <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col pb-[100px]">
+      {/* Header */}
       <Header
         variant="default"
-        title={isDeposit ? "Xac nhan nap tien" : "Xac nhan rut tien"}
-        showStatusBar={false}
+        title="Xác nhận"
+        showStatusBar={true}
         leading={
           <button
             type="button"
@@ -124,148 +139,149 @@ function ConfirmTxContent() {
       />
 
       {fetchLoading ? (
-        <>
-          {/* Dark header skeleton */}
-          <div className="bg-foreground px-[22px] pt-[54px] pb-[60px] flex flex-col items-center">
-            <div className="h-4 w-24 bg-background/20 rounded-full animate-pulse mb-[8px]" />
-            <div className="h-8 w-40 bg-background/20 rounded-full animate-pulse" />
+        /* Loading skeleton */
+        <div className="px-[22px] pt-[32px]">
+          <div className="bg-secondary rounded-28 px-[20px] py-[24px] space-y-4">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="h-12 bg-background rounded-14 animate-pulse" />
+            ))}
           </div>
-          <div className="px-[22px] -mt-[32px]">
-            <div className="bg-background rounded-[28px] px-[20px] py-[24px] shadow-sm space-y-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="h-12 bg-secondary rounded-[14px] animate-pulse" />
-              ))}
-            </div>
-          </div>
-        </>
+        </div>
       ) : (
-        <>
+        <div className="flex-1 overflow-y-auto">
           {/* Stale warning */}
           {staleWarning && (
-            <div className="px-[22px] pt-[8px]">
+            <div className="px-[22px] pt-[16px]">
               <InformMessage
                 hierarchy="primary"
                 icon={<Info size={20} />}
-                body="Thong tin co the da thay doi. Vui long kiem tra lai."
-                actionLabel="Quay lai"
+                body="Thông tin có thể đã thay đổi. Vui lòng kiểm tra lại."
+                actionLabel="Quay lại"
                 onAction={() => router.back()}
               />
             </div>
           )}
 
-          {/* Balance changed warning — per decisions.md M3 */}
-          {balanceChanged && (
-            <div className="px-[22px] pt-[8px]">
-              <InformMessage
-                hierarchy="primary"
-                icon={<Info size={20} />}
-                body="So du da thay doi, vui long kiem tra lai."
-                actionLabel="Quay lai"
-                onAction={() => router.back()}
+          {/* Transaction summary section */}
+          <div className="pt-[32px] px-[22px]">
+            <ItemList>
+              <ItemListItem
+                label="Loại giao dịch"
+                metadata={serviceTitle}
+                divider
               />
-            </div>
-          )}
-
-          {/* Dark header — amount hero (BIDV pattern) */}
-          <div className="bg-foreground px-[22px] pt-[54px] pb-[60px] flex flex-col items-center">
-            <p className="text-sm font-semibold text-background mb-[8px]">{serviceTitle}</p>
-            <p className="text-[28px] font-bold leading-[34px] text-background">
-              {amount.toLocaleString("vi-VN")}d
-            </p>
+              <ItemListItem
+                label="Số tiền"
+                metadata={formatVND(amount)}
+                divider
+              />
+              <ItemListItem
+                label="Phí giao dịch"
+                metadata="Miễn phí"
+                divider
+              />
+              <ItemListItem
+                label={isDeposit ? "Từ" : "Từ"}
+                metadata={isDeposit ? "Ví V-Smart Pay" : "Ví sinh lời"}
+                divider
+              />
+              <ItemListItem
+                label={isDeposit ? "Đến" : "Về"}
+                metadata={isDeposit ? "Ví sinh lời" : "Ví V-Smart Pay"}
+                divider
+              />
+              {isDeposit ? (
+                <>
+                  <ItemListItem
+                    label="Lãi suất dự kiến"
+                    metadata={`${SINHLOI_CONFIG.interestRate}%/năm`}
+                    divider
+                  />
+                  <ItemListItem
+                    label="Tần suất nhận lãi"
+                    metadata="Hàng tháng"
+                    divider
+                  />
+                  <ItemListItem
+                    label="Lãi ước tính/ngày"
+                    metadata={`+${estimatedInterestDay.toLocaleString("vi-VN")}₫`}
+                    divider
+                  />
+                  <ItemListItem
+                    label="Lãi ước tính/tháng"
+                    metadata={`+${estimatedInterestMonth.toLocaleString("vi-VN")}₫`}
+                  />
+                </>
+              ) : (
+                <>
+                  <ItemListItem
+                    label="Số dư SL sau rút"
+                    metadata={`${balanceAfterWithdraw.toLocaleString("vi-VN")}₫`}
+                    divider
+                  />
+                  <ItemListItem
+                    label="Lãi bị giảm/ngày"
+                    metadata={`-${estimatedInterestDay.toLocaleString("vi-VN")}₫`}
+                  />
+                </>
+              )}
+            </ItemList>
           </div>
 
-          {/* White card overlapping dark header (BIDV pattern) */}
-          <div className="px-[22px] -mt-[32px]">
-            <div className="bg-background rounded-[28px] px-[20px] py-[24px] shadow-sm">
-              <ItemList>
-                <ItemListItem label="Dich vu" metadata={serviceTitle} divider />
-                <ItemListItem label="So tien" metadata={formatVND(amount)} divider />
-                <ItemListItem label="Phi giao dich" metadata="Mien phi" divider />
-                <ItemListItem
-                  label={isDeposit ? "Tu" : "Tu"}
-                  metadata={isDeposit ? "Vi V-Smart Pay" : "Vi sinh loi"}
-                  divider
-                />
-                <ItemListItem
-                  label={isDeposit ? "Den" : "Ve"}
-                  metadata={isDeposit ? "Vi sinh loi" : "Vi V-Smart Pay"}
-                  divider
-                />
-                {isDeposit ? (
-                  <>
-                    <ItemListItem
-                      label="Lai uoc tinh/ngay"
-                      metadata={`+${estimatedInterestDay.toLocaleString("vi-VN")}d`}
-                      divider
-                    />
-                    <ItemListItem
-                      label="Lai uoc tinh/thang"
-                      metadata={`+${estimatedInterestMonth.toLocaleString("vi-VN")}d`}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <ItemListItem
-                      label="So du SL sau rut"
-                      metadata={`${balanceAfterWithdraw.toLocaleString("vi-VN")}d`}
-                      divider
-                    />
-                    <ItemListItem
-                      label="Lai bi giam/ngay"
-                      metadata={`-${estimatedInterestDay.toLocaleString("vi-VN")}d`}
-                    />
-                  </>
-                )}
-              </ItemList>
-            </div>
-          </div>
-
-          {/* Disclaimer */}
-          <div className="px-[22px] pt-[16px]">
-            <p className="text-xs text-foreground-secondary text-center">
-              {isDeposit
-                ? "Loi nhuan la tam tinh va co the thay doi"
-                : "Tien se ve Vi V-Smart Pay ngay lap tuc"
+          {/* InformMessage */}
+          <div className="pt-[32px] px-[22px]">
+            <InformMessage
+              hierarchy="secondary"
+              icon={<Info size={20} />}
+              body={
+                isDeposit
+                  ? "Lợi nhuận là tạm tính và có thể thay đổi theo điều kiện thị trường."
+                  : "Tiền sẽ về Ví V-Smart Pay ngay lập tức sau khi xác thực."
               }
-            </p>
+            />
           </div>
 
           {/* Tiered auth notice for small deposits */}
           {isDeposit && amount <= AUTH_THRESHOLD && (
-            <div className="px-[22px] pt-[12px]">
-              <p className="text-xs text-foreground-secondary text-center">
-                Giao dich nap duoi 5 trieu khong can xac thuc OTP
-              </p>
+            <div className="pt-[16px] px-[22px]">
+              <InformMessage
+                hierarchy="primary"
+                icon={<Info size={20} />}
+                body="Giao dịch nạp dưới 5 triệu không cần xác thực OTP."
+              />
             </div>
           )}
-        </>
+        </div>
       )}
 
-      <div className="flex-1" />
-
-      {/* Bottom CTA */}
-      <div className="shrink-0 px-[22px] pb-[34px] pt-[12px]">
-        <Button
-          variant="primary"
-          size="48"
-          className="w-full"
-          disabled={fetchLoading || staleWarning}
-          isLoading={loading}
-          onClick={handleConfirm}
-        >
-          Xac thuc giao dich
-        </Button>
-      </div>
+      {/* FixedBottom with ButtonGroup */}
+      <FixedBottom>
+        <ButtonGroup
+          layout="horizontal"
+          primaryLabel="Xác nhận"
+          secondaryLabel="Huỷ"
+          primaryProps={{
+            onClick: handleConfirm,
+            disabled: fetchLoading || staleWarning,
+            isLoading: loading,
+          }}
+          secondaryProps={{
+            onClick: handleCancel,
+          }}
+        />
+      </FixedBottom>
 
       {/* Session Timeout Dialog */}
       <Dialog
         open={sessionDialog}
         onClose={() => setSessionDialog(false)}
-        title="Phien giao dich het han"
-        description="Vui long thuc hien lai giao dich."
-        primaryLabel="Quay lai"
+        title="Phiên giao dịch hết hạn"
+        description="Vui lòng thực hiện lại giao dịch."
+        primaryLabel="Quay lại"
+        secondaryLabel="Đóng"
         footerProps={{
           primaryProps: { onClick: () => { setSessionDialog(false); router.back() } },
+          secondaryProps: { onClick: () => setSessionDialog(false) },
         }}
       />
 
@@ -273,10 +289,10 @@ function ConfirmTxContent() {
       <Dialog
         open={networkDialog}
         onClose={() => setNetworkDialog(false)}
-        title="Khong co ket noi mang"
-        description="Vui long kiem tra Internet va thu lai"
-        primaryLabel="Thu lai"
-        secondaryLabel="Dong"
+        title="Không có kết nối mạng"
+        description="Vui lòng kiểm tra Internet và thử lại."
+        primaryLabel="Thử lại"
+        secondaryLabel="Đóng"
         footerProps={{
           primaryProps: { onClick: () => setNetworkDialog(false) },
           secondaryProps: { onClick: () => setNetworkDialog(false) },

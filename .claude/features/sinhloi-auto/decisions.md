@@ -69,3 +69,6 @@
 2. Min amount 10,000đ — standard VSP, chưa confirm với đối tác
 3. Auto-refresh 30s — UX decision, chưa confirm backend support
 4. Daily withdraw limit 30M — từ data.ts existing, chưa confirm BRD mới
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-auto/status|sinhloi-auto]]

@@ -334,3 +334,6 @@ Tài khoản → Liên kết NH → Quản lý TT → Chọn BIDV
 **Estimated screens mới cần design:** ~3-5 (Form liên kết BIDV, Waiting/redirect screen, maybe OTP screen). Còn lại reuse existing.
 
 **Risk level:** MEDIUM — Feature well-scoped nhưng phụ thuộc nặng vào BIDV API behavior và deeplink reliability.
+
+---
+Back: [[features/index|Features]] · [[features/bidv-link/status|bidv-link]]

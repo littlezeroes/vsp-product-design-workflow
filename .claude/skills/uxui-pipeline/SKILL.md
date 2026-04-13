@@ -49,3 +49,6 @@ Reply: "Pipeline chạy trên Claude Code anh ơi. Anh mở terminal chạy `cla
 2. **KHÔNG dispatch agents** — agents chạy trên Claude Code
 3. **Tiếng Việt** — luôn luôn
 4. **Ngắn gọn** — user đọc trên điện thoại
+
+---
+Back: [[agents/index|Agents]]

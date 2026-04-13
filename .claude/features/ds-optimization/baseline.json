@@ -1,0 +1,28 @@
+{
+  "date": "2026-04-11",
+  "file": "KzwbNKTQUkX6xnRSJhx411",
+  "summary": {
+    "avgM1_tokenBind": 87,
+    "avgM2_autoLayout": 83,
+    "avgM3_naming": 98,
+    "totalUnboundColors": 1676,
+    "totalGenericNames": 271,
+    "totalPages": 30
+  },
+  "variables": {
+    "collections": 5,
+    "primitiveColors": 173,
+    "semanticColors": 80,
+    "spacing": 24,
+    "typography": 27,
+    "radius": 12,
+    "modes": ["Light Mode", "Dark Mode"]
+  },
+  "worstOffenders": [
+    {"page": "Glass Floating Bar", "M1": 53, "unbound": 493},
+    {"page": "Device Element", "M1": 39, "unbound": 828},
+    {"page": "Special TextField", "M1": 49, "unbound": 25},
+    {"page": "Fixed Bottom", "M1": 65, "unbound": 67},
+    {"page": "Dropdown", "M1": 69, "unbound": 41}
+  ]
+}

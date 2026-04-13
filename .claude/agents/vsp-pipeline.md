@@ -53,13 +53,17 @@ Ref app   : [OKX|Cash App|Revolut] pattern
 ---
 
 ### Stage 3 — Build
-Follow the template in `.claude/pipeline.md` Stage 3 exactly.
+**Pre-flight:** Run `/vsp-build` skill first — this loads component inventory, token definitions, spacing grid, and Screen Structure template into working memory.
+
+Then follow the template in `.claude/pipeline.md` Stage 3 exactly.
 
 Apply all rules from `.claude/agents/vsp-designer.md`:
 - Token system (all colors from token classes)
 - 7 design laws
 - Page structure template
 - Ref design language
+
+The `/vsp-build` skill includes Phase 4 self-QC — run it before moving to Stage 4.
 
 Output: complete `.tsx` file at target path.
 
@@ -194,3 +198,6 @@ Empty state  → Cash App: centered, green icon, minimal
 Confirmation → OKX bottom sheet: grabber + options list
 Auth / OTP   → OKX: individual boxes, back chevron top
 ```
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

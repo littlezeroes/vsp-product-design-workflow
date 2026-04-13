@@ -1,0 +1,50 @@
+{
+  "date": "2026-04-12",
+  "file": "KzwbNKTQUkX6xnRSJhx411",
+  "method": "AutoResearch (Karpathy) + Hermes Agent delegation pattern",
+  "totalMutations": 3200,
+  "summary": {
+    "before": {
+      "M1_colorBind": 87, "M2_gapBind": 80, "M2_paddingBind": 80,
+      "M3_naming": 98, "M4_radiusBind": 44, "M5_fontSizeBind": 40,
+      "M5_lineHeightBind": 40, "M6_varDescriptions": 0,
+      "M7_compDescriptions": 53, "M8_scopeIssues": 11
+    },
+    "after": {
+      "M1_colorBind": 94, "M2_gapBind": 99, "M2_paddingBind": 98,
+      "M3_naming": 100, "M4_radiusBind": 78, "M5_fontSizeBind": 84,
+      "M5_lineHeightBind": 86, "M6_varDescriptions": 98,
+      "M7_compDescriptions": 100, "M8_scopeIssues": 4
+    },
+    "delta": {
+      "M1": "+7%", "M2_gap": "+19%", "M2_padding": "+18%",
+      "M3": "+2%", "M4": "+34%", "M5_fs": "+44%", "M5_lh": "+46%",
+      "M6": "+98%", "M7": "+47%", "M8": "-7 issues"
+    }
+  },
+  "dsRoadmapScore": {
+    "before": 5.6,
+    "after": 7.5,
+    "delta": "+1.9",
+    "breakdown": {
+      "visual": { "before": 8, "after": 8 },
+      "tokens": { "before": 6, "after": 9 },
+      "aiFriendliness": { "before": 5, "after": 8 },
+      "documentation": { "before": 3, "after": 8 },
+      "componentDepth": { "before": 9, "after": 9 },
+      "themeSupport": { "before": 6, "after": 8 },
+      "codeFigmaSync": { "before": 2, "after": 2 },
+      "organization": { "before": 6, "after": 8 }
+    }
+  },
+  "mutations": {
+    "colorBindings": 1314,
+    "spacingBindings": 700,
+    "radiusBindings": 488,
+    "typographyBindings": 511,
+    "nameRenames": 271,
+    "componentDescriptions": 36,
+    "variableDescriptions": 309,
+    "scopeFixes": 7
+  }
+}

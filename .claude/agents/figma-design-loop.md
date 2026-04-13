@@ -112,3 +112,6 @@ check(scr,"");
 | HARDCODED_TEXT_COLOR | `node.fills = [vP(V.fgP)]` |
 | NO_TEXT_STYLE | `node.textStyleId = S.bXS.id` (Body/XS fallback) |
 | HARDCODED_FRAME_COLOR | `node.fills = [vP(V.bgSec)]` |
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

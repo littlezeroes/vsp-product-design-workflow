@@ -712,3 +712,6 @@
 | G2 | Global | `deeplink-not-logged-in` | Medium | Deep link chua login → login → redirect |
 | G3 | Global | `re-register-after-cancel` | Low | Dang ky lai sau huy — S1 hien nhu user moi |
 | G4 | Global | `rate-changed-mid-flow` | Medium | Lai suat thay doi giua flow — auto cap nhat o S2, lai suat cu ap dung sau S3 |
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-v2/status|sinhloi-v2]]

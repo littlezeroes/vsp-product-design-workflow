@@ -68,3 +68,6 @@ Khoa list gaps → Vi show PO ở step-08 → nếu PO approve → Ivy thêm sta
 
 ## Handoff
 qa-states.md saved → Vi (OpenClaw) show PO ở step-08.
+
+---
+Back: [[workflows/index|Workflows]] · [[workflows/uxui-pipeline/workflow|Pipeline]]

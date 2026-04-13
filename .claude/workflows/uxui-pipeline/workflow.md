@@ -119,3 +119,6 @@ User says: "pipeline", "new feature", "start flow", "bắt đầu feature"
 3. Chạy step-01: Nate analyze
 4. Follow pipeline steps — Vi hỏi tại mỗi checkpoint
 ```
+
+---
+Back: [[workflows/index|Workflows]]

@@ -113,3 +113,6 @@ States: empty → typing → detected → resolved → not-found → error-looku
 1. `app/transfer/entry/page.tsx` — full rewrite
 2. `app/transfer/states/page.tsx` — updated S1-C states
 3. `.claude/features/chuyen-tien/screens-optionD.md` — this file
+
+---
+Back: [[features/index|Features]] · [[features/chuyen-tien/status|chuyen-tien]]

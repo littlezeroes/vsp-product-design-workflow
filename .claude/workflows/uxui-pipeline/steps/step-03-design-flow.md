@@ -94,3 +94,6 @@ Merge screens nếu có thể — ít screen hơn luôn tốt hơn.
 
 ## Handoff
 flow.md saved → dispatch Đức cho step-04 (review).
+
+---
+Back: [[workflows/index|Workflows]] · [[workflows/uxui-pipeline/workflow|Pipeline]]

@@ -13,3 +13,6 @@
 
 ## SHOULD ANSWERS
 PO skip → dùng AI assumptions từ analysis.md
+
+---
+Back: [[features/index|Features]] · [[features/smart-billing-hub/status|smart-billing-hub]]

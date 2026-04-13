@@ -147,3 +147,6 @@
 5. **Fix so du = 0 + Rut** — chan truoc, khong bat user nhap roi moi bao loi
 
 Fix xong 5 items → update flow.md → gui lai Duc review → PASS.
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-v2/status|sinhloi-v2]]

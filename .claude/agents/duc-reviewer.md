@@ -111,3 +111,6 @@ Nate: "Flow cần 5 screens"
 ```
 
 Đức KHÔNG tự sửa flow — chỉ chê + đề xuất. Quyền sửa là PO.
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

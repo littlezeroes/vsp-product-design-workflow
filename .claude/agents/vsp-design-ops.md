@@ -290,3 +290,6 @@ A screen/component is ready to ship when:
 - [ ] All touch targets ≥ 44px height
 - [ ] Home indicator present on all full-screen pages
 - [ ] No `text-muted-foreground` anywhere in the codebase (VSP uses `text-foreground-secondary`)
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

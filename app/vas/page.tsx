@@ -1,342 +1,419 @@
 "use client"
 
 import * as React from "react"
-import { useRouter, useSearchParams } from "next/navigation"
-import {
-  ChevronLeft, ChevronRight, Search,
-  Zap, Droplets, Wifi, Tv, Smartphone, CreditCard, Signal, Landmark, Clock, Settings,
-} from "lucide-react"
-import { Header } from "@/components/ui/header"
-import { TextField } from "@/components/ui/text-field"
-import { FeedbackState } from "@/components/ui/feedback-state"
+import { useState, useEffect, useRef } from "react"
 
-/* ── Category data with accent colors ────────────────────────────────── */
-const CATEGORIES = [
-  { label: "Dien", href: "/vas/bill/provider?type=electric", Icon: Zap, accent: "bg-warning", iconColor: "text-background" },
-  { label: "Nuoc", href: "/vas/bill/provider?type=water", Icon: Droplets, accent: "bg-info", iconColor: "text-background" },
-  { label: "Internet", href: "/vas/bill/provider?type=internet", Icon: Wifi, accent: "bg-foreground", iconColor: "text-background" },
-  { label: "Truyen hinh", href: "/vas/bill/provider?type=tv", Icon: Tv, accent: "bg-danger", iconColor: "text-background" },
-  { label: "Nap tien", href: "/vas/topup", Icon: Smartphone, accent: "bg-success", iconColor: "text-background" },
-  { label: "The cao", href: "/vas/card", Icon: CreditCard, accent: "bg-foreground", iconColor: "text-background" },
-  { label: "Goi data", href: "/vas/data", Icon: Signal, accent: "bg-info", iconColor: "text-background" },
-  { label: "Tai chinh", href: "/vas/finance", Icon: Landmark, accent: "bg-warning", iconColor: "text-background" },
-] as const
+/* ── Data ─────────────────────────────────────────────────────── */
+interface Screen {
+  screen: string
+  route: string
+  states: { label: string; param: string }[]
+}
 
-/* ── Mock saved billers — with real context ──────────────────────────── */
-const SAVED_BILLERS = [
-  { id: "evn-hcm", provider: "EVN HCMC", code: "PA01234567", type: "electric", amount: "1.250.000d", due: "15/03", urgent: true },
-  { id: "sawaco", provider: "SAWACO", code: "NV0098765", type: "water", amount: "385.000d", due: "20/03", urgent: false },
-  { id: "fpt", provider: "FPT Telecom", code: "FPT2891034", type: "internet", amount: "220.000d", due: "25/03", urgent: false },
+interface Epic {
+  id: string
+  title: string
+  desc: string
+  color: string
+  screens: Screen[]
+}
+
+const EPICS: Epic[] = [
+  {
+    id: "e1",
+    title: "Epic 1 — Thanh toán hóa đơn",
+    desc: "V1 → V2 → V2a → V2b → V5(confirm)",
+    color: "#6366f1",
+    screens: [
+      {
+        screen: "V1: VAS Home",
+        route: "/vas/home",
+        states: [
+          { label: "loaded", param: "" },
+          { label: "empty-saved", param: "?state=empty-saved" },
+          { label: "loading", param: "?state=loading" },
+        ],
+      },
+      {
+        screen: "V2: Danh mục hóa đơn",
+        route: "/vas/bill",
+        states: [
+          { label: "default", param: "" },
+        ],
+      },
+      {
+        screen: "V2a: Chọn NCC",
+        route: "/vas/bill/provider",
+        states: [
+          { label: "điện", param: "?type=electric" },
+          { label: "nước", param: "?type=water" },
+          { label: "internet", param: "?type=internet" },
+          { label: "truyền hình", param: "?type=tv" },
+          { label: "search empty", param: "?type=electric&state=search-empty" },
+        ],
+      },
+      {
+        screen: "V2b: Nhập mã KH",
+        route: "/vas/bill/input",
+        states: [
+          { label: "empty", param: "?provider=EVN%20HCMC" },
+          { label: "typing", param: "?provider=EVN%20HCMC&state=typing" },
+          { label: "loading", param: "?provider=EVN%20HCMC&state=loading" },
+          { label: "error-not-found", param: "?provider=EVN%20HCMC&state=error-not-found" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "e2",
+    title: "Epic 2 — Nạp tiền điện thoại",
+    desc: "V3 → V5(confirm)",
+    color: "#22c55e",
+    screens: [
+      {
+        screen: "V3: Nạp tiền ĐT",
+        route: "/vas/topup",
+        states: [
+          { label: "empty", param: "" },
+          { label: "carrier detected", param: "?state=carrier-detected" },
+          { label: "amount selected", param: "?state=amount-selected" },
+          { label: "error", param: "?state=error" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "e3",
+    title: "Epic 3 — Xác nhận (shared)",
+    desc: "V5 confirm — dùng chung cho mọi flow",
+    color: "#f59e0b",
+    screens: [
+      {
+        screen: "V5: Confirm — Topup",
+        route: "/vas/confirm",
+        states: [
+          { label: "default", param: "?type=topup&phone=0912345678&amount=100,000" },
+          { label: "loading", param: "?type=topup&state=loading" },
+          { label: "insufficient", param: "?type=topup&state=insufficient" },
+        ],
+      },
+      {
+        screen: "V5: Confirm — Bill",
+        route: "/vas/confirm",
+        states: [
+          { label: "default", param: "?type=bill&provider=EVN%20HCMC&code=PE01234567" },
+          { label: "loading", param: "?type=bill&state=loading" },
+          { label: "insufficient", param: "?type=bill&state=insufficient" },
+        ],
+      },
+    ],
+  },
 ]
 
-const SAVED_PHONES = [
-  { id: "p1", phone: "0912 345 678", carrier: "Viettel", lastAmount: "100.000d" },
-  { id: "p2", phone: "0988 765 432", carrier: "Mobifone", lastAmount: "50.000d" },
-]
+/* ── Flow charts ─────────────────────────────────────────────── */
+const FLOW_CHARTS: Record<string, string> = {
+  e1: `flowchart TD
+  START((VAS\\nHome)) --> V2[V2: Danh muc\\nhoa don]
+  V2 --> V2A[V2a: Chon\\nnha cung cap]
+  V2A --> V2B[V2b: Nhap\\nma khach hang]
+  V2B --> D1{Tra cuu?}
+  D1 -->|Tim thay| V5[V5: Xac nhan\\nthanh toan]
+  D1 -->|Khong tim thay| ERR[Inline error]
+  ERR --> V2B
+  V5 --> AUTH[Auth\\nPIN/Bio]
+  AUTH -->|OK| RESULT[Ket qua\\nGiao dich]
+  AUTH -->|Fail| V5
+  classDef st fill:#6366f1,stroke:#4f46e5,color:#fff
+  classDef sc fill:#1a1a2e,stroke:#374151,color:#e5e5e5
+  classDef dc fill:#0f172a,stroke:#6366f1,color:#c7d2fe
+  classDef ok fill:#052e16,stroke:#22c55e,color:#86efac
+  classDef fl fill:#450a0a,stroke:#ef4444,color:#fca5a5
+  class START st
+  class V2,V2A,V2B,V5 sc
+  class D1 dc
+  class RESULT ok
+  class ERR fl
+  class AUTH sc`,
 
-/* ── Recent transactions ─────────────────────────────────────────────── */
-const RECENT = [
-  { id: "r1", label: "Nap tien 0912 345 678", detail: "Viettel · 100.000d", date: "Hom nay", Icon: Smartphone, status: "success" as const },
-  { id: "r2", label: "EVN HCMC", detail: "PA01234567 · 1.250.000d", date: "08/03", Icon: Zap, status: "success" as const },
-  { id: "r3", label: "FPT Telecom", detail: "FPT2891034 · 220.000d", date: "01/03", Icon: Wifi, status: "success" as const },
-]
+  e2: `flowchart TD
+  START((VAS\\nHome)) --> V3[V3: Nap tien\\ndien thoai]
+  V3 --> D1{Nhap SĐT\\n+ chon menh gia}
+  D1 -->|Valid| V5[V5: Xac nhan]
+  D1 -->|Invalid| ERR[SĐT khong\\nhop le]
+  ERR --> V3
+  V5 --> AUTH[Auth\\nPIN/Bio]
+  AUTH -->|OK| RESULT[Ket qua]
+  AUTH -->|Fail| V5
+  classDef st fill:#22c55e,stroke:#16a34a,color:#fff
+  classDef sc fill:#1a1a2e,stroke:#374151,color:#e5e5e5
+  classDef dc fill:#0f172a,stroke:#22c55e,color:#bbf7d0
+  classDef ok fill:#052e16,stroke:#22c55e,color:#86efac
+  classDef fl fill:#450a0a,stroke:#ef4444,color:#fca5a5
+  class START st
+  class V3,V5,AUTH sc
+  class D1 dc
+  class RESULT ok
+  class ERR fl`,
 
-/* ── Helpers ──────────────────────────────────────────────────────────── */
-function getBillerIcon(type: string) {
-  switch (type) {
-    case "electric": return { Icon: Zap, accent: "bg-warning" }
-    case "water": return { Icon: Droplets, accent: "bg-info" }
-    case "internet": return { Icon: Wifi, accent: "bg-foreground" }
-    case "tv": return { Icon: Tv, accent: "bg-danger" }
-    default: return { Icon: Zap, accent: "bg-secondary" }
+  e3: `flowchart TD
+  ANY((Bat ky flow\\nnao)) --> V5[V5: Xac nhan\\nthanh toan]
+  V5 --> D1{Du so du?}
+  D1 -->|Du| AUTH[Auth\\nPIN/Bio]
+  D1 -->|Khong du| WARN[Canh bao\\nKhong du so du]
+  WARN --> V5
+  AUTH -->|OK| RESULT[Ket qua\\nThanh cong]
+  AUTH -->|Fail| FAIL[Ket qua\\nThat bai]
+  FAIL --> V5
+  classDef st fill:#f59e0b,stroke:#d97706,color:#fff
+  classDef sc fill:#1a1a2e,stroke:#374151,color:#e5e5e5
+  classDef dc fill:#0f172a,stroke:#f59e0b,color:#fde68a
+  classDef ok fill:#052e16,stroke:#22c55e,color:#86efac
+  classDef fl fill:#450a0a,stroke:#ef4444,color:#fca5a5
+  class ANY st
+  class V5,AUTH sc
+  class D1 dc
+  class RESULT ok
+  class WARN,FAIL fl`,
+}
+
+/* Flatten for Prev/Next navigation */
+const ALL_SCREENS = EPICS.flatMap((e) => e.screens)
+const TOTAL_STATES = ALL_SCREENS.reduce((acc, s) => acc + s.states.length, 0)
+
+function findEpicIdx(flatScreenIdx: number): number {
+  let count = 0
+  for (let i = 0; i < EPICS.length; i++) {
+    count += EPICS[i].screens.length
+    if (flatScreenIdx < count) return i
   }
+  return 0
 }
 
-function getCarrierAccent(carrier: string) {
-  switch (carrier) {
-    case "Viettel": return "bg-danger"
-    case "Mobifone": return "bg-info"
-    case "Vinaphone": return "bg-success"
-    default: return "bg-foreground"
-  }
+/* ── Shared styles ────────────────────────────────────────────── */
+const FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+
+const tabStyle = (active: boolean): React.CSSProperties => ({
+  padding: "8px 16px",
+  fontSize: 12,
+  fontWeight: 600,
+  fontFamily: FONT,
+  border: "none",
+  borderBottom: active ? "2px solid var(--foreground)" : "2px solid transparent",
+  background: "transparent",
+  color: active ? "var(--foreground)" : "var(--muted-foreground)",
+  cursor: "pointer",
+  letterSpacing: "0.5px",
+})
+
+/* ── Mermaid renderer ─────────────────────────────────────────── */
+function FlowRenderer({ chart, epicId }: { chart: string; epicId: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    let cancelled = false
+    async function render() {
+      const mermaid = (await import("mermaid")).default
+      const isDark = document.documentElement.classList.contains("dark")
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: isDark ? "dark" : "neutral",
+        themeVariables: isDark ? {
+          darkMode: true, primaryColor: "#6366f1", primaryTextColor: "#e5e5e5",
+          primaryBorderColor: "#4f46e5", lineColor: "#525252", secondaryColor: "#1e1b4b",
+          tertiaryColor: "#0f172a", fontSize: "13px", fontFamily: FONT,
+        } : {
+          darkMode: false, primaryColor: "#f5f5f5", primaryTextColor: "#080808",
+          primaryBorderColor: "#a3a3a3", lineColor: "#a3a3a3", secondaryColor: "#f5f5f5",
+          tertiaryColor: "#fafafa", fontSize: "13px", fontFamily: FONT,
+        },
+        flowchart: { htmlLabels: true, curve: "basis", padding: 14, nodeSpacing: 28, rankSpacing: 44 },
+      })
+      if (cancelled || !ref.current) return
+      let finalChart = chart
+      if (!isDark) {
+        finalChart = finalChart.replace(/classDef\s+\w+\s+fill:[^;\n]+/g, (match) => {
+          const name = match.match(/classDef\s+(\w+)/)?.[1]
+          const mono: Record<string, string> = {
+            st: "classDef st fill:#080808,stroke:#080808,color:#fff",
+            sc: "classDef sc fill:#f5f5f5,stroke:#d4d4d4,color:#080808",
+            dc: "classDef dc fill:#fff,stroke:#080808,color:#080808",
+            ok: "classDef ok fill:#080808,stroke:#080808,color:#fff",
+            fl: "classDef fl fill:#fff,stroke:#080808,color:#080808,stroke-dasharray:5 3",
+            dl: "classDef dl fill:#e5e5e5,stroke:#a3a3a3,color:#080808",
+            lk: "classDef lk fill:#e5e5e5,stroke:#a3a3a3,color:#080808",
+            ac: "classDef ac fill:#e5e5e5,stroke:#a3a3a3,color:#080808",
+            hm: "classDef hm fill:#080808,stroke:#080808,color:#fff",
+          }
+          return name && mono[name] ? mono[name] : match
+        })
+      }
+      const uid = `flow-${epicId}-${Date.now()}`
+      const { svg } = await mermaid.render(uid, finalChart)
+      if (cancelled || !ref.current) return
+      ref.current.innerHTML = svg
+      const svgEl = ref.current.querySelector("svg")
+      if (svgEl) { svgEl.style.maxWidth = "100%"; svgEl.style.height = "auto" }
+    }
+    render()
+    return () => { cancelled = true }
+  }, [chart, epicId])
+
+  return <div ref={ref} style={{ display: "flex", justifyContent: "center", overflow: "auto" }} />
 }
 
-/* ── Skeleton ─────────────────────────────────────────────────────────── */
-function SkeletonPage() {
+/* ── Sidebar ─────────────────────────────────────────────────── */
+function Sidebar({
+  epics, expandedEpic, setExpandedEpic, activeEpicId, onSelectEpic, mode,
+  screenIdx, stateIdx, onSelectScreen, onSelectState, getFlatIdx,
+}: {
+  epics: Epic[]; expandedEpic: string; setExpandedEpic: (id: string) => void
+  activeEpicId?: string; onSelectEpic?: (id: string) => void; mode: "ui" | "flow"
+  screenIdx?: number; stateIdx?: number; onSelectScreen?: (flatIdx: number) => void
+  onSelectState?: (idx: number) => void; getFlatIdx?: (epicIdx: number, localScreenIdx: number) => number
+}) {
   return (
-    <>
-      {/* Skeleton search */}
-      <div className="px-[22px] pt-[16px]">
-        <div className="h-[44px] rounded-full bg-secondary animate-pulse" />
-      </div>
-      {/* Skeleton banner */}
-      <div className="px-[22px] pt-[32px]">
-        <div className="h-[72px] rounded-[28px] bg-secondary animate-pulse" />
-      </div>
-      {/* Skeleton grid */}
-      <div className="px-[22px] pt-[32px]">
-        <div className="h-[14px] w-[100px] rounded-full bg-secondary animate-pulse mb-[12px]" />
-        <div className="grid grid-cols-4 gap-[12px]">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="flex flex-col items-center gap-[8px]">
-              <div className="w-[48px] h-[48px] rounded-full bg-secondary animate-pulse" />
-              <div className="w-[40px] h-[10px] rounded-full bg-secondary animate-pulse" />
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* Skeleton saved */}
-      <div className="px-[22px] pt-[32px]">
-        <div className="h-[14px] w-[120px] rounded-full bg-secondary animate-pulse mb-[12px]" />
-        {[1, 2].map((i) => (
-          <div key={i} className="flex items-center gap-[12px] py-[12px]">
-            <div className="w-[40px] h-[40px] rounded-full bg-secondary animate-pulse shrink-0" />
-            <div className="flex-1 space-y-[6px]">
-              <div className="h-[14px] w-3/4 rounded-full bg-secondary animate-pulse" />
-              <div className="h-[10px] w-1/2 rounded-full bg-secondary animate-pulse" />
-            </div>
-          </div>
-        ))}
-      </div>
-    </>
-  )
-}
-
-/* ── Page ─────────────────────────────────────────────────────────────── */
-function VasHomeContent() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const state = searchParams.get("state") ?? "loaded"
-
-  const showSaved = state !== "empty-saved" && state !== "loading"
-  const isLoading = state === "loading"
-  const isSearch = state === "search-active" || state === "search-empty"
-  const [searchQuery, setSearchQuery] = React.useState(state === "search-empty" ? "xyz" : "")
-
-  return (
-    <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
-      {/* ── Header ──────────────────────────────────────────────── */}
-      <Header
-        variant="large-title"
-        largeTitle="Thanh toan"
-        leading={
-          <button
-            type="button"
-            onClick={() => router.back()}
-            className="flex items-center justify-center p-[10px] min-h-[44px] rounded-full"
-          >
-            <ChevronLeft size={18} className="text-foreground" />
-          </button>
-        }
-        trailing={
-          <button
-            type="button"
-            onClick={() => router.push("/vas/saved")}
-            className="flex items-center justify-center p-[10px] min-h-[44px] rounded-full"
-          >
-            <Settings size={18} className="text-foreground" />
-          </button>
-        }
-      />
-
-      {/* ── Scrollable content ──────────────────────────────────── */}
-      <div className="flex-1 overflow-y-auto pb-[21px]">
-
-        {/* ── Search bar ───────────────────────────────────────── */}
-        <div className="px-[22px] pt-[16px]">
-          <div className="relative">
-            <Search size={16} className="absolute left-[14px] top-1/2 -translate-y-1/2 text-foreground-secondary pointer-events-none" />
-            <input
-              type="text"
-              placeholder="Tim dich vu, nha cung cap..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-[44px] rounded-full bg-secondary pl-[40px] pr-[16px] text-sm text-foreground placeholder:text-foreground-secondary outline-none"
-            />
-          </div>
-        </div>
-
-        {isLoading && <SkeletonPage />}
-
-        {!isLoading && state === "search-empty" && (
-          <div className="pt-[32px] px-[22px]">
-            <FeedbackState
-              icon={
-                <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center">
-                  <Search size={32} className="text-foreground-secondary" />
-                </div>
-              }
-              title="Khong tim thay dich vu"
-              description="Thu tim voi tu khoa khac"
-            />
-          </div>
-        )}
-
-        {!isLoading && !isSearch && (
-          <>
-            {/* ── Urgent bill reminder banner ─────────────────── */}
-            {showSaved && SAVED_BILLERS.some((b) => b.urgent) && (
-              <div className="px-[22px] pt-[32px]">
-                {SAVED_BILLERS.filter((b) => b.urgent).map((bill) => {
-                  const { Icon, accent } = getBillerIcon(bill.type)
-                  return (
-                    <button
-                      key={bill.id}
-                      type="button"
-                      onClick={() => router.push(`/vas/bill/input?provider=${bill.id}&type=${bill.type}&state=bill-found`)}
-                      className="w-full bg-secondary rounded-[28px] p-[16px] flex items-center gap-[12px]"
-                    >
-                      <div className={`w-[40px] h-[40px] rounded-full ${accent} flex items-center justify-center shrink-0`}>
-                        <Icon size={20} className="text-background" />
-                      </div>
-                      <div className="flex-1 min-w-0 text-left">
-                        <p className="text-sm font-semibold text-foreground">{bill.provider} · {bill.amount}</p>
-                        <p className="text-xs font-normal text-danger">Han {bill.due} — Thanh toan ngay</p>
-                      </div>
-                      <ChevronRight size={16} className="text-foreground-secondary shrink-0" />
+    <div style={{ flex: 1, overflowY: "auto", padding: "4px 0" }}>
+      {epics.map((epic, eIdx) => {
+        const isExpanded = expandedEpic === epic.id
+        const epicStateCount = epic.screens.reduce((a, s) => a + s.states.length, 0)
+        return (
+          <div key={epic.id}>
+            <button
+              onClick={() => { setExpandedEpic(isExpanded ? "" : epic.id); if (mode === "flow" && onSelectEpic) onSelectEpic(epic.id) }}
+              style={{ display: "flex", alignItems: "center", gap: 8, width: "100%", textAlign: "left", padding: "10px 16px", background: isExpanded ? "var(--secondary)" : "transparent", border: "none", borderLeft: `3px solid ${isExpanded ? "var(--foreground)" : "transparent"}`, color: isExpanded ? "var(--foreground)" : "var(--foreground-secondary)", fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: FONT, letterSpacing: "0.3px" }}
+            >
+              <span style={{ transform: isExpanded ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.15s", fontSize: 10 }}>&#9654;</span>
+              <span style={{ flex: 1 }}>{epic.title}</span>
+              <span style={{ fontSize: 10, color: "var(--foreground-secondary)", fontWeight: 400 }}>{mode === "ui" ? epicStateCount : `${epic.screens.length} screens`}</span>
+            </button>
+            {isExpanded && <div style={{ padding: "0 16px 6px 30px", fontSize: 10, color: "var(--foreground-secondary)" }}>{epic.desc}</div>}
+            {mode === "ui" && isExpanded && getFlatIdx && onSelectScreen && onSelectState &&
+              epic.screens.map((screen, sIdx) => {
+                const flatIdx = getFlatIdx(eIdx, sIdx)
+                const isActive = flatIdx === screenIdx
+                return (
+                  <div key={sIdx}>
+                    <button onClick={() => onSelectScreen(flatIdx)} style={{ display: "block", width: "100%", textAlign: "left", padding: "6px 16px 6px 30px", background: isActive ? "var(--secondary)" : "transparent", border: "none", color: isActive ? "var(--foreground)" : "var(--foreground-secondary)", fontSize: 12, fontWeight: isActive ? 600 : 400, cursor: "pointer", fontFamily: FONT }}>
+                      {screen.screen}
                     </button>
-                  )
-                })}
-              </div>
-            )}
-
-            {/* ── Category grid (3 col) ───────────────────────── */}
-            <div className="pt-[32px] px-[22px]">
-              <p className="text-sm font-semibold text-foreground pb-[16px]">Dich vu</p>
-              <div className="grid grid-cols-4 gap-y-[20px] gap-x-[12px]">
-                {CATEGORIES.map(({ label, href, Icon, accent }) => (
-                  <button
-                    key={href}
-                    type="button"
-                    onClick={() => router.push(href)}
-                    className="flex flex-col items-center gap-[8px]"
-                  >
-                    <div className={`w-[48px] h-[48px] rounded-full ${accent} flex items-center justify-center`}>
-                      <Icon size={22} className="text-background" />
-                    </div>
-                    <p className="text-xs font-medium text-foreground text-center leading-[16px]">{label}</p>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* ── Saved billers — list style with context ──────── */}
-            {showSaved && (
-              <div className="pt-[32px]">
-                <div className="flex items-center justify-between px-[22px] pb-[8px]">
-                  <p className="text-sm font-semibold text-foreground">Hoa don da luu</p>
-                  <button
-                    type="button"
-                    onClick={() => router.push("/vas/saved")}
-                    className="text-sm font-semibold text-success"
-                  >
-                    Tat ca
-                  </button>
-                </div>
-                <div className="px-[22px]">
-                  {SAVED_BILLERS.map((bill, idx) => {
-                    const { Icon, accent } = getBillerIcon(bill.type)
-                    return (
-                      <button
-                        key={bill.id}
-                        type="button"
-                        onClick={() => router.push(`/vas/bill/input?provider=${bill.id}&type=${bill.type}`)}
-                        className={`w-full flex items-center gap-[12px] py-[14px] ${idx < SAVED_BILLERS.length - 1 ? "border-b border-border" : ""}`}
-                      >
-                        <div className={`w-[40px] h-[40px] rounded-full ${accent} flex items-center justify-center shrink-0`}>
-                          <Icon size={18} className="text-background" />
-                        </div>
-                        <div className="flex-1 min-w-0 text-left">
-                          <p className="text-sm font-semibold text-foreground">{bill.provider}</p>
-                          <p className="text-xs font-normal text-foreground-secondary">{bill.code}</p>
-                        </div>
-                        <div className="shrink-0 text-right">
-                          <p className="text-sm font-semibold text-foreground">{bill.amount}</p>
-                          <p className="text-xs font-normal text-foreground-secondary">Han {bill.due}</p>
-                        </div>
-                      </button>
-                    )
-                  })}
-                </div>
-              </div>
-            )}
-
-            {/* ── Saved phones — horizontal chips ─────────────── */}
-            {showSaved && (
-              <div className="pt-[32px]">
-                <div className="flex items-center justify-between px-[22px] pb-[8px]">
-                  <p className="text-sm font-semibold text-foreground">Nap nhanh</p>
-                </div>
-                <div className="flex gap-[10px] overflow-x-auto px-[22px] scrollbar-none">
-                  {SAVED_PHONES.map((p) => (
-                    <button
-                      key={p.id}
-                      type="button"
-                      onClick={() => router.push(`/vas/topup?phone=${p.phone.replace(/\s/g, "")}`)}
-                      className="shrink-0 bg-secondary rounded-[28px] px-[16px] py-[12px] flex items-center gap-[10px]"
-                    >
-                      <div className={`w-[32px] h-[32px] rounded-full ${getCarrierAccent(p.carrier)} flex items-center justify-center`}>
-                        <Smartphone size={14} className="text-background" />
+                    {isActive && (
+                      <div style={{ padding: "4px 16px 8px 40px", display: "flex", flexWrap: "wrap", gap: 4 }}>
+                        {screen.states.map((s, idx) => {
+                          const isStateActive = idx === stateIdx
+                          return (
+                            <button key={idx} onClick={() => onSelectState(idx)} style={{ padding: "3px 10px", borderRadius: 100, border: "none", fontSize: 10, fontWeight: isStateActive ? 600 : 400, background: isStateActive ? "var(--foreground)" : "var(--secondary)", color: isStateActive ? "var(--background)" : "var(--foreground-secondary)", cursor: "pointer", fontFamily: FONT }}>
+                              {s.label}
+                            </button>
+                          )
+                        })}
                       </div>
-                      <div className="text-left">
-                        <p className="text-sm font-semibold text-foreground">{p.phone}</p>
-                        <p className="text-xs font-normal text-foreground-secondary">{p.carrier} · {p.lastAmount}</p>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* ── Recent transactions ──────────────────────────── */}
-            <div className="pt-[32px]">
-              <div className="flex items-center justify-between px-[22px] pb-[8px]">
-                <p className="text-sm font-semibold text-foreground">Gan day</p>
-                <button
-                  type="button"
-                  onClick={() => router.push("/vas/history")}
-                  className="text-sm font-semibold text-success"
-                >
-                  Xem tat ca
-                </button>
-              </div>
-              <div className="px-[22px]">
-                {RECENT.map((tx, idx) => (
-                  <div
-                    key={tx.id}
-                    className={`flex items-center gap-[12px] py-[12px] ${idx < RECENT.length - 1 ? "border-b border-border" : ""}`}
-                  >
-                    <div className="w-[36px] h-[36px] rounded-full bg-secondary flex items-center justify-center shrink-0">
-                      <tx.Icon size={16} className="text-foreground" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-foreground truncate">{tx.label}</p>
-                      <p className="text-xs font-normal text-foreground-secondary">{tx.detail}</p>
-                    </div>
-                    <div className="shrink-0">
-                      <p className="text-xs font-normal text-foreground-secondary">{tx.date}</p>
-                    </div>
+                    )}
                   </div>
-                ))}
-              </div>
-            </div>
-          </>
-        )}
-
-      </div>
-
-      {/* ── Home indicator ──────────────────────────────────────── */}
-      <div className="absolute bottom-0 inset-x-0 h-[21px] flex items-end justify-center pb-[4px] bg-background pointer-events-none">
-        <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
-      </div>
+                )
+              })
+            }
+            {mode === "flow" && isExpanded && epic.screens.map((screen, sIdx) => (
+              <div key={sIdx} style={{ padding: "4px 16px 4px 30px", fontSize: 11, color: "var(--foreground-secondary)", fontFamily: FONT }}>{screen.screen}</div>
+            ))}
+          </div>
+        )
+      })}
     </div>
   )
 }
 
-export default function VasHomePage() {
+/* ── Page ──────────────────────────────────────────────────────── */
+export default function VasStates() {
+  const [tab, setTab] = useState<"ui" | "flow">("ui")
+  const [isDark, setIsDark] = useState(false)
+  useEffect(() => {
+    const check = () => setIsDark(document.documentElement.classList.contains("dark"))
+    check()
+    const obs = new MutationObserver(check)
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] })
+    return () => obs.disconnect()
+  }, [])
+
+  const [screenIdx, setScreenIdx] = useState(0)
+  const [stateIdx, setStateIdx] = useState(0)
+  const [expandedEpicUI, setExpandedEpicUI] = useState("e1")
+  const [flowEpicId, setFlowEpicId] = useState("e1")
+  const [expandedEpicFlow, setExpandedEpicFlow] = useState("e1")
+
+  const currentScreen = ALL_SCREENS[screenIdx]
+  const currentState = currentScreen.states[stateIdx]
+  const iframeSrc = `${currentScreen.route}${currentState.param}`
+  const currentEpicIdx = findEpicIdx(screenIdx)
+  const flowEpic = EPICS.find((e) => e.id === flowEpicId) || EPICS[0]
+
+  function selectScreen(flatIdx: number) { setScreenIdx(flatIdx); setStateIdx(0); setExpandedEpicUI(EPICS[findEpicIdx(flatIdx)].id) }
+  function getFlatIdx(epicIdx: number, localScreenIdx: number): number { let flat = 0; for (let i = 0; i < epicIdx; i++) flat += EPICS[i].screens.length; return flat + localScreenIdx }
+  const globalStatePos = ALL_SCREENS.slice(0, screenIdx).reduce((acc, s) => acc + s.states.length, 0) + stateIdx + 1
+
   return (
-    <React.Suspense fallback={null}>
-      <VasHomeContent />
-    </React.Suspense>
+    <div style={{ display: "flex", height: "100vh", background: "var(--background)", color: "var(--foreground)", fontFamily: FONT }}>
+      {/* Sidebar */}
+      <div style={{ width: 300, minWidth: 300, borderRight: "1px solid var(--border)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+        <div style={{ padding: "20px 16px 0", borderBottom: "1px solid var(--border)" }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "var(--foreground)", letterSpacing: "0.5px" }}>VAS PAYMENT</div>
+          <div style={{ fontSize: 11, color: "var(--foreground-secondary)", marginTop: 4 }}>3 epics &middot; {ALL_SCREENS.length} screens &middot; {TOTAL_STATES} states</div>
+          <div style={{ display: "flex", gap: 0, marginTop: 12 }}>
+            <button style={tabStyle(tab === "ui")} onClick={() => setTab("ui")}>UI</button>
+            <button style={tabStyle(tab === "flow")} onClick={() => setTab("flow")}>Flow</button>
+          </div>
+        </div>
+        {tab === "ui" ? (
+          <Sidebar epics={EPICS} expandedEpic={expandedEpicUI} setExpandedEpic={setExpandedEpicUI} mode="ui" screenIdx={screenIdx} stateIdx={stateIdx} onSelectScreen={selectScreen} onSelectState={setStateIdx} getFlatIdx={getFlatIdx} />
+        ) : (
+          <Sidebar epics={EPICS} expandedEpic={expandedEpicFlow} setExpandedEpic={(id) => { setExpandedEpicFlow(id); if (id) setFlowEpicId(id) }} activeEpicId={flowEpicId} onSelectEpic={setFlowEpicId} mode="flow" />
+        )}
+      </div>
+
+      {/* Main */}
+      {tab === "ui" ? (
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", gap: 12, padding: "20px 32px", overflow: "auto" }}>
+          <div style={{ textAlign: "center", flexShrink: 0 }}>
+            <div style={{ fontSize: 14, fontWeight: 600, color: "var(--foreground)" }}>{currentScreen.screen}</div>
+            <div style={{ fontSize: 11, color: "var(--foreground-secondary)", marginTop: 2 }}>{currentState.label} &mdash; {iframeSrc}</div>
+          </div>
+          {(() => {
+            const SCALE = 0.78, W = 390, H = 844, PAD = 8
+            const frameW = Math.round(W * SCALE) + PAD * 2
+            const frameH = Math.round(H * SCALE) + PAD * 2
+            return (
+              <div style={{ width: frameW, height: frameH, borderRadius: Math.round(52 * SCALE), background: "#1a1a1a", border: "1px solid #333", padding: PAD, boxShadow: "0 25px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.1)", position: "relative", flexShrink: 0 }}>
+                <div style={{ position: "absolute", top: Math.round(12 * SCALE) + PAD, left: "50%", transform: "translateX(-50%)", width: Math.round(120 * SCALE), height: Math.round(36 * SCALE), borderRadius: 16, background: "#000", zIndex: 10 }} />
+                <div style={{ width: Math.round(W * SCALE), height: Math.round(H * SCALE), borderRadius: Math.round(44 * SCALE), overflow: "hidden", background: "#000" }}>
+                  <iframe key={iframeSrc} src={iframeSrc} style={{ width: W, height: H, border: "none", transform: `scale(${SCALE})`, transformOrigin: "0 0" }} title={`${currentScreen.screen} — ${currentState.label}`} />
+                </div>
+              </div>
+            )
+          })()}
+          <div style={{ display: "flex", gap: 8, alignItems: "center", flexShrink: 0 }}>
+            <button onClick={() => { if (stateIdx > 0) { setStateIdx(stateIdx - 1) } else if (screenIdx > 0) { const prev = ALL_SCREENS[screenIdx - 1]; selectScreen(screenIdx - 1); setStateIdx(prev.states.length - 1) } }} disabled={screenIdx === 0 && stateIdx === 0} style={{ padding: "6px 16px", borderRadius: 8, border: "1px solid var(--border)", background: "var(--secondary)", color: screenIdx === 0 && stateIdx === 0 ? "var(--foreground-secondary)" : "var(--foreground)", fontSize: 12, cursor: screenIdx === 0 && stateIdx === 0 ? "not-allowed" : "pointer", fontFamily: FONT }}>← Prev</button>
+            <span style={{ fontSize: 11, color: "var(--foreground-secondary)", minWidth: 60, textAlign: "center" }}>{globalStatePos} / {TOTAL_STATES}</span>
+            <button onClick={() => { if (stateIdx < currentScreen.states.length - 1) { setStateIdx(stateIdx + 1) } else if (screenIdx < ALL_SCREENS.length - 1) { selectScreen(screenIdx + 1) } }} disabled={screenIdx === ALL_SCREENS.length - 1 && stateIdx === currentScreen.states.length - 1} style={{ padding: "6px 16px", borderRadius: 8, border: "1px solid var(--border)", background: "var(--secondary)", color: screenIdx === ALL_SCREENS.length - 1 && stateIdx === currentScreen.states.length - 1 ? "var(--foreground-secondary)" : "var(--foreground)", fontSize: 12, cursor: screenIdx === ALL_SCREENS.length - 1 && stateIdx === currentScreen.states.length - 1 ? "not-allowed" : "pointer", fontFamily: FONT }}>Next →</button>
+          </div>
+        </div>
+      ) : (
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+          <div style={{ padding: "20px 32px 16px", borderBottom: "1px solid var(--border)", flexShrink: 0 }}>
+            <div style={{ marginBottom: 6 }}><span style={{ fontSize: 16, fontWeight: 700, color: "var(--foreground)" }}>{flowEpic.title}</span></div>
+            <div style={{ fontSize: 12, color: "var(--foreground-secondary)" }}>{flowEpic.desc}</div>
+            <div style={{ display: "flex", gap: 16, marginTop: 12, flexWrap: "wrap" }}>
+              {[{ style: "solid", label: "Screen" }, { style: "dashed", label: "Decision" }, { style: "double", label: "Thanh cong" }, { style: "dotted", label: "That bai" }].map((item) => (
+                <div key={item.label} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11 }}>
+                  <div style={{ width: 12, height: 12, borderRadius: item.style === "dashed" ? "50%" : 3, background: "var(--background)", border: `1.5px ${item.style === "double" ? "solid" : item.style} var(--foreground-secondary)`, ...(item.style === "double" ? { outline: "1.5px solid var(--foreground-secondary)", outlineOffset: 1 } : {}) }} />
+                  <span style={{ color: "var(--foreground-secondary)" }}>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ flex: 1, overflow: "auto", padding: "32px", display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
+            <FlowRenderer key={flowEpicId} chart={FLOW_CHARTS[flowEpicId]} epicId={flowEpicId} />
+          </div>
+        </div>
+      )}
+    </div>
   )
 }

@@ -67,3 +67,6 @@ Loop tối đa 2 lần. Nếu vẫn chưa OK → Vi hỏi PO "anh muốn skip fl
 
 ## Handoff
 Flow approved → dispatch Ivy cho step-06.
+
+---
+Back: [[workflows/index|Workflows]] · [[workflows/uxui-pipeline/workflow|Pipeline]]

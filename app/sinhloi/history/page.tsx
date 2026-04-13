@@ -2,42 +2,56 @@
 
 import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { ChevronLeft, ChevronRight as ChevronR, ArrowUpRight, ArrowDownLeft, TrendingUp, FileText } from "lucide-react"
+import { ChevronLeft, ArrowUpRight, ArrowDownLeft, Percent, FileText } from "lucide-react"
 import { Header } from "@/components/ui/header"
 import { ItemList, ItemListItem } from "@/components/ui/item-list"
 import { FeedbackState } from "@/components/ui/feedback-state"
-import { MOCK_TRANSACTIONS_FULL, MOCK_MONTHLY_STATS, formatVND, formatVNDSigned, getTxIcon } from "../data"
+import { Skeleton } from "@/components/ui/skeleton"
+import { Badge } from "@/components/ui/badge"
+import { MOCK_TRANSACTIONS_FULL, formatVND, formatVNDSigned, getTxIcon } from "../data"
 import type { SinhLoiTransaction } from "../data"
 
-/* ── Helpers ───────────────────────────────────────────────────── */
-const FILTERS = [
-  { label: "Tat ca", value: "all" },
-  { label: "Nap tien", value: "deposit" },
-  { label: "Rut tien", value: "withdrawal" },
-  { label: "Tra lai", value: "interest" },
+/* ── Tab config ──────────────────────────────────────────────── */
+const TABS = [
+  { label: "Tất cả", value: "all" },
+  { label: "Nạp", value: "deposit" },
+  { label: "Rút", value: "withdrawal" },
+  { label: "Lãi", value: "interest" },
 ]
 
-function getStatusColor(status: SinhLoiTransaction["status"]) {
+/* ── Helpers ──────────────────────────────────────────────────── */
+function getStatusBadgeVariant(status: SinhLoiTransaction["status"]) {
   switch (status) {
-    case "success": return "text-success"
-    case "pending": return "text-warning"
-    case "failed": return "text-danger"
+    case "success": return "success" as const
+    case "pending": return "warning" as const
+    case "failed": return "danger" as const
   }
 }
 
 function getStatusText(status: SinhLoiTransaction["status"]) {
   switch (status) {
-    case "success": return "Thanh cong"
-    case "pending": return "Dang xu ly"
-    case "failed": return "That bai"
+    case "success": return "Thành công"
+    case "pending": return "Đang xử lý"
+    case "failed": return "Thất bại"
   }
 }
 
-function getAmountColor(type: string) {
+function getAmountPrefix(type: string) {
   switch (type) {
-    case "deposit": return "text-success"
-    case "withdrawal": return "text-danger"
-    default: return "text-success"
+    case "deposit": return "+"
+    case "withdrawal": return "-"
+    default: return "+"
+  }
+}
+
+function getTxPrefixIcon(type: string) {
+  switch (type) {
+    case "deposit":
+      return <ArrowDownLeft size={20} className="text-info" />
+    case "withdrawal":
+      return <ArrowUpRight size={20} className="text-danger" />
+    default:
+      return <Percent size={20} className="text-success" />
   }
 }
 
@@ -55,37 +69,28 @@ function groupByDate(txs: SinhLoiTransaction[]): { date: string; items: SinhLoiT
   return groups
 }
 
-/* ── Loading skeleton ──────────────────────────────────────────── */
+/* ── Loading skeleton ─────────────────────────────────────────── */
 function HistorySkeleton() {
   return (
-    <div className="pt-[16px] px-[22px]">
-      {/* Filter chips skeleton */}
-      <div className="flex gap-[8px] mb-[16px]">
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="h-[32px] w-[60px] bg-secondary rounded-full animate-pulse" />
-        ))}
-      </div>
-      {/* Row skeletons */}
-      <div className="space-y-4">
-        {[1, 2, 3, 4, 5].map((i) => (
-          <div key={i} className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-full bg-secondary animate-pulse shrink-0" />
-            <div className="flex-1 space-y-2">
-              <div className="h-4 w-3/4 bg-secondary rounded-full animate-pulse" />
-              <div className="h-3 w-1/2 bg-secondary rounded-full animate-pulse" />
-            </div>
-            <div className="space-y-2">
-              <div className="h-4 w-16 bg-secondary rounded-full animate-pulse" />
-              <div className="h-3 w-12 bg-secondary rounded-full animate-pulse ml-auto" />
-            </div>
+    <div className="px-[22px] pt-[16px] flex flex-col gap-4">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <div key={i} className="flex items-center gap-3">
+          <Skeleton variant="circle" width={44} height={44} />
+          <div className="flex-1 flex flex-col gap-2">
+            <Skeleton variant="text" width="75%" />
+            <Skeleton variant="text" width="50%" />
           </div>
-        ))}
-      </div>
+          <div className="flex flex-col gap-2 items-end">
+            <Skeleton variant="text" width={64} />
+            <Skeleton variant="text" width={48} />
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
 
-/* ── S11: Lich su giao dich — BIDV transactions pattern ────────── */
+/* ── Page ─────────────────────────────────────────────────────── */
 export default function HistoryPage() {
   return <React.Suspense fallback={null}><HistoryContent /></React.Suspense>
 }
@@ -95,9 +100,8 @@ function HistoryContent() {
   const searchParams = useSearchParams()
   const stateParam = searchParams.get("state")
 
-  const [activeFilter, setActiveFilter] = React.useState("all")
+  const [activeTab, setActiveTab] = React.useState("all")
   const [isLoading, setIsLoading] = React.useState(stateParam === "loading")
-  const [isError, setIsError] = React.useState(false)
 
   // Simulate loading
   React.useEffect(() => {
@@ -107,46 +111,24 @@ function HistoryContent() {
     }
   }, [stateParam])
 
-  const filtered = activeFilter === "all"
+  const filtered = activeTab === "all"
     ? (stateParam === "empty" ? [] : MOCK_TRANSACTIONS_FULL)
-    : MOCK_TRANSACTIONS_FULL.filter((tx) => tx.type === activeFilter)
+    : MOCK_TRANSACTIONS_FULL.filter((tx) => tx.type === activeTab)
 
   const isEmpty = filtered.length === 0
   const grouped = groupByDate(filtered)
 
-  /* ── Error state ─────────────────────────────────────────────── */
-  if (isError) {
-    return (
-      <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
-        <Header
-          variant="large-title"
-          largeTitle="Lich su giao dich"
-          leading={
-            <button type="button" onClick={() => router.back()} className="w-[44px] h-[44px] flex items-center justify-center rounded-full">
-              <ChevronLeft size={18} className="text-foreground" />
-            </button>
-          }
-        />
-        <div className="flex-1 flex items-center justify-center">
-          <FeedbackState
-            title="Khong the tai lich su"
-            description="Vui long thu lai"
-            actionLabel="Thu lai"
-            actionProps={{ onClick: () => setIsError(false) }}
-          />
-        </div>
-        <div className="absolute bottom-0 inset-x-0 h-[21px] flex items-end justify-center pb-[4px] bg-background pointer-events-none">
-          <div className="w-[139px] h-[5px] rounded-full bg-foreground" />
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
+      {/* Header — large-title with search + tabs */}
       <Header
         variant="large-title"
-        largeTitle="Lich su giao dich"
+        largeTitle="Lịch sử"
+        showSearch
+        searchProps={{ placeholder: "Tìm giao dịch..." }}
+        tabs={TABS}
+        activeTab={activeTab}
+        onTabChange={(v) => setActiveTab(v)}
         leading={
           <button
             type="button"
@@ -158,84 +140,11 @@ function HistoryContent() {
         }
       />
 
-      {/* Monthly stats — summary cards */}
-      <div className="px-[22px] pb-[16px]">
-        <div className="flex items-center justify-between mb-[12px]">
-          <p className="text-md font-semibold text-foreground">Thong ke</p>
-          <div className="flex items-center gap-[8px]">
-            <button type="button" className="p-1">
-              <ChevronLeft size={16} className="text-foreground-secondary" />
-            </button>
-            <p className="text-sm font-semibold text-foreground">{MOCK_MONTHLY_STATS.month}</p>
-            <button type="button" className="p-1">
-              <ChevronR size={16} className="text-foreground-secondary" />
-            </button>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-[8px]">
-          <div className="bg-secondary rounded-[20px] p-[14px]">
-            <div className="flex items-center justify-between mb-[4px]">
-              <p className="text-sm text-foreground-secondary">Tong tien vao</p>
-              <ArrowDownLeft size={16} className="text-success" />
-            </div>
-            <p className="text-md font-bold tabular-nums text-foreground">{formatVND(MOCK_MONTHLY_STATS.totalIn)}</p>
-          </div>
-          <div className="bg-secondary rounded-[20px] p-[14px]">
-            <div className="flex items-center justify-between mb-[4px]">
-              <p className="text-sm text-foreground-secondary">Tong tien ra</p>
-              <ArrowUpRight size={16} className="text-danger" />
-            </div>
-            <p className="text-md font-bold tabular-nums text-foreground">{formatVND(MOCK_MONTHLY_STATS.totalOut)}</p>
-          </div>
-          <div className="bg-secondary rounded-[20px] p-[14px]">
-            <div className="flex items-center justify-between mb-[4px]">
-              <p className="text-sm text-foreground-secondary">Tien loi thang</p>
-              <TrendingUp size={16} className="text-success" />
-            </div>
-            <p className="text-md font-bold tabular-nums text-success">{formatVND(MOCK_MONTHLY_STATS.interestMonth)}</p>
-          </div>
-          <div className="bg-secondary rounded-[20px] p-[14px]">
-            <div className="flex items-center justify-between mb-[4px]">
-              <p className="text-sm text-foreground-secondary">Tien hoan thang</p>
-              <span className="text-success text-xs">$</span>
-            </div>
-            <p className="text-md font-bold tabular-nums text-success">{formatVND(MOCK_MONTHLY_STATS.cashbackMonth)}</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Filter chips — BIDV pattern: horizontal scroll */}
-      <div className="px-[22px] pb-[8px]">
-        <div className="flex gap-[8px] overflow-x-auto no-scrollbar">
-          {FILTERS.map((f) => (
-            <button
-              key={f.value}
-              type="button"
-              onClick={() => setActiveFilter(f.value)}
-              className={`shrink-0 px-[14px] py-[6px] rounded-full text-sm font-semibold leading-5 transition-colors ${
-                activeFilter === f.value
-                  ? "bg-foreground text-background"
-                  : "bg-secondary text-foreground"
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Note T-1 */}
-      <div className="px-[22px] pb-[8px]">
-        <p className="text-xs text-foreground-secondary">
-          Giao dich hom nay se hien thi vao ngay mai
-        </p>
-      </div>
-
       <div className="flex-1 overflow-y-auto pb-[21px]">
-        {/* Loading — skeleton */}
+        {/* Loading */}
         {isLoading && <HistorySkeleton />}
 
-        {/* Empty — FeedbackState */}
+        {/* Empty */}
         {!isLoading && isEmpty && (
           <div className="pt-[32px] px-[22px]">
             <FeedbackState
@@ -244,19 +153,19 @@ function HistoryContent() {
                   <FileText size={32} className="text-foreground-secondary" />
                 </div>
               }
-              title={activeFilter !== "all" ? "Khong tim thay giao dich" : "Chua co giao dich nao"}
+              title="Chưa có giao dịch"
               description={
-                activeFilter !== "all"
-                  ? undefined
-                  : "Nap tien vao vi sinh loi de bat dau giao dich"
+                activeTab !== "all"
+                  ? "Không tìm thấy giao dịch với bộ lọc này"
+                  : "Nạp tiền vào ví sinh lời để bắt đầu"
               }
-              actionLabel={activeFilter !== "all" ? "Xoa bo loc" : undefined}
-              actionProps={activeFilter !== "all" ? { onClick: () => setActiveFilter("all") } : undefined}
+              actionLabel={activeTab !== "all" ? "Xóa bộ lọc" : undefined}
+              actionProps={activeTab !== "all" ? { onClick: () => setActiveTab("all") } : undefined}
             />
           </div>
         )}
 
-        {/* Loaded — grouped by date (BIDV pattern) */}
+        {/* Transaction list grouped by date */}
         {!isLoading && !isEmpty && (
           <div className="pt-[16px]">
             {grouped.map((section) => (
@@ -268,47 +177,41 @@ function HistoryContent() {
                   </p>
                 </div>
 
-                {/* Transaction items */}
+                {/* Items */}
                 <div className="px-[22px]">
                   <ItemList>
-                    {section.items.map((tx, idx) => {
-                      const icon = getTxIcon(tx.type)
-                      return (
-                        <ItemListItem
-                          key={tx.id}
-                          prefix={
-                            <div className={`w-full h-full rounded-full flex items-center justify-center ${icon.bg}`}>
-                              {tx.type === "deposit" ? <ArrowDownLeft size={20} className={icon.color} /> :
-                               tx.type === "withdrawal" ? <ArrowUpRight size={20} className={icon.color} /> :
-                               <TrendingUp size={20} className={icon.color} />}
-                            </div>
-                          }
-                          label={tx.label}
-                          sublabel={tx.date}
-                          suffix={
-                            <div className="shrink-0 flex flex-col gap-1 items-end">
-                              <span className={`text-md font-semibold leading-6 ${getAmountColor(tx.type)}`}>
-                                {formatVNDSigned(tx.amount)}
-                              </span>
-                              <span className={`text-sm font-normal leading-5 ${getStatusColor(tx.status)}`}>
-                                {getStatusText(tx.status)}
-                              </span>
-                            </div>
-                          }
-                          divider={idx < section.items.length - 1}
-                          onPress={() => router.push(`/sinhloi/history/${tx.id}`)}
-                        />
-                      )
-                    })}
+                    {section.items.map((tx, idx) => (
+                      <ItemListItem
+                        key={tx.id}
+                        prefix={
+                          <div className={`w-full h-full rounded-full flex items-center justify-center ${getTxIcon(tx.type).bg}`}>
+                            {getTxPrefixIcon(tx.type)}
+                          </div>
+                        }
+                        label={tx.label}
+                        sublabel={tx.date}
+                        metadata={formatVNDSigned(tx.amount)}
+                        suffix={
+                          <div className="flex flex-col items-end gap-1">
+                            <Badge variant={getStatusBadgeVariant(tx.status)} dot>
+                              {getStatusText(tx.status)}
+                            </Badge>
+                          </div>
+                        }
+                        showChevron
+                        divider={idx < section.items.length - 1}
+                        onPress={() => router.push(`/sinhloi/history/${tx.id}`)}
+                      />
+                    ))}
                   </ItemList>
                 </div>
               </div>
             ))}
 
-            {/* End of list footer */}
+            {/* End of list */}
             <div className="px-[22px] pt-[24px] pb-[16px]">
               <p className="text-xs text-foreground-secondary text-center">
-                Da hien thi tat ca giao dich
+                Đã hiển thị tất cả giao dịch
               </p>
             </div>
           </div>

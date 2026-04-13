@@ -249,3 +249,6 @@ organize        = "agent-organizer:meta"
 workflow        = "workflow-orchestrator:meta"
 distribute      = "task-distributor:meta"
 ```
+
+---
+Back: [[agents/index|Agents]]

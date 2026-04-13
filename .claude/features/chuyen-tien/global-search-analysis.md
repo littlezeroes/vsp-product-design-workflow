@@ -259,3 +259,6 @@ ENTRY PAGE
 ---
 
 *Nate out. Đợi Đức review.*
+
+---
+Back: [[features/index|Features]] · [[features/chuyen-tien/status|chuyen-tien]]

@@ -223,3 +223,6 @@
 ---
 
 *Report by Khoa — QA Design | 2026-03-22*
+
+---
+Back: [[features/index|Features]] · [[features/sinhloi-auto/status|sinhloi-auto]]

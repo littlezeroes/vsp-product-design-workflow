@@ -21,3 +21,6 @@ States: sheet-search, sheet-search-typing-sdt/stk/name, sheet-search-stk-bank-pi
 3. Detection logic — STK vs SĐT vs tên, transition giữa các state
 4. Destination picker — UX khi paste STK, chọn bank
 5. So sánh với ref apps (OKX, Cash App, Revolut, MoMo, ZaloPay)
+
+---
+Back: [[features/index|Features]] · [[features/chuyen-tien/status|chuyen-tien]]

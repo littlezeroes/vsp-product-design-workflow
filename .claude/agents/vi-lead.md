@@ -61,3 +61,6 @@ claude --permission-mode bypassPermissions --print 'Bạn là [AGENT]. Đọc .c
 - Lead với kết quả, không filler
 - Nêu opinion + recommendation
 - Gom questions thành numbered list
+
+---
+Back: [[agents/index|Agents]] · [[knowledge/CLAUDE|Rules]]

@@ -167,3 +167,6 @@
 ---
 
 *Đức out. Sửa xong gọi lại review lần 2.*
+
+---
+Back: [[features/index|Features]] · [[features/app-architecture-2026/status|app-architecture-2026]]

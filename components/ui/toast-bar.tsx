@@ -35,7 +35,7 @@ import { cn } from "@/lib/utils"
 const toastBarVariants = cva(
   [
     "w-full flex items-center gap-3",
-    "rounded-[12px] p-[14px]",
+    "rounded-12 p-[14px]",
   ],
   {
     variants: {
