@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sinh Lời Tự Động — Visual Explainer</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f5f5; color: #080808; }
+
+  .phone-frame {
+    width: 390px; margin: 40px auto; background: #fff; border-radius: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12); overflow: hidden; padding-bottom: 20px;
+  }
+
+  /* Status bar */
+  .status-bar { height: 54px; display: flex; align-items: flex-end; justify-content: space-between; padding: 0 24px 8px; }
+  .status-bar .time { font-size: 15px; font-weight: 600; }
+  .status-bar .icons { font-size: 12px; letter-spacing: 2px; }
+
+  /* Header */
+  .header { display: flex; align-items: center; padding: 8px 22px; gap: 12px; }
+  .header .back { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #080808; }
+  .header .title { font-size: 18px; font-weight: 700; flex: 1; }
+
+  /* Content */
+  .content { padding: 0 22px; }
+
+  /* Swipe card container */
+  .swipe-container {
+    overflow-x: auto; scroll-snap-type: x mandatory; display: flex; gap: 12px;
+    padding: 16px 0; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .swipe-container::-webkit-scrollbar { display: none; }
+
+  .card {
+    min-width: 346px; scroll-snap-align: start; border-radius: 24px;
+    padding: 24px; flex-shrink: 0;
+  }
+
+  /* Card 1: Overview */
+  .card-overview { background: linear-gradient(135deg, #1f1f1f 0%, #343434 100%); color: #fff; }
+  .card-overview .label { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+  .card-overview .amount { font-size: 36px; font-weight: 700; letter-spacing: -1px; }
+  .card-overview .amount .unit { font-size: 16px; font-weight: 400; opacity: 0.5; margin-left: 4px; }
+  .card-overview .stats { display: flex; gap: 24px; margin-top: 20px; }
+  .card-overview .stat .val { font-size: 20px; font-weight: 600; color: #00dda3; }
+  .card-overview .stat .key { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+  /* Card 2: How it works */
+  .card-how { background: #fafafa; border: 1px solid #e5e5e5; }
+  .card-how .card-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+
+  /* Timeline */
+  .timeline { position: relative; padding: 0 0 0 20px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 6px; top: 4px; bottom: 4px;
+    width: 2px; background: #e5e5e5; border-radius: 1px;
+  }
+  .timeline-item { position: relative; margin-bottom: 16px; }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-item .dot {
+    position: absolute; left: -20px; top: 4px; width: 14px; height: 14px;
+    border-radius: 50%; border: 2px solid #00b182; background: #fff;
+  }
+  .timeline-item .dot.active { background: #00b182; }
+  .timeline-item .dot.pending { border-color: #eab308; background: #fefce8; }
+  .timeline-item .t-label { font-size: 13px; font-weight: 600; }
+  .timeline-item .t-desc { font-size: 12px; color: #737373; margin-top: 2px; }
+
+  /* Card 3: Daily calculation */
+  .card-calc { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .card-calc .card-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #166534; }
+
+  .formula {
+    background: #fff; border-radius: 16px; padding: 16px; margin-bottom: 12px;
+    border: 1px solid #dcfce7;
+  }
+  .formula .formula-label { font-size: 11px; color: #737373; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .formula .formula-text { font-size: 14px; font-weight: 600; }
+  .formula .formula-text .highlight { color: #00b182; }
+  .formula .formula-example { font-size: 12px; color: #525252; margin-top: 8px; line-height: 1.6; }
+  .formula .formula-result {
+    font-size: 20px; font-weight: 700; color: #00b182; margin-top: 8px;
+    padding-top: 8px; border-top: 1px solid #dcfce7;
+  }
+
+  /* Card 4: Monthly chart */
+  .card-chart { background: #fff; border: 1px solid #e5e5e5; }
+  .card-chart .card-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+
+  .chart-area { height: 140px; position: relative; display: flex; align-items: flex-end; gap: 2px; padding-bottom: 20px; }
+  .chart-bar {
+    flex: 1; background: linear-gradient(180deg, #00dda3 0%, #00b182 100%);
+    border-radius: 3px 3px 0 0; min-height: 8px; position: relative;
+    transition: height 0.3s ease;
+  }
+  .chart-bar:hover { opacity: 0.8; }
+  .chart-bar.today { background: linear-gradient(180deg, #33e4b5 0%, #00dda3 100%); }
+  .chart-bar.future { background: #e5e5e5; }
+
+  .chart-labels { display: flex; justify-content: space-between; margin-top: 4px; }
+  .chart-labels span { font-size: 10px; color: #a1a1a1; }
+
+  .chart-summary {
+    display: flex; justify-content: space-between; margin-top: 16px;
+    padding-top: 12px; border-top: 1px solid #f3f3f3;
+  }
+  .chart-summary .cs-item .cs-val { font-size: 16px; font-weight: 700; }
+  .chart-summary .cs-item .cs-val.green { color: #00b182; }
+  .chart-summary .cs-item .cs-key { font-size: 11px; color: #737373; margin-top: 2px; }
+
+  /* Card 5: Payment */
+  .card-payment { background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%); border: 1px solid #fde047; }
+  .card-payment .card-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+  .card-payment .pay-info { font-size: 13px; color: #525252; line-height: 1.6; }
+  .card-payment .pay-date {
+    display: inline-flex; align-items: center; gap: 6px; background: #fff;
+    border-radius: 100px; padding: 8px 16px; margin-top: 12px; font-size: 14px; font-weight: 600;
+  }
+  .card-payment .pay-date .icon { font-size: 18px; }
+
+  /* Dots indicator */
+  .dots { display: flex; justify-content: center; gap: 6px; padding: 12px 0; }
+  .dots .dot { width: 6px; height: 6px; border-radius: 50%; background: #d4d4d4; }
+  .dots .dot.active { width: 20px; border-radius: 3px; background: #080808; }
+
+  /* Section title */
+  .section-title { font-size: 20px; font-weight: 700; padding: 32px 0 4px; }
+  .section-desc { font-size: 14px; color: #737373; padding-bottom: 4px; }
+
+  /* Bottom bar */
+  .bottom-bar { padding: 16px 22px; }
+  .cta {
+    width: 100%; height: 48px; background: #1f1f1f; color: #fff; border: none;
+    border-radius: 100px; font-size: 16px; font-weight: 600; cursor: pointer;
+    font-family: inherit;
+  }
+
+  /* Home indicator */
+  .home-indicator { display: flex; justify-content: center; padding: 8px 0 4px; }
+  .home-indicator .bar { width: 139px; height: 5px; background: #080808; border-radius: 100px; }
+
+  /* Annotation outside phone */
+  .annotation {
+    width: 390px; margin: 0 auto 60px; padding: 20px; background: #fff;
+    border-radius: 16px; border: 1px solid #e5e5e5;
+  }
+  .annotation h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+  .annotation ul { padding-left: 20px; font-size: 14px; line-height: 2; color: #525252; }
+  .annotation ul li strong { color: #080808; }
+
+  .page-title { text-align: center; padding: 40px 20px 0; font-size: 28px; font-weight: 700; }
+  .page-desc { text-align: center; padding: 8px 20px 0; font-size: 14px; color: #737373; }
+</style>
+</head>
+<body>
+
+<p class="page-title">Sinh Lời Tự Động — Visual Explainer</p>
+<p class="page-desc">Swipe cards minh họa cách tính lợi nhuận tự động</p>
+
+<!-- Phone Frame -->
+<div class="phone-frame">
+  <div class="status-bar">
+    <span class="time">9:41</span>
+    <span class="icons">&#9679;&#9679;&#9679; &#9681; &#9632;</span>
+  </div>
+
+  <div class="header">
+    <div class="back">&lsaquo;</div>
+    <div class="title">Sinh lời tự động</div>
+  </div>
+
+  <div class="content">
+    <!-- Swipe Cards -->
+    <div class="swipe-container" id="swipeContainer">
+
+      <!-- Card 1: Overview -->
+      <div class="card card-overview">
+        <div class="label">Số dư sinh lời</div>
+        <div class="amount">2.400.000<span class="unit">&#8363;</span></div>
+        <div class="stats">
+          <div class="stat">
+            <div class="val">+16.438 &#8363;</div>
+            <div class="key">Lợi nhuận tháng này</div>
+          </div>
+          <div class="stat">
+            <div class="val">2,5%</div>
+            <div class="key">Lợi suất / năm</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: How it works -->
+      <div class="card card-how">
+        <div class="card-title">Cách tính lợi nhuận</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="dot active"></div>
+            <div class="t-label">Ngày 1 &rarr; Ngày cuối tháng</div>
+            <div class="t-desc">Kỳ tính lãi = từ đầu đến cuối tháng</div>
+          </div>
+          <div class="timeline-item">
+            <div class="dot active"></div>
+            <div class="t-label">Mỗi ngày tạm tính</div>
+            <div class="t-desc">Lợi nhuận = Số dư &times; Lợi suất &divide; 365</div>
+          </div>
+          <div class="timeline-item">
+            <div class="dot active"></div>
+            <div class="t-label">Cuối kỳ cộng dồn</div>
+            <div class="t-desc">Tổng = &Sigma; lợi nhuận mỗi ngày trong kỳ</div>
+          </div>
+          <div class="timeline-item">
+            <div class="dot pending"></div>
+            <div class="t-label">Trả lãi: tối đa 5 ngày làm việc</div>
+            <div class="t-desc">Sau ngày cuối tháng, lãi được cộng vào ví</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Daily calculation -->
+      <div class="card card-calc">
+        <div class="card-title">Ví dụ tính 1 ngày</div>
+        <div class="formula">
+          <div class="formula-label">Công thức</div>
+          <div class="formula-text">
+            <span class="highlight">Số dư</span> &times; <span class="highlight">Lợi suất</span> &divide; 365
+          </div>
+          <div class="formula-example">
+            2.400.000 &times; 2.5% &divide; 365
+          </div>
+          <div class="formula-result">
+            = 164 &#8363; / ngày
+          </div>
+        </div>
+        <div class="formula">
+          <div class="formula-label">Tạm tính tháng 3 (30 ngày)</div>
+          <div class="formula-text">
+            164 &times; 30 ngày
+          </div>
+          <div class="formula-result">
+            = 4.931 &#8363;
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Monthly chart -->
+      <div class="card card-chart">
+        <div class="card-title">Lợi nhuận tạm tính — Tháng 3</div>
+        <div class="chart-area">
+          <!-- 30 bars for 30 days -->
+          <div class="chart-bar" style="height:20%"></div>
+          <div class="chart-bar" style="height:22%"></div>
+          <div class="chart-bar" style="height:22%"></div>
+          <div class="chart-bar" style="height:24%"></div>
+          <div class="chart-bar" style="height:24%"></div>
+          <div class="chart-bar" style="height:26%"></div>
+          <div class="chart-bar" style="height:26%"></div>
+          <div class="chart-bar" style="height:28%"></div>
+          <div class="chart-bar" style="height:30%"></div>
+          <div class="chart-bar" style="height:32%"></div>
+          <div class="chart-bar" style="height:34%"></div>
+          <div class="chart-bar" style="height:36%"></div>
+          <div class="chart-bar" style="height:38%"></div>
+          <div class="chart-bar" style="height:40%"></div>
+          <div class="chart-bar" style="height:42%"></div>
+          <div class="chart-bar" style="height:45%"></div>
+          <div class="chart-bar" style="height:48%"></div>
+          <div class="chart-bar" style="height:50%"></div>
+          <div class="chart-bar" style="height:52%"></div>
+          <div class="chart-bar" style="height:55%"></div>
+          <div class="chart-bar" style="height:58%"></div>
+          <div class="chart-bar" style="height:60%"></div>
+          <div class="chart-bar" style="height:62%"></div>
+          <div class="chart-bar" style="height:65%"></div>
+          <div class="chart-bar" style="height:68%"></div>
+          <div class="chart-bar" style="height:70%"></div>
+          <div class="chart-bar" style="height:75%"></div>
+          <div class="chart-bar" style="height:80%"></div>
+          <div class="chart-bar today" style="height:85%"></div>
+          <div class="chart-bar future" style="height:90%"></div>
+        </div>
+        <div class="chart-labels">
+          <span>1/3</span>
+          <span>10/3</span>
+          <span>20/3</span>
+          <span>30/3</span>
+        </div>
+        <div class="chart-summary">
+          <div class="cs-item">
+            <div class="cs-val green">+4.767 &#8363;</div>
+            <div class="cs-key">Tích lũy đến hôm nay</div>
+          </div>
+          <div class="cs-item">
+            <div class="cs-val">~4.931 &#8363;</div>
+            <div class="cs-key">Dự kiến cuối tháng</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Payment -->
+      <div class="card card-payment">
+        <div class="card-title">&#128197; Ngày trả lãi</div>
+        <div class="pay-info">
+          Lợi nhuận được tính đến ngày cuối tháng.<br>
+          Tiền lãi sẽ được <strong>tự động cộng vào ví</strong> trong vòng tối đa 5 ngày làm việc đầu tháng sau.
+        </div>
+        <div class="pay-date">
+          <span class="icon">&#9989;</span>
+          Dự kiến: 1 - 7 tháng 4, 2026
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Dots -->
+    <div class="dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+  </div>
+
+  <div class="bottom-bar">
+    <button class="cta">Kích hoạt sinh lời</button>
+  </div>
+
+  <div class="home-indicator"><div class="bar"></div></div>
+</div>
+
+<!-- Annotation -->
+<div class="annotation">
+  <h3>Giải thích các card</h3>
+  <ul>
+    <li><strong>Card 1 — Overview:</strong> Số dư hiện tại, lợi nhuận tháng, lợi suất</li>
+    <li><strong>Card 2 — Cách tính:</strong> Timeline 4 bước từ đầu kỳ → trả lãi</li>
+    <li><strong>Card 3 — Ví dụ:</strong> Công thức + số cụ thể cho 1 ngày và 1 tháng</li>
+    <li><strong>Card 4 — Chart:</strong> Bar chart 30 ngày — lợi nhuận tích lũy tăng dần</li>
+    <li><strong>Card 5 — Trả lãi:</strong> Timeline trả lãi, ngày dự kiến</li>
+  </ul>
+</div>
+
+<script>
+// Simple dot indicator update on scroll
+const container = document.getElementById('swipeContainer');
+const dots = document.querySelectorAll('.dots .dot');
+
+container.addEventListener('scroll', () => {
+  const scrollLeft = container.scrollLeft;
+  const cardWidth = 358; // card + gap
+  const activeIndex = Math.round(scrollLeft / cardWidth);
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === activeIndex);
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1-Week Design Sprint — V-Smart Pay</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    background: #fff; color: #111;
+    line-height: 1.7;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+  h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .subtitle { font-size: 16px; color: #555; margin-bottom: 6px; }
+  .meta { font-size: 13px; color: #999; margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid #e5e5e5; }
+  h2 { font-size: 20px; font-weight: 700; margin-top: 48px; margin-bottom: 16px; letter-spacing: -0.3px; }
+  h3 { font-size: 15px; font-weight: 600; margin-top: 28px; margin-bottom: 8px; }
+  p, li { font-size: 15px; color: #333; line-height: 1.8; }
+  p { margin-bottom: 12px; }
+  ul, ol { padding-left: 20px; margin-bottom: 16px; }
+  li { margin-bottom: 4px; }
+  hr { border: none; border-top: 1px solid #e5e5e5; margin: 48px 0; }
+  blockquote { border-left: 3px solid #111; padding: 12px 0 12px 20px; margin: 20px 0; font-style: italic; color: #444; font-size: 15px; line-height: 1.8; }
+  code { font-family: 'SF Mono', monospace; font-size: 13px; background: #f5f5f5; padding: 2px 6px; border-radius: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; }
+  th { text-align: left; padding: 10px 12px; border-bottom: 2px solid #111; font-weight: 600; font-size: 13px; }
+  td { padding: 10px 12px; border-bottom: 1px solid #e5e5e5; vertical-align: top; color: #333; line-height: 1.6; }
+  td:first-child { font-weight: 600; color: #111; }
+
+  .big-idea { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; line-height: 1.5; margin: 24px 0; color: #111; }
+
+  /* Timeline */
+  .timeline { margin: 24px 0 32px; }
+  .day { border: 1px solid #e5e5e5; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; position: relative; }
+  .day.active { border-color: #111; }
+  .day-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .day-name { font-size: 16px; font-weight: 700; }
+  .day-label { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 4px; }
+  .day-label.understand { background: #eff6ff; color: #2563eb; }
+  .day-label.plan { background: #fef3c7; color: #92400e; }
+  .day-label.build { background: #f0fdf4; color: #166534; }
+  .day-label.qa { background: #fef2f2; color: #991b1b; }
+  .day-label.ship { background: #111; color: #fff; }
+  .day-tasks { list-style: none; padding: 0; margin: 0; }
+  .day-tasks li { font-size: 14px; color: #555; padding: 3px 0; display: flex; align-items: flex-start; gap: 8px; }
+  .day-tasks li::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #ccc; margin-top: 8px; flex-shrink: 0; }
+  .day-tasks li.human::before { background: #111; }
+  .day-tasks li.ai::before { background: #6366f1; }
+  .day-tasks li.checkpoint::before { background: #dc2626; width: 8px; height: 8px; margin-top: 7px; border-radius: 0; }
+  .task-tag { font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-left: 4px; flex-shrink: 0; }
+  .task-tag.human { background: #f5f5f5; color: #555; }
+  .task-tag.ai { background: #eef2ff; color: #6366f1; }
+  .task-tag.checkpoint { background: #fef2f2; color: #dc2626; }
+  .task-time { font-size: 12px; color: #999; margin-left: auto; flex-shrink: 0; }
+
+  /* Parallel track */
+  .tracks { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0 24px; }
+  .track { border: 1px solid #e5e5e5; border-radius: 10px; padding: 16px 20px; }
+  .track.human-track { border-color: #111; }
+  .track.ai-track { border-color: #6366f1; }
+  .track-title { font-size: 13px; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .track.human-track .track-title { color: #111; }
+  .track.ai-track .track-title { color: #6366f1; }
+  .track p { font-size: 13px; color: #555; margin-bottom: 6px; }
+
+  /* Size cards */
+  .size-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 16px 0 24px; }
+  .size-card { border: 1px solid #e5e5e5; border-radius: 10px; padding: 16px; text-align: center; }
+  .size-card .size-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .size-card .size-scope { font-size: 12px; color: #555; margin-bottom: 8px; }
+  .size-card .size-sprint { font-size: 24px; font-weight: 700; }
+  .size-card .size-unit { font-size: 12px; color: #999; }
+
+  /* Verdict */
+  .verdict { background: #fafafa; border-radius: 12px; padding: 24px; margin: 24px 0; }
+  .verdict-title { font-size: 14px; font-weight: 600; color: #111; margin-bottom: 8px; }
+  .verdict p { font-size: 14px; color: #555; margin-bottom: 8px; }
+  .verdict p:last-child { margin-bottom: 0; }
+
+  /* Org chart */
+  .org-note { background: #f9fafb; border: 1px solid #e5e5e5; border-radius: 10px; padding: 16px 20px; margin: 16px 0 24px; font-size: 14px; color: #555; }
+  .org-note strong { color: #111; }
+
+  .footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid #e5e5e5; font-size: 12px; color: #bbb; }
+
+  .risk { margin-bottom: 12px; padding: 16px; border: 1px solid #e5e5e5; border-radius: 8px; }
+  .risk strong { font-size: 14px; display: block; margin-bottom: 4px; }
+  .risk p { font-size: 14px; color: #555; margin-bottom: 0; }
+  .risk .mitigation { font-size: 13px; color: #16a34a; margin-top: 6px; font-weight: 500; }
+
+  @media (max-width: 600px) {
+    .tracks { grid-template-columns: 1fr; }
+    .size-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>1-Week Design Sprint</h1>
+<p class="subtitle">Quy tr&igrave;nh thi&#7871;t k&#7871; cho fintech &mdash; V-Smart Pay</p>
+<div class="meta">V-Smart Pay &middot; Design Team &middot; April 2026</div>
+
+<!-- ═══ 1: Why 1 week ═══ -->
+<h2>1. T&#7841;i sao 1 tu&#7847;n?</h2>
+
+<p>Fintech kh&ocirc;ng ph&#7843;i startup SaaS. C&oacute; NHNN, c&oacute; compliance, c&oacute; 15-20 states cho m&#7897;t m&agrave;n h&igrave;nh thanh to&aacute;n. Nh&#432;ng c&#361;ng kh&ocirc;ng ph&#7843;i waterfall 4 tu&#7847;n. <strong>1 tu&#7847;n l&agrave; sweet spot</strong> &mdash; &#273;&#7911; ng&#7855;n &#273;&#7875; gi&#7919; momentum, &#273;&#7911; d&agrave;i &#273;&#7875; cover edge cases v&agrave; compliance.</p>
+
+<div class="verdict">
+  <div class="verdict-title">Nguy&ecirc;n t&#7855;c c&#7889;t l&otilde;i</div>
+  <p><strong>1 sprint = 1 epic scope = design-ready to handoff.</strong></p>
+  <p>Kh&ocirc;ng ph&#7843;i "l&agrave;m 1 ph&#7847;n r&#7891;i tu&#7847;n sau l&agrave;m ti&#7871;p". Cu&#7889;i tu&#7847;n, epic &#273;&oacute; ph&#7843;i ship &#273;&#432;&#7907;c cho Dev.</p>
+</div>
+
+<hr>
+
+<!-- ═══ 2: Team structure ═══ -->
+<h2>2. C&#7845;u tr&uacute;c team</h2>
+
+<div class="org-note">
+  <strong>V-Smart Pay</strong> chia theo 7 domain, m&#7895;i domain 1-2 designer:
+  <br>Authentication &middot; Discovery &middot; Integration (KBF/V-App + BINA) &middot; Management &middot; Structure &middot; Core Motion &middot; Merchant Portal
+</div>
+
+<p>M&#7895;i designer own domain c&#7911;a m&igrave;nh. Sprint 1 tu&#7847;n ch&#7841;y <strong>&#273;&#7897;c l&#7853;p theo domain</strong> &mdash; kh&ocirc;ng c&#7847;n c&#7843; team sync m&#7895;i ng&agrave;y. Ch&#7881; c&#7847;n:</p>
+
+<ul>
+  <li><strong>Daily 15 ph&uacute;t</strong> &mdash; m&#7895;i ng&#432;&#7901;i n&oacute;i 2 c&acirc;u: "h&ocirc;m qua l&agrave;m g&igrave;, h&ocirc;m nay l&agrave;m g&igrave;, c&oacute; block g&igrave; kh&ocirc;ng"</li>
+  <li><strong>Thread-based c&#7885; x&aacute;t</strong> &mdash; PO + Tech comment tr&#7921;c ti&#7871;p tr&ecirc;n thread, kh&ocirc;ng h&#7885;p tr&#7915; khi deadlock</li>
+  <li><strong>Friday retro</strong> &mdash; 30 ph&uacute;t, c&#7843; team</li>
+</ul>
+
+<h3>2 track song song</h3>
+
+<div class="tracks">
+  <div class="track human-track">
+    <div class="track-title">Designer (con ng&#432;&#7901;i)</div>
+    <p>S&aacute;ng t&#7841;o, ra quy&#7871;t &#273;&#7883;nh, c&#7885; x&aacute;t v&#7899;i PO/Tech, gi&#7843;i quy&#7871;t conflict, polish final design.</p>
+    <p><strong>Output:</strong> Flow decisions, UI direction, final Figma screens</p>
+  </div>
+  <div class="track ai-track">
+    <div class="track-title">AI Pipeline (Nate/&#272;&#7913;c/Ivy/Khoa)</div>
+    <p>Ph&acirc;n t&iacute;ch BRD, generate wireframe, li&#7879;t k&ecirc; edge cases, check state coverage, qu&#7843;n l&yacute; IA + states.</p>
+    <p><strong>Output:</strong> Wireframes, state matrix, IA map, QA checklist</p>
+  </div>
+</div>
+
+<p>AI kh&ocirc;ng thay th&#7871; designer. AI l&agrave;m ph&#7847;n <strong>mechanical</strong> (li&#7879;t k&ecirc; states, check coverage, generate wireframe t&#7915; flow) &#273;&#7875; designer t&#7853;p trung v&agrave;o ph&#7847;n <strong>creative</strong> (gi&#7843;i ph&aacute;p UX, visual direction, micro-interaction).</p>
+
+<blockquote>AI output wireframe + state matrix. Designer nh&igrave;n v&agrave;o &#273;&oacute; &#273;&#7875; s&aacute;ng t&#7841;o, kh&ocirc;ng ph&#7843;i &#273;&#7875; copy. C&#7843; team c&ugrave;ng nh&igrave;n v&agrave;o IA v&agrave; state matrix nh&#432; m&#7897;t ngu&#7891;n s&#7921; th&#7853;t duy nh&#7845;t.</blockquote>
+
+<hr>
+
+<!-- ═══ 3: The week ═══ -->
+<h2>3. M&#7897;t tu&#7847;n tr&ocirc;ng nh&#432; th&#7871; n&agrave;o</h2>
+
+<div class="timeline">
+
+  <div class="day">
+    <div class="day-header">
+      <span class="day-name">Th&#7913; Hai &mdash; Understand</span>
+      <span class="day-label understand">PHASE A</span>
+    </div>
+    <ul class="day-tasks">
+      <li class="human">S&aacute;ng: Nh&#7853;n BRD/Spec t&#7915; PO + constraints t&#7915; Tech + compliance requirements. &#272;&#7885;c c&#7843; 3 c&ugrave;ng l&uacute;c. <span class="task-tag human">Designer</span></li>
+      <li class="ai">Song song: AI (Nate) ph&acirc;n t&iacute;ch BRD &rarr; t&igrave;m gaps, flag compliance items, output <code>analysis.md</code> <span class="task-tag ai">AI</span></li>
+      <li class="checkpoint">Chi&#7873;u: H&#7887;i PO confirm gaps. Tr&#7843; l&#7901;i ngay tr&ecirc;n thread, kh&ocirc;ng h&#7885;p. <span class="task-tag checkpoint">Checkpoint 1</span></li>
+      <li class="ai">Cu&#7889;i ng&agrave;y: AI (Nate) design flow ch&iacute;nh + happy path. AI (Khoa) generate state matrix t&#7915; edge-case-library. <span class="task-tag ai">AI</span></li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-header">
+      <span class="day-name">Th&#7913; Ba &mdash; Draft &amp; Debate</span>
+      <span class="day-label understand">PHASE A</span>
+    </div>
+    <ul class="day-tasks">
+      <li class="human">S&aacute;ng: Designer sketch solution tr&ecirc;n flow AI &#273;&#432;a ra. B&#7893; sung / thay &#273;&#7893;i theo creative direction. <span class="task-tag human">Designer</span></li>
+      <li class="ai">Song song: AI (&#272;&#7913;c) review flow &mdash; challenge, t&igrave;m l&#7895; h&#7893;ng, &#273;&#7873; xu&#7845;t alternative. <span class="task-tag ai">AI</span></li>
+      <li class="human">Chi&#7873;u: Designer xem debate Nate vs &#272;&#7913;c, ch&#7885;n h&#432;&#7899;ng ho&#7863;c mix. <span class="task-tag human">Designer</span></li>
+      <li class="checkpoint">Cu&#7889;i ng&agrave;y: Show PO k&#7871;t qu&#7843; debate + flow &#273;&#227; ch&#7885;n. PO ch&#7889;t. <span class="task-tag checkpoint">Checkpoint 2</span></li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-header">
+      <span class="day-name">Th&#7913; T&#432; &mdash; Screen Design</span>
+      <span class="day-label plan">PHASE B</span>
+    </div>
+    <ul class="day-tasks">
+      <li class="ai">S&aacute;ng: AI (Ivy) t&#7841;o wireframe/screen breakdown + AI (Khoa) check state coverage. <span class="task-tag ai">AI</span></li>
+      <li class="human">Designer nh&#7853;n wireframe + state matrix &rarr; design UI trong Figma. &#272;&acirc;y l&agrave; ph&#7847;n creative ch&iacute;nh. <span class="task-tag human">Designer</span></li>
+      <li class="human">C&#7885; x&aacute;t v&#7899;i Tech tr&ecirc;n thread: "API n&agrave;y tr&#7843; g&igrave;?", "timeout bao l&acirc;u?", "c&oacute; cache kh&ocirc;ng?" <span class="task-tag human">Designer + Tech</span></li>
+      <li class="checkpoint">Cu&#7889;i ng&agrave;y: Show PO screens + states. PO approve h&#432;&#7899;ng. <span class="task-tag checkpoint">Checkpoint 3</span></li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-header">
+      <span class="day-name">Th&#7913; N&#259;m &mdash; Polish &amp; Compliance</span>
+      <span class="day-label build">PHASE C</span>
+    </div>
+    <ul class="day-tasks">
+      <li class="human">S&aacute;ng: Polish UI &mdash; token check, spacing, micro-interactions, dark mode. <span class="task-tag human">Designer</span></li>
+      <li class="ai">Song song: AI (Khoa) ch&#7841;y full QA &mdash; state coverage, token compliance, edge cases. <span class="task-tag ai">AI</span></li>
+      <li class="human">Chi&#7873;u: <strong>Compliance review</strong> &mdash; masking rules, auth flow &#273;&#7911; step, disclaimer/ToS, NHNN regulations. <span class="task-tag checkpoint">Compliance</span></li>
+      <li class="human">Fix issues t&#7915; QA + compliance. <span class="task-tag human">Designer</span></li>
+    </ul>
+  </div>
+
+  <div class="day active">
+    <div class="day-header">
+      <span class="day-name">Th&#7913; S&aacute;u &mdash; Ship &amp; Retro</span>
+      <span class="day-label ship">SHIP</span>
+    </div>
+    <ul class="day-tasks">
+      <li class="human">S&aacute;ng: Final review v&#7899;i PO. Fix last-minute feedback. <span class="task-tag checkpoint">Checkpoint 4</span></li>
+      <li class="human">Handoff cho Dev: Figma link + state matrix + edge case checklist + compliance notes. <span class="task-tag human">Designer</span></li>
+      <li class="human">Chi&#7873;u: <strong>Retro 30 ph&uacute;t</strong> &mdash; c&#7843; team. C&aacute;i g&igrave; t&#7889;t, c&aacute;i g&igrave; ch&#432;a t&#7889;t, tu&#7847;n sau l&agrave;m kh&aacute;c g&igrave;. <span class="task-tag human">Team</span></li>
+      <li class="human">Plan sprint tu&#7847;n sau: ch&#7885;n epic ti&#7871;p theo. <span class="task-tag human">Designer + PO</span></li>
+    </ul>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ═══ 4: Sizing ═══ -->
+<h2>4. Feature sizing &mdash; kh&ocirc;ng ph&#7843;i c&aacute;i g&igrave; c&#361;ng 1 tu&#7847;n</h2>
+
+<p>Feature c&oacute; nh&#7887; c&oacute; l&#7899;n. C&aacute;ch x&#7917; l&yacute;:</p>
+
+<div class="size-grid">
+  <div class="size-card">
+    <div class="size-name">S &mdash; Nh&#7887;</div>
+    <div class="size-scope">1-3 screens, &iacute;t edge cases.<br>V&iacute; d&#7909;: th&ecirc;m n&uacute;t Chia s&#7867;, s&#7917;a UI setting</div>
+    <div class="size-sprint">2-3</div>
+    <div class="size-unit">features / sprint</div>
+  </div>
+  <div class="size-card" style="border-color:#111;">
+    <div class="size-name">M &mdash; V&#7915;a</div>
+    <div class="size-scope">5-8 screens, edge cases r&otilde;.<br>V&iacute; d&#7909;: n&#7841;p ti&#7873;n &#273;i&#7879;n tho&#7841;i, li&ecirc;n k&#7871;t bank</div>
+    <div class="size-sprint">1</div>
+    <div class="size-unit">feature / sprint</div>
+  </div>
+  <div class="size-card">
+    <div class="size-name">L &mdash; L&#7899;n</div>
+    <div class="size-scope">10+ screens, nhi&#7873;u flow.<br>V&iacute; d&#7909;: bill payment e2e, eKYC</div>
+    <div class="size-sprint">2-3</div>
+    <div class="size-unit">sprints (chia epic)</div>
+  </div>
+</div>
+
+<h3>Feature l&#7899;n: Chia epic, kh&ocirc;ng k&eacute;o d&agrave;i sprint</h3>
+
+<p>Sprint lu&ocirc;n l&agrave; 1 tu&#7847;n. Feature l&#7899;n th&igrave; <strong>chia th&agrave;nh nhi&#7873;u epic</strong>, m&#7895;i epic ship &#273;&#432;&#7907;c &#273;&#7897;c l&#7853;p:</p>
+
+<table>
+  <thead>
+    <tr><th>Sprint</th><th>Epic</th><th>Scope</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Tu&#7847;n 1</td><td>Bill Payment &mdash; Happy path</td><td>Ch&#7885;n nh&agrave; cung c&#7845;p &rarr; nh&#7853;p m&atilde; &rarr; x&aacute;c nh&#7853;n &rarr; th&agrave;nh c&ocirc;ng</td></tr>
+    <tr><td>Tu&#7847;n 2</td><td>Bill Payment &mdash; Error &amp; Edge</td><td>Fail, timeout, duplicate, partial, refund</td></tr>
+    <tr><td>Tu&#7847;n 3</td><td>Bill Payment &mdash; History &amp; Saved</td><td>L&#7883;ch s&#7917;, thanh to&aacute;n &#273;&#7883;nh k&#7923;, h&oacute;a &#273;&#417;n &#273;&atilde; l&#432;u</td></tr>
+  </tbody>
+</table>
+
+<p>M&#7895;i tu&#7847;n v&#7851;n ship 1 c&aacute;i ho&agrave;n ch&#7881;nh. Dev c&oacute; th&#7875; b&#7855;t &#273;&#7847;u code epic 1 trong khi designer l&agrave;m epic 2.</p>
+
+<hr>
+
+<!-- ═══ 5: AI role ═══ -->
+<h2>5. AI l&agrave;m g&igrave;, kh&ocirc;ng l&agrave;m g&igrave;</h2>
+
+<table>
+  <thead>
+    <tr><th>AI l&agrave;m (mechanical)</th><th>Designer l&agrave;m (creative)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Ph&acirc;n t&iacute;ch BRD, t&igrave;m gaps</td><td>Quy&#7871;t &#273;&#7883;nh h&#432;&#7899;ng gi&#7843;i quy&#7871;t</td></tr>
+    <tr><td>Generate wireframe t&#7915; flow</td><td>Design UI, visual direction</td></tr>
+    <tr><td>Li&#7879;t k&ecirc; t&#7845;t c&#7843; states + edge cases</td><td>Ch&#7885;n c&aacute;ch handle m&#7895;i state</td></tr>
+    <tr><td>Qu&#7843;n l&yacute; IA map (sitemap, navigation)</td><td>S&aacute;ng t&#7841;o interaction, micro-animation</td></tr>
+    <tr><td>Check token compliance, QA</td><td>Polish, c&#7885; x&aacute;t v&#7899;i PO/Tech</td></tr>
+    <tr><td>Debate (&#272;&#7913;c) &mdash; t&igrave;m l&#7895; h&#7893;ng logic</td><td>Ra quy&#7871;t &#273;&#7883;nh cu&#7889;i c&ugrave;ng</td></tr>
+    <tr><td>Generate state matrix cho c&#7843; team nh&igrave;n</td><td>V&#7869; Figma screens cu&#7889;i c&ugrave;ng</td></tr>
+  </tbody>
+</table>
+
+<div class="verdict">
+  <div class="verdict-title">State matrix &amp; IA &mdash; ngu&#7891;n s&#7921; th&#7853;t chung</div>
+  <p>AI generate v&agrave; maintain <strong>IA map</strong> (c&#7845;u tr&uacute;c navigation, sitemap) v&agrave; <strong>state matrix</strong> (m&#7895;i screen c&oacute; bao nhi&ecirc;u states, &#273;&atilde; cover ch&#432;a). C&#7843; team &mdash; Designer, PO, Tech, QA &mdash; c&ugrave;ng nh&igrave;n v&agrave;o &#273;&oacute;.</p>
+  <p>Kh&ocirc;ng c&ograve;n chuy&#7879;n "Designer n&oacute;i cover r&#7891;i nh&#432;ng th&#7921;c ra thi&#7871;u 5 states". Matrix l&agrave; checklist b&#7855;t bu&#7897;c.</p>
+</div>
+
+<hr>
+
+<!-- ═══ 6: Fintech specifics ═══ -->
+<h2>6. C&aacute;i kh&aacute;c bi&#7879;t c&#7911;a fintech</h2>
+
+<h3>C&aacute;i kh&ocirc;ng th&#7875; skip</h3>
+
+<div class="risk">
+  <strong>Compliance review (Th&#7913; N&#259;m, 1 ng&agrave;y)</strong>
+  <p>NHNN, payment regulations, data privacy. B&#7845;t k&#7875; iterate nhanh c&#7905; n&agrave;o, tr&#432;&#7899;c khi ship ph&#7843;i qua compliance. Constraint c&#7913;ng.</p>
+  <p class="mitigation">&rarr; &#272;&#432;a v&agrave;o Th&#7913; N&#259;m c&#7889; &#273;&#7883;nh. Kh&ocirc;ng &#273;&#7875; d&#7891;n v&agrave;o Th&#7913; S&aacute;u.</p>
+</div>
+
+<div class="risk">
+  <strong>Edge case marathon (Th&#7913; Ba-T&#432;)</strong>
+  <p>M&#7897;t m&agrave;n h&igrave;nh thanh to&aacute;n c&oacute; 15-20 states: fail, timeout, insufficient balance, duplicate, refund, partial payment, network error gi&#7919;a ch&#7915;ng&hellip;</p>
+  <p class="mitigation">&rarr; AI generate state matrix t&#7915; edge-case-library. Designer kh&ocirc;ng c&#7847;n nh&#7899; &mdash; ch&#7881; c&#7847;n review v&agrave; design.</p>
+</div>
+
+<div class="risk">
+  <strong>Pixel-perfect = Trust</strong>
+  <p>Sai 1 pixel &#7903; app social th&igrave; user kh&oacute; ch&#7883;u. Sai 1 flow &#7903; app payment th&igrave; user m&#7845;t ti&#7873;n. UI "cheap" = m&#7845;t trust ngay.</p>
+  <p class="mitigation">&rarr; Token check + design QA b&#7855;t bu&#7897;c tr&#432;&#7899;c handoff (Th&#7913; N&#259;m).</p>
+</div>
+
+<h3>C&aacute;i n&ecirc;n skip</h3>
+
+<ul>
+  <li><strong>Persona m&#7899;i m&#7895;i feature</strong> &mdash; user context &#273;&atilde; r&otilde; (c&#432; d&acirc;n Vingroup, nh&acirc;n vi&ecirc;n VP, merchant). Kh&ocirc;ng c&#7847;n reinvent.</li>
+  <li><strong>Journey map chi ti&#7871;t</strong> &mdash; thay b&#7857;ng flow diagram t&#7915; AI, nhanh h&#417;n 10x.</li>
+  <li><strong>H&#7885;p sync d&agrave;i</strong> &mdash; thread-first. Daily 15 ph&uacute;t l&agrave; &#273;&#7911;.</li>
+  <li><strong>Research ri&ecirc;ng m&#7895;i sprint</strong> &mdash; t&iacute;ch l&#361;y insight v&agrave;o edge-case-library, d&ugrave;ng l&#7841;i.</li>
+</ul>
+
+<hr>
+
+<!-- ═══ 7: Deliverables ═══ -->
+<h2>7. Output m&#7895;i sprint</h2>
+
+<table>
+  <thead>
+    <tr><th>Artifact</th><th>Owner</th><th>M&ocirc; t&#7843;</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Figma screens</td><td>Designer</td><td>T&#7845;t c&#7843; screens + states, token-compliant, d&ugrave;ng DS components</td></tr>
+    <tr><td>State matrix</td><td>AI (Khoa)</td><td>M&#7895;i screen &times; m&#7895;i state = &#273;&atilde; cover / ch&#432;a. Checklist cho Dev + QA</td></tr>
+    <tr><td>IA map</td><td>AI (Nate)</td><td>C&#7845;u tr&uacute;c navigation, sitemap, flow diagram</td></tr>
+    <tr><td>Edge case list</td><td>AI + Designer</td><td>T&#7915; edge-case-library + b&#7893; sung theo feature</td></tr>
+    <tr><td>Compliance notes</td><td>Designer</td><td>Nh&#7919;ng &#273;i&#7875;m &#273;&atilde; &#273;&#432;&#7907;c compliance review</td></tr>
+    <tr><td>Debate log</td><td>AI (&#272;&#7913;c)</td><td>Nh&#7919;ng alternative &#273;&atilde; c&acirc;n nh&#7855;c v&agrave; l&yacute; do ch&#7885;n/b&#7887;</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<!-- ═══ 8: Risks ═══ -->
+<h2>8. R&#7911;i ro &amp; c&aacute;ch x&#7917; l&yacute;</h2>
+
+<div class="risk">
+  <strong>PO kh&ocirc;ng respond k&#7883;p checkpoint</strong>
+  <p>Sprint 1 tu&#7847;n c&oacute; 4 checkpoints. PO tr&#7843; l&#7901;i ch&#7853;m = c&#7843; sprint tr&#7877;.</p>
+  <p class="mitigation">&rarr; Cam k&#7871;t: PO respond trong 2h. N&#7871;u kh&ocirc;ng, designer t&#7921; quy&#7871;t &#273;&#7883;nh v&agrave; ghi v&agrave;o assumptions.md. PO review sau.</p>
+</div>
+
+<div class="risk">
+  <strong>Compliance reject cu&#7889;i tu&#7847;n</strong>
+  <p>Th&#7913; N&#259;m compliance n&oacute;i "kh&ocirc;ng &#273;&#432;&#7907;c" &rarr; m&#7845;t 1 ng&agrave;y fix &rarr; Th&#7913; S&aacute;u kh&ocirc;ng k&#7883;p ship.</p>
+  <p class="mitigation">&rarr; AI flag compliance items t&#7915; Th&#7913; Hai (step-01). Gi&#7843;m b&#7845;t ng&#7901; &#7903; Th&#7913; N&#259;m. N&#7871;u v&#7851;n reject, feature ch&#432;a ship &rarr; carry sang sprint sau, kh&ocirc;ng k&eacute;o d&agrave;i sprint.</p>
+</div>
+
+<div class="risk">
+  <strong>Feature qu&aacute; l&#7899;n cho 1 tu&#7847;n</strong>
+  <p>Epic scope sai &rarr; Th&#7913; T&#432; m&#7899;i nh&#7853;n ra l&agrave;m kh&ocirc;ng xong.</p>
+  <p class="mitigation">&rarr; Sizing v&agrave;o Th&#7913; S&aacute;u tu&#7847;n tr&#432;&#7899;c. N&#7871;u L th&igrave; chia epic ngay. Kh&ocirc;ng bao gi&#7901; nh&#7853;n L v&agrave;o 1 sprint.</p>
+</div>
+
+<div class="risk">
+  <strong>AI output kh&ocirc;ng ch&#7845;t l&#432;&#7907;ng</strong>
+  <p>Wireframe AI kh&ocirc;ng d&ugrave;ng &#273;&#432;&#7907;c, state matrix b&#7883; thi&#7871;u.</p>
+  <p class="mitigation">&rarr; AI l&agrave; tool, kh&ocirc;ng ph&#7843;i decision maker. Designer lu&ocirc;n review. Edge-case-library c&#7843;i thi&#7879;n theo th&#7901;i gian &mdash; c&agrave;ng nhi&#7873;u sprint, AI c&agrave;ng ch&iacute;nh x&aacute;c.</p>
+</div>
+
+<hr>
+
+<!-- ═══ 9: Summary ═══ -->
+<h2>9. T&oacute;m l&#7841;i</h2>
+
+<p class="big-idea">1 tu&#7847;n. 1 epic. Ship &#273;&#432;&#7907;c.</p>
+
+<table>
+  <thead>
+    <tr><th>Ng&agrave;y</th><th>Phase</th><th>Output</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Th&#7913; 2</td><td>Understand</td><td>BRD gaps confirmed, flow draft, compliance flags</td></tr>
+    <tr><td>Th&#7913; 3</td><td>Debate &amp; Decide</td><td>Flow ch&#7889;t, PO approved</td></tr>
+    <tr><td>Th&#7913; 4</td><td>Design</td><td>Figma screens + state matrix, PO approved</td></tr>
+    <tr><td>Th&#7913; 5</td><td>Polish &amp; Compliance</td><td>QA passed, compliance cleared</td></tr>
+    <tr><td>Th&#7913; 6</td><td>Ship &amp; Retro</td><td>Handoff to Dev + retro + plan next sprint</td></tr>
+  </tbody>
+</table>
+
+<div class="verdict">
+  <div class="verdict-title">Kh&aacute;c bi&#7879;t v&#7899;i sprint th&#432;&#7901;ng</div>
+  <p><strong>Compliance l&agrave; gate b&#7855;t bu&#7897;c</strong> &mdash; kh&ocirc;ng skip, &#273;&#432;a v&agrave;o Th&#7913; N&#259;m c&#7889; &#273;&#7883;nh.</p>
+  <p><strong>Edge cases kh&ocirc;ng ph&#7843;i nice-to-have</strong> &mdash; l&agrave; b&#7855;t bu&#7897;c. Sai flow = user m&#7845;t ti&#7873;n.</p>
+  <p><strong>AI l&agrave;m mechanical, Designer l&agrave;m creative</strong> &mdash; AI generate matrix &#273;&#7875; c&#7843; team c&ugrave;ng nh&igrave;n, Designer ra quy&#7871;t &#273;&#7883;nh.</p>
+  <p><strong>Thread-first</strong> &mdash; c&#7885; x&aacute;t h&agrave;ng ng&agrave;y tr&ecirc;n thread, kh&ocirc;ng h&#7885;p tr&#7915; khi deadlock.</p>
+</div>
+
+<div class="footer">V-Smart Pay &middot; Design Team &middot; April 2026</div>
+
+</body>
+</html>

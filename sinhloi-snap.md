@@ -1,0 +1,111 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]: SINH LOI TU DONG v2
+        - generic [ref=e6]: 5 epics · 22 screens · 51 states
+        - generic [ref=e7]
+      - generic [ref=e10]:
+        - generic [ref=e11]
+        - button "▶ Epic 2 — Dashboard 5" [ref=e31] [cursor=pointer]
+        - button "▶ Epic 3 — Nap/Rut tien 15" [ref=e36] [cursor=pointer]
+        - button "▶ Epic 4 — Lich su giao dich 6" [ref=e41] [cursor=pointer]
+        - button "▶ Epic 5 — Huy sinh loi 5" [ref=e46] [cursor=pointer]
+        - button "▶ Epic 6 — Gamification & Hang 3" [ref=e51] [cursor=pointer]
+        - button "▶ Epic 7 — Cai dat & FAQ 2" [ref=e56] [cursor=pointer]
+    - generic [ref=e60]:
+      - generic [ref=e61]:
+        - generic [ref=e63]: Epic 1
+        - generic [ref=e64]: "S1: Product Page"
+        - generic [ref=e65]: default (da eKYC) — /sinhloi/intro
+      - iframe [ref=e69]:
+        - generic [active] [ref=f3e1]:
+          - generic [ref=f3e2]:
+            - generic [ref=f3e3]:
+              - generic [ref=f3e4]:
+                - generic [ref=f3e5]: 9:41
+                - generic [ref=f3e6]:
+                  - img [ref=f3e7]
+                  - img [ref=f3e12]
+              - button [ref=f3e22]:
+                - img [ref=f3e23]
+              - paragraph [ref=f3e26]: Sinh loi
+            - generic [ref=f3e27]:
+              - generic [ref=f3e42]:
+                - paragraph [ref=f3e65]: Tien nhan roi, sinh loi moi ngay
+                - paragraph [ref=f3e66]: Toi uu hoa so du voi lai suat canh tranh
+              - generic [ref=f3e67]:
+                - generic [ref=f3e68]:
+                  - img [ref=f3e70]
+                  - paragraph [ref=f3e73]: Lai suat canh tranh len den 4.5%/nam
+                - generic [ref=f3e74]:
+                  - img [ref=f3e76]
+                  - paragraph [ref=f3e78]: Rut tien bat ky luc nao ve Vi V-Smart Pay
+                - generic [ref=f3e79]:
+                  - img [ref=f3e81]
+                  - paragraph [ref=f3e83]: Khong mat phi, khong cam ket thoi gian
+              - generic [ref=f3e84]:
+                - paragraph [ref=f3e85]: Thong tin san pham
+                - generic [ref=f3e86]:
+                  - generic [ref=f3e87]: So du toi da
+                  - generic [ref=f3e88]: 100.000.000 d
+                - generic [ref=f3e89]:
+                  - generic [ref=f3e90]: Rut tien ve vi
+                  - generic [ref=f3e91]: 30.000.000 d/ngay
+                - generic [ref=f3e92]:
+                  - generic [ref=f3e93]: Doi tac tai chinh
+                  - generic [ref=f3e94]: ABC
+              - generic [ref=f3e95]:
+                - paragraph [ref=f3e96]: Cach thuc hoat dong
+                - generic [ref=f3e97]:
+                  - generic [ref=f3e98]:
+                    - generic [ref=f3e100]: "1"
+                    - generic [ref=f3e101]:
+                      - paragraph [ref=f3e102]: Kich hoat
+                      - paragraph [ref=f3e103]: Xac nhan thong tin va dong y dieu khoan
+                  - generic [ref=f3e104]:
+                    - generic [ref=f3e106]: "2"
+                    - generic [ref=f3e107]:
+                      - paragraph [ref=f3e108]: Nap tien
+                      - paragraph [ref=f3e109]: Chuyen tien tu Vi V-Smart Pay
+                  - generic [ref=f3e110]:
+                    - generic [ref=f3e112]: "3"
+                    - generic [ref=f3e113]:
+                      - paragraph [ref=f3e114]: Nhan lai
+                      - paragraph [ref=f3e115]: Lai tinh hang ngay, tra hang thang
+              - generic [ref=f3e116]:
+                - paragraph [ref=f3e117]: Tinh thu loi nhuan voi lai suat 4.5%
+                - generic [ref=f3e118]:
+                  - slider [ref=f3e119] [cursor=pointer]: "0"
+                  - generic [ref=f3e120]:
+                    - generic [ref=f3e121]: "0"
+                    - generic [ref=f3e122]: 100.000.000 d
+                - generic [ref=f3e123]:
+                  - generic [ref=f3e124]:
+                    - paragraph [ref=f3e125]: So tien trong vi sinh loi
+                    - paragraph [ref=f3e126]: 0 d
+                  - generic [ref=f3e127]:
+                    - paragraph [ref=f3e128]: Tien lai du kien nhan duoc 1 nam
+                    - paragraph [ref=f3e129]: +0 d
+              - paragraph [ref=f3e131]: San pham hoat dong theo mo hinh cho vay. Lai suat co the thay doi theo thoa thuan voi doi tac.
+            - button "Kich hoat sinh loi" [ref=f3e133] [cursor=pointer]:
+              - generic [ref=f3e135]: Kich hoat sinh loi
+          - generic [ref=f3e50] [cursor=pointer]:
+            - button "Open Next.js Dev Tools" [ref=f3e51]:
+              - img [ref=f3e52]
+            - generic [ref=f3e55]:
+              - button "Open issues overlay" [ref=f3e56]:
+                - generic [ref=f3e57]:
+                  - generic [ref=f3e58]: "0"
+                  - generic [ref=f3e59]: "1"
+                - generic [ref=f3e60]: Issue
+              - button "Collapse issues badge" [ref=f3e61]:
+                - img [ref=f3e62]
+          - alert [ref=f3e64]
+      - generic [ref=e70]:
+        - button "← Prev" [disabled] [ref=e71]
+        - generic [ref=e72]: 1 / 51
+        - button "Next →" [ref=e73] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e79] [cursor=pointer]:
+    - img [ref=e80]
+  - alert [ref=e83]

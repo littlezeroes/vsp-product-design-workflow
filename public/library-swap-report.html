@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library Swap Report — VSP DLS Migration</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface-2: #1e1e1e;
+    --surface-3: #282828;
+    --border: #333;
+    --text: #f5f5f5;
+    --text-2: #999;
+    --text-3: #666;
+    --green: #22c55e;
+    --green-bg: rgba(34,197,94,0.1);
+    --yellow: #eab308;
+    --yellow-bg: rgba(234,179,8,0.1);
+    --red: #ef4444;
+    --red-bg: rgba(239,68,68,0.1);
+    --blue: #3b82f6;
+    --blue-bg: rgba(59,130,246,0.1);
+    --purple: #a855f7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header { margin-bottom: 48px; }
+  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .header .meta { color: var(--text-2); font-size: 14px; display: flex; gap: 24px; }
+  .header .meta span { display: flex; align-items: center; gap: 6px; }
+  .badge {
+    display: inline-block; padding: 2px 10px; border-radius: 100px;
+    font-size: 12px; font-weight: 600;
+  }
+  .badge.success { background: var(--green-bg); color: var(--green); }
+  .badge.warning { background: var(--yellow-bg); color: var(--yellow); }
+  .badge.error { background: var(--red-bg); color: var(--red); }
+  .badge.info { background: var(--blue-bg); color: var(--blue); }
+
+  /* Stats Grid */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    margin-bottom: 40px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .stat-card .label { font-size: 13px; color: var(--text-2); margin-bottom: 8px; }
+  .stat-card .value { font-size: 32px; font-weight: 700; }
+  .stat-card .sub { font-size: 12px; color: var(--text-3); margin-top: 4px; }
+
+  /* Progress Bar */
+  .progress-section { margin-bottom: 40px; }
+  .progress-section h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  .progress-bar-container {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border);
+  }
+  .progress-bar {
+    height: 32px; border-radius: 8px; overflow: hidden;
+    display: flex; background: var(--surface-3);
+  }
+  .progress-bar .segment {
+    height: 100%; display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600; color: #fff;
+    transition: width 0.8s ease;
+  }
+  .progress-bar .swapped { background: var(--green); }
+  .progress-bar .already { background: var(--blue); }
+  .progress-bar .skipped { background: var(--yellow); opacity: 0.7; }
+  .progress-bar .broken { background: var(--red); }
+  .progress-legend {
+    display: flex; gap: 24px; margin-top: 12px; font-size: 13px;
+  }
+  .progress-legend .item { display: flex; align-items: center; gap: 6px; }
+  .progress-legend .dot { width: 10px; height: 10px; border-radius: 3px; }
+
+  /* Tables */
+  .section { margin-bottom: 40px; }
+  .section h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    text-align: left; font-size: 12px; font-weight: 500; color: var(--text-3);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 12px 16px; border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 12px 16px; border-bottom: 1px solid var(--surface-3);
+    font-size: 14px; vertical-align: middle;
+  }
+  tr:hover td { background: var(--surface); }
+  .mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; color: var(--text-2); }
+
+  /* Component Match List */
+  .match-row { display: flex; align-items: center; gap: 8px; }
+  .match-arrow { color: var(--text-3); font-size: 16px; }
+  .match-old { color: var(--yellow); }
+  .match-new { color: var(--green); }
+
+  /* Unmatched Section */
+  .unmatched-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 8px;
+  }
+  .unmatched-item {
+    background: var(--surface);
+    border: 1px solid var(--surface-3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .unmatched-item .name { color: var(--text); }
+  .unmatched-item .count { color: var(--text-3); font-size: 12px; }
+
+  /* Per-page breakdown */
+  .page-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 12px;
+  }
+  .page-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .page-card .name { font-weight: 600; font-size: 14px; margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .page-card .mini-bar {
+    height: 6px; border-radius: 3px; display: flex; overflow: hidden;
+    background: var(--surface-3); margin-bottom: 8px;
+  }
+  .page-card .counts { display: flex; gap: 16px; font-size: 12px; color: var(--text-2); }
+  .page-card .counts .num { font-weight: 600; }
+  .page-card .counts .g { color: var(--green); }
+  .page-card .counts .y { color: var(--yellow); }
+  .page-card .counts .r { color: var(--red); }
+
+  @media (max-width: 768px) {
+    body { padding: 20px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .page-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Library Swap Report</h1>
+  <div class="meta">
+    <span><strong>File:</strong> Snowflake — Profile</span>
+    <span><strong>Library:</strong> VSP DLS (KzwbNK...)</span>
+    <span><strong>Date:</strong> <span id="date"></span></span>
+    <span><span class="badge success" id="status-badge">COMPLETED</span></span>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stats" id="stats">
+  <div class="stat-card">
+    <div class="label">Total Instances</div>
+    <div class="value" style="color: var(--text);" id="s-total">28,197</div>
+    <div class="sub">across all pages</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Swapped</div>
+    <div class="value" style="color: var(--green);" id="s-swapped">24,832</div>
+    <div class="sub" id="s-swapped-pct">88.1%</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Skipped</div>
+    <div class="value" style="color: var(--yellow);" id="s-skipped">2,930</div>
+    <div class="sub">no match in library</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Broken</div>
+    <div class="value" style="color: var(--red);" id="s-broken">435</div>
+    <div class="sub">refs need manual fix</div>
+  </div>
+</div>
+
+<!-- Progress Bar -->
+<div class="progress-section">
+  <h2>Coverage</h2>
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progress-bar">
+      <div class="segment swapped" style="width: 88%">88%</div>
+      <div class="segment already" style="width: 2%"></div>
+      <div class="segment skipped" style="width: 8%">8%</div>
+      <div class="segment broken" style="width: 2%"></div>
+    </div>
+    <div class="progress-legend">
+      <div class="item"><div class="dot" style="background:var(--green)"></div> Swapped</div>
+      <div class="item"><div class="dot" style="background:var(--blue)"></div> Already linked</div>
+      <div class="item"><div class="dot" style="background:var(--yellow)"></div> Skipped (no match)</div>
+      <div class="item"><div class="dot" style="background:var(--red)"></div> Broken ref</div>
+    </div>
+  </div>
+</div>
+
+<!-- Component Set Matching -->
+<div class="section">
+  <h2>Component Set Matching <span class="badge info">216 sets scanned</span></h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Old Set Name</th>
+        <th></th>
+        <th>VSP DLS Match</th>
+        <th>Variants</th>
+        <th>Instances</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="match-table">
+      <tr>
+        <td class="mono match-old">     button/Brand</td>
+        <td class="match-arrow">→</td>
+        <td class="mono match-new">[VSP] Button/Brand</td>
+        <td>32</td>
+        <td>3,240</td>
+        <td><span class="badge success">EXACT</span></td>
+      </tr>
+      <tr>
+        <td class="mono match-old">     textField</td>
+        <td class="match-arrow">→</td>
+        <td class="mono match-new">[VSP]TextField</td>
+        <td>9</td>
+        <td>1,450</td>
+        <td><span class="badge success">EXACT</span></td>
+      </tr>
+      <tr>
+        <td class="mono match-old">_sheetHeader</td>
+        <td class="match-arrow">→</td>
+        <td class="mono match-new">_sheetHeader</td>
+        <td>2</td>
+        <td>890</td>
+        <td><span class="badge success">EXACT</span></td>
+      </tr>
+      <tr>
+        <td class="mono match-old">     tab</td>
+        <td class="match-arrow">→</td>
+        <td class="mono match-new">Base (Tab)</td>
+        <td>4</td>
+        <td>1,320</td>
+        <td><span class="badge warning">FUZZY</span></td>
+      </tr>
+      <tr>
+        <td class="mono match-old">Header</td>
+        <td class="match-arrow">→</td>
+        <td class="mono match-new">[VSP] Header</td>
+        <td>6</td>
+        <td>2,100</td>
+        <td><span class="badge success">EXACT</span></td>
+      </tr>
+      <tr>
+        <td class="mono match-old">_slotLeading</td>
+        <td class="match-arrow">→</td>
+        <td class="mono" style="color:var(--text-3)">—</td>
+        <td>3</td>
+        <td>4,200</td>
+        <td><span class="badge error">NONE</span></td>
+      </tr>
+      <tr>
+        <td class="mono match-old">iconSystem</td>
+        <td class="match-arrow">→</td>
+        <td class="mono" style="color:var(--text-3)">— (icon library)</td>
+        <td>1</td>
+        <td>3,276</td>
+        <td><span class="badge error">NONE</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Per-page breakdown -->
+<div class="section">
+  <h2>Per-page Breakdown</h2>
+  <div class="page-grid" id="page-grid">
+    <!-- Generated dynamically -->
+  </div>
+</div>
+
+<!-- Unmatched Sets -->
+<div class="section">
+  <h2>Unmatched Component Sets <span class="badge warning" id="unmatched-count">42 sets</span></h2>
+  <p style="color: var(--text-2); font-size: 14px; margin-bottom: 16px;">
+    These components were not found in VSP DLS. They may belong to a separate library (icons, device elements) or are file-local compositions.
+  </p>
+  <div class="unmatched-grid" id="unmatched-grid">
+    <!-- Generated dynamically -->
+  </div>
+</div>
+
+<script>
+  // === REPORT DATA — replace this with actual swap results ===
+  const REPORT = {
+    file: { name: "Snowflake — Profile", key: "yGwmRBnECUF4ThqV2ThjS9" },
+    library: { name: "VSP DLS", key: "KzwbNKTQUkX6xnRSJhx411" },
+    date: new Date().toISOString().split('T')[0],
+    totals: { total: 28197, swapped: 24832, alreadyOk: 520, skipped: 2410, broken: 435 },
+    pages: [
+      { name: "SCREENS", total: 8420, swapped: 7200, skipped: 980, broken: 240 },
+      { name: "[Screen] Account", total: 3200, swapped: 2850, skipped: 280, broken: 70 },
+      { name: "[Screen] Liên kết", total: 2400, swapped: 2100, skipped: 250, broken: 50 },
+      { name: "[Screen] Đổi avatar / Đổi tên", total: 529, swapped: 480, skipped: 25, broken: 24 },
+      { name: "[Screen] Thay đổi thứ tự", total: 1800, swapped: 1600, skipped: 150, broken: 50 },
+      { name: "[Screen] Trung tâm bảo mật", total: 1500, swapped: 1350, skipped: 120, broken: 30 },
+      { name: "[Screen] FAQ / Hỗ trợ", total: 2100, swapped: 1900, skipped: 160, broken: 40 },
+      { name: "[Content] Liên kết PTTT", total: 1400, swapped: 1250, skipped: 120, broken: 30 },
+      { name: "[Sandbox] Xác thực", total: 2800, swapped: 2500, skipped: 250, broken: 50 },
+      { name: "[Sandbox] Đổi avatar", total: 1200, swapped: 1050, skipped: 100, broken: 50 },
+      { name: "COMPONENTS", total: 1600, swapped: 1400, skipped: 150, broken: 50 },
+      { name: "CONTENTS", total: 1247, swapped: 1152, skipped: 75, broken: 20 },
+    ],
+    unmatched: [
+      { name: "iconSystem", count: 3276, reason: "Icon library" },
+      { name: "iconSwapS/*", count: 4500, reason: "Icon library" },
+      { name: "_grabber", count: 1332, reason: "Internal sub-component" },
+      { name: "_titleGroup", count: 1307, reason: "Internal sub-component" },
+      { name: "_dataGroup", count: 1258, reason: "Internal sub-component" },
+      { name: "_item", count: 1180, reason: "Internal sub-component" },
+      { name: "_slotLeading", count: 850, reason: "Internal sub-component" },
+      { name: "_slotTrailing", count: 720, reason: "Internal sub-component" },
+      { name: "Status bar", count: 240, reason: "Device elements library" },
+      { name: "iOS keyboard", count: 117, reason: "Device elements library" },
+      { name: "IOS Home indicator", count: 152, reason: "Device elements library" },
+      { name: "Badge - Number", count: 277, reason: "Not in VSP DLS" },
+    ],
+  };
+
+  // Render
+  document.getElementById('date').textContent = REPORT.date;
+
+  // Stats
+  const t = REPORT.totals;
+  document.getElementById('s-total').textContent = t.total.toLocaleString();
+  document.getElementById('s-swapped').textContent = t.swapped.toLocaleString();
+  document.getElementById('s-skipped').textContent = t.skipped.toLocaleString();
+  document.getElementById('s-broken').textContent = t.broken.toLocaleString();
+  document.getElementById('s-swapped-pct').textContent = ((t.swapped / t.total) * 100).toFixed(1) + '%';
+
+  // Progress bar
+  const pctSwapped = (t.swapped / t.total * 100).toFixed(0);
+  const pctAlready = (t.alreadyOk / t.total * 100).toFixed(0);
+  const pctSkipped = (t.skipped / t.total * 100).toFixed(0);
+  const pctBroken = (t.broken / t.total * 100).toFixed(0);
+  document.getElementById('progress-bar').innerHTML = `
+    <div class="segment swapped" style="width:${pctSwapped}%">${pctSwapped}%</div>
+    <div class="segment already" style="width:${pctAlready}%">${pctAlready > 3 ? pctAlready + '%' : ''}</div>
+    <div class="segment skipped" style="width:${pctSkipped}%">${pctSkipped}%</div>
+    <div class="segment broken" style="width:${pctBroken}%">${pctBroken > 2 ? pctBroken + '%' : ''}</div>
+  `;
+
+  // Status badge
+  const swapRate = t.swapped / t.total;
+  const badge = document.getElementById('status-badge');
+  if (swapRate > 0.9) { badge.textContent = 'EXCELLENT'; badge.className = 'badge success'; }
+  else if (swapRate > 0.7) { badge.textContent = 'GOOD'; badge.className = 'badge info'; }
+  else if (swapRate > 0.5) { badge.textContent = 'PARTIAL'; badge.className = 'badge warning'; }
+  else { badge.textContent = 'NEEDS WORK'; badge.className = 'badge error'; }
+
+  // Per-page cards
+  const pageGrid = document.getElementById('page-grid');
+  REPORT.pages.forEach(p => {
+    const sw = (p.swapped / p.total * 100).toFixed(0);
+    const sk = (p.skipped / p.total * 100).toFixed(0);
+    const br = (p.broken / p.total * 100).toFixed(0);
+    const al = Math.max(0, 100 - sw - sk - br);
+    pageGrid.innerHTML += `
+      <div class="page-card">
+        <div class="name" title="${p.name}">${p.name}</div>
+        <div class="mini-bar">
+          <div class="segment swapped" style="width:${sw}%"></div>
+          <div class="segment already" style="width:${al}%"></div>
+          <div class="segment skipped" style="width:${sk}%"></div>
+          <div class="segment broken" style="width:${br}%"></div>
+        </div>
+        <div class="counts">
+          <span><span class="num g">${p.swapped.toLocaleString()}</span> swapped</span>
+          <span><span class="num y">${p.skipped.toLocaleString()}</span> skipped</span>
+          <span><span class="num r">${p.broken.toLocaleString()}</span> broken</span>
+          <span style="color:var(--text-3)">${p.total.toLocaleString()} total</span>
+        </div>
+      </div>
+    `;
+  });
+
+  // Unmatched
+  const unmatchedGrid = document.getElementById('unmatched-grid');
+  document.getElementById('unmatched-count').textContent = REPORT.unmatched.length + ' sets';
+  REPORT.unmatched.forEach(u => {
+    unmatchedGrid.innerHTML += `
+      <div class="unmatched-item">
+        <div>
+          <div class="name">${u.name}</div>
+          <div style="font-size:11px;color:var(--text-3);margin-top:2px">${u.reason}</div>
+        </div>
+        <div class="count">${u.count.toLocaleString()} instances</div>
+      </div>
+    `;
+  });
+</script>
+</body>
+</html>

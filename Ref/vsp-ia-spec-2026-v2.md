@@ -984,3 +984,6 @@ Phase 3 (Q4)
 
 *V-Smart Pay IA 2026 — Version 2.0 — 21/03/2026 — Product Design Specification*
 *Confidential — Internal use only — Vingroup Financial Technology*
+
+---
+Back: [[Home]] · [[knowledge/CLAUDE|Rules]]

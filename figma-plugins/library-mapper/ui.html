@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Inter,-apple-system,sans-serif;font-size:12px;color:#e5e5e5;background:#2c2c2c;padding:0}
+  .tabs{display:flex;border-bottom:1px solid #444;background:#1e1e1e}
+  .tab{flex:1;padding:12px;text-align:center;cursor:pointer;font-size:12px;font-weight:600;color:#888;border-bottom:2px solid transparent}
+  .tab.active{color:#e5e5e5;border-bottom-color:#0d99ff}
+  .tab:hover{color:#ccc}
+  .content{padding:16px}
+  .panel{display:none}
+  .panel.active{display:block}
+  h3{font-size:13px;font-weight:600;margin-bottom:6px}
+  p.desc{color:#888;font-size:11px;margin-bottom:16px;line-height:1.5}
+  .btn{padding:10px 16px;border-radius:8px;border:none;cursor:pointer;font-size:12px;font-weight:600;width:100%}
+  .btn-blue{background:#0d99ff;color:#fff}
+  .btn-blue:hover{background:#0b87e0}
+  .btn-blue:disabled{background:#444;color:#666;cursor:not-allowed}
+  .btn-green{background:#22c55e;color:#fff}
+  .btn-green:hover{background:#1ea550}
+  .btn-gray{background:#444;color:#e5e5e5}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0}
+  .stat{background:#1e1e1e;border-radius:8px;padding:8px;text-align:center}
+  .stat .num{font-size:16px;font-weight:700}
+  .stat .lbl{font-size:9px;color:#666;margin-top:2px}
+  .green .num{color:#22c55e}
+  .yellow .num{color:#eab308}
+  .red .num{color:#ef4444}
+  .blue .num{color:#3b82f6}
+  .status{font-size:11px;color:#888;margin-top:8px;min-height:16px}
+  .progress-bar{height:4px;background:#444;border-radius:2px;margin:8px 0;overflow:hidden}
+  .progress-fill{height:100%;background:#0d99ff;transition:width 0.3s}
+  .log{font-size:10px;color:#888;max-height:200px;overflow-y:auto;margin-top:8px;background:#1e1e1e;border-radius:6px;padding:8px}
+  .log div{padding:2px 0}
+  .log .ok{color:#22c55e}
+  .log .warn{color:#eab308}
+  .log .err{color:#ef4444}
+  .info-box{background:#1e1e1e;border-radius:8px;padding:12px;margin:12px 0}
+  .info-box .title{font-size:11px;color:#888;margin-bottom:4px}
+  .info-box .value{font-size:16px;font-weight:700;color:#22c55e}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+
+<div class="tabs">
+  <div class="tab active" id="tab1" onclick="switchTab(1)">① Export Library</div>
+  <div class="tab" id="tab2" onclick="switchTab(2)">② Swap Instances</div>
+</div>
+
+<div class="content">
+
+  <!-- PANEL 1: Export -->
+  <div class="panel active" id="panel1">
+    <h3>Export Library</h3>
+    <p class="desc">
+      Open the <strong>library file</strong> (e.g. VSP DLS) and click Export.<br>
+      This saves all component names & keys locally.
+    </p>
+
+    <div id="exportInfo" class="info-box hidden">
+      <div class="title">Last exported</div>
+      <div class="value" id="exportName">—</div>
+      <div style="font-size:11px;color:#888;margin-top:2px" id="exportCount">—</div>
+    </div>
+
+    <button class="btn btn-blue" id="btnExport" onclick="doExport()">Export This File</button>
+    <div class="status" id="exportStatus"></div>
+  </div>
+
+  <!-- PANEL 2: Swap -->
+  <div class="panel" id="panel2">
+
+    <!-- Before swap -->
+    <div id="swapReady">
+      <h3>Swap Instances</h3>
+      <p class="desc">
+        Open the <strong>design file</strong> and click Swap.<br>
+        Matches instances by exact component name and swaps to library version.
+      </p>
+
+      <div id="swapInfo" class="info-box hidden">
+        <div class="title">Library loaded</div>
+        <div class="value" id="swapLibName">—</div>
+        <div style="font-size:11px;color:#888;margin-top:2px" id="swapLibCount">—</div>
+      </div>
+
+      <button class="btn btn-green" id="btnSwap" onclick="doSwap()">Scan & Swap</button>
+      <div class="status" id="swapStatus"></div>
+    </div>
+
+    <!-- During swap -->
+    <div id="swapRunning" class="hidden">
+      <h3>Swapping...</h3>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="status" id="progressText">Starting...</div>
+    </div>
+
+    <!-- Results -->
+    <div id="swapResults" class="hidden">
+      <h3>Results</h3>
+      <div class="stats">
+        <div class="stat green"><div class="num" id="r-swapped">0</div><div class="lbl">Swapped</div></div>
+        <div class="stat blue"><div class="num" id="r-already">0</div><div class="lbl">Already OK</div></div>
+        <div class="stat yellow"><div class="num" id="r-skipped">0</div><div class="lbl">Skipped</div></div>
+        <div class="stat red"><div class="num" id="r-broken">0</div><div class="lbl">Broken</div></div>
+      </div>
+      <div class="log" id="resultLog"></div>
+      <div style="margin-top:12px">
+        <button class="btn btn-gray" onclick="resetSwap()">Run again</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function switchTab(n) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab' + n).classList.add('active');
+    document.getElementById('panel' + n).classList.add('active');
+  }
+
+  // ─── EXPORT ───────────────────────────────────────────────────
+
+  function doExport() {
+    document.getElementById('btnExport').disabled = true;
+    document.getElementById('exportStatus').textContent = 'Scanning...';
+    parent.postMessage({ pluginMessage: { type: 'export-library' } }, '*');
+  }
+
+  // ─── SWAP ─────────────────────────────────────────────────────
+
+  function doSwap() {
+    document.getElementById('swapReady').classList.add('hidden');
+    document.getElementById('swapRunning').classList.remove('hidden');
+    document.getElementById('swapResults').classList.add('hidden');
+    parent.postMessage({ pluginMessage: { type: 'swap' } }, '*');
+  }
+
+  function resetSwap() {
+    document.getElementById('swapReady').classList.remove('hidden');
+    document.getElementById('swapRunning').classList.add('hidden');
+    document.getElementById('swapResults').classList.add('hidden');
+  }
+
+  // ─── MESSAGES ─────────────────────────────────────────────────
+
+  window.onmessage = (event) => {
+    const msg = event.data.pluginMessage;
+    if (!msg) return;
+
+    // Export progress
+    if (msg.type === 'export-progress') {
+      document.getElementById('exportStatus').textContent = `${msg.page} — ${msg.count} components`;
+    }
+
+    // Export done
+    if (msg.type === 'export-done') {
+      document.getElementById('btnExport').disabled = false;
+      document.getElementById('exportStatus').textContent = '';
+      document.getElementById('exportInfo').classList.remove('hidden');
+      document.getElementById('exportName').textContent = msg.fileName;
+      document.getElementById('exportCount').textContent = msg.count + ' components exported';
+
+      // Also update swap panel
+      document.getElementById('swapInfo').classList.remove('hidden');
+      document.getElementById('swapLibName').textContent = msg.fileName;
+      document.getElementById('swapLibCount').textContent = msg.count + ' components';
+
+      // Auto-switch to swap tab
+      // switchTab(2);
+    }
+
+    // Swap progress
+    if (msg.type === 'swap-progress') {
+      const pct = Math.round((msg.pageIndex / msg.totalPages) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressText').textContent =
+        `${msg.pageIndex}/${msg.totalPages} ${msg.page} (${msg.swapped} swapped)`;
+    }
+
+    // Swap error
+    if (msg.type === 'swap-error') {
+      document.getElementById('swapRunning').classList.add('hidden');
+      document.getElementById('swapReady').classList.remove('hidden');
+      document.getElementById('swapStatus').textContent = msg.error;
+      document.getElementById('swapStatus').style.color = '#ef4444';
+    }
+
+    // Swap done
+    if (msg.type === 'swap-done') {
+      document.getElementById('swapRunning').classList.add('hidden');
+      document.getElementById('swapResults').classList.remove('hidden');
+      document.getElementById('r-swapped').textContent = msg.swapped.toLocaleString();
+      document.getElementById('r-already').textContent = msg.alreadyOk.toLocaleString();
+      document.getElementById('r-skipped').textContent = msg.skipped.toLocaleString();
+      document.getElementById('r-broken').textContent = msg.broken.toLocaleString();
+
+      const log = document.getElementById('resultLog');
+      log.innerHTML = '';
+
+      for (const p of (msg.pages || [])) {
+        log.innerHTML += `<div class="ok">✓ ${p.page}: ${p.swapped} swapped</div>`;
+      }
+
+      if (msg.unmatched && msg.unmatched.length > 0) {
+        log.innerHTML += `<div style="margin-top:6px;color:#888;">— Unmatched (top ${msg.unmatched.length}) —</div>`;
+        for (const u of msg.unmatched) {
+          log.innerHTML += `<div class="warn">  ${u.name} (×${u.count})</div>`;
+        }
+      }
+
+      if (msg.swapped === 0 && msg.alreadyOk > 0) {
+        log.innerHTML += `<div style="margin-top:6px;color:#3b82f6;">All instances already linked to library ✓</div>`;
+      }
+    }
+  };
+</script>
+</body>
+</html>
