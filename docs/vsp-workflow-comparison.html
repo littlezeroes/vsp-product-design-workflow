@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VSP Workflow — Designer 1 Tuần</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: #e5e5e5;
+    line-height: 1.7;
+    padding: 24px 16px 120px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  /* Header */
+  .hero {
+    text-align: center;
+    padding: 56px 0 48px;
+    border-bottom: 1px solid #1a1a1a;
+    margin-bottom: 56px;
+  }
+  .hero .badge {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #888;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .hero .subtitle {
+    font-size: 16px;
+    color: #888;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .hero .date {
+    font-size: 12px;
+    color: #444;
+    margin-top: 16px;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 56px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  .section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .section .lead {
+    font-size: 15px;
+    color: #888;
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 24px;
+    border-radius: 16px;
+    overflow-x: auto;
+    margin-bottom: 16px;
+  }
+  .flow-traditional { background: #1a0a0a; border: 1px solid #331a1a; }
+  .flow-vsp { background: #0a1a0a; border: 1px solid #1a331a; }
+  .flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    min-width: 100px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .flow-step .label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e5e5e5;
+  }
+  .flow-step .time {
+    font-size: 11px;
+    color: #666;
+  }
+  .flow-step.pain {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+  .flow-step.pain .label { color: #f87171; }
+  .flow-step.good {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+  }
+  .flow-step.good .label { color: #4ade80; }
+  .flow-arrow {
+    color: #333;
+    font-size: 18px;
+    padding: 0 6px;
+    flex-shrink: 0;
+  }
+  .flow-arrow.back {
+    color: #ef4444;
+    font-size: 14px;
+  }
+  .flow-note {
+    font-size: 12px;
+    color: #555;
+    padding-left: 24px;
+    border-left: 2px solid #222;
+    margin-bottom: 8px;
+  }
+
+  /* Comparison table */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    gap: 1px;
+    background: #1a1a1a;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .compare-cell {
+    padding: 14px 16px;
+    background: #0f0f0f;
+    font-size: 14px;
+  }
+  .compare-cell.header {
+    background: #141414;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+  }
+  .compare-cell.header.bad { color: #f87171; }
+  .compare-cell.header.good { color: #4ade80; }
+  .compare-cell.label {
+    color: #888;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .compare-cell .val { color: #e5e5e5; }
+  .compare-cell .val.red { color: #f87171; }
+  .compare-cell .val.green { color: #4ade80; }
+
+  /* Stat cards */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-card .number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .stat-card .number.green { color: #4ade80; }
+  .stat-card .desc {
+    font-size: 12px;
+    color: #666;
+  }
+
+  /* Argument cards */
+  .argument {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 12px;
+  }
+  .argument .num {
+    font-size: 11px;
+    font-weight: 700;
+    color: #4ade80;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .argument h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .argument p {
+    font-size: 14px;
+    color: #999;
+    line-height: 1.6;
+  }
+  .argument .example {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    font-size: 13px;
+    color: #bbb;
+  }
+  .argument .example strong { color: #e5e5e5; }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #222;
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #333;
+  }
+  .timeline-item.active::before { background: #4ade80; }
+  .timeline-item.pain::before { background: #ef4444; }
+  .timeline-day {
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 2px;
+  }
+  .timeline-text {
+    font-size: 14px;
+    color: #ccc;
+  }
+  .timeline-text.muted { color: #666; }
+
+  /* Quote */
+  .quote {
+    border-left: 3px solid #333;
+    padding: 16px 20px;
+    margin: 24px 0;
+    background: #111;
+    border-radius: 0 12px 12px 0;
+  }
+  .quote p {
+    font-size: 15px;
+    color: #ccc;
+    font-style: italic;
+  }
+  .quote .author {
+    font-size: 12px;
+    color: #555;
+    font-style: normal;
+    margin-top: 8px;
+  }
+
+  /* Two column */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .col-card {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .col-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .col-card.bad h4 { color: #f87171; }
+  .col-card.good h4 { color: #4ade80; }
+  .col-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .col-card li {
+    font-size: 13px;
+    color: #999;
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .col-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .col-card.bad li::before { background: #7f1d1d; }
+  .col-card.good li::before { background: #14532d; }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: #1a1a1a;
+    margin: 56px 0;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid #1a1a1a;
+  }
+  .footer p {
+    font-size: 12px;
+    color: #444;
+  }
+
+  @media (max-width: 640px) {
+    .stats { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 100px 1fr 1fr; font-size: 12px; }
+    .two-col { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="badge">Internal · V-Smart Pay</div>
+    <h1>Designer Workflow: 1 Tuần</h1>
+    <p class="subtitle">Tại sao VSP iterate nhanh hơn — và tại sao điều đó tạo ra sản phẩm tốt hơn.</p>
+    <p class="date">Prepared for Leadership Review · April 2026</p>
+  </div>
+
+  <!-- Section 1: The Problem -->
+  <div class="section">
+    <p class="section-label">Vấn đề</p>
+    <h2>Workflow truyền thống: Iteration quá muộn</h2>
+    <p class="lead">BRD xong → đợi draft → draft sai → quay lại sửa → deadline → ship cái "tạm được". Lần đầu team thấy output thực tế là ngày 3-4. Chỉ còn 1-2 ngày để sửa.</p>
+
+    <!-- Traditional flow -->
+    <div class="flow flow-traditional">
+      <div class="flow-step">
+        <span class="label">BRD</span>
+        <span class="time">PO viết</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <span class="label">Đợi draft</span>
+        <span class="time">2-3 ngày</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step pain">
+        <span class="label">Draft sai</span>
+        <span class="time">Lần đầu thấy output</span>
+      </div>
+      <span class="flow-arrow back">← sửa</span>
+      <div class="flow-step pain">
+        <span class="label">Back & forth</span>
+        <span class="time">1-2 ngày mất</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <span class="label">Deadline</span>
+        <span class="time">Hết thời gian</span>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step pain">
+        <span class="label">Ship "tạm ổn"</span>
+        <span class="time">Không ai happy</span>
+      </div>
+    </div>
+    <p class="flow-note">Mỗi bước là một bức tường. PO xong mới chuyển Designer. Designer xong mới chuyển Dev. Không ai thấy sản phẩm cuối cho đến khi quá muộn.</p>
+  </div>
+
+  <!-- Section 2: 1 Week Breakdown -->
+  <div class="section">
+    <p class="section-label">So sánh</p>
+    <h2>1 tuần designer làm gì?</h2>
+
+    <div class="two-col">
+      <div class="col-card bad">
+        <h4>Traditional (Vapp-style)</h4>
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-day">Ngày 1-2</p>
+            <p class="timeline-text muted">Đọc BRD, hỏi PO, đợi trả lời, clarify requirement</p>
+          </div>
+          <div class="timeline-item pain">
+            <p class="timeline-day">Ngày 3</p>
+            <p class="timeline-text">Draft v1 — team lần đầu thấy output</p>
+          </div>
+          <div class="timeline-item pain">
+            <p class="timeline-day">Ngày 4</p>
+            <p class="timeline-text">Review → "sai rồi" → quay lại sửa</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-day">Ngày 5</p>
+            <p class="timeline-text muted">Cố gắng ship v2 "tạm ổn" vì hết deadline</p>
+          </div>
+        </div>
+        <p style="font-size:13px;color:#f87171;margin-top:16px;font-weight:600;">→ 1-2 iteration cycles / tuần</p>
+      </div>
+
+      <div class="col-card good">
+        <h4>Continuous Friction (VSP)</h4>
+        <div class="timeline">
+          <div class="timeline-item active">
+            <p class="timeline-day">Ngày 1</p>
+            <p class="timeline-text">Draft rough trên visual thread — PO + Tech cùng xem ngay</p>
+          </div>
+          <div class="timeline-item active">
+            <p class="timeline-day">Ngày 2</p>
+            <p class="timeline-text">v2, v3 dựa trên feedback — iterate same day</p>
+          </div>
+          <div class="timeline-item active">
+            <p class="timeline-day">Ngày 3</p>
+            <p class="timeline-text">Thử 2-3 approach khác nhau, Tech confirm feasibility</p>
+          </div>
+          <div class="timeline-item active">
+            <p class="timeline-day">Ngày 4</p>
+            <p class="timeline-text">Polish best approach, edge cases, dark mode</p>
+          </div>
+          <div class="timeline-item active">
+            <p class="timeline-day">Ngày 5</p>
+            <p class="timeline-text">Battle-tested design → handoff Dev. Đã qua 10+ mắt.</p>
+          </div>
+        </div>
+        <p style="font-size:13px;color:#4ade80;margin-top:16px;font-weight:600;">→ 5-10+ iteration cycles / tuần</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="section">
+    <div class="stats">
+      <div class="stat-card">
+        <p class="number green">5-10×</p>
+        <p class="desc">Iteration cycles / tuần<br><span style="color:#444">(vs 1-2× truyền thống)</span></p>
+      </div>
+      <div class="stat-card">
+        <p class="number green">40-50%</p>
+        <p class="desc">Thời gian freed<br><span style="color:#444">cho experimentation</span></p>
+      </div>
+      <div class="stat-card">
+        <p class="number green">~0</p>
+        <p class="desc">Sync meetings / tuần<br><span style="color:#444">Async trên visual thread</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="section">
+    <p class="section-label">Chi tiết</p>
+    <h2>So sánh trực tiếp</h2>
+
+    <div class="compare-grid">
+      <div class="compare-cell header">Tiêu chí</div>
+      <div class="compare-cell header bad">Traditional</div>
+      <div class="compare-cell header good">Continuous Friction</div>
+
+      <div class="compare-cell label">Lần đầu thấy output</div>
+      <div class="compare-cell"><span class="val red">Ngày 3-4</span></div>
+      <div class="compare-cell"><span class="val green">Ngày 1 (rough draft)</span></div>
+
+      <div class="compare-cell label">Feedback từ Tech</div>
+      <div class="compare-cell"><span class="val red">Sau khi design "xong"</span></div>
+      <div class="compare-cell"><span class="val green">Ngay từ draft đầu</span></div>
+
+      <div class="compare-cell label">Communication</div>
+      <div class="compare-cell"><span class="val">BRD text → meeting</span></div>
+      <div class="compare-cell"><span class="val green">Visual thread, async</span></div>
+
+      <div class="compare-cell label">Khi draft sai</div>
+      <div class="compare-cell"><span class="val red">Mất 2-3 ngày sửa</span></div>
+      <div class="compare-cell"><span class="val green">Fix trong 2-3 giờ</span></div>
+
+      <div class="compare-cell label">Meetings / tuần</div>
+      <div class="compare-cell"><span class="val red">3-5 sync meetings</span></div>
+      <div class="compare-cell"><span class="val green">~0 (comment trên thread)</span></div>
+
+      <div class="compare-cell label">Innovation</div>
+      <div class="compare-cell"><span class="val">Safe, đúng spec</span></div>
+      <div class="compare-cell"><span class="val green">Bold, vượt spec</span></div>
+
+      <div class="compare-cell label">Output quality</div>
+      <div class="compare-cell"><span class="val">"Spec-compliant"</span></div>
+      <div class="compare-cell"><span class="val green">"Battle-tested"</span></div>
+
+      <div class="compare-cell label">Friction timing</div>
+      <div class="compare-cell"><span class="val red">Muộn (sau draft)</span></div>
+      <div class="compare-cell"><span class="val green">Sớm (ngày 1)</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Key Arguments -->
+  <div class="section">
+    <p class="section-label">Tại sao</p>
+    <h2>4 Arguments chính</h2>
+
+    <div class="argument">
+      <p class="num">01</p>
+      <h3>Sai sớm = rẻ. Sai muộn = đắt.</h3>
+      <p>Trong workflow truyền thống, draft sai được phát hiện ngày 4 → mất 2 ngày sửa → ship cái kém. Với continuous friction, draft sai ngày 1 → fix ngay → còn 4 ngày iterate. Chi phí sửa lỗi tăng theo thời gian — phát hiện càng sớm, fix càng rẻ.</p>
+      <div class="example">
+        <strong>Ví dụ:</strong> Feature Sinh lời — flow activate ban đầu có 6 bước. Sau ngày 1 thread review, Tech chỉ ra 2 bước có thể merge. Kết quả: 4 bước, UX tốt hơn, dev nhanh hơn. Nếu phát hiện muộn → redesign + recode.
+      </div>
+    </div>
+
+    <div class="argument">
+      <p class="num">02</p>
+      <h3>40-50% thời gian freed cho experimentation</h3>
+      <p>Bỏ meeting sync, bỏ đợi BRD clarify, bỏ back-and-forth qua email. Thời gian đó không phải để nghỉ — mà để thử 3-4 approach thay vì bị kẹt với 1 approach duy nhất.</p>
+      <div class="example">
+        <strong>Công thức:</strong> Early friction → Speed iteration → Unexpected solutions → Bold features → Sản phẩm có "soul"
+      </div>
+    </div>
+
+    <div class="argument">
+      <p class="num">03</p>
+      <h3>Tech friction = Innovation engine</h3>
+      <p>Khi designer + dev va chạm hàng ngày trên visual thread → phát hiện logic patterns mà spec không bao giờ capture được. "Khi Design và Tech 'va chạm' hàng ngày trên visual thread, họ phát hiện ra những patterns thông minh sâu sắc mà spec chuẩn không bao giờ nắm bắt được."</p>
+      <div class="example">
+        <strong>Ví dụ VSP:</strong> AI agents review UX ngay khi draft → catch 15+ edge cases trước khi dev bắt đầu. Design System documentation live tại <a href="https://vsp-dls.vercel.app" style="color:#4ade80" target="_blank">vsp-dls.vercel.app</a>
+      </div>
+    </div>
+
+    <div class="argument">
+      <p class="num">04</p>
+      <h3>Quality từ transparency, không từ KPI</h3>
+      <p>Thread visible → mọi người thấy output → peer pressure tự nhiên → không ai ship cái xấu. Multiple POs, leadership, tech leads cùng comment trên 1 thread → multi-directional input. Early-stage drafts nhận hàng chục iteration cycles trước khi developer chạm tay — "battle-tested" designs.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- The Shift -->
+  <div class="section">
+    <p class="section-label">Mô hình</p>
+    <h2>Từ Waterfall → Continuous Friction</h2>
+
+    <div class="quote">
+      <p>"Mỗi bước trong waterfall là một bức tường. PO xong → Designer. Designer xong → Dev. Không ai thấy sản phẩm cuối cho đến khi quá muộn để thay đổi."</p>
+    </div>
+
+    <div class="two-col" style="margin-top:24px">
+      <div class="col-card bad">
+        <h4>Traditional: Sequential Walls</h4>
+        <p style="font-size:14px;color:#999;margin-bottom:16px;">PO/Spec → Designer → Developer</p>
+        <ul>
+          <li>Designer nhận spec thiếu technical context</li>
+          <li>Quy trình cứng → không ai dám đề xuất innovation</li>
+          <li>Meeting liên tục để clarify → mất momentum</li>
+          <li>Output = "safe", đúng spec nhưng không đặc biệt</li>
+        </ul>
+      </div>
+      <div class="col-card good">
+        <h4>VSP: Thread-based Friction</h4>
+        <p style="font-size:14px;color:#999;margin-bottom:16px;">UX Idea ↔ Product Thread ↔ Tech Thread</p>
+        <ul>
+          <li>Tất cả cùng nhìn 1 thứ, đồng thời</li>
+          <li>Tech tham gia từ ngày 1 — không phải review cuối</li>
+          <li>Async trên visual thread — không cần họp</li>
+          <li>Output = "bold", vượt xa spec ban đầu</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Implementation -->
+  <div class="section">
+    <p class="section-label">Áp dụng</p>
+    <h2>VSP Implementation</h2>
+
+    <div class="argument">
+      <p class="num">THREAD-FIRST</p>
+      <h3>Feature mới bắt đầu bằng visual thread</h3>
+      <p>PO đặt vấn đề → Designer draft → Tech identify constraints — tất cả trên 1 thread (Figma / Slack / Lark). Meeting chỉ khi thực sự cần.</p>
+    </div>
+
+    <div class="argument">
+      <p class="num">MULTI-STAKEHOLDER</p>
+      <h3>Nhiều mắt nhìn từ sớm</h3>
+      <p>Không chỉ 1 PO review. Multiple POs, leadership, tech leads cùng engage → multi-directional input → giảm late-stage surprises.</p>
+    </div>
+
+    <div class="argument">
+      <p class="num">NO DESIGN FREEZE</p>
+      <h3>Iterate cho đến khi battle-tested</h3>
+      <p>Không "đóng băng design" trước khi dev. Continuous iteration cho đến khi tất cả stakeholders confirm. Design cuối đã được validate kỹ — không phải "hy vọng nó đúng".</p>
+    </div>
+
+    <div class="argument">
+      <p class="num">AI-AUGMENTED</p>
+      <h3>AI agents trong design pipeline</h3>
+      <p>VSP sử dụng AI agents để: review UX tự động, check edge cases, audit design tokens, generate wireframes nhanh. Kết quả: designer focus vào creative decisions thay vì repetitive tasks.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Bottom line -->
+  <div class="section">
+    <p class="section-label">Kết luận</p>
+    <h2>Không phải process mới — mà là paradigm shift</h2>
+    <p class="lead">Traditional model sản xuất sản phẩm "đúng spec". Continuous friction model sản xuất sản phẩm "vượt spec". Designer chuyển từ "thợ nhận việc" thành Product Creator thực sự.</p>
+
+    <div class="quote">
+      <p>"Khoảng im lặng giữa các phòng ban — đó là thứ cần xóa bỏ. Tech không biết Designer nghĩ gì. Designer không biết Tech có thể làm gì. Khi xóa bức tường đó, sản phẩm có soul."</p>
+    </div>
+
+    <div class="stats" style="margin-top:32px">
+      <div class="stat-card">
+        <p class="number" style="font-size:20px;color:#fff;">Early friction</p>
+        <p class="desc">Va chạm sớm = fix rẻ</p>
+      </div>
+      <div class="stat-card">
+        <p class="number" style="font-size:20px;color:#fff;">Speed iteration</p>
+        <p class="desc">5-10× cycles / tuần</p>
+      </div>
+      <div class="stat-card">
+        <p class="number" style="font-size:20px;color:#fff;">Bold output</p>
+        <p class="desc">Sản phẩm có soul</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>V-Smart Pay · Design Workflow Comparison · April 2026</p>
+    <p style="margin-top:4px;"><a href="https://vsp-dls.vercel.app" style="color:#4ade80;text-decoration:none;">vsp-dls.vercel.app</a> · Design System Documentation</p>
+  </div>
+
+</div>
+</body>
+</html>
