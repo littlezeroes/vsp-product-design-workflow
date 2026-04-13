@@ -24,12 +24,12 @@ const punctuationRules = [
 const numberFormatting = [
   {
     type: 'VND Currency',
-    format: '1.000.000đ',
-    note: 'Dùng dấu chấm phân cách hàng nghìn, hậu tố "đ". Không dùng "VND" trong UI ngắn gọn.',
+    format: '400.000 ₫',
+    note: 'Dùng dấu chấm phân cách hàng nghìn, dấu cách + ký hiệu ₫. Dùng trong UI.',
   },
   {
     type: 'VND Currency (formal)',
-    format: '1.000.000 VND',
+    format: '1.000.000 ₫',
     note: 'Dùng trong biên lai, xác nhận giao dịch, tài liệu chính thức.',
   },
   {

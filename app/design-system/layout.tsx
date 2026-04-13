@@ -1,14 +1,60 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { navigation } from '@/lib/ds-data'
 import { ChevronDown, Menu, X, Moon, Sun } from 'lucide-react'
 
-function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
+const headerTabs = [
+  {
+    id: 'components',
+    label: 'Components',
+    href: '/design-system',
+    sections: ['Getting Started', 'Foundations', 'Actions', 'Forms', 'Selections', 'Navigation', 'Feedback', 'Modals', 'Indicators', 'Interface Elements', 'Support'],
+  },
+  {
+    id: 'patterns',
+    label: 'UX Patterns',
+    href: '/design-system/patterns/forms',
+    sections: ['Patterns'],
+  },
+  {
+    id: 'content',
+    label: 'Content & Voice',
+    href: '/design-system/content/tone-of-voice',
+    sections: ['Content & Language'],
+  },
+  {
+    id: 'templates',
+    label: 'Templates',
+    href: '/design-system/templates/screen-structure',
+    sections: ['Templates'],
+  },
+]
+
+function getActiveTab(pathname: string): string {
+  if (pathname.startsWith('/design-system/patterns')) return 'patterns'
+  if (pathname.startsWith('/design-system/content')) return 'content'
+  if (pathname.startsWith('/design-system/templates')) return 'templates'
+  return 'components'
+}
+
+function SidebarContent({
+  activeTab,
+  onNavigate,
+}: {
+  activeTab: string
+  onNavigate?: () => void
+}) {
   const pathname = usePathname()
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({})
+
+  const tab = headerTabs.find((t) => t.id === activeTab)
+  const filteredNav = useMemo(
+    () => navigation.filter((s) => tab?.sections.includes(s.title)),
+    [tab]
+  )
 
   const toggle = (title: string) => {
     setCollapsed((prev) => ({ ...prev, [title]: !prev[title] }))
@@ -16,23 +62,25 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
 
   return (
     <nav className="flex flex-col gap-[2px] py-[16px]">
-      {navigation.map((section) => (
+      {filteredNav.map((section) => (
         <div key={section.title}>
-          <button
-            onClick={() => toggle(section.title)}
-            className="flex w-full items-center justify-between px-[16px] py-[8px] text-[11px] font-medium uppercase tracking-widest"
-            style={{ color: 'var(--foreground-secondary)', opacity: 0.6 }}
-          >
-            {section.title}
-            <ChevronDown
-              size={14}
-              className="transition-transform duration-200"
-              style={{
-                transform: collapsed[section.title] ? 'rotate(-90deg)' : 'rotate(0deg)',
-                color: 'var(--foreground-secondary)',
-              }}
-            />
-          </button>
+          {filteredNav.length > 1 && (
+            <button
+              onClick={() => toggle(section.title)}
+              className="flex w-full items-center justify-between px-[16px] py-[8px] text-[11px] font-medium uppercase tracking-widest"
+              style={{ color: 'var(--foreground-secondary)', opacity: 0.6 }}
+            >
+              {section.title}
+              <ChevronDown
+                size={14}
+                className="transition-transform duration-200"
+                style={{
+                  transform: collapsed[section.title] ? 'rotate(-90deg)' : 'rotate(0deg)',
+                  color: 'var(--foreground-secondary)',
+                }}
+              />
+            </button>
+          )}
           {!collapsed[section.title] && (
             <div className="flex flex-col">
               {section.items.map((item) => {
@@ -44,7 +92,7 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
                     onClick={onNavigate}
                     className="flex items-center gap-[8px] px-[16px] py-[6px] text-[13px] transition-colors duration-150"
                     style={{
-                      color: isActive ? 'var(--foreground)' : 'var(--foreground)',
+                      color: 'var(--foreground)',
                       fontWeight: isActive ? 600 : 450,
                       backgroundColor: isActive ? 'var(--secondary)' : 'transparent',
                       borderRadius: '6px',
@@ -80,8 +128,11 @@ export default function DesignSystemLayout({
 }: {
   children: React.ReactNode
 }) {
+  const pathname = usePathname()
+  const activeTab = getActiveTab(pathname)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [dark, setDark] = useState(false)
+  const [versionOpen, setVersionOpen] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem('ds-theme')
@@ -104,14 +155,15 @@ export default function DesignSystemLayout({
     <div className="flex min-h-screen flex-col" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}>
       {/* Top bar */}
       <header
-        className="sticky top-0 z-50 flex h-[56px] items-center justify-between border-b px-[16px] md:px-[24px]"
+        className="sticky top-0 z-50 flex h-[56px] items-center justify-between border-b px-[16px] md:px-[24px] relative"
         style={{
           borderColor: 'var(--border)',
           backgroundColor: 'var(--background)',
           backdropFilter: 'blur(12px)',
         }}
       >
-        <div className="flex items-center gap-[12px]">
+        {/* Left: hamburger + title */}
+        <div className="flex shrink-0 items-center gap-[4px]">
           <button
             className="md:hidden p-[8px] -ml-[8px]"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -123,15 +175,96 @@ export default function DesignSystemLayout({
             <span className="text-[16px] font-semibold" style={{ color: 'var(--foreground)' }}>
               VSP Design System
             </span>
-            <span
-              className="rounded-full px-[8px] py-[2px] text-[11px] font-medium"
+          </Link>
+        </div>
+
+        {/* Center: Tabs */}
+        <div className="absolute left-1/2 top-0 hidden h-full -translate-x-1/2 md:flex items-center">
+          {headerTabs.map((tab) => {
+            const isActive = activeTab === tab.id
+            return (
+              <Link
+                key={tab.id}
+                href={tab.href}
+                className="relative whitespace-nowrap px-[12px] py-[16px] text-[13px] font-medium transition-colors"
+                style={{
+                  color: isActive ? 'var(--foreground)' : 'var(--foreground-secondary)',
+                }}
+              >
+                {tab.label}
+                {isActive && (
+                  <span
+                    className="absolute bottom-0 left-[12px] right-[12px] h-[2px] rounded-full"
+                    style={{ backgroundColor: 'var(--foreground)' }}
+                  />
+                )}
+              </Link>
+            )
+          })}
+        </div>
+
+        {/* Right: version dropdown + actions */}
+        <div className="flex shrink-0 items-center gap-[8px]">
+          {/* Version dropdown */}
+          <div className="relative hidden sm:block">
+            <button
+              onClick={() => setVersionOpen((v) => !v)}
+              className="inline-flex items-center gap-[4px] rounded-full px-[10px] py-[4px] text-[11px] font-medium transition-colors"
               style={{ backgroundColor: 'var(--secondary)', color: 'var(--foreground-secondary)' }}
             >
               v1.0
-            </span>
-          </Link>
-        </div>
-        <div className="flex items-center gap-[8px]">
+              <ChevronDown
+                size={12}
+                className="transition-transform duration-200"
+                style={{ transform: versionOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+              />
+            </button>
+            {versionOpen && (
+              <>
+                <div className="fixed inset-0 z-50" onClick={() => setVersionOpen(false)} />
+                <div
+                  className="absolute right-0 top-[calc(100%+8px)] z-50 w-[220px] rounded-14 border p-[8px]"
+                  style={{
+                    borderColor: 'var(--border)',
+                    backgroundColor: 'var(--background)',
+                    boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
+                  }}
+                >
+                  <div className="flex flex-col gap-[2px]">
+                    <span
+                      className="px-[8px] py-[4px] text-[10px] font-medium uppercase tracking-wider"
+                      style={{ color: 'var(--foreground-secondary)', opacity: 0.6 }}
+                    >
+                      Versions
+                    </span>
+                    <div
+                      className="flex items-center justify-between rounded-8 px-[8px] py-[6px]"
+                      style={{ backgroundColor: 'var(--secondary)' }}
+                    >
+                      <span className="text-[13px] font-medium" style={{ color: 'var(--foreground)' }}>
+                        v1.0
+                      </span>
+                      <span className="text-[11px]" style={{ color: 'var(--foreground-secondary)' }}>
+                        Current
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    className="my-[6px] h-[1px]"
+                    style={{ backgroundColor: 'var(--border)' }}
+                  />
+                  <Link
+                    href="/design-system/changelog"
+                    onClick={() => setVersionOpen(false)}
+                    className="flex items-center rounded-8 px-[8px] py-[6px] text-[13px] font-medium transition-colors"
+                    style={{ color: 'var(--foreground-secondary)' }}
+                  >
+                    View Changelog
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
           <a
             href="https://www.figma.com/file/KzwbNKTQUkX6xnRSJhx411"
             target="_blank"
@@ -156,7 +289,7 @@ export default function DesignSystemLayout({
       </header>
 
       <div className="flex flex-1">
-        {/* Desktop sidebar */}
+        {/* Desktop sidebar — filtered by active tab */}
         <aside
           className="hidden md:block w-[240px] shrink-0 overflow-y-auto border-r"
           style={{
@@ -166,7 +299,7 @@ export default function DesignSystemLayout({
             top: '56px',
           }}
         >
-          <SidebarContent />
+          <SidebarContent activeTab={activeTab} />
         </aside>
 
         {/* Mobile sidebar overlay */}
@@ -182,10 +315,10 @@ export default function DesignSystemLayout({
               style={{
                 borderColor: 'var(--border)',
                 backgroundColor: 'var(--background)',
-                height: 'calc(100vh - 56px)',
+                height: 'calc(100vh - 96px)',
               }}
             >
-              <SidebarContent onNavigate={() => setMobileOpen(false)} />
+              <SidebarContent activeTab={activeTab} onNavigate={() => setMobileOpen(false)} />
             </aside>
           </>
         )}

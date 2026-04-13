@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { dsStats, navigation } from '@/lib/ds-data'
 
@@ -10,9 +12,29 @@ const stats = [
 ]
 
 const foundations = navigation.find((s) => s.title === 'Foundations')
-const componentSections = navigation.filter(
-  (s) => !['Getting Started', 'Foundations'].includes(s.title)
-)
+
+const sections = [
+  {
+    title: 'Components',
+    desc: '82 components across 10 categories — actions, forms, navigation, feedback, and more.',
+    href: '/design-system/components/button',
+  },
+  {
+    title: 'UX Patterns',
+    desc: 'Reusable patterns for forms, search, loading, errors, navigation, and confirmation flows.',
+    href: '/design-system/patterns/forms',
+  },
+  {
+    title: 'Content & Voice',
+    desc: 'Tone of voice, writing guidelines, and error message standards for fintech.',
+    href: '/design-system/content/tone-of-voice',
+  },
+  {
+    title: 'Templates',
+    desc: 'Screen structure and page type blueprints — the skeleton of every VSP screen.',
+    href: '/design-system/templates/screen-structure',
+  },
+]
 
 export default function DesignSystemOverview() {
   return (
@@ -73,8 +95,13 @@ export default function DesignSystemOverview() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="group flex flex-col gap-[4px] rounded-12 border p-[16px] transition-colors"
-                style={{ borderColor: 'var(--border)' }}
+                className="group flex flex-col gap-[4px] rounded-14 p-[16px] transition-all duration-200 hover:-translate-y-[1px]"
+                style={{
+                  backgroundColor: 'var(--background)',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)' }}
+                onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)' }}
               >
                 <span
                   className="text-[14px] font-semibold"
@@ -94,43 +121,40 @@ export default function DesignSystemOverview() {
         </section>
       )}
 
-      {/* Component Categories */}
+      {/* Explore Sections */}
       <section className="flex flex-col gap-[16px]">
         <h2
           className="text-[20px] font-semibold leading-[24px]"
           style={{ color: 'var(--foreground)' }}
         >
-          Components
+          Explore
         </h2>
         <div className="grid grid-cols-1 gap-[8px] sm:grid-cols-2">
-          {componentSections.map((section) => (
-            <div
-              key={section.title}
-              className="flex flex-col gap-[8px] rounded-12 border p-[16px]"
-              style={{ borderColor: 'var(--border)' }}
+          {sections.map((s) => (
+            <Link
+              key={s.title}
+              href={s.href}
+              className="flex flex-col gap-[4px] rounded-14 p-[16px] transition-all duration-200 hover:-translate-y-[1px]"
+              style={{
+                backgroundColor: 'var(--background)',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)' }}
             >
               <span
                 className="text-[14px] font-semibold"
                 style={{ color: 'var(--foreground)' }}
               >
-                {section.title}
+                {s.title}
               </span>
-              <div className="flex flex-wrap gap-[4px]">
-                {section.items.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="rounded-full px-[10px] py-[4px] text-[12px] font-medium transition-colors"
-                    style={{
-                      backgroundColor: 'var(--secondary)',
-                      color: 'var(--foreground-secondary)',
-                    }}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
+              <span
+                className="text-[13px] leading-[20px]"
+                style={{ color: 'var(--foreground-secondary)' }}
+              >
+                {s.desc}
+              </span>
+            </Link>
           ))}
         </div>
       </section>
@@ -145,7 +169,20 @@ export default function DesignSystemOverview() {
         </h2>
         <div className="grid grid-cols-1 gap-[8px] sm:grid-cols-2">
           {principles.map((p) => (
-            <div key={p.title} className="flex flex-col gap-[4px]">
+            <div
+              key={p.title}
+              className="flex flex-col gap-[6px] rounded-14 p-[16px]"
+              style={{
+                backgroundColor: 'var(--background)',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
+              }}
+            >
+              <span
+                className="text-[11px] font-medium tabular-nums"
+                style={{ color: 'var(--foreground-secondary)', opacity: 0.5 }}
+              >
+                {p.num}
+              </span>
               <span
                 className="text-[14px] font-semibold"
                 style={{ color: 'var(--foreground)' }}
@@ -175,20 +212,39 @@ export default function DesignSystemOverview() {
 
 const principles = [
   {
-    title: 'Token-first',
-    desc: 'Every color, spacing, and radius value comes from a token. No hardcoded values.',
+    num: '01',
+    title: 'Clean & Premium',
+    desc: 'Remove borders; use space and shadow instead. Let content define structure.',
   },
   {
-    title: 'Compose, don\'t create',
-    desc: 'Use library components as building blocks. Never rebuild what exists.',
+    num: '02',
+    title: 'Alignment',
+    desc: 'Grid decides position, not gut feeling. Consistent alignment creates trust.',
   },
   {
-    title: 'Consistent structure',
-    desc: 'Every screen follows the same Header + Sections + FixedBottom template.',
+    num: '03',
+    title: 'Consistency',
+    desc: 'Same component, same token, same behavior — always. No one-off values.',
   },
   {
-    title: 'Dark mode by default',
-    desc: '100% dark mode coverage through semantic tokens, not manual overrides.',
+    num: '04',
+    title: 'Hierarchy',
+    desc: 'Size + weight + color = reading order. One primary action per screen.',
+  },
+  {
+    num: '05',
+    title: 'Progressive Disclosure',
+    desc: 'Show what\'s needed now; hide the rest behind a tap.',
+  },
+  {
+    num: '06',
+    title: 'Contrast',
+    desc: 'Every text-background pair must pass the eye test. Dark mode is not invert.',
+  },
+  {
+    num: '07',
+    title: 'Proximity',
+    desc: 'Close = related; far = separate. Space is structure.',
   },
 ]
 
