@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VSP — IA 2026 v5 — Minimal Change, Maximum Scale</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:Georgia,'Times New Roman',serif; background:#fff; color:#111; line-height:1.75; max-width:960px; margin:0 auto; padding:48px 24px 120px; font-size:15px; }
+  h1 { font-family:-apple-system,'Helvetica Neue',sans-serif; font-size:28px; font-weight:800; margin-bottom:2px; letter-spacing:-0.4px; }
+  .subtitle { font-family:-apple-system,sans-serif; font-size:14px; font-weight:600; color:#555; margin-bottom:2px; }
+  .meta { font-size:12px; color:#999; margin-bottom:48px; font-family:-apple-system,sans-serif; }
+  h2 { font-family:-apple-system,sans-serif; font-size:19px; font-weight:700; margin:52px 0 12px; padding-bottom:5px; border-bottom:2px solid #111; }
+  h3 { font-family:-apple-system,sans-serif; font-size:15px; font-weight:700; margin:24px 0 8px; }
+  p { margin-bottom:10px; }
+  ul, ol { margin:4px 0 10px 24px; }
+  li { margin-bottom:3px; }
+  strong { font-weight:700; }
+  em { font-style:italic; color:#555; }
+  blockquote { border-left:3px solid #111; padding:10px 16px; margin:14px 0; font-family:-apple-system,sans-serif; font-size:14px; font-weight:600; line-height:1.5; background:#fafafa; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; font-family:-apple-system,sans-serif; }
+  th { text-align:left; padding:6px 8px; border-bottom:2px solid #111; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; }
+  td { padding:6px 8px; border-bottom:1px solid #eee; vertical-align:top; }
+  tr:hover td { background:#fafafa; }
+  .sn { font-family:-apple-system,sans-serif; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#bbb; margin:52px 0 -8px; display:block; }
+  .callout { background:#f8f8f8; border-left:3px solid #111; padding:10px 14px; margin:14px 0; font-family:-apple-system,sans-serif; font-size:13px; line-height:1.55; }
+  .ia { padding:4px 10px; margin:2px 0; border-radius:6px; font-size:12px; font-weight:600; display:inline-block; font-family:-apple-system,sans-serif; }
+  .ia-0 { background:#111; color:#fff; font-size:13px; }
+  .ia-1 { background:#444; color:#fff; }
+  .ia-2 { background:#f0f0f0; color:#333; margin-left:24px; }
+  .ia-new { background:#22c55e; color:#fff; margin-left:24px; }
+  .ne { font-family:-apple-system,sans-serif; font-size:13px; margin:14px 0; }
+  .ne .nr { display:flex; align-items:center; gap:0; margin:5px 0; }
+  .ne .np { width:95px; font-size:11px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px; flex-shrink:0; }
+  .ne .np.a { color:#111; }
+  .ne .nt { padding:6px 8px; font-size:11px; font-weight:600; text-align:center; border:1px solid #ddd; flex:1; }
+  .ne .nt.k { background:#fff; color:#999; }
+  .ne .nt.n { background:#111; color:#fff; border-color:#111; }
+  .ne .nt.g { background:#22c55e; color:#fff; border-color:#22c55e; }
+  .ne .nt.q { background:#f0f0f0; color:#666; }
+  .ne .na { font-size:10px; color:#999; margin:1px 0 1px 95px; }
+  .tag { display:inline-block; font-family:-apple-system,sans-serif; font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px; margin-left:4px; }
+  .tag-keep { background:#dbeafe; color:#1d4ed8; }
+  .tag-change { background:#fef3c7; color:#92400e; }
+  .tag-new { background:#dcfce7; color:#166534; }
+  .dark-card { background:#111; color:#fff; border-radius:20px; padding:24px; margin:20px 0; font-family:-apple-system,sans-serif; }
+  .fn { font-size:11px; color:#999; margin-top:52px; padding-top:14px; border-top:2px solid #111; font-family:-apple-system,sans-serif; }
+  @media print { body{padding:20px;font-size:13px;} h2{page-break-before:always;margin-top:20px;} h2:first-of-type{page-break-before:avoid;} }
+</style>
+</head>
+<body>
+
+<h1>V-Smart Pay 2026</h1>
+<div class="subtitle">Kiến trúc Thông tin v5 — Minimal Change, Maximum Scale</div>
+<div class="meta">Version 5.0 &middot; 17/04/2026 &middot; by Huy Kieu &copy; 2026</div>
+
+<!-- TOC -->
+<div style="font-family:-apple-system,sans-serif; font-size:13px; background:#fafafa; border-radius:14px; padding:16px 20px; margin-bottom:40px;">
+  <strong style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:#999; display:block; margin-bottom:8px;">Mục lục</strong>
+  <div style="display:flex; flex-direction:column; gap:4px;">
+    <a href="#s1" style="color:#111; text-decoration:none; font-weight:600;">1. Nguyên tắc thiết kế</a>
+    <a href="#s2" style="color:#111; text-decoration:none; font-weight:600;">2. Thay đổi duy nhất: Chuyển tiền → Thanh toán</a>
+    <a href="#s3" style="color:#111; text-decoration:none; font-weight:600;">3. Scale bằng gì — không thêm tab</a>
+    <a href="#s4" style="color:#111; text-decoration:none; font-weight:600;">4. Kiến trúc 5 tab (cuối 2026)</a>
+    <a href="#s5" style="color:#111; text-decoration:none; font-weight:600;">5. Trang chủ — Widget Architecture</a>
+    <a href="#s6" style="color:#111; text-decoration:none; font-weight:600;">6. Thanh toán — Service Hub</a>
+    <a href="#s7" style="color:#111; text-decoration:none; font-weight:600;">7. Tài khoản — Mở rộng sections</a>
+    <a href="#s8" style="color:#111; text-decoration:none; font-weight:600;">8. Benchmark: Tại sao giữ History + Profile</a>
+    <a href="#s9" style="color:#111; text-decoration:none; font-weight:600;">9. Lộ trình triển khai</a>
+    <a href="#s10" style="color:#111; text-decoration:none; font-weight:600;">10. Chỉ số thành công</a>
+  </div>
+</div>
+
+<!-- ═══ 1 ═══ -->
+<span class="sn">1</span>
+<h2 id="s1">Nguyên tắc thiết kế</h2>
+
+<blockquote>Thay đổi ít nhất có thể. Giữ thói quen user. Scale bằng nội dung trong tab, không bằng thêm tab.</blockquote>
+
+<table>
+  <tr><th>#</th><th>Nguyên tắc</th><th>Nghĩa là gì</th></tr>
+  <tr><td>1</td><td><strong>Giữ nguyên 4/5 tab</strong></td><td>Giao dịch + Tài khoản + QR + Trang chủ không đổi tên, không đổi vị trí. User mở app vẫn thấy quen.</td></tr>
+  <tr><td>2</td><td><strong>Scale bằng widget + section</strong></td><td>60+ features mới đặt vào Home (widget) và Tài khoản (sections). Không tạo tab mới.</td></tr>
+  <tr><td>3</td><td><strong>1 tab = 1 mục đích</strong></td><td>Trang chủ = dashboard. Thanh toán = trả tiền. QR = quét. Giao dịch = lịch sử. Tài khoản = quản lý bản thân.</td></tr>
+  <tr><td>4</td><td><strong>Progressive disclosure</strong></td><td>Widget tài sản chỉ hiện khi user đã kích hoạt sản phẩm. Không hiện hết cho người mới.</td></tr>
+  <tr><td>5</td><td><strong>70% tiện ích, 30% quảng cáo</strong></td><td>Home ưu tiên tool user cần. Banner tối đa 1 card, đóng được.</td></tr>
+</table>
+
+<!-- ═══ 2 ═══ -->
+<span class="sn">2</span>
+<h2 id="s2">Thay đổi duy nhất: Chuyển tiền → Thanh toán</h2>
+
+<div class="ne">
+  <div class="nr"><div class="np">Hiện tại</div><div class="nt k">Trang chủ</div><div class="nt q">Chuyển tiền</div><div class="nt q">QR</div><div class="nt k">Giao dịch</div><div class="nt k">Tài khoản</div></div>
+</div>
+<div class="ne">
+  <div class="nr"><div class="np a">Mới</div><div class="nt k">Trang chủ</div><div class="nt n">Thanh toán</div><div class="nt k">QR</div><div class="nt k">Giao dịch</div><div class="nt k">Tài khoản</div></div>
+</div>
+
+<table>
+  <tr><th>Thay đổi</th><th>Chi tiết</th><th>Impact user</th></tr>
+  <tr><td><strong>Chuyển tiền → Thanh toán</strong></td><td>Mở rộng scope: chuyển tiền + hóa đơn + vé + dịch vụ. Chuyển tiền vẫn ở vị trí đầu tiên trong tab.</td><td>Thấp — chuyển tiền vẫn 1 chạm (quick action Home hoặc item đầu trong Thanh toán).</td></tr>
+  <tr><td><strong>Trang chủ</strong></td><td>Thêm widget (tài sản, reminder, ưu đãi). Không đổi cấu trúc cũ.</td><td>Không — chỉ thêm section bên dưới.</td></tr>
+  <tr><td><strong>Tài khoản</strong></td><td>Thêm section "Tài chính" và "Ưu đãi". Không đổi phần trên.</td><td>Không — scroll xuống mới thấy mới.</td></tr>
+  <tr><td><strong>Giao dịch</strong></td><td>Giữ nguyên 100%. Thêm filter theo loại.</td><td>Không.</td></tr>
+  <tr><td><strong>QR</strong></td><td>Giữ nguyên 100%.</td><td>Không.</td></tr>
+</table>
+
+<div class="callout"><strong>Nguyên tắc:</strong> Mọi hành động user đang làm giữ nguyên số lần chạm. Chuyển tiền: vẫn 1 chạm từ Home (quick action). Xem lịch sử: vẫn tab Giao dịch. Cài đặt: vẫn tab Tài khoản.</div>
+
+<!-- ═══ 3 ═══ -->
+<span class="sn">3</span>
+<h2 id="s3">Scale bằng gì — không thêm tab</h2>
+
+<table>
+  <tr><th>60+ features mới</th><th>Đặt ở đâu</th><th>Cơ chế</th></tr>
+  <tr><td><strong>20+ dịch vụ thanh toán</strong><br>Điện, nước, internet, học phí, vé phim, vé tàu, data, card...</td><td>Tab <strong>Thanh toán</strong></td><td>Search + categories + grid. Saved + reminder.</td></tr>
+  <tr><td><strong>Sinh lời, CCQ, BĐS, BH, BNPL, Vay</strong><br>6 sản phẩm tài chính</td><td><strong>Tài khoản</strong> → section "Tài chính của tôi"<br>+ Widget tài sản trên <strong>Home</strong></td><td>Section mới trong Tài khoản. Widget behavioral trên Home.</td></tr>
+  <tr><td><strong>V-Point, Voucher, Ưu đãi, Giới thiệu bạn</strong><br>Loyalty & rewards</td><td><strong>Tài khoản</strong> → section "Ưu đãi"<br>+ Widget ưu đãi trên <strong>Home</strong></td><td>Section mới trong Tài khoản. Widget trên Home.</td></tr>
+  <tr><td><strong>Ví nhóm, Ví gia đình</strong></td><td><strong>Tài khoản</strong> → section "Ví của tôi"</td><td>Section mới.</td></tr>
+  <tr><td><strong>Chuyển tiền mở rộng</strong><br>Napas, NH, Duhat, chia hóa đơn</td><td>Tab <strong>Thanh toán</strong> (gộp chung)</td><td>Chuyển tiền = category đầu tiên trong Thanh toán.</td></tr>
+</table>
+
+<div class="callout"><strong>Tại sao không tách tab Tài chính riêng?</strong> (1) Giữ 4/5 tab quen thuộc, không phá thói quen. (2) Đặt trong Tài khoản = user tự nhiên quản lý tài sản cùng quản lý profile. (3) Widget tài sản trên Home đảm bảo discovery. (4) Khi volume đủ lớn (Q4 2026+), có thể tách thành tab riêng dựa trên data thực tế — nhưng không ép sớm.</div>
+
+<!-- ═══ 4 ═══ -->
+<span class="sn">4</span>
+<h2 id="s4">Kiến trúc 5 tab (cuối 2026)</h2>
+
+<div style="margin:12px 0">
+  <div><span class="ia ia-0">Trang chủ</span> <span class="tag tag-keep">Giữ nguyên</span></div>
+  <div><span class="ia ia-2">Thẻ ví (số dư)</span></div>
+  <div><span class="ia ia-2">Quick actions: Chuyển tiền · Nạp/Rút · Nhận tiền · Thanh toán</span></div>
+  <div><span class="ia ia-new">Widget tài sản (behavioral)</span></div>
+  <div><span class="ia ia-new">Widget reminder hóa đơn</span></div>
+  <div><span class="ia ia-new">Widget ưu đãi / V-Point</span></div>
+  <div><span class="ia ia-2">Giao dịch gần đây (3 mục)</span></div>
+  <div><span class="ia ia-2">Banner (tối đa 1, đóng được)</span></div>
+</div>
+
+<div style="margin:12px 0">
+  <div><span class="ia ia-0">Thanh toán</span> <span class="tag tag-change">Đổi từ Chuyển tiền</span></div>
+  <div><span class="ia ia-2">Search dịch vụ</span></div>
+  <div><span class="ia ia-2">Chuyển tiền (Ví VSP · Ngân hàng · Napas · Duhat)</span></div>
+  <div><span class="ia ia-new">Hóa đơn (Điện · Nước · Internet · Truyền hình · Học phí)</span></div>
+  <div><span class="ia ia-new">Mua sắm (Vé phim · Vé tàu · Data · Topup · Game)</span></div>
+  <div><span class="ia ia-new">PvL dịch vụ Vingroup (VinFast · Vinmec · Vinhomes...)</span></div>
+  <div><span class="ia ia-new">Đã lưu · Sắp đến hạn · Thanh toán tự động</span></div>
+</div>
+
+<div style="margin:12px 0">
+  <div><span class="ia ia-0">QR</span> <span class="tag tag-keep">Giữ nguyên</span></div>
+  <div><span class="ia ia-2">Quét QR · Hiện QR nhận tiền · VietQR</span></div>
+</div>
+
+<div style="margin:12px 0">
+  <div><span class="ia ia-0">Giao dịch</span> <span class="tag tag-keep">Giữ nguyên</span></div>
+  <div><span class="ia ia-2">Lịch sử giao dịch (feed)</span></div>
+  <div><span class="ia ia-new">Filter: Tất cả · Chuyển tiền · Thanh toán · Đầu tư · Hoàn tiền</span></div>
+  <div><span class="ia ia-2">Chi tiết giao dịch</span></div>
+</div>
+
+<div style="margin:12px 0">
+  <div><span class="ia ia-0">Tài khoản</span> <span class="tag tag-keep">Giữ nguyên</span></div>
+  <div><span class="ia ia-2">Profile (avatar, tên, SĐT, eKYC status)</span></div>
+  <div><span class="ia ia-2">Tài khoản & bảo mật (Liên kết NH · Bảo mật · PIN)</span></div>
+  <div><span class="ia ia-new">Tài chính của tôi (Sinh lời · CCQ · BĐS · BH · BNPL · Vay)</span></div>
+  <div><span class="ia ia-new">Ưu đãi (V-Point · Voucher · Hệ sinh thái · Giới thiệu bạn)</span></div>
+  <div><span class="ia ia-new">Ví của tôi (Ví nhóm · Ví gia đình)</span></div>
+  <div><span class="ia ia-2">Cài đặt (Ngôn ngữ · Thông báo)</span></div>
+  <div><span class="ia ia-2">Hỗ trợ · Đăng xuất</span></div>
+</div>
+
+<!-- ═══ 5 ═══ -->
+<span class="sn">5</span>
+<h2 id="s5">Trang chủ — Widget Architecture</h2>
+
+<p>Home scale bằng cách thêm widget. Mỗi widget = 1 nhu cầu. Widget behavioral chỉ hiện khi có data.</p>
+
+<div style="font-family:-apple-system,sans-serif; max-width:400px; margin:16px auto; border:2px solid #111; border-radius:28px; overflow:hidden; background:#fff;">
+  <div style="padding:8px 20px 0; display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:#111;">
+    <span>9:41</span><span>&#9632;&#9632;&#9632;</span>
+  </div>
+
+  <!-- Ví -->
+  <div style="margin:8px 16px; background:#111; color:#fff; border-radius:20px; padding:16px;">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div style="font-size:10px; opacity:0.5;">Ví V-Smart Pay</div>
+      <div style="font-size:10px; opacity:0.5;">&#128065; Ẩn</div>
+    </div>
+    <div style="font-size:22px; font-weight:800; margin:4px 0;">14.328.000 ₫</div>
+    <div style="margin-top:10px; display:flex; gap:6px;">
+      <div style="flex:1; background:rgba(255,255,255,0.15); border-radius:8px; padding:6px; text-align:center; font-size:9px; font-weight:600;">Chuyển tiền</div>
+      <div style="flex:1; background:rgba(255,255,255,0.15); border-radius:8px; padding:6px; text-align:center; font-size:9px; font-weight:600;">Nạp/Rút</div>
+      <div style="flex:1; background:rgba(255,255,255,0.15); border-radius:8px; padding:6px; text-align:center; font-size:9px; font-weight:600;">Nhận tiền</div>
+      <div style="flex:1; background:rgba(255,255,255,0.15); border-radius:8px; padding:6px; text-align:center; font-size:9px; font-weight:600;">Thanh toán</div>
+    </div>
+  </div>
+
+  <!-- Widget tài sản (behavioral) -->
+  <div style="margin:8px 16px; border:1.5px solid #eee; border-radius:14px; padding:10px 14px;">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div style="font-size:10px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px;">&#x1F4B0; Tài sản đầu tư</div>
+      <div style="font-size:10px; color:#22c55e; font-weight:700;">+125.000 ₫ hôm nay</div>
+    </div>
+    <div style="font-size:16px; font-weight:800; margin:4px 0;">25.000.000 ₫</div>
+    <div style="font-size:10px; color:#999;">Sinh lời 5tr · BĐS 20tr</div>
+  </div>
+
+  <!-- Reminder -->
+  <div style="margin:8px 16px; background:#fef3c7; border-radius:14px; padding:10px 14px; display:flex; align-items:center; gap:8px;">
+    <span style="font-size:16px;">&#x1F514;</span>
+    <div style="flex:1;">
+      <div style="font-size:11px; font-weight:600;">EVN Hà Nội · 380.000 ₫ · Hạn 20/04</div>
+    </div>
+    <div style="font-size:10px; font-weight:700; background:#111; color:#fff; padding:4px 10px; border-radius:8px;">Trả</div>
+  </div>
+
+  <!-- Promo widget -->
+  <div style="margin:8px 16px; background:#f0fdf4; border-radius:14px; padding:10px 14px;">
+    <div style="font-size:10px; font-weight:700; color:#16a34a; text-transform:uppercase; letter-spacing:0.5px;">&#x1F381; Ưu đãi</div>
+    <div style="font-size:11px; font-weight:600; margin-top:4px;">Giảm 20% khi thanh toán tại VinMart</div>
+    <div style="font-size:10px; color:#999; margin-top:2px;">Bạn có 1.200 V-Point</div>
+  </div>
+
+  <!-- Giao dịch gần đây -->
+  <div style="margin:8px 16px 16px; border-top:1px solid #eee; padding-top:10px;">
+    <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+      <div style="font-size:10px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px;">Giao dịch gần đây</div>
+      <div style="font-size:10px; font-weight:700; color:#111;">Xem tất cả</div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 0; font-size:11px;">
+      <span style="font-weight:600;">Cty Điện lực HN</span>
+      <span style="color:#888;">-380.000 ₫</span>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 0; font-size:11px; border-top:1px solid #f5f5f5;">
+      <span style="font-weight:600;">Hồ Thị Minh Anh</span>
+      <span style="color:#888;">-100.000 ₫</span>
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <div style="border-top:1px solid #eee; padding:8px 0 12px; display:flex; justify-content:space-around; font-size:9px; font-weight:600; color:#999;">
+    <span style="color:#111;">&#9679; Trang chủ</span>
+    <span>Thanh toán</span>
+    <span>QR</span>
+    <span>Giao dịch</span>
+    <span>Tài khoản</span>
+  </div>
+</div>
+
+<table>
+  <tr><th>#</th><th>Widget</th><th>Hiển thị khi</th><th>Dẫn đến</th></tr>
+  <tr><td>1</td><td><strong>Thẻ ví + Quick actions</strong></td><td>Luôn hiện</td><td>Chuyển tiền, Nạp/Rút, Nhận, Thanh toán</td></tr>
+  <tr><td>2</td><td><strong>Tài sản đầu tư</strong></td><td>Khi đã kích hoạt ≥1 sản phẩm (Sinh lời, BĐS, CCQ...)</td><td>Tài khoản → Tài chính</td></tr>
+  <tr><td>3</td><td><strong>Reminder hóa đơn</strong></td><td>Khi có bill saved sắp hạn</td><td>Thanh toán → Trả ngay</td></tr>
+  <tr><td>4</td><td><strong>Ưu đãi</strong></td><td>Khi có voucher/V-Point</td><td>Tài khoản → Ưu đãi</td></tr>
+  <tr><td>5</td><td><strong>Giao dịch gần đây</strong></td><td>Luôn hiện (3 mục)</td><td>Tab Giao dịch</td></tr>
+  <tr><td>6</td><td><strong>Banner</strong></td><td>Tối đa 1, đóng được</td><td>Campaign landing</td></tr>
+</table>
+
+<!-- ═══ 6 ═══ -->
+<span class="sn">6</span>
+<h2 id="s6">Thanh toán — Service Hub</h2>
+
+<p>Tab Thanh toán thay thế tab Chuyển tiền. Scale 20+ dịch vụ bằng search + categories + grid.</p>
+
+<div style="font-family:-apple-system,sans-serif; max-width:400px; margin:16px auto; border:2px solid #111; border-radius:28px; overflow:hidden; background:#fff;">
+  <div style="padding:8px 20px 0; display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:#111;">
+    <span>9:41</span><span>&#9632;&#9632;&#9632;</span>
+  </div>
+
+  <div style="padding:16px 16px 0;">
+    <div style="font-size:20px; font-weight:800;">Thanh toán</div>
+  </div>
+
+  <!-- Search -->
+  <div style="margin:10px 16px; background:#f5f5f5; border-radius:10px; padding:8px 12px; font-size:12px; color:#999;">
+    &#x1F50D; Tìm dịch vụ, người nhận...
+  </div>
+
+  <!-- Chuyển tiền -->
+  <div style="margin:4px 16px; font-size:10px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px;">Chuyển tiền</div>
+  <div style="margin:4px 16px 8px; display:flex; gap:8px;">
+    <div style="flex:1; background:#f8f8f8; border-radius:10px; padding:10px; text-align:center;">
+      <div style="font-size:14px;">&#x1F4B3;</div>
+      <div style="font-size:10px; font-weight:600;">Ví VSP</div>
+    </div>
+    <div style="flex:1; background:#f8f8f8; border-radius:10px; padding:10px; text-align:center;">
+      <div style="font-size:14px;">&#x1F3E6;</div>
+      <div style="font-size:10px; font-weight:600;">Ngân hàng</div>
+    </div>
+    <div style="flex:1; background:#f8f8f8; border-radius:10px; padding:10px; text-align:center;">
+      <div style="font-size:14px;">&#x1F91D;</div>
+      <div style="font-size:10px; font-weight:600;">Chia hóa đơn</div>
+    </div>
+  </div>
+
+  <!-- Hóa đơn & Dịch vụ -->
+  <div style="margin:8px 16px 4px; font-size:10px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px;">Hóa đơn & Dịch vụ</div>
+  <div style="margin:4px 16px 8px; display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px;">
+    <div style="background:#f8f8f8; border-radius:10px; padding:8px; text-align:center;"><div style="font-size:14px;">⚡</div><div style="font-size:9px; font-weight:600;">Điện</div></div>
+    <div style="background:#f8f8f8; border-radius:10px; padding:8px; text-align:center;"><div style="font-size:14px;">💧</div><div style="font-size:9px; font-weight:600;">Nước</div></div>
+    <div style="background:#f8f8f8; border-radius:10px; padding:8px; text-align:center;"><div style="font-size:14px;">📶</div><div style="font-size:9px; font-weight:600;">Internet</div></div>
+    <div style="background:#f8f8f8; border-radius:10px; padding:8px; text-align:center;"><div style="font-size:14px;">📱</div><div style="font-size:9px; font-weight:600;">Điện thoại</div></div>
+    <div style="background:#f8f8f8; border-radius:10px; padding:8px; text-align:center;"><div style="font-size:14px;">🎓</div><div style="font-size:9px; font-weight:600;">Học phí</div></div>
+    <div style="background:#f8f8f8; border-radius:10px; padding:8px; text-align:center;"><div style="font-size:14px;">🎬</div><div style="font-size:9px; font-weight:600;">Vé phim</div></div>
+    <div style="background:#f8f8f8; border-radius:10px; padding:8px; text-align:center;"><div style="font-size:14px;">🚂</div><div style="font-size:9px; font-weight:600;">Vé tàu</div></div>
+    <div style="background:#f8f8f8; border-radius:10px; padding:8px; text-align:center;"><div style="font-size:14px;">···</div><div style="font-size:9px; font-weight:600;">Tất cả</div></div>
+  </div>
+
+  <!-- Sắp đến hạn -->
+  <div style="margin:8px 16px 4px; font-size:10px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px;">Sắp đến hạn</div>
+  <div style="margin:4px 16px 16px; background:#fef3c7; border-radius:10px; padding:8px 12px; font-size:11px;">
+    <strong>EVN Hà Nội</strong> · 380.000 ₫ · Hạn 20/04
+  </div>
+
+  <!-- Bottom nav -->
+  <div style="border-top:1px solid #eee; padding:8px 0 12px; display:flex; justify-content:space-around; font-size:9px; font-weight:600; color:#999;">
+    <span>Trang chủ</span>
+    <span style="color:#111;">&#9679; Thanh toán</span>
+    <span>QR</span>
+    <span>Giao dịch</span>
+    <span>Tài khoản</span>
+  </div>
+</div>
+
+<!-- ═══ 7 ═══ -->
+<span class="sn">7</span>
+<h2 id="s7">Tài khoản — Mở rộng sections</h2>
+
+<p>Tab Tài khoản giữ nguyên phần trên (Profile, Bảo mật). Thêm sections bên dưới cho Tài chính + Ưu đãi. User scroll xuống mới thấy mới.</p>
+
+<div style="font-family:-apple-system,sans-serif; max-width:400px; margin:16px auto; border:2px solid #111; border-radius:28px; overflow:hidden; background:#fff;">
+  <div style="padding:8px 20px 0; display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:#111;">
+    <span>9:41</span><span>&#9632;&#9632;&#9632;</span>
+  </div>
+
+  <div style="padding:16px 16px 0;">
+    <div style="font-size:20px; font-weight:800;">Tài khoản</div>
+  </div>
+
+  <!-- Profile -->
+  <div style="margin:12px 16px; background:#f8f8f8; border-radius:14px; padding:14px; display:flex; align-items:center; gap:12px;">
+    <div style="width:48px; height:48px; border-radius:50%; background:#ddd;"></div>
+    <div>
+      <div style="font-size:14px; font-weight:700;">Kiều Mạnh Huy</div>
+      <div style="font-size:11px; color:#999;">0834***607 · <span style="color:#22c55e; font-weight:600;">Đã xác thực</span></div>
+    </div>
+    <div style="margin-left:auto; font-size:14px; color:#ccc;">›</div>
+  </div>
+
+  <!-- Tài khoản & bảo mật (giữ nguyên) -->
+  <div style="margin:4px 16px; font-size:10px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px;">Tài khoản & bảo mật</div>
+  <div style="margin:4px 16px 8px;">
+    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f5f5f5; font-size:12px;"><span>🏦 Liên kết ngân hàng</span><span style="color:#ccc;">›</span></div>
+    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f5f5f5; font-size:12px;"><span>🔒 Trung tâm bảo mật</span><span style="color:#ccc;">›</span></div>
+  </div>
+
+  <!-- TÀI CHÍNH CỦA TÔI (MỚI) -->
+  <div style="margin:12px 16px 4px; font-size:10px; font-weight:700; color:#22c55e; text-transform:uppercase; letter-spacing:0.5px;">&#x1F4B0; Tài chính của tôi <span style="background:#dcfce7; color:#166534; padding:1px 6px; border-radius:4px; font-size:9px;">Mới</span></div>
+  <div style="margin:4px 16px 8px;">
+    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f5f5f5; font-size:12px;"><span>📈 Sinh lời tự động</span><span style="color:#22c55e; font-weight:600; font-size:11px;">5.000.000 ₫</span></div>
+    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f5f5f5; font-size:12px;"><span>🏠 Bất động sản mã hóa</span><span style="color:#ccc;">›</span></div>
+    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f5f5f5; font-size:12px;"><span>📊 Chứng chỉ quỹ</span><span style="color:#ccc;">›</span></div>
+    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f5f5f5; font-size:12px;"><span>🛡️ Bảo hiểm</span><span style="color:#ccc;">›</span></div>
+    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f5f5f5; font-size:12px;"><span>💳 Mua trước trả sau</span><span style="color:#ccc;">›</span></div>
+  </div>
+
+  <!-- ƯU ĐÃI (MỚI) -->
+  <div style="margin:12px 16px 4px; font-size:10px; font-weight:700; color:#f59e0b; text-transform:uppercase; letter-spacing:0.5px;">&#x1F381; Ưu đãi <span style="background:#fef3c7; color:#92400e; padding:1px 6px; border-radius:4px; font-size:9px;">Mới</span></div>
+  <div style="margin:4px 16px 8px;">
+    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f5f5f5; font-size:12px;"><span>⭐ V-Point</span><span style="font-weight:600; font-size:11px;">1.200 điểm</span></div>
+    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f5f5f5; font-size:12px;"><span>🎫 Voucher của tôi</span><span style="color:#ccc;">›</span></div>
+    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f5f5f5; font-size:12px;"><span>🤝 Giới thiệu bạn bè</span><span style="color:#ccc;">›</span></div>
+  </div>
+
+  <!-- Settings -->
+  <div style="margin:8px 16px 4px; font-size:10px; font-weight:700; color:#999; text-transform:uppercase; letter-spacing:0.5px;">Cài đặt</div>
+  <div style="margin:4px 16px 16px;">
+    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f5f5f5; font-size:12px;"><span>🌐 Ngôn ngữ</span><span style="color:#999; font-size:11px;">Tiếng Việt ›</span></div>
+    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f5f5f5; font-size:12px;"><span>📞 Liên hệ & hỗ trợ</span><span style="color:#ccc;">›</span></div>
+    <div style="padding:8px 0; font-size:12px; color:#ef4444;">→ Đăng xuất</div>
+  </div>
+
+  <div style="border-top:1px solid #eee; padding:8px 0 12px; display:flex; justify-content:space-around; font-size:9px; font-weight:600; color:#999;">
+    <span>Trang chủ</span>
+    <span>Thanh toán</span>
+    <span>QR</span>
+    <span>Giao dịch</span>
+    <span style="color:#111;">&#9679; Tài khoản</span>
+  </div>
+</div>
+
+<!-- ═══ 8 ═══ -->
+<span class="sn">8</span>
+<h2 id="s8">Benchmark: Tại sao giữ History + Profile riêng</h2>
+
+<table>
+  <tr><th>App</th><th>Tab Lịch sử</th><th>Tab Profile</th><th>Merge?</th></tr>
+  <tr><td><strong>MoMo</strong></td><td>Lịch sử (riêng)</td><td>Tài khoản (riêng)</td><td>Không</td></tr>
+  <tr><td><strong>ZaloPay</strong></td><td>Giao dịch (riêng)</td><td>Tôi (riêng)</td><td>Không</td></tr>
+  <tr><td><strong>Cake</strong></td><td>Transactions (riêng)</td><td>Profile (riêng)</td><td>Không</td></tr>
+  <tr><td><strong>Grab</strong></td><td>Activities (riêng)</td><td>Account (riêng)</td><td>Không</td></tr>
+  <tr><td><strong>GoPay</strong></td><td>History (riêng)</td><td>Profile (riêng)</td><td>Không</td></tr>
+  <tr><td><strong>Revolut</strong></td><td>Không tab (inline Home)</td><td>Profile (riêng)</td><td>Không</td></tr>
+</table>
+
+<div class="callout"><strong>Kết luận:</strong> 100% app tách History và Profile riêng. Không app nào merge. Giữ nguyên 2 tab này = đúng chuẩn industry + không phá thói quen user.</div>
+
+<!-- ═══ 9 ═══ -->
+<span class="sn">9</span>
+<h2 id="s9">Lộ trình triển khai</h2>
+
+<div class="ne">
+  <div class="nr"><div class="np">Hiện tại</div><div class="nt k">Trang chủ</div><div class="nt q">Chuyển tiền</div><div class="nt q">QR</div><div class="nt k">Giao dịch</div><div class="nt k">Tài khoản</div></div>
+</div>
+
+<div class="callout" style="border-color:#22c55e; margin:6px 0;">
+  <strong>Q2 (04-06/2026):</strong> Chuyển tiền → <strong>Thanh toán</strong>. Thêm hóa đơn + dịch vụ + search. Chuyển tiền vẫn là item đầu. Home thêm widget reminder.
+</div>
+<div class="ne">
+  <div class="nr"><div class="np a">Q2</div><div class="nt k">Trang chủ</div><div class="nt g">Thanh toán</div><div class="nt k">QR</div><div class="nt k">Giao dịch</div><div class="nt k">Tài khoản</div></div>
+</div>
+
+<div class="callout" style="border-color:#22c55e; margin:6px 0;">
+  <strong>Q3 (07-09/2026):</strong> Tài khoản thêm section "Tài chính" (Sinh lời, CCQ, BH...). Home thêm widget tài sản (behavioral). Giao dịch thêm filter.
+</div>
+<div class="ne">
+  <div class="nr"><div class="np a">Q3</div><div class="nt k">Trang chủ+</div><div class="nt k">Thanh toán</div><div class="nt k">QR</div><div class="nt k">Giao dịch+</div><div class="nt g">Tài khoản+</div></div>
+</div>
+
+<div class="callout" style="border-color:#22c55e; margin:6px 0;">
+  <strong>Q4 (10-12/2026):</strong> Tài khoản thêm section "Ưu đãi" (V-Point, voucher, GTB). Home thêm widget ưu đãi. Thanh toán thêm PvL Vingroup + thanh toán tự động.
+</div>
+<div class="ne">
+  <div class="nr"><div class="np a">Q4</div><div class="nt k">Trang chủ++</div><div class="nt k">Thanh toán++</div><div class="nt k">QR</div><div class="nt k">Giao dịch+</div><div class="nt k">Tài khoản++</div></div>
+</div>
+
+<div class="callout"><strong>Lưu ý:</strong> Nếu data Q3-Q4 cho thấy &gt;30% user active trong section Tài chính → cân nhắc tách thành tab riêng trong 2027. Nhưng không ép sớm khi chưa có data.</div>
+
+<!-- ═══ 10 ═══ -->
+<span class="sn">10</span>
+<h2 id="s10">Chỉ số thành công</h2>
+
+<p><strong>North Star: MATU (Monthly Active Transacting Users)</strong></p>
+
+<table>
+  <tr><th>Tab</th><th>Metric</th><th>Target</th></tr>
+  <tr><td><strong>Thanh toán</strong></td><td>Số dịch vụ / user / tháng</td><td>Từ 1.2 → 3+ (Q4)</td></tr>
+  <tr><td><strong>Home widgets</strong></td><td>Widget tap-through rate</td><td>&gt;15%</td></tr>
+  <tr><td><strong>Tài chính (trong TK)</strong></td><td>Activation rate sản phẩm tài chính</td><td>&gt;10% MAU</td></tr>
+  <tr><td><strong>Ưu đãi (trong TK)</strong></td><td>V-Point redemption rate</td><td>&gt;20%</td></tr>
+  <tr><td><strong>Giao dịch</strong></td><td>Filter usage rate</td><td>&gt;30% of tab visits</td></tr>
+</table>
+
+<div class="callout"><strong>Decision gate:</strong> Nếu "Tài chính" section trong Tài khoản đạt &gt;30% monthly visits → Q1 2027 tách thành tab Tài chính riêng (như Revolut). Nếu &lt;15% → giữ nguyên, tập trung Home widget cho discovery.</div>
+
+<div class="fn">V-Smart Pay IA 2026 &mdash; Version 5.0 &mdash; Minimal Change, Maximum Scale &mdash; 17/04/2026 &mdash; Mật &mdash; Vingroup Financial Technology</div>
+
+</body>
+</html>
