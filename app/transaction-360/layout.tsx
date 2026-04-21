@@ -21,6 +21,7 @@ import {
   Moon,
   Settings,
   ShieldCheck,
+  Sun,
   Users,
   Wallet,
   X,
@@ -221,10 +222,29 @@ export default function TransactionPortalLayout({
   const [role, setRole] = useRole();
   const roleMeta = ROLE_META[role];
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [dark, setDark] = useState(false);
+
   // Close drawer on route change
   useEffect(() => {
     setSidebarOpen(false);
   }, [pathname]);
+
+  // Init dark mode from localStorage on mount
+  useEffect(() => {
+    const saved = typeof window !== "undefined" && localStorage.getItem("t360.theme");
+    const isDark = saved === "dark";
+    setDark(isDark);
+    document.documentElement.classList.toggle("dark", isDark);
+  }, []);
+
+  const toggleDark = () => {
+    setDark((prev) => {
+      const next = !prev;
+      document.documentElement.classList.toggle("dark", next);
+      localStorage.setItem("t360.theme", next ? "dark" : "light");
+      return next;
+    });
+  };
   const pageTitle = pathname.includes("/transaction-360/")
     ? "Detail Transaction"
     : "Transaction 360";
@@ -283,8 +303,13 @@ export default function TransactionPortalLayout({
               <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden />
               Viewing as <span className="text-foreground font-medium">{roleMeta.label}</span>
             </span>
-            <PortalButton variant="ghost" size="icon" aria-label="Theme">
-              <Moon className="h-4 w-4" />
+            <PortalButton
+              variant="ghost"
+              size="icon"
+              aria-label={dark ? "Switch to light" : "Switch to dark"}
+              onClick={toggleDark}
+            >
+              {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </PortalButton>
             <PortalButton variant="ghost" size="icon" aria-label="Settings">
               <Settings className="h-4 w-4" />
