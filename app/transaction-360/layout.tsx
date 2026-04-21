@@ -135,7 +135,7 @@ function SidebarContent({ pathname }: { pathname: string }) {
               V
             </div>
             <div className="flex flex-col leading-tight">
-              <span className="text-[16.8px] font-bold text-foreground">V-Pay</span>
+              <span className="text-[16.8px] font-bold text-foreground">Brand name</span>
               <span className="text-[14.4px] font-bold text-muted-foreground">ADMIN</span>
             </div>
           </div>
@@ -151,7 +151,7 @@ function SidebarContent({ pathname }: { pathname: string }) {
               <span className="text-xs font-semibold text-primary">T360</span>
             </div>
             <span className="flex-1 text-left text-sm font-semibold text-foreground truncate">
-              V-Pay Production
+              Brand name Production
             </span>
             <ChevronDown className="size-3.5 text-muted-foreground" />
           </PortalButton>
