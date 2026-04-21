@@ -107,28 +107,22 @@ export default function TransactionDetailPage({
         </div>
       </div>
 
-      {/* Hero — single panel, strong hierarchy: title+amount → meta → identifiers */}
+      {/* Hero — vertical flow: service → amount → meta (amount ngay dưới tên) */}
       <section className="rounded-lg border bg-card">
-        {/* Row 1: title left, amount right (stacked on mobile) */}
-        <div className="p-4 md:p-6 flex items-start justify-between gap-4 md:gap-6 flex-col md:flex-row">
-          <div className="min-w-0 flex-1">
-            <h2 className="text-xl md:text-[24px] font-semibold text-foreground leading-tight">
-              {detail.serviceName}
-            </h2>
-            <div className="flex items-center gap-2 mt-2 flex-wrap">
-              <StatusPill status={detail.status} />
-              <TypePill type={detail.type} />
-              <span className="text-xs text-muted-foreground capitalize">
-                · {detail.channel} · {detail.source}
-              </span>
-            </div>
+        <div className="p-4 md:p-6">
+          <h2 className="text-base md:text-lg font-medium text-muted-foreground leading-tight">
+            {detail.serviceName}
+          </h2>
+          <div className="text-[32px] md:text-[36px] font-semibold tabular-nums tracking-tight leading-none mt-1.5">
+            {formatVND(detail.amount)}
+            <span className="text-muted-foreground">&nbsp;₫</span>
           </div>
-          <div className="md:text-right shrink-0">
-            <div className="text-[11px] font-medium text-muted-foreground mb-1">Amount</div>
-            <div className="text-[28px] md:text-[32px] font-semibold tabular-nums tracking-tight leading-none">
-              {formatVND(detail.amount)}
-              <span className="text-muted-foreground">&nbsp;₫</span>
-            </div>
+          <div className="flex items-center gap-2 mt-3 flex-wrap">
+            <StatusPill status={detail.status} />
+            <TypePill type={detail.type} />
+            <span className="text-xs text-muted-foreground capitalize">
+              · {detail.channel} · {detail.source}
+            </span>
           </div>
         </div>
 
