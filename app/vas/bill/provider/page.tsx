@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Header } from "@/components/ui/header"
@@ -24,7 +25,15 @@ const PROVIDERS: Record<string, { region: string; items: string[] }[]> = {
   ],
 }
 
-export default function ProviderSelect() {
+export default function ProviderSelectPage() {
+  return (
+    <Suspense fallback={null}>
+      <ProviderSelect />
+    </Suspense>
+  )
+}
+
+function ProviderSelect() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const type = searchParams.get("type") ?? "electric"

@@ -3,6 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothCornersProvider } from "@/components/providers/smooth-corners-provider";
 
+// Force SSR for all pages to avoid prerender errors on client-only pages
+// (many pages use useSearchParams/localStorage and aren't safely static).
+export const dynamic = "force-dynamic";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
