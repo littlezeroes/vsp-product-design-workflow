@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Activity,
   BarChart3,
@@ -17,11 +17,13 @@ import {
   ListOrdered,
   Lock,
   LogOut,
+  Menu,
   Moon,
   Settings,
   ShieldCheck,
   Users,
   Wallet,
+  X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PortalButton } from "./_components/portal-button";
@@ -122,19 +124,9 @@ function CollapsibleItem({ item, pathname }: { item: NavItem; pathname: string }
   );
 }
 
-export default function TransactionPortalLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const pathname = usePathname();
-  const [role, setRole] = useRole();
-  const roleMeta = ROLE_META[role];
-
+function SidebarContent({ pathname }: { pathname: string }) {
   return (
-    <div className="flex h-screen overflow-hidden bg-background text-foreground">
-      {/* Sidebar */}
-      <aside className="flex w-[288px] shrink-0 flex-col border-r border-border bg-card h-screen sticky top-0">
+    <>
         {/* Logo */}
         <div className="border-b border-border px-[18px] py-2">
           <div className="flex items-center gap-2">
@@ -216,20 +208,78 @@ export default function TransactionPortalLayout({
             </button>
           </div>
         </div>
+    </>
+  );
+}
+
+export default function TransactionPortalLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  const [role, setRole] = useRole();
+  const roleMeta = ROLE_META[role];
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // Close drawer on route change
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [pathname]);
+  const pageTitle = pathname.includes("/transaction-360/")
+    ? "Detail Transaction"
+    : "Transaction 360";
+
+  return (
+    <div className="flex h-screen overflow-hidden bg-background text-foreground">
+      {/* Desktop sidebar */}
+      <aside className="hidden md:flex w-[288px] shrink-0 flex-col border-r border-border bg-card h-screen sticky top-0">
+        <SidebarContent pathname={pathname} />
       </aside>
+
+      {/* Mobile drawer */}
+      {sidebarOpen && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setSidebarOpen(false)}
+          />
+          <aside className="relative flex w-[288px] max-w-[85vw] h-full flex-col border-r border-border bg-card">
+            <button
+              onClick={() => setSidebarOpen(false)}
+              aria-label="Close menu"
+              className="absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-md hover:bg-muted"
+            >
+              <X className="h-4 w-4" />
+            </button>
+            <SidebarContent pathname={pathname} />
+          </aside>
+        </div>
+      )}
 
       {/* Main */}
       <div className="flex flex-1 flex-col min-w-0">
-        <header className="flex h-14 md:h-16 shrink-0 items-center justify-between border-b border-border bg-card px-4 md:px-6 gap-2">
-          <div className="flex items-center gap-2 text-sm">
+        <header className="flex h-14 md:h-16 shrink-0 items-center justify-between border-b border-border bg-card px-3 md:px-6 gap-2">
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setSidebarOpen(true)}
+            aria-label="Open menu"
+            className="md:hidden flex items-center justify-center h-9 w-9 rounded-md hover:bg-muted shrink-0"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+
+          {/* Breadcrumb — desktop only */}
+          <div className="hidden md:flex items-center gap-2 text-sm min-w-0">
             <span className="text-muted-foreground">Accounting</span>
             <span className="text-muted-foreground">/</span>
-            <span className="font-medium text-foreground">
-              {pathname.includes("/transaction-360/") ? "Detail Transaction" : "Transaction 360"}
-            </span>
+            <span className="font-medium text-foreground truncate">{pageTitle}</span>
           </div>
-          <div className="flex items-center gap-2 ml-auto shrink-0">
-            <span className="inline-flex items-center gap-1.5 h-7 px-2 rounded-md border text-xs text-muted-foreground">
+
+          {/* Mobile title */}
+          <span className="md:hidden font-semibold text-sm truncate">{pageTitle}</span>
+
+          <div className="flex items-center gap-1.5 md:gap-2 ml-auto shrink-0">
+            <span className="hidden lg:inline-flex items-center gap-1.5 h-7 px-2 rounded-md border text-xs text-muted-foreground">
               <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden />
               Viewing as <span className="text-foreground font-medium">{roleMeta.label}</span>
             </span>

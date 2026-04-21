@@ -66,22 +66,22 @@ export default function TransactionDetailPage({
 
   return (
     <div className="space-y-4">
-      {/* Top nav row — back + breadcrumb-style title */}
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-3 min-w-0">
+      {/* Top nav row — back + title + actions (wraps on mobile) */}
+      <div className="flex items-start md:items-center justify-between gap-3 flex-wrap">
+        <div className="flex items-center gap-3 min-w-0 flex-1">
           <PortalButton variant="outline" size="icon" asChild>
             <Link href="/transaction-360" aria-label="Back to list">
               <ChevronLeft className="h-4 w-4" />
             </Link>
           </PortalButton>
-          <h1 className="text-xl font-bold leading-tight truncate">
+          <h1 className="text-lg md:text-xl font-bold leading-tight truncate">
             Detail Transaction
-            <span className="text-muted-foreground font-normal ml-1.5">
+            <span className="text-muted-foreground font-normal ml-1.5 hidden sm:inline">
               (RefId:{detail.refId.slice(0, 10)}…)
             </span>
           </h1>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           <PortalButton
             variant="outline"
             size="sm"
@@ -94,7 +94,7 @@ export default function TransactionDetailPage({
             ) : (
               <Eye className="mr-1 h-3.5 w-3.5" />
             )}
-            {unmasked ? "Mask phones" : "Unmask phones"}
+            <span className="hidden sm:inline">{unmasked ? "Mask phones" : "Unmask phones"}</span>
           </PortalButton>
           <PortalButton
             variant="outline"
@@ -102,17 +102,17 @@ export default function TransactionDetailPage({
             onClick={() => navigator.clipboard?.writeText(detail.refId)}
           >
             <Copy className="mr-1 h-3.5 w-3.5" />
-            Copy RefId
+            <span className="hidden sm:inline">Copy RefId</span>
           </PortalButton>
         </div>
       </div>
 
       {/* Hero — single panel, strong hierarchy: title+amount → meta → identifiers */}
       <section className="rounded-lg border bg-card">
-        {/* Row 1: title left, amount right */}
-        <div className="p-6 flex items-start justify-between gap-6">
+        {/* Row 1: title left, amount right (stacked on mobile) */}
+        <div className="p-4 md:p-6 flex items-start justify-between gap-4 md:gap-6 flex-col md:flex-row">
           <div className="min-w-0 flex-1">
-            <h2 className="text-[24px] font-semibold text-foreground leading-tight">
+            <h2 className="text-xl md:text-[24px] font-semibold text-foreground leading-tight">
               {detail.serviceName}
             </h2>
             <div className="flex items-center gap-2 mt-2 flex-wrap">
@@ -123,9 +123,9 @@ export default function TransactionDetailPage({
               </span>
             </div>
           </div>
-          <div className="text-right shrink-0">
+          <div className="md:text-right shrink-0">
             <div className="text-[11px] font-medium text-muted-foreground mb-1">Amount</div>
-            <div className="text-[32px] font-semibold tabular-nums tracking-tight leading-none">
+            <div className="text-[28px] md:text-[32px] font-semibold tabular-nums tracking-tight leading-none">
               {formatVND(detail.amount)}
               <span className="text-muted-foreground">&nbsp;₫</span>
             </div>
@@ -133,7 +133,7 @@ export default function TransactionDetailPage({
         </div>
 
         {/* Row 2: From / To */}
-        <div className="px-6 pb-4">
+        <div className="px-4 md:px-6 pb-4">
           <dl className="grid grid-cols-[80px_1fr] gap-y-1 text-sm">
             <dt className="text-muted-foreground text-xs pt-0.5">From</dt>
             <dd>
@@ -152,8 +152,8 @@ export default function TransactionDetailPage({
           </dl>
         </div>
 
-        {/* Row 3: identifiers — 2-col definition list, label fixed width */}
-        <div className="px-6 py-4 border-t grid grid-cols-2 gap-x-8 gap-y-2">
+        {/* Row 3: identifiers — 1 col mobile, 2 col tablet+ */}
+        <div className="px-4 md:px-6 py-4 border-t grid grid-cols-1 md:grid-cols-2 gap-x-6 lg:gap-x-8 gap-y-3 md:gap-y-2">
           <DefRow label="Ref ID" value={detail.refId} mono copy />
           <DefRow label="Code" value={detail.transactionCode} mono copy />
           <DefRow label="Device ID" value={detail.deviceId} mono />
@@ -163,8 +163,8 @@ export default function TransactionDetailPage({
         </div>
       </section>
 
-      {/* Bottom row: [Stages | Stage Details] — 2 cột */}
-      <div className="grid grid-cols-[300px_1fr] gap-4">
+      {/* Bottom row: [Stages | Stage Details] — stack on mobile/tablet, 2 cột trên lg */}
+      <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-4">
         <section className="rounded-lg border bg-card self-start">
           <div className="p-4">
             <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
