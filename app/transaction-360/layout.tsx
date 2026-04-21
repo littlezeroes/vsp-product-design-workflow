@@ -39,6 +39,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useRole, ROLE_META } from "./_components/use-role";
+import { ThemeSwitcher } from "./_components/theme-switcher";
 import { Toaster } from "@/components/ui/sonner";
 
 type NavItem = {
@@ -303,6 +304,7 @@ export default function TransactionPortalLayout({
               <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden />
               Viewing as <span className="text-foreground font-medium">{roleMeta.label}</span>
             </span>
+            <ThemeSwitcher />
             <PortalButton
               variant="ghost"
               size="icon"
