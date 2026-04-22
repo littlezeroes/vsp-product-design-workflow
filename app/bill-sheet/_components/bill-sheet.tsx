@@ -35,7 +35,7 @@ export function BillSheet({
   discounts = [],
   availableVouchers = [],
   walletBalance,
-  walletLabel = "Ví V-Smart Pay",
+  walletLabel = "Name wallet",
 }: BillSheetProps) {
   const totalFees = fees.reduce((s, f) => s + f.amount, 0);
   const totalDiscount = discounts.reduce((s, d) => s + d.amount, 0);
