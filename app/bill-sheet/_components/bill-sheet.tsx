@@ -15,7 +15,10 @@ export interface BillSheetProps {
   merchantInitial?: string;
   billAmount: number;
   fees?: Line[];
+  /** Discounts đã áp dụng — trừ vào amount */
   discounts?: Line[];
+  /** Voucher có sẵn nhưng chưa áp dụng — chip xanh CTA, không ảnh hưởng amount */
+  availableVouchers?: string[];
   walletBalance: number;
   walletLabel?: string;
 }
@@ -30,6 +33,7 @@ export function BillSheet({
   billAmount,
   fees = [],
   discounts = [],
+  availableVouchers = [],
   walletBalance,
   walletLabel = "Ví V-Smart Pay",
 }: BillSheetProps) {
@@ -40,15 +44,11 @@ export function BillSheet({
 
   /* ── Tween BIG amount from billAmount → finalAmount on mount ── */
   const [displayAmount, setDisplayAmount] = useState(billAmount);
-  const [badgeVisible, setBadgeVisible] = useState(false);
 
   useEffect(() => {
-    // Reset to start
     setDisplayAmount(billAmount);
-    setBadgeVisible(false);
 
     if (delta === 0) {
-      // Nothing to animate, show immediately
       setDisplayAmount(finalAmount);
       return;
     }
@@ -64,8 +64,6 @@ export function BillSheet({
       setDisplayAmount(billAmount + (finalAmount - billAmount) * eased);
       if (t < 1) {
         rafId = requestAnimationFrame(tick);
-      } else {
-        setBadgeVisible(true);
       }
     };
     rafId = requestAnimationFrame(tick);
@@ -93,22 +91,22 @@ export function BillSheet({
           </button>
 
           {/* 1. TITLE */}
-          <div className="text-[15px] font-semibold text-foreground leading-tight">
+          <div className="text-[17px] font-semibold text-foreground leading-tight">
             {title}
           </div>
 
-          {/* 2. BIG amount + badge */}
-          <div className="mt-1.5 flex items-baseline gap-1">
-            <span className="text-[36px] font-bold tabular-nums tracking-tight leading-none">
+          {/* 2. BIG amount — to nhất, dominant */}
+          <div className="mt-1 flex items-baseline gap-1.5">
+            <span className="text-[44px] font-bold tabular-nums tracking-tight leading-none">
               {fmt(displayAmount)}
             </span>
-            <span className="text-xl font-medium text-foreground-secondary leading-none">
+            <span className="text-2xl font-semibold text-foreground-secondary leading-none">
               ₫
             </span>
           </div>
 
-          {/* Savings badge — chỉ hiện khi tiết kiệm (shine sweep khi mount) */}
-          {delta < 0 && badgeVisible && (
+          {/* Savings badge — hiện ngay từ đầu, shine sweep animation trên mount */}
+          {delta < 0 && (
             <div
               key={`badge-${delta}`}
               className="relative inline-flex items-center gap-1 h-6 px-2 mt-2 w-fit rounded-md text-[12px] font-medium bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-100 overflow-hidden"
@@ -128,36 +126,15 @@ export function BillSheet({
             </div>
           )}
 
-          {/* 3. Voucher section — standalone block (nếu có voucher) */}
-          {discounts.some((d) => d.chip) && (
-            <div className="mt-5 flex flex-col gap-2">
-              {discounts
-                .filter((d) => d.chip)
-                .map((d, i) => (
-                  <button
-                    key={`voucher-${i}`}
-                    className="flex items-center gap-2.5 h-11 px-3 rounded-2xl bg-emerald-50 ring-1 ring-inset ring-emerald-100 text-left w-full"
-                  >
-                    <div className="size-6 rounded-md bg-emerald-500 text-white flex items-center justify-center text-[10px] font-bold shrink-0">
-                      %
-                    </div>
-                    <span className="flex-1 text-[13px] font-medium text-emerald-800 truncate">
-                      {d.chip}
-                    </span>
-                    <ChevronRight className="size-4 text-emerald-700" />
-                  </button>
-                ))}
-            </div>
-          )}
-
-          {/* 4. Breakdown (collapsible, no +/- column) */}
-          <div className="mt-5 border-t border-border">
+          {/* 3. Breakdown (collapsible) — chỉ hiện khi có fees/discount */}
+          {(fees.length > 0 || discounts.length > 0) && (
+          <div className="mt-3">
             <button
               onClick={() => setExpanded((v) => !v)}
-              className="w-full flex items-center justify-between py-3 text-sm"
+              className="w-full flex items-center justify-between py-2"
             >
-              <span className="font-medium text-foreground">
-                Chi tiết khoản tiền
+              <span className="text-[13px] font-semibold text-foreground">
+                Chi tiết giao dịch
               </span>
               <ChevronDown
                 className={cn(
@@ -188,28 +165,80 @@ export function BillSheet({
               </div>
             )}
           </div>
+          )}
 
-          {/* 4. Transaction info — ItemList horizontal rows */}
-          <div className="border-t border-border pt-2">
-            <ItemList>
-              <ItemListItem
-                label="Giao dịch"
-                metadata={title}
-                divider
-              />
-              <ItemListItem
-                label="Nhà cung cấp"
-                metadata={merchant}
-                divider
-              />
-              <ItemListItem
-                label="Mã khách hàng"
-                metadata={merchantCode}
-              />
-            </ItemList>
+          {/* 4. Transaction info — compact rows, text nhỏ, không divider */}
+          <div className="border-t border-border pt-4 mt-1">
+            <div className="text-[13px] font-semibold mb-2">
+              Thông tin giao dịch
+            </div>
+            <dl className="space-y-2">
+              <div className="flex items-center justify-between gap-3 text-[13px]">
+                <dt className="text-foreground-secondary">Dịch vụ</dt>
+                <dd className="font-medium truncate">{title}</dd>
+              </div>
+              <div className="flex items-center justify-between gap-3 text-[13px]">
+                <dt className="text-foreground-secondary">Nhà cung cấp</dt>
+                <dd className="font-medium truncate">{merchant}</dd>
+              </div>
+              <div className="flex items-center justify-between gap-3 text-[13px]">
+                <dt className="text-foreground-secondary">Mã khách hàng</dt>
+                <dd className="font-medium font-mono">{merchantCode}</dd>
+              </div>
+            </dl>
           </div>
 
-          {/* 5. Payment source */}
+          {/* 5. Voucher — 3 trạng thái: applied / available offer / empty */}
+          <div className="mt-4 flex flex-col gap-2">
+            {discounts.some((d) => d.chip) ? (
+              /* Applied — xanh đậm, có chữ "Đã áp dụng" implicit */
+              discounts
+                .filter((d) => d.chip)
+                .map((d, i) => (
+                  <button
+                    key={`voucher-${i}`}
+                    className="flex items-center gap-2.5 h-11 px-3 rounded-2xl bg-emerald-50 ring-1 ring-inset ring-emerald-100 text-left w-full"
+                  >
+                    <div className="size-6 rounded-md bg-emerald-500 text-white flex items-center justify-center text-[10px] font-bold shrink-0">
+                      %
+                    </div>
+                    <span className="flex-1 text-[13px] font-medium text-emerald-800 truncate">
+                      {d.chip}
+                    </span>
+                    <ChevronRight className="size-4 text-emerald-700" />
+                  </button>
+                ))
+            ) : availableVouchers.length > 0 ? (
+              /* Available offer — chip xanh CTA, chưa áp dụng */
+              availableVouchers.map((v, i) => (
+                <button
+                  key={`offer-${i}`}
+                  className="flex items-center gap-2.5 h-11 px-3 rounded-2xl bg-emerald-50 ring-1 ring-inset ring-emerald-100 text-left w-full"
+                >
+                  <div className="size-6 rounded-md bg-emerald-500 text-white flex items-center justify-center text-[10px] font-bold shrink-0">
+                    %
+                  </div>
+                  <span className="flex-1 text-[13px] font-medium text-emerald-800 truncate">
+                    {v}
+                  </span>
+                  <ChevronRight className="size-4 text-emerald-700" />
+                </button>
+              ))
+            ) : (
+              /* Empty — gray border, invite user thêm */
+              <button className="flex items-center gap-2.5 h-11 px-3 rounded-2xl bg-background border border-border hover:bg-muted transition-colors text-left w-full">
+                <div className="size-6 rounded-md bg-muted text-foreground-secondary flex items-center justify-center text-[10px] font-bold shrink-0">
+                  %
+                </div>
+                <span className="flex-1 text-[13px] font-medium text-foreground-secondary">
+                  Chọn voucher khuyến mãi
+                </span>
+                <ChevronRight className="size-4 text-foreground-secondary" />
+              </button>
+            )}
+          </div>
+
+          {/* 6. Payment source */}
           <div className="mt-4">
             <div className="text-[13px] font-semibold mb-2">
               Nguồn thanh toán
@@ -235,7 +264,7 @@ export function BillSheet({
             </div>
           </div>
 
-          {/* 6. CTA */}
+          {/* 7. CTA */}
           <div className="mt-4">
             <Button variant="primary" size="48" className="w-full">
               Xác thực giao dịch

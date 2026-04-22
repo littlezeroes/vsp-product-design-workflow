@@ -13,21 +13,13 @@ const common = {
 
 const cases = [
   {
-    caption: "Case 1 — Even",
-    desc: "Bill 2M + phí 10k − giảm 10k = 2.000.000 ₫. Không badge.",
+    caption: "Case 1 — Default (chưa áp voucher)",
+    desc: "Bill 2M, chưa add voucher. Chip xanh hiển offer sẵn có để tap apply.",
     props: {
       ...common,
-      fees: [
-        { label: "Phí tiện ích NCC", amount: 5_000 },
-        { label: "Phí thanh toán", amount: 5_000 },
-      ],
-      discounts: [
-        {
-          label: "Giảm giá",
-          amount: 10_000,
-          chip: "Giảm giá 10k cho lần đầu sử dụng",
-        },
-      ],
+      fees: [],
+      discounts: [],
+      availableVouchers: ["Giảm giá 10k cho lần đầu sử dụng"],
     },
   },
   {
