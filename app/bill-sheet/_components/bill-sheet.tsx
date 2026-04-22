@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown, ChevronRight, Info, Wallet, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -82,13 +82,6 @@ export function BillSheet({
 
       {/* Dim backdrop */}
       <div className="flex-1 bg-[#262626]/60 flex flex-col justify-end">
-        {/* Floating merchant avatar */}
-        <div className="relative">
-          <div className="absolute -top-[28px] left-1/2 -translate-x-1/2 size-14 rounded-full bg-[#e73c3c] text-white flex items-center justify-center font-bold text-lg shadow-lg ring-4 ring-background z-10">
-            {merchantInitial}
-          </div>
-        </div>
-
         {/* Sheet */}
         <div className="bg-background rounded-t-[28px] pt-8 pb-[21px] px-[22px] flex flex-col max-h-[calc(100%-40px)] overflow-y-auto">
           {/* Close */}
@@ -114,26 +107,50 @@ export function BillSheet({
             </span>
           </div>
 
-          {delta !== 0 && (
+          {/* Savings badge — chỉ hiện khi tiết kiệm (shine sweep khi mount) */}
+          {delta < 0 && badgeVisible && (
             <div
-              className={cn(
-                "inline-flex items-center gap-1 h-6 px-2 mt-2 w-fit rounded-md text-[12px] font-medium transition-all duration-300",
-                badgeVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 -translate-y-1",
-                delta < 0
-                  ? "bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-100 animate-flash-emerald"
-                  : "bg-orange-50 text-orange-700 ring-1 ring-inset ring-orange-100 animate-flash-orange",
-              )}
               key={`badge-${delta}`}
+              className="relative inline-flex items-center gap-1 h-6 px-2 mt-2 w-fit rounded-md text-[12px] font-medium bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-100 overflow-hidden"
             >
-              {delta < 0
-                ? `✓ Tiết kiệm ${fmt(-delta)} ₫`
-                : `⚠ Phụ thu ${fmt(delta)} ₫`}
+              <span className="relative z-10">
+                ✓ Tiết kiệm {fmt(-delta)} ₫
+              </span>
+              {/* Shine overlay sweeping across */}
+              <span
+                aria-hidden
+                className="absolute inset-y-0 -inset-x-2 pointer-events-none animate-shine-sweep"
+                style={{
+                  background:
+                    "linear-gradient(100deg, transparent 10%, rgba(255,255,255,0.85) 45%, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.85) 55%, transparent 90%)",
+                }}
+              />
             </div>
           )}
 
-          {/* 3. Breakdown (collapsible, no +/- column) */}
+          {/* 3. Voucher section — standalone block (nếu có voucher) */}
+          {discounts.some((d) => d.chip) && (
+            <div className="mt-5 flex flex-col gap-2">
+              {discounts
+                .filter((d) => d.chip)
+                .map((d, i) => (
+                  <button
+                    key={`voucher-${i}`}
+                    className="flex items-center gap-2.5 h-11 px-3 rounded-2xl bg-emerald-50 ring-1 ring-inset ring-emerald-100 text-left w-full"
+                  >
+                    <div className="size-6 rounded-md bg-emerald-500 text-white flex items-center justify-center text-[10px] font-bold shrink-0">
+                      %
+                    </div>
+                    <span className="flex-1 text-[13px] font-medium text-emerald-800 truncate">
+                      {d.chip}
+                    </span>
+                    <ChevronRight className="size-4 text-emerald-700" />
+                  </button>
+                ))}
+            </div>
+          )}
+
+          {/* 4. Breakdown (collapsible, no +/- column) */}
           <div className="mt-5 border-t border-border">
             <button
               onClick={() => setExpanded((v) => !v)}
@@ -161,24 +178,12 @@ export function BillSheet({
                   />
                 ))}
                 {discounts.map((d, i) => (
-                  <Fragment key={`disc-${i}`}>
-                    <Row
-                      label={d.label}
-                      value={`−${fmt(d.amount)} ₫`}
-                      valueClassName="text-emerald-700"
-                    />
-                    {d.chip && (
-                      <button className="flex items-center gap-2 h-9 px-3 rounded-xl bg-emerald-50 ring-1 ring-inset ring-emerald-100 text-left w-full">
-                        <div className="size-5 rounded-md bg-emerald-500 text-white flex items-center justify-center text-[9px] font-bold shrink-0">
-                          %
-                        </div>
-                        <span className="flex-1 text-[12px] text-emerald-800 truncate">
-                          {d.chip}
-                        </span>
-                        <ChevronRight className="size-4 text-emerald-700" />
-                      </button>
-                    )}
-                  </Fragment>
+                  <Row
+                    key={`disc-${i}`}
+                    label={d.label}
+                    value={`−${fmt(d.amount)} ₫`}
+                    valueClassName="text-emerald-700"
+                  />
                 ))}
               </div>
             )}
