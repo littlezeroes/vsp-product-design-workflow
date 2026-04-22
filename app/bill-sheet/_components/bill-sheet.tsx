@@ -78,7 +78,7 @@ export function BillSheet({
       {/* Full dim backdrop — sheet overlays a dimmed base */}
       <div className="flex-1 min-h-[72px] flex flex-col justify-end">
         {/* Sheet */}
-        <div className="bg-background rounded-t-[28px] pt-8 pb-[21px] px-[22px] flex flex-col max-h-[calc(100%-40px)] overflow-y-auto">
+        <div className="bg-background rounded-t-[28px] pt-6 pb-0 px-[22px] flex flex-col max-h-[calc(100%-40px)] overflow-y-auto">
           {/* Close */}
           <button
             aria-label="Close"
@@ -269,7 +269,7 @@ export function BillSheet({
           </div>
 
           {/* Home indicator */}
-          <div className="flex items-end justify-center h-[21px] pb-1 mt-2 shrink-0">
+          <div className="flex items-end justify-center h-[21px] pb-1 mt-3 shrink-0">
             <span className="w-[139px] h-[5px] bg-foreground rounded-full" />
           </div>
         </div>
