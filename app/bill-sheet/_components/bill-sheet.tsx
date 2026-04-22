@@ -74,12 +74,9 @@ export function BillSheet({
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="w-[390px] h-[844px] bg-muted/40 flex flex-col relative overflow-hidden rounded-[40px] ring-1 ring-border shadow-2xl">
-      {/* status bar */}
-      <div className="h-[54px] shrink-0" />
-
-      {/* Dim backdrop */}
-      <div className="flex-1 bg-[#262626]/60 flex flex-col justify-end">
+    <div className="w-[390px] h-[844px] bg-[#262626]/70 flex flex-col relative overflow-hidden">
+      {/* Full dim backdrop — sheet overlays a dimmed base */}
+      <div className="flex-1 min-h-[72px] flex flex-col justify-end">
         {/* Sheet */}
         <div className="bg-background rounded-t-[28px] pt-8 pb-[21px] px-[22px] flex flex-col max-h-[calc(100%-40px)] overflow-y-auto">
           {/* Close */}
@@ -117,10 +114,10 @@ export function BillSheet({
               {/* Shine overlay sweeping across */}
               <span
                 aria-hidden
-                className="absolute inset-y-0 -inset-x-2 pointer-events-none animate-shine-sweep"
+                className="absolute inset-y-0 -inset-x-4 pointer-events-none animate-shine-sweep"
                 style={{
                   background:
-                    "linear-gradient(100deg, transparent 10%, rgba(255,255,255,0.85) 45%, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.85) 55%, transparent 90%)",
+                    "linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.6) 60%, transparent 80%)",
                 }}
               />
             </div>
