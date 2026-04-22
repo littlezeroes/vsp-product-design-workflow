@@ -17,7 +17,7 @@ const cases: Record<string, Parameters<typeof BillSheet>[0]> = {
     ...common,
     fees: [],
     discounts: [],
-    availableVouchers: ["Giảm giá 10k cho lần đầu sử dụng"],
+    availableVouchers: [],
   },
   "2": {
     ...common,
