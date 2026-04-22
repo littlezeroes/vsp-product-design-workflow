@@ -187,9 +187,22 @@ function useTheme() {
 
 export default function BillSheetStatesBrowser() {
   const [tab, setTab] = useState<"ui" | "inspect">("ui");
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [stateIdx, setStateIdx] = useState(0);
   const { theme, toggle } = useTheme();
+
+  // Detect viewport on mount / resize — default sidebar open on desktop
+  useEffect(() => {
+    const update = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      setSidebarOpen(!mobile);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   const currentState = STATES[stateIdx];
   const iframeSrc = `/bill-sheet/view?case=${currentState.param}`;
@@ -212,17 +225,33 @@ export default function BillSheetStatesBrowser() {
         } as React.CSSProperties
       }
     >
+      {/* Mobile backdrop */}
+      {sidebarOpen && isMobile && (
+        <div
+          onClick={() => setSidebarOpen(false)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.4)",
+            zIndex: 40,
+          }}
+        />
+      )}
+
       {/* Sidebar */}
       {sidebarOpen && (
         <aside
           style={{
             width: 260,
+            maxWidth: "85vw",
             minHeight: "100vh",
             background: "var(--tool-sidebar)",
             borderRight: "1px solid var(--tool-border)",
-            position: "sticky",
+            position: isMobile ? "fixed" : "sticky",
             top: 0,
+            left: 0,
             alignSelf: "flex-start",
+            zIndex: 50,
           }}
         >
           {/* Sidebar header */}
@@ -393,20 +422,26 @@ export default function BillSheetStatesBrowser() {
       </div>
 
       {/* Main canvas */}
-      <main style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden", paddingTop: 56 }}>
+      <main style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden", paddingTop: isMobile ? 64 : 56, width: "100%", minWidth: 0 }}>
         {/* Breadcrumb header */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            padding: "20px 24px",
+            padding: isMobile ? "12px 16px" : "20px 24px",
             flexShrink: 0,
+            gap: 8,
+            flexWrap: "wrap",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12 }}>
-            <span style={{ color: "var(--tool-text-secondary)" }}>Bill Sheet</span>
-            <span style={{ color: "var(--tool-text-muted)" }}>/</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, flexWrap: "wrap", minWidth: 0 }}>
+            {!isMobile && (
+              <>
+                <span style={{ color: "var(--tool-text-secondary)" }}>Bill Sheet</span>
+                <span style={{ color: "var(--tool-text-muted)" }}>/</span>
+              </>
+            )}
             <span style={{ color: "var(--tool-text)", fontWeight: 600 }}>
               Thanh toán hóa đơn điện
             </span>
@@ -424,21 +459,23 @@ export default function BillSheetStatesBrowser() {
               {currentState.label}
             </span>
           </div>
-          <div
-            style={{
-              fontSize: 11,
-              color: "var(--tool-text-muted)",
-              fontVariantNumeric: "tabular-nums",
-            }}
-          >
-            {iframeSrc}
-          </div>
+          {!isMobile && (
+            <div
+              style={{
+                fontSize: 11,
+                color: "var(--tool-text-muted)",
+                fontVariantNumeric: "tabular-nums",
+              }}
+            >
+              {iframeSrc}
+            </div>
+          )}
         </div>
 
         {tab === "ui" ? (
-          <UIPanel states={STATES} />
+          <UIPanel states={STATES} isMobile={isMobile} />
         ) : (
-          <InspectPanel state={currentState} iframeSrc={iframeSrc} />
+          <InspectPanel state={currentState} iframeSrc={iframeSrc} isMobile={isMobile} />
         )}
       </main>
 
@@ -543,8 +580,8 @@ function CapsuleTab({
 
 /* ── UI panel — 3 phones side by side ──────────────────────── */
 
-function UIPanel({ states }: { states: StateDef[] }) {
-  const SCALE = 0.6;
+function UIPanel({ states, isMobile }: { states: StateDef[]; isMobile: boolean }) {
+  const SCALE = isMobile ? 0.72 : 0.6;
   const W = 390;
   const H = 844;
   const PAD = 6;
@@ -557,8 +594,8 @@ function UIPanel({ states }: { states: StateDef[] }) {
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "center",
-        gap: 28,
-        padding: "0 32px 60px",
+        gap: isMobile ? 16 : 28,
+        padding: isMobile ? "0 16px 80px" : "0 32px 60px",
         overflow: "auto",
         flexWrap: "wrap",
       }}
@@ -639,11 +676,13 @@ function UIPanel({ states }: { states: StateDef[] }) {
 function InspectPanel({
   state,
   iframeSrc,
+  isMobile,
 }: {
   state: StateDef;
   iframeSrc: string;
+  isMobile: boolean;
 }) {
-  const SCALE = 0.68;
+  const SCALE = isMobile ? 0.62 : 0.68;
   const W = 390;
   const H = 844;
   return (
@@ -651,14 +690,21 @@ function InspectPanel({
       style={{
         flex: 1,
         display: "grid",
-        gridTemplateColumns: `${Math.round(W * SCALE) + 40}px 1fr`,
-        gap: 24,
-        padding: "0 32px 60px",
+        gridTemplateColumns: isMobile ? "1fr" : `${Math.round(W * SCALE) + 40}px 1fr`,
+        gap: isMobile ? 20 : 24,
+        padding: isMobile ? "0 16px 80px" : "0 32px 60px",
         overflow: "auto",
       }}
     >
       {/* Phone preview with zone overlays */}
-      <div style={{ position: "sticky", top: 80, alignSelf: "start" }}>
+      <div
+        style={{
+          position: isMobile ? "static" : "sticky",
+          top: 80,
+          alignSelf: "start",
+          justifySelf: isMobile ? "center" : "start",
+        }}
+      >
         <div
           style={{
             width: Math.round(W * SCALE),
