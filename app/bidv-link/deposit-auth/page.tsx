@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { ChevronLeft, AlertCircle, Scan, Fingerprint, Lock } from "lucide-react"
+import { ChevronLeft, AlertCircle, Scan, Fingerprint, Lock, X } from "lucide-react"
 import { Header } from "@/components/ui/header"
 import { ItemList, ItemListItem } from "@/components/ui/item-list"
 import { InformMessage } from "@/components/ui/inform-message"
@@ -118,50 +118,52 @@ function DepositAuthContent() {
   }
 
   return (
-    <div className="relative w-full max-w-[390px] min-h-screen bg-secondary text-foreground flex flex-col">
-      {/* Header with back button */}
-      <Header
-        variant="default"
-        title="Xác nhận nạp tiền"
-        showStatusBar={false}
-        leading={
+    <div
+      className="relative w-full max-w-[390px] h-screen flex flex-col justify-end overflow-hidden"
+      style={{ background: "rgba(0,0,0,0.45)" }}
+    >
+      {/* Sheet panel — tràn từ dưới lên */}
+      <div className="bg-background rounded-t-[24px] flex flex-col max-h-[90vh] overflow-y-auto shadow-[0_-10px_30px_rgba(0,0,0,0.25)]">
+        {/* Sheet top bar — X close + title */}
+        <div className="relative flex items-center h-[56px] px-[22px] shrink-0">
           <button
             type="button"
             onClick={() => router.push("/bidv-link/deposit")}
-            className="w-[44px] h-[44px] flex items-center justify-center rounded-full"
+            className="w-[40px] h-[40px] -ml-[10px] flex items-center justify-center rounded-full"
           >
-            <ChevronLeft size={18} className="text-foreground" />
+            <X size={20} className="text-foreground" />
           </button>
-        }
-      />
-
-      {/* Fee changed warning — above dark header */}
-      {state === "fee-changed" && (
-        <div className="px-[22px] pb-[12px] bg-background">
-          <InformMessage
-            hierarchy="primary"
-            icon={<AlertCircle size={24} />}
-            body="Phí đã thay đổi"
-          />
         </div>
-      )}
 
-      {/* Dark header — amount hero */}
-      <div className="bg-foreground px-[22px] pt-[54px] pb-[60px] flex flex-col items-center">
-        <p className="text-sm font-semibold text-background mb-[8px]">V-Smart Pay</p>
-        <p className="text-[28px] font-bold leading-[34px] text-background">200.000đ</p>
-      </div>
-
-      {/* White card overlapping dark header */}
-      <div className="px-[22px] -mt-[32px]">
-        <div className="bg-background rounded-[28px] px-[20px] py-[24px] shadow-sm">
-          <ItemList>
-            <ItemListItem label="Nguồn tiền" metadata="BIDV ****1234" divider />
-            <ItemListItem label="Số tiền" metadata="200.000đ" divider />
-            <ItemListItem label="Phí giao dịch" metadata="0đ" />
-          </ItemList>
+        {/* Amount hero — không còn dark header */}
+        <div className="px-[22px] pb-[18px]">
+          <p className="text-[13px] font-semibold text-foreground-secondary mb-[4px]">Nạp tiền vào ví VSP</p>
+          <p className="text-[32px] font-black tracking-[-0.5px] leading-none">
+            200.000<span className="text-[20px] font-bold text-foreground/40 ml-[2px] underline">đ</span>
+          </p>
         </div>
-      </div>
+
+        {/* Fee changed warning */}
+        {state === "fee-changed" && (
+          <div className="px-[22px] pb-[12px]">
+            <InformMessage
+              hierarchy="primary"
+              icon={<AlertCircle size={24} />}
+              body="Phí đã thay đổi"
+            />
+          </div>
+        )}
+
+        {/* Detail rows card */}
+        <div className="px-[22px]">
+          <div className="bg-secondary rounded-[16px] px-[16px] py-[4px]">
+            <ItemList>
+              <ItemListItem label="Nguồn tiền" metadata="BIDV ****1234" divider />
+              <ItemListItem label="Số tiền" metadata="200.000đ" divider />
+              <ItemListItem label="Phí giao dịch" metadata="0đ" />
+            </ItemList>
+          </div>
+        </div>
 
       <div className="flex-1 overflow-y-auto">
         {/* Conditional: PIN entry view or auth method selection */}
@@ -275,20 +277,21 @@ function DepositAuthContent() {
         )}
       </div>
 
-      {/* Bottom CTA — only in default/auth-method view (not PIN view) */}
-      {!PIN_STATES.includes(state) && (
-        <div className="shrink-0 px-[22px] pb-[34px] pt-[12px]">
-          <Button
-            variant="primary"
-            size="48"
-            className="w-full"
-            isLoading={isLoading}
-            onClick={handleConfirm}
-          >
-            Xác nhận
-          </Button>
-        </div>
-      )}
+        {/* Bottom CTA — only in default/auth-method view (not PIN view) */}
+        {!PIN_STATES.includes(state) && (
+          <div className="shrink-0 px-[22px] pb-[20px] pt-[12px]">
+            <Button
+              variant="primary"
+              size="48"
+              className="w-full !bg-foreground !text-background"
+              isLoading={isLoading}
+              onClick={handleConfirm}
+            >
+              Xác thực giao dịch
+            </Button>
+          </div>
+        )}
+      </div>
 
       {/* Session Timeout Dialog */}
       <Dialog

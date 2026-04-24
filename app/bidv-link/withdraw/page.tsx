@@ -219,12 +219,12 @@ function WithdrawContent() {
         </div>
       </div>
 
-      {/* Fixed CTA */}
+      {/* Fixed CTA — XanhSM tiffany */}
       <div className="absolute bottom-0 inset-x-0 bg-background px-[22px] pb-[34px] pt-[12px]">
         <Button
           variant="primary"
           size="48"
-          className="w-full"
+          className="w-full !bg-[#28bdbf] !text-white"
           disabled={!isValid || isLoading}
           isLoading={isLoading}
           onClick={handleContinue}

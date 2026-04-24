@@ -81,14 +81,14 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
             "w-full min-h-[58px] rounded-14 border",
             "flex items-center gap-[16px] px-[14px] py-[10px]",
             "transition-colors duration-150",
-            // Border states (priority: error > focus > default > disabled)
+            // Border states — stronger default + brand green on focus
             error
               ? "border-danger"
               : focused
               ? "border-brand-secondary border-[1.5px]"
               : disabled
               ? "border-disabled-border bg-secondary"
-              : "border-border"
+              : "border-grey-400"
           )}
         >
           {/* Leading icon — 24px */}
@@ -123,7 +123,7 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
               className={cn(
                 // Figma: sm (14px) / medium (500) / line-height 20px
                 "w-full bg-transparent text-sm font-medium leading-5 text-foreground outline-none",
-                // Figma placeholder: foreground/tertiary = grey-300 = #d4d4d4
+                // Placeholder: foreground/tertiary — reads well on white bg
                 "placeholder:text-grey-300 placeholder:font-normal",
                 disabled && "cursor-not-allowed text-disabled-fg",
                 className

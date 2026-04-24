@@ -22,12 +22,12 @@ const QUICK_AMOUNTS = [100000, 200000, 500000]
 function TabSwitcher({ active }: { active: "deposit" | "withdraw" }) {
   const router = useRouter()
   return (
-    <div className="flex items-center justify-center py-[8px]">
+    <div className="flex items-center justify-center py-[4px]">
       <div className="flex items-center bg-secondary rounded-full p-[3px]">
         <button
           type="button"
           onClick={() => router.replace("/bidv-link/deposit")}
-          className={`px-[16px] py-[6px] rounded-full text-sm font-semibold leading-5 transition-colors ${
+          className={`px-[14px] py-[5px] rounded-full text-[13px] font-semibold leading-[18px] transition-colors ${
             active === "deposit"
               ? "bg-foreground text-background"
               : "text-foreground"
@@ -38,7 +38,7 @@ function TabSwitcher({ active }: { active: "deposit" | "withdraw" }) {
         <button
           type="button"
           onClick={() => router.replace("/bidv-link/withdraw")}
-          className={`px-[16px] py-[6px] rounded-full text-sm font-semibold leading-5 transition-colors ${
+          className={`px-[14px] py-[5px] rounded-full text-[13px] font-semibold leading-[18px] transition-colors ${
             active === "withdraw"
               ? "bg-foreground text-background"
               : "text-foreground"
@@ -61,10 +61,10 @@ function Numpad({ onInput }: { onInput: (key: string) => void }) {
           key={key}
           type="button"
           onClick={() => onInput(key)}
-          className="h-[52px] flex items-center justify-center text-[20px] font-semibold text-foreground active:bg-secondary rounded-[8px] transition-colors"
+          className="h-[44px] flex items-center justify-center text-[19px] font-semibold text-foreground active:bg-secondary rounded-[8px] transition-colors"
         >
           {key === "backspace" ? (
-            <Delete size={24} className="text-foreground" />
+            <Delete size={22} className="text-foreground" />
           ) : (
             key
           )}
@@ -142,31 +142,31 @@ function DepositContent() {
       {/* Tab switcher */}
       <TabSwitcher active="deposit" />
 
-      <div className="flex-1 flex flex-col pb-[100px]">
+      <div className="flex-1 flex flex-col pb-[96px]">
         {/* Balance display — centered */}
-        <div className="px-[22px] pt-[16px] flex justify-center">
-          <p className="text-sm font-normal leading-5 text-foreground-secondary">
+        <div className="px-[22px] pt-[8px] flex justify-center">
+          <p className="text-[13px] font-normal leading-[18px] text-foreground-secondary">
             Số dư ví{" "}
             <span className="font-bold text-foreground-secondary">{formatVND(walletBalance)}đ</span>
           </p>
         </div>
 
         {/* Amount display */}
-        <div className="px-[22px] pt-[24px] flex flex-col items-center">
+        <div className="px-[22px] pt-[14px] flex flex-col items-center">
           <div className="flex items-center gap-[2px]">
-            <p className="text-[40px] font-bold tabular-nums text-foreground leading-tight">
+            <p className="text-[34px] font-bold tabular-nums text-foreground leading-tight">
               {amount === 0 ? "0" : formatVND(amount)}đ
             </p>
             {/* Blue cursor line */}
-            <div className="w-[2px] h-[36px] bg-info animate-pulse rounded-full" />
+            <div className="w-[2px] h-[30px] bg-info animate-pulse rounded-full" />
           </div>
           {error && (
-            <p className="text-xs font-normal leading-5 text-danger mt-[4px]">{error}</p>
+            <p className="text-xs font-normal leading-[18px] text-danger mt-[2px]">{error}</p>
           )}
         </div>
 
         {/* Quick amount chips */}
-        <div className="pt-[24px]">
+        <div className="pt-[14px]">
           <div className="px-[22px]">
             <div className="flex gap-[8px] justify-center">
               {QUICK_AMOUNTS.map((val) => (
@@ -174,7 +174,7 @@ function DepositContent() {
                   key={val}
                   type="button"
                   onClick={() => setAmount(val)}
-                  className={`px-[16px] py-[8px] rounded-full text-sm font-semibold leading-5 transition-colors ${
+                  className={`px-[14px] py-[6px] rounded-full text-[13px] font-semibold leading-[18px] transition-colors ${
                     amount === val
                       ? "bg-foreground text-background"
                       : "bg-secondary text-foreground"
@@ -188,19 +188,19 @@ function DepositContent() {
         </div>
 
         {/* Custom Numpad */}
-        <div className="pt-[32px] mt-auto">
+        <div className="pt-[14px] mt-auto">
           <div className="px-[22px]">
             <Numpad onInput={handleAmountInput} />
           </div>
         </div>
       </div>
 
-      {/* Fixed CTA */}
+      {/* Fixed CTA — XanhSM tiffany */}
       <div className="absolute bottom-0 inset-x-0 bg-background px-[22px] pb-[34px] pt-[12px]">
         <Button
           variant="primary"
           size="48"
-          className="w-full"
+          className="w-full !bg-[#28bdbf] !text-white"
           disabled={!isValid || isLoading}
           isLoading={isLoading}
           onClick={handleContinue}

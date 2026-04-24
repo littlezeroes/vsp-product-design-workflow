@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "token-check": "npx tsx scripts/token-checker.ts"
+    "token-check": "npx tsx scripts/token-checker.ts",
+    "validate": "npx tsx .claude/validators/run-all.ts",
+    "validate:tokens": "npx tsx .claude/validators/token-compliance.ts",
+    "validate:align": "npx tsx .claude/validators/alignment-22px.ts"
   },
   "dependencies": {
     "@vercel/kv": "^3.0.0",
@@ -30,6 +33,7 @@
   },
   "devDependencies": {
     "@figma/code-connect": "^1.4.2",
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

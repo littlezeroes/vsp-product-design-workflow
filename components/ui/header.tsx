@@ -246,8 +246,9 @@ function Header({
       {/* ── Status bar ── */}
       {showStatusBar && <StatusBar variant={isVP ? "vp" : "default"} />}
 
-      {/* ── Nav bar — h-[56px] / pl-[14px] pr-[22px] / gap-2 (8px) ── */}
-      <div className="flex items-center gap-2 pl-[14px] pr-[22px] h-[56px] shrink-0">
+      {/* ── Nav bar — h-[56px] / pl-[8px] pr-[22px] / gap-2 (8px) ── */}
+      {/* pl-[8px]: optical alignment — ChevronLeft tip aligns with x=22 content below */}
+      <div className="flex items-center gap-2 pl-[8px] pr-[22px] h-[56px] shrink-0">
 
         {/* Back button — consumer provides the 44px touch target */}
         {leading && (
