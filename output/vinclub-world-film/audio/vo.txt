@@ -1,0 +1,21 @@
+v01|Một hóa đơn. Một ứng dụng.
+v02|Một chuyến xe. Thêm một ứng dụng nữa.
+v03|Thế giới của bạn, đang bị chia thành từng mảnh.
+v04|Nếu cả thế giới ấy, nằm gọn trong tay bạn thì sao?
+v05|Đây là VinClub.
+v06|Cả thế giới. Trong tay bạn.
+v07|Mọi thứ bắt đầu từ một điều duy nhất: điều bạn muốn làm.
+v08|Một chiếc thẻ. Mọi đặc quyền, dành riêng cho bạn.
+v09|VinPay. Số dư, chuyển tiền, quỹ dự phòng. Chỉ một chạm.
+v10|VinLife. Xe đang sạc bảy mươi hai phần trăm. Nhà, xe, cuộc sống, trong tầm mắt.
+v11|Không muốn tìm? Cứ hỏi.
+v12|VinClub AI hiểu bạn, và đưa bạn đến đúng nơi cần đến. Gõ, hoặc chỉ cần nói.
+v13|Và đây, là thế giới quanh bạn. Sống động trong 3D.
+v14|Chạm Vincom. Xoay. Nhìn từ một góc hoàn toàn mới.
+v15|Bước vào showroom. Chọn cửa hàng. Xoay đôi giày, đổi màu, nhìn tận từng lớp cấu tạo.
+v16|Thích? Thêm vào giỏ. Ưu đãi, luôn chờ sẵn.
+v17|Và chúng tôi còn tiến xa hơn. VinClub Duo.
+v18|Gập lại, gọn trong lòng bàn tay. Mở ra, thế giới rộng gấp đôi.
+v19|À, còn một điều nữa.
+v20|Năm trăm VPoint. Vừa được cộng. Ngay lập tức.
+v21|VinClub. Cả thế giới, trong tay bạn.
