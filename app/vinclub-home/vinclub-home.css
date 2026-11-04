@@ -1,0 +1,157 @@
+/* Same workspace as Home VinPay: option column on the left, one 390 by 844 phone. Colours here are prototype materials. */
+.vk-page{--bg:#fcfcfb;--ink:#1f1a18;--sub:#6f6863;--surface:#fff;--wash:#f1e6d3;--line:rgba(31,26,24,.08);display:flex;align-items:flex-start;justify-content:center;gap:32px;min-height:100vh;padding:24px;background:#e9e7e3;color:var(--ink)}
+.vk-page[data-mode=dark]{--bg:#0b0b0b;--ink:#f4f4f3;--sub:#a3a3a1;--surface:#191919;--wash:#3a2c14;--line:rgba(255,255,255,.1)}
+.vk-page[data-framed]{padding:0;background:var(--bg);min-height:0}
+.vk-left{display:flex;flex-direction:column;gap:12px;width:280px;flex:none}
+.vk-panel{padding:20px;border-radius:24px;background:#fff;color:#1f1a18;corner-shape:superellipse(1.6)}.vk-panel h1{padding-bottom:12px;font-size:18px;line-height:24px;font-weight:500}
+.vk-control+.vk-control{padding-top:12px}.vk-control>p{padding-bottom:8px;color:#6f6863;font-size:13px;line-height:18px}.vk-control>div{display:flex;flex-wrap:wrap;gap:6px}
+.vk-control button{padding:7px 12px;border-radius:18px;background:#f3f2f0;font-size:13px;line-height:18px;font-weight:500}.vk-control button[aria-pressed=true],.vk-mode button[aria-pressed=true]{background:#1f1a18;color:#fff}
+.vk-mode{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:12px;background:#f3f2f0}.vk-mode button{display:flex;justify-content:center;padding:8px;border-radius:10px}
+.vk-phone{position:relative;flex:none;width:390px;height:844px;overflow:hidden;border-radius:28px;background:var(--bg);corner-shape:superellipse(1.6)}
+.vk-page[data-framed] .vk-phone{border-radius:0}
+.vk-scroll{position:relative;isolation:isolate;height:100%;overflow-y:auto;padding-bottom:104px;background:linear-gradient(180deg,var(--wash),var(--bg) 340px) no-repeat;scrollbar-width:none}.vk-scroll::-webkit-scrollbar{display:none}
+.vk-status{height:54px;padding:18px 22px 0;font-size:16px;line-height:20px;font-weight:600}
+.vk-phone section h2{font-size:18px;line-height:24px;font-weight:600}
+.vk-phone button{text-align:left}
+
+/* Hero 1: leather block, metal status card. */
+.vk-hero{margin:0 22px;padding:10px 10px 18px;border-radius:26px;color:#fff;background:url(/vinclub-duo/togo.png) 0 0/220px,linear-gradient(180deg,#2a1d19,#1f1512);background-blend-mode:overlay,normal;box-shadow:inset 0 1px 0 rgba(255,225,205,.18),0 10px 22px rgba(31,26,24,.18);corner-shape:superellipse(1.6)}
+.vk-status-card{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border-radius:16px;color:#1f1a18;background:linear-gradient(104deg,rgba(255,255,255,0) 16%,rgba(255,255,255,.55) 43%,rgba(255,255,255,0) 60%),linear-gradient(176deg,#f1e4cd,#e4cfac 40%,#d3bf9c);box-shadow:inset 0 1px 0 rgba(255,255,255,.78)}
+.vk-member,.vk-pay{display:flex;flex-direction:column;gap:1px}.vk-member small,.vk-pay small{font-size:11px;line-height:14px;font-weight:500}.vk-member strong{font-size:16px;line-height:20px;font-weight:700}
+.vk-phone .vk-pay{align-items:flex-end;text-align:right}.vk-pay b{font-size:12px;line-height:16px;font-weight:600}
+.vk-hook{display:flex;flex-direction:column;align-items:flex-start;padding:14px 10px 0;animation:vk-in 420ms cubic-bezier(.22,1,.36,1) both}
+.vk-hook img{width:44px;height:44px;margin-bottom:8px}.vk-hook>small{color:#f6d67e;font-size:12px;line-height:16px;font-weight:600}
+.vk-phone .vk-hook h2{padding-top:4px;font-size:26px;line-height:32px;letter-spacing:-.5px}
+.vk-hook p{padding-top:6px;color:rgba(255,255,255,.72);font-size:14px;line-height:20px}
+.vk-progress{display:block;width:100%;height:6px;margin-top:12px;overflow:hidden;border-radius:6px;background:rgba(255,255,255,.18)}.vk-progress i{display:block;width:96%;height:100%;border-radius:6px;background:#f6d67e}
+.vk-phone .vk-cta{width:100%;height:48px;margin-top:14px;border-radius:24px;background:#f6d67e;color:#1f1a18;font-size:15px;font-weight:600;text-align:center}.vk-cta:disabled{opacity:.6}
+@keyframes vk-in{from{opacity:0;transform:translateY(10px)}}
+@media (prefers-reduced-motion:reduce){.vk-hook{animation:none}}
+
+/* Hero 2: the hook is printed on one large metal card. */
+[data-visual=card] .vk-hero{color:#1f1a18;background:linear-gradient(112deg,rgba(255,255,255,0) 18%,rgba(255,255,255,.6) 42%,rgba(255,255,255,0) 62%),linear-gradient(170deg,#f3e7d2,#e4cfac 45%,#cfb890);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 14px 28px rgba(90,66,30,.26)}
+[data-visual=card] .vk-status-card{padding:8px 10px 10px;border-radius:0;background:none;box-shadow:inset 0 -1px 0 rgba(31,26,24,.14)}
+[data-visual=card] .vk-hook>small{color:#7a5a1e}[data-visual=card] .vk-hook p{color:rgba(31,26,24,.68)}
+[data-visual=card] .vk-phone .vk-cta,[data-visual=card] .vk-cta{background:#1f1a18;color:#f6d67e}[data-visual=card] .vk-progress{background:rgba(31,26,24,.14)}[data-visual=card] .vk-progress i{background:#1f1a18}
+
+/* Hero 3: no container, massive type on the backdrop. */
+[data-visual=type] .vk-hero{padding:0;color:var(--ink);background:none;box-shadow:none}
+[data-visual=type] .vk-status-card{order:2;padding:12px 0;border-radius:0;color:var(--ink);background:none;box-shadow:inset 0 1px 0 var(--line)}
+[data-visual=type] .vk-hero{display:flex;flex-direction:column}
+[data-visual=type] .vk-hook{padding:8px 0 14px}[data-visual=type] .vk-hook img{display:none}[data-visual=type] .vk-hook>small{color:var(--sub)}
+.vk-phone[data-visual=type] .vk-hook h2{font-size:38px;line-height:44px;letter-spacing:-1.2px}[data-visual=type] .vk-hook p{color:var(--sub)}
+[data-visual=type] .vk-cta{background:var(--ink);color:var(--bg)}[data-visual=type] .vk-progress{background:var(--line)}[data-visual=type] .vk-progress i{background:var(--ink)}
+
+/* Hero 4: the tier progress ring leads, the hook sits under it. */
+[data-visual=ring] .vk-status-card{flex-wrap:wrap;justify-content:center;padding:14px 12px 10px;text-align:center}
+[data-visual=ring] .vk-member{order:1;width:100%;align-items:center;margin-top:-82px;padding-bottom:42px}
+[data-visual=ring] .vk-member strong{font-size:20px;line-height:24px}
+[data-visual=ring] .vk-pay{order:2;align-items:center;text-align:center}
+.vk-ring{width:132px;height:132px;border-radius:50%;background:conic-gradient(from 220deg,#1f1a18 calc(var(--progress)*.78),rgba(31,26,24,.14) 0 78%,transparent 0);-webkit-mask:radial-gradient(closest-side,transparent calc(100% - 7px),#000 calc(100% - 6px));mask:radial-gradient(closest-side,transparent calc(100% - 7px),#000 calc(100% - 6px))}
+[data-visual=ring] .vk-hook img,[data-visual=ring] .vk-progress{display:none}
+.vk-phone[data-visual=ring] .vk-hook h2{font-size:22px;line-height:28px}
+
+.vk-mine{padding-top:24px}.vk-mine h2{padding:0 22px 12px}.vk-mine>div{display:flex;gap:10px;overflow-x:auto;padding:0 22px 8px;scrollbar-width:none}.vk-mine>div::-webkit-scrollbar{display:none}
+.vk-mine button{display:flex;flex:0 0 150px;flex-direction:column;gap:2px;height:132px;padding:12px;border-radius:20px;background:var(--surface);box-shadow:0 1px 2px rgba(31,26,24,.04),0 6px 14px rgba(31,26,24,.06);corner-shape:superellipse(1.6)}
+.vk-mine small{padding-top:6px;color:var(--sub);font-size:11px;line-height:14px;font-weight:500}.vk-mine strong{font-size:14px;line-height:18px;font-weight:600}.vk-mine em{color:var(--sub);font-size:12px;line-height:16px;font-style:normal}
+.vk-section{padding:16px 22px 0}.vk-section h2{padding-bottom:12px}
+.vk-row{display:flex;align-items:center;gap:12px;width:100%;padding:10px 0}.vk-row>span{display:flex;flex:1;flex-direction:column;gap:2px;min-width:0}.vk-row small{color:var(--sub);font-size:12px;line-height:16px}.vk-row strong{font-size:14px;line-height:20px;font-weight:600}.vk-row>svg:last-child{flex:none;color:var(--sub)}
+.vk-services{padding-top:24px}.vk-services>div{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 8px}.vk-services button{display:flex;flex-direction:column;align-items:center;justify-content:space-between;height:64px}.vk-services small{font-size:12px;line-height:16px;font-weight:500;white-space:nowrap}
+
+.vk-bar-fade{position:absolute;inset:auto 0 0;z-index:4;height:96px;background:linear-gradient(to top,var(--bg) 30%,transparent);pointer-events:none}
+.vk-bar{position:absolute;left:22px;right:22px;bottom:20px;z-index:5;display:flex;align-items:center;height:62px;padding:4px;border-radius:31px;background:rgba(255,255,255,.58);-webkit-backdrop-filter:blur(28px) saturate(180%);backdrop-filter:blur(28px) saturate(180%);box-shadow:inset 0 0 0 .5px rgba(255,255,255,.5),0 2px 5px rgba(31,26,24,.06),0 12px 28px rgba(31,26,24,.12)}
+.vk-page[data-mode=dark] .vk-bar{background:rgba(38,38,38,.72);box-shadow:inset 0 0 0 .5px rgba(255,255,255,.14),0 12px 30px rgba(0,0,0,.5)}
+.vk-bar>button,.vk-bar>span{display:flex;flex:1 1 0;min-width:0;align-items:center;justify-content:center}
+.vk-bar>button{flex-direction:column;gap:1px;height:54px;border-radius:27px;color:var(--sub)}.vk-bar>button[aria-current=page]{background:var(--line);color:var(--ink)}.vk-bar small{font-size:10px;line-height:12px;font-weight:600;white-space:nowrap}
+.vk-bar>span button{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border:1px solid transparent;border-radius:var(--radius-14);color:var(--color-grey-950);background:radial-gradient(90% 70% at 28% 8%,color-mix(in srgb,var(--color-yellow-50) 70%,transparent),transparent 72%) padding-box,linear-gradient(145deg,var(--color-yellow-100),var(--color-orange-200) 48%,var(--color-yellow-600)) padding-box,linear-gradient(135deg,var(--color-yellow-50),var(--color-yellow-600) 28%,var(--color-orange-100) 52%,var(--color-yellow-700) 76%,var(--color-yellow-200)) border-box;box-shadow:inset 0 1px 0 color-mix(in srgb,var(--color-yellow-50) 65%,transparent),inset 0 -1px 0 color-mix(in srgb,var(--color-yellow-700) 40%,transparent),0 2px 6px color-mix(in srgb,var(--color-grey-1000) 22%,transparent);corner-shape:superellipse(1.6)}
+.vk-indicator{position:absolute;left:50%;bottom:6px;z-index:6;width:139px;height:5px;margin-left:-69.5px;border-radius:5px;background:var(--ink)}
+@media (max-width:760px){.vk-page{flex-direction:column;align-items:center}.vk-left{width:390px}}
+
+/* Fit: the points stay inside the ring; a two-line voucher title stays inside its card. */
+.vk-ring{width:156px;height:156px}
+[data-visual=ring] .vk-member{margin-top:-98px;padding-bottom:54px}
+[data-visual=ring] .vk-member strong{font-size:17px;line-height:22px}
+.vk-mine button{height:auto;min-height:150px}
+
+/* Numbered approach menu and frame name, same as the Header visual menu on Home VinPay. */
+.vk-numbers{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.vk-numbers button{display:flex;align-items:center;justify-content:center;height:40px;border-radius:12px;background:#f5f4f2;font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}.vk-numbers button[aria-pressed=true]{background:#1f1a18;color:#fff}
+.vk-phone-col{flex:none;width:390px}.vk-frame-name{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 6px;padding:0 4px 12px;color:#1f1a18;font-size:14px;line-height:20px;font-weight:600}.vk-frame-name small{width:100%;color:#6f6863;font-size:12px;line-height:16px;font-weight:400}
+.vk-page[data-framed] .vk-phone-col{width:auto}
+
+
+/* Option column, measured from Home VinPay: 280 wide, 12 gap, 22 radius, 17 titles, 34 pills. */
+.vk-page{min-height:100vh;gap:32px;padding:24px 16px;background:#e9e7e4}
+.vk-panel{display:grid;gap:18px;padding:20px;border-radius:22px}.vk-panel h1{padding:0;font-size:17px;line-height:26px;font-weight:400}
+.vk-mode{height:44px;padding:4px;border-radius:14px;background:#f5f4f2}.vk-mode button{align-items:center;height:36px;padding:0;border-radius:10px}
+.vk-control>p{padding-bottom:8px;font-size:13px;line-height:20px}.vk-control+.vk-control{padding-top:0}
+.vk-control>div{gap:6px}.vk-control button{display:flex;align-items:center;gap:6px;height:34px;padding:7px 12px;border-radius:17px;background:none;font-size:13px;line-height:20px;font-weight:600}.vk-control button i{width:10px;height:10px;border-radius:50%}
+.vk-numbers{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.vk-numbers button{height:40px;border-radius:12px;background:#f5f4f2}
+.vk-frame-name{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;height:40px;padding:0 0 8px;color:#1f1a18;font-size:14px;line-height:20px;font-weight:600}.vk-frame-name b{font-weight:700}.vk-frame-name small{width:auto;margin-left:auto;color:#6d6663;font-size:12px;font-weight:400;white-space:nowrap}
+.vk-page[data-framed]{padding:0;min-height:0;background:var(--bg)}.vk-page[data-framed] .vk-phone{border-radius:0}.vk-page[data-framed] .vk-phone-col{width:auto}
+
+.vk-archive summary{color:#6d6663;font-size:13px;cursor:pointer}.vk-archive .vk-numbers{padding-top:10px}
+
+.vk-panel h1 small{display:block;color:#6d6663;font-size:12px;line-height:16px}.vk-panel [role=group].vk-numbers{grid-template-columns:repeat(4,1fr)}
+
+.vk-panel [role=group].vk-numbers-5{grid-template-columns:repeat(5,1fr)}
+.vk-why{display:flex;flex-direction:column;gap:2px;font-size:13px;line-height:18px;color:#6f6863}.vk-why b{color:#1f1a18;font-weight:600}.vk-why a{color:#1f1a18;text-decoration:underline}
+
+/* Verdict beside the phone. */
+.vk-notes{position:sticky;top:64px;flex:none;align-self:flex-start;width:280px;margin-top:40px}.vk-notes dl{display:grid;gap:4px}.vk-notes dt{padding-top:10px;color:#6d6663;font-size:12px;line-height:16px;font-weight:600}.vk-notes dd{color:#1f1a18;font-size:14px;line-height:20px}
+@media (max-width:1040px){.vk-page{flex-wrap:wrap}.vk-notes{position:static;margin-top:0}}
+
+.vk-launch{position:absolute;inset:0;z-index:80;overflow:hidden;border-radius:inherit}.vk-launch .glass-launch{width:100%;height:100%;aspect-ratio:auto}.vk-launch .glass-launch__curtain{background:var(--glass-prism-black)}
+
+/* Completed explorations live below the preview workspace. */
+.vk-page{flex-wrap:wrap}
+.vk-confirmed{flex:0 0 100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,280px));justify-content:center;align-items:start;gap:12px;padding-top:32px}
+.vk-confirmed .vk-panel{width:100%}
+/* Keep Home geometry stable underneath the loading crossfade. */
+/* Shared VinClub / VinPay CTA finish. */
+.vk-page .vk-phone :is(button[data-variant="primary"],.vk-cta,.vh-cta,.vx-primary,.vs-cta,.vs-pill,.vs-hook-action,.vr-primary,.aw-primary,.ve-ticket-cta,.vr-experience-cta,.vo-wallet-detail,.rk-vpoint-actions button,.rk-vpoint-sheet button[type="submit"]):not(:disabled):not([data-intent="danger"]){background:var(--vinclub-cta-bg)!important;color:var(--vinclub-cta-fg)!important}
+.vk-page .vk-phone :is(button[data-variant="primary"],.vs-hook-action,.aw-primary,.ve-ticket-cta,.vr-experience-cta,.vo-wallet-detail,.rk-vpoint-actions button,.rk-vpoint-sheet button[type="submit"]):not(:disabled):not([data-intent="danger"])>span:first-child{background:var(--vinclub-cta-bg)!important}
+
+.vk-page{--vinclub-cta-bg:color-mix(in srgb,var(--color-grey-1000) 82%,var(--color-yellow-950));--vinclub-cta-fg:var(--color-orange-200)}
+
+/* Seasonal game entry floats above the Home navigation. */
+.vk-page .vk-phone .vk-game-fab{position:absolute;right:22px;bottom:106px;z-index:25;min-height:44px;padding:10px 14px;color:var(--vinclub-cta-fg);box-shadow:0 4px 16px color-mix(in srgb,var(--color-grey-1000) 20%,transparent)}
+.vk-game-fab>span:first-child{background:var(--vinclub-cta-bg)}
+.vk-game-fab>span:last-child{gap:8px}
+
+/* Character and game title are one transparent game entry asset. */
+.vk-page .vk-phone .vk-game-fab{right:14px;bottom:106px;width:88px;height:88px;min-height:88px;padding:0;background:transparent;color:inherit;box-shadow:none;filter:drop-shadow(0 4px 6px color-mix(in srgb,var(--color-grey-1000) 16%,transparent));transition:transform 180ms ease}
+.vk-game-fab>span:first-child{background:transparent!important}
+.vk-game-fab img{display:block;width:88px;height:88px;object-fit:contain}
+.vk-game-fab:hover{transform:translateY(-2px)}
+.vk-game-fab:active{transform:scale(.96)}
+@media(prefers-reduced-motion:reduce){.vk-page .vk-phone .vk-game-fab{transition:none}.vk-game-fab:hover,.vk-game-fab:active{transform:none}}
+/* The shrinking splash curtain must reveal the Home skeleton beneath it. */
+.vk-launch .glass-launch{background:transparent}
+.vk-phone .vc-inactive-header{align-items:flex-start;padding-inline:22px;gap:8px;padding-bottom:24px}
+.vc-inactive-header>small{opacity:.65;font-size:12px}
+.vk-phone .vc-inactive-header h1{font-size:25px;line-height:32px;font-weight:600;letter-spacing:-.5px}
+.vc-inactive-header>p{max-width:280px;font-size:13px;line-height:20px;opacity:.7}
+.vk-phone .vc-join-cta{margin-top:4px;padding:8px 14px;color:var(--vinclub-cta-fg)}
+.vc-join-cta>span:first-child{background:var(--vinclub-cta-bg)}
+.vc-activation{position:absolute;inset:54px 0 0;z-index:35;display:flex;flex-direction:column;background:var(--background)}
+.vc-activation-nav{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;height:56px;flex:none;padding-inline:22px}
+.vc-activation-nav h1{font-size:17px;font-weight:600;text-align:center}
+.vc-activation-nav button{padding:0;width:44px;height:44px}
+.vc-activation-nav button>span:first-child{background:transparent}
+.vc-activation-symbol{color:var(--color-orange-200);margin-top:20px;margin-bottom:24px}
+.vc-activation-eyebrow{font-size:12px;color:var(--foreground-secondary);line-height:18px;margin-bottom:8px}
+.vk-phone .vc-activation h2{font-size:28px;line-height:36px;font-weight:600;letter-spacing:-.6px}
+.vc-activation section>p:last-of-type{font-size:14px;line-height:22px;margin-top:12px;color:var(--foreground-secondary)}
+.vc-activation-perks{display:flex;flex-direction:column;gap:20px;padding-top:32px;font-size:13px;line-height:20px}
+.vc-activation-perks span{display:flex;align-items:center;gap:12px}
+.vc-activation-perks svg{flex:none;color:var(--color-orange-200)}
+.vc-activation-footer{margin-top:auto;padding-top:24px;padding-bottom:8px;display:flex;flex-direction:column;gap:24px;align-items:center}
+.vc-activation-footer button{width:100%}
+.vc-activation-footer>div{border-radius:var(--radius-8)}
+.vk-phone:has(.vc-activation) .vk-bar,.vk-phone:has(.vc-activation) .vk-bar-fade,.vk-phone:has(.vc-activation)>.vk-indicator{visibility:hidden}
+.vk-page .vk-phone .vk-game-fab{width:52px;height:52px;min-height:52px;right:14px;bottom:108px;filter:drop-shadow(0 2px 4px color-mix(in srgb,var(--color-grey-1000) 12%,transparent)) saturate(.75)}
+.vk-page .vk-phone .vk-game-fab img{width:52px;height:52px}
+
+/* Seasonal game entry belongs only to the unobstructed VinClub Home. */
+.vk-phone:not([data-tab="home"]) .vk-game-fab,
+.vk-phone:has(.mini-app,.vr-open[aria-modal="true"],.vr-wallet-activation,.vr-story-viewer,[role="dialog"][aria-modal="true"])>.vk-game-fab{display:none}

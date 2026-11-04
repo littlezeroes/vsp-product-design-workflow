@@ -1,0 +1,173 @@
+.vk-phone .rk-integrated { position:absolute; inset:0; z-index:40; display:block; min-height:0; padding:0; border-radius:inherit; background:var(--bg); }
+.rk-integrated > .rk-phone { width:100%; height:100%; border-radius:inherit; }
+.rk-integrated > .rk-phone:not(.aw) { --ink:var(--foreground); --sub:var(--foreground-secondary); --card:var(--secondary); background:var(--bg); }
+.rk-integrated .rk-scroll { padding-bottom:94px; }
+.vk-phone .rk-integrated .rk-hero h2 { font-size:40px; line-height:48px; }
+.vk-phone .rk-integrated .rk-section h3 { font-size:17px; }
+.rk-integrated .rk-badge-picker { position:absolute; z-index:6; bottom:28px; left:22px; right:22px; padding:12px; background:var(--secondary); color:var(--foreground); border-radius:var(--radius-14); box-shadow:0 4px 24px color-mix(in srgb,var(--foreground) 10%,transparent); font-size:12px; }
+.rk-badge-picker summary { cursor:pointer; }
+.rk-badge-picker > div { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+.rk-badge-picker button[aria-pressed=true] { box-shadow:inset 0 0 0 1px var(--foreground); }
+.rk-integrated .aw-actions button { text-align:center; }
+
+.rk-integrated > .rk-phone:not(.aw) { --gold:var(--foreground); }
+.rk-integrated .rk-hero-badge { filter:drop-shadow(0 12px 18px color-mix(in srgb,var(--foreground) 14%,transparent)); }
+
+.vk-phone .rk-integrated .aw-primary { background:var(--ink); color:var(--card); }
+.vk-phone .rk-integrated .aw-secondary { background:var(--fill); color:var(--ink); }
+
+/* Membership is tab content inside the host scroller; host owns status and bottom navigation. */
+.vk-phone .rk-integrated:not([data-award=true]){position:relative;inset:auto;z-index:auto;border-radius:0;color:var(--ink)}
+.rk-integrated:not([data-award=true])>.rk-phone{height:auto;overflow:visible;border-radius:0}
+.rk-integrated:not([data-award=true]) .rk-scroll{height:auto;overflow:visible;padding-bottom:24px}
+.rk-integrated:not([data-award=true]) .rk-status,.rk-integrated:not([data-award=true]) .rk-indicator{display:none}
+.rk-integrated:not([data-award=true]) .rk-badge-picker{position:relative;inset:auto;margin:0 22px 24px;box-shadow:none}
+.rk-integrated .rk-section{padding-inline:22px}
+.rk-integrated .rk-hero{padding-inline:22px}
+.vk-bar button[data-member-tab] small{font-size:9px;letter-spacing:-.2px}
+.vk-phone .rk-integrated{--ink:inherit;--sub:inherit;--foreground:var(--ink);--foreground-secondary:var(--sub);--secondary:var(--surface);--fill:var(--line);--card:var(--surface)}
+.vk-page .vk-phone[data-tab=member] .vk-scroll{background:var(--bg)}
+.vk-page .vk-phone[data-tab=member] .vk-status{background:var(--bg);color:var(--ink)}
+
+/* The rank tab keeps its own dark palette in either host appearance. */
+.vk-page .vk-phone[data-tab=member]{--bg:var(--background);--ink:var(--foreground);--sub:var(--foreground-secondary);--surface:var(--secondary);--line:var(--btn-secondary-bg);--wash:var(--secondary);color:var(--foreground)}
+.vk-phone[data-tab=member] .rk-integrated{--ink:var(--color-grey-00);--sub:var(--color-grey-400)}
+
+/* Compact dark rank summary, followed by a light benefits surface. */
+.vk-phone .rk-integrated .rk-hero{padding-top:8px;padding-bottom:24px;background:none;gap:4px}
+.vk-phone .rk-integrated .rk-hero-badge{width:108px;height:108px;filter:none}
+.vk-phone .rk-integrated .rk-hero h2{font-size:30px;line-height:36px;font-weight:600}
+.rk-integrated .rk-celebrate{font-size:12px}
+.rk-integrated .rk-progress{margin-top:12px;padding:12px;border-radius:var(--radius-14);box-shadow:none}
+.rk-integrated .rk-progress small{font-size:11px;line-height:16px}
+.rk-integrated .rk-top{padding-top:8px}
+.rk-integrated .rk-light-content{--background:var(--color-grey-00);--foreground:var(--color-grey-1000);--foreground-secondary:var(--color-grey-500);--secondary:var(--color-grey-50);--ink:var(--foreground);--sub:var(--foreground-secondary);--card:var(--secondary);--gold:var(--foreground);--fill:var(--secondary);background:var(--background);color:var(--foreground);padding-bottom:24px}
+.rk-integrated .rk-light-content .rk-list{background:transparent;box-shadow:none;gap:8px}
+.rk-integrated .rk-light-content .rk-benefit{padding:10px 0;box-shadow:none;grid-template-columns:32px 1fr 24px}
+.rk-integrated .rk-light-content .rk-brand{width:32px;height:32px;padding:3px;background:var(--secondary);border-radius:var(--radius-8)}
+.rk-integrated .rk-light-content .rk-mark{width:24px;height:24px}
+.rk-integrated .rk-light-content .rk-tier-card{border-radius:var(--radius-14);box-shadow:none}
+.rk-integrated .rk-light-content .rk-tier-card[data-state=current]{box-shadow:inset 0 0 0 1px var(--foreground-secondary)}
+.rk-integrated .rk-light-content .rk-badges figure{background:transparent;padding:8px 4px}
+.rk-integrated .rk-light-content .rk-badges img{width:64px;height:64px;filter:grayscale(1);opacity:.4}
+.rk-integrated .rk-light-content .rk-badges figure[data-earned] img{filter:none;opacity:1}
+.rk-integrated:not([data-award=true]) .rk-scroll{background:var(--color-grey-00);padding-bottom:0}
+.rk-integrated .rk-nav,.rk-integrated .rk-hero{background:var(--bg)}
+.rk-integrated:not([data-award=true]) .rk-badge-picker{margin-bottom:0;padding-bottom:24px;background:var(--color-grey-50);color:var(--color-grey-1000)}
+.vk-page .vk-phone[data-tab=member] .vk-scroll{background:var(--color-grey-00)}
+.vk-page .vk-phone[data-tab=member] .vk-bar{--ink:var(--color-grey-1000);--sub:var(--color-grey-500);--line:color-mix(in srgb,var(--ink) 8%,transparent);background:color-mix(in srgb,var(--color-grey-00) 88%,transparent);box-shadow:0 4px 24px color-mix(in srgb,var(--ink) 10%,transparent)}
+.vk-phone[data-tab=member] .vk-bar-fade{background:linear-gradient(to top,var(--color-grey-00) 20%,transparent)}
+.vk-phone[data-tab=member] .vk-indicator{background:var(--color-grey-1000)}
+.vk-phone[data-tab=member] .vk-bar button[data-member-tab] small{font-size:10px;letter-spacing:0}
+.vk-phone .rk-integrated .rk-nav,.vk-phone .rk-integrated .rk-hero{background:var(--color-grey-1000);color:var(--color-grey-00)}
+
+.rk-integrated .rk-vpoint{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:0;padding-bottom:24px;background:var(--color-grey-1000);color:var(--color-grey-00)}
+.rk-vpoint>div:first-child{display:flex;flex-direction:column;gap:4px}.rk-vpoint p{font-size:12px;color:var(--foreground-secondary)}
+.rk-vpoint strong{font-size:28px;line-height:34px;letter-spacing:-.6px;font-weight:600}.rk-vpoint strong small{font-size:12px;font-weight:400;letter-spacing:0}.rk-vpoint>div>span{font-size:10px;color:var(--foreground-secondary)}
+.rk-vpoint-actions{display:flex;gap:8px}.rk-integrated .rk-vpoint-actions button{padding:8px 12px;min-height:36px;font-size:12px}
+.rk-vpoint-message{flex-basis:100%}
+.rk-vpoint-dialog{position:absolute;inset:0;z-index:60;--background:var(--color-grey-00);--foreground:var(--color-grey-1000);--foreground-secondary:var(--color-grey-500);--secondary:var(--color-grey-50);--btn-secondary-bg:var(--secondary);color:var(--foreground)}
+.rk-vpoint-dialog>div{position:absolute}
+.rk-vpoint-sheet form{display:flex;flex-direction:column;gap:16px;padding-block:12px}
+.rk-vpoint-sheet header{display:flex;align-items:center;justify-content:space-between;gap:12px}.rk-vpoint-sheet h2{font-size:20px;font-weight:600}
+.rk-vpoint-sheet p{font-size:12px;line-height:18px;color:var(--foreground-secondary)}
+.rk-integrated .rk-vpoint-sheet button{padding:8px 16px;min-height:40px}.rk-integrated .rk-vpoint-sheet button[type=submit]{min-height:48px}
+
+.vk-phone[data-tab=member]{transform:translateZ(0)}
+.rk-vpoint-dialog{position:fixed}
+
+.vk-phone:has(.rk-vpoint-dialog) .vk-bar,.vk-phone:has(.rk-vpoint-dialog) .vk-bar-fade,.vk-phone:has(.rk-vpoint-dialog) .vk-indicator{visibility:hidden}
+
+/* A compact current-tier card and one tier detail panel at a time. */
+.vk-phone .rk-integrated .rk-current-card{width:100%;padding:16px;background:var(--color-grey-900);color:var(--color-grey-00);text-align:left}
+.rk-current-summary{display:flex;align-items:center;gap:16px}
+.vk-phone .rk-integrated .rk-current-summary .rk-hero-badge{width:80px;height:80px;flex:none}
+.rk-current-summary>div{flex:1;min-width:0}
+.rk-current-summary .rk-eyebrow{margin:0 0 4px;color:var(--color-grey-400)}
+.vk-phone .rk-integrated .rk-current-card h2{font-size:24px;line-height:32px}
+.rk-page .rk-current-card .rk-celebrate{margin-top:4px;min-height:32px;height:auto;padding:0;background:transparent;color:inherit;font-size:11px;white-space:normal;text-align:left}
+.rk-current-card .rk-celebrate>span:first-child{background:transparent}
+.rk-current-card .rk-top{margin-top:12px;color:var(--color-grey-400);font-size:12px;line-height:20px}
+.rk-current-card .rk-progress{background:var(--color-grey-800);color:inherit}
+.rk-current-card .rk-progress small,.rk-current-card .rk-progress-row b{color:var(--color-grey-400)}
+.rk-page .rk-tier-tabs{gap:16px;margin-bottom:12px;--foreground:var(--color-grey-1000);--foreground-secondary:var(--color-grey-500)}
+.rk-page .rk-tier-tabs button{min-height:44px;padding:12px 0;flex:1;justify-content:center}
+.rk-tier-panel .rk-tier-card{width:100%;min-width:0}
+.vk-page .vk-phone[data-tab=member]{background:var(--color-grey-00)}
+.vk-page .vk-phone[data-tab=member] .vk-bar-fade{height:112px;background:linear-gradient(to bottom,color-mix(in srgb,var(--color-grey-00) 0%,transparent),var(--color-grey-00) 48%,var(--color-grey-00));box-shadow:none}
+
+.rk-rank-progress{appearance:none;display:block;width:100%;height:6px;margin:12px 0 10px;overflow:hidden;border:0;border-radius:var(--radius-8);background:var(--color-grey-700);color:var(--color-grey-00)}
+.rk-rank-progress::-webkit-progress-bar{background:var(--color-grey-700);border-radius:inherit}
+.rk-rank-progress::-webkit-progress-value{background:var(--color-grey-00);border-radius:inherit}
+.rk-rank-progress::-moz-progress-bar{background:var(--color-grey-00);border-radius:inherit}
+.rk-rank-progress:indeterminate{opacity:.6}
+.rk-tier-panel .rk-tier-card{box-shadow:none!important}
+.rk-tier-benefits{padding-top:12px}
+.rk-tier-benefits .rk-benefit{padding-block:10px}
+
+/* The tier tabs already identify the selected benefits. */
+.rk-tier-panel .rk-tier-benefits{padding-top:0}
+.rk-current-summary{align-items:flex-start}
+.rk-current-summary>div{padding-top:2px}
+.rk-current-summary .rk-eyebrow,.vk-phone .rk-current-summary h2{text-align:left}
+
+/* Shared screen edges: 22px outside, 12px inside cards. */
+.vk-phone .rk-integrated .rk-current-card{padding:12px;border-radius:var(--radius-28)}
+.rk-current-summary{gap:12px}
+.rk-current-summary>div{padding-top:0}
+.vk-phone .rk-integrated .rk-current-card .rk-progress{padding:0;margin-top:16px;background:transparent;border-radius:0}
+.rk-current-card .rk-progress-row{align-items:baseline;gap:12px}
+.rk-current-card .rk-progress-row b{flex:none;font-size:11px;line-height:16px}
+.rk-current-card .rk-progress small{display:block;text-align:left}
+.rk-page .rk-tier-tabs{gap:0}
+.rk-page .rk-tier-tabs button{justify-content:flex-start}
+.rk-tier-panel .rk-tier-card{padding:12px}
+.rk-tier-panel .rk-tier-benefits{width:100%}
+
+/* Card backgrounds extend beyond the content column; text stays at x=22px. */
+.vk-phone .rk-integrated .rk-current-card{width:calc(100% + 24px);margin-inline:-12px;flex:none}
+.rk-tier-panel .rk-tier-card{width:calc(100% + 24px);margin-inline:-12px}
+
+.vk-phone .rk-integrated .rk-nav-tab{display:flex;align-items:center;height:56px;padding-inline:22px}.rk-integrated .rk-nav-tab h1{text-align:left;font-size:24px;line-height:32px;font-weight:600}
+
+/* Award is a full screen celebration, with its own home indicator. */
+.vk-phone:has(.rk-integrated[data-award=true]) .vk-bar,.vk-phone:has(.rk-integrated[data-award=true]) .vk-bar-fade,.vk-phone:has(.rk-integrated[data-award=true]) .vk-indicator{display:none}
+.vk-phone .rk-integrated[data-award=true]{position:fixed;inset:0;z-index:80}
+.rk-integrated .aw-stage{background:radial-gradient(ellipse at 50% 42%,color-mix(in srgb,var(--color-yellow-700) 18%,transparent),transparent 55%),var(--color-grey-1000)}
+.rk-integrated .aw-spot{top:-60px;width:220px;height:610px;filter:blur(8px);animation:aw-spot-sweep 5s ease-in-out infinite alternate}
+.rk-integrated .aw-spot::before{left:0;opacity:.85;background:linear-gradient(color-mix(in srgb,var(--color-orange-100) 70%,transparent),color-mix(in srgb,var(--color-yellow-300) 22%,transparent) 55%,transparent);filter:blur(10px)}
+.rk-integrated .aw-spot:nth-child(2){opacity:.65;animation-delay:-2s}
+.rk-integrated .aw-spot:nth-child(3){animation-delay:-4s}
+.aw-confetti-piece{position:absolute;left:var(--cx);top:-20px;width:5px;height:10px;border-radius:2px;background:var(--color-yellow-300);animation:aw-celebration-fall 4.6s var(--delay) ease-in infinite;opacity:0}
+.aw-confetti-piece[data-tone="1"]{background:var(--color-orange-200);width:7px;height:7px}
+.aw-confetti-piece[data-tone="2"]{background:var(--color-grey-00);width:3px;height:8px}
+.aw-confetti-piece[data-tone="3"]{background:var(--color-yellow-700)}
+.rk-integrated .aw-new-rank{width:230px;height:230px;object-fit:contain;filter:drop-shadow(0 12px 28px color-mix(in srgb,var(--color-yellow-700) 20%,transparent))}
+@keyframes aw-celebration-fall{0%{opacity:0;transform:translate3d(0,-20px,0) rotate(0)}10%{opacity:.9}80%{opacity:.75}100%{opacity:0;transform:translate3d(25px,760px,0) rotate(var(--spin))}}
+@keyframes aw-spot-sweep{from{transform:translateX(-50%) rotate(calc(var(--a) - 8deg));opacity:.4}to{transform:translateX(-50%) rotate(calc(var(--a) + 8deg));opacity:.85}}
+@media(prefers-reduced-motion:reduce){.rk-integrated .aw-spot{animation:none;opacity:.65}.aw-confetti-piece{animation:none;display:none}}
+.rk-integrated .aw-close{z-index:5}
+/* Equal-width tier labels are centred within their tabs. */
+.rk-page .rk-tier-tabs button{flex:1;justify-content:center;text-align:center}
+.rk-integrated .aw-perks figure>.aw-perk-icon{display:grid;place-items:center;width:44px;height:44px;padding:0;border-radius:var(--radius-14);background:linear-gradient(145deg,color-mix(in srgb,var(--color-yellow-200) 20%,var(--color-grey-900)),var(--color-grey-950));color:var(--color-yellow-200);box-shadow:inset 0 1px 0 color-mix(in srgb,var(--color-yellow-100) 35%,transparent),0 4px 10px color-mix(in srgb,var(--color-grey-1000) 30%,transparent)}
+.aw-rank-object{position:relative;display:grid;place-items:center;width:240px;height:240px;transform-style:preserve-3d;animation:aw-metal-turn 9s ease-in-out infinite}
+.aw-rank-object::after{content:"";position:absolute;inset:15%;border-radius:50%;background:linear-gradient(115deg,transparent 30%,color-mix(in srgb,var(--color-grey-00) 24%,transparent),transparent 65%);mix-blend-mode:screen;pointer-events:none;animation:aw-metal-glint 5s ease-in-out infinite}
+.aw-rank-object[data-metal=silver]{filter:drop-shadow(0 10px 18px color-mix(in srgb,var(--color-grey-300) 22%,transparent))}
+.aw-rank-object[data-metal=platinum]{filter:drop-shadow(0 10px 20px color-mix(in srgb,var(--color-blue-200) 30%,transparent))}
+@keyframes aw-metal-turn{0%,100%{transform:perspective(700px) rotateY(-22deg) rotateX(6deg) rotateZ(-3deg)}50%{transform:perspective(700px) rotateY(24deg) rotateX(-5deg) rotateZ(3deg)}}
+@keyframes aw-metal-glint{0%,100%{opacity:0;transform:translateX(-35%)}45%,55%{opacity:.8}80%{opacity:0;transform:translateX(35%)}}
+@media(prefers-reduced-motion:reduce){.aw-rank-object,.aw-rank-object::after{animation:none}}
+
+/* Quiet studio illumination, localised behind the object. */
+.rk-integrated .aw-stage{background:radial-gradient(ellipse at 50% 43%,color-mix(in srgb,var(--color-yellow-100) 7%,transparent),transparent 38%),var(--color-grey-1000)}
+.rk-integrated .aw-floor{opacity:.35;filter:blur(16px)}
+.aw-confetti-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+.rk-integrated .aw-perks figure>.aw-perk-icon{width:56px;height:56px;background:transparent;box-shadow:none;border-radius:0}
+.rk-integrated .aw-perks figure>.aw-perk-icon img{width:56px;height:56px;object-fit:contain}
+.rk-integrated .aw-rank-object{animation:none}
+.rk-integrated .aw-rank-object::after{display:none}
+/* One uninterrupted rank header surface; no separators around the title. */
+.vk-page .vk-phone[data-tab=member] .vk-status,
+.vk-phone[data-tab=member] .rk-integrated:not([data-award=true]) .rk-nav-tab,
+.vk-phone[data-tab=member] .rk-integrated:not([data-award=true]) .rk-hero{background:var(--color-grey-1000);border:0;outline:0;box-shadow:none}
+.vk-phone[data-tab=member] .rk-nav-tab::before,.vk-phone[data-tab=member] .rk-nav-tab::after,.vk-phone[data-tab=member] .vk-status::before,.vk-phone[data-tab=member] .vk-status::after{content:none;box-shadow:none;border:0}

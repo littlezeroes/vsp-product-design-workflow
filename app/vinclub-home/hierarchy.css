@@ -1,0 +1,113 @@
+.vk-hierarchy-options{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.vk-hierarchy-options>button{height:auto;min-height:58px;padding:10px 12px;justify-content:flex-start;text-align:left;white-space:normal}
+.vk-hierarchy-options>button>span:last-child{width:100%;gap:10px;align-items:flex-start}
+.vk-hierarchy-options>button>span:last-child>span:first-child{font-size:11px;line-height:18px;min-width:14px;color:var(--foreground-secondary)}
+.vk-hierarchy-options>button>span:last-child>span:last-child{display:flex;flex-direction:column;gap:3px}
+.vk-hierarchy-options strong{font-size:12px;line-height:18px;font-weight:600}
+.vk-hierarchy-options small{font-size:11px;line-height:16px;color:var(--foreground-secondary)}
+.vk-hierarchy-options button[aria-pressed=true]{box-shadow:inset 0 0 0 1px var(--foreground)}
+/* Each option is a full visual system; type and geometry are unchanged. */
+.vk-page[data-hierarchy] .vk-phone[data-tab=home]{--ch-header:var(--color-grey-950);--ch-ink:var(--color-grey-00);--ch-sub:var(--color-grey-400);--ch-point:var(--ch-ink);--ch-rank:var(--ch-ink);--ch-sheet:var(--color-grey-50);--v-paper:var(--color-grey-00);--v-wallet:var(--color-grey-950);--v-wallet-light:var(--color-grey-800);--v-wallet-ink:var(--color-grey-00);--v-metal:var(--color-orange-200);--v-clasp:var(--color-grey-1000);--v-icon-filter:saturate(.65);--v-art-filter:saturate(.65);--v-photo-filter:saturate(.6) contrast(.9);--v-edge:var(--color-orange-200);--v-story-ink:var(--color-grey-950);--v-story-sub:var(--color-grey-700)}
+.vk-page[data-hierarchy="2"] .vk-phone[data-tab=home]{--ch-header:color-mix(in srgb,var(--color-orange-100) 40%,var(--color-grey-50));--ch-ink:var(--color-grey-950);--ch-sub:var(--color-grey-600);--ch-sheet:var(--color-grey-50);--v-paper:color-mix(in srgb,var(--color-orange-100) 24%,var(--color-grey-00));--v-clasp:var(--color-orange-100);--v-metal:var(--color-grey-950);--v-icon-filter:saturate(.55) sepia(.1);--v-photo-filter:saturate(.55) sepia(.08) contrast(.92)}
+.vk-page[data-hierarchy="3"] .vk-phone[data-tab=home]{--ch-point:var(--color-orange-200);--ch-rank:var(--color-orange-200);--ch-sheet:color-mix(in srgb,var(--color-orange-100) 20%,var(--color-grey-50));--v-paper:color-mix(in srgb,var(--color-orange-100) 45%,var(--color-grey-00));--v-icon-filter:saturate(.7) sepia(.15);--v-art-filter:saturate(.65) sepia(.12);--v-story-ink:var(--color-orange-100);--v-story-sub:var(--color-orange-200);--v-photo-filter:saturate(.5) sepia(.15) contrast(.95)}
+.vk-page[data-hierarchy="4"] .vk-phone[data-tab=home]{--ch-header:var(--color-grey-100);--ch-ink:var(--color-grey-950);--ch-sub:var(--color-grey-600);--ch-sheet:var(--color-grey-50);--v-paper:var(--color-grey-00);--v-wallet:var(--color-grey-800);--v-wallet-light:var(--color-grey-700);--v-clasp:var(--color-grey-200);--v-metal:var(--color-grey-950);--v-icon-filter:grayscale(1) brightness(1.04);--v-art-filter:saturate(.3);--v-photo-filter:saturate(.28) contrast(.9);--v-edge:var(--color-grey-300)}
+.vk-page[data-hierarchy="5"] .vk-phone[data-tab=home]{--ch-header:color-mix(in srgb,var(--color-orange-100) 65%,var(--color-grey-50));--ch-ink:var(--color-grey-950);--ch-sub:var(--color-grey-600);--ch-sheet:color-mix(in srgb,var(--color-orange-50) 65%,var(--color-grey-50));--v-paper:var(--color-grey-00);--v-wallet:var(--color-orange-950);--v-wallet-light:color-mix(in srgb,var(--color-orange-900) 65%,var(--color-grey-800));--v-icon-filter:saturate(.5) sepia(.3);--v-art-filter:saturate(.55) sepia(.15);--v-photo-filter:saturate(.6) sepia(.2) contrast(.9);--v-clasp:var(--color-orange-200);--v-metal:var(--color-orange-950)}
+.vk-page[data-hierarchy="6"] .vk-phone[data-tab=home]{--ch-header:var(--color-grey-1000);--ch-point:var(--color-grey-200);--ch-sheet:var(--color-grey-100);--v-wallet:var(--color-grey-1000);--v-wallet-light:var(--color-grey-900);--v-paper:var(--color-grey-00);--v-clasp:var(--color-grey-300);--v-metal:var(--color-grey-1000);--v-icon-filter:grayscale(1) contrast(1.05);--v-art-filter:saturate(.2);--v-photo-filter:grayscale(.7) contrast(.95);--v-edge:var(--color-grey-400);--v-story-ink:var(--color-grey-00);--v-story-sub:var(--color-grey-300)}
+.vk-page[data-hierarchy="7"] .vk-phone[data-tab=home]{--ch-header:color-mix(in srgb,var(--color-teal-100) 12%,var(--color-grey-100));--ch-ink:var(--color-grey-950);--ch-sub:var(--color-grey-600);--ch-sheet:var(--color-grey-50);--v-wallet:color-mix(in srgb,var(--color-teal-950) 30%,var(--color-grey-800));--v-wallet-light:var(--color-grey-700);--v-paper:color-mix(in srgb,var(--color-teal-100) 8%,var(--color-grey-00));--v-icon-filter:grayscale(.9) sepia(.08);--v-art-filter:saturate(.4);--v-photo-filter:saturate(.45) contrast(.88);--v-edge:var(--color-grey-300);--v-clasp:var(--color-grey-200);--v-metal:var(--color-grey-900)}
+.vk-page[data-hierarchy="8"] .vk-phone[data-tab=home]{--ch-header:color-mix(in srgb,var(--color-orange-100) 12%,var(--color-grey-100));--ch-ink:var(--color-grey-950);--ch-sub:var(--color-grey-600);--ch-sheet:var(--color-grey-50);--v-wallet:var(--color-grey-600);--v-wallet-light:var(--color-grey-500);--v-paper:var(--color-grey-00);--v-clasp:var(--color-grey-200);--v-metal:var(--color-grey-950);--v-icon-filter:grayscale(.85) sepia(.08);--v-art-filter:saturate(.35);--v-photo-filter:saturate(.3) sepia(.08) contrast(.88);--v-edge:var(--color-grey-300)}
+
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vk-status{background:var(--ch-header);color:var(--ch-ink)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-stack{background:var(--ch-header)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-stack .vr-hello{color:var(--ch-ink)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-stack .vr-hello>small,.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-member-text>small{color:var(--ch-sub)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-stack .vs-pts[data-member-layout="3"]>.vs-pts-num{color:var(--ch-sub)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-stack .vs-pts[data-member-layout="3"] .vs-pts-num strong{color:var(--ch-point)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-stack .vs-pts[data-member-layout="3"]>.vr-member-subtle[data-tier]{color:var(--ch-rank)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-stack .vr-sheet{background:var(--ch-sheet)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-stack .vr-pouches .vr-pouch[data-kind=wallet] .vr-pouch-cover,.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-fly[data-kind=wallet] .vr-pouch-cover{background:linear-gradient(145deg,var(--v-wallet-light),var(--v-wallet)),url(/vinclub-duo/skin/matte.webp) center/cover;background-blend-mode:multiply;color:var(--v-wallet-ink)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-stack .vr-pouches .vr-pouch[data-kind=wallet] .vr-pouch-cover::before{background:radial-gradient(ellipse,color-mix(in srgb,var(--color-grey-00) 9%,transparent) .6px,transparent 1px) 0 0/3px 4px;opacity:.65}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-stack .vr-pouches .vr-pouch .vr-pouch-snap{background:var(--v-clasp)!important;color:var(--v-metal)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-pouch-snap .vr-snap-logo{background:var(--v-metal)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-vinpay-services img{filter:var(--v-icon-filter)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-vinpay-services[data-service-mode=cards] .vr-service{background:var(--v-paper);box-shadow:none}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-offer-story:not([data-art=xanhsm]){--story-paper:var(--v-paper)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-offer-art{filter:var(--v-art-filter)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-fy-grid>.vr-experience-card>img,.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-experience-detail-image{filter:var(--v-photo-filter)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-home-story-frame{background:linear-gradient(135deg,var(--v-edge),var(--color-grey-00),var(--v-edge))}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-home-story-frame .vr-home-story{box-shadow:inset 0 0 0 2px var(--ch-sheet);background:var(--ch-sheet)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-home-story-frame .vr-home-story-label{color:var(--v-story-ink)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-home-story-frame .vr-home-story-label small{color:var(--v-story-sub)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vk-game-fab{filter:var(--v-icon-filter)}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vk-bar{background:color-mix(in srgb,var(--ch-sheet) 94%,transparent)}
+.vk-phone .vr-offer-story[data-art=xanhsm]{--story-paper:color-mix(in srgb,var(--brand-greensm) 30%,var(--color-grey-00))}
+.vr-story-campaign[data-campaign=ride]{background:linear-gradient(150deg,color-mix(in srgb,var(--brand-greensm) 18%,var(--color-grey-00)),color-mix(in srgb,var(--brand-greensm) 50%,var(--color-grey-00)))}
+.vk-phone .vr-offer-pnl>strong,.vk-phone .vr-home-story-frame .vr-home-story-label small{font-family:var(--font-sans),Arial,sans-serif;font-size:15px;line-height:20px;font-weight:600;letter-spacing:0;font-style:normal}
+/* Let the leather grain read naturally, without an artificial dot pattern. */
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-stack .vr-pouches .vr-pouch[data-kind=wallet] .vr-pouch-cover,
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-fly[data-kind=wallet] .vr-pouch-cover{background:linear-gradient(145deg,var(--v-wallet-light),var(--v-wallet)),url(/vinclub-duo/skin/matte.webp) center/cover;background-blend-mode:soft-light}
+.vk-page[data-hierarchy]:not([data-hierarchy="1"]) .vk-phone[data-tab=home] .vr-stack .vr-pouches .vr-pouch[data-kind=wallet] .vr-pouch-cover::before{display:none}
+.vk-page[data-hierarchy="5"] .vk-phone[data-tab=home]{--v-wallet:color-mix(in srgb,var(--color-orange-900) 75%,var(--color-grey-900));--v-wallet-light:color-mix(in srgb,var(--color-orange-800) 65%,var(--color-grey-700))}
+.vk-visual-archive{margin-top:14px;font-size:11px;color:var(--foreground-secondary)}
+.vk-visual-archive summary{cursor:pointer;padding-block:8px}
+/* The retained Home direction uses VinPay's champagne backdrop, independently of its black brand. */
+.vk-page[data-mode=light][data-hierarchy="1"] .vk-phone[data-tab=home]{--home-header-bg:color-mix(in srgb,var(--vinpay-champagne,var(--color-orange-200)) 58%,var(--color-grey-00))}
+.vk-page[data-mode=light][data-hierarchy="1"] .vk-phone[data-tab=home] .vk-status{background:var(--home-header-bg);color:var(--color-grey-950)}
+.vk-page[data-mode=light][data-hierarchy="1"] .vk-phone[data-tab=home] .vr-stack{background:radial-gradient(ellipse 65% 160px at 15% 150px,color-mix(in srgb,var(--color-grey-00) 55%,transparent),transparent 80%),radial-gradient(ellipse 75% 180px at 90% 40px,color-mix(in srgb,var(--vinpay-champagne,var(--color-orange-200)) 22%,transparent),transparent 80%),var(--home-header-bg)}
+.vk-page .vk-phone .vk-game-fab{width:88px;height:88px;min-height:88px;right:14px;bottom:106px;filter:drop-shadow(0 4px 6px color-mix(in srgb,var(--color-grey-1000) 16%,transparent))}
+.vk-page .vk-phone .vk-game-fab img{width:88px;height:88px}
+/* Pastel offer banners: consistent lightness with each partner's own colour family. */
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story[data-art=winmart]{--story-paper:color-mix(in srgb,var(--color-orange-100) 65%,var(--color-grey-00))}
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story[data-art=vinmec]{--story-paper:color-mix(in srgb,var(--color-blue-200) 45%,var(--color-grey-00))}
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story[data-art=vinpearl]{--story-paper:color-mix(in srgb,var(--color-yellow-100) 65%,var(--color-grey-00))}
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story[data-art=vinwonders]{--story-paper:color-mix(in srgb,var(--color-purple-100) 60%,var(--color-grey-00))}
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story[data-art=vinbus]{--story-paper:color-mix(in srgb,var(--color-teal-100) 45%,var(--color-grey-00))}
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story[data-art=xanhsm]{--story-paper:color-mix(in srgb,var(--brand-greensm) 24%,var(--color-grey-00))}
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story .vr-offer-art{filter:saturate(.65) contrast(.96)}
+.vk-page[data-hierarchy="1"] .vk-phone .vr-home-story-frame{background:linear-gradient(135deg,var(--color-yellow-100),var(--color-orange-200),var(--color-yellow-200))}
+/* Brand Primary Gold; the backdrop uses the same shader settings as VinPay. */
+.vk-page[data-hierarchy="1"] .vk-phone[data-tab=home]{--home-header-gold:var(--brand-vinclub-gold)}
+.vk-page[data-mode=light][data-hierarchy="1"] .vk-phone[data-tab=home]{--home-header-bg:color-mix(in srgb,var(--home-header-gold) 35%,var(--color-grey-00))}
+.vk-page[data-hierarchy="1"] .vk-phone[data-tab=home] .vr-stack{position:relative;isolation:isolate;background:transparent}
+.vk-vinpay-header-backdrop{position:absolute;inset:-54px 0 auto;height:350px;z-index:-1;overflow:hidden;pointer-events:none;mask-image:linear-gradient(var(--color-grey-1000) 58%,transparent)}
+.vk-page[data-hierarchy="1"] .vk-phone[data-tab=home] .vr-stack .vr-hello{padding-top:4px}
+.vk-page[data-mode=light][data-hierarchy="1"] .vk-phone[data-tab=home] .vk-scroll{background:var(--home-header-bg)}
+.vk-page[data-mode=light][data-hierarchy="1"] .vk-phone[data-tab=home] .vk-status{background:transparent}
+.vk-page[data-hierarchy="1"] .vk-phone[data-tab=home]{--home-header-gold:var(--brand-vinclub-gold)}
+.vk-page[data-mode=light][data-hierarchy="1"] .vk-phone[data-tab=home]{--home-header-bg:color-mix(in srgb,var(--home-header-gold) 58%,var(--color-grey-00))}
+/* Uniform PNL typography also applies to URLs saved with the old header 11. */
+.vk-page .vk-phone .vr-offer-story[data-header] .vr-offer-pnl>strong{font-family:var(--font-sans),Arial,sans-serif;font-size:15px;line-height:20px;font-weight:600;letter-spacing:0;font-style:normal}
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story[data-art=xanhsm]{--story-paper:color-mix(in srgb,var(--brand-greensm) 14%,var(--color-grey-00))}
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story[data-art=winmart]{--story-paper:color-mix(in srgb,var(--color-orange-100) 55%,var(--color-grey-00))}
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story[data-art=vinpearl]{--story-paper:color-mix(in srgb,var(--color-yellow-100) 45%,var(--color-grey-00))}
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story:is([data-art=xanhsm],[data-art=winmart]) .vr-offer-art{filter:none}
+
+/* Preserve the original offer illustrations and their original colours. */
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story .vr-offer-art{filter:none}
+/* WinMart's rose-peach surface separates it from the ivory VinClub story. */
+.vk-page[data-hierarchy="1"] .vk-phone .vr-offer-story[data-art=winmart]{--story-paper:color-mix(in srgb,var(--color-red-100) 65%,var(--color-orange-50))}
+
+/* Offers shares Home's warm gold header and light content sheet. */
+.vk-page[data-mode=light] .vk-phone[data-tab=offers]{--home-header-gold:var(--brand-vinclub-gold);--home-header-bg:color-mix(in srgb,var(--home-header-gold) 58%,var(--color-grey-00))}
+.vk-page[data-mode=light] .vk-phone[data-tab=offers] .vk-scroll{background:var(--home-header-bg)}
+.vk-page[data-mode=light] .vk-phone[data-tab=offers] .vk-status{background:var(--home-header-bg);color:var(--color-grey-950)}
+.vk-page[data-mode=light] .vk-phone[data-tab=offers] .vo-page{background:var(--home-header-bg)}
+.vk-page[data-mode=light] .vk-phone[data-tab=offers] .vo-head{background:transparent;color:var(--color-grey-950)}
+.vk-page[data-mode=light] .vk-phone[data-tab=offers] .vo-wallet{color:var(--color-grey-00)}
+.vk-page[data-mode=light] .vk-phone[data-tab=offers] .vo-sheet{background:var(--home-sheet-bg);box-shadow:0 -2px 8px color-mix(in srgb,var(--color-grey-950) 6%,transparent)}
+/* Offers uses the same gold and shader component as Home. */
+.vk-page .vk-phone[data-tab=offers]{--home-header-gold:var(--brand-vinclub-gold)}
+.vk-page[data-mode=light] .vk-phone[data-tab=offers] .vk-status{background:transparent}
+.vk-page[data-mode=light] .vk-phone[data-tab=offers] .vo-page{position:relative;isolation:isolate;background:transparent}
+.vk-page[data-mode=dark] .vk-phone[data-tab=offers] .vo-page{position:relative;isolation:isolate;background:transparent}
+
+/* A continuous tier-coloured shader behind the entire Home and Offers viewport. */
+.vk-page .vk-phone{--home-shader-tint:var(--brand-vinclub-gold)}
+.vk-page .vk-phone[data-tier="Bạc"]{--home-shader-tint:var(--color-grey-400)}
+.vk-page .vk-phone[data-tier="Bạch Kim"]{--home-shader-tint:var(--color-blue-200)}
+.vk-page .vk-phone[data-tier="Nhân viên"]{--home-shader-tint:var(--color-orange-200)}
+.vk-page .vk-phone>.vk-vinpay-header-backdrop{position:absolute;inset:0;height:100%;z-index:0;mask-image:none;background:var(--bg);pointer-events:none}
+.vk-phone>[data-mini-app-host]{position:relative;height:100%}
+.vk-page[data-hierarchy] .vk-phone:is([data-tab=home],[data-tab=offers]) :is(.vk-scroll,.vk-status,.vr-stack,.vr-stack .vr-sheet,.vo-page,.vo-sheet){background:transparent;box-shadow:none}
+.vk-page[data-hierarchy] .vk-phone[data-tab=home] :is(.vk-status,.vr-stack .vr-hello,.vs-pts-num strong){color:var(--ink)}
+.vk-page[data-hierarchy] .vk-phone[data-tab=home] :is(.vr-stack .vr-hello>small,.vs-pts-num,.vr-member-subtle[data-tier],.vr-member-text>small){color:var(--sub)}
+.vk-page .vk-phone:is([data-tab=home],[data-tab=offers]) .vk-bar-fade{background:transparent}

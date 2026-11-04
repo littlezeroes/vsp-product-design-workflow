@@ -1,0 +1,50 @@
+/* Loading uses the shared VSP skeleton; it overlays rather than changing Home geometry. */
+.vk-home-skeleton{position:absolute;inset:0;z-index:70;overflow:hidden;background:var(--color-grey-50)}
+.vk-skeleton-hero{padding:0 22px 20px;background:var(--color-grey-950)}
+.vk-skeleton-status{height:54px;padding-top:18px;font-size:16px;line-height:20px;color:var(--color-grey-00)}
+.vk-skeleton-hero .animate-pulse{background:var(--color-grey-800)}
+.vk-skeleton-sheet{padding:20px 22px 100px;border-radius:var(--radius-28) var(--radius-28) 0 0;background:var(--color-grey-50)}
+@media(prefers-reduced-motion:reduce){.vk-home-skeleton .animate-pulse{animation:none}}
+
+.vk-home-skeleton{transition:opacity 200ms ease-out}
+.vk-home-skeleton[data-leaving=true]{opacity:0;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.vk-home-skeleton{transition:none}}
+
+.vk-home-skeleton--matched{background:var(--color-grey-950)}
+.vk-skeleton-matched-sheet{position:absolute;inset-inline:0;bottom:0;background:var(--color-grey-50);border-radius:var(--radius-28) var(--radius-28) 0 0}
+.vk-home-skeleton--matched .vk-skeleton-dark{background:var(--color-grey-800)}
+
+
+/* Loading uses the real layout, with placeholders tailored to each content type. */
+.vk-page[data-home-skeleton]{--home-sk:color-mix(in srgb,var(--ink,var(--foreground)) 6%,var(--bg,var(--background)));--home-sk-line:color-mix(in srgb,var(--ink,var(--foreground)) 10%,var(--bg,var(--background)))}
+.vk-page[data-home-skeleton] .vr-stack :is(.vs-pts-num,.vr-tier-metal,.vr-sheet h2,.vr-offers-view-all){position:relative}
+.vk-page[data-home-skeleton]:not([data-skeleton-leaving]) .vr-stack :is(.vs-pts-num,.vr-tier-metal,.vr-sheet h2,.vr-offers-view-all){color:transparent!important}
+.vk-page[data-home-skeleton]:not([data-skeleton-leaving]) .vr-stack :is(.vs-pts-num,.vr-tier-metal,.vr-offers-view-all)>*{visibility:hidden}
+.vk-page[data-home-skeleton] .vr-stack :is(.vs-pts-num,.vr-tier-metal,.vr-sheet h2,.vr-offers-view-all)::after{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:70%;height:14px;border-radius:var(--radius-8);background:var(--home-sk-line);pointer-events:none;transition:opacity 200ms ease-out}
+.vk-page[data-home-skeleton] .vr-stack .vs-pts-num::after{width:136px;height:28px}
+.vk-page[data-home-skeleton] .vr-stack .vr-tier-metal::after{width:76px;height:28px}
+.vk-page[data-home-skeleton] .vr-stack .vr-sheet h2::after{width:136px;height:16px}
+.vk-page[data-home-skeleton] .vr-stack .vr-offers-view-all::after{width:56px;height:12px}
+.vk-page[data-home-skeleton]:not([data-skeleton-leaving]) .vr-pouch :is(small,strong){color:transparent!important;text-shadow:none!important}
+.vk-page[data-home-skeleton] .vr-pouch :is(small,strong){position:relative}
+.vk-page[data-home-skeleton] .vr-pouch :is(small,strong)::after{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:72px;height:9px;border-radius:var(--radius-8);background:color-mix(in srgb,var(--color-grey-00) 12%,transparent);transition:opacity 200ms ease-out}
+.vk-page[data-home-skeleton] .vr-pouch strong::after{width:156px;height:20px}
+.vk-page[data-home-skeleton]:not([data-skeleton-leaving]) .vr-pouch-snap{visibility:hidden}
+.vk-page[data-home-skeleton] .vr-stack :is(.vr-service,.vr-home-story,.vr-offer-story,.vr-experience-card){position:relative}
+.vk-page[data-home-skeleton]:not([data-skeleton-leaving]) .vr-stack :is(.vr-service,.vr-home-story,.vr-offer-story,.vr-experience-card)>*{visibility:hidden}
+.vk-page[data-home-skeleton] .vr-stack :is(.vr-service,.vr-home-story,.vr-offer-story,.vr-experience-card)::after{content:"";position:absolute;inset:0;z-index:4;border-radius:inherit;background:var(--home-sk);transition:opacity 200ms ease-out;pointer-events:none}
+.vk-page[data-home-skeleton] .vr-stack :is(.vr-service,.vr-home-story,.vr-offer-story,.vr-experience-card)::before{content:"";position:absolute;left:12px;right:24%;bottom:18px;z-index:5;height:24px;background:linear-gradient(var(--home-sk-line),var(--home-sk-line)) left top/80% 8px no-repeat,linear-gradient(var(--home-sk-line),var(--home-sk-line)) left bottom/100% 6px no-repeat;border-radius:var(--radius-8);transition:opacity 200ms ease-out;pointer-events:none}
+.vk-page[data-home-skeleton]:not([data-skeleton-leaving]) .vr-home-story-frame{background:var(--home-sk)!important;box-shadow:none!important}
+.vk-page[data-home-skeleton] .vr-home-story-frame::before{display:none}
+.vk-page[data-home-skeleton] .vk-game-fab{visibility:hidden}
+.vk-page[data-home-skeleton][data-skeleton-leaving] .vr-stack :is(.vs-pts-num,.vr-tier-metal,.vr-sheet h2,.vr-offers-view-all,.vr-pouch small,.vr-pouch strong,.vr-service,.vr-home-story,.vr-offer-story,.vr-experience-card)::after,.vk-page[data-home-skeleton][data-skeleton-leaving] .vr-stack :is(.vr-service,.vr-home-story,.vr-offer-story,.vr-experience-card)::before{opacity:0}
+@media(prefers-reduced-motion:reduce){.vk-page[data-home-skeleton] .vr-stack *::after,.vk-page[data-home-skeleton] .vr-stack *::before{transition:none!important}}
+
+.vk-page[data-home-skeleton]:not([data-skeleton-leaving]) .vk-phone .vr-home-story-frame .vr-home-story{background:var(--home-sk)!important}
+.vk-page[data-home-skeleton]:not([data-skeleton-leaving]) .vr-experience-card{background:var(--home-sk)!important}
+.vk-page[data-home-skeleton] .vr-stack .vr-sheet .vr-fy>h2::after{left:22px;top:calc(50% + 6px)}
+
+.vk-number-reels{display:inline-flex;align-items:center;vertical-align:bottom;line-height:1.1}
+.vk-number-digit{display:inline-block;overflow:hidden;width:1ch;height:1.1em}
+.vk-number-column{display:flex;flex-direction:column;will-change:transform}
+.vk-number-column>span{display:block;flex:none;height:1.1em;line-height:1.1}

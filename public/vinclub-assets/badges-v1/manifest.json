@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "collection": "VinClub — Huy hiệu dịch vụ",
+  "generator": "Built-in imagegen",
+  "assets": [
+    {
+      "id": "greenfood",
+      "title": "Chiến thần Greenfood",
+      "src": "/vinclub-assets/badges-v1/greenfood.png"
+    },
+    {
+      "id": "vinpearl",
+      "title": "Chill guy Vinpearl",
+      "src": "/vinclub-assets/badges-v1/vinpearl.png"
+    },
+    {
+      "id": "vinfast",
+      "title": "Tay lái vàng VinFast",
+      "src": "/vinclub-assets/badges-v1/vinfast.png"
+    },
+    {
+      "id": "vinwonders",
+      "title": "Phá đảo VinWonders",
+      "src": "/vinclub-assets/badges-v1/vinwonders.png"
+    },
+    {
+      "id": "vincom",
+      "title": "Trùm săn deal Vincom",
+      "src": "/vinclub-assets/badges-v1/vincom.png"
+    },
+    {
+      "id": "vinpay",
+      "title": "Cao thủ VinPay",
+      "src": "/vinclub-assets/badges-v1/vinpay.png"
+    }
+  ],
+  "references": [
+    "https://i.pinimg.com/1200x/f8/d5/77/f8d57783edf364ddca93a67131f6eb40.jpg",
+    "https://i.pinimg.com/1200x/52/9f/17/529f17b6ba124f17842a54ba9ef143ae.jpg",
+    "https://i.pinimg.com/736x/45/d7/80/45d7804742ff022706f158f633635fbb.jpg"
+  ]
+}

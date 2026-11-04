@@ -1,0 +1,142 @@
+/* Airbnb Experiences mobile reference: image-led rows, inset search and compact filters.
+   VinClub adaptation uses existing host colour variables and DLS controls. */
+.ve{--background:var(--bg);--foreground:var(--ink);--foreground-secondary:var(--sub);--secondary:var(--surface);--btn-secondary-bg:var(--line);color:var(--foreground);padding-bottom:16px}
+.ve h1{font-size:28px;line-height:34px;font-weight:650;letter-spacing:-.8px;margin:0}.ve h1:focus{outline:none}.ve h2{font-size:18px;line-height:24px;font-weight:650;margin:0}.ve p{margin:0}
+.ve-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:24px;padding-bottom:24px}.ve .ve-eyebrow{font-size:10px;line-height:16px;letter-spacing:1.2px;color:var(--foreground-secondary);margin-bottom:6px;font-weight:600}
+.ve .ve-icon{width:44px;min-width:44px;height:44px;min-height:44px;padding:0;background:transparent;color:var(--foreground)}.ve .ve-icon>span:first-child{background:none}
+.ve-categories{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:24px 22px 0}.ve .ve-categories>button{min-height:44px;padding:0 16px;color:var(--foreground-secondary);font-weight:500}.ve .ve-categories>button[aria-pressed=true]{background:var(--foreground);color:var(--background)}.ve .ve-categories>button[aria-pressed=true]>span:first-child{background:var(--foreground)}
+.ve-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:8px}.ve-section-head>span{font-size:12px;color:var(--foreground-secondary)}.ve .ve-prototype{font-size:11px;line-height:16px;color:var(--foreground-secondary)}
+.ve-list{display:flex;flex-direction:column;gap:24px;padding-top:20px}.ve-card{display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:12px}.ve-card-image{position:relative;aspect-ratio:1/1.2;overflow:hidden;isolation:isolate;background:var(--secondary)}
+.ve .ve-image-link{position:absolute;inset:0;width:100%;height:100%;padding:0;border-radius:inherit}.ve .ve-image-link>span:first-child{display:none}.ve .ve-image-link>span:last-child{width:100%;height:100%}.ve-image-link img{width:100%;height:100%;object-fit:cover}
+.ve .ve-heart{position:absolute;top:4px;right:4px;width:44px;height:44px;min-height:44px;padding:0;color:var(--color-grey-00);background:transparent;filter:drop-shadow(0 1px 3px var(--color-grey-1000))}.ve .ve-heart>span:first-child{background:none}.ve-heart svg{stroke-width:1.8px}
+.ve-date{position:absolute;left:8px;bottom:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;width:38px;height:42px;background:var(--surface);color:var(--foreground);pointer-events:none}.ve-date strong{font-size:17px;line-height:20px}.ve-date small{font-size:8px;line-height:12px;font-weight:650;letter-spacing:.4px}
+.ve-card-info{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding-top:2px}.ve-card-info>p{font-size:10px;line-height:14px;color:var(--foreground-secondary)}.ve .ve-title{height:auto;min-height:44px;width:100%;padding:4px 0;background:none;border-radius:0;white-space:normal;text-align:left;color:var(--foreground);font-weight:650;font-size:15px;line-height:19px}.ve .ve-title>span:first-child{display:none}.ve .ve-title>span:last-child{justify-content:flex-start;text-align:left;width:100%}.ve-card-info>small{font-size:11px;line-height:15px;color:var(--foreground-secondary)}.ve-time{font-size:11px;line-height:16px;color:var(--foreground-secondary);margin-top:4px}.ve-price{font-size:13px;line-height:18px;margin-top:7px}.ve-price small{font-size:11px;font-weight:400}.ve-member-tag{font-size:10px;line-height:16px;background:var(--line);padding:2px 6px;margin-top:6px;border-radius:var(--radius-8)}
+.ve-empty{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding-block:32px}.ve-empty h3{font-size:18px;line-height:24px;font-weight:600}.ve-empty p{font-size:14px;line-height:20px;color:var(--foreground-secondary)}
+.ve-detail-nav{display:flex;align-items:center;justify-content:space-between;height:56px}.ve-detail-art img{width:100%;aspect-ratio:1.1;object-fit:cover}.ve-detail .ve-eyebrow{letter-spacing:0;font-size:12px}.ve-detail h1{font-size:30px;line-height:36px}.ve-detail-city{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--foreground-secondary);padding-top:12px}.ve-facts{display:flex;align-items:center;gap:12px;background:var(--surface);padding:16px;margin-top:24px}.ve-facts>span{display:flex;flex-direction:column;gap:4px}.ve-facts strong{font-size:15px}.ve-facts small{font-size:13px;color:var(--foreground-secondary)}.ve .ve-description{font-size:14px;line-height:22px;padding-top:12px;padding-bottom:16px}
+.ve-detail-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:24px}.ve-detail-bottom>span{display:flex;flex-direction:column;gap:4px}.ve-detail-bottom strong{font-size:20px;line-height:26px}.ve-detail-bottom small{font-size:10px;line-height:16px;color:var(--foreground-secondary)}.ve-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+@media(max-width:359px){.ve-card{grid-template-columns:minmax(0,40%) minmax(0,1fr)}.ve h1{font-size:25px;line-height:32px}.ve-card-info>p{font-size:9px}}
+
+/* Keep Home stack treatments scoped away from the event tab. */
+.vk-page .vk-phone[data-tab=events] .vk-scroll{padding-bottom:104px;background:var(--bg)}
+.vk-page .vk-phone[data-tab=events] .vk-status{color:var(--ink)}
+
+.vk-page[data-framed]:has([data-tab=events]) .vk-phone-col{width:100%}
+.vk-page[data-framed] .vk-phone[data-tab=events]{width:100%;max-width:390px}
+
+/* VinClub editorial feature, independent of the reference result-list layout. */
+.ve-heading h1{max-width:260px;font-size:32px;line-height:37px;letter-spacing:-1px}
+.ve-featured{overflow:hidden;background:var(--wash)}
+.ve-featured-photo{position:relative;isolation:isolate;height:214px;overflow:hidden}
+.ve .ve-featured-link{position:absolute;inset:0;width:100%;height:100%;padding:0;border-radius:0;background:transparent}
+.ve .ve-featured-link>span:first-child{display:none}.ve .ve-featured-link>span:last-child{width:100%;height:100%}
+.ve-featured-link img{width:100%;height:100%;object-fit:cover;object-position:center 66%}
+.ve-featured-photo:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,color-mix(in srgb,var(--color-grey-1000) 28%,transparent),transparent 42%)}
+.ve-featured-label{position:absolute;top:18px;left:16px;z-index:1;color:var(--color-grey-00);font-size:11px;line-height:16px;font-weight:600}
+.ve-featured-photo .ve-heart{top:4px;right:8px;z-index:2}
+.ve-featured-date{position:absolute;right:16px;bottom:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:58px;height:64px;background:var(--surface);color:var(--foreground);pointer-events:none;box-shadow:var(--shadow-soft)}
+.ve-featured-date strong{font-size:28px;line-height:30px;letter-spacing:-1px}.ve-featured-date small{font-size:8px;line-height:12px;letter-spacing:.8px;font-weight:650}
+.ve-featured-copy{padding:18px 20px 20px}.ve-featured-copy>p{font-size:9px;line-height:14px;letter-spacing:1.1px;font-weight:600;color:var(--foreground-secondary)}
+.ve .ve-featured-title{width:100%;height:auto;white-space:normal;padding:8px 0 14px;border-radius:0;background:none;color:var(--foreground);font-size:25px;line-height:29px;font-weight:650;letter-spacing:-.5px;text-align:left}
+.ve .ve-featured-title>span:first-child{display:none}.ve .ve-featured-title>span:last-child{width:100%;justify-content:space-between;text-align:left}
+.ve-featured-copy>div{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;line-height:18px}.ve-featured-copy>div>span{color:var(--foreground-secondary)}.ve-featured-copy strong{font-weight:600}
+.ve-results{padding-top:32px}
+
+/* Discovery: compact navigation, category shortcuts and an immersive event cover. */
+.ve-heading{height:56px;padding-top:0;padding-bottom:0}
+.ve-heading h1{font-size:24px;line-height:32px;letter-spacing:-.6px;font-weight:600}
+.ve-categories{gap:12px;padding-top:20px;padding-bottom:0}
+.ve .ve-categories>button{flex:1;flex-shrink:0;min-width:52px;min-height:64px;padding:8px 0;color:var(--foreground-secondary);border-radius:var(--radius-14);background:transparent}
+.ve .ve-categories>button>span:first-child{display:none}
+.ve .ve-categories>button>span:last-child{flex-direction:column;gap:8px;font-size:10px;line-height:16px;font-weight:500}
+.ve .ve-categories>button[aria-pressed=true]{background:var(--wash);color:var(--foreground)}
+.ve-featured-section{padding-top:24px}
+.ve-section-head{padding-bottom:12px}
+.ve h2{font-size:18px;line-height:24px;font-weight:600;letter-spacing:-.4px}
+.ve-section-head>span{font-size:10px;line-height:16px;letter-spacing:1px}
+.ve-featured{position:relative;height:320px;background:var(--secondary);isolation:isolate}
+.ve-featured-photo{position:absolute;inset:0;height:100%}
+.ve-featured-link img{object-position:center 55%}
+.ve-featured-photo:after{background:linear-gradient(180deg,color-mix(in srgb,var(--color-grey-1000) 24%,transparent),transparent 30%,color-mix(in srgb,var(--color-grey-1000) 34%,transparent) 48%,color-mix(in srgb,var(--color-grey-1000) 92%,transparent));z-index:0}
+.ve-featured-label{display:flex;align-items:center;gap:6px;top:20px;left:16px;font-size:9px;font-weight:600;letter-spacing:1.2px}
+.ve-live-dot{width:5px;height:5px;border-radius:100%;background:currentColor}
+.ve-featured-date{top:57px;left:16px;right:auto;bottom:auto;width:46px;height:54px;background:var(--background);box-shadow:none;gap:0}
+.ve-featured-date strong{font-size:24px;line-height:28px}
+.ve-featured-date small{font-size:7px;letter-spacing:.3px}
+.ve-featured-copy{position:absolute;inset:auto 0 0;padding:0 16px 20px;pointer-events:none;color:var(--color-grey-00)}
+.ve-featured-copy>p{font-size:9px;line-height:16px;letter-spacing:1.4px;color:inherit;opacity:.8}
+.ve .ve-featured-title{pointer-events:auto;color:inherit;font-size:28px;line-height:32px;letter-spacing:-.8px;padding:6px 0 16px}
+.ve-featured-title svg{width:32px;height:32px;padding:6px;border-radius:100%;background:color-mix(in srgb,var(--color-grey-00) 20%,transparent)}
+.ve-featured-copy>div{font-size:11px;line-height:16px}
+.ve-featured-copy>div>span{display:flex;align-items:center;gap:6px;color:inherit;opacity:.85}
+.ve-featured-copy strong{font-size:12px}
+.ve-results{padding-top:24px}
+.ve-list{gap:20px;padding-top:16px}
+.ve-card{grid-template-columns:104px minmax(0,1fr);gap:16px}
+.ve-card-image{aspect-ratio:1/1.25}
+.ve-card-info>p{font-size:10px;line-height:16px}
+.ve .ve-title{font-size:16px;line-height:21px;padding:4px 0;min-height:0}
+.ve-card-info>small{font-size:11px;line-height:16px}
+.ve-time{margin-top:6px}
+.ve-price{margin-top:4px}
+.ve-card .ve-heart{top:0;right:0;width:36px;height:36px;min-height:36px}
+.ve-date{width:32px;height:38px;left:8px;bottom:8px}
+.ve-date strong{font-size:16px}
+.ve-date small{font-size:7px}
+.ve-disclaimer{padding-top:24px;padding-bottom:16px}
+.ve-detail-bottom{position:sticky;bottom:0;background:var(--background);padding-top:12px;padding-bottom:16px;z-index:3}
+@media(max-width:359px){.ve-categories{gap:8px}.ve-card{grid-template-columns:96px minmax(0,1fr);gap:12px}.ve-featured-copy{padding-inline:16px}.ve-featured-copy>div{gap:6px}}
+
+/* Dark discovery header continues from the status bar through the featured event. */
+.vk-page .vk-phone[data-tab=events] .vk-status{background:var(--color-grey-1000);color:var(--color-grey-00)}
+.ve-top{--background:var(--color-grey-1000);--foreground:var(--color-grey-00);--foreground-secondary:var(--color-grey-400);--secondary:var(--color-grey-800);--wash:var(--secondary);background:var(--background);color:var(--foreground);padding-bottom:24px}
+.ve-top .ve-categories{padding-top:12px}
+
+/* Concert editorial: restrained corners, atmospheric lighting and a ticket footer. */
+.ve-top{position:relative;isolation:isolate;overflow:hidden;--event-glow:var(--decor-denim);background:radial-gradient(ellipse at 82% 46%,color-mix(in srgb,var(--event-glow) 22%,transparent),transparent 62%),var(--background);padding-bottom:24px}
+.ve-heading,.ve-categories,.ve-featured-section{position:relative;z-index:1}
+.ve .ve-categories{gap:22px;padding:8px 22px 0;overflow:auto}
+.ve .ve-categories>button{position:relative;flex:0 0 auto;min-width:0;min-height:44px;padding:0;background:transparent;border-radius:0;font-size:12px;color:var(--foreground-secondary)}
+.ve .ve-categories>button>span:last-child{font-size:12px;line-height:20px}
+.ve .ve-categories>button[aria-pressed=true]{color:var(--foreground);background:transparent}
+.ve-categories>button:after{content:"";position:absolute;inset:auto 0 0;height:2px;background:var(--foreground);transform:scaleX(0);transform-origin:left;transition:transform 220ms ease}
+.ve-categories>button[aria-pressed=true]:after{transform:scaleX(1)}
+.ve-featured-section{padding-top:24px}
+.ve-featured-section .ve-section-head>span{font-size:8px;letter-spacing:1.1px;white-space:nowrap}
+.ve-featured-section h2{font-size:18px;letter-spacing:-.5px}
+.ve-featured{height:240px;border-radius:var(--radius-28);box-shadow:none}
+.ve-featured-link img{object-position:center 45%;transform:none;transition:filter 220ms ease}
+.ve-featured-photo:after{background:linear-gradient(180deg,color-mix(in srgb,var(--background) 30%,transparent),transparent 35%,color-mix(in srgb,var(--background) 16%,transparent) 48%,color-mix(in srgb,var(--background) 96%,transparent));pointer-events:none}
+.ve-featured-label{top:18px;left:16px;font-size:8px;letter-spacing:1.7px}
+.ve-featured-copy{padding:0 12px 16px}
+.ve-featured-copy>p{font-size:10px;line-height:16px;letter-spacing:.6px}
+.ve .ve-featured-title{font-size:24px;line-height:28px;letter-spacing:-.6px;padding:4px 0 8px;font-weight:600}.ve .ve-featured-title>span:last-child{justify-content:flex-start;max-width:260px}
+.ve-featured-title svg{background:transparent;padding:4px;transition:transform 220ms ease}
+.ve-concert-time{display:flex;align-items:center;gap:8px;font-size:11px;line-height:16px;color:inherit}
+.ve-ticket-strip{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px}
+.ve-ticket-strip>div{display:flex;flex-direction:column;gap:4px}.ve-ticket-strip small{font-size:8px;letter-spacing:1px;color:var(--foreground-secondary)}
+.ve-ticket-strip strong{font-size:14px;line-height:20px;font-weight:600;letter-spacing:-.2px}.ve-ticket-strip strong>span{font-size:11px;font-weight:400;color:var(--foreground-secondary)}
+.ve .ve-ticket-cta{padding-inline:14px;color:var(--background);font-size:12px}.ve-ticket-cta>span:first-child{border-radius:inherit}
+.ve-ticket-cta>span:last-child{gap:6px}
+.ve-card-image{border-radius:var(--radius-14)}
+.ve-image-link img{transition:transform 400ms cubic-bezier(.22,1,.36,1)}
+.ve-card{animation:ve-enter 500ms cubic-bezier(.22,1,.36,1) both}.ve-card:nth-child(2){animation-delay:60ms}.ve-card:nth-child(3){animation-delay:120ms}.ve-card:nth-child(4){animation-delay:180ms}
+.ve-detail{animation:ve-enter 300ms ease both}
+.ve-heart[aria-pressed=true] svg{animation:ve-heart-pop 320ms ease both}
+.ve button:active{transform:scale(.98)}
+@media(hover:hover){.ve-featured:hover .ve-featured-title svg{transform:translateX(4px)}.ve-card-image:hover img{transform:scale(1.06)}.ve-featured-link:hover img{filter:brightness(1.1)}}
+@keyframes ve-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ve-poster-drift{from{transform:scale(1.1)}to{transform:scale(1.02)}}
+@keyframes ve-heart-pop{0%,100%{transform:scale(1)}45%{transform:scale(1.25)}}
+@media(prefers-reduced-motion:reduce){.ve *,.ve *:after{animation:none!important;transition:none!important}.ve-featured-link img{transform:none}.ve button:active{transform:none}}
+
+/* A duplicate concert photo sits below a translucent black scrim. */
+.ve-backdrop{position:absolute;z-index:0;inset:-48px;width:calc(100% + 96px);height:calc(100% + 96px);max-width:none;object-fit:cover;object-position:center 38%;filter:blur(36px) saturate(1.1) brightness(.85);pointer-events:none}
+.ve-top:after{content:"";position:absolute;z-index:0;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--background) 66%,transparent),color-mix(in srgb,var(--background) 48%,transparent) 38%,color-mix(in srgb,var(--background) 58%,transparent) 78%,color-mix(in srgb,var(--background) 78%,transparent));pointer-events:none}
+.ve-ticket-strip{position:relative;z-index:1}
+
+.ve-ticket-strip{--event-highlight:var(--foreground)}
+.ve-ticket-strip>div>small,.ve-ticket-strip strong,.ve-ticket-strip strong>span{color:var(--event-highlight)}
+
+/* Let the same backdrop extend beneath the status bar without a black seam. */
+.vk-page .vk-phone[data-tab=events]:has(.ve-top) .vk-status{position:relative;z-index:2;background:transparent}
+.vk-phone[data-tab=events] .ve-top{margin-top:-54px;padding-top:54px}

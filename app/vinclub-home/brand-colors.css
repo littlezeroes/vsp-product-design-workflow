@@ -1,0 +1,5 @@
+/* Partner palette tokens shared with VinPay Home's existing brand configuration. */
+:root{--vinpay-champagne:#c9a86a;--brand-greensm:#2dccd3}
+
+/* VinClub Brand Guideline, page 9 — Primary Gold, RGB (217, 176, 111). */
+:root{--brand-vinclub-gold:#d9b06f}

@@ -2,7 +2,29 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* Exclude alternate Next.js build caches from Tailwind source detection. */
+@source not "../.next-*/**";
+
+/* Alternate Next.js build directories contain generated data, not UI classes. */
+@source not "../.next-3250";
+@source not "../.next-mini-app-3250";
+
 @custom-variant dark (&:is(.dark *));
+
+/* Daily glass derives from the existing semantic palette in both themes. */
+.vc-daily-premium {
+  --splash-background: #000000;
+  --daily-accent: var(--foreground);
+  --daily-accent-surface: var(--secondary);
+  --daily-glass-reflection: var(--color-grey-00);
+  --daily-glass-gold: color-mix(in srgb, var(--color-orange-200) 70%, var(--color-yellow-700));
+  --daily-glass: var(--background);
+  --daily-glass-edge: color-mix(in srgb, var(--background) 85%, var(--foreground));
+}
+.dark .vc-daily-premium {
+  --daily-glass: var(--secondary);
+  --daily-glass-edge: color-mix(in srgb, var(--foreground) 24%, transparent);
+}
 
 /* ============================================================
    VSP PRIMITIVE PALETTE
@@ -242,6 +264,24 @@
    References CSS vars, resolves dynamically at runtime.
    ============================================================ */
 @theme inline {
+  /* Decor extension — proposed palette, separate from brand/status tokens.
+     Use bg-decor-sage-subtle with text-foreground for readable copy. */
+  --color-decor-sand: var(--decor-sand);
+  --color-decor-sand-subtle: var(--decor-sand-subtle);
+  --color-decor-clay: var(--decor-clay);
+  --color-decor-clay-subtle: var(--decor-clay-subtle);
+  --color-decor-butter: var(--decor-butter);
+  --color-decor-butter-subtle: var(--decor-butter-subtle);
+  --color-decor-sage: var(--decor-sage);
+  --color-decor-sage-subtle: var(--decor-sage-subtle);
+  --color-decor-lagoon: var(--decor-lagoon);
+  --color-decor-lagoon-subtle: var(--decor-lagoon-subtle);
+  --color-decor-denim: var(--decor-denim);
+  --color-decor-denim-subtle: var(--decor-denim-subtle);
+  --color-decor-lilac: var(--decor-lilac);
+  --color-decor-lilac-subtle: var(--decor-lilac-subtle);
+  --color-decor-rose: var(--decor-rose);
+  --color-decor-rose-subtle: var(--decor-rose-subtle);
   /* Shadcn core */
   --color-background:          var(--background);
   --color-foreground:          var(--foreground);
@@ -295,6 +335,22 @@
   --color-search:              var(--search);
   --color-btn-secondary-bg:    var(--btn-secondary-bg);
 
+  /* Outline scale (alpha overlays, sync with Figma color/outlineBase) */
+  --color-outline-subtle:      var(--outline-subtle);
+  --color-outline-base:        var(--outline-base);
+  --color-outline-strong:      var(--outline-strong);
+
+  /* Shadow tokens (sync with Figma effect collection) */
+  --shadow-active:             var(--shadow-active);
+  --shadow-ring-focus:         var(--shadow-ring-focus);
+  --shadow-card:               var(--shadow-card);
+  --shadow-card-elevated:      var(--shadow-card-elevated);
+  --shadow-glass-edge:         var(--shadow-glass-edge);
+  --shadow-glass:              var(--effect-glass);
+
+  /* Backdrop blur tokens */
+  --blur-glass:                var(--blur-glass);
+
   /* Sidebar */
   --color-sidebar:                       var(--sidebar);
   --color-sidebar-foreground:            var(--sidebar-foreground);
@@ -320,7 +376,9 @@
   --radius-10: 10px;   /* Tooltip */
   --radius-12: 12px;   /* ToastBar */
   --radius-14: 14px;   /* TextField, InformMessage, Frame */
+  --radius-16: 16px;   /* Charging widget */
   --radius-28: 28px;   /* Cards, Dialog, ItemList containers */
+  --radius-36: 36px;   /* Large stacked cards */
 }
 
 /* ============================================================
@@ -341,6 +399,26 @@
    LIGHT MODE — Semantic Color Values
    ============================================================ */
 :root {
+  --brand-greensm: #2dccd3;
+  --vinpay-champagne: #c9a86a;
+
+  /* Decor base colors stay consistent on 3D objects across themes. */
+  --decor-sand: #c5ae8c;
+  --decor-sand-subtle: #f3ede3;
+  --decor-clay: #bf7964;
+  --decor-clay-subtle: #f5e7e1;
+  --decor-butter: #d8bc69;
+  --decor-butter-subtle: #f8f0d8;
+  --decor-sage: #8ea58c;
+  --decor-sage-subtle: #eaf0e6;
+  --decor-lagoon: #639c9b;
+  --decor-lagoon-subtle: #e4f0ee;
+  --decor-denim: #788fae;
+  --decor-denim-subtle: #e8edf5;
+  --decor-lilac: #a394b8;
+  --decor-lilac-subtle: #efeaf5;
+  --decor-rose: #c3919c;
+  --decor-rose-subtle: #f5e8ec;
   --radius: 0.5rem; /* TODO: update when radius tokens are confirmed */
 
   /* Surface */
@@ -411,6 +489,28 @@
   --search: #f3f3f3;               /* Grey.150 */
   --btn-secondary-bg: rgba(10, 10, 10, 0.05); /* Component.Background.Secondary-btn */
 
+  /* Outline scale — alpha hairlines (Figma color/outlineBase = #00000008) */
+  --outline-subtle:    rgba(0, 0, 0, 0.03);   /* hairline divider, card border at rest */
+  --outline-base:      rgba(0, 0, 0, 0.06);   /* default outline */
+  --outline-strong:    rgba(0, 0, 0, 0.12);   /* visible separator */
+
+  /* Shadow tokens — references color tokens so dark mode flips automatically */
+  --shadow-active:        0 0 0 1.5px var(--foreground);                                          /* Figma actived/gray */
+  --shadow-ring-focus:    0 0 0 2px var(--ring);                                                  /* form focus ring */
+  --shadow-card:          0 1px 1px -0.5px rgba(0, 0, 0, 0.03), 0 1px 2px -0.5px rgba(0, 0, 0, 0.04); /* card at rest */
+  --shadow-card-elevated: 0 8px 24px -8px rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.04);   /* lifted card / sheet */
+  --shadow-glass-edge:    inset 0 3px 3px 0 rgba(255, 255, 255, 0.12);                             /* Figma compPrimary inner highlight */
+
+  /* Composite effect — glass surface (PIN inactive, bottom sheet handle, etc.) */
+  --effect-glass: inset 0 3px 3px 0 rgba(255, 255, 255, 0.12), 0 1px 1px -0.5px rgba(0, 0, 0, 0.03);
+
+  /* Backdrop blur radius (Figma effect/compPrimary BACKGROUND_BLUR → CSS 12px) */
+  --blur-glass: 12px;
+
+  /* Scroll-edge mask gradients (Figma Component/Background/Masker/top|bot) */
+  --mask-top: linear-gradient(to bottom, var(--background) 0%, transparent 100%);
+  --mask-bot: linear-gradient(to top,    var(--background) 0%, transparent 100%);
+
   /* Sidebar */
   --sidebar: #fafafa;
   --sidebar-foreground: #080808;
@@ -426,6 +526,17 @@
    DARK MODE — Semantic Color Values
    ============================================================ */
 .dark {
+
+  /* Tinted decor surfaces adapt to dark mode without inverting objects. */
+  --decor-sand-subtle: color-mix(in srgb, var(--decor-sand) 16%, var(--background));
+  --decor-clay-subtle: color-mix(in srgb, var(--decor-clay) 16%, var(--background));
+  --decor-butter-subtle: color-mix(in srgb, var(--decor-butter) 16%, var(--background));
+  --decor-sage-subtle: color-mix(in srgb, var(--decor-sage) 16%, var(--background));
+  --decor-lagoon-subtle: color-mix(in srgb, var(--decor-lagoon) 16%, var(--background));
+  --decor-denim-subtle: color-mix(in srgb, var(--decor-denim) 16%, var(--background));
+  --decor-lilac-subtle: color-mix(in srgb, var(--decor-lilac) 16%, var(--background));
+  --decor-rose-subtle: color-mix(in srgb, var(--decor-rose) 16%, var(--background));
+
   /* Surface */
   --background: #080808;           /* BG.Surface.Primary dark = Grey.1000 */
   --foreground: #ffffff;           /* FG.Primary dark = Grey.00 */
@@ -492,6 +603,25 @@
   --search: #171717;               /* Grey.900 */
   --btn-secondary-bg: rgba(255, 255, 255, 0.10); /* Component.Background.Secondary-btn dark */
 
+  /* Outline scale — flip to white alphas on dark */
+  --outline-subtle:    rgba(255, 255, 255, 0.06);
+  --outline-base:      rgba(255, 255, 255, 0.10);
+  --outline-strong:    rgba(255, 255, 255, 0.16);
+
+  /* Shadow tokens — heavier shadows + softer inner edge on dark */
+  --shadow-active:        0 0 0 1.5px var(--foreground);
+  --shadow-ring-focus:    0 0 0 2px var(--ring);
+  --shadow-card:          0 1px 1px -0.5px rgba(0, 0, 0, 0.30), 0 1px 2px -0.5px rgba(0, 0, 0, 0.40);
+  --shadow-card-elevated: 0 8px 24px -8px rgba(0, 0, 0, 0.60), 0 2px 4px -1px rgba(0, 0, 0, 0.40);
+  --shadow-glass-edge:    inset 0 3px 3px 0 rgba(255, 255, 255, 0.06);
+
+  --effect-glass: inset 0 3px 3px 0 rgba(255, 255, 255, 0.06), 0 1px 1px -0.5px rgba(0, 0, 0, 0.40);
+
+  --blur-glass: 12px;
+
+  --mask-top: linear-gradient(to bottom, var(--background) 0%, transparent 100%);
+  --mask-bot: linear-gradient(to top,    var(--background) 0%, transparent 100%);
+
   /* Sidebar */
   --sidebar: #171717;
   --sidebar-foreground: #ffffff;
@@ -542,3 +672,35 @@
 
 /* Hide Next.js dev error badge in design review iframes */
 nextjs-portal { display: none !important; }
+
+/* ============================================================
+   SCROLL-EDGE MASKS (Figma Component/Background/Masker/top|bot)
+   Use over scrollable areas to fade content into the surface.
+   ============================================================ */
+.bg-mask-top { background: var(--mask-top); }
+.bg-mask-bot { background: var(--mask-bot); }
+
+/* Veda reference study — palette sampled from the user-supplied video. */
+.veda-page {
+  --veda-paper: var(--color-grey-00);
+  --veda-ink: var(--color-grey-1000);
+  --veda-night: #020208;
+  --veda-subtle: var(--color-grey-500);
+  --veda-silver: var(--color-grey-200);
+  --veda-gold: color-mix(in srgb, var(--color-yellow-100) 60%, var(--color-orange-300));
+  --veda-copper: color-mix(in srgb, var(--color-orange-300) 65%, var(--color-red-200));
+}
+
+/* Glass splash study: sampled reference palette, isolated to the splash route. */
+.brand-splash {
+  --splash-black: #000000;
+  --splash-top-light: #000000;
+  --splash-gold-glow: #000000;
+  --splash-lower-neutral: #000000;
+  --splash-brand-gold: #d9c18a;
+  --splash-on-dark: var(--color-grey-00);
+  --splash-status: var(--color-grey-00);
+}
+
+:root{--vinclub-cta-bg:color-mix(in srgb,var(--color-grey-1000) 82%,var(--color-yellow-950));--vinclub-cta-fg:var(--color-orange-200)}
+

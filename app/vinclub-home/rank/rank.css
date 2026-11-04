@@ -1,0 +1,167 @@
+/* VinPay · VinClub tiers. Dark VinClub palette: near-black ground, warm ink, VinClub gold (#E8C88A) for the one primary action. */
+.rk-page { --ink: #f5efe4; --sub: rgba(245, 239, 228, .58); --gold: #e8c88a; --fill: #1f1712; --card: #16120f;
+  display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: center; gap: 32px; min-height: 100dvh; padding: 24px; background: #e9e7e4; color: #1f1a18;
+  font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+.rk-page *, .rk-page *::before, .rk-page *::after { box-sizing: border-box; margin: 0; }
+.rk-page button { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.rk-page > figure { display: flex; flex-direction: column; gap: 10px; }
+.rk-page > figure > figcaption { font-size: 13px; font-weight: 600; color: #6d6663; }
+
+.rk-controls { width: 230px; padding: 20px; border-radius: 24px; background: #fff; display: flex; flex-direction: column; gap: 12px; }
+.rk-controls h1 { font-size: 17px; }
+.rk-controls p { font-size: 12px; color: #6d6663; }
+.rk-controls [role="group"] { display: flex; flex-direction: column; gap: 6px; }
+.rk-controls [role="group"] button { height: 36px; padding: 0 14px; border-radius: 18px; background: #f2f0ed; font-size: 13px; font-weight: 600; text-align: left; }
+.rk-controls [role="group"] button[aria-pressed="true"] { background: #1f1a18; color: #fff; }
+.rk-replay { height: 40px; border-radius: 20px; background: #1f1a18 !important; color: #fff !important; font-size: 13px; font-weight: 600; }
+
+.rk-phone { position: relative; width: 390px; height: 844px; overflow: hidden; border-radius: 28px; background: #0b0908; color: var(--ink); corner-shape: superellipse(1.6); }
+.rk-scroll { height: 100%; overflow-y: auto; padding-bottom: 48px; scrollbar-width: none; }
+.rk-status { position: relative; z-index: 3; display: flex; align-items: flex-end; height: 54px; padding: 0 22px 4px; font-size: 16.5px; font-weight: 700; }
+.rk-nav { display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; height: 44px; padding: 0 6px; }
+.rk-nav h1 { font-size: 17px; line-height: 22px; font-weight: 600; text-align: center; }
+.rk-nav button { display: flex; width: 40px; height: 40px; align-items: center; justify-content: center; }
+.rk-indicator { position: absolute; z-index: 5; left: 50%; bottom: 8px; width: 139px; height: 5px; border-radius: 3px; background: var(--ink); transform: translateX(-50%); }
+
+/* Membership page */
+.rk-hero { display: flex; flex-direction: column; align-items: center; padding: 8px 16px 0; text-align: center; background: radial-gradient(60% 34% at 50% 16%, rgba(232, 200, 138, .16), transparent 70%); }
+.rk-hero-badge { filter: drop-shadow(0 18px 30px rgba(0, 0, 0, .55)); }
+.rk-eyebrow { margin-top: 8px; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--sub); }
+.rk-hero h2 { font-size: 34px; line-height: 40px; font-weight: 800; letter-spacing: -.8px; }
+.rk-progress { width: 100%; margin-top: 18px; padding: 16px; border-radius: 20px; background: var(--card); text-align: left; box-shadow: inset 0 0 0 .5px rgba(255, 255, 255, .08); }
+.rk-progress-row { display: flex; justify-content: space-between; font-size: 15px; line-height: 20px; font-weight: 600; }
+.rk-progress-row b { color: var(--gold); font-weight: 600; }
+.rk-progress i { display: block; height: 6px; margin: 12px 0 10px; border-radius: 3px; background: rgba(255, 255, 255, .1); overflow: hidden; }
+.rk-progress i b { display: block; height: 100%; border-radius: inherit; background: var(--gold); }
+.rk-progress small, .rk-top { font-size: 13px; line-height: 18px; color: var(--sub); }
+.rk-top { margin-top: 12px; }
+.rk-section { padding: 24px 16px 0; }
+.rk-section h3 { padding-bottom: 12px; font-size: 17px; line-height: 22px; font-weight: 700; }
+.rk-section-head { display: flex; align-items: center; justify-content: space-between; }
+.rk-section-head button { display: flex; align-items: center; gap: 2px; padding-bottom: 12px; font-size: 14px; font-weight: 600; color: var(--gold); }
+.rk-list { display: flex; flex-direction: column; border-radius: 20px; background: var(--card); box-shadow: inset 0 0 0 .5px rgba(255, 255, 255, .06); }
+.rk-benefit, .rk-unlock { display: grid; grid-template-columns: 40px 1fr 32px; align-items: center; gap: 12px; padding: 12px 14px; }
+.rk-benefit + .rk-benefit { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06); }
+.rk-brand { width: 40px; height: 40px; border-radius: 12px; object-fit: contain; background: #fff; padding: 5px; }
+.rk-benefit strong, .rk-unlock strong { display: block; font-size: 15px; line-height: 20px; font-weight: 600; }
+.rk-benefit small, .rk-unlock small { display: block; font-size: 13px; line-height: 18px; color: var(--sub); }
+.rk-mark { width: 32px; height: 32px; object-fit: contain; }
+.rk-tier-scroll { display: flex; gap: 10px; margin: 0 -16px; padding: 0 16px 4px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.rk-tier-card { flex: none; width: 250px; padding: 14px; border-radius: 20px; background: var(--card); scroll-snap-align: start; box-shadow: inset 0 0 0 .5px rgba(255, 255, 255, .06); }
+.rk-tier-card[data-state="current"] { box-shadow: inset 0 0 0 1px rgba(232, 200, 138, .6); }
+.rk-tier-head { display: flex; align-items: center; gap: 10px; }
+.rk-tier-head strong { display: block; font-size: 16px; line-height: 22px; font-weight: 700; }
+.rk-tier-head small { display: block; font-size: 12px; line-height: 16px; color: var(--sub); }
+.rk-tier-card[data-state="current"] .rk-tier-head small { color: var(--gold); }
+.rk-tier-badge { position: relative; display: grid; place-items: center; }
+.rk-tier-badge svg[data-locked] { filter: grayscale(1) brightness(.5); }
+.rk-tier-badge > .lucide { position: absolute; color: var(--ink); }
+.rk-tier-card ul { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; padding: 0; list-style: none; }
+.rk-tier-card li { display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 18px; color: var(--sub); }
+.rk-tier-card li img { width: 22px; height: 22px; object-fit: contain; flex: none; }
+.rk-badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.rk-badges figure { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 6px; border-radius: 20px; background: var(--card); text-align: center; }
+.rk-badges img { width: 84px; height: 84px; object-fit: contain; filter: grayscale(1) brightness(.45); }
+.rk-badges figure[data-earned] img { filter: drop-shadow(0 8px 14px rgba(0, 0, 0, .5)); }
+.rk-badges figcaption { font-size: 12px; line-height: 16px; font-weight: 600; }
+.rk-badges small { font-size: 11px; line-height: 14px; color: var(--sub); }
+.rk-badges figure[data-earned] small { color: var(--gold); }
+
+/* ── Rank-up, static, matched to the reference at scale 0.56: eyebrow cap 22 (font 31), title cap 67 (font 96), badge 340,
+      title→badge 51, badge→close 60, close 185 wide on #1d1b20 with left-set text. ── */
+.rk-ref { background: #000; }
+.rk-ref-body { position: absolute; inset: 54px 0 34px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.rk-ref-eyebrow, .rk-ref-title, .rk-ref-close { font-family: var(--font-cond), "Arial Narrow", sans-serif; text-transform: uppercase; color: #fff; }
+.rk-ref-eyebrow { font-size: 31px; line-height: 31px; font-weight: 700; font-style: italic; letter-spacing: -.2px; }
+.rk-ref-title { margin-top: 10px; font-size: 96px; line-height: 84px; font-weight: 800; font-style: italic; letter-spacing: -1px; }
+.rk-ref[data-tier="platinum"] .rk-ref-title { font-size: 80px; line-height: 72px; }
+.rk-ref-badge { margin-top: 40px; filter: drop-shadow(0 20px 36px rgba(0, 0, 0, .8)); }
+.rk-page .rk-ref-close { width: 185px; height: 40px; margin-top: 52px; padding: 0 12px; border-radius: 2px; background: #1d1b20; font-size: 18px; font-weight: 500; letter-spacing: .3px; text-align: left; }
+
+@media (prefers-reduced-motion: reduce) { .rk-page * { animation: none !important; } }
+
+/* ── Award screens, cloned from the reference at scale 0.53 (content shifted 30pt down for the status bar).
+      eyebrow cap 12 (font 17) at x34 · title cap 28 (font 38/38) · date 16 · badge ≈188×215 at y ≈287 · floor glow under it
+      · earned line 17 centred at y ≈596 · pills 339×57, x25, white then #4c4c4e, 14 apart, ending y ≈800. ── */
+.aw { --tint: #0a74c9; background: #000; font-family: var(--font-geo), -apple-system, sans-serif; }
+/* Stage, measured on the reference: haze brightest at the top edge, dim by 30% height, black from ~45%; three spot sources on the top
+   edge (6% / 50% / 94%), each a hot point and a soft cone fading by ~40% height; faint dust above. */
+.aw-stage { position: absolute; inset: 0; overflow: hidden; background: linear-gradient(180deg, color-mix(in srgb, var(--tint) 46%, #000) 0%, color-mix(in srgb, var(--tint) 34%, #000) 16%, color-mix(in srgb, var(--tint) 24%, #000) 30%, color-mix(in srgb, var(--tint) 9%, #000) 44%, #000 58%); }
+.aw-spot { position: absolute; top: -18px; width: 0; height: 0; transform: rotate(var(--a)); transform-origin: 0 0; }
+.aw-spot::before { content: ""; position: absolute; left: -150px; top: 0; width: 300px; height: 400px; background: linear-gradient(180deg, color-mix(in srgb, var(--tint) 70%, #fff 30%) 0%, color-mix(in srgb, var(--tint) 75%, transparent) 26%, color-mix(in srgb, var(--tint) 30%, transparent) 60%, transparent 100%); clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%); filter: blur(36px); opacity: .55; mix-blend-mode: screen; }
+.aw-spot > b { position: absolute; left: -46px; top: -14px; width: 92px; height: 60px; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--tint) 35%, #fff 65%), color-mix(in srgb, var(--tint) 80%, transparent) 55%, transparent); filter: blur(4px); mix-blend-mode: screen; }
+.aw-dust { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: #cfe6ff; }
+.aw-dot { position: absolute; width: 4px; height: 9px; border-radius: 4px; transform: rotate(10deg); box-shadow: 0 0 6px currentColor; }
+.aw-dot[data-k="diamond"] { width: 7px; height: 7px; border-radius: 1px; transform: rotate(45deg); }
+.aw-floor { position: absolute; left: 50%; top: 492px; width: 300px; height: 60px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--tint) 45%, transparent), transparent); filter: blur(6px); }
+.aw .rk-status { position: relative; z-index: 2; }
+.aw-close { position: absolute; z-index: 2; top: 62px; right: 18px; display: flex; width: 28px; height: 28px; align-items: center; justify-content: center; color: #fff; }
+.aw-head { position: relative; z-index: 2; padding: 14px 34px 0; color: #fff; }
+.aw-head p { font-size: 17px; line-height: 22px; font-weight: 600; text-transform: uppercase; letter-spacing: .2px; }
+.aw-head h1 { margin-top: 10px; font-size: 38px; line-height: 38px; font-weight: 700; letter-spacing: -.6px; text-transform: uppercase; }
+.aw-head time { display: block; margin-top: 18px; font-size: 16px; line-height: 20px; color: rgba(255, 255, 255, .78); }
+.aw-art { position: absolute; z-index: 2; left: 0; right: 0; top: 287px; display: grid; place-items: center; height: 215px; }
+.aw-badge-img { width: 215px; height: 215px; object-fit: contain; filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .55)); }
+.aw-badge-svg { filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .55)); }
+.aw-earned { position: absolute; z-index: 2; left: 34px; right: 34px; top: 596px; font-size: 17px; line-height: 22px; text-align: center; color: rgba(255, 255, 255, .78); }
+.aw-actions { position: absolute; z-index: 2; left: 25px; right: 25px; bottom: 44px; display: flex; flex-direction: column; gap: 14px; }
+.rk-page .aw-actions button { height: 57px; border-radius: 29px; font-family: inherit; font-size: 17px; line-height: 22px; font-weight: 600; text-align: center; }
+.rk-page .aw-primary { background: #fff; color: #000; }
+.rk-page .aw-secondary { background: #4c4c4e; color: #fff; }
+
+/* Unlocked benefits on the rank-up award: a row of four under the badge; the "earned by" line moves up to make room. */
+.aw[data-perks] .aw-earned { top: 520px; }
+.aw-perks { position: absolute; z-index: 2; left: 16px; right: 16px; top: 556px; }
+.aw-perks h2 { font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-align: center; color: rgba(255, 255, 255, .6); }
+.aw-perks > div { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 10px; }
+.aw-perks figure { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.aw-perks figure > span { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: #fff; }
+.aw-perks figure > span img:first-child { width: 34px; height: 34px; object-fit: contain; }
+.aw-perk-check { position: absolute; right: -6px; bottom: -6px; width: 22px; height: 22px; object-fit: contain; }
+.aw-perks figcaption { font-size: 12px; line-height: 15px; font-weight: 600; color: #fff; }
+
+
+/* Softer studio light, one deliberate reveal, then a quiet resting state. */
+.rk-controls { width: 250px; }
+.rk-controls [aria-label="Thiết kế badge"] button { display:flex; align-items:center; gap:10px; height:auto; min-height:62px; padding:8px 10px; border-radius:14px; }
+.rk-controls small { display:block; font-size:10px; line-height:16px; font-weight:400; opacity:.65; }
+.rk-nav { height:56px; }
+.rk-hero { padding-inline:22px; }
+.rk-section { padding-inline:22px; }
+.rk-tier-scroll { margin-inline:-22px; padding-inline:22px; }
+.rk-eyebrow { letter-spacing:.5px; font-size:12px; text-transform:none; }
+.rk-hero h2 { font-size:40px; line-height:48px; font-weight:650; }
+.rk-page .rk-celebrate { display:flex; gap:6px; align-items:center; margin-top:10px; font-size:13px; color:var(--gold); }
+.aw-stage { background:radial-gradient(ellipse at 50% 42%,color-mix(in srgb,var(--tint) 14%,transparent),transparent 48%),var(--card); }
+.aw-spot { top:-95px; left:50% !important; width:180px; height:590px; transform-origin:50% 0; transform:translateX(-50%) rotate(var(--a)); filter:blur(20px); animation:aw-light-reveal 2.4s ease-out both; }
+.aw-spot::before { inset:0; width:100%; height:100%; clip-path:polygon(46% 0,54% 0,100% 100%,0 100%); background:linear-gradient(180deg,color-mix(in srgb,var(--ink) 30%,transparent),color-mix(in srgb,var(--tint) 14%,transparent) 55%,transparent); filter:blur(12px); opacity:.4; }
+.aw-spot > b { display:none; }
+.aw-spot:nth-child(2) { opacity:.3; }
+.aw-spot:nth-child(3) { animation-delay:.15s; }
+.aw-dust { background:var(--ink); opacity:.15 !important; animation:aw-drift 7s ease-in-out infinite alternate; }
+.aw-dot { background:var(--gold) !important; color:var(--gold) !important; opacity:0; box-shadow:none; animation:aw-confetti 2.8s .5s ease-out both; }
+.aw-floor { top:474px; width:230px; height:35px; opacity:.5; animation:aw-light-reveal 2s ease-out both; }
+.aw-head { padding:22px 22px 0; }
+.aw-head p { font-size:11px; line-height:16px; letter-spacing:1.8px; color:var(--gold); font-weight:600; }
+.aw-head h1 { margin-top:16px; text-transform:none; letter-spacing:-.8px; }
+.aw-head h1 span { display:block; font-size:23px; line-height:32px; font-weight:400; color:var(--sub); letter-spacing:-.5px; }
+.aw-head h1 strong { display:block; margin-top:3px; font-size:48px; line-height:58px; font-weight:650; letter-spacing:-1.8px; }
+.aw-head time { margin-top:12px; font-size:12px; line-height:18px; color:var(--sub); }
+.aw-art { top:270px; animation:aw-badge-reveal 1.25s .15s cubic-bezier(.16,1,.3,1) both; }
+.aw-earned { top:550px; left:22px; right:22px; font-size:14px; line-height:22px; color:var(--sub); animation:aw-copy-reveal .7s .65s both; }
+.aw[data-perks] .aw-earned { top:505px; }
+.aw-perks { top:552px; left:22px; right:22px; animation:aw-copy-reveal .7s .8s both; }
+.aw-perks h2 { text-align:left; font-size:13px; line-height:18px; text-transform:none; letter-spacing:0; color:var(--ink); }
+.aw-perks > div { margin-top:14px; gap:12px; }
+.aw-perks figcaption { font-size:10px; line-height:15px; font-weight:400; color:var(--sub); }
+.aw-actions { left:22px; right:22px; gap:10px; }
+.rk-page .aw-actions button { height:50px; font-size:15px; }
+.rk-page .aw-secondary { background:var(--fill); color:var(--ink); }
+.aw-close { width:44px; height:44px; top:60px; right:12px; }
+@keyframes aw-light-reveal { from { opacity:0; } to { opacity:.65; } }
+@keyframes aw-badge-reveal { from { opacity:0; transform:translateY(24px) scale(.88) rotate(-5deg); } to { opacity:1; transform:translateY(0) scale(1) rotate(0); } }
+@keyframes aw-copy-reveal { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes aw-confetti { 0% { opacity:0; transform:translateY(-30px) rotate(-15deg); } 25% { opacity:.65; } 100% { opacity:0; transform:translateY(95px) rotate(60deg); } }
+@keyframes aw-drift { to { transform:translateY(-12px); } }
+@media (max-width:440px) { .rk-page { padding:16px 0; gap:24px; } .rk-controls { width:calc(100% - 44px); } .rk-phone { max-width:100vw; } }
+@media (prefers-reduced-motion:reduce) { .rk-page *, .rk-page *::before { animation:none !important; transition:none !important; } .aw-spot { opacity:.5; } .aw-dot { opacity:0; } }

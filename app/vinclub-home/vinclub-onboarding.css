@@ -1,0 +1,50 @@
+.vk-phone .vc-onboarding{--foreground:var(--color-grey-950);--foreground-secondary:var(--color-grey-600);--secondary:color-mix(in srgb,var(--color-grey-00) 65%,transparent);--story-top:var(--color-blue-100);--story-bottom:var(--color-orange-50);position:absolute;inset:0;z-index:65;display:flex;flex-direction:column;overflow:hidden;color:var(--foreground);background:radial-gradient(ellipse at 10% 45%,color-mix(in srgb,var(--color-green-100) 65%,transparent),transparent 65%),linear-gradient(155deg,var(--story-top),var(--story-bottom));font-family:inherit}
+.vc-onboarding[data-story=ecosystem]{--story-top:var(--color-green-100);--story-bottom:var(--color-yellow-50)}
+.vc-onboarding[data-story=privileges]{--story-top:color-mix(in srgb,var(--color-blue-100) 65%,var(--color-red-100));--story-bottom:var(--color-orange-50)}
+.vc-onboarding-header{flex:none}
+.vc-onboarding-header>div:first-child{color:var(--foreground);background:transparent}
+.vc-onboarding-bars{display:flex;gap:5px;padding-inline:22px}
+.vc-onboarding-bars button{display:flex;align-items:center;min-height:12px;flex:1;background:transparent}
+.vc-onboarding-bars button>span{display:block;height:3px;width:100%;background:color-mix(in srgb,var(--foreground) 15%,transparent);border-radius:var(--radius-8)}
+.vc-onboarding-bars button[data-complete]>span{background:var(--foreground)}
+.vc-onboarding-nav{display:flex;align-items:center;justify-content:space-between;height:44px;padding-inline:22px}
+.vc-onboarding-nav>span{font-size:11px;letter-spacing:2px;font-weight:600}
+.vc-onboarding-nav button{height:40px;width:40px;padding:0}
+.vc-onboarding-nav button>span:first-child{background:transparent}
+.vc-onboarding-content{position:relative;display:flex;flex-direction:column;flex:1;min-height:0;animation:vc-story-reveal 400ms ease-out both}
+.vc-onboarding-kicker{font-size:10px;line-height:16px;letter-spacing:1.3px;font-weight:600;color:var(--foreground-secondary)}
+.vk-phone .vc-onboarding h1{font-size:30px;line-height:37px;letter-spacing:-.9px;font-weight:650;margin-top:10px}
+.vc-onboarding-description{font-size:13px;line-height:20px;color:var(--foreground-secondary);margin-top:12px;max-width:320px}
+.vc-onboarding-art{display:flex;align-items:center;justify-content:center;flex:1;min-height:0;margin:4px -22px -8px;overflow:hidden}
+.vc-onboarding-art img{height:100%;width:112%;max-width:none;object-fit:contain;mix-blend-mode:normal;filter:drop-shadow(0 16px 24px color-mix(in srgb,var(--color-yellow-950) 10%,transparent))}
+.vc-onboarding-footer{flex:none;display:flex;flex-direction:column;align-items:stretch;gap:10px;padding-top:0;padding-bottom:8px}
+.vc-onboarding-step{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;font-size:11px;font-variant-numeric:tabular-nums;color:var(--foreground-secondary)}
+.vc-onboarding-step button{width:36px;height:36px;min-height:36px;padding:0}
+.vc-onboarding-step button>span:first-child{background:transparent}
+.vc-onboarding-step button:disabled{opacity:.25}
+.vk-phone .vc-onboarding .vc-onboarding-continue,.vk-phone .vc-onboarding .vc-onboarding-later{height:48px;width:100%;font-size:14px}
+.vc-onboarding-later>span:first-child{background:color-mix(in srgb,var(--color-grey-00) 65%,transparent)}
+.vc-onboarding-footer>div:last-child{align-self:center;margin-top:6px;border-radius:var(--radius-8)}
+@keyframes vc-story-reveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.vc-onboarding-content{animation:none}}
+
+/* Neutral canvas and one clear action across the introduction. */
+.vk-phone .vc-onboarding{--foreground:var(--color-grey-950);--foreground-secondary:var(--color-grey-600);--secondary:var(--color-grey-100);background:var(--color-grey-50)}
+.vk-phone .vc-onboarding .vc-onboarding-continue{background:var(--color-grey-950)!important;color:var(--color-grey-00)!important}
+.vk-phone .vc-onboarding .vc-onboarding-continue>span:first-child{background:var(--color-grey-950)!important}
+.vk-phone .vc-onboarding .vc-onboarding-later{color:var(--foreground)!important}
+.vk-phone .vc-onboarding .vc-onboarding-later>span:first-child{background:var(--color-grey-100)}
+
+/* Full-bleed campaign stories: artwork supplies each vivid colour canvas. */
+.vk-phone .vc-onboarding{--foreground:var(--color-grey-00);--foreground-secondary:var(--color-grey-00);background:var(--color-blue-700);isolation:isolate}
+.vc-onboarding-backdrop{object-fit:cover;z-index:-2}
+.vc-onboarding::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,color-mix(in srgb,var(--color-blue-950) 26%,transparent),transparent 42%,transparent 70%,color-mix(in srgb,var(--color-blue-950) 30%,transparent))}
+.vk-phone .vc-onboarding h1{font-size:42px;line-height:45px;letter-spacing:-1.5px;font-weight:750;margin-top:8px}
+.vc-onboarding-kicker{opacity:.8;letter-spacing:1.8px}
+.vc-onboarding-description{font-size:14px;line-height:21px;max-width:250px;margin-top:12px}
+.vc-onboarding[data-story=privileges]{--foreground:var(--color-yellow-950);--foreground-secondary:var(--color-yellow-950)}
+.vc-onboarding-step{color:var(--foreground)}
+.vk-phone .vc-onboarding .vc-onboarding-continue{background:var(--color-yellow-950)!important;color:var(--color-yellow-100)!important}
+.vk-phone .vc-onboarding .vc-onboarding-continue>span:first-child{background:var(--color-yellow-950)!important}
+.vk-phone .vc-onboarding .vc-onboarding-later>span:first-child{background:color-mix(in srgb,var(--color-grey-00) 15%,transparent)}
+.vk-phone .vc-onboarding .vc-onboarding-later{color:var(--foreground)!important}

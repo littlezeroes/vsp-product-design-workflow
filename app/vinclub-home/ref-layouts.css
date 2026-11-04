@@ -1,0 +1,970 @@
+/* Layouts from the user's references. */
+.vr-stack{color:var(--ink)}.vr-brand{padding:8px 22px 14px}.vr-brand strong{font-size:28px;line-height:34px;font-weight:600}
+.vr-cards{display:flex;flex-direction:column;padding:0 22px}.vr-cards button{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;height:96px;margin-bottom:-36px;padding:16px 18px;border-radius:28px 28px 0 0;color:#1f1a18;background:color-mix(in srgb,var(--brand-tone) 32%,#fff);box-shadow:0 -1px 0 rgba(255,255,255,.4);corner-shape:superellipse(1.6)}.vr-cards span{font-size:16px;line-height:22px;font-weight:500}.vr-cards b{font-size:16px;line-height:22px;font-weight:600}
+.vr-sheet{position:relative;z-index:1;padding:4px 0 24px;border-radius:30px 30px 0 0;background:var(--bg);box-shadow:0 -6px 18px rgba(31,26,24,.06)}
+.vr-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 22px}.vr-tiles button{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}.vr-tiles i{display:flex;align-items:center;justify-content:center;width:100%;height:84px;border-radius:20px;background:#2a2b2e;color:#f6d67e}.vr-tiles small{font-size:13px;line-height:17px}
+.vr-offers{display:flex;gap:10px;overflow-x:auto;padding:0 22px;scrollbar-width:none}.vr-offers::-webkit-scrollbar{display:none}.vr-offers button{position:relative;display:flex;flex:0 0 156px;flex-direction:column;align-items:flex-start;justify-content:space-between;height:190px;padding:12px;overflow:hidden;border-radius:24px;color:#1f1a18;background:color-mix(in srgb,var(--brand-tone) 26%,#fff)}.vr-offers em{padding:3px 9px;border-radius:12px;background:#fff;font-size:12px;line-height:16px;font-style:normal;font-weight:600}.vr-offers img{align-self:center}.vr-offers strong{font-size:17px;line-height:22px;font-weight:600}
+
+.vr-cat{padding:0 22px 16px}.vr-cat>header{display:flex;align-items:center;justify-content:space-between;gap:4px}.vr-cat h1{font-size:32px;line-height:38px;font-weight:700;letter-spacing:-.6px}.vr-cat>header img{flex:none}
+.vr-chips{display:flex;gap:6px;overflow-x:auto;margin:8px -22px 0;padding:0 22px;scrollbar-width:none}.vr-chips::-webkit-scrollbar{display:none}.vr-chips button{flex:none;padding:9px 16px;border-radius:14px;background:var(--line);font-size:14px;font-weight:500}.vr-chips button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.vr-banner{position:relative;margin-top:20px;padding:22px;overflow:hidden;border-radius:24px;color:#1f1a18;background:linear-gradient(95deg,#f9e3e1,#e7f3fb)}.vk-phone .vr-banner h2{max-width:230px;font-size:26px;line-height:31px;letter-spacing:-.4px}.vr-banner p{padding:6px 0 16px;font-size:14px;line-height:20px}.vr-banner button{padding:12px 18px;border-radius:14px;background:#1f1a18;color:#fff;font-size:14px;font-weight:600}.vr-banner img{position:absolute;right:-8px;bottom:-8px}
+.vk-phone .vr-title{padding:24px 0 12px;font-size:24px;line-height:30px}.vr-uneven{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.vr-uneven button{position:relative;grid-column:span 2;height:112px;padding:12px;overflow:hidden;border-radius:18px;background:var(--surface);box-shadow:0 1px 3px rgba(31,26,24,.04)}.vr-uneven button:nth-child(-n+2){grid-column:span 3}.vr-uneven span{position:relative;z-index:1;display:block;font-size:14px;line-height:18px;font-weight:500}.vr-uneven img{position:absolute;right:-6px;bottom:-8px}.vr-uneven svg{position:absolute;left:12px;bottom:12px}
+
+.vr-award{display:flex;flex-direction:column;margin-top:-54px;padding:64px 28px 24px;min-height:calc(100% + 54px - 104px);color:#fff;background:radial-gradient(70% 34% at 28% 0,rgba(0,121,168,.7),transparent),radial-gradient(70% 34% at 78% 0,rgba(0,121,168,.5),transparent),#04070c}.vr-award>small{font-size:14px;line-height:20px;font-weight:500}.vr-award h1{padding-top:2px;font-size:36px;line-height:40px;font-weight:700;letter-spacing:-.6px}.vr-award em{padding-top:6px;color:rgba(255,255,255,.66);font-size:15px;font-style:normal}
+.vr-badge{display:flex;align-items:center;justify-content:center;align-self:center;width:190px;height:216px;margin:26px 0 22px;color:#1f1a18;background:linear-gradient(135deg,#fff3cf,#e4b95f 45%,#fbe7b0 62%,#b08a3e);clip-path:polygon(50% 0,100% 12%,100% 62%,50% 100%,0 62%,0 12%);animation:vr-pop .6s cubic-bezier(.34,1.56,.64,1) both}@keyframes vr-pop{from{transform:scale(.7);opacity:0}}@media (prefers-reduced-motion:reduce){.vr-badge{animation:none}}
+.vr-award p{padding-bottom:18px;color:rgba(255,255,255,.76);font-size:15px;line-height:22px;text-align:center}.vk-phone .vr-primary,.vk-phone .vr-ghost{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:50px;border-radius:25px;font-size:15px;font-weight:600;text-align:center}.vr-primary{background:#fff;color:#1f1a18}.vr-primary:disabled{opacity:.6}.vr-ghost{margin-top:10px;background:rgba(255,255,255,.2);color:#fff}
+
+.vr-offer{display:flex;flex-direction:column;gap:12px;padding:0 22px 16px}.vr-offer section{padding:20px;overflow:hidden;border-radius:26px;background:var(--surface);box-shadow:0 1px 3px rgba(31,26,24,.04),0 6px 16px rgba(31,26,24,.06);corner-shape:superellipse(1.6)}.vk-phone .vr-offer h2{font-size:28px;line-height:32px;letter-spacing:-.5px}.vr-offer p{padding:8px 0 14px;color:var(--sub);font-size:15px;line-height:21px}.vk-phone .vr-offer button{width:100%;height:50px;border-radius:14px;background:var(--brand-tone);color:#fff;font-size:15px;font-weight:600;text-align:center}.vr-offer section>div{position:relative;display:flex;justify-content:center;height:136px;margin-top:10px}.vr-offer section>div img{margin-left:-70px}.vr-offer span{position:absolute;right:8px;bottom:18px;display:flex;flex-direction:column;padding:6px 14px;border-radius:10px;color:#fff;background:var(--brand-tone);transform:rotate(-4deg)}.vr-offer span small{font-size:11px;line-height:14px}.vr-offer span b{font-size:34px;line-height:38px;font-weight:700}
+
+/* Dark full-bleed approaches: status text stays readable and the dark surface reaches the bottom of the phone. */
+.vk-phone[data-approach=award] .vk-scroll{background:#0e0e10}
+.vk-phone[data-approach=award] .vk-status{position:relative;z-index:1;color:#fff}
+.vk-phone[data-approach=award] .vk-bar-fade{background:linear-gradient(to top,#0e0e10 30%,transparent)}
+.vk-phone[data-approach=award] .vk-indicator{background:#fff}
+.vk-phone[data-approach=award] .vk-bar{--ink:#f4f4f3;--sub:#a3a3a1;--line:rgba(255,255,255,.13);background:rgba(38,38,38,.72);box-shadow:inset 0 0 0 .5px rgba(255,255,255,.14),0 12px 30px rgba(0,0,0,.5)}
+
+/* Lower parts under the stack. */
+.vr-sheet .vh-v-head{padding-top:18px}.vr-sheet .vr-cat{padding-top:0}.vr-sheet .vr-offer{padding-top:18px}
+.vr-today{padding:18px 22px 0}.vk-phone .vr-today h2{padding:0 0 12px;font-size:24px;line-height:30px;letter-spacing:-.4px}
+.vr-scratch{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:24px;background:var(--surface);box-shadow:0 1px 3px rgba(31,26,24,.04),0 6px 16px rgba(31,26,24,.06);corner-shape:superellipse(1.6)}.vr-scratch .vh-scratch{margin:0}.vr-scratch>strong{font-size:17px;line-height:22px;font-weight:600}.vk-phone .vr-scratch>button{height:48px;border-radius:24px;background:var(--ink);color:var(--bg);font-size:15px;font-weight:600;text-align:center}.vr-scratch>button:disabled{opacity:.55}
+.vr-row{display:flex;align-items:center;gap:12px;width:100%;padding:10px 0}.vr-row:first-of-type{margin-top:8px}.vr-row>span{display:flex;flex:1;flex-direction:column;gap:1px;min-width:0}.vr-row strong{font-size:14px;line-height:18px;font-weight:600}.vr-row em{color:var(--sub);font-size:12px;line-height:16px;font-style:normal}.vr-row b{flex:none;padding:6px 12px;border-radius:16px;background:var(--line);font-size:12px;font-weight:600}
+
+/* Plain status line, leather wallet with two metal cards, horizontal vouchers. */
+.vr-brand{display:flex;flex-direction:column;align-items:flex-start;gap:2px}.vr-brand button{display:flex;align-items:center;gap:2px;color:var(--sub);font-size:14px;line-height:20px;font-weight:500}
+.vr-sheet{margin-top:16px;box-shadow:none;background:none}
+.vr-sheet .vh-v-grid{display:flex;gap:10px;overflow-x:auto;padding:0 22px 4px;scroll-snap-type:x mandatory;scroll-padding-left:22px;scrollbar-width:none}.vr-sheet .vh-v-grid::-webkit-scrollbar{display:none}.vr-sheet .vh-v-grid button{flex:0 0 176px;height:208px;scroll-snap-align:start}
+
+/* Two leather wallets side by side. Lift, then the inner screen grows out of the wallet. */
+.vr-pouches{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 22px}
+.vk-phone .vr-pouch{position:relative;display:block;height:150px;overflow:hidden;border-radius:22px;background:url(/vinclub-duo/togo.png) 0 0/200px,linear-gradient(180deg,#1f1512,#2a1d19);background-blend-mode:overlay,normal;box-shadow:inset 0 1px 0 rgba(255,225,205,.14),0 8px 18px rgba(31,26,24,.16);corner-shape:superellipse(1.6)}
+.vr-pouch-card{position:absolute;left:8px;right:8px;top:8px;height:96px;display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:14px;color:#1f1a18;box-shadow:inset 0 1px 0 rgba(255,255,255,.78);transition:transform .38s cubic-bezier(.22,1,.36,1)}.vr-pouch-card[data-metal=front]{background:linear-gradient(104deg,rgba(255,255,255,0) 16%,rgba(255,255,255,.55) 43%,rgba(255,255,255,0) 60%),linear-gradient(176deg,#f1e4cd,#e4cfac 40%,#d3bf9c)}.vr-pouch-card[data-metal=back]{background:linear-gradient(100deg,rgba(255,255,255,0) 20%,rgba(255,255,255,.42) 46%,rgba(255,255,255,0) 64%),linear-gradient(178deg,#d3d5d8,#b2b5b9 45%,#a0a3a7)}.vr-pouch-card small{font-size:12px;line-height:16px;font-weight:500}.vr-pouch-card strong{font-size:16px;line-height:22px;font-weight:600;white-space:nowrap}
+.vr-pouch-lip{position:absolute;inset:82px 0 0;background:url(/vinclub-duo/togo.png) 0 -60px/200px,linear-gradient(180deg,#33241f,#241915);background-blend-mode:overlay,normal;box-shadow:inset 0 1px 0 rgba(255,228,208,.24);transition:transform .38s cubic-bezier(.22,1,.36,1)}
+.vr-pouch:active{transform:scale(.98)}.vr-pouch[data-lift] .vr-pouch-lip{transform:translateY(44px)}.vr-pouch[data-lift] .vr-pouch-card{transform:translateY(4px) scale(1.03)}
+.vr-open{position:absolute;inset:0;z-index:8;overflow:hidden;background:var(--bg);animation:vr-open-in .56s cubic-bezier(.32,.72,0,1) both}@keyframes vr-open-in{from{clip-path:var(--from)}to{clip-path:inset(0 round 28px)}}
+.vr-open iframe{display:block;width:100%;height:100%;border:0}.vr-open-voucher{height:100%;padding:68px 22px 24px;overflow-y:auto}.vr-open-voucher h1{padding-bottom:12px;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-.5px}
+.vk-phone .vr-open-back{position:absolute;top:54px;left:22px;z-index:1;display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;background:transparent;color:var(--foreground);-webkit-backdrop-filter:none;backdrop-filter:none}.vk-phone .vr-open-back>span:first-child{background:transparent}
+@media (prefers-reduced-motion:reduce){.vr-open{animation:none}.vr-pouch-card,.vr-pouch-lip{transition:none}}
+
+/* Black header behind the status bar: tier as a metal badge, VPoint beside it. The wallets overlap its lower edge. */
+.vk-phone[data-approach=stack] .vk-status{position:relative;z-index:1;color:#fff}
+.vr-stack .vr-brand{gap:10px;margin:-54px 0 -36px;padding:62px 22px 56px;color:#fff;background:#0e0e10;border-radius:0 0 28px 28px}
+.vk-phone .vr-member{display:flex;align-items:center;gap:10px;width:100%;color:#fff}
+.vr-tier-badge{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 12px 0 10px;border-radius:15px;color:#1f1a18;font-size:14px;font-weight:700;background:linear-gradient(112deg,#f6d67e,#fff0c2 48%,#d9b566);box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}
+.vr-tier-badge[data-tier="Bạc"]{background:linear-gradient(112deg,#b9bcc0,#f2f3f4 48%,#a2a5a9)}.vr-tier-badge[data-tier="Bạch Kim"]{background:linear-gradient(112deg,#cfd8e3,#fff 48%,#aebccd)}.vr-tier-badge[data-tier="Nhân viên"]{background:linear-gradient(112deg,#e4cfac,#f8efdf 48%,#c9ae83)}
+.vr-points{flex:1;color:rgba(255,255,255,.72);font-size:14px;line-height:20px;text-align:left}.vr-points b{color:#fff;font-size:16px;font-weight:600}.vr-member>svg{flex:none;color:rgba(255,255,255,.6)}
+.vr-pouches{position:relative;z-index:1}
+
+/* Closed bifold wallet: stitched leather cover with a metal snap; the card only shows once it opens. */
+.vk-phone .vr-pouch{overflow:visible;perspective:560px;background:#17100d}
+.vr-pouch-card{inset:8px;top:8px;left:8px;right:8px;height:auto}
+.vr-pouch-cover{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:flex-end;gap:1px;padding:16px;border-radius:22px;color:#f6e7c8;background:url(/vinclub-duo/togo.png) 0 0/200px,linear-gradient(170deg,#3a2922,#241915);background-blend-mode:overlay,normal;box-shadow:inset 0 1px 0 rgba(255,228,208,.26),inset 0 -1px 0 rgba(0,0,0,.4);transform-origin:0 50%;backface-visibility:hidden;transition:transform .56s cubic-bezier(.32,.72,0,1),opacity .2s ease .36s;corner-shape:superellipse(1.6)}
+.vr-pouch-cover small{position:relative;font-size:12px;line-height:16px;font-weight:500;opacity:.8}.vr-pouch-cover strong{position:relative;font-size:16px;line-height:22px;font-weight:600;white-space:nowrap;text-shadow:0 1px 0 rgba(0,0,0,.5)}
+.vr-pouch-stitch{position:absolute;inset:7px;border:1px dashed rgba(255,228,208,.22);border-radius:16px;pointer-events:none}
+.vr-pouch-snap{position:absolute;top:50%;right:0;width:44px;height:30px;margin-top:-30px;border-radius:15px 0 0 15px;background:linear-gradient(180deg,#46332b,#2c1e19);box-shadow:inset 0 1px 0 rgba(255,228,208,.24),-1px 2px 4px rgba(0,0,0,.35)}.vr-pouch-snap::after{content:"";position:absolute;left:10px;top:7px;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3cf,#c9a257 60%,#8a6a2c);box-shadow:0 1px 2px rgba(0,0,0,.5)}
+.vr-pouch[data-lift] .vr-pouch-cover{transform:rotateY(-118deg);opacity:0}
+.vr-pouch[data-lift] .vr-pouch-card{transform:none}
+@media (prefers-reduced-motion:reduce){.vr-pouch-cover{transition:none}}
+
+/* Black ground runs behind status, tier and wallets; the light sheet rises over it with its top corners rounded. */
+.vk-phone[data-approach=stack] .vk-scroll{padding-bottom:0;background:#0e0e10}
+.vr-stack{margin-top:-54px;padding-top:54px;min-height:calc(100% + 54px);display:flex;flex-direction:column;background:#0e0e10}
+.vr-stack .vr-brand{margin:0;padding:8px 22px 14px;background:none;border-radius:0}
+.vr-stack .vr-sheet{flex:1;margin-top:18px;padding:4px 0 120px;border-radius:28px 28px 0 0;background:var(--bg);color:var(--ink);box-shadow:0 -1px 0 rgba(255,255,255,.06)}
+
+/* Voucher wallet: dark optical glass with a spectral rim, after /brand-splash/vinclub/glass. */
+.vr-pouch[data-kind=voucher]{--spectrum:conic-gradient(from 210deg,#fff,#5ec8ff,#3f6bff,#b56cff,#ff5fa8,#ff9d3c,#ffe56b,#5dffb0,#fff)}
+.vk-phone .vr-pouch[data-kind=voucher]{background:#050507}
+.vr-pouch[data-kind=voucher] .vr-pouch-cover{border:1.5px solid transparent;color:#fff;background:radial-gradient(70% 90% at 82% 8%,rgba(120,170,255,.2),transparent 62%),radial-gradient(60% 80% at 8% 100%,rgba(255,120,190,.14),transparent 60%),linear-gradient(160deg,#17181c,#08080a) padding-box,var(--spectrum) border-box;background-blend-mode:normal;box-shadow:inset 0 1px 1px rgba(255,255,255,.34),inset 0 -8px 18px rgba(255,255,255,.04),0 0 18px rgba(120,130,255,.26)}
+.vr-pouch[data-kind=voucher] .vr-pouch-cover::before{content:"";position:absolute;inset:-30% auto -30% 58%;width:34px;transform:rotate(24deg);background:linear-gradient(90deg,transparent,rgba(94,200,255,.5),rgba(181,108,255,.5),rgba(255,157,60,.45),transparent);filter:blur(7px);pointer-events:none}
+.vr-pouch[data-kind=voucher] .vr-pouch-stitch{display:none}
+.vr-pouch[data-kind=voucher] .vr-pouch-snap{background:linear-gradient(180deg,#26272c,#0d0d10);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),-1px 2px 4px rgba(0,0,0,.5)}.vr-pouch[data-kind=voucher] .vr-pouch-snap::after{background:conic-gradient(#fff,#5ec8ff,#b56cff,#ff9d3c,#fff)}
+.vr-pouch[data-kind=voucher] .vr-pouch-card{color:#111;background:linear-gradient(115deg,#bfe8ff,#d9c8ff 30%,#ffd0e6 55%,#ffe9b8 78%,#c9ffe6)}
+/* Arrangements. 1 stacked: voucher peeks behind the wallet. 2 swipe: one wallet per snap. */
+.vr-pouches[data-arrange="1"]{display:block;height:206px;margin:0 22px;padding:0}.vk-phone .vr-pouches[data-arrange="1"] .vr-pouch{position:absolute;left:0;right:0;width:auto;height:154px}.vr-pouches[data-arrange="1"] [data-kind=voucher]{top:0;z-index:1}.vr-pouches[data-arrange="1"] [data-kind=wallet]{top:52px;z-index:2}
+.vr-pouches[data-arrange="1"] [data-kind=voucher] .vr-pouch-cover{flex-direction:row;align-items:flex-start;justify-content:space-between;padding-top:14px}.vr-pouches[data-arrange="1"] [data-kind=voucher] .vr-pouch-snap{display:none}
+.vr-pouches[data-arrange="2"]{display:flex;gap:10px;overflow-x:auto;padding:0 22px 4px;scroll-snap-type:x mandatory;scroll-padding-left:22px;scrollbar-width:none}.vr-pouches[data-arrange="2"]::-webkit-scrollbar{display:none}.vk-phone .vr-pouches[data-arrange="2"] .vr-pouch{flex:0 0 300px;height:170px;scroll-snap-align:start}
+
+/* Same size as the inner wallet; opening is one continuous object. */
+.vr-pouches[data-arrange="1"]{height:289px}.vk-phone .vr-pouches[data-arrange="1"] .vr-pouch{height:237px}
+.vk-phone .vr-pouches[data-arrange="2"] .vr-pouch{flex:0 0 346px;height:237px}
+.vr-open{position:absolute;inset:0;z-index:8;overflow:hidden;visibility:hidden;background:none;animation:none}
+.vr-open[data-open]{visibility:visible;background:var(--bg);animation:vr-screen .36s ease both}@keyframes vr-screen{from{background:transparent}}
+.vr-open iframe.vr-open-frame{position:absolute;inset:0;display:block;width:100%;height:100%;border:0;opacity:0}.vr-open[data-open=wallet] iframe.vr-open-frame{animation:vr-inner .32s ease .62s both}
+@keyframes vr-inner{from{opacity:0}to{opacity:1}}
+.vr-open .vr-open-voucher{position:absolute;inset:0;height:auto;padding:62px 22px 24px;overflow-y:auto;animation:vr-inner .32s ease .62s both}.vr-open-voucher h1{height:44px;padding:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-.5px}.vk-phone .vr-pouch-static{display:block;width:346px;height:237px;margin-bottom:14px}
+.vk-phone .vr-fly{position:absolute;left:22px;top:106px;z-index:2;display:block;width:346px;height:237px;animation:vr-fly .56s cubic-bezier(.32,.72,0,1) both,vr-fly-out .26s ease .72s both;pointer-events:none}
+@keyframes vr-fly{from{top:var(--from)}to{top:106px}}@keyframes vr-fly-out{to{opacity:0}}
+.vr-fly .vr-pouch-cover{animation:vr-cover .56s cubic-bezier(.32,.72,0,1) .06s both}@keyframes vr-cover{to{transform:rotateY(-118deg);opacity:0}}
+.vk-phone .vr-open-back{animation:vr-inner .24s ease .7s both}
+@media (prefers-reduced-motion:reduce){.vk-phone .vr-fly{display:none}.vr-open[data-open],.vr-open[data-open] *{animation:none}.vr-open[data-open=wallet] iframe.vr-open-frame{opacity:1}}
+/* Modern wallet: anodised graphite instead of leather. Voucher keeps its optical glass, sheen clipped inside. */
+.vk-phone .vr-pouch[data-kind=wallet]{background:#16171a}
+.vr-pouch[data-kind=wallet] .vr-pouch-cover{color:#fff;background:linear-gradient(115deg,rgba(255,255,255,.1),rgba(255,255,255,0) 34%,rgba(255,255,255,0) 68%,rgba(255,255,255,.07)),linear-gradient(170deg,#34363b,#1b1c20);background-blend-mode:normal;box-shadow:inset 0 1px 0 rgba(255,255,255,.26),inset 0 0 0 1px rgba(255,255,255,.07)}
+.vr-pouch[data-kind=wallet] .vr-pouch-cover strong{text-shadow:none}
+.vr-pouch-snap{width:40px;height:26px;background:linear-gradient(180deg,#44464c,#25262a)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.22)!important}.vr-pouch[data-kind=wallet] .vr-pouch-snap::after{left:9px;top:6px;width:14px;height:14px;background:radial-gradient(circle at 35% 30%,#fff,#aeb1b6 60%,#6f7277)}
+.vr-pouch[data-kind=voucher] .vr-pouch-cover{overflow:hidden;box-shadow:inset 0 1px 1px rgba(255,255,255,.34),inset 0 -8px 18px rgba(255,255,255,.04)}
+/* 3D tier badge. */
+.vr-tier-3d{flex:none;width:44px;height:44px;margin:-4px 0;filter:drop-shadow(0 4px 8px rgba(0,0,0,.45))}.vr-tier-name{color:#fff;font-size:16px;line-height:22px;font-weight:600}
+
+/* Lower part: product cards, swipeable vouchers, event tickets. */
+.vr-mix{padding-top:14px}.vr-mix-products{padding:0 22px}.vk-phone .vr-mix>h2{padding:22px 22px 12px;font-size:20px;line-height:26px;font-weight:600}
+.vr-sheet .vr-mix .vh-v-grid button{flex:0 0 160px;height:176px}
+.vr-events{display:flex;gap:10px;overflow-x:auto;padding:0 22px;scrollbar-width:none}.vr-events::-webkit-scrollbar{display:none}.vr-events button{display:flex;flex:0 0 220px;flex-direction:column;gap:2px}.vr-events img{width:100%;height:130px;margin-bottom:6px;object-fit:cover;border-radius:18px}.vr-events strong{font-size:14px;line-height:18px;font-weight:600}.vr-events em{color:var(--sub);font-size:12px;line-height:16px;font-style:normal}
+/* Opening, transform and opacity only: inner screen fades in, the cover lands, then swings open onto the inner wallet. */
+.vr-open[data-open]{background:none;animation:none}
+.vr-open iframe.vr-open-frame{will-change:opacity}.vr-open[data-open=wallet] iframe.vr-open-frame{animation:vr-inner .28s ease-out .06s both}
+.vr-open .vr-open-voucher{background:var(--bg);animation:vr-inner .28s ease-out .06s both}
+.vk-phone .vr-fly{top:106px;background:none;perspective:900px;will-change:transform;animation:vr-fly .34s cubic-bezier(.22,1,.36,1) both}.vk-phone .vr-pouch.vr-fly{background:none}
+@keyframes vr-fly{from{transform:translateY(calc(var(--from) - 106px))}to{transform:none}}
+.vr-fly .vr-pouch-cover{will-change:transform,opacity;transition:none;animation:vr-cover .6s cubic-bezier(.45,.05,.2,1) .26s both}
+@keyframes vr-cover{0%{transform:none;opacity:1}70%{opacity:1}100%{transform:rotateY(-112deg);opacity:0}}
+.vk-phone .vr-open-back{animation:vr-inner .24s ease .64s both}
+/* Inside the voucher wallet: the holographic card alone, no dark frame around it. */
+.vk-phone .vr-pouch-static,.vk-phone .vr-pouch-static[data-kind=voucher]{background:none;box-shadow:none}.vr-pouch-static .vr-pouch-card{inset:0;border-radius:22px;padding:16px}
+
+/* Stacked and compact: the sheet rides over the lower part of the wallet, so label and balance sit at the top of the cover. */
+.vr-pouches[data-arrange="1"]{margin-bottom:-122px}
+.vr-stack .vr-sheet{position:relative;z-index:3;margin-top:0;box-shadow:0 -10px 24px rgba(0,0,0,.35)}
+.vr-pouch[data-kind=wallet] .vr-pouch-cover{justify-content:flex-start}
+.vr-pouch[data-kind=wallet] .vr-pouch-cover strong{font-size:24px;line-height:30px}
+.vr-pouches[data-arrange="1"] [data-kind=wallet] .vr-pouch-snap{top:30px;margin-top:0}
+
+/* Metal clasp with the VinClub symbol and "Mở". */
+.vr-pouch .vr-pouch-snap,.vr-fly .vr-pouch-snap{display:flex!important;align-items:center;gap:6px;width:auto;height:40px;padding:0 14px 0 8px;margin-top:0;border-radius:20px 0 0 20px;color:#1f1a18;background:linear-gradient(170deg,#f4f5f6,#b4b7bc 42%,#e6e7e9 58%,#8f9297)!important;box-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 rgba(0,0,0,.25),-2px 3px 8px rgba(0,0,0,.45)!important;font-style:normal}
+.vr-pouch .vr-pouch-snap::after{display:none}.vr-pouches[data-arrange="1"] [data-kind=voucher] .vr-pouch-snap{display:none!important}
+.vr-snap-logo{width:26px;height:26px;background:#1f1a18;-webkit-mask:url(/brand-splash/vinclub-symbol.svg) center/contain no-repeat;mask:url(/brand-splash/vinclub-symbol.svg) center/contain no-repeat}.vr-pouch-snap b{font-size:14px;line-height:18px;font-weight:700}
+/* Voucher wallet: generated optical glass. */
+.vr-pouch[data-kind=voucher] .vr-pouch-cover{border:0;background:url(/vinclub-duo/voucher/glass.webp) center/100% 100% no-repeat;box-shadow:0 0 22px rgba(120,130,255,.28)}.vr-pouch[data-kind=voucher] .vr-pouch-cover::before{display:none}
+/* Voucher art sits clear of the copy. */
+.vr-mix .vh-v-grid .vh-v-art{right:6px;top:8px;bottom:auto}.vr-mix .vh-v-art img{display:block;width:64px;height:64px}.vr-mix .vh-v-grid button>strong{max-width:80px}
+/* App Store style cards. */
+.vr-today-cards{display:flex;flex-direction:column;gap:16px;padding:0 22px}.vk-phone .vr-today-cards>.vr-experience-card{position:relative;display:block;width:100%;height:380px;overflow:hidden;border-radius:24px;color:#fff;box-shadow:0 10px 26px rgba(31,26,24,.16);transition:transform .2s cubic-bezier(.32,.72,0,1);corner-shape:superellipse(1.6)}.vr-today-cards>.vr-experience-card:active{transform:scale(.97)}
+.vr-today-cards img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vr-tc-head{position:absolute;inset:0 0 auto;display:flex;flex-direction:column;gap:2px;padding:18px 18px 56px;background:linear-gradient(to bottom,rgba(10,10,14,.72) 45%,transparent)}.vr-tc-head small{font-size:13px;line-height:18px;font-weight:600;opacity:.82;letter-spacing:.2px}.vr-tc-head strong{font-size:28px;line-height:32px;font-weight:700;letter-spacing:-.5px}
+.vr-tc-foot{position:absolute;inset:auto 0 0;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;background:rgba(15,15,18,.42);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%)}.vr-tc-foot em{font-size:13px;line-height:18px;font-style:normal}.vr-tc-foot b{flex:none;padding:6px 16px;border-radius:16px;background:rgba(255,255,255,.26);font-size:13px;font-weight:700}
+
+/* Calmer glass: thinner, dimmer spectral edge, no outer glow. */
+.vr-pouch[data-kind=voucher] .vr-pouch-cover{background:#08080b;box-shadow:inset 0 0 0 .5px rgba(255,255,255,.14)}
+.vr-pouch[data-kind=voucher] .vr-pouch-cover::before{content:"";display:block;position:absolute;inset:0;width:auto;transform:none;filter:saturate(.72);opacity:.58;background:url(/vinclub-duo/voucher/glass.webp) center/104% 106% no-repeat}
+/* Clasp in the warm gold of the inner Home background. */
+.vr-pouch .vr-pouch-snap,.vr-fly .vr-pouch-snap{background:linear-gradient(170deg,#f3dfb6,#d9b67c 46%,#ecd3a3 62%,#b8935a)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 0 rgba(90,60,20,.3),-2px 3px 8px rgba(0,0,0,.4)!important}
+
+/* Tier and points, apart from the wallets. */
+.vr-stack .vr-brand{flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
+.vk-phone .vr-member2{display:flex;align-items:center;gap:6px;height:40px;padding:0 8px 0 6px;border-radius:20px;color:#fff;background:rgba(255,255,255,.1)}.vr-member2 img{flex:none;width:28px;height:28px}.vr-member2>span{display:flex;flex-direction:column;text-align:left}.vr-member2 small{font-size:10px;line-height:12px;opacity:.72}.vr-member2 b{font-size:14px;line-height:17px;font-weight:600}.vr-member2>svg{flex:none;opacity:.6}
+/* 2: first row of the sheet, on the light surface. */
+.vr-sheet-member{padding:14px 22px 0}.vk-phone .vr-sheet-member .vr-member2{width:100%;height:52px;padding:0 12px;border-radius:16px;color:var(--ink);background:var(--surface);box-shadow:0 1px 3px rgba(31,26,24,.05)}.vr-sheet-member .vr-member2>span{flex:1;flex-direction:row;align-items:baseline;gap:8px}.vr-sheet-member .vr-member2 small{font-size:14px;line-height:20px;opacity:1;font-weight:600}.vr-sheet-member .vr-member2 b{font-size:14px;line-height:20px;font-weight:500;color:var(--sub)}.vr-sheet-member .vr-member2 b::after{content:" VPoint"}
+/* 3: no container, badge above the number. */
+.vr-brand[data-member="3"] .vr-member2{flex-direction:column;gap:0;height:auto;padding:0;background:none}.vr-brand[data-member="3"] .vr-member2 img{width:36px;height:36px}.vr-brand[data-member="3"] .vr-member2>span{align-items:center;text-align:center}.vr-brand[data-member="3"] .vr-member2 small{display:none}.vr-brand[data-member="3"] .vr-member2 b{font-size:12px;line-height:16px}.vr-brand[data-member="3"] .vr-member2>svg{display:none}
+
+/* Voucher wallet strip: name left, expiry count in amber, PnL logos overlapping beside it. */
+.vr-pouch[data-kind=voucher] .vr-pouch-cover strong{color:#ffc978;font-size:14px;line-height:20px}
+.vr-pouches[data-arrange="1"] [data-kind=voucher] .vr-pouch-cover{align-items:center;padding:14px 16px 0;flex-wrap:wrap;align-content:flex-start;gap:0 8px}.vr-pouches[data-arrange="1"] [data-kind=voucher] .vr-pouch-cover small{font-size:14px;line-height:20px;opacity:1;font-weight:500}.vr-pouches[data-arrange="1"] [data-kind=voucher] .vr-pouch-cover strong{order:1}.vr-pouches[data-arrange="1"] [data-kind=voucher] .vr-pnl{order:2;position:static;margin-left:auto}
+.vr-pnl{position:absolute;top:16px;right:16px;z-index:1;display:flex}.vr-pnl img{width:24px;height:24px;margin-left:-6px;object-fit:contain;border-radius:50%;background:#fff;box-shadow:0 0 0 1.5px #08080b}
+.vr-pnl img{padding:3px}
+
+/* Greeting, then the metal membership tag on one side and VPoint on the other. */
+.vr-stack .vr-hello{flex-direction:column;align-items:stretch;gap:10px;padding:6px 22px 16px}.vr-hello h1{font-size:28px;line-height:34px;font-weight:600;letter-spacing:-.5px}
+.vr-hello-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.vk-phone .vr-tier-metal{display:inline-flex;align-items:center;gap:5px;height:34px;padding:0 14px 0 6px;border-radius:17px;color:#1f1a18;font-size:14px;font-weight:600;white-space:nowrap;background:linear-gradient(112deg,#e9c673,#fff0c2 48%,#d9b566);box-shadow:inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 0 rgba(90,60,20,.3)}.vr-tier-metal img{width:24px;height:24px}
+.vr-tier-metal[data-tier="Bạc"]{background:linear-gradient(112deg,#b9bcc0,#f2f3f4 48%,#a2a5a9)}.vr-tier-metal[data-tier="Bạch Kim"]{background:linear-gradient(112deg,#cfd8e3,#fff 48%,#aebccd)}.vr-tier-metal[data-tier="Nhân viên"]{background:linear-gradient(112deg,#e4cfac,#f8efdf 48%,#c9ae83)}
+.vk-phone .vr-hello-points{display:inline-flex;align-items:center;gap:4px;color:rgba(255,255,255,.72);font-size:14px;white-space:nowrap}.vr-hello-points b{color:#fff;font-size:16px;font-weight:600}.vr-hello-points svg{opacity:.6}
+
+/* Tier stays quiet: small mark and plain text, no metal plate. */
+.vk-phone .vr-tier-metal,.vk-phone .vr-tier-metal[data-tier]{height:auto;padding:0;gap:4px;color:#fff;background:none;box-shadow:none;font-weight:500}
+.vr-tier-metal img{width:20px;height:20px}
+
+/* Thin brushed-gold rim on the VinClub wallet, same gold as the clasp. */
+.vr-pouch[data-kind=wallet] .vr-pouch-cover{border:1.5px solid transparent;background:linear-gradient(115deg,rgba(255,255,255,.1),rgba(255,255,255,0) 34%,rgba(255,255,255,0) 68%,rgba(255,255,255,.07)) padding-box,linear-gradient(170deg,#34363b,#1b1c20) padding-box,linear-gradient(135deg,#f3dfb6,#b8935a 34%,#ecd3a3 62%,#a9834b) border-box;box-shadow:0 -4px 14px rgba(0,0,0,.4)}
+
+/* Calmer top: voucher strip is just its name and the expiry count. */
+.vr-pouches[data-arrange="1"] [data-kind=voucher] .vr-pouch-cover{justify-content:space-between;flex-wrap:nowrap;flex-direction:row;align-items:flex-start}
+/* Scratch card leads the lower part, compact. */
+.vr-scratch-row{display:flex;align-items:center;gap:12px;margin:0 22px 12px;padding:10px;border-radius:20px;background:var(--surface);box-shadow:0 1px 3px rgba(31,26,24,.04),0 6px 16px rgba(31,26,24,.06);corner-shape:superellipse(1.6)}
+.vr-scratch-row .vh-scratch{flex:none;width:72px;height:60px;margin:0;border-radius:12px}.vr-scratch-row .vh-scratch b{font-size:12px}.vr-scratch-row>span:nth-child(2){display:flex;flex:1;flex-direction:column;gap:1px;min-width:0}.vr-scratch-row small{color:var(--sub);font-size:12px;line-height:16px}.vr-scratch-row strong{font-size:14px;line-height:18px;font-weight:600}
+.vk-phone .vr-scratch-row>button{flex:none;height:36px;padding:0 14px;border-radius:18px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:600;text-align:center}.vr-scratch-row>button:disabled{opacity:.55}
+
+/* Voucher card: copy on top, illustration at the bottom right, clear of each other. */
+.vr-sheet .vr-mix .vh-v-grid button{height:196px;justify-content:flex-start;gap:6px}
+.vr-mix .vh-v-grid button>strong{max-width:none}
+.vr-mix .vh-v-grid .vh-v-art{top:auto;right:8px;bottom:8px}.vr-mix .vh-v-art img{width:76px;height:76px}
+
+/* Scratch card: prize printed underneath, foil canvas on top. */
+.vr-scratch-card{position:relative;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;width:112px;height:72px;overflow:hidden;border-radius:12px;color:#1f1a18;background:linear-gradient(135deg,#fff3cf,#f3dfb6);box-shadow:inset 0 0 0 1px rgba(90,60,20,.18)}.vr-scratch-card b{font-size:18px;line-height:22px;font-weight:700}.vr-scratch-row .vr-scratch-card small{color:#6b5526;font-size:11px;line-height:14px}
+.vr-scratch-card canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity .28s ease}.vr-scratch-card[data-won] canvas{opacity:0;pointer-events:none}.vr-scratch-card[data-won]{animation:vh-pop 480ms cubic-bezier(.34,1.56,.64,1) both}
+.vr-scratch-card{-webkit-user-select:none;user-select:none}
+
+/* Scratch card, full width: a big surface to scratch, nothing competing beside it. */
+.vr-scratch-full{padding:0 22px 8px}.vr-scratch-full>header{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding-bottom:12px}.vk-phone .vr-scratch-full h2{font-size:20px;line-height:26px;font-weight:600}.vk-phone .vr-scratch-full header button{color:var(--sub);font-size:13px;font-weight:500}
+.vr-scratch-full .vr-scratch-card{width:100%;height:132px;border-radius:20px;corner-shape:superellipse(1.6)}.vr-scratch-full .vr-scratch-card b{font-size:34px;line-height:40px;letter-spacing:-.6px}.vr-scratch-full .vr-scratch-card small{color:#6b5526;font-size:13px;line-height:18px}
+.vr-mix-products{padding-top:14px}
+
+/* More air in the top zone. */
+.vr-stack .vr-hello{gap:16px;padding:14px 22px 26px}
+.vr-pouches[data-arrange="1"]{height:305px;margin-bottom:-112px}
+.vk-phone .vr-pouches[data-arrange="1"] [data-kind=wallet]{top:68px}
+.vr-pouches[data-arrange="1"] [data-kind=voucher] .vr-pouch-cover{padding:20px 20px 0}
+.vr-pouch[data-kind=wallet] .vr-pouch-cover{padding:20px}
+.vr-pouch[data-kind=wallet] .vr-pouch-cover small{padding-bottom:4px}
+.vr-pouches[data-arrange="1"] [data-kind=wallet] .vr-pouch-snap{top:26px;height:36px}
+.vr-snap-logo{width:22px;height:22px}
+
+/* Option blocks: hooks and headers on the fixed stacked Home. */
+.vs-block{margin:0 22px 12px;padding:14px;border-radius:20px;background:var(--surface);box-shadow:0 1px 3px rgba(31,26,24,.04),0 6px 16px rgba(31,26,24,.06);corner-shape:superellipse(1.6)}.vs-block>header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-bottom:10px}.vk-phone .vs-block h2{padding:0;font-size:18px;line-height:24px;font-weight:600}.vs-block>header>span{color:var(--sub);font-size:13px}.vs-block>p{padding-bottom:10px;color:var(--sub);font-size:14px;line-height:20px}
+.vk-phone .vs-cta{width:100%;height:44px;margin-top:12px;border-radius:22px;background:var(--ink);color:var(--bg);font-size:14px;font-weight:600;text-align:center}.vs-cta:disabled{opacity:.55}
+.vs-days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.vs-days li{display:flex;flex-direction:column;align-items:center;gap:3px}.vs-days i{display:flex;align-items:center;justify-content:center;width:100%;height:42px;border-radius:12px;background:var(--line);font-size:12px;font-style:normal;font-weight:600}.vs-days small{color:var(--sub);font-size:9px;line-height:12px;white-space:nowrap}.vs-days li[data-on] i{background:var(--ink);color:var(--bg)}.vs-days li[data-today] i{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.vs-bar{display:block;height:6px;overflow:hidden;border-radius:6px;background:var(--line)}.vs-bar i{display:block;height:100%;border-radius:6px;background:var(--ink);transition:width .4s cubic-bezier(.22,1,.36,1)}
+.vk-phone .vs-task{display:flex;align-items:center;gap:10px;width:100%;padding:10px 0 0;font-size:14px;line-height:20px}.vs-task i{display:flex;flex:none;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--sub)}.vs-task[aria-pressed=true] i{background:var(--ink);color:var(--bg);box-shadow:none}
+.vs-clock{display:flex;gap:3px}.vs-clock i{min-width:28px;padding:2px 0;border-radius:7px;background:var(--ink);color:var(--bg);font-size:13px;line-height:18px;font-style:normal;font-weight:600;font-variant-numeric:tabular-nums;text-align:center}
+.vk-phone .vs-deal-row{display:flex;align-items:center;gap:12px;width:100%}.vs-deal-row>span{display:flex;flex:1;flex-direction:column;gap:1px;min-width:0}.vs-deal-row small{color:var(--sub);font-size:12px;line-height:16px}.vs-deal-row strong{font-size:16px;line-height:22px;font-weight:600}.vs-deal-row b{flex:none;padding:8px 16px;border-radius:18px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:600}
+.vs-stamps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 4px}.vk-phone .vs-stamps button{display:flex;flex-direction:column;align-items:center;gap:3px;opacity:.32;filter:grayscale(1)}.vk-phone .vs-stamps button[data-on]{opacity:1;filter:none}.vs-stamps small{font-size:11px;line-height:14px;white-space:nowrap}
+.vs-big{display:block;font-size:34px;line-height:40px;font-weight:600;letter-spacing:-.6px}.vs-bars{display:flex;align-items:flex-end;gap:6px;height:56px}.vs-bars i{flex:1;border-radius:6px 6px 2px 2px;background:var(--ink);opacity:.18}.vs-bars i:last-child{opacity:1}
+.vr-hook-after{padding-top:20px}
+.vk-phone .vs-avatar{flex:none;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:15px;font-weight:600;text-align:center}
+.vs-compact{display:flex;flex-direction:column;gap:6px}.vs-compact>small{font-size:18px;line-height:24px;font-weight:600}
+.vr-stack .vs-pts{gap:4px}.vs-pts>small{color:rgba(255,255,255,.7);font-size:14px;line-height:20px}.vk-phone .vs-pts-num{display:flex;align-items:baseline;gap:6px;color:rgba(255,255,255,.7);font-size:15px}.vs-pts-num strong{color:#fff;font-size:44px;line-height:50px;font-weight:600;letter-spacing:-1px}.vs-pts .vr-tier-metal{align-self:flex-start;margin-top:6px}
+
+/* Dành cho bạn, after Airbnb. */
+.vr-fy{padding-top:24px}.vk-phone .vr-fy>h2{padding:0 22px 12px;font-size:20px;line-height:26px;font-weight:600}
+.vr-fy-tabs{display:flex;gap:20px;margin:0 22px 14px;box-shadow:inset 0 -1px 0 var(--line)}.vk-phone .vr-fy-tabs button{padding:0 0 10px;color:var(--sub);font-size:14px;line-height:20px;font-weight:500}.vk-phone .vr-fy-tabs button[aria-pressed=true]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink)}
+.vr-fy-rail{display:flex;gap:12px;overflow-x:auto;padding:0 22px;scroll-snap-type:x mandatory;scroll-padding-left:22px;scrollbar-width:none}.vr-fy-rail::-webkit-scrollbar{display:none}.vr-fy-rail article{display:flex;flex:0 0 248px;flex-direction:column;scroll-snap-align:start}
+.vr-fy-photo{position:relative;display:block;height:248px;margin-bottom:10px;overflow:hidden;border-radius:20px;corner-shape:superellipse(1.6)}.vr-fy-photo img{width:100%;height:100%;object-fit:cover}.vr-fy-photo em{position:absolute;top:12px;left:12px;padding:5px 11px;border-radius:14px;background:rgba(255,255,255,.94);color:#1f1a18;font-size:12px;line-height:16px;font-style:normal;font-weight:600}.vk-phone .vr-fy-photo button{position:absolute;top:10px;right:10px;display:flex}
+.vr-fy-rail strong{font-size:15px;line-height:20px;font-weight:600}.vr-fy-rail small{color:var(--sub);font-size:14px;line-height:20px}.vr-fy-rail b{padding-top:4px;font-size:14px;line-height:20px;font-weight:600}
+
+
+/* Young gold: luminous finish with dark ink, a black clasp for contrast. Same finish on the opened wallet. */
+[data-skin=satin]{--skin:url(/vinclub-duo/skin/satin.webp)}[data-skin=liquid]{--skin:url(/vinclub-duo/skin/liquid.webp)}[data-skin=amber]{--skin:url(/vinclub-duo/skin/amber.webp)}
+.vr-pouch[data-kind=wallet] .vr-pouch-cover{border:0;color:#17120a;background:var(--skin) center/cover no-repeat;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 -4px 14px rgba(0,0,0,.35)}
+.vr-pouch[data-kind=wallet] .vr-pouch-cover small{opacity:.78}
+.vr-pouch .vr-pouch-snap,.vr-fly .vr-pouch-snap{color:#ffd76a;background:#14110c!important;box-shadow:0 2px 8px rgba(0,0,0,.3)!important}.vr-snap-logo{background:#ffd76a}
+.vr-pouch[data-kind=voucher] .vr-pouch-cover strong{color:#ffd76a}
+.vr-tier-metal svg{opacity:.6;margin-left:-1px}
+.vr-fy .vr-today-cards{padding:0 22px}.vk-phone .vr-fy .vr-today-cards>.vr-experience-card{height:340px}
+/* The reason-to-open card breaks the page on purpose: acid lime ticket, tilted, riding over the sheet edge. */
+.vr-special{--ink:#10130a;--sub:rgba(16,19,10,.62);--line:rgba(16,19,10,.14);--bg:#d8ff3e;--surface:transparent;position:relative;z-index:4;margin:-46px 14px 18px;padding:16px 0 12px;border-radius:26px;color:#10130a;background:#d8ff3e;box-shadow:0 18px 36px rgba(120,160,0,.32),0 2px 0 rgba(255,255,255,.5) inset;transform:rotate(-1.2deg);corner-shape:superellipse(1.6);-webkit-mask:radial-gradient(circle 9px at 0 58px,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 58px,transparent 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 9px at 0 58px,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 58px,transparent 98%,#000) right/51% 100% no-repeat}
+.vr-special-after{margin-top:22px;margin-bottom:0}
+.vr-special .vs-block,.vr-special .vr-scratch-full{margin:0;padding:0 16px;box-shadow:none;background:none}
+.vk-phone .vr-special h2{font-size:22px;line-height:28px;font-weight:700;letter-spacing:-.3px}.vr-special .vs-block>header,.vr-special .vr-scratch-full>header{padding-bottom:16px}.vk-phone .vr-scratch-full header button,.vr-special .vs-block>header>span{color:rgba(16,19,10,.7)}
+.vr-special .vs-stamps button{opacity:.45}
+.vr-stack .vr-sheet{overflow:visible}.vr-mix{padding-top:0}
+
+/* Black is the default wallet; white ink and a champagne clasp on dark finishes, dark ink on gold. */
+[data-skin=matte]{--skin:url(/vinclub-duo/skin/matte.webp);--w-ink:#fff;--w-clasp:#e8d3a6;--w-clasp-ink:#17120a}[data-skin=carbon]{--skin:url(/vinclub-duo/skin/carbon.webp);--w-ink:#fff;--w-clasp:#e8d3a6;--w-clasp-ink:#17120a}[data-skin=titan]{--skin:url(/vinclub-duo/skin/titan.webp);--w-ink:#fff;--w-clasp:#e8d3a6;--w-clasp-ink:#17120a}[data-skin=piano]{--skin:url(/vinclub-duo/skin/piano.webp);--w-ink:#fff;--w-clasp:#e8d3a6;--w-clasp-ink:#17120a}[data-skin=stone]{--skin:url(/vinclub-duo/skin/stone.webp);--w-ink:#fff;--w-clasp:#e8d3a6;--w-clasp-ink:#17120a}
+[data-skin=satin],[data-skin=liquid],[data-skin=amber]{--w-ink:#17120a;--w-clasp:#14110c;--w-clasp-ink:#ffd76a}
+.vr-pouch[data-kind=wallet] .vr-pouch-cover{color:var(--w-ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 0 0 .5px rgba(255,255,255,.14),0 -4px 14px rgba(0,0,0,.4)}
+.vr-pouch .vr-pouch-snap,.vr-fly .vr-pouch-snap{color:var(--w-clasp-ink);background:var(--w-clasp)!important}.vr-snap-logo{background:var(--w-clasp-ink)}
+.vk-phone .vr-skin-btn{position:absolute;top:64px;right:22px;z-index:2;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff}
+.vr-skin-layer{position:absolute;inset:0;z-index:9}.vk-phone .vr-skin-scrim{position:absolute;inset:0;width:100%;background:rgba(0,0,0,.4)}
+.vr-skin-sheet{position:absolute;inset:auto 0 0;padding:22px 22px 28px;border-radius:28px 28px 0 0;color:var(--ink);background:var(--bg);animation:vr-skin-up .36s cubic-bezier(.32,.72,0,1) both}@keyframes vr-skin-up{from{transform:translateY(100%)}}
+.vk-phone .vr-skin-sheet h2{font-size:22px;line-height:28px}.vr-skin-sheet p{padding:2px 0 16px;color:var(--sub);font-size:14px;line-height:20px}.vr-skin-sheet>div{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 10px}.vk-phone .vr-skin-sheet>div button{display:flex;flex-direction:column;align-items:center;gap:6px}.vr-skin-sheet i{display:block;width:100%;aspect-ratio:1.3;border-radius:14px;background-size:cover;background-position:center}.vr-skin-sheet button[aria-pressed=true] i{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--ink)}.vr-skin-sheet small{font-size:12px;line-height:16px;white-space:nowrap}.vk-phone .vr-skin-done{width:100%;height:48px;margin-top:20px;border-radius:24px;background:var(--ink);color:var(--bg);font-size:15px;font-weight:600;text-align:center}
+/* Looks for the reason-to-open card. Base resets lime; each look sets its own ink and surface. */
+.vr-special{--ink:#fff;--sub:rgba(255,255,255,.66);--line:rgba(255,255,255,.14);--bg:#0c0c0f;color:var(--ink);transform:none;-webkit-mask:none;mask:none;margin:-30px 22px 16px;box-shadow:0 14px 30px rgba(0,0,0,.28)}
+.vk-phone .vr-scratch-full header button,.vr-special .vs-block>header>span{color:var(--sub)}
+.vr-special .vs-cta{background:var(--ink);color:var(--bg)}
+
+/* Dành cho bạn: two cards per row. */
+.vr-fy .vr-fy-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.vk-phone .vr-fy .vr-fy-grid>.vr-experience-card{height:236px;border-radius:20px}
+.vr-fy-grid .vr-tc-head{padding:12px 12px 40px}.vr-fy-grid .vr-tc-head small{font-size:11px;line-height:14px}.vr-fy-grid .vr-tc-head strong{font-size:17px;line-height:21px;letter-spacing:-.2px}.vr-fy-grid .vr-tc-foot{padding:9px 12px}.vr-fy-grid .vr-tc-foot em{font-size:12px;line-height:16px}
+.vr-special.vr-special-after{margin:22px 22px 0}
+
+/* Reason-to-open card: explorations of the running light rim. Colours and speed are variables; the rim is one rotating layer behind a 2pt inset. */
+.vr-special{--run:conic-gradient(#ffd76a,#ff7ab8,#7a7bff,#5ee0ff,#ffd76a 40%,transparent 55%,transparent 90%,#ffd76a);--run-time:4s;--run-w:2px;--run-fill:#0c0c0f;background:var(--run-fill);isolation:isolate;overflow:hidden}
+.vr-special::before{content:"";position:absolute;left:50%;top:50%;z-index:-2;width:160%;aspect-ratio:1;margin:-80% 0 0 -80%;background:var(--run);animation:vr-spin var(--run-time) linear infinite}
+.vr-special::after{content:"";position:absolute;inset:var(--run-w);z-index:-1;border-radius:24px;background:var(--run-fill)}
+@keyframes vr-spin{to{transform:rotate(360deg)}}@media (prefers-reduced-motion:reduce){.vr-special::before{animation:none}}
+.vr-special[data-run="2"]{--run:conic-gradient(#fff0c2,#d9a93f,#fff0c2 30%,transparent 50%,transparent 90%,#fff0c2)}
+.vr-special[data-run="3"]{--run-w:2.5px;overflow:hidden;animation:vr-glow 2.8s ease-in-out infinite}@keyframes vr-glow{0%,100%{box-shadow:0 10px 24px rgba(122,123,255,.25)}50%{box-shadow:0 14px 44px rgba(255,122,184,.55),0 0 24px rgba(94,224,255,.4)}}
+.vr-special[data-run="4"]{--run:conic-gradient(transparent 0 72%,rgba(255,255,255,.2) 84%,#fff 98%,transparent 100%);--run-time:2.6s;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 14px 30px rgba(0,0,0,.28)}
+.vr-special[data-run="5"]{--run:conic-gradient(#fff,transparent 16%,transparent 50%,#fff 52%,transparent 68%,transparent 98%,#fff);--run-time:5s}
+.vr-special[data-run="6"]{--run-time:9s;--run-fill:linear-gradient(160deg,#1a1b22,#07070a)}.vr-special[data-run="6"]::after{background:linear-gradient(160deg,#1a1b22,#07070a)}
+.vr-special[data-run="7"]{--ink:#1f1a18;--sub:#6f6863;--line:rgba(31,26,24,.1);--bg:#fff;--run-fill:#fff;box-shadow:0 16px 36px rgba(31,26,24,.18)}
+.vr-special[data-run="8"]{--ink:#17120a;--sub:rgba(23,18,10,.68);--line:rgba(23,18,10,.14);--bg:#f3d98f;--run:conic-gradient(#fff,#8a6a2c,#fff 30%,transparent 50%,transparent 90%,#fff);--run-fill:#f3d98f}.vr-special[data-run="8"]::after{background:url(/vinclub-duo/skin/satin.webp) center/cover}
+@media (prefers-reduced-motion:reduce){.vr-special[data-run="3"]{animation:none}}
+.vr-special .vr-scratch-full,.vr-special .vs-block{position:relative}
+
+/* Sheet starts with the products now that nothing rides over its edge. */
+.vr-mix{padding-top:18px}.vr-special.vr-special-after{margin:16px 22px 0}
+
+/* Chosen look: running rim with a breathing glow, on a light card. Sits in the flow above or below the products. */
+.vr-special[data-run="3"]{--ink:#1f1a18;--sub:#6f6863;--line:rgba(31,26,24,.1);--bg:#fff;--run-fill:#fff}
+.vr-special{margin:0 22px 16px}
+
+/* Home now has one wallet in the stack. */
+.vr-pouches[data-arrange="1"]{height:237px;margin-bottom:-90px}.vk-phone .vr-pouches[data-arrange="1"] [data-kind=wallet]{top:0}
+/* Ưu đãi tab. */
+.vo-page{background:#0e0e10}.vo-head{padding:6px 22px 28px;color:#fff}.vo-head h1{font-size:34px;line-height:40px;font-weight:600;letter-spacing:-.6px}
+.vo-wallet{display:flex;align-items:center;justify-content:space-between;gap:10px;height:96px;margin-top:14px;padding:18px 20px;border-radius:24px;background:#08080b;position:relative;overflow:hidden;isolation:isolate;corner-shape:superellipse(1.6)}.vo-wallet::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.58;filter:saturate(.72);background:url(/vinclub-duo/voucher/glass.webp) center/104% 106% no-repeat}.vo-wallet>div{display:flex;flex-direction:column;gap:2px}.vo-wallet small{font-size:13px;line-height:18px;opacity:.76}.vo-wallet strong{font-size:22px;line-height:28px;font-weight:600}.vo-wallet b{flex:none;color:#ffd76a;font-size:14px;font-weight:600}
+.vo-sheet{flex:1;padding:8px 0 120px;border-radius:28px 28px 0 0;color:var(--ink);background:var(--bg);animation:vo-up .46s cubic-bezier(.32,.72,0,1) both}@keyframes vo-up{from{transform:translateY(60px);opacity:.4}}@media (prefers-reduced-motion:reduce){.vo-sheet{animation:none}}
+.vo-grip{display:block;width:36px;height:5px;margin:0 auto 14px;border-radius:5px;background:var(--line)}
+.vo-list{display:flex;flex-direction:column;gap:10px;padding:0 22px}
+.vo-ticket{display:flex;align-items:center;min-height:92px;overflow:hidden;border-radius:18px;background:var(--surface);box-shadow:0 1px 3px rgba(31,26,24,.05),0 6px 16px rgba(31,26,24,.05);-webkit-mask:radial-gradient(circle 7px at 84px 0,transparent 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 7px at 84px 100%,transparent 98%,#000) bottom/100% 51% no-repeat;mask:radial-gradient(circle 7px at 84px 0,transparent 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 7px at 84px 100%,transparent 98%,#000) bottom/100% 51% no-repeat}
+.vo-stub{flex:none;display:flex;align-items:center;justify-content:center;align-self:stretch;width:84px;background:color-mix(in srgb,var(--brand-tone) 24%,#fff)}.vo-stub img{width:60px;height:60px}
+.vo-body{flex:1;display:flex;flex-direction:column;gap:1px;min-width:0;padding:10px 8px 10px 14px}.vo-body small{color:var(--sub);font-size:12px;line-height:16px}.vo-body strong{font-size:17px;line-height:22px;font-weight:600}.vo-body em{color:var(--sub);font-size:12px;line-height:16px;font-style:normal}.vo-body em[data-soon]{color:#c2410c;font-weight:500}
+.vk-phone .vo-ticket>button{flex:none;height:34px;margin-right:12px;padding:0 14px;border-radius:17px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:600;text-align:center}.vo-ticket>button:disabled{opacity:.45}
+.vo-title{display:flex;align-items:baseline;justify-content:space-between;padding:26px 22px 12px}.vk-phone .vo-title h2{font-size:20px;line-height:26px;font-weight:600}.vo-title span{color:var(--sub);font-size:13px}
+.vo-redeem{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 22px}.vk-phone .vo-redeem button{display:flex;flex-direction:column;gap:1px;padding:12px;border-radius:18px;background:color-mix(in srgb,var(--brand-tone) 14%,var(--surface))}.vo-redeem img{align-self:flex-end;width:64px;height:64px}.vo-redeem small{color:var(--sub);font-size:12px;line-height:16px}.vo-redeem strong{min-height:36px;font-size:14px;line-height:18px;font-weight:600}.vo-redeem b{padding-top:4px;font-size:13px;line-height:18px;font-weight:600}
+.vo-need{display:block;padding-top:6px}.vo-need i{display:block;height:4px;border-radius:4px;background:var(--ink)}.vo-need em{display:block;padding-top:4px;color:var(--sub);font-size:12px;line-height:16px;font-style:normal}
+
+/* Above the products the card is black and rides up over the wallet and the sheet edge. */
+.vr-special:not(.vr-special-after){--ink:#fff;--sub:rgba(255,255,255,.66);--line:rgba(255,255,255,.14);--bg:#0c0c0f;--run-fill:#0c0c0f;margin:-78px 22px 16px}
+
+/* Layer order: wallet, then the black card, then the sheet over the card's lower edge. */
+.vr-special.vr-special-under{z-index:2;margin:-56px 22px -28px;padding-bottom:44px}
+.vr-special-under+.vr-sheet{margin-top:0}
+
+/* Rebalanced first screen: black zone about half. Compact header, wallet shows only its top, shorter hook card, product cards as rows. */
+.vr-stack .vr-hello{gap:2px;padding:0 22px 14px}.vk-phone .vs-pts-num strong{font-size:36px;line-height:42px}.vs-pts .vr-tier-metal{margin-top:4px}.vk-phone .vr-skin-btn{top:58px}
+.vr-special.vr-special-under{margin:-142px 22px -24px;padding:12px 0 36px}
+.vk-phone .vr-special-under h2{font-size:17px;line-height:22px}.vr-special-under .vs-block>header,.vr-special-under .vr-scratch-full>header{padding-bottom:10px}.vr-special-under .vr-scratch-full{padding-bottom:0}
+.vr-special-under .vr-scratch-full .vr-scratch-card{height:88px;border-radius:14px}.vr-special-under .vr-scratch-full .vr-scratch-card b{font-size:26px;line-height:30px}
+.vr-mix{padding-top:16px}
+.vr-mix-products{gap:10px;padding-top:0}.vk-phone .vr-mix-products button{flex-direction:row;align-items:center;gap:8px;padding:10px;min-height:66px}.vr-mix-products img{flex:none;width:40px;height:40px}.vr-mix-products small{font-size:13px;line-height:18px}.vr-mix-products strong{font-size:13px;line-height:18px;white-space:normal}
+.vk-phone .vr-mix>h2{padding-top:20px}
+/* More hooks. */
+.vs-row{display:flex;align-items:center;gap:12px}.vs-row>span{display:flex;flex:1;flex-direction:column;gap:1px;min-width:0}.vk-phone .vs-row h2{font-size:16px;line-height:21px}.vs-row p{padding:0;color:var(--sub);font-size:13px;line-height:18px}
+.vk-phone .vs-pill{flex:none;height:36px;padding:0 16px;border-radius:18px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:600;text-align:center}.vs-pill:disabled{opacity:.5}
+.vs-count{flex:none;font-size:30px;line-height:36px;font-weight:700;letter-spacing:-.6px}
+.vs-wheel{flex:none;width:56px;height:56px;border-radius:50%;background:conic-gradient(#ffd76a 0 25%,#ff7ab8 0 50%,#7a7bff 0 75%,#5ee0ff 0);box-shadow:0 0 0 3px rgba(128,128,128,.3);transition:transform 2.4s cubic-bezier(.16,1,.3,1)}
+.vs-gift{display:flex;flex:none;align-items:center;justify-content:center;width:56px;height:56px;border-radius:16px;background:var(--line);font-size:18px;font-style:normal;font-weight:700}.vs-gift[data-open]{animation:vh-pop 480ms cubic-bezier(.34,1.56,.64,1) both}
+.vs-picks{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.vk-phone .vs-picks button{display:flex;flex-direction:column;padding:8px 10px;border-radius:12px;background:var(--line)}.vs-picks small{font-size:11px;line-height:14px;white-space:nowrap}.vs-picks b{font-size:17px;line-height:22px;font-weight:600}.vk-phone .vs-picks button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+
+/* Wallet keeps its name, balance and clasp visible above the hook card. */
+.vr-special.vr-special-under{margin:-54px 22px -24px}
+/* Ưu đãi: the glass card tucks into the sheet, same layering as Home. */
+.vo-head{padding-bottom:0}.vo-wallet{height:128px;align-items:flex-start;padding-top:20px}
+.vo-sheet{position:relative;z-index:1;margin-top:-34px;box-shadow:0 -8px 22px rgba(0,0,0,.28)}
+
+/* Compact product cards above the selected hook. */
+.vk-phone .vr-stack .vr-sheet{padding-top:0}
+.vk-phone .vr-stack .vr-mix-products{padding-top:10px;gap:10px}
+.vk-phone .vr-stack .vr-mix-products button{flex-direction:column;align-items:flex-start;gap:6px;padding:10px 12px;min-height:0}
+.vk-phone .vr-stack .vr-mix-products img{width:36px;height:36px}
+.vk-phone .vs-pts>.vr-tier-metal{margin-top:0;margin-bottom:10px;min-height:32px}
+
+/* Membership stays a quiet navigation link above the wallet. */
+.vk-phone .vs-pts>.vr-member-subtle[data-tier]{min-height:32px;padding:0;gap:4px;margin:0 0 4px;color:var(--color-grey-400);background:transparent;box-shadow:none;font-size:12px;font-weight:400;backdrop-filter:none}
+.vk-phone .vr-member-subtle>span:first-child{background:transparent}
+.vk-phone .vr-member-subtle img{width:14px;height:14px;opacity:.7}
+.vk-phone .vr-member-subtle svg{width:12px;height:12px}
+
+/* Section alternatives preserve the same screen frame and content column. */
+.vk-phone .vs-pts[data-header-layout="2"]{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:8px}
+.vs-pts[data-header-layout="2"]>.vr-member-subtle{grid-column:1/-1}
+.vk-phone .vs-pts[data-header-layout="2"] .vs-pts-num strong{font-size:24px;line-height:32px}
+.vk-phone .vs-pts[data-header-layout="3"]{gap:0;padding-bottom:8px}
+.vk-phone .vs-pts[data-header-layout="3"] .vs-pts-num strong{font-size:28px;line-height:36px}
+.vk-phone .vs-pts[data-header-layout="4"] .vs-pts-num{align-items:flex-start;flex-direction:column;gap:0}
+.vk-phone .vs-pts[data-header-layout="4"] .vs-pts-num strong{font-size:32px;line-height:40px}
+.vk-phone .vr-stack[data-wallet-layout="2"] .vr-pouches{height:199px;min-height:0}
+.vk-phone .vr-stack[data-wallet-layout="3"] .vr-pouches{height:219px;min-height:0}
+.vk-phone .vr-stack[data-wallet-layout="4"] .vr-pouch-cover strong{font-size:28px;line-height:36px}
+.vk-phone .vr-stack .vr-mix[data-products="2"] .vr-mix-products button{flex-direction:row;align-items:center;padding:12px;gap:8px}
+.vk-phone .vr-stack .vr-mix[data-products="2"] .vr-mix-products img{width:28px;height:28px}
+.vk-phone .vr-stack .vr-mix[data-products="3"] .vr-mix-products button>span{flex-direction:column-reverse;gap:4px}
+.vk-phone .vr-stack .vr-mix[data-products="3"] .vr-mix-products strong{font-size:16px;line-height:24px;white-space:normal}
+.vk-phone .vr-stack .vr-mix[data-products="4"] .vr-mix-products{grid-template-columns:1fr;gap:8px}
+.vk-phone .vr-stack .vr-mix[data-products="4"] .vr-mix-products button{flex-direction:row;align-items:center;gap:12px}
+.vk-phone .vr-mix[data-vouchers="2"]>.vh-v-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;gap:12px;padding:0 22px}
+.vk-phone .vr-mix[data-vouchers="2"]>.vh-v-grid button{width:auto;min-width:0;height:184px}
+.vk-phone .vr-mix[data-vouchers="3"]>.vh-v-grid{display:flex;flex-direction:column;overflow:visible;gap:8px;padding:0 22px}
+.vk-phone .vr-mix[data-vouchers="3"]>.vh-v-grid button{flex:auto;width:100%;height:104px;min-height:104px}
+.vk-phone .vr-mix[data-vouchers="3"]>.vh-v-grid button .vh-v-art{width:88px;height:88px;left:auto;right:8px;bottom:0}
+.vk-phone .vr-mix[data-vouchers="4"]>.vh-v-grid button{flex:0 0 280px;height:184px}
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;padding:0 22px}
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid>.vr-experience-card{flex:0 0 290px;height:320px;scroll-snap-align:start}
+.vk-phone .vr-fy[data-feed="3"] .vr-fy-grid{display:flex;flex-direction:column;gap:12px}
+.vk-phone .vr-fy[data-feed="3"] .vr-fy-grid>.vr-experience-card{height:108px;min-height:108px;padding:12px 12px 12px 116px;background:var(--background);color:var(--foreground);border-radius:var(--radius-14)}
+.vk-phone .vr-fy[data-feed="3"] .vr-fy-grid>.vr-experience-card::after{display:none}
+.vk-phone .vr-fy[data-feed="3"] .vr-fy-grid>.vr-experience-card>img{width:96px;height:100%;left:0;object-fit:cover}
+.vk-phone .vr-fy[data-feed="3"] .vr-tc-head,.vk-phone .vr-fy[data-feed="3"] .vr-tc-foot{position:relative;inset:auto;padding:0;color:var(--foreground)}
+.vk-phone .vr-fy[data-feed="3"] .vr-tc-head strong{font-size:14px;line-height:20px}
+.vk-phone .vr-fy[data-feed="4"] .vr-fy-grid>.vr-experience-card{display:flex;flex-direction:column;justify-content:flex-start;height:auto;min-height:248px;padding:0 0 12px;background:var(--background);color:var(--foreground)}
+.vk-phone .vr-fy[data-feed="4"] .vr-fy-grid>.vr-experience-card::after{display:none}
+.vk-phone .vr-fy[data-feed="4"] .vr-fy-grid>.vr-experience-card>img{position:relative;height:150px;width:100%;object-fit:cover}
+.vk-phone .vr-fy[data-feed="4"] .vr-tc-head,.vk-phone .vr-fy[data-feed="4"] .vr-tc-foot{position:relative;inset:auto;padding:8px 12px 0;color:var(--foreground)}
+.vk-phone .vr-fy[data-feed="4"] .vr-tc-head strong{font-size:14px;line-height:20px}
+.vk-phone .vr-fy[data-feed="3"] .vr-tc-head,.vk-phone .vr-fy[data-feed="3"] .vr-tc-foot,.vk-phone .vr-fy[data-feed="4"] .vr-tc-head,.vk-phone .vr-fy[data-feed="4"] .vr-tc-foot{background:none;backdrop-filter:none}
+.vk-phone .vr-fy[data-feed="3"] .vr-today-cards>.vr-experience-card{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:8px}
+
+/* Apple-style editorial cards reveal the next story and snap on swipe. */
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid{flex-direction:row;scroll-padding-left:22px;overscroll-behavior-x:contain;scrollbar-width:none;padding-bottom:16px}
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid::-webkit-scrollbar{display:none}
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid>.vr-experience-card{border-radius:var(--radius-28);flex-basis:calc(100% - 24px);height:340px}
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-head{padding:20px 20px 56px}
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-head strong{font-size:24px;line-height:32px;letter-spacing:-.5px}
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-foot{padding:16px 20px}
+
+/* Same responsive-to-count service composition as VinPay. */
+.vk-phone .vr-vinpay-services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:12px 22px 0}
+.vk-phone .vr-vinpay-services .vr-service{padding:12px;white-space:normal;justify-content:flex-start;text-align:left;border-radius:var(--radius-14);background:var(--background);color:var(--foreground);box-shadow:0 4px 12px color-mix(in srgb,var(--foreground) 5%,transparent)}
+.vr-service>span:first-child{background:transparent}
+.vk-phone .vr-service>span:last-child{display:flex;flex-direction:column;align-items:flex-start;gap:10px;width:100%}
+.vr-service-copy{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.vr-service img{flex:none;width:44px;height:44px;object-fit:contain}
+.vr-service small,.vr-service strong{font-size:14px;line-height:20px}
+.vk-phone .vr-vinpay-services[data-service-mode="row"]{grid-template-columns:1fr}
+.vk-phone .vr-vinpay-services[data-service-mode="row"] .vr-service>span:last-child{flex-direction:row;align-items:center;gap:12px}
+.vr-service-cta{display:flex;align-items:center;gap:2px;margin-left:auto;font-size:12px}
+.vk-phone .vr-vinpay-services[data-service-mode="grid"]{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:0;row-gap:16px}
+.vk-phone .vr-vinpay-services[data-service-mode="grid"] .vr-service{padding:0;box-shadow:none;background:transparent}
+.vk-phone .vr-vinpay-services[data-service-mode="grid"] .vr-service>span:last-child{align-items:center;gap:8px}
+.vk-phone .vr-vinpay-services[data-service-mode="grid"] .vr-service small{font-size:13px;line-height:18px;white-space:nowrap;font-weight:400}
+.vk-phone .vr-vinpay-services[data-service-mode="grid"] .vr-service-copy{align-items:flex-start}
+.vk-phone .vr-mix[data-products="3"] .vr-vinpay-services[data-service-mode="cards"] .vr-service-copy{flex-direction:column-reverse}
+
+/* Reason to open: quiet surface with a soft elevation. */
+.vk-page .vr-special {
+  --ink:var(--foreground);
+  --sub:var(--foreground-secondary);
+  --line:color-mix(in srgb,var(--foreground) 10%,transparent);
+  --bg:var(--background);
+  --run-fill:var(--background);
+  color:var(--ink);
+  background:var(--bg);
+  box-shadow:0 2px 6px color-mix(in srgb,var(--foreground) 3%,transparent),0 8px 20px color-mix(in srgb,var(--foreground) 6%,transparent);
+  animation:none;
+}
+.vk-page .vr-special::before,.vk-page .vr-special::after { content:none; }
+
+/* Approved membership position: tier beside the larger VPoint value. */
+.vk-phone .vr-stack .vs-pts[data-member-layout="3"]{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:4px 8px}
+.vk-phone .vs-pts[data-member-layout="3"]>.vr-member-subtle[data-tier]{grid-column:2;grid-row:2;margin:0;min-height:36px;font-size:12px;max-width:100%}
+.vk-phone .vs-pts[data-member-layout="3"]>.vr-member-subtle>span:last-child{gap:3px}
+.vs-pts[data-member-layout="3"]>small{grid-column:1/-1;grid-row:1;font-size:12px;line-height:20px;color:var(--color-grey-400)}
+.vk-phone .vs-pts[data-member-layout="3"]>.vs-pts-num{grid-column:1;grid-row:2;flex-direction:row;align-items:baseline;gap:4px;font-size:12px;line-height:16px;white-space:nowrap}
+.vk-phone .vs-pts[data-member-layout="3"] .vs-pts-num strong{font-size:36px;line-height:44px;letter-spacing:-1.2px}
+/* Remove the flight clone after the cover finishes opening, including its shadow. */
+.vk-phone .vr-pouch.vr-fly{animation:vr-fly .34s cubic-bezier(.22,1,.36,1) both,vr-fly-out .16s ease .86s forwards}
+
+
+.vk-phone .vs-pts[data-member-layout="3"]>.vr-member-subtle[data-tier]{font-size:14px;min-height:40px}
+.vk-phone .vs-pts[data-member-layout="3"]>.vr-member-subtle img{width:20px;height:20px;opacity:1}
+.vk-phone .vs-pts[data-member-layout="3"]>.vr-member-subtle svg{width:14px;height:14px}
+
+/* Align the tier label with the point value, without the redundant prefix. */
+.vk-phone .vr-stack .vs-pts[data-member-layout="3"]{align-items:baseline}
+.vk-phone .vs-pts[data-member-layout="3"]>.vr-member-subtle[data-tier]{align-self:baseline;min-height:40px;line-height:20px}
+.vk-phone .vs-pts[data-member-layout="3"]>.vr-member-subtle>span:last-child{align-items:center;line-height:20px}
+
+/* Premium uncoated paper; all contents share the ticket's single tilt. */
+.vk-page .vr-special{--ink:var(--color-grey-950);--sub:var(--color-grey-600);--line:color-mix(in srgb,var(--color-grey-950) 10%,transparent);--bg:color-mix(in srgb,var(--color-orange-50) 70%,var(--color-grey-00));--run-fill:var(--bg);position:relative;overflow:hidden;background:repeating-linear-gradient(7deg,transparent 0 3px,color-mix(in srgb,var(--color-yellow-700) 3%,transparent) 3px 4px),repeating-linear-gradient(97deg,transparent 0 5px,color-mix(in srgb,var(--color-orange-700) 2%,transparent) 5px 6px),var(--bg);color:var(--ink);border-radius:var(--radius-14);padding-top:16px;padding-bottom:18px;transform:rotate(-2deg);transform-origin:50% 50%;box-shadow:inset 0 1px 0 var(--color-grey-00),0 2px 0 color-mix(in srgb,var(--color-orange-200) 65%,var(--color-grey-200)),0 12px 24px color-mix(in srgb,var(--color-grey-950) 12%,transparent);-webkit-mask:none;mask:none}
+.vk-page .vr-special::before,.vk-page .vr-special::after{content:none;display:none;animation:none}
+.vk-page .vr-special-after{margin-top:26px;margin-bottom:8px}
+.vr-hook-label{display:block;margin:0 16px 12px;padding:0;background:none;color:var(--color-yellow-800);font-size:10px;line-height:16px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transform:none}
+.vk-phone .vr-special h2{font-size:24px;line-height:28px;font-weight:700;letter-spacing:-.7px}
+.vk-phone .vr-special .vs-deal-row small,.vk-phone .vr-special .vs-block p{color:var(--sub)}
+.vk-phone .vr-special .vs-clock i{background:color-mix(in srgb,var(--color-grey-950) 7%,transparent);color:var(--color-grey-950)}
+/* VinPay secondary action: a quiet glass capsule with the shared VSP press state. */
+.vk-phone .vr-special .vs-hook-action{flex:none;min-height:36px;padding:8px 14px;color:var(--color-grey-900);font-size:13px;line-height:20px;font-weight:600;border-radius:999px;background:none;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--color-grey-00) 75%,transparent),0 1px 2px color-mix(in srgb,var(--color-grey-950) 3%,transparent)}
+.vk-phone .vr-special .vs-hook-action>span:first-child{background:color-mix(in srgb,var(--color-grey-00) 60%,transparent);backdrop-filter:blur(16px)}
+/* A fine paper edge, matching the definition of the saved voucher cards. */
+.vk-page .vr-special{border:1px solid color-mix(in srgb,var(--color-yellow-700) 22%,var(--color-grey-200));box-shadow:inset 0 1px 0 var(--color-grey-00),inset 0 0 0 3px color-mix(in srgb,var(--color-grey-00) 45%,transparent),0 2px 0 color-mix(in srgb,var(--color-orange-200) 65%,var(--color-grey-200)),0 12px 24px color-mix(in srgb,var(--color-grey-950) 12%,transparent)}
+/* White paper with a quiet dotted print. */
+.vk-page .vr-special{--bg:var(--color-grey-00);--run-fill:var(--color-grey-00);background:radial-gradient(circle,color-mix(in srgb,var(--color-grey-500) 12%,transparent) .65px,transparent .85px) 0 0/8px 8px,var(--bg);border-color:var(--color-grey-200);box-shadow:inset 0 1px 0 var(--color-grey-00),0 2px 0 var(--color-grey-150),0 10px 22px color-mix(in srgb,var(--color-grey-950) 9%,transparent)}
+.vk-page .vr-special .vr-hook-label{color:var(--color-grey-500)}
+/* Real transparent side notches follow the same transform as the paper. */
+.vk-page .vr-special{-webkit-mask-image:radial-gradient(circle 8px at 0 65%,transparent 7.5px,var(--color-grey-950) 8px),radial-gradient(circle 8px at 100% 65%,transparent 7.5px,var(--color-grey-950) 8px);-webkit-mask-size:100% 100%;-webkit-mask-repeat:no-repeat;-webkit-mask-composite:source-in;mask-image:radial-gradient(circle 8px at 0 65%,transparent 7.5px,var(--color-grey-950) 8px),radial-gradient(circle 8px at 100% 65%,transparent 7.5px,var(--color-grey-950) 8px);mask-size:100% 100%;mask-repeat:no-repeat;mask-composite:intersect}
+/* Continuous outline traces the paper and both punched notches. */
+.vk-page .vr-special{border:0}
+.vr-special>.vr-ticket-outline{position:absolute;inset:0;z-index:3;width:100%;height:100%;overflow:visible;pointer-events:none;fill:none;stroke:var(--color-grey-300);stroke-width:1.25;stroke-linejoin:round}
+/* Use the same iridescent edge artwork as the My Vouchers wallet. */
+.vr-special>.vr-ticket-outline{stroke-width:2.5}
+/* Apple editorial card edge: a single continuous rounded image surface. */
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid>.vr-experience-card{border:0;outline:0;border-radius:var(--radius-28);clip-path:inset(0 round var(--radius-28));background:var(--color-grey-950);box-shadow:0 4px 14px color-mix(in srgb,var(--color-grey-950) 12%,transparent);padding:0;isolation:isolate}
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid>.vr-experience-card::before,.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid>.vr-experience-card::after{content:none}
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid>.vr-experience-card>img{border:0;border-radius:0;width:100%;height:100%;object-fit:cover}
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-foot{background:linear-gradient(transparent,color-mix(in srgb,var(--color-grey-950) 70%,transparent));backdrop-filter:none;padding-top:36px;color:var(--color-grey-00)}
+/* A simple pastel gradient edge replaces the textured treatment. */
+.vr-special>.vr-ticket-outline{stroke-width:1.5}
+.vk-phone .vs-pts[data-member-layout="3"]>.vr-member-subtle[data-tier]{font-size:16px}
+/* Each concept explains the reward, requirements and next step without crowding the hero. */
+.vr-hook-detail{margin:14px 16px 0;padding-top:10px}
+.vr-hook-summary{display:flex;align-items:center;gap:8px;justify-content:space-between}
+.vr-hook-summary>span{flex:1;color:var(--sub);font-size:11px;line-height:16px}
+.vk-phone .vr-hook-summary button{flex:none;padding:4px 6px;min-height:32px;color:var(--color-grey-700);font-size:11px;line-height:16px}
+.vr-hook-summary button>span:first-child{background:transparent}
+.vr-hook-rules{display:flex;flex-direction:column;gap:12px;padding-top:12px}
+.vr-hook-rules>div{display:flex;flex-direction:column;gap:4px}
+.vr-hook-rules dt{font-size:11px;line-height:16px;font-weight:600;color:var(--ink)}
+.vr-hook-rules dd{font-size:12px;line-height:20px;color:var(--sub)}
+/* Daily gifts are one paper deck; only the front card contains visible content. */
+.vr-daily-gifts{position:relative;padding:0 22px;margin-top:24px;margin-bottom:16px}
+.vk-phone .vr-daily-gifts>h2{font-size:18px;line-height:24px;padding-bottom:12px}
+.vr-daily-deck{position:relative;padding-bottom:12px;isolation:isolate}
+.vr-gift-backplate{position:absolute;inset:0 6px 6px;z-index:0;display:block;pointer-events:none;border-radius:var(--radius-14);background:var(--color-grey-00);box-shadow:inset 0 0 0 1px var(--color-grey-200)}
+.vr-gift-backplate[data-level="2"]{inset:0 12px 0;transform:rotate(1deg)}
+.vr-gift-backplate[data-level="1"]{transform:rotate(-.5deg)}
+.vk-page .vr-daily-deck>.vr-special{position:relative;z-index:1;margin:0;transform:rotate(-2deg)}
+.vk-page .vr-daily-deck .vr-ticket-outline{stroke:var(--color-grey-200);stroke-width:1}
+
+.vk-phone .vr-daily-deck .vr-scratch-card{background:var(--color-grey-50);color:var(--color-grey-900);box-shadow:inset 0 0 0 1px var(--color-grey-200);border-radius:var(--radius-14);gap:4px}
+.vk-phone .vr-daily-deck .vr-scratch-card b{font-size:22px;line-height:28px}
+.vk-phone .vr-daily-deck .vr-scratch-card small{color:var(--color-grey-500)}
+.vr-daily-gifts-above{margin-bottom:16px}
+.vr-daily-heading{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding-bottom:12px}
+.vk-phone .vr-daily-heading h2{font-size:18px;line-height:24px}
+.vr-daily-heading>span{font-size:12px;line-height:20px;color:var(--sub)}
+.vr-daily-deck[data-count="1"]{padding-bottom:0}
+.vr-daily-deck[data-count="2"]{padding-bottom:6px}
+.vr-daily-deck[data-count="3"]{padding-bottom:12px}
+.vr-daily-deck[data-count="4"]{padding-bottom:18px}
+.vr-daily-deck .vr-gift-backplate[data-level="1"]{inset:6px 6px 0;transform:rotate(-.5deg)}
+.vr-daily-deck .vr-gift-backplate[data-level="2"]{inset:12px 12px 0;transform:rotate(1deg)}
+.vr-daily-deck .vr-gift-backplate[data-level="3"]{inset:18px 18px 0;transform:rotate(2deg)}
+/* Expose each paper edge clearly so the stack reads without a count label. */
+.vr-daily-deck[data-count="2"]{padding-bottom:12px}
+.vr-daily-deck[data-count="3"]{padding-bottom:24px}
+.vr-daily-deck[data-count="4"]{padding-bottom:36px}
+.vr-daily-deck .vr-gift-backplate{background:radial-gradient(circle,color-mix(in srgb,var(--color-grey-500) 10%,transparent) .6px,transparent .8px) 0 0/8px 8px,var(--color-grey-00);box-shadow:inset 0 0 0 1px var(--color-grey-300),0 3px 6px color-mix(in srgb,var(--color-grey-950) 7%,transparent)}
+.vr-daily-deck .vr-gift-backplate[data-level="1"]{inset:8px 4px 12px;transform:rotate(.4deg)}
+.vr-daily-deck .vr-gift-backplate[data-level="2"]{inset:16px 8px 0;transform:rotate(1.4deg)}
+.vr-daily-deck[data-count="2"] .vr-gift-backplate[data-level="1"]{bottom:0}
+.vr-daily-deck[data-count="4"] .vr-gift-backplate[data-level="1"]{bottom:24px}
+.vr-daily-deck[data-count="4"] .vr-gift-backplate[data-level="2"]{bottom:12px}
+.vr-daily-deck .vr-gift-backplate[data-level="3"]{inset:24px 12px 0;transform:rotate(2.4deg)}
+/* Shared continuous corners (the project's 60% smoothing treatment). */
+.vk-page,.vk-page *,.vk-page *::before,.vk-page *::after{corner-shape:superellipse(1.6)}
+/* Card edges sit outside the common 22px text column. */
+.vr-daily-deck{margin-inline:-12px}
+.vk-page .vr-daily-deck>.vr-special{transform:rotate(-.7deg)}
+.vk-phone .vr-daily-deck .vs-block,.vk-phone .vr-daily-deck .vr-scratch-full{padding-inline:12px}
+.vr-daily-deck .vr-hook-detail{margin-inline:12px}
+.vr-daily-deck .vr-hook-summary:not(:has(>span)){justify-content:flex-end}
+.vk-phone .vr-daily-deck .vr-scratch-full>header{align-items:baseline;gap:8px}
+.vk-phone .vr-daily-deck .vr-scratch-full h2{font-size:20px;line-height:28px}
+/* Silver scratch foil is a distinct, tactile panel inside the paper ticket. */
+.vk-phone .vr-daily-deck .vr-scratch-card{height:144px;border-radius:var(--radius-8);corner-shape:superellipse(1.6);box-shadow:inset 0 1px 3px color-mix(in srgb,var(--color-grey-950) 14%,transparent)}
+.vr-daily-deck .vr-scratch-card canvas{border-radius:var(--radius-8);corner-shape:superellipse(1.6);clip-path:polygon(1% 1%,15% 0,30% 1%,45% 0,60% 1%,80% 0,99% 1%,100% 20%,99.5% 40%,100% 60%,99.5% 80%,100% 99%,80% 100%,60% 99%,40% 100%,20% 99%,1% 100%,0 80%,.5% 60%,0 40%,.5% 20%)}
+/* Each service has a shared center axis for its icon and intrinsic-width label. */
+.vk-phone .vr-vinpay-services[data-service-mode="grid"]{align-items:start;grid-auto-rows:72px;column-gap:0;row-gap:16px}
+.vk-phone .vr-vinpay-services[data-service-mode="grid"] .vr-service{align-self:stretch;min-width:0;min-height:72px;align-items:center}
+.vk-phone .vr-vinpay-services[data-service-mode="grid"] .vr-service>span:last-child{align-items:center;justify-content:flex-start;gap:8px;width:100%}
+.vk-phone .vr-vinpay-services[data-service-mode="grid"] .vr-service img{display:block;flex:none;width:44px;height:44px;object-fit:contain;object-position:center}
+.vk-phone .vr-vinpay-services[data-service-mode="grid"] .vr-service-copy{width:auto;min-height:20px;align-items:center}
+.vk-phone .vr-vinpay-services[data-service-mode="grid"] .vr-service small{display:block;line-height:20px;white-space:nowrap}
+.vr-daily-deck .vr-scratch-card canvas{cursor:pointer}
+/* Compact scratch card: label, title, foil; the foil itself is the only action. */
+.vk-page .vr-daily-deck>.vr-special{padding-top:12px;padding-bottom:12px}
+.vr-daily-deck .vr-hook-label{margin:0 12px 6px;line-height:16px;letter-spacing:1px}
+.vk-phone .vr-daily-deck .vr-scratch-full>header{padding-bottom:10px}
+.vk-phone .vr-daily-deck .vr-scratch-full .vr-scratch-card{height:112px}
+.vr-daily-gifts{margin-top:20px;margin-bottom:12px}
+/* Wallet text shares the 22px content column with greeting and VPoint. */
+.vk-phone .vr-stack .vr-pouches[data-arrange="1"]{margin-inline:10px}
+.vk-phone .vr-stack .vr-pouches[data-arrange="1"] .vr-pouch-cover{padding-inline:12px}
+/* Lift the whole paper deck so masking the ticket does not clip its shadow. */
+.vr-daily-deck{filter:drop-shadow(0 5px 7px color-mix(in srgb,var(--color-grey-950) 10%,transparent)) drop-shadow(0 14px 20px color-mix(in srgb,var(--color-grey-950) 12%,transparent))}
+.vr-daily-deck .vr-gift-backplate{box-shadow:inset 0 0 0 1px var(--color-grey-200),0 3px 7px color-mix(in srgb,var(--color-grey-950) 12%,transparent)}
+/* Quiet elevation below the deck, with a clean top edge. */
+.vr-daily-deck{filter:drop-shadow(0 10px 6px color-mix(in srgb,var(--color-grey-950) 6%,transparent))}
+.vr-daily-deck .vr-gift-backplate{box-shadow:inset 0 0 0 1px var(--color-grey-200),0 2px 3px color-mix(in srgb,var(--color-grey-950) 4%,transparent)}
+.vk-page .vr-daily-deck>.vr-special{box-shadow:inset 0 1px 0 var(--color-grey-00)}
+/* Shared outer card edges; inner card content keeps its own padding. */
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid{padding-inline:10px;scroll-padding-left:10px}
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-head{padding-inline:12px}
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-foot{padding-inline:12px}
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid>.vr-experience-card{flex-basis:100%}
+/* All card surfaces share 10px outer insets; text keeps the 22px inner axis. */
+.vk-phone .vr-vinpay-services[data-service-mode="cards"],.vk-phone .vr-vinpay-services[data-service-mode="row"]{padding-inline:10px}
+.vk-phone .vr-stack .vr-mix[data-vouchers]>.vh-v-grid{padding-inline:10px;scroll-padding-left:10px}
+/* Ordinary cards have their own padded frame; the hero wallet keeps its primary text axis. */
+.vk-phone .vr-vinpay-services[data-service-mode="cards"],.vk-phone .vr-vinpay-services[data-service-mode="row"]{padding-inline:22px}
+.vr-daily-deck{margin-inline:0}
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid{padding-inline:22px;scroll-padding-left:22px}
+.vk-phone .vr-stack .vr-mix[data-vouchers]>.vh-v-grid{padding-inline:22px;scroll-padding-left:22px}
+/* Soft grey sheet and a restrained champagne halo behind the wallet. */
+.vk-page{--home-sheet-bg:var(--color-grey-50)}
+.vk-page[data-mode="dark"]{--home-sheet-bg:var(--color-grey-950)}
+.vk-phone .vr-stack{background:radial-gradient(ellipse 100% 220px at 50% 230px,color-mix(in srgb,var(--color-yellow-700) 20%,transparent),transparent 78%),radial-gradient(ellipse 70% 180px at 85% 210px,color-mix(in srgb,var(--color-orange-200) 8%,transparent),transparent 80%),var(--color-grey-950)}
+.vk-phone .vr-stack .vr-sheet{background:var(--home-sheet-bg);box-shadow:0 -2px 8px color-mix(in srgb,var(--color-grey-950) 6%,transparent)}
+.vk-phone .vr-stack .vr-pouches .vr-pouch{box-shadow:0 10px 22px color-mix(in srgb,var(--color-grey-950) 22%,transparent),0 0 28px color-mix(in srgb,var(--color-yellow-200) 5%,transparent)}
+/* Apple Today adaptation: portrait artwork and typography form one editorial card. */
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid{gap:16px;padding-top:2px;padding-bottom:20px}
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid>.vr-experience-card{height:auto;aspect-ratio:346/426;border-radius:var(--radius-14);corner-shape:superellipse(1.6);clip-path:none;overflow:hidden;background:var(--color-grey-950);box-shadow:0 8px 18px color-mix(in srgb,var(--color-grey-950) 10%,transparent)}
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid>.vr-experience-card>img{position:absolute;inset:0;object-position:center;z-index:0}
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-head{position:absolute;inset:0 0 auto;z-index:1;padding:20px 20px 72px;gap:6px;background:linear-gradient(to bottom,color-mix(in srgb,var(--color-grey-950) 50%,transparent),transparent);color:var(--color-grey-00)}
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-head small{font-size:11px;line-height:16px;letter-spacing:.7px;font-weight:600;text-transform:uppercase;opacity:.8}
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-head strong{max-width:95%;font-size:28px;line-height:32px;font-weight:700;letter-spacing:-.6px}
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-foot{position:absolute;inset:auto 0 0;z-index:1;padding:52px 20px 20px;background:linear-gradient(to top,color-mix(in srgb,var(--color-grey-950) 70%,transparent),transparent);backdrop-filter:none;color:var(--color-grey-00)}
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-foot em{font-size:14px;line-height:20px;font-weight:400}
+/* Stronger depth behind the hero wallet, without changing the Carbon finish. */
+.vk-phone .vr-stack .vr-pouches .vr-pouch{box-shadow:0 12px 24px color-mix(in srgb,var(--color-grey-950) 38%,transparent),0 22px 40px color-mix(in srgb,var(--color-grey-950) 24%,transparent),0 0 34px color-mix(in srgb,var(--color-yellow-200) 8%,transparent)}
+/* Square editorial cards keep the horizontal experience compact. */
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid>.vr-experience-card{aspect-ratio:1/1;height:auto}
+/* Restore the approved rounded Apple-style card with true 60% continuous corners. */
+.vk-phone .vr-fy[data-feed="2"] .vr-fy-grid>.vr-experience-card{border-radius:var(--radius-28);corner-shape:round;aspect-ratio:1/1}
+/* Stamp card: compact hierarchy and consistent cells, without changing its paper treatment. */
+.vk-phone .vr-daily-deck .vs-stamp-card>header{padding-bottom:6px;align-items:baseline}
+.vk-phone .vr-daily-deck .vs-stamp-card h2{font-size:20px;line-height:28px}
+.vk-phone .vr-daily-deck .vs-stamp-card>p{font-size:12px;line-height:20px;padding-bottom:12px}
+.vk-phone .vr-daily-deck .vs-stamps{gap:12px 8px;grid-auto-rows:64px}
+.vk-phone .vr-daily-deck .vs-stamps button{gap:6px;justify-content:flex-start;align-items:center;opacity:1;filter:none}
+.vk-phone .vr-daily-deck .vs-stamps .daily-icon{width:36px;height:36px;object-fit:contain}
+.vk-phone .vr-daily-deck .vs-stamps button:not([data-on]) .daily-icon{opacity:.4;filter:grayscale(1)}
+.vk-phone .vr-daily-deck .vs-stamps small{font-size:11px;line-height:20px;color:var(--color-grey-700)}
+/* Visible VSP actions sit beside the story metadata. */
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-foot{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.vk-phone .vr-fy[data-feed="2"] .vr-tc-foot em{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+.vk-phone .vr-experience-cta{flex:none;color:var(--color-grey-950);font-size:12px;line-height:20px;padding:6px 12px}
+.vk-phone .vr-experience-cta>span:first-child{background:var(--color-grey-00)}
+.vr-experience-overlay{position:absolute;inset:0;z-index:45}
+.vr-experience-overlay>div{position:absolute}
+.vr-experience-detail-image{width:100%;max-height:320px;object-fit:cover}
+/* Pale green paper for the reason-to-open deck. */
+.vk-page .vr-daily-deck>.vr-special{--bg:var(--color-green-50);--run-fill:var(--color-green-50);background:radial-gradient(circle,color-mix(in srgb,var(--color-green-900) 10%,transparent) .65px,transparent .85px) 0 0/8px 8px,var(--bg)}
+.vr-daily-deck .vr-gift-backplate{background:var(--color-green-50);box-shadow:inset 0 0 0 1px var(--color-green-200),0 2px 3px color-mix(in srgb,var(--color-grey-950) 4%,transparent)}
+
+/* Banana-lime paper, replacing the mint tint. */
+.vk-page .vr-daily-deck>.vr-special{--bg:color-mix(in srgb,var(--color-yellow-200) 78%,var(--color-green-300));--run-fill:var(--bg)}
+.vr-daily-deck .vr-gift-backplate{background:color-mix(in srgb,var(--color-yellow-200) 78%,var(--color-green-300));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--color-yellow-700) 20%,transparent),0 2px 3px color-mix(in srgb,var(--color-grey-950) 4%,transparent)}
+
+/* Compare restrained paper colors in the full Home composition. */
+.vr-daily-gifts[data-gift-tone]{--gift-paper:var(--color-grey-00);--gift-edge:var(--color-grey-200);--gift-dot:var(--color-grey-500)}
+.vr-daily-gifts[data-gift-tone="2"]{--gift-paper:color-mix(in srgb,var(--color-orange-50) 65%,var(--color-grey-00));--gift-edge:color-mix(in srgb,var(--color-orange-200) 45%,var(--color-grey-200))}
+.vr-daily-gifts[data-gift-tone="3"]{--gift-paper:color-mix(in srgb,var(--color-green-50) 70%,var(--color-grey-00));--gift-edge:color-mix(in srgb,var(--color-green-200) 45%,var(--color-grey-200))}
+.vr-daily-gifts[data-gift-tone="4"]{--gift-paper:color-mix(in srgb,var(--color-blue-50) 75%,var(--color-grey-00));--gift-edge:var(--color-blue-200)}
+.vr-daily-gifts[data-gift-tone="5"]{--gift-paper:color-mix(in srgb,var(--color-red-50) 65%,var(--color-grey-00));--gift-edge:color-mix(in srgb,var(--color-red-200) 50%,var(--color-grey-200))}
+.vr-daily-gifts[data-gift-tone="6"]{--gift-paper:var(--color-grey-100);--gift-edge:var(--color-grey-300)}
+.vk-page .vr-daily-gifts[data-gift-tone] .vr-daily-deck>.vr-special{--bg:var(--gift-paper);--run-fill:var(--gift-paper);background:radial-gradient(circle,color-mix(in srgb,var(--gift-dot) 10%,transparent) .65px,transparent .85px) 0 0/8px 8px,var(--bg)}
+.vr-daily-gifts[data-gift-tone] .vr-daily-deck .vr-gift-backplate{background:var(--gift-paper);box-shadow:inset 0 0 0 1px var(--gift-edge),0 2px 3px color-mix(in srgb,var(--color-grey-950) 4%,transparent)}
+
+/* Give the wallet header and the main sections breathing room. */
+.vk-phone .vr-stack .vr-hello{padding-bottom:24px}
+.vk-phone .vr-vinpay-services{padding-top:20px}
+.vr-daily-gifts{margin-top:28px;margin-bottom:20px}
+.vk-phone .vr-fy>h2{padding-top:28px;padding-bottom:12px}
+/* Full-spectrum gradients, kept light enough for the existing dark text. */
+.vr-daily-gifts[data-gift-tone]{--gift-gradient:linear-gradient(125deg,var(--color-grey-00),var(--color-orange-100));--gift-edge:var(--color-orange-200)}
+.vr-daily-gifts[data-gift-tone="1"]{--gift-gradient:linear-gradient(125deg,var(--color-grey-00),var(--color-orange-100) 60%,var(--color-yellow-100))}
+.vr-daily-gifts[data-gift-tone="2"]{--gift-gradient:linear-gradient(125deg,var(--color-yellow-100),var(--color-orange-200));--gift-edge:var(--color-orange-200)}
+.vr-daily-gifts[data-gift-tone="3"]{--gift-gradient:linear-gradient(125deg,var(--color-red-100),color-mix(in srgb,var(--color-blue-200) 55%,var(--color-red-100)));--gift-edge:var(--color-red-200)}
+.vr-daily-gifts[data-gift-tone="4"]{--gift-gradient:linear-gradient(125deg,color-mix(in srgb,var(--color-blue-200) 55%,var(--color-red-100)),var(--color-blue-100));--gift-edge:var(--color-blue-200)}
+.vr-daily-gifts[data-gift-tone="5"]{--gift-gradient:linear-gradient(125deg,var(--color-blue-100),var(--color-green-100));--gift-edge:var(--color-green-200)}
+.vr-daily-gifts[data-gift-tone="6"]{--gift-gradient:linear-gradient(125deg,var(--color-green-100),var(--color-yellow-100));--gift-edge:var(--color-green-200)}
+.vr-daily-gifts[data-gift-tone="7"]{--gift-gradient:linear-gradient(135deg,var(--color-yellow-100),var(--color-orange-200) 45%,var(--color-red-100));--gift-edge:var(--color-orange-200)}
+.vr-daily-gifts[data-gift-tone="8"]{--gift-gradient:linear-gradient(135deg,var(--color-green-100),var(--color-blue-200) 50%,var(--color-red-100));--gift-edge:var(--color-blue-200)}
+.vr-daily-gifts[data-gift-tone="9"]{--gift-gradient:linear-gradient(120deg,var(--color-red-100),var(--color-orange-100) 20%,var(--color-yellow-100) 40%,var(--color-green-100) 60%,var(--color-blue-100) 80%,color-mix(in srgb,var(--color-blue-200) 55%,var(--color-red-100)));--gift-edge:var(--color-blue-200)}
+.vr-daily-gifts[data-gift-tone="10"]{--gift-gradient:radial-gradient(ellipse at 0 0,var(--color-red-100),transparent 65%),radial-gradient(ellipse at 100% 100%,var(--color-blue-100),transparent 65%),linear-gradient(125deg,var(--color-grey-00),var(--color-orange-50));--gift-edge:var(--color-grey-200)}
+.vk-page .vr-daily-gifts[data-gift-tone] .vr-daily-deck>.vr-special{background:radial-gradient(circle,color-mix(in srgb,var(--color-grey-500) 9%,transparent) .65px,transparent .85px) 0 0/8px 8px,var(--gift-gradient)}
+.vr-daily-gifts[data-gift-tone] .vr-daily-deck .vr-gift-backplate{background:var(--gift-gradient)}
+/* The scratch surface is softly brushed silver, without jagged edging or bold stripes. */
+.vk-phone .vr-daily-deck .vr-scratch-card canvas{clip-path:none;border-radius:var(--radius-14);corner-shape:superellipse(1.6)}
+.vk-phone .vr-daily-deck .vr-scratch-card{border-radius:var(--radius-14);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--color-grey-400) 18%,transparent)}
+/* Home: services → horizontal offers → editorial experiences. */
+.vk-phone .vr-stack .vr-mix[data-vouchers="1"]>.vh-v-grid{display:flex;flex-direction:row;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:22px}
+.vk-phone .vr-stack .vr-mix[data-vouchers="1"]>.vh-v-grid button{flex:0 0 160px;scroll-snap-align:start}
+
+/* Reference voucher composition: PNL at the top; benefit and artwork at the bottom. */
+.vr-offer-stories{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:22px;padding:0 22px 8px;scrollbar-width:none}
+.vr-offer-stories::-webkit-scrollbar{display:none}
+.vk-phone .vr-offer-story{--story-paper:var(--color-grey-100);position:relative;flex:0 0 160px;height:196px;overflow:hidden;padding:14px;border-radius:var(--radius-28);background:var(--story-paper);color:var(--color-grey-950);scroll-snap-align:start;align-items:stretch;justify-content:flex-start;text-align:left}
+.vr-offer-story[data-art="scratch"]{--story-paper:var(--color-orange-100)}
+.vr-offer-story[data-art="xanhsm"]{--story-paper:var(--color-green-100)}
+.vr-offer-story[data-art="winmart"]{--story-paper:var(--color-orange-100)}
+.vr-offer-story[data-art="vinmec"]{--story-paper:var(--color-blue-100)}
+.vr-offer-story[data-art="vinpearl"]{--story-paper:var(--color-yellow-100)}
+.vr-offer-story[data-art="vinwonders"]{--story-paper:color-mix(in srgb,var(--color-blue-100) 65%,var(--color-red-100))}
+.vr-offer-story[data-art="vinbus"]{--story-paper:var(--color-grey-100)}
+.vr-offer-story>span:first-child{background:transparent}
+.vk-phone .vr-offer-story>span:last-child{position:relative;display:block;width:100%;height:100%}
+.vr-offer-pnl{position:absolute;inset:0 0 auto;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:3px}
+.vr-offer-pnl>strong{font-size:15px;line-height:20px;font-weight:600;max-width:100%}
+.vr-offer-pnl>small{font-size:10px;line-height:14px;color:var(--color-grey-600)}
+.vr-offer-value{position:absolute;left:0;bottom:0;z-index:2;display:flex;flex-direction:column;align-items:flex-start;max-width:96px;gap:1px}
+.vr-offer-value>small{font-size:11px;line-height:14px;font-weight:400}
+.vr-offer-value>b{font-size:32px;line-height:36px;letter-spacing:-1px;font-weight:500}
+.vr-offer-story[data-art="scratch"] .vr-offer-value>b{font-size:24px;line-height:28px;letter-spacing:-.5px}
+.vr-offer-art{position:absolute;right:-28px;bottom:-18px;z-index:1;width:112px;height:112px;pointer-events:none}
+.vr-offer-art>img{display:block;width:112px;height:112px;object-fit:contain}
+.vr-offer-art>svg{position:absolute;right:8px;bottom:12px;color:var(--color-yellow-700)}
+.vr-offer-mini-art{width:22px;height:22px;display:block;flex:none}
+.vr-offer-mini-art>img,.vr-offer-mini-art>svg{width:22px;height:22px;object-fit:contain}
+.vr-offer-story[data-header="2"] .vr-offer-pnl{flex-direction:row;align-items:center;gap:6px}
+.vr-offer-story[data-header="3"] .vr-offer-pnl>strong{font-size:20px;line-height:24px;letter-spacing:-.5px}
+.vr-offer-story[data-header="5"] .vr-offer-pnl{padding-left:8px;box-shadow:inset 2px 0 0 var(--color-grey-950)}
+.vr-offer-story[data-header="6"] .vr-offer-pnl>strong{padding:4px 7px;border-radius:var(--radius-8);background:color-mix(in srgb,var(--color-grey-00) 55%,transparent);font-size:13px;line-height:18px}
+/* Story viewer is contained in the phone, with manual navigation while scratching. */
+.vr-story-viewer{position:absolute;inset:0;z-index:75;display:flex;flex-direction:column;overflow:hidden;background:var(--color-grey-950);color:var(--color-grey-00);outline:none}
+.vr-story-progress{display:flex;gap:4px;padding:12px 22px 4px}
+.vk-phone .vr-story-progress>button{flex:1;min-width:0;height:14px;min-height:14px;padding:0;background:transparent}
+.vr-story-progress>button>span:first-child{background:transparent}
+.vr-story-progress>button>span:last-child{display:block;width:100%}
+.vr-story-progress button span[data-seen],.vr-story-progress button span[data-seen]~span{background:var(--color-grey-00)}
+.vr-story-progress button>span:last-child>span{display:block;height:3px;width:100%;border-radius:999px;background:var(--color-grey-600)}
+.vr-story-progress button>span:last-child>span[data-seen]{background:var(--color-grey-00)}
+.vr-story-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 22px 12px}
+.vr-story-nav>div{display:flex;flex-direction:column;gap:3px}
+.vr-story-nav strong{font-size:14px;line-height:20px;font-weight:600}
+.vr-story-nav small{font-size:11px;line-height:16px;color:var(--color-grey-400)}
+.vk-phone .vr-story-nav button,.vk-phone .vr-story-controls button{color:var(--color-grey-00);background:transparent}
+.vr-story-nav button>span:first-child,.vr-story-controls button>span:first-child{background:var(--color-grey-800)}
+.vr-story-content{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;padding-block:16px}
+.vr-story-content .vr-daily-gifts{margin-block:0}
+.vr-story-content .vr-daily-deck{filter:none}
+.vr-story-promotion{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:0 22px}
+.vr-story-promotion>small{font-size:16px;line-height:24px;color:var(--color-grey-300)}
+.vk-phone .vr-story-promotion>h2{font-size:64px;line-height:72px;font-weight:500;letter-spacing:-2px}
+.vr-story-promotion>p{font-size:14px;line-height:20px;color:var(--color-grey-300)}
+.vr-story-promotion>img{align-self:center;width:230px;height:230px;object-fit:contain}
+.vk-phone .vr-story-promotion>button{align-self:stretch;margin-top:16px;color:var(--color-grey-950)}
+.vr-story-promotion>button>span:first-child{background:var(--color-grey-00)}
+.vr-story-controls{display:flex;justify-content:space-between;padding:12px 22px 28px;gap:12px}
+@media(prefers-reduced-motion:no-preference){.vr-story-viewer{animation:vk-home-reveal 220ms cubic-bezier(.22,1,.36,1) both}}
+.vk-phone .vr-offer-story{height:160px}
+/* Keep the reference's lower text column clear of the cropped illustration. */
+.vk-phone .vr-offer-story{white-space:normal}
+.vr-offer-value{width:72px;max-width:72px}
+.vr-offer-value>small{max-width:72px;white-space:normal;font-size:11px;line-height:14px;overflow-wrap:normal}
+.vr-offer-value>b{font-size:30px;line-height:34px;white-space:nowrap;letter-spacing:-1px}
+.vr-offer-story[data-art="scratch"] .vr-offer-value>b{font-size:20px;line-height:26px;letter-spacing:-.5px}
+.vr-offer-art{right:-32px;bottom:-14px;width:88px;height:88px}
+.vr-offer-art>img{width:88px;height:88px;object-fit:contain}
+/* The scratch story has its own visual identity; vouchers keep the reference pastels. */
+.vk-phone .vr-offer-story[data-art="scratch"]{background:radial-gradient(ellipse at 100% 100%,color-mix(in srgb,var(--color-orange-200) 14%,transparent),transparent 70%),linear-gradient(145deg,var(--color-grey-800),var(--color-grey-950));color:var(--color-grey-00);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--color-grey-00) 12%,transparent)}
+.vr-offer-story-bars{position:absolute;top:-6px;inset-inline:0;display:flex;gap:3px;height:2px}
+.vr-offer-story-bars>i{flex:1;border-radius:999px;background:var(--color-grey-600)}
+.vr-offer-story-bars>i:first-child{background:var(--color-orange-200)}
+.vr-offer-story[data-art="scratch"] .vr-offer-pnl{top:7px}
+.vr-offer-story[data-art="scratch"] .vr-offer-pnl>strong{color:var(--color-grey-00)}
+.vr-offer-story[data-art="scratch"] .vr-offer-value>small{color:var(--color-grey-300)}
+.vr-offer-story[data-art="scratch"] .vr-offer-value>b{color:var(--color-grey-00)}
+.vr-offer-story[data-art="scratch"][data-header="4"] .vr-offer-pnl>small{color:var(--color-grey-400)}
+.vr-offer-story[data-art="scratch"][data-header="5"] .vr-offer-pnl{box-shadow:inset 2px 0 0 var(--color-orange-200)}
+.vr-offer-story[data-art="scratch"][data-header="6"] .vr-offer-pnl>strong{background:var(--color-grey-800)}
+/* Banner story with a gradient rim, distinct from the voucher illustrations. */
+.vr-offer-story-cover{position:absolute;inset:-14px;z-index:0;overflow:hidden}
+.vr-offer-story-cover>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.vr-offer-story-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--color-grey-950) 55%,transparent),transparent 38%,color-mix(in srgb,var(--color-grey-950) 88%,transparent))}
+.vk-phone .vr-offer-story[data-art="scratch"]::after{content:"";position:absolute;inset:0;z-index:4;padding:2px;border-radius:inherit;pointer-events:none;background:linear-gradient(140deg,var(--color-yellow-200),var(--color-orange-200) 25%,var(--color-red-300) 50%,var(--color-blue-300) 75%,var(--color-green-300));-webkit-mask:linear-gradient(var(--color-grey-950) 0 0) content-box,linear-gradient(var(--color-grey-950) 0 0);-webkit-mask-composite:xor;mask:linear-gradient(var(--color-grey-950) 0 0) content-box,linear-gradient(var(--color-grey-950) 0 0);mask-composite:exclude}
+.vr-offer-story[data-art="scratch"] .vr-offer-story-bars{z-index:2}
+.vr-offer-story[data-art="scratch"] .vr-offer-art{display:none}
+.vr-offer-story[data-art="scratch"] .vr-offer-value{width:100%;max-width:100%;gap:3px}
+.vr-offer-story[data-art="scratch"] .vr-offer-value>b{font-size:24px;line-height:28px}
+.vr-offer-story[data-art="scratch"] .vr-offer-value>small{max-width:100%;white-space:nowrap}
+/* GreenSM is turquoise, not leaf green. */
+.vr-offer-story[data-art="xanhsm"]{--story-paper:color-mix(in srgb,var(--color-blue-100) 70%,var(--color-green-50))}
+.vk-phone .vo-wallet .vo-wallet-detail{flex:none;color:var(--color-orange-200);font-size:12px;line-height:20px;padding:6px 10px}
+.vo-wallet .vo-wallet-detail>span:first-child{background:color-mix(in srgb,var(--color-grey-00) 8%,transparent)}
+.vo-sheet>.vr-daily-gifts{margin-top:12px;margin-bottom:24px}
+
+/* More header studies, using the same card content for direct comparison. */
+.vr-offer-story[data-header="7"] .vr-offer-pnl{gap:8px}
+.vr-offer-story[data-header="7"] .vr-offer-mini-art{display:grid;place-items:center;width:34px;height:34px;padding:5px;border-radius:var(--radius-8);background:color-mix(in srgb,var(--color-grey-00) 75%,transparent)}
+.vr-offer-story[data-header="7"] .vr-offer-pnl>strong{font-size:14px;line-height:18px}
+.vr-offer-story[data-header="8"] .vr-offer-pnl{gap:4px}
+.vr-offer-story[data-header="8"] .vr-offer-kicker{font-size:9px;line-height:13px;letter-spacing:1px;text-transform:uppercase;color:inherit;opacity:.65}
+.vr-offer-story[data-header="8"] .vr-offer-pnl>strong{font-size:19px;line-height:24px;font-weight:600;letter-spacing:-.6px}
+.vr-offer-story[data-header="9"] .vr-offer-pnl{flex-direction:row;align-items:center;justify-content:space-between;gap:6px}
+.vr-offer-story[data-header="9"] .vr-offer-pnl>strong{font-size:14px;line-height:20px}
+.vr-offer-header-arrow{flex:none;opacity:.6}
+.vr-offer-story[data-header="10"] .vr-offer-pnl{gap:8px}
+.vr-offer-story[data-header="10"] .vr-offer-member{display:flex;align-items:center;gap:4px;padding:3px 6px;border-radius:var(--radius-8);font-size:8px;line-height:12px;color:var(--color-grey-00);background:var(--color-grey-950)}
+.vr-offer-story[data-header="10"][data-art="scratch"] .vr-offer-member{color:var(--color-grey-950);background:var(--color-orange-200)}
+.vr-offer-story[data-header="11"] .vr-offer-pnl{gap:6px}
+.vr-offer-story[data-header="11"] .vr-offer-index{font-size:8px;line-height:12px;letter-spacing:1.2px;color:inherit;opacity:.6;font-variant-numeric:tabular-nums}
+.vr-offer-story[data-header="11"] .vr-offer-pnl>strong{font-family:inherit;font-size:15px;line-height:20px;font-weight:600;letter-spacing:0}
+.vr-offer-story[data-header="12"] .vr-offer-pnl{inset:-14px -14px auto;min-height:48px;padding:14px;color:var(--color-grey-00);background:var(--color-grey-950)}
+.vr-offer-story[data-header="12"] .vr-offer-pnl>strong{font-size:13px;line-height:20px;color:inherit}
+.vr-offer-story[data-header="12"][data-art="scratch"] .vr-offer-pnl{top:-14px;background:var(--color-grey-800)}
+
+/* Dotted gift paper, outlined by the SVG gradient around the ticket notches. */
+.vk-page .vr-daily-gifts[data-gift-tone] .vr-daily-deck>.vr-special{background:radial-gradient(circle,color-mix(in srgb,var(--color-grey-500) 14%,transparent) .7px,transparent .9px) 0 0/8px 8px,var(--gift-gradient)}
+
+/* Gold metal clasp: brushed grain, broad studio reflection, beveled edges. */
+.vk-page .vr-pouch .vr-pouch-snap,.vk-page .vr-fly .vr-pouch-snap{
+  --clasp-gold:color-mix(in srgb,var(--color-orange-200) 72%,var(--color-yellow-700));
+  color:var(--color-grey-950);
+  background:repeating-linear-gradient(0deg,transparent 0 1px,color-mix(in srgb,var(--color-yellow-50) 12%,transparent) 1px 2px),linear-gradient(112deg,transparent 18%,color-mix(in srgb,var(--color-yellow-50) 72%,transparent) 36%,transparent 49%),linear-gradient(178deg,var(--color-yellow-100),var(--clasp-gold) 24%,var(--color-yellow-100) 48%,var(--clasp-gold) 64%,var(--color-yellow-700))!important;
+  box-shadow:inset 0 1px 0 var(--color-yellow-50),inset 0 -1px 0 color-mix(in srgb,var(--color-yellow-950) 45%,transparent),-2px 3px 8px color-mix(in srgb,var(--color-grey-1000) 32%,transparent)!important;
+}
+.vk-page .vr-pouch-snap .vr-snap-logo{background:var(--color-grey-950)}
+
+/* Wallet material: fine grain, directional light and a rolled, recessed edge. */
+.vk-page .vr-pouch[data-kind=wallet] .vr-pouch-cover{
+  isolation:isolate;
+  background:linear-gradient(125deg,color-mix(in srgb,var(--color-grey-00) 10%,transparent),transparent 36%,color-mix(in srgb,var(--color-grey-1000) 24%,transparent) 76%),var(--skin) center/cover no-repeat;
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--color-grey-00) 35%,transparent),inset 1px 0 0 color-mix(in srgb,var(--color-grey-00) 12%,transparent),inset 0 -3px 2px color-mix(in srgb,var(--color-grey-1000) 75%,transparent),inset 0 0 0 3px color-mix(in srgb,var(--color-grey-1000) 40%,transparent),0 -3px 10px color-mix(in srgb,var(--color-grey-1000) 40%,transparent);
+}
+.vk-page .vr-pouch[data-kind=wallet] .vr-pouch-cover::before{
+  content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+  background:repeating-linear-gradient(132deg,transparent 0 2px,color-mix(in srgb,var(--color-grey-00) 5%,transparent) 2px 3px,transparent 3px 6px),radial-gradient(ellipse at 22% 0,color-mix(in srgb,var(--color-grey-00) 14%,transparent),transparent 58%);
+}
+.vk-page .vr-pouch[data-kind=wallet] .vr-pouch-cover::after{
+  content:"";position:absolute;inset:5px;z-index:-1;border-radius:var(--radius-14);pointer-events:none;
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--color-grey-1000) 65%,transparent),0 1px 0 color-mix(in srgb,var(--color-grey-00) 15%,transparent),inset 1px 0 0 color-mix(in srgb,var(--color-grey-00) 9%,transparent);
+}
+.vk-page [data-skin=carbon] .vr-pouch[data-kind=wallet] .vr-pouch-cover{
+  background:linear-gradient(115deg,color-mix(in srgb,var(--color-grey-00) 13%,transparent),transparent 38%,color-mix(in srgb,var(--color-grey-1000) 32%,transparent) 80%),var(--skin) center/280px auto repeat;
+}
+.vk-page [data-skin=matte] .vr-pouch[data-kind=wallet] .vr-pouch-cover::before{
+  background:radial-gradient(ellipse,color-mix(in srgb,var(--color-grey-00) 9%,transparent) .5px,transparent 1px) 0 0/3px 4px,radial-gradient(ellipse at 25% 0,color-mix(in srgb,var(--color-grey-00) 12%,transparent),transparent 60%);
+}
+.vk-page .vr-pouch[data-kind=wallet] .vr-pouch-stitch{inset:9px;z-index:-1;border-color:color-mix(in srgb,var(--color-grey-300) 24%,transparent);border-radius:var(--radius-14);opacity:.7}
+/* Generic products retain VinPay's icon → title → description hierarchy. */
+.vk-phone .vr-mix[data-products="3"] .vr-vinpay-services[data-service-mode="cards"] .vr-service-copy{flex-direction:column}
+
+.vr-offers-section-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:24px 22px 12px}
+.vk-phone .vr-offers-section-head>h2{padding:0;font-size:18px;line-height:24px}
+.vk-phone .vr-offers-section-head .vr-offers-view-all{flex:none;padding:0;height:32px;min-height:32px;background:transparent;color:var(--foreground-secondary);font-size:12px;gap:2px;box-shadow:none}
+.vr-offers-view-all>span:first-child{background:transparent}
+
+/* Quiet black saffiano finish: even grain and soft studio light. */
+.vk-page [data-skin=carbon] .vr-pouch[data-kind=wallet] .vr-pouch-cover{
+  background:radial-gradient(ellipse 110% 100% at 16% -30%,color-mix(in srgb,var(--color-grey-00) 10%,transparent),transparent 72%),linear-gradient(155deg,var(--color-grey-800),var(--color-grey-950) 58%,var(--color-grey-1000));
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--color-grey-00) 25%,transparent),inset 1px 0 0 color-mix(in srgb,var(--color-grey-00) 8%,transparent),inset 0 -2px 2px color-mix(in srgb,var(--color-grey-1000) 70%,transparent),0 -2px 8px color-mix(in srgb,var(--color-grey-1000) 25%,transparent);
+}
+.vk-page [data-skin=carbon] .vr-pouch[data-kind=wallet] .vr-pouch-cover::before{
+  background:repeating-linear-gradient(38deg,transparent 0 2px,color-mix(in srgb,var(--color-grey-00) 2.5%,transparent) 2px 2.6px,transparent 2.6px 4px),repeating-linear-gradient(-38deg,transparent 0 2px,color-mix(in srgb,var(--color-grey-1000) 20%,transparent) 2px 2.6px,transparent 2.6px 4px);
+}
+.vk-page [data-skin=carbon] .vr-pouch[data-kind=wallet] .vr-pouch-cover::after{inset:4px;box-shadow:inset 0 1px 0 color-mix(in srgb,var(--color-grey-1000) 45%,transparent),0 1px 0 color-mix(in srgb,var(--color-grey-00) 5%,transparent)}
+.vk-page [data-skin=carbon] .vr-pouch[data-kind=wallet] .vr-pouch-stitch{display:none}
+.vk-phone .vr-offers-section-head>h2{font-weight:700}
+
+/* Daily gifts: white dotted paper with the existing gradient ticket edge. */
+.vk-page .vr-daily-gifts[data-gift-tone] .vr-daily-deck>.vr-special{
+  --bg:var(--color-grey-00);
+  --run-fill:var(--color-grey-00);
+  background:radial-gradient(circle,color-mix(in srgb,var(--color-grey-500) 14%,transparent) .7px,transparent .9px) 0 0/8px 8px,var(--color-grey-00);
+}
+.vr-daily-gifts[data-gift-tone] .vr-daily-deck .vr-gift-backplate{background:var(--color-grey-00)}
+/* Offer text rows stay aligned even when the condition wraps to two lines. */
+.vr-offer-value{display:grid;grid-template-rows:14px 34px 28px;row-gap:1px;align-items:start;align-content:start;height:78px}
+.vr-offer-value>small,.vr-offer-value>b{margin:0}
+/* Keep generic Product names while making each benefit understandable. */
+.vk-phone .vr-vinpay-services[data-service-mode="cards"] .vr-service-copy strong{font-size:13px;line-height:20px;font-weight:500;white-space:normal}
+/* One section gap, rather than padding on both the section and its title. */
+.vr-mix>.vr-fy{padding-top:0}
+.vk-phone .vr-mix>.vr-fy>h2{padding-top:24px;padding-bottom:12px}
+/* Make the tier entry useful without inventing thresholds or progress values. */
+.vr-member-text{display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.vk-phone .vr-member-text>small{font-size:10px;line-height:14px;font-weight:400;color:var(--color-grey-500)}
+/* The wallet balance remains primary; its detail clasp is quieter. */
+.vk-page .vr-pouches[data-arrange="1"] .vr-pouch .vr-pouch-snap,.vk-page .vr-fly .vr-pouch-snap{height:32px;background:var(--vinclub-cta-bg)!important;color:var(--vinclub-cta-fg);box-shadow:inset 0 1px 0 color-mix(in srgb,var(--color-grey-00) 35%,transparent),0 1px 3px color-mix(in srgb,var(--color-grey-950) 12%,transparent)!important;gap:5px;padding-inline:8px 12px}
+.vk-page .vr-pouch-snap .vr-snap-logo{width:18px;height:18px}
+.vk-page .vr-pouch-snap b{font-size:12px;line-height:18px;font-weight:600}
+
+/* The wallet clasp follows the shared CTA colors. */
+.vk-page .vr-pouch .vr-pouch-snap,.vk-page .vr-fly .vr-pouch-snap{
+  background:var(--vinclub-cta-bg)!important;
+  color:var(--vinclub-cta-fg);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--vinclub-cta-fg) 16%,transparent),inset 0 -1px 0 var(--color-grey-1000),-2px 3px 8px color-mix(in srgb,var(--color-grey-1000) 28%,transparent)!important;
+}
+.vk-page .vr-pouch-snap .vr-snap-logo{background:var(--vinclub-cta-fg)}
+/* A portrait banner story lives alongside the PNL vouchers. */
+.vk-phone .vr-home-story{position:relative;isolation:isolate;flex:0 0 112px;height:160px;padding:0;overflow:hidden;border-radius:var(--radius-28);color:var(--color-grey-00);background:var(--color-grey-950);scroll-snap-align:start}
+.vr-home-story>span:first-child{background:transparent}
+.vk-phone .vr-home-story>span:last-child{position:absolute;inset:0;display:block}
+.vr-home-story-banner{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vr-home-story-shade{position:absolute;inset:0;background:linear-gradient(transparent 20%,color-mix(in srgb,var(--color-grey-950) 85%,transparent))}
+.vr-home-story-label{position:absolute;inset:auto 12px 14px;display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left}
+.vr-home-story-label small{font-size:9px;line-height:12px;letter-spacing:1px;color:var(--color-grey-300)}
+.vr-home-story-label strong{font-size:16px;line-height:20px;font-weight:600;white-space:normal}
+.vr-home-story::after{content:"";position:absolute;inset:0;z-index:2;padding:2px;border-radius:inherit;pointer-events:none;background:linear-gradient(135deg,var(--color-yellow-200),var(--color-orange-300),var(--color-red-300),var(--color-blue-300));-webkit-mask:linear-gradient(var(--color-grey-950) 0 0) content-box,linear-gradient(var(--color-grey-950) 0 0);-webkit-mask-composite:xor;mask:linear-gradient(var(--color-grey-950) 0 0) content-box,linear-gradient(var(--color-grey-950) 0 0);mask-composite:exclude}
+.vr-home-story-intro{position:relative;flex:1;min-height:0;overflow:hidden}
+.vr-home-story-intro>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vr-home-story-intro>div{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;padding:40px 22px;background:linear-gradient(transparent 35%,color-mix(in srgb,var(--color-grey-950) 90%,transparent))}
+.vk-phone .vr-home-story-intro h2{font-size:32px;line-height:40px;font-weight:600}
+.vr-home-story-intro p{font-size:14px;line-height:20px;color:var(--color-grey-300)}
+.vr-home-story-intro button{align-self:stretch;margin-top:8px;color:var(--color-grey-950)}
+.vr-home-story-intro button>span:first-child{background:var(--color-grey-00)}
+/* Match the 56px tab headers used by Events and Rank. */
+.vk-phone .vo-head{padding:0 22px 24px;color:var(--color-grey-00)}
+.vo-heading{display:flex;align-items:center;height:56px}
+.vk-phone .vo-heading h1{font-size:24px;line-height:32px;font-weight:600;letter-spacing:-.6px}
+/* The marketing story uses a champagne-gold rim and its own campaign artwork. */
+.vr-home-story::after{padding:2.5px;background:linear-gradient(135deg,var(--color-orange-100),var(--color-yellow-600) 24%,var(--color-orange-200) 48%,var(--color-yellow-700) 72%,var(--color-yellow-200))}
+.vr-home-story-shade{background:linear-gradient(180deg,color-mix(in srgb,var(--color-grey-950) 42%,transparent),transparent 55%,color-mix(in srgb,var(--color-grey-950) 10%,transparent))}
+.vr-home-story-label{inset:14px 12px auto;gap:4px}
+.vr-home-story-label small{color:var(--color-orange-100)}
+.vr-home-story-banner{object-position:center}
+/* The final marketing artwork already contains its campaign headline. */
+.vr-home-story-shade{background:none}
+.vr-home-story-intro>div{background:linear-gradient(transparent 70%,color-mix(in srgb,var(--color-grey-950) 35%,transparent))}
+.vr-home-story-banner,.vr-home-story-intro>img{object-position:center top}
+/* A real gradient frame keeps the story rim visible around the banner. */
+.vr-home-story-frame{flex:0 0 112px;height:160px;padding:3px;overflow:hidden;background:linear-gradient(135deg,var(--color-yellow-200),var(--color-yellow-600) 25%,var(--color-orange-200) 50%,var(--color-yellow-700) 75%,var(--color-yellow-200));scroll-snap-align:start}
+.vk-phone .vr-home-story-frame .vr-home-story{width:100%;height:100%;min-width:0;display:block;flex:none;padding:2px;box-shadow:inset 0 0 0 2px var(--color-grey-50);background:var(--color-grey-50)}
+.vk-phone .vr-home-story-frame .vr-home-story::after{display:none}
+.vk-phone .vr-home-story-frame .vr-home-story>span:first-child{display:none}
+.vk-phone .vr-home-story-frame .vr-home-story>span:last-child{position:absolute;inset:2px;overflow:hidden;border-radius:inherit;display:block}
+.vk-phone .vr-home-story-frame .vr-home-story-banner{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;max-width:none}
+.vk-phone .vr-home-story-frame .vr-home-story-label{position:absolute;inset:12px 9px auto;display:flex;align-items:flex-start;gap:3px;color:var(--color-grey-950);text-align:left;white-space:normal}
+.vr-home-story-label small{color:var(--color-grey-800)}
+.vk-phone .vr-home-story-frame .vr-home-story-label strong{font-size:16px;line-height:19px;font-weight:700}
+.vr-story-campaign{flex:1;min-height:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:16px;padding:24px 22px;background:linear-gradient(150deg,var(--color-blue-100),var(--color-green-100));color:var(--color-grey-950)}
+.vr-story-campaign[data-campaign=shop]{background:linear-gradient(150deg,var(--color-orange-100),var(--color-yellow-200))}
+.vr-story-campaign>small{font-size:20px;font-weight:600}.vk-phone .vr-story-campaign h2{font-size:36px;line-height:42px;white-space:normal}
+.vr-story-campaign>img{width:100%;height:240px;object-fit:contain}.vr-story-campaign>p{font-size:17px;line-height:24px}.vr-story-campaign>button{align-self:stretch}
+.vk-phone:has(.vr-home-story-viewer) .vk-bar,.vk-phone:has(.vr-home-story-viewer) .vk-bar-fade,.vk-phone:has(.vr-home-story-viewer) .vk-indicator{visibility:hidden}
+/* Spread service columns across the content width without extra half-cell gutters. */
+.vk-phone .vr-vinpay-services[data-service-mode="grid"]{grid-template-columns:repeat(4,max-content);justify-content:space-between;padding-inline:22px}
+.vk-phone .vr-vinpay-services[data-service-mode="grid"] .vr-service{width:auto;min-width:44px}
+.vk-phone .vr-vinpay-services[data-service-mode="grid"]{padding-inline:32px}
+.vk-phone .vr-home-story-frame .vr-home-story-label{color:var(--color-grey-00)}
+.vk-phone .vr-home-story-frame .vr-home-story-label small{color:var(--color-yellow-100)}
+.vr-wallet-activation{position:absolute;inset:0;z-index:85;background:var(--background);overflow:hidden;border-radius:inherit}
+.vr-wallet-activation>iframe{display:block;width:100%;height:100%;border:0}
+.vk-phone:has(.vr-wallet-activation) .vk-bar,.vk-phone:has(.vr-wallet-activation) .vk-bar-fade,.vk-phone:has(.vr-wallet-activation) .vk-indicator{visibility:hidden}
+.vk-phone .vr-stack[data-wallet-state="2"] .vr-pouch-cover>strong,.vk-phone .vr-stack[data-wallet-state="2"] .vr-pouch-card>strong{font-size:20px;line-height:28px;font-weight:500}
+/* Story shares the vouchers' light surfaces and type scale. */
+.vr-home-story-frame{padding:2px;background:linear-gradient(135deg,var(--color-yellow-200),var(--color-orange-200) 45%,var(--color-yellow-600) 75%,var(--color-yellow-100))}
+.vk-phone .vr-home-story-frame .vr-home-story-label{inset:12px 10px auto;color:var(--color-grey-950);gap:14px}
+.vk-phone .vr-home-story-frame .vr-home-story-label small{font-size:15px;line-height:20px;letter-spacing:0;font-weight:600;color:var(--color-grey-950)}
+.vk-phone .vr-home-story-frame .vr-home-story-label strong{font-size:16px;line-height:19px;font-weight:600}
+/* Editorial photography stays softer than the promotional artwork. */
+.vk-phone .vr-fy-grid>.vr-experience-card>img,.vk-phone .vr-experience-detail-image{filter:saturate(.68) contrast(.92) brightness(1.03)}
+/* Home hierarchy: champagne identity area, dark wallet, quiet content surfaces. */
+.vk-page[data-mode=light] .vk-phone[data-tab=home]{--home-header-bg:color-mix(in srgb,var(--color-orange-100) 45%,var(--color-grey-50))}
+.vk-page[data-mode=light] .vk-phone[data-tab=home] .vk-status{background:var(--home-header-bg);color:var(--color-grey-950)}
+.vk-page[data-mode=light] .vk-phone[data-tab=home] .vr-stack{background:linear-gradient(180deg,var(--home-header-bg) 0 100px,var(--color-grey-900) 215px,var(--color-grey-950) 310px)}
+.vk-page[data-mode=light] .vr-stack .vr-hello{color:var(--color-grey-950)}
+.vk-page[data-mode=light] .vr-stack .vr-hello>small{color:var(--color-grey-600);font-size:12px;line-height:18px}
+.vk-page[data-mode=light] .vr-stack .vs-pts[data-member-layout="3"]>.vs-pts-num{color:var(--color-grey-600);font-size:12px;gap:5px}
+.vk-page[data-mode=light] .vr-stack .vs-pts[data-member-layout="3"] .vs-pts-num strong{color:var(--color-grey-950);font-size:38px;line-height:46px;font-weight:650}
+.vk-page[data-mode=light] .vr-stack .vs-pts[data-member-layout="3"]>.vr-member-subtle[data-tier]{color:var(--color-grey-800);font-size:14px}
+.vk-page[data-mode=light] .vr-member-text>small{color:var(--color-grey-600)}
+.vk-phone .vr-offer-story[data-art=xanhsm]{--story-paper:color-mix(in srgb,var(--color-blue-100) 45%,var(--color-grey-00))}
+.vk-phone .vr-offer-story[data-art=winmart]{--story-paper:color-mix(in srgb,var(--color-orange-100) 45%,var(--color-grey-00))}
+.vk-phone .vr-offer-story[data-art=vinmec]{--story-paper:color-mix(in srgb,var(--color-blue-100) 40%,var(--color-grey-00))}
+.vk-phone .vr-offer-story[data-art=vinpearl]{--story-paper:color-mix(in srgb,var(--color-yellow-100) 40%,var(--color-grey-00))}
+.vk-phone .vr-offer-story .vr-offer-art{filter:saturate(.8)}
+.vk-phone .vr-offers-section-head>h2,.vk-phone .vr-mix>.vr-fy>h2{font-size:18px;line-height:26px;font-weight:650;letter-spacing:-.35px}
+.vk-phone .vr-offers-view-all{font-size:11px;font-weight:500;color:var(--color-grey-600)}
+.vk-phone .vr-tc-head>small{opacity:.75}
+.vk-page[data-mode=light] .vk-phone[data-tab=home] .vr-stack{background:radial-gradient(ellipse at 50% 230px,color-mix(in srgb,var(--color-orange-200) 22%,transparent),transparent 70%),var(--home-header-bg)}
+/* Daylight editorial art keeps its natural light; use dark type on a soft ivory scrim. */
+.vk-phone .vr-fy[data-feed="2"] .vr-experience-card[data-artwork=daylight]>.vr-tc-head{color:var(--color-grey-950);background:linear-gradient(to bottom,color-mix(in srgb,var(--color-grey-00) 80%,transparent),transparent);text-shadow:none}
+.vk-phone .vr-fy[data-feed="2"] .vr-experience-card[data-artwork=daylight]>.vr-tc-foot{color:var(--color-grey-950);background:linear-gradient(to top,color-mix(in srgb,var(--color-grey-00) 90%,transparent),transparent);text-shadow:none}
+.vk-phone .vr-fy-grid>.vr-experience-card[data-artwork=daylight]>img{filter:saturate(.9) contrast(.96)}
+
+/* Vivid daily gift story, with the existing gift artwork kept intact. */
+.vk-page .vk-phone .vr-home-story-frame .vr-home-story{background:linear-gradient(150deg,var(--color-blue-600),var(--color-blue-400) 50%,var(--color-green-100))}
+.vk-page .vk-phone .vr-home-story-frame .vr-home-story>span:first-child{background:transparent}
+.vk-page .vk-phone .vr-home-story-frame .vr-home-story-banner{mask-image:linear-gradient(to bottom,transparent 0%,color-mix(in srgb,var(--color-grey-1000) 18%,transparent) 32%,var(--color-grey-1000) 72%)}
+.vk-page .vk-phone .vr-home-story-frame .vr-home-story-label,.vk-page .vk-phone .vr-home-story-frame .vr-home-story-label small{color:var(--color-grey-00)!important;text-shadow:0 1px 4px color-mix(in srgb,var(--color-red-900) 20%,transparent)}
+/* Editorial cards use warm white type over a restrained scrim. */
+.vk-phone .vr-fy[data-feed="2"] .vr-experience-card[data-artwork=daylight]>.vr-tc-head{color:var(--color-orange-50);background:linear-gradient(to bottom,color-mix(in srgb,var(--color-yellow-950) 46%,transparent),transparent);text-shadow:0 1px 4px color-mix(in srgb,var(--color-grey-950) 15%,transparent)}
+.vk-phone .vr-fy[data-feed="2"] .vr-experience-card[data-artwork=daylight]>.vr-tc-foot{color:var(--color-orange-50);background:linear-gradient(to top,color-mix(in srgb,var(--color-yellow-950) 48%,transparent),transparent);text-shadow:none}
+
+/* Sunlit car and island banners retain airy photography. */
+.vk-phone .vr-fy[data-feed="2"] .vr-experience-card[data-artwork=daylight]>.vr-tc-head{color:var(--color-grey-800);background:linear-gradient(to bottom,color-mix(in srgb,var(--color-grey-00) 65%,transparent),transparent);text-shadow:none}
+.vk-phone .vr-fy[data-feed="2"] .vr-experience-card[data-artwork=daylight]>.vr-tc-foot{color:var(--color-grey-800);background:linear-gradient(to top,color-mix(in srgb,var(--color-grey-00) 80%,transparent),transparent)}
+
+/* Warm VinClub gift palette, without alert red or a cold blue block. */
+.vk-page .vk-phone .vr-home-story-frame .vr-home-story{background:linear-gradient(145deg,var(--color-yellow-300),var(--color-orange-200) 54%,var(--color-yellow-50))}
+.vk-page .vk-phone .vr-home-story-frame .vr-home-story-label,.vk-page .vk-phone .vr-home-story-frame .vr-home-story-label small{color:var(--color-yellow-950)!important;text-shadow:none}
+
+.vk-page .vk-phone .vr-offer-story[data-art="vinmec"]{--story-paper:color-mix(in srgb,var(--color-blue-200) 45%,var(--color-grey-00));background:var(--story-paper)}
+.vk-page .vk-phone .vo-ticket>button:not(:disabled){background:var(--vinclub-cta-bg);color:var(--vinclub-cta-fg)}
+
+/* Two balances within the existing black voucher card. */
+.vk-phone .vo-wallet-split{display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);column-gap:16px}
+.vo-wallet-split>div{min-width:0}
+.vo-wallet-split strong{display:flex;align-items:baseline;gap:4px;white-space:nowrap}
+.vo-wallet-split .vo-wallet-unit{font-size:12px;line-height:20px;font-weight:400}
+.vo-wallet-divider{display:block;width:1px;height:48px;margin-top:2px;background:color-mix(in srgb,var(--color-grey-00) 20%,transparent)}
+
+/* Expiring vouchers form a single swipeable row. */
+.vk-phone .vo-expiring-rail{flex-direction:row;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;scroll-padding-inline:22px;overscroll-behavior-x:contain;scrollbar-width:none;padding-bottom:4px}
+.vo-expiring-rail::-webkit-scrollbar{display:none}
+.vo-expiring-rail>.vo-ticket{flex:0 0 calc(100% - 16px);min-width:0;scroll-snap-align:start}

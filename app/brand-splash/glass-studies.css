@@ -1,0 +1,135 @@
+/* Artwork palette tokens, isolated from product UI tokens. */
+.glass-studies {
+  --glass-radiance-gold: #ffd33f;
+  --glass-radiance-core: #fff0a6;
+  --glass-prism-black: #000000;
+  --glass-pearl-pink: #ee91cc;
+  --glass-pearl-violet: #a293ee;
+  --glass-pearl-mint: #73ddcd;
+  --glass-pearl-amber: #efd79d;
+  --glass-spectrum-red: #f17d8c;
+  --glass-spectrum-orange: #f3ad71;
+  --glass-spectrum-yellow: #f2de8c;
+  --glass-spectrum-green: #86d8b8;
+  --glass-spectrum-blue: #7abfe9;
+  --glass-spectrum-indigo: #9c9ee4;
+  --glass-spectrum-violet: #d59bdf;
+  --glass-pearl: #e9e5f0;
+  --glass-gold: #d9c18a;
+  --glass-gold-smoke: #dfc794;
+  --glass-gold-light: #fff0cc;
+  --glass-gold-deep: #9a692b;
+  --glass-backdrop: #323a43;
+  --glass-ink: #080910;
+  --glass-night: #10121c;
+  --glass-paper: #eff0f5;
+  --glass-ice: #ecf8ff;
+  --glass-white: #ffffff;
+  --glass-cyan: #60e5f2;
+  --glass-violet: #a38bff;
+  --glass-coral: #ff977f;
+  --glass-smoke: #7f8aab;
+  --glass-silver: #dce1f4;
+}
+.glass-phone { container-type: inline-size; position: relative; isolation: isolate; background: var(--glass-paper); color: var(--glass-ink); aspect-ratio: 390 / 720; }
+.glass-phone[data-look='jewel-glass'], .glass-phone[data-look='nacre-prism'], .glass-phone[data-look='smoked-prism'], .glass-phone[data-look='obsidian-liquid'] { background: var(--glass-ink); color: var(--glass-white); }
+.glass-phone canvas { display: block; width: 100%; height: 100%; }
+.glass-phone__stage { position: absolute; inset: 12% 0 20%; }
+.glass-phone__identity { position: absolute; bottom: 11%; left: 22px; right: 22px; display: flex; align-items: center; flex-direction: column; gap: 12px; }
+.glass-phone__wordmark { width: 42%; aspect-ratio: 5.936; background: var(--glass-gold); mask: url('/brand-splash/vinclub-wordmark.svg') center / contain no-repeat; }
+.glass-phone__parent { display: flex; gap: 7px; align-items: center; font-size: 3.3cqw; letter-spacing: .12em; }
+.glass-phone__vsp { width: 6cqw; height: 4cqw; background: currentColor; mask: url('/brand-splash/vinpay-symbol.svg') center / contain no-repeat; }
+.glass-phone__home { position: absolute; bottom: 8px; left: calc(50% - 69.5px); background: currentColor; }
+.glass-phone__status { position: absolute; left: 22px; right: 22px; top: 18px; display: flex; justify-content: space-between; font-size: 3.3cqw; font-weight: 600; }
+.glass-phone__loading { position: absolute; left: 22px; bottom: 24%; font-size: 12px; }
+.glass-phone__light { position: absolute; inset: 18% 4% 28%; background: radial-gradient(ellipse, var(--glass-gold), transparent 65%); opacity: .08; pointer-events: none; }
+
+/* Chosen looks: material 01/04 + liquid entrance 02 + an exit into Home. */
+.glass-launch { overflow: hidden; }
+.glass-launch__destination { position: absolute; inset: 0; display: flex; flex-direction: column; transform: scale(1.045); transition: transform 760ms cubic-bezier(.16,1,.3,1); }
+.glass-launch__iframe { width: 100%; flex: 1; min-height: 0; border: 0; }
+.glass-launch__curtain { position: absolute; inset: 0; overflow: hidden; background: var(--glass-ink); color: var(--glass-white); }
+.glass-launch[data-phase='out'] .glass-launch__destination, .glass-launch[data-phase='home'] .glass-launch__destination { transform: scale(1); }
+.glass-launch[data-phase='out'] .glass-launch__curtain { pointer-events: none; animation: glass-curtain-out 760ms cubic-bezier(.4,0,.2,1) both; }
+.glass-launch[data-phase='out'] .glass-phone__stage { transform-origin: 50% 46%; animation: glass-logo-out 760ms cubic-bezier(.6,0,.2,1) both; }
+.glass-launch[data-phase='out'] .glass-phone__identity { animation: glass-identity-out 180ms ease-out both; }
+.glass-launch[data-phase='out'] .glass-phone__status, .glass-launch[data-phase='out'] .glass-phone__home { animation: glass-identity-out 240ms ease-out both; }
+.glass-launch[data-paused='true'] *, .glass-launch[data-paused='true'] *::before { animation-play-state: paused !important; transition-duration: 0s; }
+@keyframes glass-logo-out { 0% { transform: scale(1); opacity: 1; filter: blur(0) sepia(0) saturate(1); } 40% { filter: blur(0) sepia(.45) saturate(1.5); } 65% { opacity: 1; } 100% { transform: scale(6.5) rotate(-4deg); opacity: 0; filter: blur(3px) sepia(.45) saturate(1.5); } }
+@keyframes glass-curtain-out { 0%, 25% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes glass-identity-out { to { opacity: 0; transform: translateY(8px); } }
+@media (prefers-reduced-motion: reduce) {
+  .glass-launch *, .glass-launch *::before { animation: none !important; transition: none !important; }
+}
+
+.glass-launch[data-look='nacre-prism'] .glass-phone__light { background: radial-gradient(ellipse, var(--glass-violet), transparent 65%); }
+.glass-launch[data-look='nacre-prism'][data-phase='out'] .glass-phone__stage { animation-name: glass-pearl-out; }
+@keyframes glass-pearl-out { 0% { transform: scale(1); opacity: 1; filter: blur(0); } 65% { opacity: 1; } 100% { transform: scale(6.5) rotate(-4deg); opacity: 0; filter: blur(3px); } }
+
+.glass-launch[data-look='jewel-glass'][data-phase='out'] .glass-phone__stage { animation-name: glass-pearl-out; }
+
+.glass-phone[data-look='jewel-glass'], .glass-launch[data-look='jewel-glass'] .glass-launch__curtain { background: var(--glass-prism-black); color: var(--glass-white); }
+
+.prism-film { overflow: visible; }
+.prism-film__poster, .prism-film__video { width: 100%; height: 100%; object-fit: contain; transform: rotate(-7deg); transform-origin: 50% 50%; }
+.prism-film[data-ready='false']:not([data-static='true']) .prism-film__poster { opacity: 0; }
+.prism-film__video { position: absolute; inset: 0; opacity: 0; }
+.prism-film[data-ready='true'] .prism-film__video { opacity: 1; }
+.glass-launch[data-look='jewel-glass'] .glass-phone__light { display: none; }
+.prism-fullscreen { min-height: 100dvh; display: flex; justify-content: center; background: var(--glass-prism-black); }
+.prism-fullscreen .glass-launch { width: 100%; max-width: 480px; height: 100dvh; min-height: 640px; aspect-ratio: auto; }
+
+.prism-film__out { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 90ms linear; }
+.prism-film__out[data-playing='true'] { opacity: 1; }
+
+.glass-launch[data-look='jewel-glass'][data-phase='out'] .prism-film[data-rendered-exit='true'] { animation: none; transform: none; filter: none; }
+
+/* Keep the glass sharp during the camera push, then iris the splash into Home. */
+.glass-launch[data-look='jewel-glass'] .glass-launch__curtain { clip-path: circle(100% at 50% 46%); }
+.glass-launch[data-look='jewel-glass'][data-phase='out'] .glass-launch__curtain { animation: prism-circular-exit 480ms cubic-bezier(.4,0,.2,1) both; opacity: 1; pointer-events: none; }
+.glass-launch[data-look='jewel-glass'][data-phase='close'] .glass-launch__curtain { animation: prism-circle-close 360ms cubic-bezier(.65,0,.25,1) both; opacity: 1; pointer-events: none; }
+.glass-launch[data-phase='close'] .glass-launch__destination { transform: scale(1); }
+.glass-launch[data-look='jewel-glass'][data-phase='close'] .prism-film { animation: none; transform: none; filter: none; }
+.glass-launch[data-phase='close'] .glass-phone__identity, .glass-launch[data-phase='close'] .glass-phone__status, .glass-launch[data-phase='close'] .glass-phone__home { opacity: 0; }
+@keyframes prism-circle-focus { from { clip-path: circle(100% at 50% 46%); } to { clip-path: circle(20% at 50% 46%); } }
+@keyframes prism-circle-close { from { clip-path: circle(20% at 50% 46%); } to { clip-path: circle(0% at 50% 46%); } }
+
+/* Orthographic pullback preserves the exact final glass pose and material. */
+.glass-launch[data-look='jewel-glass'][data-phase='out'] .prism-film[data-rendered-exit='false'] { animation: prism-logo-exit 480ms cubic-bezier(.4,0,.2,1) both;transform-origin:50% 50%; }
+.glass-launch[data-look='jewel-glass'][data-phase='out'] .prism-film[data-rendered-exit='false'] .prism-film__media { animation:none;transform:none; }
+.glass-launch[data-look='jewel-glass'][data-phase='close'] .prism-film[data-rendered-exit='false'] .prism-film__media { transform: scale(.16); filter: blur(0); }
+.prism-film__media { position: absolute; inset: 0; will-change:transform; backface-visibility:hidden; }
+@keyframes prism-logo-pullback {
+  0% { transform: scale(1); }
+  100% { transform: scale(.16); }
+}
+
+
+/* Generated 3D brand assets are composited over the approved optical film. */
+.prism-brand-icons{position:absolute;inset:0;z-index:2;pointer-events:none}
+.prism-brand-icon{position:absolute;left:50%;top:50%;width:16cqw;height:16cqw;margin:-8cqw;opacity:0}
+.prism-brand-icon img{display:block;width:100%;height:100%;object-fit:contain}
+.prism-brand-icon:nth-child(1){--brand-x:0cqw;--brand-y:-39cqw;--brand-delay:0ms}
+.prism-brand-icon:nth-child(2){--brand-x:34cqw;--brand-y:-21cqw;--brand-delay:35ms}
+.prism-brand-icon:nth-child(3){--brand-x:34cqw;--brand-y:21cqw;--brand-delay:70ms}
+.prism-brand-icon:nth-child(4){--brand-x:0cqw;--brand-y:39cqw;--brand-delay:105ms}
+.prism-brand-icon:nth-child(5){--brand-x:-34cqw;--brand-y:21cqw;--brand-delay:140ms}
+.prism-brand-icon:nth-child(6){--brand-x:-34cqw;--brand-y:-21cqw;--brand-delay:175ms}
+.prism-film[data-ready=true] .prism-brand-icon{animation:prism-brand-converge 2000ms cubic-bezier(.22,.8,.2,1) both}
+@keyframes prism-brand-converge{
+  0%{opacity:0;transform:translate3d(var(--brand-x),var(--brand-y),0) scale(.65)}
+  16%,48%{opacity:1;transform:translate3d(var(--brand-x),var(--brand-y),0) scale(1)}
+  86%{opacity:1;transform:translate3d(calc(var(--brand-x)*.1),calc(var(--brand-y)*.1),0) scale(.2)}
+  100%{opacity:0;transform:translate3d(0,0,0) scale(.02)}
+}
+.glass-launch[data-phase=close] .prism-brand-icons{visibility:hidden}
+@media(prefers-reduced-motion:reduce){.prism-brand-icons{display:none}}
+
+.glass-launch__destination>.vk-home-skeleton{z-index:2}
+
+.glass-launch[data-look="jewel-glass"] .glass-launch__curtain{will-change:clip-path}
+
+/* One clock/easing carries the final pose and circular mask into Home. */
+@keyframes prism-circular-exit{from{clip-path:circle(100% at 50% 46%)}to{clip-path:circle(0% at 50% 46%)}}
+@keyframes prism-logo-exit{0%{transform:scale(1);opacity:1}80%{opacity:1}100%{transform:scale(.01);opacity:0}}
+.glass-launch[data-look="jewel-glass"] .glass-launch__destination{transform:none;transition:none}

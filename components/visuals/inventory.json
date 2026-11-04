@@ -1,0 +1,1277 @@
+{
+  "items": [
+    {
+      "id": "rive-identity",
+      "scope": "activation",
+      "type": "illustration",
+      "title": "Xác thực CCCD",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-identity.poster.png",
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-identity.riv",
+      "tintMask": "cyan",
+      "context": "Xác thực",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/driver-care/activate/flow.tsx",
+          "screen": "Kích hoạt ví"
+        },
+        {
+          "file": "app/driver-care/activate/story.tsx",
+          "screen": "Hướng dẫn xác thực"
+        }
+      ],
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/activation/identity.png",
+      "proposed": false
+    },
+    {
+      "id": "rive-nfc",
+      "scope": "activation",
+      "type": "illustration",
+      "title": "Quét chip NFC",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-nfc.poster.png",
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-nfc.riv",
+      "tintMask": "cyan",
+      "context": "Xác thực",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/driver-care/activate/flow.tsx",
+          "screen": "Kích hoạt ví"
+        },
+        {
+          "file": "app/driver-care/activate/story.tsx",
+          "screen": "Hướng dẫn xác thực"
+        }
+      ],
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/activation/nfc.png",
+      "proposed": false
+    },
+    {
+      "id": "rive-face",
+      "scope": "activation",
+      "type": "illustration",
+      "title": "Xác thực khuôn mặt",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-face.poster.png",
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-face.riv",
+      "tintMask": "cyan",
+      "context": "Xác thực",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/driver-care/activate/flow.tsx",
+          "screen": "Kích hoạt ví"
+        },
+        {
+          "file": "app/driver-care/activate/story.tsx",
+          "screen": "Hướng dẫn xác thực"
+        }
+      ],
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/activation/face.png",
+      "proposed": false
+    },
+    {
+      "id": "rive-bank",
+      "scope": "activation",
+      "type": "illustration",
+      "title": "Liên kết ngân hàng",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-bank.poster.png",
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-bank.riv",
+      "tintMask": "cyan",
+      "context": "Xác thực",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/driver-care/activate/flow.tsx",
+          "screen": "Kích hoạt ví"
+        }
+      ],
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/activation/bank.png",
+      "proposed": false
+    },
+    {
+      "id": "rive-complete",
+      "scope": "activation",
+      "type": "illustration",
+      "title": "Hoàn tất",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-complete.poster.png",
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-complete.riv",
+      "tintMask": "cyan",
+      "context": "Trạng thái",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/driver-care/activate/flow.tsx",
+          "screen": "Kích hoạt ví"
+        }
+      ],
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/activation/complete.png",
+      "proposed": false
+    },
+    {
+      "id": "rive-pending",
+      "scope": "activation",
+      "type": "illustration",
+      "title": "Đang xử lý",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-pending.poster.png",
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-pending.riv",
+      "tintMask": "cyan",
+      "context": "Trạng thái",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/driver-care/activate/flow.tsx",
+          "screen": "Kích hoạt ví"
+        }
+      ],
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/activation/pending.png",
+      "proposed": false
+    },
+    {
+      "id": "rive-failed",
+      "scope": "activation",
+      "type": "illustration",
+      "title": "Xác thực thất bại",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-failed.poster.png",
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-failed.riv",
+      "tintMask": "cyan",
+      "context": "Trạng thái",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/driver-care/activate/flow.tsx",
+          "screen": "Kích hoạt ví"
+        }
+      ],
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/activation/failed.png",
+      "proposed": false
+    },
+    {
+      "id": "rive-unsupported",
+      "scope": "activation",
+      "type": "illustration",
+      "title": "Không hỗ trợ NFC",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-unsupported.poster.png",
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/rive-unsupported.riv",
+      "tintMask": "cyan",
+      "context": "Trạng thái",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/driver-care/activate/flow.tsx",
+          "screen": "Kích hoạt ví"
+        }
+      ],
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/activation/unsupported.png",
+      "proposed": false
+    },
+    {
+      "id": "vinclub-illus-ride",
+      "scope": "vinclub",
+      "type": "illustration",
+      "title": "Di chuyển",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-ride.poster.png",
+      "original": "/vinclub-assets/illustrations/editorial-color-v3/ride.webp",
+      "context": "VinClub",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/vinclub-dualsurface/illustration-assets.ts",
+          "screen": "VinClub · Di chuyển"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-ride.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/vinclub/71928c12-ride.webp",
+      "proposed": false
+    },
+    {
+      "id": "vinclub-illus-food",
+      "scope": "vinclub",
+      "type": "illustration",
+      "title": "Ăn uống",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-food.poster.png",
+      "original": "/vinclub-assets/illustrations/editorial-color-v3/food.webp",
+      "context": "VinClub",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/vinclub-dualsurface/illustration-assets.ts",
+          "screen": "VinClub · Ăn uống"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-food.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/vinclub/b229d690-food.webp",
+      "proposed": false
+    },
+    {
+      "id": "vinclub-illus-flight",
+      "scope": "vinclub",
+      "type": "illustration",
+      "title": "Vé máy bay",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-flight.poster.png",
+      "original": "/vinclub-assets/illustrations/editorial-color-v3/flight.webp",
+      "context": "VinClub",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/vinclub-dualsurface/illustration-assets.ts",
+          "screen": "VinClub · Vé máy bay"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-flight.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/vinclub/4de5d120-flight.webp",
+      "proposed": false
+    },
+    {
+      "id": "vinclub-illus-shopping",
+      "scope": "vinclub",
+      "type": "illustration",
+      "title": "Mua sắm",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-shopping.poster.png",
+      "original": "/vinclub-assets/illustrations/editorial-color-v3/shopping.webp",
+      "context": "VinClub",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/vinclub-dualsurface/illustration-assets.ts",
+          "screen": "VinClub · Mua sắm"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-shopping.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/vinclub/168fd32c-shopping.webp",
+      "proposed": false
+    },
+    {
+      "id": "vinclub-illus-bills",
+      "scope": "vinclub",
+      "type": "illustration",
+      "title": "Hóa đơn",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-bills.poster.png",
+      "original": "/vinclub-assets/illustrations/editorial-color-v3/bills.webp",
+      "context": "VinClub",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/vinclub-dualsurface/illustration-assets.ts",
+          "screen": "VinClub · Hóa đơn"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-bills.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/vinclub/f41f44e2-bills.webp",
+      "proposed": false
+    },
+    {
+      "id": "vinclub-illus-insurance",
+      "scope": "vinclub",
+      "type": "illustration",
+      "title": "Bảo hiểm",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-insurance.poster.png",
+      "original": "/vinclub-assets/illustrations/editorial-color-v3/insurance.webp",
+      "context": "VinClub",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/vinclub-dualsurface/illustration-assets.ts",
+          "screen": "VinClub · Bảo hiểm"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-insurance.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/vinclub/573c6bb1-insurance.webp",
+      "proposed": false
+    },
+    {
+      "id": "vinclub-illus-escape",
+      "scope": "vinclub",
+      "type": "illustration",
+      "title": "Nghỉ dưỡng",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-escape.poster.png",
+      "original": "/vinclub-assets/illustrations/editorial-color-v3/escape.webp",
+      "context": "VinClub",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/vinclub-dualsurface/illustration-assets.ts",
+          "screen": "VinClub · Nghỉ dưỡng"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-escape.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/vinclub/ec5acf8e-escape.webp",
+      "proposed": false
+    },
+    {
+      "id": "vinclub-illus-wellness",
+      "scope": "vinclub",
+      "type": "illustration",
+      "title": "Chăm sóc sức khỏe",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-wellness.poster.png",
+      "original": "/vinclub-assets/illustrations/editorial-color-v3/wellness.webp",
+      "context": "VinClub",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/vinclub-dualsurface/illustration-assets.ts",
+          "screen": "VinClub · Chăm sóc sức khỏe"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-wellness.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/vinclub/90535fba-wellness.webp",
+      "proposed": false
+    },
+    {
+      "id": "vinclub-illus-weekend",
+      "scope": "vinclub",
+      "type": "illustration",
+      "title": "Cuối tuần",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-weekend.poster.png",
+      "original": "/vinclub-assets/illustrations/editorial-color-v3/weekend.webp",
+      "context": "VinClub",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/vinclub-dualsurface/illustration-assets.ts",
+          "screen": "VinClub · Cuối tuần"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-weekend.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/vinclub/14436fe5-weekend.webp",
+      "proposed": false
+    },
+    {
+      "id": "vinclub-illus-winmart",
+      "scope": "vinclub",
+      "type": "illustration",
+      "title": "WinMart",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-winmart.poster.png",
+      "original": "/vinclub-assets/illustrations/editorial-color-v3/winmart.webp",
+      "context": "VinClub",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/vinclub-dualsurface/illustration-assets.ts",
+          "screen": "VinClub · WinMart"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-winmart.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/vinclub/20f72d2a-winmart.webp",
+      "proposed": false
+    },
+    {
+      "id": "vinclub-illus-apartment",
+      "scope": "vinclub",
+      "type": "illustration",
+      "title": "Căn hộ",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-apartment.poster.png",
+      "original": "/vinclub-assets/illustrations/editorial-color-v3/apartment-depth-v2.webp",
+      "context": "VinClub",
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/vinclub-dualsurface/illustration-assets.ts",
+          "screen": "VinClub · Căn hộ"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vinclub-illus-apartment.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/vinclub/ab71b91f-apartment-depth-v2.webp",
+      "proposed": false
+    },
+    {
+      "id": "vinclub-daily-car",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Gọi xe",
+      "src": "/vsp-visual-library/vinclub/b8f8cdc4-car.webp",
+      "original": "/vinclub-assets/icons-v3/1/car.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-daily-flight",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Vé máy bay",
+      "src": "/vsp-visual-library/vinclub/aeb870d1-flight.webp",
+      "original": "/vinclub-assets/icons-v3/1/flight.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-daily-food",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Đồ ăn",
+      "src": "/vsp-visual-library/vinclub/b82497db-food.webp",
+      "original": "/vinclub-assets/icons-v3/1/food.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-daily-hotel",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Khách sạn",
+      "src": "/vsp-visual-library/vinclub/3d6d2d18-hotel.webp",
+      "original": "/vinclub-assets/icons-v3/1/hotel.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-daily-payment",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Thanh toán",
+      "src": "/vsp-visual-library/vinclub/fde85c86-payment.webp",
+      "original": "/vinclub-assets/icons-v3/1/payment.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-daily-school",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Học phí",
+      "src": "/vsp-visual-library/vinclub/d727bb0f-school.webp",
+      "original": "/vinclub-assets/icons-v3/1/school.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-daily-shopping",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Mua sắm",
+      "src": "/vsp-visual-library/vinclub/08c518ec-shopping.webp",
+      "original": "/vinclub-assets/icons-v3/1/shopping.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-daily-travel",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Du lịch",
+      "src": "/vsp-visual-library/vinclub/f45e1088-travel.webp",
+      "original": "/vinclub-assets/icons-v3/1/travel.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-payment-bank",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Ngân hàng",
+      "src": "/vsp-visual-library/vinclub/e8f881fa-bank.webp",
+      "original": "/vinclub-assets/payment-icons/1/bank.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-payment-bill",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Hóa đơn",
+      "src": "/vsp-visual-library/vinclub/5f40e154-bill.webp",
+      "original": "/vinclub-assets/payment-icons/1/bill.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-payment-credit",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Ví trả sau",
+      "src": "/vsp-visual-library/vinclub/1653e1c5-credit.webp",
+      "original": "/vinclub-assets/payment-icons/1/credit.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-payment-deposit",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Nạp tiền",
+      "src": "/vsp-visual-library/vinclub/429a2a29-deposit.webp",
+      "original": "/vinclub-assets/payment-icons/1/deposit.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-payment-electricity",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Điện",
+      "src": "/vsp-visual-library/vinclub/15042d43-electricity.webp",
+      "original": "/vinclub-assets/payment-icons/1/electricity.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-payment-insurance",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Bảo hiểm",
+      "src": "/vsp-visual-library/vinclub/4f4697ce-insurance.webp",
+      "original": "/vinclub-assets/payment-icons/1/insurance.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-payment-internet",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Internet",
+      "src": "/vsp-visual-library/vinclub/84a4eff7-internet.webp",
+      "original": "/vinclub-assets/payment-icons/1/internet.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-payment-scan",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Quét mã",
+      "src": "/vsp-visual-library/vinclub/6f4c455d-scan.webp",
+      "original": "/vinclub-assets/payment-icons/1/scan.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-payment-transfer",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Chuyển tiền",
+      "src": "/vsp-visual-library/vinclub/0a70ae6a-transfer.webp",
+      "original": "/vinclub-assets/payment-icons/1/transfer.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-payment-withdraw",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Rút tiền",
+      "src": "/vsp-visual-library/vinclub/bd271f8c-withdraw.webp",
+      "original": "/vinclub-assets/payment-icons/1/withdraw.webp",
+      "detail": "Icon VinClub · Resin Flow",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-custom-medical",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Vinmec",
+      "src": "/vsp-visual-library/vinclub/94372646-vinmec-stethoscope-v1.webp",
+      "original": "/vinclub-assets/icons-custom/vinmec-stethoscope-v1.webp",
+      "detail": "Icon VinClub · custom",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ / thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-custom-grocery",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "WinMart",
+      "src": "/vsp-visual-library/vinclub/69c76814-winmart-grocery-v1.webp",
+      "original": "/vinclub-assets/icons-custom/winmart-grocery-v1.webp",
+      "detail": "Icon VinClub · custom",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ / thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-custom-loan",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Vay nhanh",
+      "src": "/vsp-visual-library/vinclub/ede0d008-loan-v1.webp",
+      "original": "/vinclub-assets/payment-custom/loan-v1.webp",
+      "detail": "Icon VinClub · custom",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ / thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-custom-water",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Nước",
+      "src": "/vsp-visual-library/vinclub/b4fd49e7-water-v1.webp",
+      "original": "/vinclub-assets/payment-custom/water-v1.webp",
+      "detail": "Icon VinClub · custom",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ / thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "vinclub-custom-train",
+      "scope": "vinclub",
+      "type": "brand",
+      "brand": "vinclub",
+      "title": "Vé tàu",
+      "src": "/vsp-visual-library/vinclub/d78bd1a8-train-v1.webp",
+      "original": "/vinclub-assets/payment-custom/train-v1.webp",
+      "detail": "Icon VinClub · custom",
+      "uses": [
+        {
+          "file": "components/vinclub/daily-icons.tsx",
+          "screen": "VinClub · Dịch vụ / thanh toán"
+        }
+      ]
+    },
+    {
+      "id": "soft-saving",
+      "scope": "vsmart",
+      "type": "illustration",
+      "title": "Sinh lời",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/soft-saving.poster.png",
+      "context": "Card",
+      "tintMask": "sage",
+      "proposed": false,
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "Đề xuất trong visual library",
+          "screen": "Home V-Smart · promo"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/soft-saving.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/soft/saving.png"
+    },
+    {
+      "id": "soft-loan",
+      "scope": "vsmart",
+      "type": "illustration",
+      "title": "Vay nhanh",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/soft-loan.poster.png",
+      "context": "Card",
+      "tintMask": "sage",
+      "proposed": false,
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "Đề xuất trong visual library",
+          "screen": "Home V-Smart · promo"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/soft-loan.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/soft/loan.png"
+    },
+    {
+      "id": "soft-bill",
+      "scope": "vsmart",
+      "type": "illustration",
+      "title": "Hóa đơn",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/soft-bill.poster.png",
+      "context": "Card",
+      "tintMask": "sage",
+      "proposed": false,
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "Đề xuất trong visual library",
+          "screen": "Home V-Smart · promo"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/soft-bill.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/soft/bill.png"
+    },
+    {
+      "id": "soft-insurance",
+      "scope": "vsmart",
+      "type": "illustration",
+      "title": "Bảo hiểm",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/soft-insurance.poster.png",
+      "context": "Card",
+      "tintMask": "sage",
+      "proposed": false,
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "Đề xuất trong visual library",
+          "screen": "Home V-Smart · promo"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/soft-insurance.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/vsp-visual-library/soft/insurance.png"
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/insurance@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Bảo hiểm",
+      "src": "/ui-templates/sumeria/home/icons/insurance@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/nap-rut@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Nạp / Rút",
+      "src": "/ui-templates/sumeria/home/icons/nap-rut@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/noxh@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Nhà ở xã hội",
+      "src": "/ui-templates/sumeria/home/icons/noxh@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/saving@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Sinh lời",
+      "src": "/ui-templates/sumeria/home/icons/saving@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/svc-bill@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Hóa đơn",
+      "src": "/ui-templates/sumeria/home/icons/svc-bill@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/svc-calculator@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Trả góp",
+      "src": "/ui-templates/sumeria/home/icons/svc-calculator@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/svc-card@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Thẻ",
+      "src": "/ui-templates/sumeria/home/icons/svc-card@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/svc-gift@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Ưu đãi",
+      "src": "/ui-templates/sumeria/home/icons/svc-gift@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/svc-phone@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Nạp điện thoại",
+      "src": "/ui-templates/sumeria/home/icons/svc-phone@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/svc-piggy@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Tiết kiệm",
+      "src": "/ui-templates/sumeria/home/icons/svc-piggy@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/svc-plug@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Điện",
+      "src": "/ui-templates/sumeria/home/icons/svc-plug@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/svc-umbrella@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Bảo hiểm",
+      "src": "/ui-templates/sumeria/home/icons/svc-umbrella@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/tra-sau@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Trả sau",
+      "src": "/ui-templates/sumeria/home/icons/tra-sau@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/ung-luong@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Ứng lương",
+      "src": "/ui-templates/sumeria/home/icons/ung-luong@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/vay@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Vay nhanh",
+      "src": "/ui-templates/sumeria/home/icons/vay@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/wallet@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Ví",
+      "src": "/ui-templates/sumeria/home/icons/wallet@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/xem-tat-ca@1x.png",
+      "scope": "vsmart",
+      "type": "brand",
+      "title": "Xem tất cả",
+      "src": "/ui-templates/sumeria/home/icons/xem-tat-ca@1x.png",
+      "brand": "original",
+      "detail": "Icon theo brand · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · dịch vụ và tài chính"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/clear/bank@1x.png",
+      "scope": "vsmart",
+      "type": "reminder",
+      "title": "Liên kết ngân hàng",
+      "src": "/ui-templates/sumeria/home/icons/clear/bank@1x.png",
+      "detail": "Reminder · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · reminder"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/clear/bill@1x.png",
+      "scope": "vsmart",
+      "type": "reminder",
+      "title": "Hóa đơn điện đến hạn",
+      "src": "/ui-templates/sumeria/home/icons/clear/bill@1x.png",
+      "detail": "Reminder · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · reminder"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/clear/data@1x.png",
+      "scope": "vsmart",
+      "type": "reminder",
+      "title": "Sắp hết data",
+      "src": "/ui-templates/sumeria/home/icons/clear/data@1x.png",
+      "detail": "Reminder · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · reminder"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/clear/earn@1x.png",
+      "scope": "vsmart",
+      "type": "reminder",
+      "title": "Lãi về hôm nay",
+      "src": "/ui-templates/sumeria/home/icons/clear/earn@1x.png",
+      "detail": "Reminder · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · reminder"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/clear/insure@1x.png",
+      "scope": "vsmart",
+      "type": "reminder",
+      "title": "Bảo hiểm sắp hết hạn",
+      "src": "/ui-templates/sumeria/home/icons/clear/insure@1x.png",
+      "detail": "Reminder · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · reminder"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/clear/later@1x.png",
+      "scope": "vsmart",
+      "type": "reminder",
+      "title": "Dư nợ trả sau",
+      "src": "/ui-templates/sumeria/home/icons/clear/later@1x.png",
+      "detail": "Reminder · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · reminder"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/clear/loan@1x.png",
+      "scope": "vsmart",
+      "type": "reminder",
+      "title": "Khoản vay đến hạn",
+      "src": "/ui-templates/sumeria/home/icons/clear/loan@1x.png",
+      "detail": "Reminder · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · reminder"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/clear/offer@1x.png",
+      "scope": "vsmart",
+      "type": "reminder",
+      "title": "Ưu đãi sắp hết hạn",
+      "src": "/ui-templates/sumeria/home/icons/clear/offer@1x.png",
+      "detail": "Reminder · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · reminder"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/clear/otp@1x.png",
+      "scope": "vsmart",
+      "type": "reminder",
+      "title": "Kích hoạt Smart OTP",
+      "src": "/ui-templates/sumeria/home/icons/clear/otp@1x.png",
+      "detail": "Reminder · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · reminder"
+        }
+      ]
+    },
+    {
+      "id": "/ui-templates/sumeria/home/icons/clear/water@1x.png",
+      "scope": "vsmart",
+      "type": "reminder",
+      "title": "Hóa đơn nước đến hạn",
+      "src": "/ui-templates/sumeria/home/icons/clear/water@1x.png",
+      "detail": "Reminder · giữ nguyên bộ hiện tại",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · reminder"
+        }
+      ]
+    },
+    {
+      "id": "vsmart-cafe",
+      "scope": "vsmart",
+      "type": "illustration",
+      "title": "Vay linh hoạt · cafe",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vsmart-cafe.poster.png",
+      "context": "Card",
+      "proposed": false,
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · promo"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vsmart-cafe.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/ui-templates/sumeria/home/promo-cafe-matte-v3.png"
+    },
+    {
+      "id": "vsmart-showroom",
+      "scope": "vsmart",
+      "type": "illustration",
+      "title": "Sinh lời · showroom",
+      "src": "/vsp-visual-library/illustrations-smoke-glass-v4/vsmart-showroom.poster.png",
+      "context": "Card",
+      "proposed": false,
+      "detail": "Glass khói nhẹ · titanium · xanh brand · gốm ngà · native Rive",
+      "uses": [
+        {
+          "file": "app/ui-templates/sumeria/vsp/client.tsx",
+          "screen": "Home V-Smart · promo"
+        }
+      ],
+      "rive": "/vsp-visual-library/illustrations-smoke-glass-v4/vsmart-showroom.riv",
+      "family": "illustrations-smoke-glass-v4",
+      "originalSrc": "/ui-templates/sumeria/home/promo-showroom-matte-v3.png"
+    }
+  ]
+}

@@ -143,6 +143,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
+        data-variant={variant}
+        data-intent={intent}
         className={cn(
           buttonVariants({ variant, intent, size }),
           gapClass,

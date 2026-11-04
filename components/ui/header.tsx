@@ -61,7 +61,7 @@ import { cn } from "@/lib/utils"
  */
 
 /* ── Status Bar (iOS mock) ───────────────────────────────────────────── */
-function StatusBar({ variant = "default" }: { variant?: "default" | "vp" }) {
+export function StatusBar({ variant = "default" }: { variant?: "default" | "vp" }) {
   const height = variant === "vp" ? "h-[54px]" : "h-[54px]"
   return (
     <div

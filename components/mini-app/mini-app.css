@@ -1,0 +1,37 @@
+.mini-app{position:absolute;inset:0;z-index:50;display:flex;flex-direction:column;overflow:hidden;animation:mini-app-enter 240ms cubic-bezier(.16,1,.3,1)}
+.mini-app-content{position:relative;flex:1;min-height:0}.mini-app-content iframe{width:100%;height:100%;border:0;background:var(--background)}
+.mini-app-loading{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:16px;background:var(--background)}
+@keyframes mini-app-enter{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.mini-app{animation:none}}
+.duo-task-home:has(>.mini-app){position:relative}.duo-task-home>[data-mini-app-host]{display:contents}
+
+.vk-phone>[data-mini-app-host]{display:contents}
+.mini-app .mini-app-close{position:absolute;top:54px;right:12px;z-index:3;width:44px;min-height:44px;padding:0;background:transparent;color:var(--foreground)}
+.mini-app .mini-app-close>span:first-child{background:transparent}
+.tet-mini-app-header{display:flex;align-items:center;justify-content:space-between;gap:12px;height:44px;flex:none;padding:0 22px;background:var(--background);color:var(--foreground)}
+.tet-mini-app-header>span{font-size:12px;color:var(--foreground-secondary)}
+.tet-mini-app-header button{min-height:36px;padding:0;font-size:12px}
+.tet-mini-app-header button>span:first-child{background:transparent}
+.tet-game-loading{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:radial-gradient(ellipse at 20% 15%,var(--color-green-100),transparent 65%),linear-gradient(160deg,var(--color-blue-100),var(--color-yellow-50) 70%);color:var(--color-yellow-950)}
+.tet-game-loading>img{filter:drop-shadow(0 12px 20px color-mix(in srgb,var(--color-yellow-950) 12%,transparent))}
+.tet-game-loading>p{font-size:14px;line-height:22px;font-weight:500}
+.tet-game-loading .tet-loading-back{position:absolute;left:22px;top:54px;width:44px;height:44px;padding:0}
+.tet-loading-back>span:first-child{background:transparent}
+.tet-loading-progress{display:flex;align-items:center;gap:12px;width:min(100%,280px);font-size:12px;font-variant-numeric:tabular-nums}
+.tet-loading-progress progress{appearance:none;width:100%;height:10px;border:0;border-radius:var(--radius-8);overflow:hidden;background:color-mix(in srgb,var(--color-yellow-950) 8%,transparent)}
+.tet-loading-progress progress::-webkit-progress-bar{background:color-mix(in srgb,var(--color-yellow-950) 8%,transparent)}
+.tet-loading-progress progress::-webkit-progress-value{background:linear-gradient(90deg,var(--color-orange-200),var(--color-yellow-600));border-radius:var(--radius-8);transition:width 350ms ease}
+.tet-loading-progress progress::-moz-progress-bar{background:linear-gradient(90deg,var(--color-orange-200),var(--color-yellow-600));border-radius:var(--radius-8)}
+@media(prefers-reduced-motion:reduce){.tet-loading-progress progress::-webkit-progress-value{transition:none}}
+
+/* Loading uses the exact same scenery and character art as the original game. */
+.tet-game-loading{gap:20px;background:var(--color-yellow-50) url('/vinclub-game/loading-scenery.webp') center/cover no-repeat;color:var(--color-yellow-950)}
+.tet-game-loading>.tet-loading-title{width:min(100%,310px);height:90px;object-fit:contain;filter:drop-shadow(0 3px 2px color-mix(in srgb,var(--color-yellow-950) 10%,transparent))}
+.tet-game-loading>.tet-loading-character{width:200px;height:230px;object-fit:contain;filter:drop-shadow(0 8px 6px color-mix(in srgb,var(--color-yellow-950) 14%,transparent))}
+.tet-game-loading>p{font-size:15px;line-height:22px;font-weight:600;padding:10px 16px;border-radius:var(--radius-14);background:color-mix(in srgb,var(--color-yellow-50) 65%,var(--color-grey-00));box-shadow:0 3px 0 color-mix(in srgb,var(--color-orange-200) 65%,var(--color-yellow-700));text-align:left}
+.tet-loading-progress{width:min(100%,290px);padding:8px 10px;border-radius:var(--radius-14);background:color-mix(in srgb,var(--color-yellow-50) 65%,var(--color-grey-00));box-shadow:0 3px 0 color-mix(in srgb,var(--color-orange-200) 65%,var(--color-yellow-700));font-size:12px;font-weight:600}
+.tet-loading-progress progress{height:16px;box-shadow:inset 0 1px 3px color-mix(in srgb,var(--color-yellow-950) 18%,transparent);background:var(--color-orange-100)}
+.tet-loading-progress progress::-webkit-progress-bar{background:var(--color-orange-100);box-shadow:inset 0 1px 3px color-mix(in srgb,var(--color-yellow-950) 18%,transparent);border-radius:inherit}
+.tet-loading-progress progress::-webkit-progress-value{background:linear-gradient(var(--color-red-400),var(--color-red-600));box-shadow:inset 0 2px 0 color-mix(in srgb,var(--color-grey-00) 40%,transparent)}
+.tet-loading-progress progress::-moz-progress-bar{background:linear-gradient(var(--color-red-400),var(--color-red-600));box-shadow:inset 0 2px 0 color-mix(in srgb,var(--color-grey-00) 40%,transparent)}
+@media(max-height:700px){.tet-game-loading{gap:14px}.tet-game-loading>.tet-loading-title{height:70px}.tet-game-loading>.tet-loading-character{height:180px;width:160px}}
