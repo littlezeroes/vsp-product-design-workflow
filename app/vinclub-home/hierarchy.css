@@ -111,3 +111,4 @@
 .vk-page[data-hierarchy] .vk-phone[data-tab=home] :is(.vk-status,.vr-stack .vr-hello,.vs-pts-num strong){color:var(--ink)}
 .vk-page[data-hierarchy] .vk-phone[data-tab=home] :is(.vr-stack .vr-hello>small,.vs-pts-num,.vr-member-subtle[data-tier],.vr-member-text>small){color:var(--sub)}
 .vk-page .vk-phone:is([data-tab=home],[data-tab=offers]) .vk-bar-fade{background:transparent}
+

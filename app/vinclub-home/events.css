@@ -87,12 +87,12 @@
 @media(max-width:359px){.ve-categories{gap:8px}.ve-card{grid-template-columns:96px minmax(0,1fr);gap:12px}.ve-featured-copy{padding-inline:16px}.ve-featured-copy>div{gap:6px}}
 
 /* Dark discovery header continues from the status bar through the featured event. */
-.vk-page .vk-phone[data-tab=events] .vk-status{background:var(--color-grey-1000);color:var(--color-grey-00)}
-.ve-top{--background:var(--color-grey-1000);--foreground:var(--color-grey-00);--foreground-secondary:var(--color-grey-400);--secondary:var(--color-grey-800);--wash:var(--secondary);background:var(--background);color:var(--foreground);padding-bottom:24px}
+.vk-page .vk-phone[data-tab=events] .vk-status{background:var(--bg);color:var(--ink)}
+.ve-top{--background:var(--brand-vinclub-wine);--foreground:var(--color-grey-00);--foreground-secondary:color-mix(in srgb,var(--foreground) 78%,var(--background));--secondary:color-mix(in srgb,var(--foreground) 12%,var(--background));--wash:var(--secondary);background:var(--background);color:var(--foreground);padding-bottom:24px}
 .ve-top .ve-categories{padding-top:12px}
 
 /* Concert editorial: restrained corners, atmospheric lighting and a ticket footer. */
-.ve-top{position:relative;isolation:isolate;overflow:hidden;--event-glow:var(--decor-denim);background:radial-gradient(ellipse at 82% 46%,color-mix(in srgb,var(--event-glow) 22%,transparent),transparent 62%),var(--background);padding-bottom:24px}
+.ve-top{position:relative;isolation:isolate;overflow:hidden;background:var(--background);padding-bottom:24px}
 .ve-heading,.ve-categories,.ve-featured-section{position:relative;z-index:1}
 .ve .ve-categories{gap:22px;padding:8px 22px 0;overflow:auto}
 .ve .ve-categories>button{position:relative;flex:0 0 auto;min-width:0;min-height:44px;padding:0;background:transparent;border-radius:0;font-size:12px;color:var(--foreground-secondary)}
@@ -130,7 +130,7 @@
 @media(prefers-reduced-motion:reduce){.ve *,.ve *:after{animation:none!important;transition:none!important}.ve-featured-link img{transform:none}.ve button:active{transform:none}}
 
 /* A duplicate concert photo sits below a translucent black scrim. */
-.ve-backdrop{position:absolute;z-index:0;inset:-48px;width:calc(100% + 96px);height:calc(100% + 96px);max-width:none;object-fit:cover;object-position:center 38%;filter:blur(36px) saturate(1.1) brightness(.85);pointer-events:none}
+.ve-backdrop{display:none}
 .ve-top:after{content:"";position:absolute;z-index:0;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--background) 66%,transparent),color-mix(in srgb,var(--background) 48%,transparent) 38%,color-mix(in srgb,var(--background) 58%,transparent) 78%,color-mix(in srgb,var(--background) 78%,transparent));pointer-events:none}
 .ve-ticket-strip{position:relative;z-index:1}
 
@@ -138,5 +138,5 @@
 .ve-ticket-strip>div>small,.ve-ticket-strip strong,.ve-ticket-strip strong>span{color:var(--event-highlight)}
 
 /* Let the same backdrop extend beneath the status bar without a black seam. */
-.vk-page .vk-phone[data-tab=events]:has(.ve-top) .vk-status{position:relative;z-index:2;background:transparent}
+.vk-page .vk-phone[data-tab=events]:has(.ve-top) .vk-status{position:relative;z-index:2;background:transparent;color:var(--color-grey-00)}
 .vk-phone[data-tab=events] .ve-top{margin-top:-54px;padding-top:54px}

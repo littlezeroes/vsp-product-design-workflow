@@ -153,5 +153,23 @@
 .vk-page .vk-phone .vk-game-fab img{width:52px;height:52px}
 
 /* Seasonal game entry belongs only to the unobstructed VinClub Home. */
+.vk-page:not([data-framed]){
+  --background:var(--color-grey-00);
+  --foreground:var(--color-grey-950);
+  --foreground-secondary:var(--color-grey-800);
+  --secondary:var(--color-grey-100);
+  --btn-secondary-bg:color-mix(in srgb,var(--foreground) 5%,transparent);
+  background:var(--background);color:var(--foreground);color-scheme:light;
+}
+.vk-page .vk-phone:not([data-tab=member]){
+  --background:var(--bg);
+  --foreground:var(--ink);
+  --foreground-secondary:var(--sub);
+  --secondary:var(--surface);
+  --secondary-foreground:var(--ink);
+  --btn-secondary-bg:var(--line);
+  color:var(--foreground);
+}
+.vk-page[data-mode=dark] .vk-phone{color-scheme:dark}
 .vk-phone:not([data-tab="home"]) .vk-game-fab,
 .vk-phone:has(.mini-app,.vr-open[aria-modal="true"],.vr-wallet-activation,.vr-story-viewer,[role="dialog"][aria-modal="true"])>.vk-game-fab{display:none}
