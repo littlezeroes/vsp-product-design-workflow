@@ -125,26 +125,25 @@ function DepositContent() {
 
   return (
     <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
-      {/* Header: default variant with back arrow */}
-      <Header
-        variant="default"
-        leading={
-          <button
-            type="button"
-            onClick={() => router.back()}
-            className="w-[44px] h-[44px] flex items-center justify-center rounded-full"
-          >
-            <ChevronLeft size={18} className="text-foreground" />
-          </button>
-        }
-      />
-
-      {/* Tab switcher */}
-      <TabSwitcher active="deposit" />
+      {/* Custom header: back + tab switcher center + spacer */}
+      <div className="h-[54px] shrink-0" />
+      <div className="flex items-center gap-2 pl-[8px] pr-[8px] h-[56px] shrink-0">
+        <button
+          type="button"
+          onClick={() => router.back()}
+          className="w-[44px] h-[44px] flex items-center justify-center rounded-full shrink-0"
+        >
+          <ChevronLeft size={18} className="text-foreground" />
+        </button>
+        <div className="flex-1 flex justify-center">
+          <TabSwitcher active="deposit" />
+        </div>
+        <div className="w-[44px] shrink-0" />
+      </div>
 
       <div className="flex-1 flex flex-col pb-[96px]">
         {/* Balance display — centered */}
-        <div className="px-[22px] pt-[8px] flex justify-center">
+        <div className="px-[22px] pt-[12px] flex justify-center">
           <p className="text-[13px] font-normal leading-[18px] text-foreground-secondary">
             Số dư ví{" "}
             <span className="font-bold text-foreground-secondary">{formatVND(walletBalance)}đ</span>
@@ -152,7 +151,7 @@ function DepositContent() {
         </div>
 
         {/* Amount display */}
-        <div className="px-[22px] pt-[14px] flex flex-col items-center">
+        <div className="px-[22px] pt-[20px] flex flex-col items-center">
           <div className="flex items-center gap-[2px]">
             <p className="text-[34px] font-bold tabular-nums text-foreground leading-tight">
               {amount === 0 ? "0" : formatVND(amount)}đ
@@ -165,8 +164,10 @@ function DepositContent() {
           )}
         </div>
 
-        {/* Quick amount chips */}
-        <div className="pt-[14px]">
+        <div className="flex-1" />
+
+        {/* Quick amount chips — ngay sát bàn phím */}
+        <div className="pb-[10px]">
           <div className="px-[22px]">
             <div className="flex gap-[8px] justify-center">
               {QUICK_AMOUNTS.map((val) => (
@@ -176,7 +177,7 @@ function DepositContent() {
                   onClick={() => setAmount(val)}
                   className={`px-[14px] py-[6px] rounded-full text-[13px] font-semibold leading-[18px] transition-colors ${
                     amount === val
-                      ? "bg-foreground text-background"
+                      ? "bg-[#28bdbf] text-white"
                       : "bg-secondary text-foreground"
                   }`}
                 >
@@ -188,7 +189,7 @@ function DepositContent() {
         </div>
 
         {/* Custom Numpad */}
-        <div className="pt-[14px] mt-auto">
+        <div>
           <div className="px-[22px]">
             <Numpad onInput={handleAmountInput} />
           </div>

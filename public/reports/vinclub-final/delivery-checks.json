@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-01T16:15:26.666Z",
+  "checks": [
+    {
+      "name": "board HTTP200",
+      "pass": true
+    },
+    {
+      "name": "8 detailed blocks",
+      "pass": true
+    },
+    {
+      "name": "3 measured layout choices",
+      "pass": true
+    },
+    {
+      "name": "source/candidate images load",
+      "pass": true
+    },
+    {
+      "name": "board no overflow 1440",
+      "pass": true
+    },
+    {
+      "name": "board no overflow 390",
+      "pass": true
+    },
+    {
+      "name": "12-slide deck",
+      "pass": true
+    },
+    {
+      "name": "slides in bounds",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "6 main blocks source geometry match",
+      "pass": true
+    },
+    {
+      "name": "old versions preserved",
+      "pass": true
+    },
+    {
+      "name": "wallet source origin3300",
+      "pass": true
+    },
+    {
+      "name": "wallet source rendered",
+      "pass": true
+    },
+    {
+      "name": "wallet return",
+      "pass": true
+    },
+    {
+      "name": "runtime",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "pass": true,
+  "scope": "Artifact, source geometry, wallet integration and layout checks. Pixel diff is separate and not zero; no human UT."
+}

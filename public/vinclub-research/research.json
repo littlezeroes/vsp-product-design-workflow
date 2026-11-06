@@ -1,0 +1,577 @@
+{
+  "date": "2026-10-01",
+  "sources": {
+    "bank": {
+      "id": "bank",
+      "title": "Credit payment card bank app animation",
+      "author": "Robin Holesinsky",
+      "url": "https://dribbble.com/shots/26063214-Credit-payment-card-bank-app-animation",
+      "kind": "UI / Motion",
+      "learn": "Thẻ và dữ liệu tài chính cần cùng một hierarchy tiết chế.",
+      "apply": "Thẻ hội viên dẫn vào VPoint; số dư ví vẫn có nhãn và hành động riêng.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "protect": {
+      "id": "protect",
+      "title": "Protect card mobile app design 3D animation",
+      "author": "ALEX BENDER / FANCY",
+      "url": "https://dribbble.com/shots/22982035-Protect-card-mobile-app-design-3D-animation",
+      "kind": "3D / Motion",
+      "learn": "Một tác vụ tài chính có thể có một vật thể đại diện rõ ràng.",
+      "apply": "Thử thẻ mở thành bảng quyền lợi khi user chạm; cần mở nguồn để xem motion đầy đủ.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "topup": {
+      "id": "topup",
+      "title": "Top up bank card 3D animation",
+      "author": "ALEX BENDER / FANCY",
+      "url": "https://dribbble.com/shots/24528477-Top-up-bank-card-3D-animation-mobile-app-design",
+      "kind": "3D / Motion",
+      "learn": "Dùng thao tác nạp làm điểm xuất phát cho nghiên cứu chuyển động.",
+      "apply": "Thử feedback nạp ví hoặc nhận điểm có điểm bắt đầu và kết thúc cụ thể.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "premium": {
+      "id": "premium",
+      "title": "Premium 3D Card Animation",
+      "author": "Armin",
+      "url": "https://dribbble.com/shots/26714442-Premium-3D-Card-Animation",
+      "kind": "3D / Material",
+      "learn": "Nguồn mô tả Blender, vật liệu premium và bố cục tiết chế.",
+      "apply": "Dùng làm đối chiếu cho bộ thẻ hiện tại; thử ánh sáng ở đúng kích thước mobile.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "sber": {
+      "id": "sber",
+      "title": "Sberbank card — 3D Product Animation",
+      "author": "Nick Fedianin",
+      "url": "https://www.behance.net/gallery/196534927/Sberbank-card-3D-Product-Animation-Cinema-4D",
+      "kind": "3D / Material",
+      "learn": "Bề mặt mờ, bevel mảnh và highlight tập trung tạo độ sắc.",
+      "apply": "Dùng chất liệu kim loại cho một điểm nhấn; chữ số UI đặt trên lớp riêng.",
+      "image": "card",
+      "evidence": "Đã xem thumbnail; chưa xem toàn bộ video"
+    },
+    "koho": {
+      "id": "koho",
+      "title": "Koho Metal Card",
+      "author": "Portfolio trên Behance",
+      "url": "https://www.behance.net/gallery/218831911/Koho-Metal-Card",
+      "kind": "3D / Material",
+      "learn": "Tương phản vật liệu thô và kim loại làm vật phẩm có trọng lượng.",
+      "apply": "Thử hero vật phẩm trong đoạn mở đầu video; Home cần giản lược bối cảnh.",
+      "image": "koho",
+      "evidence": "Đã xem thumbnail; chưa xem toàn bộ video"
+    },
+    "glass": {
+      "id": "glass",
+      "title": "Liquid Glass Effect UI",
+      "author": "Dear Regita Permatasari",
+      "url": "https://dribbble.com/shots/26508704-Liquid-Glass-Effect-UI",
+      "kind": "UI / Material",
+      "learn": "Panel trong suốt có độ sâu khi nền và mép được kiểm soát.",
+      "apply": "Thử lớp điều hướng nổi; giữ số dư và nội dung chính trên nền rõ.",
+      "image": "glass",
+      "evidence": "Đọc nguồn + xem thumbnail"
+    },
+    "apple": {
+      "id": "apple",
+      "title": "Materials — Human Interface Guidelines",
+      "author": "Apple",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/materials",
+      "kind": "Material / Hierarchy",
+      "learn": "Apple phân biệt Liquid Glass cho lớp điều khiển với lớp nội dung.",
+      "apply": "Dùng kính cho dock và chuyển tiếp điều khiển; nội dung thanh toán cần đọc rõ.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "meetglass": {
+      "id": "meetglass",
+      "title": "Meet Liquid Glass — WWDC25",
+      "author": "Apple",
+      "url": "https://developer.apple.com/videos/play/wwdc2025/219/",
+      "kind": "Motion / Material",
+      "learn": "Nguồn giải thích phản ứng, thích nghi và tính chất quang học của vật liệu.",
+      "apply": "Thử thanh tìm kiếm mở thành panel bằng hình khối liên tục; xem video nguồn để đối chiếu.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "prakthis": {
+      "id": "prakthis",
+      "title": "Prakthis E-Wallet UI Mobile App",
+      "author": "Paperpillar",
+      "url": "https://dribbble.com/shots/26819546-Prakthis-E-Wallet-UI-Mobile-App",
+      "kind": "UI / AI",
+      "learn": "Thumbnail phối tác vụ ví với đề xuất AI và hóa đơn.",
+      "apply": "Đưa gợi ý gắn với việc cần làm, như hóa đơn sắp đến hạn.",
+      "image": "prakthis",
+      "evidence": "Đọc nguồn + xem thumbnail"
+    },
+    "finance": {
+      "id": "finance",
+      "title": "Finance app — glassmorphism design",
+      "author": "Ira Sh",
+      "url": "https://dribbble.com/shots/15477199-Finance-app-glassmorphism-design",
+      "kind": "UI / Material",
+      "learn": "Kính và gradient có thể liên kết nhiều màn theo cùng một chất liệu.",
+      "apply": "Giảm màu nền và độ trong để vẫn đọc được số dư; tham chiếu lịch sử, không coi là trend mới.",
+      "image": "finance",
+      "evidence": "Đã xem thumbnail"
+    },
+    "pete": {
+      "id": "pete",
+      "title": "Luxury Travel App UI",
+      "author": "Pete Brady",
+      "url": "https://dribbble.com/shots/14954055-Luxury-Travel-App-UI",
+      "kind": "UI / Editorial",
+      "learn": "Nguồn đặt photography và typography làm trung tâm.",
+      "apply": "Thiết kế đặc quyền như nội dung được tuyển chọn; tránh nhiều banner ngang bằng nhau.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "vistajet": {
+      "id": "vistajet",
+      "title": "Concept For Vistajet App",
+      "author": "Slick",
+      "url": "https://dribbble.com/shots/22177729-Concept-For-Vistajet-App",
+      "kind": "UI / Editorial",
+      "learn": "Ảnh, nền tối và một màu action tạo cảm giác dịch vụ riêng.",
+      "apply": "Thử premium bằng dịch vụ và nội dung; giữ điểm, ví, thanh toán luôn truy cập được.",
+      "image": "vistajet",
+      "evidence": "Đã xem thumbnail; đây là concept của designer"
+    },
+    "travel": {
+      "id": "travel",
+      "title": "Luxury travel mobile app design",
+      "author": "Nikesh Beidwar",
+      "url": "https://dribbble.com/shots/22597902-Luxury-travel-mobile-app-design",
+      "kind": "UI / Editorial",
+      "learn": "Ảnh kiến trúc và bố cục rõ tạo chất lượng mà không cần hiệu ứng dày.",
+      "apply": "Hero một trải nghiệm; quyền lợi liên quan xuất hiện ngay dưới.",
+      "image": "travel",
+      "evidence": "Đã xem thumbnail"
+    },
+    "ritz": {
+      "id": "ritz",
+      "title": "Ritz-Carlton — Luxury Stay Discovery UI",
+      "author": "Md Mafizul Islam",
+      "url": "https://dribbble.com/shots/26956046-Ritz-Carlton-Luxury-Stay-Discovery-UI",
+      "kind": "UI / Editorial",
+      "learn": "Tông tối và ảnh định hướng khám phá các trải nghiệm chọn lọc.",
+      "apply": "Dùng cho trang đặc quyền premium; đây là concept, không phải bằng chứng sản phẩm Ritz-Carlton.",
+      "image": "ritz",
+      "evidence": "Đã xem thumbnail; concept của designer"
+    },
+    "aventiora": {
+      "id": "aventiora",
+      "title": "Aventiora — Luxury Travel Hero Motion",
+      "author": "Halo Design Studio",
+      "url": "https://dribbble.com/shots/26857465-Aventiora-Luxury-Travel-Hero-Motion",
+      "kind": "Motion / Editorial",
+      "learn": "Nguồn mô tả footage yacht, nhịp chữ chậm và chuyển tiếp nhẹ.",
+      "apply": "Làm storyboard hero → chi tiết bằng cùng một ảnh; Home giữ tác vụ tài chính nhanh.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "fireart": {
+      "id": "fireart",
+      "title": "Travel Mobile App",
+      "author": "Fireart Studio",
+      "url": "https://dribbble.com/shots/23936170-Travel-Mobile-App",
+      "kind": "UI / Layout",
+      "learn": "Thumbnail nền sáng, ảnh lớn và thông tin có phân cấp.",
+      "apply": "Thử Home sáng với module điểm/tiền gọn và nội dung tuyển chọn.",
+      "image": "fireart",
+      "evidence": "Đã xem thumbnail"
+    },
+    "portals": {
+      "id": "portals",
+      "title": "Portals landing page — 3D animation",
+      "author": "ALEX BENDER / FANCY",
+      "url": "https://dribbble.com/shots/26011595-Portals-landing-page-web-design-3D-animation",
+      "kind": "3D / Story",
+      "learn": "Nguồn dùng portal để kể việc biến đổi tài sản.",
+      "apply": "Biến entry mini app thành cánh cửa; chỉ lấy phép chuyển tiếp, không bê bố cục web sang mobile.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "everswap": {
+      "id": "everswap",
+      "title": "Everswap",
+      "author": "Lusion",
+      "url": "https://lusion.co/projects/everswap/",
+      "kind": "3D / Story",
+      "learn": "Dự án dùng cảnh quan, dòng chảy để kể chuyển động và trao đổi giá trị.",
+      "apply": "Thử VPoint đi đến một dịch vụ bằng một chuyển tiếp có hướng; cần mobile layout riêng.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "spatial": {
+      "id": "spatial",
+      "title": "Meta: Spatial Fusion",
+      "author": "Lusion / Phoria / Meta",
+      "url": "https://lusion.co/projects/spatial_fusion/",
+      "kind": "Spatial / Interaction",
+      "learn": "Nguồn mô tả trải nghiệm WebXR gắn nội dung với không gian.",
+      "apply": "Chỉ lấy ý niệm dịch vụ có không gian riêng; concept điện thoại không cần XR.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "vision": {
+      "id": "vision",
+      "title": "Apple Vision Pro",
+      "author": "Apple",
+      "url": "https://www.apple.com/apple-vision-pro/",
+      "kind": "Spatial / Hierarchy",
+      "learn": "Tham chiếu về trải nghiệm không gian và nội dung trong nhiều lớp.",
+      "apply": "Thử chiều sâu các cụm dịch vụ; giữ tap và scroll quen thuộc trên điện thoại.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "labs": {
+      "id": "labs",
+      "title": "Lusion Labs",
+      "author": "Lusion",
+      "url": "https://lusion.co/projects/lusion_labs/",
+      "kind": "3D / Exploration",
+      "learn": "Nguồn mô tả nơi thử nghiệm thiết kế, 3D và WebGL.",
+      "apply": "Đầu tư một nghiên cứu visual signature trước khi dựng đủ màn.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "aitravel": {
+      "id": "aitravel",
+      "title": "AI Travel Concierge",
+      "author": "Zakariya Buhari",
+      "url": "https://dribbble.com/shots/27646208-AI-Travel-Concierge",
+      "kind": "UI / Context",
+      "learn": "Nguồn tổ chức hành trình Discover → Plan → Travel theo bối cảnh.",
+      "apply": "Home đổi gợi ý khi một nhu cầu đang diễn ra; demo bằng dữ liệu có kịch bản.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "mobileai": {
+      "id": "mobileai",
+      "title": "Mobile AI assistant animation",
+      "author": "Asaad Mahmood / The Small Square",
+      "url": "https://dribbble.com/shots/26445170-Mobile-AI-assistant-animation",
+      "kind": "Motion / AI",
+      "learn": "Nguồn có sphere được thiết kế và animate riêng.",
+      "apply": "Tạo dấu hiệu listening/thinking/done; không để orb chiếm hết Home.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "aimotion": {
+      "id": "aimotion",
+      "title": "AI assistant motion mobile visual",
+      "author": "Robin Holesinsky / rh.design",
+      "url": "https://dribbble.com/shots/26604861-AI-assistant-motion-mobile-visual",
+      "kind": "UI / AI",
+      "learn": "Thumbnail tập trung vào một orb và một câu hỏi, giảm nhiễu xung quanh.",
+      "apply": "Thử AI mở thành chế độ tập trung; Home mặc định vẫn có tác vụ nhanh.",
+      "image": "ai",
+      "evidence": "Đã xem thumbnail"
+    },
+    "thinking": {
+      "id": "thinking",
+      "title": "Thinking — AI Product Interaction & Motion UI",
+      "author": "Michael Frankland",
+      "url": "https://dribbble.com/shots/27354914-Thinking-AI-Product-Interaction-Motion-UI-CSS-Animation",
+      "kind": "Motion / State",
+      "learn": "Nguồn nghiên cứu trạng thái thinking và processing qua motion.",
+      "apply": "Define bốn trạng thái AI: idle, listening, thinking, suggestion; phân biệt bằng chuyển động.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "orb": {
+      "id": "orb",
+      "title": "AI Input Orb Animation",
+      "author": "Constantin Calcatinge / Vivid Motion",
+      "url": "https://dribbble.com/shots/25211877-AI-Input-Orb-Animation",
+      "kind": "Motion / AI",
+      "learn": "Reference dành cho biểu đạt input bằng orb.",
+      "apply": "Thử orb nhỏ trở thành thanh nhập khi chạm; mở nguồn để xem video.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "dark": {
+      "id": "dark",
+      "title": "Fintech Banking App UI — Dark Minimal",
+      "author": "Oxin Studio",
+      "url": "https://dribbble.com/shots/27188976-Fintech-Banking-App-UI-Dark-Minimal-Mobile-App-Design",
+      "kind": "UI / Typography",
+      "learn": "Nguồn nhấn mạnh số dư lớn, action nhanh và feed giao dịch rõ.",
+      "apply": "Dùng làm đối chiếu hierarchy để hiệu ứng không làm mất hành động chính.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "blu": {
+      "id": "blu",
+      "title": "Blu Bank 3D Animation — Translating Color into Motion",
+      "author": "Portfolio trên Behance",
+      "url": "https://www.behance.net/gallery/179914819/Blu-Bank-3D-Animation-Translating-Color-into-Motion",
+      "kind": "3D / Brand",
+      "learn": "Thumbnail dùng một hệ chất liệu và hình khối nhất quán.",
+      "apply": "Thử shape trừu tượng làm signature; giảm số lượng vật thể trên màn nhỏ.",
+      "image": "blu",
+      "evidence": "Đã xem thumbnail; chưa xem toàn bộ video"
+    },
+    "synthetic": {
+      "id": "synthetic",
+      "title": "Synthetic Human",
+      "author": "Lusion / Fantasy",
+      "url": "https://lusion.co/projects/synthetic_human/",
+      "kind": "3D / Optimization",
+      "learn": "Nguồn mô tả procedural animation và tối ưu asset 3D cho web.",
+      "apply": "Cho concept một dấu hiệu sống; thử render trước, live 3D chỉ khi có lý do.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    },
+    "oryzo": {
+      "id": "oryzo",
+      "title": "Oryzo AI",
+      "author": "Lusion",
+      "url": "https://lusion.co/projects/oryzo_ai/",
+      "kind": "Story / Art direction",
+      "learn": "Đây là dự án châm biếm cách trình bày sản phẩm thời AI, có chủ đích.",
+      "apply": "Học sự nhất quán craft/câu chuyện; VinClub phải dùng tình huống cụ thể để kể giá trị.",
+      "image": null,
+      "evidence": "Đọc trang nguồn"
+    }
+  },
+  "directions": [
+    {
+      "id": "metal",
+      "num": "01",
+      "name": "Sculpted Metal",
+      "vn": "Giá trị được chế tác",
+      "hero": "koho",
+      "palette": [
+        "Obsidian",
+        "Titanium",
+        "Champagne"
+      ],
+      "tagline": "Tiền, điểm, đặc quyền — trong một không gian được chế tác cho bạn.",
+      "story": "Cảm giác sở hữu và kiểm soát giá trị. Thẻ hội viên là vật phẩm mở vào điểm, ví và quyền lợi.",
+      "layout": "Header gọn → thẻ hội viên có VPoint → số dư ví riêng → Quét / Chuyển / Hóa đơn → gợi ý dùng điểm → mini app → đặc quyền.",
+      "interaction": "Chạm thẻ mở bảng điểm và quyền lợi; số dư ví mở V-Smart Pay. Chuyển VPoint và chuyển tiền có nhãn riêng. Sau thanh toán hiển thị điểm còn lại.",
+      "visual": "Grotesk sắc nét; số tabular; kim loại satin; nền tối sâu và vùng nội dung sáng có chủ đích. Icon mảnh, hình học trưởng thành.",
+      "wow": "0–1s ánh sáng lướt bevel → 1–3s thẻ nghiêng rất nhẹ và mở rộng → 3–6s hiện hành động dùng điểm. Đây là motion đề xuất, chưa được render.",
+      "assets": "Tái dùng 4 material study trong Blender; cần thêm mặt thẻ, dấu thương hiệu, bố cục chữ và một transition mở thẻ.",
+      "inputs": "Số dư VPoint mẫu; số dư ví mẫu; hạng hội viên; 2 quyền lợi tương ứng; quy tắc sử dụng điểm cho tình huống demo.",
+      "options": [
+        "Nền sáng + thẻ titanium",
+        "Nền tối + obsidian",
+        "Nền trắng ấm + champagne"
+      ],
+      "refs": [
+        "premium",
+        "sber",
+        "koho",
+        "bank",
+        "protect",
+        "topup"
+      ],
+      "effort": "Vừa",
+      "risk": "Dễ thành một app ngân hàng đen/vàng thông thường nếu toàn bộ sáng tạo dồn vào thẻ.",
+      "recommendation": "Phát triển: tận dụng asset có sẵn và kiểm chứng premium bằng chất lượng craft."
+    },
+    {
+      "id": "glass",
+      "num": "02",
+      "name": "Optical Glass",
+      "vn": "Những lớp giá trị trong suốt",
+      "hero": "glass",
+      "palette": [
+        "Pearl",
+        "Smoke",
+        "Optical red"
+      ],
+      "tagline": "Mọi thứ kết nối, mọi hành động ở trong tầm tay.",
+      "story": "Cảm giác liền mạch. Home và mini app cùng nằm trong một không gian có lớp điều khiển thống nhất.",
+      "layout": "Header + định danh → module điểm/tiền nền rõ → action nhanh → module nhu cầu → dịch vụ → dock kính nổi.",
+      "interaction": "Thanh tìm kiếm mở thành panel AI; dock giữ vị trí khi vào mini app; chuyển tiếp bảo toàn entry và đường quay lại. Blur không tác động chữ số.",
+      "visual": "Sans trung tính; pearl/smoke; kính tập trung ở dock, chip và panel transient; thẻ nội dung rõ; đỏ dùng ở một điểm dẫn mắt.",
+      "wow": "0–2s dock xuất hiện → 2–4s một pill mở thành panel → 4–7s nội dung mini app tiếp nối. Test biến hình và contrast cùng lúc.",
+      "assets": "Shader/refraction study hoặc video render cho signature; mask/blur cho prototype; nền đơn giản để kiểm tra chữ.",
+      "inputs": "Navigation chính; mini app đầu tiên; trạng thái panel; thông tin điểm và tiền; nền tương ứng 2 theme.",
+      "options": [
+        "Pearl glass sáng",
+        "Smoked glass tối",
+        "Clear dock trên hero ảnh"
+      ],
+      "refs": [
+        "apple",
+        "meetglass",
+        "glass",
+        "prakthis",
+        "finance"
+      ],
+      "effort": "Vừa–cao",
+      "risk": "Dễ giống iOS hoặc thành kính phủ khắp màn; cần chứng minh bản sắc riêng ở typography và cấu trúc.",
+      "recommendation": "Giữ làm hướng dự phòng hoặc vật liệu hỗ trợ; không mặc định glass là hướng thắng."
+    },
+    {
+      "id": "editorial",
+      "num": "03",
+      "name": "Living Editorial",
+      "vn": "Một thế giới được tuyển chọn",
+      "hero": "vistajet",
+      "palette": [
+        "Ink",
+        "Ivory",
+        "Vermilion"
+      ],
+      "tagline": "Những điều đáng trải nghiệm, với quyền lợi dành riêng cho bạn.",
+      "story": "Premium đến từ chất lượng dịch vụ và cách tuyển chọn. Tương lai đến từ nội dung biết bối cảnh và chuyển cảnh liền mạch.",
+      "layout": "Header → thanh giá trị gọn (VPoint / Ví) → một hero trải nghiệm → action thanh toán luôn dễ tìm → dịch vụ → voucher tuyển chọn.",
+      "interaction": "Hero mở chi tiết với cùng ảnh; điểm và ưu đãi áp dụng được nằm trong tóm tắt; user chọn nguồn thanh toán trước xác nhận.",
+      "visual": "Display type có cá tính + sans dễ đọc; ảnh kiến trúc/lifestyle art-directed; nhịp lớn/nhỏ; một màu action. Có thể thử serif hiện đại nhưng tránh retro.",
+      "wow": "0–2s ảnh hero có chiều sâu nhẹ → 2–5s tap giữ ảnh xuyên màn → 5–8s quyền lợi và thanh toán xuất hiện. Không giấu action sau đoạn intro.",
+      "assets": "3–5 ảnh cùng art direction; một clip hero hoặc depth map; type specimen; ít icon thống nhất.",
+      "inputs": "Một trải nghiệm premium có thể kể cụ thể; nội dung voucher; giá/điểm/ưu đãi giả lập có nhãn; câu chuyện hội viên.",
+      "options": [
+        "Ảnh full-bleed + chữ lớn",
+        "Nền sáng + ảnh kiến trúc",
+        "Nền tối + lifestyle cinematic"
+      ],
+      "refs": [
+        "pete",
+        "vistajet",
+        "travel",
+        "ritz",
+        "aventiora",
+        "fireart"
+      ],
+      "effort": "Vừa",
+      "risk": "Có thể đẹp như travel app nhưng yếu phần ví/loyalty; module giá trị và action phải đủ rõ.",
+      "recommendation": "Phát triển: khác rõ hướng thẻ kim loại và thử premium từ typography/nội dung."
+    },
+    {
+      "id": "spatial",
+      "num": "04",
+      "name": "Spatial Ecosystem",
+      "vn": "Cánh cửa vào hệ sinh thái",
+      "hero": "blu",
+      "palette": [
+        "Porcelain",
+        "Graphite",
+        "Light red"
+      ],
+      "tagline": "Một điểm đến. Nhiều thế giới kết nối.",
+      "story": "Mỗi mini app là một không gian dịch vụ; điểm và ví đi cùng user giữa các không gian.",
+      "layout": "Header → điểm và ví → 3 entry lớn theo nhu cầu → cụm mini app thường dùng → voucher phù hợp → navigation.",
+      "interaction": "Tap một entry mở mini app bằng shared element; giữ tài khoản, trạng thái và thanh toán. Ngay từ Home vẫn có Quét / Chuyển.",
+      "visual": "Không gian 2.5D; shape kiến trúc tối giản; surface trắng/satin; đỏ có kiểm soát; khoảng cách và scale tạo chiều sâu.",
+      "wow": "0–2s các entry hiện theo chiều sâu → 2–5s một entry mở thành portal → 5–8s thành mini app thật. Thử UI 2D trước và sau transition.",
+      "assets": "Một portal signature; 3 biểu tượng dịch vụ có cùng material; transition mask; miniature service scene tối giản.",
+      "inputs": "Danh sách 3 mini app ưu tiên; điểm đến cụ thể; cách quay về; dịch vụ nào chấp nhận điểm và ví trong demo.",
+      "options": [
+        "Portal kiến trúc",
+        "Stack không gian 2.5D",
+        "Đường kết nối giá trị"
+      ],
+      "refs": [
+        "portals",
+        "everswap",
+        "spatial",
+        "vision",
+        "labs",
+        "blu"
+      ],
+      "effort": "Cao",
+      "risk": "Dễ thành showcase game/website. Motion chỉ dùng ở chuyển tiếp; Home cần thao tác như app.",
+      "recommendation": "Giữ làm nhánh táo bạo; nên motion-test trước khi đầu tư nhiều màn."
+    },
+    {
+      "id": "concierge",
+      "num": "05",
+      "name": "Personal Concierge",
+      "vn": "Một ngày được chuẩn bị cho bạn",
+      "hero": "prakthis",
+      "palette": [
+        "Pearl",
+        "Midnight",
+        "Warm light"
+      ],
+      "tagline": "Bạn cần gì hôm nay? Quyền lợi của bạn đã sẵn sàng.",
+      "story": "AI biểu hiện qua việc chuẩn bị đúng hành động và quyền lợi. Câu chuyện demo có thể dùng dữ liệu dựng sẵn.",
+      "layout": "Header cá nhân → điểm/tiền tóm tắt → một việc cần làm hôm nay → 3 action nhanh → mini app gần nhu cầu → voucher được tuyển chọn → ô nhập yêu cầu.",
+      "interaction": "Idle → nhập/nói nhu cầu → thinking → 2–3 đề xuất → chọn → mini app → xác nhận. User luôn kiểm soát tiền và nguồn điểm.",
+      "visual": "Typography sạch và tự tin; nội dung ít nhưng có giá trị; ánh sáng nhẹ; prompt và suggestion card thành một hệ hình khối.",
+      "wow": "0–2s xuất hiện lời gợi ý theo bối cảnh → 2–4s input mở rộng → 4–8s đề xuất biến thành action card. Orb chỉ là một dấu hiệu trạng thái.",
+      "assets": "Một mark AI riêng; 4 motion state; proposal cards; dữ liệu kịch bản học phí hoặc nghỉ dưỡng; confirmation feedback.",
+      "inputs": "Một tình huống demo; thông tin user giả lập; đề xuất mong muốn; giới hạn điểm dùng được; điểm bàn giao sang mini app.",
+      "options": [
+        "AI chủ động qua card",
+        "AI dạng command bar",
+        "Concierge theo timeline ngày"
+      ],
+      "refs": [
+        "aitravel",
+        "prakthis",
+        "mobileai",
+        "aimotion",
+        "thinking",
+        "orb"
+      ],
+      "effort": "Vừa–cao",
+      "risk": "Dễ thành chatbot có orb đẹp nhưng không giải quyết việc gì. Demo phải tới được hành động cụ thể.",
+      "recommendation": "Phát triển: thể hiện tầm nhìn AI và kết nối loyalty + ví + mini app bằng một câu chuyện."
+    },
+    {
+      "id": "luminous",
+      "num": "06",
+      "name": "Luminous Minimal",
+      "vn": "Giá trị hiện ra bằng ánh sáng",
+      "hero": "ai",
+      "palette": [
+        "Monochrome",
+        "Ruby",
+        "Silver light"
+      ],
+      "tagline": "Giá trị của bạn, luôn sẵn sàng chuyển động.",
+      "story": "Một dấu hiệu trừu tượng thống nhất biểu đạt tiền, điểm và quyền lợi; bản sắc đến từ hình khối và ánh sáng.",
+      "layout": "Header → số dư/điểm typographic lớn → 3 action nhanh → module gợi ý → dịch vụ và đặc quyền. Signature nằm cạnh dữ liệu, không thay dữ liệu.",
+      "interaction": "Khi nhận điểm/chuyển/đổi, signature chuyển trạng thái rồi settle; lịch sử và số dư luôn được ghi rõ bằng chữ.",
+      "visual": "Đen/trắng sắc nét; ruby hoặc bạc làm điểm nhấn; ít surface; shape điêu khắc có cấu trúc; tránh gradient cầu vồng và rounded toy.",
+      "wow": "0–2s signature hình thành → 2–5s chuyển giá trị từ nguồn đến đích → 5–7s trạng thái thành công settle. Đây là hướng motion đề xuất.",
+      "assets": "3 shape study riêng; lighting study; 1 identity motion; icon nét đồng nhất; mask để ghép vào UI.",
+      "inputs": "Một giao dịch đại diện; ý nghĩa từng trạng thái; mức độ abstract chấp nhận được; lựa chọn nền sáng/tối.",
+      "options": [
+        "Light ribbon",
+        "Sculptural V",
+        "Ruby core"
+      ],
+      "refs": [
+        "dark",
+        "blu",
+        "synthetic",
+        "labs",
+        "oryzo",
+        "aimotion"
+      ],
+      "effort": "Vừa–cao",
+      "risk": "Có thể giống crypto/AI startup nếu chỉ có orb và glow; phải gắn signature với giá trị VinClub.",
+      "recommendation": "Giữ làm nguồn signature cho hướng thắng hoặc phát triển nếu muốn đột phá nhận diện."
+    }
+  ],
+  "selectedRecommendation": [
+    "metal",
+    "editorial",
+    "concierge"
+  ],
+  "commonContent": [
+    "Định danh hội viên",
+    "VPoint và số dư ví riêng",
+    "Quét / Chuyển / Hóa đơn",
+    "Mini app thường dùng",
+    "Voucher dùng được",
+    "Gợi ý theo bối cảnh"
+  ],
+  "researchNote": "Reference có cùng nguồn được dùng ở nhiều hướng để so sánh cách áp dụng. Các recipe, đánh giá và timing là đề xuất thiết kế; không phải hành vi đã triển khai. Thumbnail là tư liệu tham khảo có ghi nguồn; không dùng làm asset sản phẩm."
+}

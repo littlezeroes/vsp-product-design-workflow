@@ -1,0 +1,179 @@
+{
+  "executiveFinding": "Giữ nhịp nhận biết tài sản → chọn dịch vụ/lợi ích → hình dung trải nghiệm. Thay Product 1/2 bằng tên tác vụ thật và nối quà/ưu đãi về nơi tìm lại; đây là đề xuất cần UT, chưa có chứng cứ tăng chuyển đổi. Layout wallet=2 giảm container 38px nhưng cover vẫn 237px: không thể gọi là đã thu nhỏ toàn bộ ví.",
+  "baseline": {
+    "status": "quan sát render + đọc source; không phải human UT",
+    "parentUrl": "http://localhost:3300/ui-templates/sumeria/vsp?mode=light",
+    "childUrl": "http://localhost:3300/vinclub-home?embedded=1&skin=3&hook=1&style=8&pos=1&vinclubState=1&giftTone=1&giftCount=1&walletState=1&approach=stack&mode=light",
+    "process": "node PID 87296; lsof cwd /Users/huykieu/Documents/vinpay-all",
+    "actualParams": {
+      "embedded": 1,
+      "skin": 3,
+      "hook": 1,
+      "style": 8,
+      "pos": 1,
+      "vinclubState": 1,
+      "giftTone": 1,
+      "giftCount": 1,
+      "walletState": 1,
+      "approach": "stack",
+      "mode": "light"
+    },
+    "confirmed": {
+      "header": 1,
+      "wallet": 2,
+      "products": 3,
+      "vouchers": 1,
+      "feed": 2,
+      "style": 3,
+      "pos": 1
+    },
+    "effective": "Default header1 wallet2 products3 productCount2 vouchers1 feed2 hierarchy1 story1; URL style8 accepted; URL skin3 forcibly normalized to2, resulting data-skin=carbon. Confirmed object hides controls; it does not enforce values over URL. Gift HomeStory hardcodes kind1 look3 count1 tone1 independently of general picks.",
+    "limitations": [
+      "Fresh Playwright browser, not user storage/session. Parent opened VinClub button; screenshot captures direct child inside parent, not standalone splash.",
+      "Figures and products are source sample data; rendered affordances are not evidence of real reward settlement, lead, booking or payment.",
+      "Evidence is desktop host with 390px child; no human comprehension or conversion study.",
+      "Interaction check: normal click on Quà mỗi ngày timed out at 30s because adjacent Vinmec offer absolute span intercepted pointer events. Viewer implementation inspected in source, normal entry opening NOT verified. No force-click used."
+    ],
+    "evidence": [
+      "evidence/ux-baseline.png"
+    ],
+    "source": [
+      "app/(vinpay)/ui-templates/sumeria/vsp/client.tsx:279",
+      "app/(vinclub)/vinclub-home/page.tsx:41",
+      "app/(vinclub)/vinclub-home/page.tsx:69",
+      "app/(vinclub)/vinclub-home/page.tsx:88"
+    ]
+  },
+  "blockDecisions": [
+    {
+      "block": "Tài sản: hạng, VPoint, ví",
+      "role": "Nhận biết tôi có gì; mở quản lý khi cần",
+      "observed": "12.450 VPoint, hạng Vàng và ví 28.650.000 ₫ đứng đầu; wallet cover 237px trong container199px.",
+      "keep/change": "keep/change",
+      "layoutDecision": "Giữ số dư/hạng và đích quản lý; kiểm tra overlap/legibility trước khi thu gọn thêm; không lấy cover199 làm thông số.",
+      "why": "Tài sản cần đọc đúng nhưng không chiếm hết viewport. Mức chú ý vừa, chữ cấp màn hình giữ trục22px.",
+      "tradeoff": "Thu gọn quá mức giảm nhận diện ví; UT đọc số dư và tìm lịch sử.",
+      "source": "ref-layouts.tsx:385–409; ref-layouts.css:358; evidence/ux-baseline.png"
+    },
+    {
+      "block": "Dịch vụ",
+      "role": "Chọn việc cần làm nhanh",
+      "observed": "Hai card generic Product1/2, Tích lũy linh hoạt/Chi tiêu linh hoạt; icon-title-description cuối cascade.",
+      "keep/change": "change",
+      "layoutDecision": "Dùng hai card cho hai lựa chọn có tên/đầu ra rõ; số lượng lớn chuyển grid có Xem thêm. Không tăng số ô chỉ để lấp Home.",
+      "why": "Với hai lựa chọn cần so lợi ích; nhãn Product không giúp dự đoán đích. Ưu tiên sau trạng thái vì có ý định cụ thể.",
+      "tradeoff": "Card lớn chiếm chỗ ưu đãi; UT chọn đúng dịch vụ và kể lại sẽ nhận gì.",
+      "source": "ref-layouts.tsx:VoucherLower; ref-layouts.css:804"
+    },
+    {
+      "block": "Ưu đãi",
+      "role": "Khám phá lời đề nghị, khác với tài sản đã sở hữu",
+      "observed": "Rail Dành cho bạn + Xem tất cả, nhiều thương hiệu; chạm dispatch offers chung.",
+      "keep/change": "keep/change",
+      "layoutDecision": "Giữ rail để gợi ý, Xem tất cả cho tìm kiếm/so sánh; card mở đúng đề nghị và điều kiện thay vì chỉ mở catalog chung. Tách Đã lưu/của tôi khỏi đề nghị khám phá.",
+      "why": "Rail giới hạn lựa chọn ban đầu; đường đầy đủ hỗ trợ tác vụ tìm voucher cụ thể.",
+      "tradeoff": "Nội dung ngoài màn dễ bị bỏ qua; thử tìm thương hiệu thứ4 và tìm lại voucher sau lưu.",
+      "source": "ref-layouts.tsx:271–293; evidence/ux-baseline.png"
+    },
+    {
+      "block": "Quà mỗi ngày",
+      "role": "Lời mời nhẹ, mở sâu khi có quan tâm",
+      "observed": "Story là item đầu rail112×160 tại y483; mở viewer bốn bước, scratch ở bước1. Normal pointer entry failed: adjacent Vinmec background intercepted click; four-step viewer is source behavior, not passed interaction.",
+      "keep/change": "keep/change",
+      "layoutDecision": "Fix pointer hit area/stacking before validating normal story opening. Giữ entry nhỏ; hiển thị trạng thái đã nhận và đích Quà của tôi sau nhận. Thưởng/điều kiện chỉ hiện khi có thật.",
+      "why": "Không để game lấn dịch vụ; sau nhận phải có giá trị dùng và nơi tìm lại, không chỉ animation.",
+      "tradeoff": "Thêm bước trước quà; cần kiểm tra khách hiểu thưởng/điều kiện và đi tiếp đâu.",
+      "source": "home-story.tsx:11–60; ref-layouts.tsx:273"
+    },
+    {
+      "block": "Trải nghiệm",
+      "role": "Hình dung chuyến đi hoặc dịch vụ đáng tham gia",
+      "observed": "Hai ảnh lớn Lái thử VinFast/Đến với Đảo Ngọc; rail bắt đầu y713.",
+      "keep/change": "keep/change",
+      "layoutDecision": "Giữ ảnh lớn có chọn lọc; kèm giá hoặc nguyên tắc báo giá, điều kiện, địa điểm và bước tiếp rõ. Với tác vụ đặt cụ thể dùng list/lọc ở tầng sau.",
+      "why": "Ảnh phục vụ tưởng tượng; thông tin ràng buộc phục vụ quyết định. Ưu tiên sau tác vụ tần suất cao.",
+      "tradeoff": "Ảnh chiếm chiều cao và chưa chứng minh nhu cầu; UT tìm điều kiện và phân biệt xem thông tin/gửi yêu cầu/đã đặt.",
+      "source": "ref-layouts.tsx:ForYou; evidence/ux-baseline.png"
+    },
+    {
+      "block": "Điều hướng và hoạt động",
+      "role": "Tìm lại tài sản, yêu cầu và hỗ trợ",
+      "observed": "Bottom Trang chủ/Ưu đãi/Sự kiện/Hạng; Home không có CTA cam kết đơn nhất.",
+      "keep/change": "keep/change",
+      "layoutDecision": "Giữ bottom ổn định; đặt trạng thái đã lưu/đang xử lý ở đúng hub; chỉ thêm CTA cố định trong flow có một cam kết.",
+      "why": "Home nhiều ý định không cần primary cố định. Tìm lại là phần tiếp theo của nhận quà/lưu deal/đăng ký.",
+      "tradeoff": "Thêm hub có thể tăng lựa chọn; UT quay lại tìm tài sản sau rời màn.",
+      "source": "page.tsx navigation; home-story.tsx campaign dispatch"
+    }
+  ],
+  "archivedLessons": [
+    {
+      "lesson": "Archive hierarchy2–8 changes skin/banner, header/paper/wallet palette and icon/art/photo filtering; it is primarily visual treatment, not seven new IA or behavioral models.",
+      "source": "hierarchy.ts:1; hierarchy.css:19–48; page.tsx:122",
+      "evidenceType": "source-note",
+      "notProven": "Archive label Các option chưa chọn is not a recorded user rejection."
+    },
+    {
+      "lesson": "Award belongs after an achievement; expiry only when assets actually expire; distant progress can discourage. Gate these by real state rather than permanent Home pressure.",
+      "source": "hooks.tsx:24–44 NOTES",
+      "evidenceType": "source-note",
+      "notProven": "Design judgements from competitor references, explicitly no usage data."
+    },
+    {
+      "lesson": "Scratch/gift can create a small entry but must connect to usable value; source itself warns opening then leaving and reward budget.",
+      "source": "hooks.tsx NOTES scratch/gift; home-story.tsx:45",
+      "evidenceType": "source-note",
+      "notProven": "No observed retention lift or stakeholder rejection."
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "daily",
+      "audience": "Hội viên đang có quyền lợi phù hợp",
+      "openReason": "Kiểm tra quà mới có điều kiện rõ",
+      "homePriority": "Trạng thái gọn → quà nhỏ → ưu đãi có thể dùng",
+      "action": "Mở quà, lưu vào kho, xem nơi dùng",
+      "receivedValue": "Quyền lợi xác nhận và có thể tìm lại",
+      "returnReason": "Có nội dung mới phù hợp hoặc quyền lợi cần dùng",
+      "risk": "Mở xong thoát, quà thiếu giá trị/ngân sách",
+      "evidenceType": "giả thuyết cần human UT; không có số conversion"
+    },
+    {
+      "id": "spend",
+      "audience": "Khách chuẩn bị chi tiêu thật tại thương hiệu",
+      "openReason": "Tìm ưu đãi áp dụng cho giao dịch dự định",
+      "homePriority": "Dịch vụ/ưu đãi theo ngữ cảnh, tìm kiếm và Đã lưu",
+      "action": "Kiểm tra điều kiện rồi dùng đúng kênh",
+      "receivedValue": "Lợi ích đã áp dụng chỉ xác nhận sau giao dịch",
+      "returnReason": "Tra lịch sử/lợi ích thực nhận và lần mua tiếp",
+      "risk": "Nhầm % tối đa thành tiền tiết kiệm bảo đảm",
+      "evidenceType": "giả thuyết cần human UT; không có số conversion"
+    },
+    {
+      "id": "experience",
+      "audience": "Khách có dự định cuối tuần hoặc dịch vụ lớn",
+      "openReason": "Khám phá lựa chọn phù hợp và điều kiện",
+      "homePriority": "Ảnh có chọn lọc → giá/địa điểm → chi tiết",
+      "action": "Xem điều kiện, lưu hoặc gửi yêu cầu có đồng ý",
+      "receivedValue": "Lựa chọn rõ; yêu cầu có mã/trạng thái nếu đã gửi",
+      "returnReason": "Theo dõi phản hồi hoặc tiếp tục kế hoạch đã lưu",
+      "risk": "Nhầm lead đã gửi thành booking đã xác nhận",
+      "evidenceType": "giả thuyết cần human UT; không có số conversion"
+    }
+  ],
+  "facts": {
+    "walletHeights": {
+      "viewportWidth": 390,
+      "containerOption2": 198.984375,
+      "coverOption2": 236.9921875,
+      "containerOption1Source": 237,
+      "differenceContainerOnly": 38.015625,
+      "servicesY": 275.1953125,
+      "giftRailY": 483.125,
+      "experienceY": 713.0859375,
+      "measurement": "getBoundingClientRect after parent VinClub open; transforms produce fractional px"
+    },
+    "cssOverride": "ref-layouts.css:413 reverses service copy for products3; :804 resets column so final is icon → title → description. hierarchy.css:53 champagne58% superseded by :69 gold30035%, then :75–76 gold50058%; :65 art saturation superseded :85 filter:none. WinMart paper :60 then :80 then :87 red100/orange50.",
+    "scope": "Read-only production review; writes restricted to report/evidence in vsp-ui."
+  }
+}

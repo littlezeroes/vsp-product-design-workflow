@@ -1,0 +1,29 @@
+/* One ordered sequence: finish the 3D turn, enlarge the mark,
+   then close the entire splash in a circle to reveal Home. */
+.vc-launch { display: flex; justify-content: center; min-height: 100dvh; overflow: hidden; background: var(--splash-black); }
+.vc-launch__stage { width: 100%; max-width: 430px; height: 100dvh; position: relative; overflow: hidden; isolation: isolate; background: var(--background); }
+.vc-launch__home { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: var(--background); }
+.vc-launch__curtain { position: absolute; inset: 0; z-index: 2; background: var(--splash-black); clip-path: circle(90% at 50% 39.5%); }
+.vc-launch__content { position: absolute; inset: 0; pointer-events: none; }
+.vc-launch__content .vc-splash, .vc-launch__content .vc-splash__screen { background: transparent; }
+.vc-launch .vc-splash__hero { inset: 17% 0 auto; height: 45%; }
+.vc-launch .vc-splash__art { width: 112%; transform-origin: 62% 74%; will-change: transform; }
+.vc-launch .vc-splash[data-option=turn] .vc-splash__object { animation: none; }
+.vc-launch .vc-splash__light, .vc-launch .vc-splash__outline { display: none; }
+.vc-launch .vc-splash__identity { top: 82.55%; }
+.vc-launch .vc-splash[data-option=turn] .vc-splash__wordmark { width: 73%; animation: none; transform: none; opacity: 1; }
+.vc-launch[data-launch-phase=grow] .vc-splash__art { animation: vc-launch-logo-grow 520ms cubic-bezier(.65,0,.3,1) forwards; }
+.vc-launch[data-launch-phase=close] .vc-splash__art { transform: scale(18); }
+.vc-launch[data-launch-phase=close] .vc-launch__curtain { animation: vc-launch-circle-close 560ms cubic-bezier(.65,0,.25,1) forwards; }
+.vc-launch[data-launch-phase=home] .vc-launch__curtain { visibility: hidden; pointer-events: none; }
+@keyframes vc-launch-logo-grow { from { transform: scale(1); } to { transform: scale(18); } }
+@keyframes vc-launch-circle-close { from { clip-path: circle(90% at 50% 39.5%); } to { clip-path: circle(0% at 50% 39.5%); } }
+@media (prefers-reduced-motion: reduce) { .vc-launch * { animation: none !important; transition: none !important; } }
+
+.vc-launch__radiance { position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0; transform-origin: 50% 39.5%; mix-blend-mode: screen; background: radial-gradient(ellipse at 50% 39.5%, color-mix(in srgb, var(--splash-on-dark) 85%, transparent) 0%, color-mix(in srgb, var(--splash-brand-gold) 75%, transparent) 15%, color-mix(in srgb, var(--splash-brand-gold) 30%, transparent) 36%, transparent 68%); }
+.vc-launch__radiance::after { content: ''; position: absolute; inset: 0; background: repeating-conic-gradient(from -12deg at 50% 39.5%, transparent 0deg 18deg, color-mix(in srgb, var(--splash-on-dark) 24%, transparent) 20deg, transparent 24deg 40deg); mask: radial-gradient(ellipse at 50% 39.5%, transparent 5%, var(--splash-on-dark) 24%, transparent 70%); }
+.vc-launch[data-launch-phase=grow] .vc-launch__radiance { animation: vc-gold-radiate 520ms cubic-bezier(.22,1,.36,1) forwards; }
+.vc-launch[data-launch-phase=close] .vc-launch__radiance { opacity: .42; transform: scale(2.2); }
+.vc-launch[data-launch-phase=grow] .vc-splash__identity,
+.vc-launch[data-launch-phase=close] .vc-splash__identity { opacity: 0; transition: opacity 160ms ease-out; }
+@keyframes vc-gold-radiate { 0% { opacity: 0; transform: scale(.12); } 55% { opacity: .9; transform: scale(.95); } 100% { opacity: .42; transform: scale(2.2); } }

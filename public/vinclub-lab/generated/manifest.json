@@ -1,0 +1,850 @@
+{
+  "createdAt": "2026-10-02T08:07:27.033Z",
+  "configVersion": 6,
+  "cases": [
+    {
+      "id": "member-metal",
+      "ia": "member",
+      "visual": "metal",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=member&visual=metal&stage=visual"
+    },
+    {
+      "id": "member-glass",
+      "ia": "member",
+      "visual": "glass",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=member&visual=glass&stage=visual"
+    },
+    {
+      "id": "member-spatial",
+      "ia": "member",
+      "visual": "spatial",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=member&visual=spatial&stage=visual"
+    },
+    {
+      "id": "member-concierge",
+      "ia": "member",
+      "visual": "concierge",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=member&visual=concierge&stage=visual"
+    },
+    {
+      "id": "member-luminous",
+      "ia": "member",
+      "visual": "luminous",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=member&visual=luminous&stage=visual"
+    },
+    {
+      "id": "needs-metal",
+      "ia": "needs",
+      "visual": "metal",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=needs&visual=metal&stage=visual"
+    },
+    {
+      "id": "needs-glass",
+      "ia": "needs",
+      "visual": "glass",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=needs&visual=glass&stage=visual"
+    },
+    {
+      "id": "needs-spatial",
+      "ia": "needs",
+      "visual": "spatial",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=needs&visual=spatial&stage=visual"
+    },
+    {
+      "id": "needs-concierge",
+      "ia": "needs",
+      "visual": "concierge",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=needs&visual=concierge&stage=visual"
+    },
+    {
+      "id": "needs-luminous",
+      "ia": "needs",
+      "visual": "luminous",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=needs&visual=luminous&stage=visual"
+    },
+    {
+      "id": "ecosystem-metal",
+      "ia": "ecosystem",
+      "visual": "metal",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=ecosystem&visual=metal&stage=visual"
+    },
+    {
+      "id": "ecosystem-glass",
+      "ia": "ecosystem",
+      "visual": "glass",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=ecosystem&visual=glass&stage=visual"
+    },
+    {
+      "id": "ecosystem-spatial",
+      "ia": "ecosystem",
+      "visual": "spatial",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=ecosystem&visual=spatial&stage=visual"
+    },
+    {
+      "id": "ecosystem-concierge",
+      "ia": "ecosystem",
+      "visual": "concierge",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=ecosystem&visual=concierge&stage=visual"
+    },
+    {
+      "id": "ecosystem-luminous",
+      "ia": "ecosystem",
+      "visual": "luminous",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=ecosystem&visual=luminous&stage=visual"
+    },
+    {
+      "id": "context-metal",
+      "ia": "context",
+      "visual": "metal",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=context&visual=metal&stage=visual"
+    },
+    {
+      "id": "context-glass",
+      "ia": "context",
+      "visual": "glass",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=context&visual=glass&stage=visual"
+    },
+    {
+      "id": "context-spatial",
+      "ia": "context",
+      "visual": "spatial",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=context&visual=spatial&stage=visual"
+    },
+    {
+      "id": "context-concierge",
+      "ia": "context",
+      "visual": "concierge",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=context&visual=concierge&stage=visual"
+    },
+    {
+      "id": "context-luminous",
+      "ia": "context",
+      "visual": "luminous",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=context&visual=luminous&stage=visual"
+    },
+    {
+      "id": "conversation-metal",
+      "ia": "conversation",
+      "visual": "metal",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=conversation&visual=metal&stage=visual"
+    },
+    {
+      "id": "conversation-glass",
+      "ia": "conversation",
+      "visual": "glass",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=conversation&visual=glass&stage=visual"
+    },
+    {
+      "id": "conversation-spatial",
+      "ia": "conversation",
+      "visual": "spatial",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=conversation&visual=spatial&stage=visual"
+    },
+    {
+      "id": "conversation-concierge",
+      "ia": "conversation",
+      "visual": "concierge",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=conversation&visual=concierge&stage=visual"
+    },
+    {
+      "id": "conversation-luminous",
+      "ia": "conversation",
+      "visual": "luminous",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=conversation&visual=luminous&stage=visual"
+    },
+    {
+      "id": "superhub-metal",
+      "ia": "superhub",
+      "visual": "metal",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=superhub&visual=metal&stage=visual"
+    },
+    {
+      "id": "superhub-glass",
+      "ia": "superhub",
+      "visual": "glass",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=superhub&visual=glass&stage=visual"
+    },
+    {
+      "id": "superhub-spatial",
+      "ia": "superhub",
+      "visual": "spatial",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=superhub&visual=spatial&stage=visual"
+    },
+    {
+      "id": "superhub-concierge",
+      "ia": "superhub",
+      "visual": "concierge",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=superhub&visual=concierge&stage=visual"
+    },
+    {
+      "id": "superhub-luminous",
+      "ia": "superhub",
+      "visual": "luminous",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=superhub&visual=luminous&stage=visual"
+    },
+    {
+      "id": "minimalhub-metal",
+      "ia": "minimalhub",
+      "visual": "metal",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=minimalhub&visual=metal&stage=visual"
+    },
+    {
+      "id": "minimalhub-glass",
+      "ia": "minimalhub",
+      "visual": "glass",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=minimalhub&visual=glass&stage=visual"
+    },
+    {
+      "id": "minimalhub-spatial",
+      "ia": "minimalhub",
+      "visual": "spatial",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=minimalhub&visual=spatial&stage=visual"
+    },
+    {
+      "id": "minimalhub-concierge",
+      "ia": "minimalhub",
+      "visual": "concierge",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=minimalhub&visual=concierge&stage=visual"
+    },
+    {
+      "id": "minimalhub-luminous",
+      "ia": "minimalhub",
+      "visual": "luminous",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=minimalhub&visual=luminous&stage=visual"
+    },
+    {
+      "id": "atlas-metal",
+      "ia": "atlas",
+      "visual": "metal",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=atlas&visual=metal&stage=visual"
+    },
+    {
+      "id": "atlas-glass",
+      "ia": "atlas",
+      "visual": "glass",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=atlas&visual=glass&stage=visual"
+    },
+    {
+      "id": "atlas-spatial",
+      "ia": "atlas",
+      "visual": "spatial",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=atlas&visual=spatial&stage=visual"
+    },
+    {
+      "id": "atlas-concierge",
+      "ia": "atlas",
+      "visual": "concierge",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=atlas&visual=concierge&stage=visual"
+    },
+    {
+      "id": "atlas-luminous",
+      "ia": "atlas",
+      "visual": "luminous",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=atlas&visual=luminous&stage=visual"
+    },
+    {
+      "id": "daily-metal",
+      "ia": "daily",
+      "visual": "metal",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=daily&visual=metal&stage=visual"
+    },
+    {
+      "id": "daily-glass",
+      "ia": "daily",
+      "visual": "glass",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=daily&visual=glass&stage=visual"
+    },
+    {
+      "id": "daily-spatial",
+      "ia": "daily",
+      "visual": "spatial",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=daily&visual=spatial&stage=visual"
+    },
+    {
+      "id": "daily-concierge",
+      "ia": "daily",
+      "visual": "concierge",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=daily&visual=concierge&stage=visual"
+    },
+    {
+      "id": "daily-luminous",
+      "ia": "daily",
+      "visual": "luminous",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=daily&visual=luminous&stage=visual"
+    },
+    {
+      "id": "dualsurface-metal",
+      "ia": "dualsurface",
+      "visual": "metal",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=dualsurface&visual=metal&stage=visual"
+    },
+    {
+      "id": "dualsurface-glass",
+      "ia": "dualsurface",
+      "visual": "glass",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=dualsurface&visual=glass&stage=visual"
+    },
+    {
+      "id": "dualsurface-spatial",
+      "ia": "dualsurface",
+      "visual": "spatial",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=dualsurface&visual=spatial&stage=visual"
+    },
+    {
+      "id": "dualsurface-concierge",
+      "ia": "dualsurface",
+      "visual": "concierge",
+      "recommended": true,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=dualsurface&visual=concierge&stage=visual"
+    },
+    {
+      "id": "dualsurface-luminous",
+      "ia": "dualsurface",
+      "visual": "luminous",
+      "recommended": false,
+      "url": "http://localhost:3000/vinclub-lab?solo=1&ia=dualsurface&visual=luminous&stage=visual"
+    }
+  ],
+  "checks": [
+    {
+      "name": "atlas: correct top navigation, direct mini apps, tuition entry, 2D/3D toggle",
+      "passed": true
+    },
+    {
+      "name": "daily: correct top navigation, direct mini apps, tuition entry, 2D/3D toggle",
+      "passed": true
+    },
+    {
+      "name": "Balanced AI has no 3D",
+      "passed": true
+    },
+    {
+      "name": "Amount validation → failure → retry → success",
+      "passed": true
+    },
+    {
+      "name": "Three top spaces are actionable",
+      "passed": true
+    },
+    {
+      "name": "390px layout + conversation action",
+      "passed": true
+    },
+    {
+      "name": "Three.js renderer + pointer: metal",
+      "passed": true
+    },
+    {
+      "name": "Three.js renderer + pointer: glass",
+      "passed": true
+    },
+    {
+      "name": "Three.js renderer + pointer: spatial",
+      "passed": true
+    },
+    {
+      "name": "Three.js renderer + pointer: concierge",
+      "passed": true
+    },
+    {
+      "name": "Three.js renderer + pointer: luminous",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "artifacts": [
+    {
+      "stage": "IA",
+      "name": "01 · Giá trị hội viên",
+      "src": "generated/ia-member.png",
+      "url": "/vinclub-lab?solo=1&ia=member&stage=wireframe"
+    },
+    {
+      "stage": "IA",
+      "name": "02 · Nhu cầu dẫn dắt",
+      "src": "generated/ia-needs.png",
+      "url": "/vinclub-lab?solo=1&ia=needs&stage=wireframe"
+    },
+    {
+      "stage": "IA",
+      "name": "03 · Hệ sinh thái dịch vụ",
+      "src": "generated/ia-ecosystem.png",
+      "url": "/vinclub-lab?solo=1&ia=ecosystem&stage=wireframe"
+    },
+    {
+      "stage": "IA",
+      "name": "04 · Ngữ cảnh chủ động",
+      "src": "generated/ia-context.png",
+      "url": "/vinclub-lab?solo=1&ia=context&stage=wireframe"
+    },
+    {
+      "stage": "IA",
+      "name": "05 · Hội thoại dẫn dắt",
+      "src": "generated/ia-conversation.png",
+      "url": "/vinclub-lab?solo=1&ia=conversation&stage=wireframe"
+    },
+    {
+      "stage": "IA",
+      "name": "06 · Super App Hub",
+      "src": "generated/ia-superhub.png",
+      "url": "/vinclub-lab?solo=1&ia=superhub&stage=wireframe"
+    },
+    {
+      "stage": "IA",
+      "name": "07 · Super App tối giản",
+      "src": "generated/ia-minimalhub.png",
+      "url": "/vinclub-lab?solo=1&ia=minimalhub&stage=wireframe"
+    },
+    {
+      "stage": "IA",
+      "name": "01 · Map-first",
+      "src": "generated/ia-atlas.png",
+      "url": "/vinclub-lab?solo=1&ia=atlas&stage=wireframe"
+    },
+    {
+      "stage": "IA",
+      "name": "02 · AI-first",
+      "src": "generated/ia-daily.png",
+      "url": "/vinclub-lab?solo=1&ia=daily&stage=wireframe"
+    },
+    {
+      "stage": "IA",
+      "name": "03 · Cân bằng / hướng của bạn",
+      "src": "generated/ia-dualsurface.png",
+      "url": "/vinclub-lab?solo=1&ia=dualsurface&stage=wireframe"
+    },
+    {
+      "stage": "Visual",
+      "name": "member-metal",
+      "src": "generated/member-metal.png",
+      "url": "/vinclub-lab?solo=1&ia=member&visual=metal&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "member-glass",
+      "src": "generated/member-glass.png",
+      "url": "/vinclub-lab?solo=1&ia=member&visual=glass&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "member-spatial",
+      "src": "generated/member-spatial.png",
+      "url": "/vinclub-lab?solo=1&ia=member&visual=spatial&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "member-concierge",
+      "src": "generated/member-concierge.png",
+      "url": "/vinclub-lab?solo=1&ia=member&visual=concierge&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "member-luminous",
+      "src": "generated/member-luminous.png",
+      "url": "/vinclub-lab?solo=1&ia=member&visual=luminous&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "needs-metal",
+      "src": "generated/needs-metal.png",
+      "url": "/vinclub-lab?solo=1&ia=needs&visual=metal&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "needs-glass",
+      "src": "generated/needs-glass.png",
+      "url": "/vinclub-lab?solo=1&ia=needs&visual=glass&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "needs-spatial",
+      "src": "generated/needs-spatial.png",
+      "url": "/vinclub-lab?solo=1&ia=needs&visual=spatial&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "needs-concierge",
+      "src": "generated/needs-concierge.png",
+      "url": "/vinclub-lab?solo=1&ia=needs&visual=concierge&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "needs-luminous",
+      "src": "generated/needs-luminous.png",
+      "url": "/vinclub-lab?solo=1&ia=needs&visual=luminous&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "ecosystem-metal",
+      "src": "generated/ecosystem-metal.png",
+      "url": "/vinclub-lab?solo=1&ia=ecosystem&visual=metal&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "ecosystem-glass",
+      "src": "generated/ecosystem-glass.png",
+      "url": "/vinclub-lab?solo=1&ia=ecosystem&visual=glass&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "ecosystem-spatial",
+      "src": "generated/ecosystem-spatial.png",
+      "url": "/vinclub-lab?solo=1&ia=ecosystem&visual=spatial&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "ecosystem-concierge",
+      "src": "generated/ecosystem-concierge.png",
+      "url": "/vinclub-lab?solo=1&ia=ecosystem&visual=concierge&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "ecosystem-luminous",
+      "src": "generated/ecosystem-luminous.png",
+      "url": "/vinclub-lab?solo=1&ia=ecosystem&visual=luminous&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "context-metal",
+      "src": "generated/context-metal.png",
+      "url": "/vinclub-lab?solo=1&ia=context&visual=metal&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "context-glass",
+      "src": "generated/context-glass.png",
+      "url": "/vinclub-lab?solo=1&ia=context&visual=glass&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "context-spatial",
+      "src": "generated/context-spatial.png",
+      "url": "/vinclub-lab?solo=1&ia=context&visual=spatial&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "context-concierge",
+      "src": "generated/context-concierge.png",
+      "url": "/vinclub-lab?solo=1&ia=context&visual=concierge&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "context-luminous",
+      "src": "generated/context-luminous.png",
+      "url": "/vinclub-lab?solo=1&ia=context&visual=luminous&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "conversation-metal",
+      "src": "generated/conversation-metal.png",
+      "url": "/vinclub-lab?solo=1&ia=conversation&visual=metal&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "conversation-glass",
+      "src": "generated/conversation-glass.png",
+      "url": "/vinclub-lab?solo=1&ia=conversation&visual=glass&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "conversation-spatial",
+      "src": "generated/conversation-spatial.png",
+      "url": "/vinclub-lab?solo=1&ia=conversation&visual=spatial&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "conversation-concierge",
+      "src": "generated/conversation-concierge.png",
+      "url": "/vinclub-lab?solo=1&ia=conversation&visual=concierge&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "conversation-luminous",
+      "src": "generated/conversation-luminous.png",
+      "url": "/vinclub-lab?solo=1&ia=conversation&visual=luminous&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "superhub-metal",
+      "src": "generated/superhub-metal.png",
+      "url": "/vinclub-lab?solo=1&ia=superhub&visual=metal&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "superhub-glass",
+      "src": "generated/superhub-glass.png",
+      "url": "/vinclub-lab?solo=1&ia=superhub&visual=glass&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "superhub-spatial",
+      "src": "generated/superhub-spatial.png",
+      "url": "/vinclub-lab?solo=1&ia=superhub&visual=spatial&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "superhub-concierge",
+      "src": "generated/superhub-concierge.png",
+      "url": "/vinclub-lab?solo=1&ia=superhub&visual=concierge&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "superhub-luminous",
+      "src": "generated/superhub-luminous.png",
+      "url": "/vinclub-lab?solo=1&ia=superhub&visual=luminous&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "minimalhub-metal",
+      "src": "generated/minimalhub-metal.png",
+      "url": "/vinclub-lab?solo=1&ia=minimalhub&visual=metal&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "minimalhub-glass",
+      "src": "generated/minimalhub-glass.png",
+      "url": "/vinclub-lab?solo=1&ia=minimalhub&visual=glass&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "minimalhub-spatial",
+      "src": "generated/minimalhub-spatial.png",
+      "url": "/vinclub-lab?solo=1&ia=minimalhub&visual=spatial&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "minimalhub-concierge",
+      "src": "generated/minimalhub-concierge.png",
+      "url": "/vinclub-lab?solo=1&ia=minimalhub&visual=concierge&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "minimalhub-luminous",
+      "src": "generated/minimalhub-luminous.png",
+      "url": "/vinclub-lab?solo=1&ia=minimalhub&visual=luminous&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "atlas-metal",
+      "src": "generated/atlas-metal.png",
+      "url": "/vinclub-lab?solo=1&ia=atlas&visual=metal&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "atlas-glass",
+      "src": "generated/atlas-glass.png",
+      "url": "/vinclub-lab?solo=1&ia=atlas&visual=glass&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "atlas-spatial",
+      "src": "generated/atlas-spatial.png",
+      "url": "/vinclub-lab?solo=1&ia=atlas&visual=spatial&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "atlas-concierge",
+      "src": "generated/atlas-concierge.png",
+      "url": "/vinclub-lab?solo=1&ia=atlas&visual=concierge&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "atlas-luminous",
+      "src": "generated/atlas-luminous.png",
+      "url": "/vinclub-lab?solo=1&ia=atlas&visual=luminous&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "daily-metal",
+      "src": "generated/daily-metal.png",
+      "url": "/vinclub-lab?solo=1&ia=daily&visual=metal&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "daily-glass",
+      "src": "generated/daily-glass.png",
+      "url": "/vinclub-lab?solo=1&ia=daily&visual=glass&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "daily-spatial",
+      "src": "generated/daily-spatial.png",
+      "url": "/vinclub-lab?solo=1&ia=daily&visual=spatial&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "daily-concierge",
+      "src": "generated/daily-concierge.png",
+      "url": "/vinclub-lab?solo=1&ia=daily&visual=concierge&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "daily-luminous",
+      "src": "generated/daily-luminous.png",
+      "url": "/vinclub-lab?solo=1&ia=daily&visual=luminous&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "dualsurface-metal",
+      "src": "generated/dualsurface-metal.png",
+      "url": "/vinclub-lab?solo=1&ia=dualsurface&visual=metal&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "Visual",
+      "name": "dualsurface-glass",
+      "src": "generated/dualsurface-glass.png",
+      "url": "/vinclub-lab?solo=1&ia=dualsurface&visual=glass&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "dualsurface-spatial",
+      "src": "generated/dualsurface-spatial.png",
+      "url": "/vinclub-lab?solo=1&ia=dualsurface&visual=spatial&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "dualsurface-concierge",
+      "src": "generated/dualsurface-concierge.png",
+      "url": "/vinclub-lab?solo=1&ia=dualsurface&visual=concierge&stage=visual",
+      "recommended": true
+    },
+    {
+      "stage": "Visual",
+      "name": "dualsurface-luminous",
+      "src": "generated/dualsurface-luminous.png",
+      "url": "/vinclub-lab?solo=1&ia=dualsurface&visual=luminous&stage=visual",
+      "recommended": false
+    },
+    {
+      "stage": "3D",
+      "name": "01 · Sculpted Metal",
+      "src": "generated/3d-metal.png",
+      "video": "generated/3d-metal.webm",
+      "url": "/vinclub-lab?solo=1&ia=member&visual=metal&stage=3d"
+    },
+    {
+      "stage": "3D",
+      "name": "02 · Optical Glass",
+      "src": "generated/3d-glass.png",
+      "video": "generated/3d-glass.webm",
+      "url": "/vinclub-lab?solo=1&ia=needs&visual=glass&stage=3d"
+    },
+    {
+      "stage": "3D",
+      "name": "04 · Spatial Ecosystem",
+      "src": "generated/3d-spatial.png",
+      "video": "generated/3d-spatial.webm",
+      "url": "/vinclub-lab?solo=1&ia=ecosystem&visual=spatial&stage=3d"
+    },
+    {
+      "stage": "3D",
+      "name": "05 · Personal Concierge",
+      "src": "generated/3d-concierge.png",
+      "video": "generated/3d-concierge.webm",
+      "url": "/vinclub-lab?solo=1&ia=context&visual=concierge&stage=3d"
+    },
+    {
+      "stage": "3D",
+      "name": "06 · Luminous Minimal",
+      "src": "generated/3d-luminous.png",
+      "video": "generated/3d-luminous.webm",
+      "url": "/vinclub-lab?solo=1&ia=member&visual=luminous&stage=3d"
+    }
+  ]
+}

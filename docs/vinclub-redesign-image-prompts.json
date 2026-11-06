@@ -1,0 +1,56 @@
+{
+  "generator": "built-in image_gen__imagegen",
+  "created": "2026-10-03",
+  "assets": [
+    {
+      "slug": "today",
+      "prompt": "Use case: stylized-concept. Create premium landscape 1536x1024 artwork for VinClub daily lifestyle app banner, actual image only not UI. Airy warm ivory cyclorama with sculptural scarlet ceramic coffee cup, miniature elegant cream house, folded cream paper calendar with absolutely blank pages, and small satin red sphere resting on limestone plinth. Art-directed luxury still life, restrained warm red and cream palette, beautiful tangible ceramic textures and soft natural window lighting, sophisticated editorial 3D realism. Cluster objects to right-center with ample quiet empty space left. Wide composition suitable cropped mobile banner. No text, letters, numerals, logos, watermark, interface, cartoon clipart.",
+      "path": "public/vinclub-redesign-art/today.png"
+    },
+    {
+      "slug": "savings",
+      "prompt": "Use case: stylized-concept. Premium VinClub lifestyle app banner artwork, landscape1536x1024, actual standalone artwork. Macro luxury product photography of emerald transparent glass shopping tote sculpture and champagne brushed metal coins with completely blank faces, on emerald glass plinth; optical caustics, rich translucent greens, warm gold glints, tangible polished edges, sophisticated editorial stilllife. Composition subject clustered right-center, ample quiet space left; high-end texture, art-directed depth, professional refined color. No text letters numbers logos watermark UI screen clipart.",
+      "path": "public/vinclub-redesign-art/savings.png"
+    },
+    {
+      "slug": "household",
+      "prompt": "Use case: stylized-concept. Premium VinClub lifestyle app banner artwork, landscape1536x1024, actual standalone artwork. Tactile handcrafted paper and matte clay architectural miniature of warm terracotta and ochre apartment home with open rooms, tiny cream sofa and botanical pot, folded woven fabric, peach backdrop, soft afternoon light; refined architect model photography, warm intimate family care world. Composition subject clustered right-center, ample quiet space left; high-end texture, art-directed depth, professional refined color. No text letters numbers logos watermark UI screen clipart.",
+      "path": "public/vinclub-redesign-art/household.png"
+    },
+    {
+      "slug": "journey",
+      "prompt": "Use case: stylized-concept. Premium VinClub lifestyle app banner artwork, landscape1536x1024, actual standalone artwork. Cinematic fine art travel photography of turquoise tropical Vietnamese sea with sculptural coral-pink resort architecture and cream stone terrace, one palm casting an elegant shadow, distant horizon and pristine blue water, atmospheric summer sunlight, luxury travel editorial. Composition subject clustered right-center, ample quiet space left; high-end texture, art-directed depth, professional refined color. No text letters numbers logos watermark UI screen clipart.",
+      "path": "public/vinclub-redesign-art/journey.png"
+    },
+    {
+      "slug": "neighborhood",
+      "prompt": "Use case: stylized-concept. Create premium lifestyle app hero artwork landscape1536x1024, standalone artwork not UI. Elegant isometric architectural scale-model of lush Vietnamese waterfront residential neighborhood, cream midrise architecture, verdant gardens, turquoise canal, little pedestrian bridges, pool, market pavilion and cafe, refined realistic miniature photographed against sage backdrop, sunlight and exquisite tiny textures. Cluster main subject center-right with ample quiet space to left; exquisite textures and depth, high-end editorial. No words letters numerals logos watermark interface generic clipart.",
+      "path": "public/vinclub-redesign-art/neighborhood.png"
+    },
+    {
+      "slug": "autopilot",
+      "prompt": "Use case: stylized-concept. Create premium lifestyle app hero artwork landscape1536x1024, standalone artwork not UI. Precision abstract industrial product sculpture of brushed aluminum concentric tracks, pistachio ceramic cylinders and small metallic modules neatly arranging themselves across floating layered machined discs; beautiful engineered tactile surfaces, pale pistachio and silver backdrop, razor sharp luxury product photography. Cluster main subject center-right with ample quiet space to left; exquisite textures and depth, high-end editorial. No words letters numerals logos watermark interface generic clipart.",
+      "path": "public/vinclub-redesign-art/autopilot.png"
+    },
+    {
+      "slug": "concierge",
+      "prompt": "Use case: stylized-concept. Create premium lifestyle app hero artwork landscape1536x1024, standalone artwork not UI. Atmospheric large translucent amber glass orb resting on travertine table in a beautiful softly blurred luxury hospitality lobby, curved velvet lounge architecture, golden warm sunlight through frosted partitions, amber cognac and ivory colors, elegant hospitality photography with nuanced optical refraction. Cluster main subject center-right with ample quiet space to left; exquisite textures and depth, high-end editorial. No words letters numerals logos watermark interface generic clipart.",
+      "path": "public/vinclub-redesign-art/concierge.png"
+    },
+    {
+      "slug": "membership",
+      "prompt": "Use case: stylized-concept. Premium VinClub app banner standalone art landscape1536x1024. Luxury sculptural stilllife of completely blank champagne metal membership card leaning against dark burgundy velvet arch, a brushed gold ribbon sculpture and onyx plinth, rich wine-red atmosphere, theatrical soft side lighting, luxurious physical textures, extreme premium editorial product photograph. Materially sophisticated art direction with tactile real texture, actual depth, subject grouped right-center, wide quiet area left for future UI overlay. No text letters numbers markings logos watermark, no UI, no clipart. All cards and sheets blank.",
+      "path": "public/vinclub-redesign-art/membership.png"
+    },
+    {
+      "slug": "wellbeing",
+      "prompt": "Use case: stylized-concept. Premium VinClub app banner standalone art landscape1536x1024. Soft mint and lavender still life of sculptural frosted glass botanical vessels, delicate natural leafy sprig, lavender ceramic rounded pebble, folded cotton towel and subtle abstract white wellness capsule forms, sage backdrop, gentle morning light, calming art-directed luxury skincare editorial photograph. Materially sophisticated art direction with tactile real texture, actual depth, subject grouped right-center, wide quiet area left for future UI overlay. No text letters numbers markings logos watermark, no UI, no clipart. All cards and sheets blank.",
+      "path": "public/vinclub-redesign-art/wellbeing.png"
+    },
+    {
+      "slug": "transparent",
+      "prompt": "Use case: stylized-concept. Premium VinClub app banner standalone art landscape1536x1024. Crisp architectural stilllife of frosted glass and graphite geometric blank receipt-like layered sheets with subtly serrated physical edges, ice-blue translucent rectangular slabs and dark pencil-thin steel rod, clean pale blue-grey studio, analytical clear precise composition, light refracting through layers, high-end industrial design photography. Materially sophisticated art direction with tactile real texture, actual depth, subject grouped right-center, wide quiet area left for future UI overlay. No text letters numbers markings logos watermark, no UI, no clipart. All cards and sheets blank.",
+      "path": "public/vinclub-redesign-art/transparent.png"
+    }
+  ]
+}

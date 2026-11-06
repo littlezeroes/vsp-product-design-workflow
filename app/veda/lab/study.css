@@ -1,0 +1,244 @@
+.veda-study {
+  min-height: 100svh;
+  padding-bottom: 110px;
+  overflow: visible;
+}
+.veda-study-header {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 10px;
+}
+.veda-study-header > a:first-child {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+.veda-study-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+.veda-study-heading h1 {
+  font-size: 24px;
+  letter-spacing: -0.7px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.veda-study-heading p {
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--veda-subtle);
+  margin-top: 12px;
+  max-width: 580px;
+}
+.veda-study-modes {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.veda-study-modes [aria-pressed="true"] {
+  outline: 1px solid var(--veda-ink);
+  outline-offset: -1px;
+}
+.veda-study-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+.veda-study-comparison figure {
+  margin: 0;
+  min-width: 0;
+}
+.veda-study-comparison figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 9px;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+.veda-study-reference,
+.veda-study-canvas {
+  background: var(--veda-night);
+  width: 100%;
+  aspect-ratio: 660/372;
+  position: relative;
+  overflow: hidden;
+}
+.veda-study-reference img,
+.veda-study-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.veda-study-timeline {
+  padding-top: 28px;
+}
+.veda-study-timeline label {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.veda-study-timeline input {
+  display: block;
+  width: 100%;
+  accent-color: var(--veda-ink);
+  margin: 20px 0 10px;
+  cursor: ew-resize;
+}
+.veda-study-range {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 10px;
+  color: var(--veda-subtle);
+}
+.veda-study-observations {
+  padding-top: 24px;
+}
+.veda-study-observations h2 {
+  font-size: 14px;
+  font-weight: 500;
+}
+.veda-study-notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 28px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--veda-subtle);
+}
+.veda-study-notes strong {
+  color: var(--veda-ink);
+  font-weight: 500;
+}
+.veda-study-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  background: var(--veda-paper);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  min-height: 76px;
+  box-shadow: 0 -1px 14px color-mix(in srgb, var(--veda-ink) 5%, transparent);
+}
+.veda-study-speed {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  margin-left: 12px;
+}
+.veda-study-speed select {
+  background: var(--color-grey-100);
+  color: var(--veda-ink);
+  border: 0;
+  padding: 7px 10px;
+  border-radius: var(--radius-8);
+  font: inherit;
+}
+.veda-study-home {
+  display: none;
+}
+@media (max-width: 760px) {
+  .veda-study-header {
+    height: 60px;
+    font-size: 8px;
+    gap: 12px;
+  }
+  .veda-study-header > a:last-child {
+    display: none;
+  }
+  .veda-study-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .veda-study-heading h1 {
+    font-size: 21px;
+  }
+  .veda-study-heading p {
+    font-size: 10px;
+  }
+  .veda-study-comparison {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .veda-study-comparison figcaption {
+    font-size: 8px;
+  }
+  .veda-study-notes {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .veda-study-observations {
+    padding-top: 16px;
+  }
+  .veda-study-bottom {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 12px;
+    padding-bottom: 28px;
+    min-height: 98px;
+  }
+  .veda-study-bottom > button {
+    font-size: 10px;
+  }
+  .veda-study-speed {
+    margin-left: 4px;
+    font-size: 10px;
+  }
+  .veda-study-speed > select {
+    max-width: 70px;
+  }
+  .veda-study-home {
+    display: block;
+    position: absolute;
+    bottom: 7px;
+    left: calc(50% - 69.5px);
+    border-radius: var(--radius-full, 999px);
+  }
+  .veda-study-range {
+    font-size: 8px;
+  }
+  .veda-study-timeline label {
+    font-size: 10px;
+  }
+  .veda-study {
+    padding-bottom: 140px;
+  }
+}
+.veda-study-canvas-light {
+  background: var(--veda-paper);
+}
+.veda-study-modes {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 580px;
+}
+@media (max-width: 760px) {
+  .veda-study-modes {
+    justify-content: flex-start;
+  }
+  .veda-study-modes button {
+    font-size: 10px;
+  }
+}
+/* The reference boards' modal paper sample is RGB(253,253,253). */
+.veda-study-canvas-light {
+  background: var(--color-grey-25);
+}

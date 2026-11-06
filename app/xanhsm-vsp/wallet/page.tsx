@@ -250,62 +250,6 @@ function WalletInner() {
           </div>
         )}
 
-        {/* ═══ Xanh SM services — CHỈ khi state===active ═══ */}
-        {allDone && (
-          <>
-            <div className="px-[18px] pb-[14px]">
-              <div className="flex items-center gap-[6px] mb-[10px] px-[4px]">
-                <Sparkles size={14} style={{ color: "#28bdbf" }} />
-                <span className="text-[13px] font-bold">Dùng ví với Xanh SM</span>
-                <span className="text-[11px] text-foreground-secondary ml-auto">Miễn phí · nhanh hơn</span>
-              </div>
-              <div className="grid grid-cols-2 gap-[12px]">
-                <button
-                  onClick={() => router.push(`/xanhsm-vsp/booking?state=has-vsp`)}
-                  className="relative h-[112px] rounded-[20px] overflow-hidden text-left active:opacity-90"
-                  style={{ background: "linear-gradient(180deg, #ffffff 0%, #d9f0e6 100%)" }}
-                >
-                  <span className="absolute top-[14px] left-[16px] text-[15px] font-black tracking-[-0.2px]">Gọi xe</span>
-                  <span className="absolute top-[40px] left-[16px] text-[10px] font-semibold text-[#0b5457]">Trả bằng VSP · 0 phí</span>
-                  <div className="absolute bottom-[4px] right-[-4px] w-[72px] h-[66px]">
-                    <Image src="/xanhsm-icons/car.png" alt="car" fill style={{ objectFit: "contain" }} />
-                  </div>
-                </button>
-                <button
-                  className="relative h-[112px] rounded-[20px] overflow-hidden text-left active:opacity-90"
-                  style={{ background: "linear-gradient(180deg, #ffffff 0%, #fff1d9 100%)" }}
-                >
-                  <span className="absolute top-[14px] left-[16px] text-[15px] font-black tracking-[-0.2px]">Đặt đồ ăn</span>
-                  <span className="absolute top-[40px] left-[16px] text-[10px] font-semibold text-[#8a5a00]">Voucher 30K · VSP</span>
-                  <div className="absolute bottom-[4px] right-[0px] w-[68px] h-[62px]">
-                    <Image src="/xanhsm-icons/food.png" alt="food" fill style={{ objectFit: "contain" }} />
-                  </div>
-                </button>
-                <button
-                  className="relative h-[112px] rounded-[20px] overflow-hidden text-left active:opacity-90"
-                  style={{ background: "linear-gradient(180deg, #ffffff 0%, #e8edf7 100%)" }}
-                >
-                  <span className="absolute top-[14px] left-[16px] text-[15px] font-black tracking-[-0.2px]">Giao hàng</span>
-                  <span className="absolute top-[40px] left-[16px] text-[10px] font-semibold text-[#2a4a8a]">Trả bằng VSP · nhanh</span>
-                  <div className="absolute bottom-[4px] right-[-2px] w-[66px] h-[62px]">
-                    <Image src="/xanhsm-icons/gift-box.png" alt="Giao hàng" fill style={{ objectFit: "contain" }} />
-                  </div>
-                </button>
-                <button
-                  className="relative h-[112px] rounded-[20px] overflow-hidden text-left active:opacity-90"
-                  style={{ background: "linear-gradient(180deg, #ffffff 0%, #e0f3eb 100%)" }}
-                >
-                  <span className="absolute top-[14px] left-[16px] text-[15px] font-black tracking-[-0.2px]">VinBus</span>
-                  <span className="absolute top-[40px] left-[16px] text-[10px] font-semibold text-[#0f6b4e]">Trả vé xe buýt</span>
-                  <div className="absolute bottom-[4px] right-[-2px] w-[72px] h-[66px]">
-                    <Image src="/xanhsm-icons/vinbus.png" alt="VinBus" fill style={{ objectFit: "contain" }} />
-                  </div>
-                </button>
-              </div>
-            </div>
-          </>
-        )}
-
         {/* ═══ Transactions ═══ */}
         <div className="px-[18px] pt-[4px] pb-[10px]">
           <span className="text-[15px] font-black">Giao dịch gần đây</span>
@@ -526,7 +470,7 @@ function WithdrawSheet({ balance, onClose }: { balance: number; onClose: () => v
           <button
             key={i}
             onClick={() => setAmount(a)}
-            className={`h-[40px] rounded-full text-[12px] font-semibold ${amount === a ? "bg-foreground text-background" : "bg-secondary text-foreground"}`}
+            className={`h-[40px] rounded-full text-[12px] font-semibold ${amount === a ? "bg-[#28bdbf] text-white" : "bg-secondary text-foreground"}`}
           >
             {a >= 1_000_000 ? `${(a / 1_000_000).toFixed(1).replace(/\.0$/, "")}M` : a === balance ? "Tất cả" : `${a / 1000}K`}
           </button>
@@ -646,7 +590,7 @@ function SimpleSheet({ title, subtitle, icon, onClose }: { title: string; subtit
       <div className="p-[20px] rounded-[14px] bg-secondary text-center text-[12px] text-foreground-secondary mb-[20px]">
         Tính năng này mở SDK của VSP đang tích hợp trong Xanh SM — preview
       </div>
-      <button onClick={onClose} className="w-full h-[52px] rounded-full bg-foreground text-background font-bold text-[15px]">
+      <button onClick={onClose} className="w-full h-[52px] rounded-full text-white font-bold text-[15px]" style={{ background: "#28bdbf", boxShadow: "0 4px 14px rgba(40,189,191,0.35)" }}>
         Đóng
       </button>
     </>

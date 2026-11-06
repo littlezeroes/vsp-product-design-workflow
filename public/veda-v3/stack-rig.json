@@ -1,0 +1,78 @@
+{
+  "method": "Rigid rotation inferred from approximate image-space centers in two source frames under an assumed quarter turn between 10500 and 11166.67 ms. Depth is not uniquely recoverable. No objects are hidden or replaced.",
+  "referenceTimeMs": 10500,
+  "angularSpeedRadPerSec": -2.356194490192345,
+  "anchorTimesMs": [
+    10500,
+    11166.666667
+  ],
+  "centerAnchorUncertaintyPixels": 8,
+  "objects": [
+    {
+      "model": 1,
+      "name": "radial-gold",
+      "position": [
+        -2.0,
+        0,
+        -0.5
+      ],
+      "rotationY": -0.2,
+      "scale": 1.94
+    },
+    {
+      "model": 6,
+      "name": "facet-copper",
+      "position": [
+        -1.6,
+        0,
+        1.9
+      ],
+      "rotationY": 0.7,
+      "scale": 1.94
+    },
+    {
+      "model": 3,
+      "name": "flower-silver",
+      "position": [
+        -0.16,
+        0,
+        -2.3
+      ],
+      "rotationY": 1.55,
+      "scale": 1.94
+    },
+    {
+      "model": 5,
+      "name": "spiral-silver",
+      "position": [
+        -0.1,
+        0,
+        1.1
+      ],
+      "rotationY": 1.4,
+      "scale": 1.94
+    },
+    {
+      "model": 2,
+      "name": "facet-gold",
+      "position": [
+        1.4,
+        0,
+        -2.8
+      ],
+      "rotationY": -0.7,
+      "scale": 1.94
+    },
+    {
+      "model": 4,
+      "name": "spiral-copper",
+      "position": [
+        2.4,
+        0,
+        -2.0
+      ],
+      "rotationY": -1.06,
+      "scale": 1.94
+    }
+  ]
+}

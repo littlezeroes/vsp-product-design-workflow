@@ -18,10 +18,15 @@ const EPICS: Epic[] = [
     color: "#0b5457",
     screens: [
       {
-        id: "S0", title: "Xanh SM Home · no entry", route: "/xanhsm-vsp/gsm-home",
-        why: "Home Xanh SM thuần. KHÔNG có VSP card. Entry point duy nhất là tab Tài khoản ở bottom nav.",
+        id: "S0", title: "Xanh SM Home · GoPay × GoJek integration", route: "/xanhsm-vsp/gsm-home",
+        why: "Home Xanh SM kèm VSP — 3 mức tích hợp giống GoPay × GoJek: Full card (dưới promo, balance lớn + 3 action), Strip ngang (gọn, dưới search), Tile inline (1 ô trong services grid). State 'no-vsp' = CTA kích hoạt tặng 50K cho từng variant.",
         states: [
-          { label: "Home Xanh SM", param: "no-vsp" },
+          { label: "Full · GoPay-style card", param: "active&variant=full" },
+          { label: "Strip · thanh ngang dưới search", param: "active&variant=strip" },
+          { label: "Tile · ô trong services grid", param: "active&variant=tile" },
+          { label: "Chưa có ví · Full · CTA 50K", param: "no-vsp&variant=full" },
+          { label: "Chưa có ví · Strip", param: "no-vsp&variant=strip" },
+          { label: "Chưa có ví · Tile", param: "no-vsp&variant=tile" },
         ],
       },
       {

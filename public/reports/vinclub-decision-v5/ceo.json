@@ -1,0 +1,182 @@
+{
+  "role": "CEO review — recommendation, not approval",
+  "executiveRecommendation": "Giữ một Home chung và dùng V5 để kiểm chứng ba hoàn cảnh. Ưu tiên vòng dùng quyền lợi đang có → đơn minh bạch → tìm lại tài sản; quà là nhánh kích hoạt có hạn mức, lái thử là nhánh yêu cầu có người tiếp nhận. Đề xuất thí điểm hẹp khi từng nhánh đủ vận hành, chưa khuyến nghị mở rộng hoặc tăng ngân sách từ kết quả demo.",
+  "reviewBasis": {
+    "read": [
+      "ux.json",
+      "business.json",
+      "product.json",
+      "app/vinclub-decision-v5/page.tsx"
+    ],
+    "verification": "Đọc artifact và code V5; CEO chưa tự chạy browser/harness. Baseline screenshot và lỗi pointer là quan sát do UX ghi nhận. Chưa có human UT, dữ liệu chuyển đổi hay doanh thu tăng thêm.",
+    "prototype": "http://localhost:3250/vinclub-decision-v5?scenario=daily",
+    "baselineEvidence": "evidence/ux-baseline.png",
+    "sourcePreserved": "Không sửa port3300 hay V1–V4."
+  },
+  "decisions": [
+    {
+      "decision": "Giữ khung nhận biết tài sản → chọn tác vụ → khám phá.",
+      "why": "Khách biết mình có gì trước khi được mời mua; Home có nhiều lý do vào.",
+      "evidence": "Baseline có hạng/VPoint/ví, hai service, rail offer/story và ảnh trải nghiệm; V5 giữ các vai trò này.",
+      "tradeoff": "Nhiều mục vẫn tranh sự chú ý; không có dữ liệu chứng minh thứ tự này tối ưu.",
+      "condition": "Kiểm tra khách tìm đúng ví, voucher và trải nghiệm; xử lý mọi lỗi chặn."
+    },
+    {
+      "decision": "Chọn spend làm vòng chứng minh giá trị đầu tiên.",
+      "why": "Khách có nhu cầu và quyền lợi sẵn có; có thể lần từ quyền lợi tới giá cuối và kết quả.",
+      "evidence": "Code V5 khởi tạo voucher ở spend, tính 2×200.000−50.000=350.000đ, đánh dấu voucher đã dùng và lưu vé mẫu trong Của tôi.",
+      "tradeoff": "Demo chưa có tồn vé, thanh toán, phát hành, hoàn/hủy hoặc đối soát.",
+      "condition": "Một nhà cung cấp xác nhận toàn vòng, quy tắc voucher và xử lý lỗi trước giao dịch thật."
+    },
+    {
+      "decision": "Giữ quà trong entry nhỏ, không mua tăng trưởng bằng lượt mở story.",
+      "why": "Quà có ý nghĩa khi dùng được; phát thưởng tạo chi phí trước khi tạo giá trị tăng thêm.",
+      "evidence": "V5 nối quà mẫu 50.000đ với đơn vé và tài sản phiên; Business chưa có bằng chứng ngân sách/phần hưởng.",
+      "tradeoff": "Thêm bước trước tác vụ mua; nguồn cung và gian lận tăng công vận hành.",
+      "condition": "Có chủ ngân sách, tồn/hạn/đường dùng, chống cấp trùng; đo sử dụng xác nhận và chi phí thay vì chỉ lượt nhận."
+    },
+    {
+      "decision": "Giữ nhánh lái thử với trạng thái yêu cầu chờ xác nhận.",
+      "why": "Ảnh giúp hình dung, form giúp chuyển ý định thành nhu cầu cụ thể mà không giả định đã giữ lịch.",
+      "evidence": "V5 dùng ảnh VinFast, ngày/giờ, điện thoại hợp lệ và consent; kết quả ghi chưa được VinFast tiếp nhận, không lưu/gửi điện thoại.",
+      "tradeoff": "Chưa có khám phá 3D, lựa chọn showroom/xe, API lead hoặc phản hồi lịch.",
+      "condition": "Có P&L nhận yêu cầu, SLA và trạng thái phản hồi; không gọi gửi form là booking hoặc doanh thu."
+    },
+    {
+      "decision": "Giữ ba scenario như ngữ cảnh của cùng IA, chưa chọn ba chiến lược cạnh tranh.",
+      "why": "Mỗi scenario phục vụ khách và tác vụ khác nhau nên không thể xếp thắng/thua bằng một điểm tổng.",
+      "evidence": "Daily/spend/experience cùng khung Home; spend thêm voucher đầu rail, experience đổi tiêu đề ưu tiên; đường tác vụ vẫn dùng chung.",
+      "tradeoff": "Chưa kiểm chứng cá nhân hóa tự động hoặc thay đổi thứ tự toàn bộ layout.",
+      "condition": "So hoàn tất job trong đúng nhóm; khi so IA phải dùng cùng người, cùng nhiệm vụ và nội dung."
+    }
+  ],
+  "optionsComparison": [
+    {
+      "option": "Daily",
+      "customerValue": "Nhận và tìm lại quyền lợi dùng được",
+      "economics": "Chi phí tài trợ trước; chưa chứng minh doanh thu",
+      "feasibility": "Chuỗi demo có; cấp thưởng thật chưa có",
+      "tradeoff": "Dễ tối ưu lượt mở thay vì giá trị dùng",
+      "evidence": "Code V5 + Business; chưa UT"
+    },
+    {
+      "option": "Spend",
+      "customerValue": "Dùng voucher có sẵn với tổng tiền rõ",
+      "economics": "Doanh số P&L khác phần hưởng nền tảng",
+      "feasibility": "Tính tiền và tài sản mẫu có; giao dịch thật chưa có",
+      "tradeoff": "Tồn vé, hoàn/hủy, đối soát",
+      "evidence": "2 vé mẫu 350.000đ sau voucher; chưa giao dịch"
+    },
+    {
+      "option": "Experience",
+      "customerValue": "Hình dung và gửi yêu cầu lịch rõ",
+      "economics": "Lead chỉ có giá trị khi đủ chuẩn/được nhận",
+      "feasibility": "Form/consent mẫu có; P&L chưa nhận",
+      "tradeoff": "Chi phí nội dung, chuyển giao và SLA",
+      "evidence": "Code ghi chờ xác nhận; chưa lead thật"
+    }
+  ],
+  "disagreeWithPreviousWork": [
+    {
+      "claim": "100 biến thể là 100 phương án UX được kiểm chứng.",
+      "correction": "Skin, màu, banner và cách lọc ảnh không tự tạo IA khác nhau. Kho biến thể là tham khảo biểu đạt; không phải bằng chứng loại/chọn của người dùng."
+    },
+    {
+      "claim": "Wallet2 thu nhỏ vật thể ví 38px.",
+      "correction": "UX đo container khoảng199px so237px: giảm38px KHÔNG GIAN DỰ TRỮ. Cover vẫn khoảng237px; phải kiểm tra overlap và khả năng đọc, không quảng bá thu nhỏ toàn bộ ví."
+    },
+    {
+      "claim": "Lượt nhận quà, click đối tác hoặc doanh số P&L chứng minh doanh thu nền tảng.",
+      "correction": "Đây là các tầng kết quả khác nhau; phần hưởng phải có hợp đồng, xác nhận và đối soát; giá trị tăng thêm cần phép so phù hợp."
+    },
+    {
+      "claim": "Có code story nghĩa là entry dùng được.",
+      "correction": "UX ghi normal click nguồn bị span ưu đãi Vinmec chặn. V5 dùng nút story riêng; code cho thấy xử lý hit-area khác nhưng chỉ browser/harness mới xác minh fix trên V5, không chứng minh nguồn3300 được sửa."
+    },
+    {
+      "claim": "Ba scenario là ba IA cạnh tranh hoặc ngày B3 là năng lực đã giao.",
+      "correction": "Đây là ba ngữ cảnh chung khung; B3 là kế hoạch/trạng thái tài liệu, cần nghiệm thu từng hành trình."
+    }
+  ],
+  "actualDemoChanges": [
+    "Tên service cụ thể Dùng quyền lợi/Đặt trải nghiệm thay nhãn generic.",
+    "Quà dẫn tới voucher, đơn vé và kho tài sản; spend khởi tạo tài sản sẵn có.",
+    "Đơn vé có số lượng, chọn áp dụng voucher, tổng tiền và bản ghi kết quả mẫu.",
+    "Yêu cầu VinFast có ngày/giờ, kiểm tra điện thoại và consent; lưu trạng thái chờ trong Của tôi.",
+    "Trạng thái lưu session theo scenario; không gọi payment, ticketing hoặc lead API thật."
+  ],
+  "currentLimitations": [
+    "CEO chưa thực thi harness; mọi nhận định hoạt động hiện là đọc code trừ quan sát baseline do UX cung cấp.",
+    "Code tại lúc review dùng một gift boolean cho cả sở hữu/đã nhận; khi tiêu voucher về false có khả năng nhận lại quà trong phiên. Đã gửi Product/implementation yêu cầu tách claimed khỏi available; cần xác minh lại bản cuối.",
+    "Không có human UT, retention, conversion, ROI hoặc nghiệm thu API."
+  ],
+  "nowLater": {
+    "now": "Hoàn thiện và kiểm tra ba đường demo, ưu tiên vòng spend; giữ nguồn và V1–V4 để so. Chỉ gọi đây là prototype có dữ liệu mẫu.",
+    "pilotGate": "Một quyền lợi/đơn có nhà cung cấp và đối soát; một chiến dịch có ngân sách/chống trùng; một lead có nơi nhận và phản hồi. Nhánh nào thiếu gate tiếp tục ở demo.",
+    "later": "Mở rộng danh mục/chiến dịch sau kết quả xác nhận; AI/chat/3D và mở rộng2027 phụ thuộc nguồn lực, SDK, dữ liệu và phép thử riêng, không thành điều kiện giả cho bản đầu."
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "question": "Khách mở VinClub để làm việc gì?",
+      "answer": "Ba hoàn cảnh: tìm quà phù hợp, dùng quyền lợi cho đơn thật, hoặc cân nhắc trải nghiệm; mỗi hoàn cảnh có đường mở → hành động → nhận giá trị → quay lại."
+    },
+    {
+      "slide": 2,
+      "question": "Baseline thực tế đang hiển thị điều gì?",
+      "answer": "Dùng evidence/ux-baseline.png, URL child/parent và effective params của UX; ghi ảnh quan sát ở390px, không phải UT. Normal click story nguồn bị offer span chặn."
+    },
+    {
+      "slide": 3,
+      "question": "Mỗi khối Home giữ vai trò gì?",
+      "answer": "Tài sản để nhận diện, service để chọn việc, offer để cân nhắc quyền lợi, story để mời nhẹ, ảnh lớn để hình dung. Wallet2 giảm38px không gian dự trữ; cover vẫn237px."
+    },
+    {
+      "slide": 4,
+      "question": "Vì sao có ba option nhưng chưa có option thắng?",
+      "answer": "Ba context composition cùng IA và tác vụ khác nhau; chưa phải A/B ba IA. So usability trong job riêng; so IA cần nhiệm vụ tương đương."
+    },
+    {
+      "slide": 5,
+      "question": "Daily đã nối giá trị ra sao?",
+      "answer": "Quà mẫu → voucher50.000đ → đơn vé → Của tôi; không có phát thưởng thật. Giữ entry nhỏ và kiểm tra cấp trùng sau dùng."
+    },
+    {
+      "slide": 6,
+      "question": "Spend đã thay đổi quyết định mua thế nào?",
+      "answer": "Voucher sở hữu dẫn tới2vé×200.000đ, giảm50.000đ, còn350.000đ; xác nhận chỉ tạo vé mẫu tìm lại được."
+    },
+    {
+      "slide": 7,
+      "question": "Experience đã chuyển khám phá thành gì?",
+      "answer": "Ảnh VinFast → ngày/giờ → consent → yêu cầu mẫu chờ xác nhận; chưa có lịch giữ chỗ hay lead P&L."
+    },
+    {
+      "slide": 8,
+      "question": "Tiền đến từ đâu và ai chịu chi phí?",
+      "answer": "Quà do ngân sách/P&L tài trợ; merchant hưởng doanh số; nền tảng chỉ có phần hưởng khi hợp đồng/đối soát xác nhận. Lead và điểm/ví không tự là doanh thu."
+    },
+    {
+      "slide": 9,
+      "question": "Phần nào làm ngay, phần nào cần điều kiện?",
+      "answer": "Ngay: kiểm tra demo và vòng spend. Pilot: nguồn cung, thanh toán/đối soát, chống trùng, tiếp nhận lead. Mở rộng/AI/3D theo readiness; B3 không phải nghiệm thu."
+    },
+    {
+      "slide": 10,
+      "question": "Bằng chứng hiện đủ kết luận đến đâu?",
+      "answer": "Có quan sát baseline, code và prototype; CEO chưa chạy harness. Không có human UT hay dữ liệu conversion; harness pass cũng chỉ chứng minh kiểm tra kỹ thuật đã nêu."
+    },
+    {
+      "slide": 11,
+      "question": "Khuyến nghị cụ thể là gì?",
+      "answer": "Giữ Home và ba context, ưu tiên pilot dùng quyền lợi hiện hữu; giới hạn daily và O2O theo gate riêng. Đây là khuyến nghị có điều kiện, không phải approval triển khai hoặc chi tiền."
+    }
+  ],
+  "decisionChangingEvidence": "Nếu khách không tìm/hiểu đúng quyền lợi, sửa IA trước mở rộng; nếu không có provider/đối soát, spend ở demo; nếu lead không được nhận, dừng tăng acquisition O2O; nếu quà không tạo sử dụng tăng thêm trong hạn mức, không tăng ngân sách.",
+  "ownerVerification": {
+    "source": "harness.json",
+    "pass": true,
+    "claimOnce": "claimed separated from available; consumed reward cannot be regranted in same demo session",
+    "boundary": "Independent CEO review was code-only. Final owner tests do not become human UT."
+  }
+}

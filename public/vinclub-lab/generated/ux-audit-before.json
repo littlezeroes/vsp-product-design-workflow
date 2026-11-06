@@ -1,0 +1,787 @@
+{
+  "date": "2026-10-02T07:32:16.637Z",
+  "method": "Desktop Chromium mobile viewports with isolated phone preview; no user participants",
+  "results": [
+    {
+      "id": "atlas",
+      "width": 320,
+      "phoneWidth": 320,
+      "scrollOverflow": true,
+      "smallTargets": [
+        {
+          "name": "Elite",
+          "width": 84.609375,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vincom",
+          "width": 79.625,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vinmec",
+          "width": 79.4375,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vinpearl",
+          "width": 83.875,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Thử không gian 3D",
+          "width": 118.53125,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vé xe / tàu",
+          "width": 134,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Bảo hiểm",
+          "width": 134,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Ví trả sau",
+          "width": 134,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Vay tiền mặt",
+          "width": 134,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Trang chủ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Dịch vụ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Lịch sử",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Cá nhân",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        }
+      ],
+      "appsAboveFold": 0,
+      "miniAppCount": 8
+    },
+    {
+      "id": "atlas",
+      "width": 390,
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [
+        {
+          "name": "Elite",
+          "width": 111.53125,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vincom",
+          "width": 79.625,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vinmec",
+          "width": 79.4375,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vinpearl",
+          "width": 83.875,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Thử không gian 3D",
+          "width": 118.53125,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vé xe / tàu",
+          "width": 169,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Bảo hiểm",
+          "width": 169,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Ví trả sau",
+          "width": 169,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Vay tiền mặt",
+          "width": 169,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Trang chủ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Dịch vụ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Lịch sử",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Cá nhân",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        }
+      ],
+      "appsAboveFold": 0,
+      "miniAppCount": 8
+    },
+    {
+      "id": "atlas",
+      "width": 430,
+      "phoneWidth": 430,
+      "scrollOverflow": false,
+      "smallTargets": [
+        {
+          "name": "Elite",
+          "width": 126.921875,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vincom",
+          "width": 79.625,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vinmec",
+          "width": 79.4375,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vinpearl",
+          "width": 83.875,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Thử không gian 3D",
+          "width": 118.53125,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vé xe / tàu",
+          "width": 189,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Bảo hiểm",
+          "width": 189,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Ví trả sau",
+          "width": 189,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Vay tiền mặt",
+          "width": 189,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Trang chủ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Dịch vụ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Lịch sử",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Cá nhân",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        }
+      ],
+      "appsAboveFold": 0,
+      "miniAppCount": 8
+    },
+    {
+      "id": "daily",
+      "width": 320,
+      "phoneWidth": 320,
+      "scrollOverflow": false,
+      "smallTargets": [
+        {
+          "name": "Khám phá quanh bạn",
+          "width": 232,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Elite",
+          "width": 84.609375,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vé xe / tàu",
+          "width": 134,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Bảo hiểm",
+          "width": 134,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Ví trả sau",
+          "width": 134,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Vay tiền mặt",
+          "width": 134,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Trang chủ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Dịch vụ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Lịch sử",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Cá nhân",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        }
+      ],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "daily",
+      "width": 390,
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [
+        {
+          "name": "Khám phá quanh bạn",
+          "width": 302,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Elite",
+          "width": 111.53125,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vé xe / tàu",
+          "width": 169,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Bảo hiểm",
+          "width": 169,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Ví trả sau",
+          "width": 169,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Vay tiền mặt",
+          "width": 169,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Trang chủ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Dịch vụ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Lịch sử",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Cá nhân",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        }
+      ],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "daily",
+      "width": 430,
+      "phoneWidth": 430,
+      "scrollOverflow": false,
+      "smallTargets": [
+        {
+          "name": "Khám phá quanh bạn",
+          "width": 342,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Elite",
+          "width": 126.921875,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vé xe / tàu",
+          "width": 189,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Bảo hiểm",
+          "width": 189,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Ví trả sau",
+          "width": 189,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Vay tiền mặt",
+          "width": 189,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Trang chủ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Dịch vụ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Lịch sử",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Cá nhân",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        }
+      ],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 320,
+      "phoneWidth": 320,
+      "scrollOverflow": true,
+      "smallTargets": [
+        {
+          "name": "Thanh toán",
+          "width": 86.65625,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "VinClub",
+          "width": 86.671875,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Khám phá",
+          "width": 86.671875,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Thẻ của tôi",
+          "width": 98.4375,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vé xe / tàu",
+          "width": 134,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Bảo hiểm",
+          "width": 134,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Ví trả sau",
+          "width": 134,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vay tiền mặt",
+          "width": 134,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Khám phá voucher",
+          "width": 232,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Trang chủ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Dịch vụ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Lịch sử",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Cá nhân",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        }
+      ],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 390,
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [
+        {
+          "name": "Thanh toán",
+          "width": 110,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "VinClub",
+          "width": 110,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Khám phá",
+          "width": 110,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Thẻ của tôi",
+          "width": 98.4375,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vé xe / tàu",
+          "width": 169,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Bảo hiểm",
+          "width": 169,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Ví trả sau",
+          "width": 169,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vay tiền mặt",
+          "width": 169,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Khám phá voucher",
+          "width": 302,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Trang chủ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Dịch vụ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Lịch sử",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Cá nhân",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        }
+      ],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 430,
+      "phoneWidth": 430,
+      "scrollOverflow": false,
+      "smallTargets": [
+        {
+          "name": "Thanh toán",
+          "width": 123.328125,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "VinClub",
+          "width": 123.34375,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Khám phá",
+          "width": 123.328125,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Thẻ của tôi",
+          "width": 98.4375,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vé xe / tàu",
+          "width": 189,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Bảo hiểm",
+          "width": 189,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Ví trả sau",
+          "width": 189,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Vay tiền mặt",
+          "width": 189,
+          "height": 32,
+          "visible": true
+        },
+        {
+          "name": "Khám phá voucher",
+          "width": 342,
+          "height": 32,
+          "visible": false
+        },
+        {
+          "name": "Trang chủ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Dịch vụ",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Lịch sử",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        },
+        {
+          "name": "Cá nhân",
+          "width": 42,
+          "height": 30,
+          "visible": false
+        }
+      ],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    }
+  ],
+  "checks": [
+    {
+      "id": "atlas",
+      "task": "Gọi xe does not show amount form",
+      "passed": false
+    },
+    {
+      "id": "atlas",
+      "task": "Học phí reaches payment demo",
+      "passed": true
+    },
+    {
+      "id": "daily",
+      "task": "Gọi xe does not show amount form",
+      "passed": false
+    },
+    {
+      "id": "daily",
+      "task": "Học phí reaches payment demo",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "Gọi xe does not show amount form",
+      "passed": false
+    },
+    {
+      "id": "dualsurface",
+      "task": "Học phí reaches payment demo",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "Khám phá only vouchers and services",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "V-Smart Pay has no ecosystem mini-app grid",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

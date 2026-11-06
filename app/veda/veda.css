@@ -1,0 +1,728 @@
+.veda-page {
+  background: var(--veda-paper);
+  color: var(--veda-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+.veda-page ::selection {
+  background: var(--veda-ink);
+  color: var(--veda-paper);
+}
+.veda-page a {
+  text-decoration: none;
+  color: inherit;
+}
+.veda-page a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 6px;
+}
+.veda-renderer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.veda-renderer canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.veda-header {
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 3;
+}
+.veda-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: -1.6px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.veda-brand svg {
+  width: 25px;
+  height: 29px;
+  flex-shrink: 0;
+}
+.veda-brand-aperture {
+  fill: var(--veda-paper);
+}
+.veda-header-caption {
+  font-size: 11px;
+  line-height: 1.3;
+  margin-left: auto;
+  margin-right: 13%;
+}
+.veda-header-link {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 12px;
+}
+.veda-hero {
+  min-height: calc(100svh - 92px);
+  height: 820px;
+  max-height: 1100px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  padding-bottom: 92px;
+}
+.veda-hero-copy {
+  position: relative;
+  z-index: 3;
+  align-self: center;
+  padding-bottom: 48px;
+}
+.veda-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  line-height: 1.4;
+}
+.veda-hero h1 {
+  font-size: clamp(54px, 7.5vw, 120px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.075em;
+  margin: 30px 0;
+}
+.veda-hero h1 em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.07em;
+}
+.veda-hero p {
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 26px;
+}
+.veda-hero-object {
+  height: 80%;
+  width: 100%;
+  position: relative;
+}
+.veda-section-meta {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px;
+  line-height: 1.4;
+  z-index: 3;
+}
+.veda-hero > .veda-section-meta,
+.veda-geometry > .veda-section-meta,
+.veda-materials > .veda-section-meta,
+.veda-end > .veda-section-meta {
+  left: 22px;
+  right: 22px;
+}
+.veda-dark {
+  background: var(--veda-night);
+  color: var(--veda-paper);
+}
+.veda-dark .veda-brand-aperture {
+  fill: var(--veda-night);
+}
+.veda-assembly-scroll {
+  height: 250svh;
+  position: relative;
+  scroll-margin-top: 0;
+}
+.veda-assembly-sticky {
+  height: 100svh;
+  min-height: 670px;
+  position: sticky;
+  top: 0;
+}
+.veda-editorial-heading {
+  display: grid;
+  grid-template-columns: 17% 27% 1fr;
+  position: relative;
+  z-index: 3;
+  align-items: start;
+  gap: 20px;
+}
+.veda-editorial-heading .veda-brand {
+  font-size: 17px;
+  letter-spacing: -1px;
+}
+.veda-editorial-heading .veda-brand svg {
+  width: 16px;
+  height: 18px;
+}
+.veda-editorial-heading h2 {
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 400;
+  margin: 0;
+}
+.veda-editorial-heading > div {
+  max-width: 300px;
+  margin-left: auto;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.veda-editorial-heading p + p {
+  margin-top: 12px;
+}
+.veda-assembly-stage {
+  position: absolute;
+  inset: 100px 0 100px;
+  cursor: grab;
+  touch-action: pan-y;
+}
+.veda-assembly-stage:active {
+  cursor: grabbing;
+}
+.veda-assembly-controls {
+  position: absolute;
+  bottom: 74px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+  gap: 14px;
+}
+.veda-assembly-controls > span,
+.veda-geometry-toggle > span {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+.veda-assembly-controls > div {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.veda-dark .veda-assembly-controls {
+  --foreground: var(--veda-paper);
+  --background: var(--veda-night);
+  --btn-secondary-bg: color-mix(in srgb, var(--veda-paper) 9%, transparent);
+}
+.veda-mode-button[aria-pressed="true"] {
+  outline: 1px solid color-mix(in srgb, var(--veda-paper) 50%, transparent);
+  outline-offset: -1px;
+}
+.veda-geometry {
+  position: relative;
+  min-height: 760px;
+  padding-top: 36px;
+  padding-bottom: 120px;
+}
+.veda-geometry-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 3;
+  margin-top: 74px;
+}
+.veda-forms-stage {
+  height: 360px;
+  width: 100%;
+}
+.veda-form-labels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  font-size: 10px;
+  gap: 22px;
+  padding-bottom: 50px;
+}
+.veda-form-labels span {
+  padding-left: 15%;
+}
+.veda-materials {
+  position: relative;
+  min-height: 720px;
+  padding-top: 36px;
+  padding-bottom: 150px;
+  background: var(--color-grey-50);
+}
+.veda-materials .veda-brand-aperture {
+  fill: var(--color-grey-50);
+}
+.veda-material-stage {
+  height: 390px;
+  margin-top: 36px;
+}
+.veda-material-labels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+.veda-material-labels span {
+  padding-left: 23%;
+}
+.veda-material-labels small {
+  font-size: 10px;
+  line-height: 2.4;
+  letter-spacing: 0;
+  color: var(--veda-subtle);
+}
+.veda-end {
+  height: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 36px;
+  position: relative;
+  padding-bottom: 70px;
+}
+.veda-brand-large {
+  font-size: clamp(100px, 17vw, 240px);
+  letter-spacing: -0.07em;
+  gap: 20px;
+}
+.veda-brand-large svg {
+  width: clamp(90px, 16vw, 215px);
+  height: clamp(100px, 17vw, 235px);
+}
+.veda-end > a:last-of-type {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+.veda-fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--veda-paper);
+  color: var(--veda-ink);
+  box-shadow: 0 -1px 12px color-mix(in srgb, var(--veda-ink) 4%, transparent);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+.veda-fixed-bottom > span:first-child {
+  max-width: 65%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.veda-scroll-count {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+.veda-fixed-bottom button {
+  font-size: 10px;
+  --btn-secondary-bg: var(--color-grey-100);
+}
+.veda-home-indicator {
+  display: none;
+}
+@media (min-width: 1600px) {
+  .veda-header,
+  .veda-hero,
+  .veda-editorial-heading,
+  .veda-assembly-controls,
+  .veda-section-meta,
+  .veda-geometry,
+  .veda-materials,
+  .veda-end {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  .veda-hero {
+    height: calc(100svh - 92px);
+  }
+}
+@media (max-width: 700px) {
+  .veda-header {
+    height: 74px;
+  }
+  .veda-header-caption {
+    display: none;
+  }
+  .veda-header-link {
+    font-size: 10px;
+    gap: 5px;
+  }
+  .veda-hero {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 850px;
+    max-height: none;
+    padding-top: 48px;
+    align-items: stretch;
+    gap: 0;
+    padding-bottom: 90px;
+  }
+  .veda-hero-copy {
+    align-self: stretch;
+    padding: 0;
+  }
+  .veda-hero h1 {
+    font-size: 66px;
+    margin: 22px 0;
+  }
+  .veda-hero p {
+    font-size: 12px;
+  }
+  .veda-hero-object {
+    height: 360px;
+    margin-top: -5px;
+  }
+  .veda-hero > .veda-section-meta {
+    bottom: 28px;
+  }
+  .veda-editorial-heading {
+    grid-template-columns: 22% 1fr;
+    gap: 14px;
+  }
+  .veda-editorial-heading > div {
+    grid-column: 2;
+    font-size: 10px;
+    max-width: 230px;
+    margin: 0;
+  }
+  .veda-editorial-heading h2 {
+    font-size: 11px;
+  }
+  .veda-editorial-heading .veda-brand {
+    font-size: 15px;
+  }
+  .veda-assembly-sticky {
+    min-height: 760px;
+  }
+  .veda-assembly-stage {
+    inset: 160px 0 150px;
+  }
+  .veda-assembly-controls {
+    bottom: 78px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .veda-assembly-controls > div {
+    gap: 4px;
+  }
+  .veda-mode-button {
+    font-size: 11px;
+  }
+  .veda-section-meta {
+    font-size: 8px;
+    gap: 12px;
+  }
+  .veda-section-meta > span:nth-child(2) {
+    max-width: 45%;
+  }
+  .veda-geometry {
+    min-height: 660px;
+    padding-top: 24px;
+    padding-bottom: 100px;
+  }
+  .veda-geometry-toggle {
+    margin-top: 38px;
+    gap: 10px;
+  }
+  .veda-geometry-toggle > span {
+    max-width: 140px;
+    line-height: 1.5;
+    font-size: 8px;
+  }
+  .veda-forms-stage {
+    height: 300px;
+  }
+  .veda-form-labels {
+    gap: 6px;
+    font-size: 8px;
+  }
+  .veda-form-labels span {
+    padding-left: 0;
+  }
+  .veda-materials {
+    min-height: 650px;
+    padding-top: 24px;
+    padding-bottom: 100px;
+  }
+  .veda-material-stage {
+    height: 320px;
+    margin-top: 18px;
+  }
+  .veda-material-labels {
+    font-size: 8px;
+  }
+  .veda-material-labels span {
+    padding-left: 10%;
+  }
+  .veda-material-labels small {
+    font-size: 8px;
+  }
+  .veda-end {
+    height: 480px;
+  }
+  .veda-brand-large {
+    font-size: 100px;
+    gap: 10px;
+  }
+  .veda-brand-large svg {
+    width: 86px;
+    height: 100px;
+  }
+  .veda-end .veda-section-meta {
+    bottom: 80px;
+  }
+  .veda-fixed-bottom {
+    height: 70px;
+    padding-bottom: 18px;
+    gap: 12px;
+  }
+  .veda-home-indicator {
+    display: block;
+    position: absolute;
+    bottom: 7px;
+    left: calc(50% - 69.5px);
+    border-radius: var(--radius-full, 999px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .veda-page {
+    scroll-behavior: auto;
+  }
+}
+/* A deterministic, unscaled 660 × 372 evidence viewport from the supplied video.
+   This mode is separate from responsive presentation and is used by the harness. */
+.veda-page[data-reference="assembly"],
+.veda-page[data-reference="ring"] {
+  width: 660px;
+  height: 372px;
+  overflow: hidden;
+}
+.veda-page[data-reference="assembly"] > *,
+.veda-page[data-reference="ring"] > * {
+  display: none;
+}
+.veda-page[data-reference] > .veda-renderer {
+  display: block;
+}
+.veda-page[data-reference="assembly"] > .veda-assembly-scroll,
+.veda-page[data-reference="ring"] > .veda-assembly-scroll {
+  display: block;
+  height: 372px;
+}
+.veda-page[data-reference="assembly"] .veda-assembly-sticky,
+.veda-page[data-reference="ring"] .veda-assembly-sticky {
+  height: 372px;
+  min-height: 372px;
+  position: relative;
+}
+.veda-page[data-reference="assembly"] .veda-editorial-heading,
+.veda-page[data-reference="ring"] .veda-editorial-heading {
+  display: block;
+  position: absolute;
+  inset: 0;
+  padding: 0;
+}
+.veda-page[data-reference="assembly"] .veda-editorial-heading > .veda-brand,
+.veda-page[data-reference="ring"] .veda-editorial-heading > .veda-brand {
+  position: absolute;
+  top: 9px;
+  left: 8px;
+  font-size: 12px;
+  gap: 1px;
+  letter-spacing: -0.6px;
+}
+.veda-page[data-reference="assembly"] .veda-editorial-heading > .veda-brand svg,
+.veda-page[data-reference="ring"] .veda-editorial-heading > .veda-brand svg {
+  width: 10px;
+  height: 11px;
+}
+.veda-page[data-reference="assembly"] .veda-editorial-heading > h2,
+.veda-page[data-reference="ring"] .veda-editorial-heading > h2 {
+  position: absolute;
+  top: 12px;
+  left: 116px;
+  font-size: 6px;
+  line-height: 1;
+}
+.veda-page[data-reference="assembly"] .veda-editorial-heading > div {
+  position: absolute;
+  top: 35px;
+  left: 116px;
+  margin: 0;
+  max-width: none;
+  display: grid;
+  grid-template-columns: 100px 104px;
+  gap: 9px;
+  font-size: 4.6px;
+  line-height: 1.3;
+}
+.veda-page[data-reference="assembly"] .veda-editorial-heading p + p {
+  margin: 0;
+}
+.veda-page[data-reference="ring"] .veda-editorial-heading > div {
+  position: absolute;
+  top: 35px;
+  left: 116px;
+  margin: 0;
+  width: 112px;
+  font-size: 5px;
+  line-height: 1.3;
+}
+.veda-page[data-reference="assembly"] .veda-assembly-stage {
+  inset: 64px 90px 42px 90px;
+}
+.veda-page[data-reference="ring"] .veda-assembly-stage {
+  inset: 28px 45px 38px 300px;
+}
+.veda-page[data-reference="assembly"] .veda-assembly-controls,
+.veda-page[data-reference="ring"] .veda-assembly-controls {
+  display: none;
+}
+.veda-page[data-reference="assembly"] .veda-section-meta,
+.veda-page[data-reference="ring"] .veda-section-meta {
+  bottom: 7px;
+  padding: 0;
+  left: 116px;
+  right: 28px;
+  font-size: 4px;
+}
+.veda-page[data-reference="assembly"] .veda-section-meta > span:nth-child(2),
+.veda-page[data-reference="ring"] .veda-section-meta > span:nth-child(2) {
+  display: none;
+}
+/* Editorial scale follows the source's guideline pages, rather than a marketing hero. */
+.veda-hero {
+  grid-template-columns: 30% 70%;
+}
+.veda-hero-copy {
+  align-self: start;
+  padding-top: 70px;
+  max-width: 240px;
+}
+.veda-hero h1 {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+  margin: 0 0 24px;
+}
+.veda-hero p {
+  font-size: 11px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.veda-hero-copy button {
+  margin-top: 12px;
+  font-size: 10px;
+}
+@media (max-width: 700px) {
+  .veda-hero-copy {
+    padding-top: 0;
+    max-width: 250px;
+  }
+  .veda-hero h1 {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  .veda-hero p {
+    font-size: 11px;
+  }
+  .veda-hero-object {
+    margin-top: 30px;
+  }
+  .veda-hero {
+    min-height: 780px;
+  }
+}
+.veda-assembly-sticky > .veda-editorial-heading {
+  grid-template-columns: 17% 1fr;
+  row-gap: 24px;
+}
+.veda-assembly-sticky > .veda-editorial-heading > div {
+  grid-column: 2;
+  max-width: 240px;
+  margin-left: 0;
+}
+.veda-assembly-stage[data-formation="ring"] {
+  left: 43%;
+  right: 2%;
+  top: 72px;
+}
+.veda-assembly-stage[data-formation="assembly"] {
+  left: 12%;
+  right: 12%;
+  top: 160px;
+}
+.veda-assembly-sticky:has([data-formation="assembly"])
+  > .veda-editorial-heading
+  > div {
+  max-width: 470px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.veda-assembly-sticky:has([data-formation="assembly"])
+  > .veda-editorial-heading
+  p
+  + p {
+  margin-top: 0;
+}
+@media (max-width: 700px) {
+  .veda-assembly-stage[data-formation="ring"],
+  .veda-assembly-stage[data-formation="assembly"] {
+    left: 0;
+    right: 0;
+    top: 210px;
+    bottom: 150px;
+  }
+  .veda-assembly-sticky > .veda-editorial-heading {
+    grid-template-columns: 22% 1fr;
+    row-gap: 14px;
+  }
+  .veda-assembly-sticky:has([data-formation="assembly"])
+    > .veda-editorial-heading
+    > div {
+    max-width: 230px;
+    display: block;
+  }
+  .veda-assembly-sticky:has([data-formation="assembly"])
+    > .veda-editorial-heading
+    p
+    + p {
+    margin-top: 12px;
+  }
+}
+.veda-page[data-reference="assembly"] .veda-assembly-stage {
+  inset: 64px 90px 42px 90px;
+}
+.veda-page[data-reference="ring"] .veda-assembly-stage {
+  inset: 28px 45px 38px 300px;
+}
+.veda-page[data-reference="assembly"] .veda-editorial-heading > div {
+  max-width: none;
+  gap: 9px;
+}
+.veda-page[data-reference="assembly"] .veda-editorial-heading > div {
+  display: grid;
+  grid-template-columns: 100px 104px;
+  width: 213px;
+  max-width: none;
+  gap: 9px;
+}
+.veda-page[data-reference="assembly"] .veda-editorial-heading p + p {
+  margin: 0;
+}

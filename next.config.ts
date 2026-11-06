@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  distDir: process.env.VSP_DIST_DIR || ".next",
   devIndicators: false,
   typescript: {
     ignoreBuildErrors: true,

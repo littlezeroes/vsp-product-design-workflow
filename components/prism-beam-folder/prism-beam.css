@@ -1,0 +1,64 @@
+/* Reference palette, isolated from the surrounding VSP theme. */
+.prism-page {
+  --prism-background: #08070c;
+  min-height: 100svh; display: flex; justify-content: center; background: var(--prism-background);
+}
+.prism-screen {
+  --prism-background: #08070c;
+  --prism-stage-center: #14101c;
+  --prism-text: #f3f0f8;
+  --prism-muted: #8d88a0;
+  --prism-eyebrow: #6f6a82;
+  --prism-hint: #5f5a72;
+  --prism-saved: #ff6fb5;
+  --prism-floor-center: rgba(255,95,210,.32);
+  --prism-floor-mid: rgba(182,92,255,.14);
+  --prism-floor-edge: rgba(182,92,255,0);
+  --prism-transparent: transparent;
+  --prism-badge-ink: #ffffff;
+  --foreground: var(--prism-text);
+  --prism-folder-y: 545px; --prism-folder-label-y: 603px;
+  --prism-header-y: 72px; --prism-hint-y: 779px; --prism-stage-radius: 639px;
+  --prism-header-opacity: 1; --prism-saved-opacity: 0; --prism-ready-opacity: 1;
+  --prism-badge-scale: 0; --prism-floor-opacity: 0;
+  position: relative; width: 100%; max-width: 480px; height: 100svh; min-height: 560px;
+  overflow: hidden; isolation: isolate; color: var(--prism-text);
+  background: radial-gradient(circle var(--prism-stage-radius) at 50% var(--prism-folder-y), var(--prism-stage-center), var(--prism-background));
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.prism-beam, .prism-art { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.prism-floor {
+  position: absolute; left: calc(50% - 190px); top: calc(var(--prism-folder-y) + 44px - 190px);
+  width: 380px; height: 380px; border-radius: 50%; transform: scaleY(.3); opacity: var(--prism-floor-opacity);
+  background: radial-gradient(circle 190px at center, var(--prism-floor-center), var(--prism-floor-mid) 50%, var(--prism-floor-edge));
+  pointer-events: none;
+}
+.prism-header { position: absolute; top: var(--prism-header-y); left: 24px; right: 24px; opacity: var(--prism-header-opacity); pointer-events: none; }
+.prism-eyebrow { margin: 0; height: 14px; line-height: 14px; font-size: 11px; font-weight: 600; letter-spacing: 2px; color: var(--prism-eyebrow); white-space: nowrap; }
+.prism-header h1 { margin: 6px 0 0; height: 36px; line-height: 36px; font-size: 30px; font-weight: 700; letter-spacing: -.5px; white-space: nowrap; }
+.prism-sub { margin: 4px 0 0; height: 20px; line-height: 20px; font-size: 15px; color: var(--prism-muted); white-space: nowrap; }
+.prism-screen .prism-hold {
+  position: absolute; left: calc(50% - 82px); top: calc(var(--prism-folder-y) - 80px);
+  width: 164px; height: 152px; padding: 0; border-radius: var(--radius-14, 14px);
+  color: var(--prism-transparent); cursor: grab; touch-action: none;
+}
+.prism-screen .prism-hold > span:first-child, .prism-screen .prism-hold:disabled > span:first-child { background: var(--prism-transparent) !important; }
+.prism-screen .prism-hold:active { cursor: grabbing; }
+.prism-screen .prism-hold:focus-visible { outline: 1px solid var(--prism-muted); outline-offset: -8px; box-shadow: none; }
+.prism-screen .prism-hold:disabled { cursor: default; }
+.prism-badge-text { position: absolute; left: calc(50% + 31.5px); top: calc(var(--prism-folder-y) - 52.5px); width: 29px; height: 29px; display: flex; justify-content: center; align-items: center; color: var(--prism-badge-ink); font-size: 13px; line-height: 16px; font-weight: 700; transform: scale(var(--prism-badge-scale)); pointer-events: none; }
+.prism-folder-text { position: absolute; top: var(--prism-folder-label-y); left: 0; right: 0; display: flex; flex-direction: column; align-items: center; pointer-events: none; }
+.prism-folder-text h2 { margin: 0; height: 22px; line-height: 22px; font-size: 17px; font-weight: 600; }
+.prism-count-line { position: relative; margin-top: 4px; height: 18px; width: 100%; }
+.prism-count-line p { position: absolute; inset: 0; display: flex; justify-content: center; margin: 0; height: 18px; line-height: 18px; font-size: 14px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.prism-count-ready { color: var(--prism-muted); opacity: var(--prism-ready-opacity); }
+.prism-count-saved { color: var(--prism-saved); opacity: var(--prism-saved-opacity); }
+.prism-hint { position: absolute; top: var(--prism-hint-y); left: 0; right: 0; display: flex; justify-content: center; margin: 0; height: 18px; line-height: 18px; font-size: 13px; font-weight: 500; color: var(--prism-hint); pointer-events: none; }
+.prism-home-indicator { position: absolute; bottom: 8px; left: calc(50% - 69.5px); border-radius: 999px; opacity: .8; }
+.prism-error { position: absolute; bottom: 96px; left: 24px; right: 24px; color: var(--prism-text); background: var(--prism-background); padding: 12px; border-radius: var(--radius-14, 14px); font-size: 14px; }
+/* The hit target has no painted button surface, including the library's disabled state. */
+.prism-screen .prism-hold > span:first-child { display: none; }
+/* Freeze the count on a readable label instead of a half-finished crossfade. */
+.prism-screen[data-reduced="true"] .prism-count-ready { opacity: 0; }
+.prism-screen[data-reduced="true"] .prism-count-saved { opacity: 1; }

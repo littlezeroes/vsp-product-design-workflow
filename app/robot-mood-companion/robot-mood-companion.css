@@ -1,0 +1,14 @@
+@font-face{font-family:PipBricolage;src:url('/robot-mood-companion/BricolageHeadline.ttf') format('truetype');font-display:swap}
+.pip-screen{--pip-room:#F8E6A0;--pip-ink:#3A2E0A;position:relative;isolation:isolate;width:100%;height:100dvh;min-height:560px;overflow:hidden;background:var(--pip-room);color:var(--pip-ink);font-family:Arial,Helvetica,sans-serif;touch-action:manipulation}
+.pip-top{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 8px);left:24px;right:24px;height:34px;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+.pip-brand{font-family:PipBricolage,sans-serif;font-size:24px}.pip-meta{font-size:14px;font-weight:600;opacity:.7}
+.pip-moods{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 64px);left:24px;right:24px;height:130px;pointer-events:none}
+.pip-mood-box{position:absolute;inset:0 0 auto;opacity:0}.pip-mood-box:first-child{opacity:1}.pip-mood-box h1{font-family:PipBricolage,sans-serif;font-size:64px;line-height:70px;font-weight:400;letter-spacing:-2px;margin:0}.pip-mood-box p{margin:4px 0 0;font-size:18px;line-height:24px;opacity:.8}
+.pip-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.pip-screen .pip-touch{position:absolute;inset:0;width:100%;height:100%;padding:0;border-radius:0;background:transparent;color:inherit;z-index:1}.pip-screen .pip-touch>span:first-child{background:transparent!important}.pip-screen .pip-touch:focus-visible{outline:2px solid var(--pip-ink);outline-offset:-8px}
+.pip-footer{position:absolute;z-index:3;left:24px;right:24px;bottom:0;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 14px)}
+.pip-dots{display:flex;justify-content:center;align-items:center;gap:8px;margin-bottom:20px}.pip-dot{display:block;width:8px;height:8px;border-radius:var(--radius-8);background:var(--pip-ink);opacity:.3}.pip-dot:first-child{width:26px;opacity:1}
+.pip-screen .pip-action{width:100%;height:58px;padding:0;font-family:PipBricolage,sans-serif;font-size:18px;font-weight:400;color:var(--pip-room)}.pip-screen .pip-action>span:first-child{background:var(--pip-ink)}
+.pip-home-indicator{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:139px;height:5px;background:var(--pip-ink);border-radius:var(--radius-8)}
+@media(min-width:600px){.pip-screen{max-width:480px;margin-inline:auto}}
+@media(prefers-reduced-motion:reduce){.pip-screen *{animation:none!important;transition:none!important}}

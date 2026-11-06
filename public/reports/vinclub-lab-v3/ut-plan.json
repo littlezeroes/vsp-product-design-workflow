@@ -1,0 +1,177 @@
+{
+  "version": "3",
+  "status": "PROTOCOL_READY_NOT_RUN",
+  "meaning": "UT = usability test; bộ giao diện UI được quản lý riêng.",
+  "scope": "Đánh giá khả năng tìm đường và hoàn thành nhiệm vụ trên prototype; không đánh giá tích hợp ngân hàng hoặc giao dịch thật.",
+  "results": null,
+  "participants": {
+    "planned": "9–12 người; điều chỉnh sau vòng pilot, chưa tuyển / chưa chạy.",
+    "segments": [
+      "Hội viên đang dùng điểm / quyền lợi",
+      "Khách có nhu cầu mua vé / gói",
+      "Khách quan tâm nhà / xe hoặc trải nghiệm O2O"
+    ],
+    "rule": "Không dùng điểm chuyên gia hoặc số lượt chạy Playwright thay cho số người tham gia."
+  },
+  "design": {
+    "shortlist": 3,
+    "method": "Trong mỗi nhóm, mỗi người thử 3 IA với cùng một bố cục UI kiểm soát; sau khi chọn IA mới so UI. Không đưa cả 100 UI cho một người.",
+    "counterbalance": [
+      "ABC",
+      "BCA",
+      "CAB",
+      "ACB",
+      "CBA",
+      "BAC"
+    ],
+    "taskOrder": "Luân phiên bộ nhiệm vụ; dùng dữ liệu tương đương, tránh ghi nhớ cùng tên sự kiện / voucher.",
+    "pilot": "1–2 phiên pilot để sửa hướng dẫn và sự cố; báo riêng, không trộn kết quả chính.",
+    "sessionMinutes": "35–50",
+    "moderation": "Không chỉ chỗ cần bấm; nếu hỗ trợ phải ghi nhận. Người dùng được dừng bất cứ lúc nào."
+  },
+  "tasks": [
+    {
+      "id": "UT01",
+      "title": "Điểm sắp hết hạn",
+      "prompt": "Bạn muốn biết có bao nhiêu điểm sắp hết hạn và tìm cách sử dụng chúng.",
+      "successCriteria": "Đến đúng màn điểm / hạn dùng, tìm được lựa chọn áp dụng; không nhầm với điều kiện nâng hạng.",
+      "conceptualPath": [
+        "Điểm khả dụng",
+        "Lô / hạn điểm",
+        "Nơi dùng điểm"
+      ],
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "UT02",
+      "title": "Đổi điểm lấy voucher",
+      "prompt": "Bạn muốn đổi điểm lấy một voucher phù hợp, rồi tìm lại voucher vừa đổi.",
+      "successCriteria": "Hiểu số điểm cần dùng, xác nhận đúng; tìm lại voucher ở khu vực sở hữu.",
+      "conceptualPath": [
+        "Danh mục đổi điểm",
+        "Chi tiết / điều kiện",
+        "Voucher đã nhận"
+      ],
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "UT03",
+      "title": "Mua vé",
+      "prompt": "Bạn muốn mua hai vé cho một sự kiện và tìm lại vé sau khi mua.",
+      "successCriteria": "Chọn đúng sự kiện, số lượng, kiểm tra tổng tiền và hoàn tất xác nhận demo; mở lại vé.",
+      "conceptualPath": [
+        "Sự kiện",
+        "Chọn vé",
+        "Xác nhận demo",
+        "Vé của tôi"
+      ],
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "UT04",
+      "title": "Mua và dùng gói",
+      "prompt": "Bạn muốn mua một gói cho gia đình, rồi biết còn những quyền lợi nào chưa dùng.",
+      "successCriteria": "Phân biệt giá gói và mua lẻ, điều kiện gia đình; tìm gói sở hữu và quyền lợi còn lại.",
+      "conceptualPath": [
+        "Khám phá gói",
+        "Chi tiết gói",
+        "Gói đã mua"
+      ],
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "UT05",
+      "title": "O2O / gửi nhu cầu",
+      "prompt": "Bạn muốn xem một dự án, hẹn tham quan và kiểm tra yêu cầu đã được tiếp nhận chưa.",
+      "successCriteria": "Đến sa bàn / dự án, đặt lịch demo có consent, tìm trạng thái; không hiểu nhầm gửi lead là đã mua nhà.",
+      "conceptualPath": [
+        "Khám phá dự án",
+        "Tư vấn / lịch hẹn",
+        "Consent",
+        "Yêu cầu của tôi"
+      ],
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "UT06",
+      "title": "Ví và thanh toán",
+      "prompt": "Bạn muốn tìm số dư tiền, kiểm tra nguồn tiền và lịch sử; phân biệt tiền ví với VPoint.",
+      "successCriteria": "Mở đúng VinPay, tìm nguồn tiền / lịch sử, giải thích được tiền và điểm. Không giao dịch thật.",
+      "conceptualPath": [
+        "VinPay",
+        "Nguồn tiền",
+        "Lịch sử"
+      ],
+      "status": "NOT_RUN"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "Task success",
+      "definition": "Thành công không hỗ trợ / có hỗ trợ / thất bại theo tiêu chí từng tác vụ."
+    },
+    {
+      "name": "First click",
+      "definition": "Điểm bấm đầu thuộc nhánh hợp lý; không bắt buộc một đường duy nhất."
+    },
+    {
+      "name": "Time on task",
+      "definition": "Từ đọc xong yêu cầu tới đạt tiêu chí; dừng nếu vượt 3 phút và ghi nhận."
+    },
+    {
+      "name": "Backtracks",
+      "definition": "Số lần quay lại vì tìm sai đường; phân biệt thao tác xem lại chủ động."
+    },
+    {
+      "name": "SEQ",
+      "definition": "Một câu tự đánh giá độ dễ sau tác vụ, thang 1–7."
+    },
+    {
+      "name": "Comprehension",
+      "definition": "Giải thích được tiền / điểm, ưu đãi mới / quyền lợi đã sở hữu, gửi lead / giao dịch mua."
+    },
+    {
+      "name": "SUS (optional)",
+      "definition": "Chỉ dùng bảng chuẩn sau toàn phiên; ghi rõ ngôn ngữ và cách chấm, không thay cho success."
+    }
+  ],
+  "decisionRule": {
+    "type": "Proposed before collection",
+    "target": "Ưu tiên IA có thành công không hỗ trợ cao hơn trên tác vụ trọng tâm, ít nhầm khái niệm hơn, khả thi theo nguồn cung. Không tuyên bố khác biệt thống kê với mẫu nhỏ.",
+    "guardrail": "Không đánh đổi hiểu sai số tiền, điều kiện quyền lợi hoặc trạng thái mua / lead để tăng số click CTA."
+  },
+  "recordTemplate": {
+    "participantId": "P__",
+    "segment": "",
+    "order": "ABC",
+    "ia": "IA__",
+    "ui": "UI__",
+    "task": "UT__",
+    "firstClick": "",
+    "success": "NOT_RUN",
+    "assistance": false,
+    "seconds": null,
+    "backtracks": null,
+    "seq": null,
+    "observation": "",
+    "quoteWithConsent": ""
+  },
+  "automatedHarness": {
+    "separateFromHumanUT": true,
+    "checks": [
+      "100 tổ hợp mở được và có mã duy nhất",
+      "Navigation / modal / CTA hoạt động theo scope demo",
+      "Không overflow trang ở viewport desktop và mobile",
+      "Không lỗi runtime / console nghiêm trọng",
+      "Header → Section → FixedBottom; home indicator",
+      "Tối đa một primary CTA; semantic tokens; named radius",
+      "Lưu ảnh và log PASS / FAIL theo tổ hợp"
+    ],
+    "doesNotProve": [
+      "Người dùng hiểu tên tab",
+      "Thời gian hoàn thành thực",
+      "Conversion uplift",
+      "Tỷ lệ giữ chân hoặc doanh thu"
+    ]
+  }
+}

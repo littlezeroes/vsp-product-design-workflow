@@ -1,0 +1,191 @@
+{
+  "bounds": {
+    "x": [
+      -8.5,
+      8.5
+    ],
+    "z": [
+      -6.5,
+      6.5
+    ],
+    "height": 3.2
+  },
+  "camera": {
+    "type": "orthographic",
+    "position": [
+      14,
+      16,
+      18
+    ],
+    "target": [
+      0,
+      0.6,
+      0
+    ],
+    "orthographicScale": 15.5,
+    "fixed": true,
+    "detail": {
+      "transitionMs": 1100,
+      "zoom": 2.25,
+      "yawRadians": -0.95,
+      "dragRotate": true,
+      "returnToOverview": true,
+      "path": "spherical arc"
+    }
+  },
+  "landmarks": {
+    "vincom_mall": [
+      -2,
+      0,
+      0.1
+    ],
+    "vincom_center": [
+      4.5,
+      0,
+      -4
+    ],
+    "vincom_plaza": [
+      3.8,
+      0,
+      4.3
+    ],
+    "winmart_destination": [
+      -4.4,
+      0,
+      3.1
+    ],
+    "vinmec_destination": [
+      3,
+      0,
+      -1.7
+    ],
+    "events_destination": [
+      -4.8,
+      0,
+      -2
+    ]
+  },
+  "mall": [
+    -2,
+    0,
+    0.1
+  ],
+  "home": [
+    2,
+    0,
+    3
+  ],
+  "carInitial": [
+    -2,
+    0.11,
+    1.5
+  ],
+  "walkerInitial": [
+    2,
+    0.04,
+    2.5
+  ],
+  "route": [
+    [
+      -2,
+      0.11,
+      1.5
+    ],
+    [
+      0,
+      0.11,
+      1.5
+    ],
+    [
+      2,
+      0.11,
+      1.5
+    ],
+    [
+      2,
+      0.11,
+      3
+    ]
+  ],
+  "groups": [
+    "vincom_mall",
+    "vincom_center",
+    "vincom_plaza",
+    "winmart_destination",
+    "vinmec_destination",
+    "events_destination",
+    "home_destination",
+    "car_delivery",
+    "character_walker"
+  ],
+  "walkerPivots": [
+    "walker_leg_l",
+    "walker_leg_r",
+    "walker_arm_l",
+    "walker_arm_r"
+  ],
+  "terrainBounds": {
+    "x": [
+      -22.1,
+      22.1
+    ],
+    "z": [
+      -17,
+      17
+    ]
+  },
+  "artDirection": "Rich saturated green foliage and park lawns, deep turquoise water, vivid blue glazing, coral/orange/violet/mint landmarks",
+  "builtCityBounds": {
+    "x": [
+      -13,
+      13
+    ],
+    "z": [
+      -10,
+      10
+    ]
+  },
+  "webColorRendering": "Neutral tone mapping with reduced fill lighting",
+  "webExperience": {
+    "fullscreen": true,
+    "sheetSnapPoints": [
+      "peek",
+      "half",
+      "full"
+    ],
+    "search": true,
+    "savedPlaces": true,
+    "itinerary": true,
+    "rotationReplay": true,
+    "floatingSheet": true,
+    "sheetInset": 10,
+    "categoriesInSheet": true,
+    "categoryPins": "matching destinations",
+    "entranceAnimationMs": 1500
+  },
+  "materialMaps": {
+    "bytes": 3296904,
+    "meshes": 61,
+    "normalMaps": 8,
+    "contactMeshes": 33,
+    "textures": 17,
+    "bakedGroundOcclusion": true
+  },
+  "meshCount": 61,
+  "delivery": {
+    "compression": "Draco",
+    "glbBytes": 3296904,
+    "shaderWarmup": true,
+    "fullscreenPoster": false
+  },
+  "lighting": {
+    "rig": "key-fill-rim",
+    "contactShadows": true,
+    "shadowMap": 2048,
+    "environmentReflection": true,
+    "toneMapping": "ACES Filmic",
+    "environmentIntensity": 0.4,
+    "rimIntensity": 0.85,
+    "exposure": 0.62
+  }
+}

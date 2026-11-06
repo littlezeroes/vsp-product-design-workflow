@@ -1,0 +1,45 @@
+@reference "../globals.css";
+.redesign-shell { min-height:100dvh; }
+.redesign-phone { width:100%; max-width:430px; height:100dvh; min-height:640px; position:relative; display:flex; flex-direction:column; margin-inline:auto; overflow:hidden; background:var(--background); }
+.redesign-phone .redesign-bottom { position:absolute; border:0; box-shadow:none; padding-bottom:8px; }
+.redesign-content { flex:1; overflow:auto; padding-bottom:176px; }
+.redesign-card { @apply rounded-28; border:0; box-shadow:none; gap:12px; padding:22px; background:var(--secondary); color:var(--foreground); }
+.redesign-nav button { padding-inline:4px; min-width:0; font-size:11px; }
+.redesign-nav button[aria-current=page] { font-weight:700; }
+.redesign-nav button[aria-current=page]::after { content:''; position:absolute; bottom:2px; width:16px; height:3px; background:var(--foreground); @apply rounded-8; }
+.redesign-message { margin-left:24px; }
+.redesign-timeline { display:grid; grid-template-columns:24px 1fr; gap:12px; }
+.redesign-stat { font-size:44px; line-height:1.1; letter-spacing:-2px; }
+@media(min-width:768px) { .redesign-shell { padding:24px; } .redesign-phone { height:900px; max-height:calc(100dvh - 48px); @apply rounded-28; box-shadow:0 0 0 1px var(--border); } }
+@media(prefers-reduced-motion:reduce) { .redesign-shell * { transition:none!important; } }
+
+.vinclub-redesign-gallery [data-slot="card"] { @apply rounded-28; }
+.redesign-phone input { @apply rounded-14; }
+/* The common device frame holds ten independently composed product surfaces. */
+.redesign-content { overscroll-behavior:contain; }
+.redesign-nav button > span:last-child { flex-direction:column; gap:4px; }
+.redesign-nav button > span:first-child { background:transparent; }
+.redesign-nav button[aria-current=page]::after { display:none; }
+.redesign-nav button[aria-current=page] { color:var(--foreground); }
+.redesign-nav button:not([aria-current=page]) { color:var(--foreground-secondary); }
+.result-stamp { display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; background:var(--secondary); @apply rounded-full; color:var(--success); }
+.design-today .redesign-nav button[aria-current=page] > span:first-child { background:var(--secondary); }
+.design-savings .redesign-bottom { background:var(--secondary); }
+.design-savings .redesign-nav button[aria-current=page] > span:first-child { background:var(--background); }
+.design-household .redesign-nav button[aria-current=page] > span:first-child { background:var(--secondary); }
+.design-journey .variant-header { font-family:Georgia,serif; }
+.design-journey .redesign-nav button[aria-current=page]::after { display:block; width:24px; }
+.design-neighborhood .redesign-bottom { @apply rounded-t-28; box-shadow:0 -8px 32px color-mix(in srgb,var(--foreground) 8%,transparent); }
+.design-autopilot .variant-header,.design-autopilot .redesign-nav { font-family:ui-monospace,monospace; }
+.design-autopilot .redesign-nav button[aria-current=page] > span:first-child { background:var(--secondary); }
+.design-concierge .redesign-nav button[aria-current=page] > span:first-child { background:var(--secondary); }
+.design-membership .variant-header { font-family:Georgia,serif; }
+.design-membership .redesign-nav { letter-spacing:.04em; }
+.design-membership .redesign-nav button[aria-current=page]::after { display:block; width:4px; height:4px; }
+.design-wellbeing .redesign-bottom { background:var(--secondary); }
+.design-wellbeing .redesign-nav button[aria-current=page] > span:first-child { background:var(--background); }
+.design-transparent .variant-header,.design-transparent .variant-detail,.design-transparent .variant-result { font-family:ui-monospace,monospace; }
+.design-transparent .redesign-nav button[aria-current=page] > span:first-child { background:var(--secondary); }
+@media(min-width:768px) { .redesign-shell { background-image:radial-gradient(circle at 20% 20%,color-mix(in srgb,var(--foreground) 4%,transparent),transparent 60%); } }
+.gallery-visual-link { display:flex; justify-content:center; height:440px; overflow:hidden; background:var(--background); }
+.gallery-visual-link img { width:203px; height:440px; object-fit:contain; }

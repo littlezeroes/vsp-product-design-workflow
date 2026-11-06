@@ -1,0 +1,210 @@
+/* Shared VinClub component finish across Home, Daily and Payment. */
+.vc-daily-premium{--font-sans:var(--font-google-sans-flex);font-family:var(--font-google-sans-flex),Arial,sans-serif;font-optical-sizing:auto}
+/* Shared glass finish on library button backgrounds, including dialogs and journeys. */
+.vc-daily-premium button>span[aria-hidden="true"]:first-child{
+  background:color-mix(in srgb,var(--daily-glass) 58%,transparent);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 8%,transparent);
+}
+.vc-daily-premium button>span.bg-foreground[aria-hidden="true"]:first-child,
+.vc-daily-premium :is(.daily-main-nav,.daily-categories,.ds-spaces,.ds-commerce-switch) button:is([aria-current=page],[aria-pressed=true])>span:first-child{
+  background:var(--foreground);
+  box-shadow:none;
+}
+.vc-daily-premium :is(.daily-main-nav,.daily-categories,.ds-spaces,.ds-commerce-switch) button:is([aria-current=page],[aria-pressed=true]){color:var(--background)}
+/* List rows and service icons retain their open layout. */
+.vc-daily-premium :is(.daily-benefit-row,.daily-service-button,.ds-service,.ds-hero-card,.ds-promo,.ds-payment-shortcut,.ds-nav-item)>span[aria-hidden="true"]:first-child{background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+
+/* A thin translucent bar and a quiet selected lens, shared by all spaces. */
+.vc-daily-premium .ds-shell .ds-spaces-glass{
+  padding:3px;
+  background:color-mix(in srgb,var(--foreground) 6%,transparent);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 12%,transparent);
+}
+.vc-daily-premium .ds-shell .ds-spaces-glass::before{
+  top:3px;bottom:3px;left:3px;width:calc((100% - 6px) / 3);
+  background:color-mix(in srgb,var(--foreground) 10%,transparent);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 15%,transparent);
+}
+.vc-daily-premium .ds-shell .ds-spaces button,
+.vc-daily-premium .ds-shell .ds-spaces button[aria-current=page]{height:34px;color:var(--foreground)}
+.vc-daily-premium .ds-shell .ds-spaces button>span:first-child,
+.vc-daily-premium .ds-shell .ds-spaces button[aria-current=page]>span:first-child{background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.vc-daily-premium :is(.ds-bottom-inner,.daily-ai-dock){
+  background:color-mix(in srgb,var(--daily-glass) 58%,transparent);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 10%,transparent),0 4px 16px color-mix(in srgb,var(--foreground) 5%,transparent);
+}
+.vc-daily-premium .ds-payment-icon,
+.vc-daily-premium .ds-payment-widget{
+  background:color-mix(in srgb,var(--daily-glass) 58%,transparent);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 10%,transparent);
+}
+.vc-daily-premium .ds-payment-sheet{
+  background:color-mix(in srgb,var(--background) 82%,transparent);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 6%,transparent);
+}
+@media(prefers-reduced-motion:reduce){.vc-daily-premium .ds-spaces-glass::before{transition:none}}
+
+/* Native CSS glass: one blur layer, a light tint, no displacement filters. */
+.vc-daily-premium .vc-liquid-surface{position:relative;border-radius:var(--radius-28)}
+.vc-daily-premium :is(.ds-shell .ds-spaces-glass,.ds-bottom-inner,.daily-dock-glass,.daily-nav-glass).vc-liquid-surface{
+  background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;
+}
+.vc-daily-premium .ds-shell .ds-spaces-glass::before{content:none}
+.vc-liquid-optics{
+  position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--daily-glass-reflection) 18%,transparent),color-mix(in srgb,var(--daily-glass) 46%,transparent));
+  backdrop-filter:blur(16px) saturate(115%);-webkit-backdrop-filter:blur(16px) saturate(115%);
+  box-shadow:inset 0 .5px 0 color-mix(in srgb,var(--daily-glass-reflection) 28%,transparent),0 3px 12px color-mix(in srgb,var(--foreground) 4%,transparent);
+}
+.vc-liquid-content{display:contents}
+.vc-liquid-content>*{position:relative;z-index:2}
+.vc-liquid-lens{
+  position:absolute;z-index:1;inset:3px auto 3px 3px;border-radius:inherit;
+  width:calc((100% - 6px) / var(--lens-count));
+  transform:translateX(calc(var(--lens-index) * 100%));
+  transition:transform .35s cubic-bezier(.22,1,.36,1);pointer-events:none;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--daily-glass-reflection) 24%,transparent),color-mix(in srgb,var(--daily-glass-reflection) 10%,transparent));
+  box-shadow:inset 0 .5px 0 color-mix(in srgb,var(--daily-glass-reflection) 30%,transparent);
+}
+.ds-payment-mode .vc-liquid-lens{background:color-mix(in srgb,var(--foreground) 6%,transparent)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .vc-liquid-optics{background:var(--secondary)}
+}
+.vc-daily-premium .ds-bottom-inner .ds-nav-item[aria-current=page]{background:color-mix(in srgb,var(--daily-glass) 26%,transparent)}
+.vc-daily-premium .daily-nav-glass{display:flex;gap:6px;padding:4px}
+.vc-daily-premium .daily-nav-glass button{font-size:13px;padding:0 12px}
+.vc-daily-premium .daily-nav-glass .daily-profile{padding:0}
+.vc-daily-premium .daily-main-nav{width:100%}
+.vc-daily-premium .daily-header>div:nth-child(2)>div:first-child{min-width:0}
+.vc-daily-premium .daily-dock-glass{padding:0}
+.vc-daily-premium .daily-dock-glass .daily-ai-dock{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+.vc-daily-premium .daily-loyalty::after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+  background:linear-gradient(115deg,transparent 35%,color-mix(in srgb,var(--color-grey-00) 16%,transparent) 48%,transparent 60%);
+  transform:translateX(-120%);animation:vc-membership-sheen 9s ease-in-out infinite;
+}
+.vc-daily-premium .daily-loyalty{position:relative;overflow:hidden}
+@keyframes vc-membership-sheen{0%,65%{transform:translateX(-120%)}90%,100%{transform:translateX(120%)}}
+.vc-daily-premium button:active{filter:brightness(1.035)}
+@media(prefers-reduced-motion:reduce){
+  .vc-liquid-lens{transition:none}
+  .vc-daily-premium .daily-loyalty::after{animation:none;display:none}
+}
+/* Resolve tint in the header's own theme rather than the outer page. */
+.ds-dark-header .vc-liquid-optics{--daily-glass:var(--background)}
+
+/* Champagne reflection belongs only to the top navigation glass. */
+:is(.ds-spaces-glass,.daily-nav-glass)>.vc-liquid-optics::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(115deg,transparent 12%,color-mix(in srgb,var(--daily-glass-gold) 15%,transparent) 28%,transparent 44%,transparent 72%,color-mix(in srgb,var(--daily-glass-gold) 10%,transparent) 92%,transparent);
+  background-size:180% 100%;background-position:40% 0;
+  transition:background-position .65s ease,opacity .4s ease;
+  box-shadow:inset 0 .5px 0 color-mix(in srgb,var(--daily-glass-gold) 25%,transparent);
+}
+:is(.ds-spaces-glass,.daily-nav-glass):is(:hover,:focus-within)>.vc-liquid-optics::after{background-position:70% 0}
+.ds-spaces-glass>.vc-liquid-lens{
+  background:radial-gradient(ellipse at 85% 0%,color-mix(in srgb,var(--daily-glass-gold) 18%,transparent),transparent 65%),linear-gradient(145deg,color-mix(in srgb,var(--daily-glass-reflection) 24%,transparent),color-mix(in srgb,var(--daily-glass-reflection) 10%,transparent));
+  box-shadow:inset 0 .5px 0 color-mix(in srgb,var(--daily-glass-gold) 32%,transparent);
+}
+/* Bottom navigation follows the preview theme in every space, including Payment. */
+.vc-daily-premium .ds-root .ds-bottom{
+  --background:var(--color-grey-00);--foreground:var(--color-grey-1000);--secondary:var(--color-grey-100);
+  --daily-glass:var(--background);--daily-glass-reflection:var(--color-grey-00);
+  background:linear-gradient(transparent,color-mix(in srgb,var(--background) 92%,transparent));
+  color:var(--foreground);backdrop-filter:none;-webkit-backdrop-filter:none;
+}
+.dark .vc-daily-premium .ds-root .ds-bottom{
+  --background:var(--color-grey-1000);--foreground:var(--color-grey-50);--secondary:var(--color-grey-900);--daily-glass:var(--secondary);
+}
+.vc-daily-premium .ds-root .ds-bottom-inner{background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.vc-daily-premium .ds-root .ds-bottom .ds-nav-item{color:var(--foreground)}
+.vc-daily-premium .ds-root .ds-bottom .ds-nav-item[aria-current=page]{background:color-mix(in srgb,var(--daily-glass) 26%,transparent);color:var(--foreground)}
+@media(prefers-reduced-motion:reduce){:is(.ds-spaces-glass,.daily-nav-glass)>.vc-liquid-optics::after{transition:none}}
+
+/* Kube-inspired edge refraction: a clear centre with a computed convex bevel. */
+.vc-refraction-defs{position:absolute;width:0;height:0;pointer-events:none;overflow:hidden}
+.vc-daily-premium .vc-top-refractive{
+  background:color-mix(in srgb,var(--daily-glass-reflection) 3%,transparent);
+  backdrop-filter:var(--top-glass-filter);-webkit-backdrop-filter:var(--top-glass-filter);
+  box-shadow:none;
+}
+:is(.ds-spaces-glass,.daily-nav-glass)>.vc-top-refractive::after{
+  background:linear-gradient(135deg,var(--daily-glass-reflection),color-mix(in srgb,var(--daily-glass-gold) 48%,var(--daily-glass-reflection)));
+  background-size:100% 100%;background-position:0 0;box-shadow:none;
+  mask-image:var(--top-glass-highlight);-webkit-mask-image:var(--top-glass-highlight);
+  mask-size:100% 100%;-webkit-mask-size:100% 100%;
+}
+.ds-spaces-glass:has(>.vc-top-refractive)>.vc-liquid-lens{
+  background:color-mix(in srgb,var(--daily-glass-reflection) 12%,transparent);
+  box-shadow:inset 0 .5px 0 color-mix(in srgb,var(--daily-glass-reflection) 24%,transparent);
+}
+
+/* Give the bottom glass a little lift, consistently across all spaces. */
+.vc-daily-premium .ds-root .ds-bottom-inner>.vc-liquid-optics{
+  box-shadow:inset 0 .5px 0 color-mix(in srgb,var(--daily-glass-reflection) 28%,transparent),0 6px 20px color-mix(in srgb,var(--foreground) 10%,transparent),0 2px 6px color-mix(in srgb,var(--foreground) 4%,transparent);
+}
+
+/* Black elevation stays independent of the surface theme. */
+.vc-daily-premium .ds-root :is(.ds-spaces-glass,.ds-bottom-inner).vc-liquid-surface {
+  box-shadow:
+    0 3px 8px color-mix(in srgb,var(--color-grey-1000) 30%,transparent),
+    0 10px 24px -4px color-mix(in srgb,var(--color-grey-1000) 42%,transparent);
+}
+
+/* Selection uses the palette of its own surface. */
+.vc-daily-premium .ds-shell .ds-spaces button:not([aria-current=page]) { color:var(--foreground-secondary);opacity:.7; }
+.vc-daily-premium .ds-shell .ds-spaces button[aria-current=page] { color:var(--foreground);opacity:1; }
+.vc-daily-premium .ds-shell .ds-spaces-glass>.vc-liquid-lens { inset:5px auto 5px 5px;width:calc((100% - 10px) / var(--lens-count));border-radius:var(--radius-28);background:color-mix(in srgb,var(--foreground) 18%,transparent);box-shadow:inset 0 .5px 0 color-mix(in srgb,var(--foreground) 32%,transparent); }
+.vc-daily-premium .ds-root .ds-bottom-inner { grid-template-columns:repeat(5,minmax(0,1fr));gap:0; }
+.vc-daily-premium .ds-root .ds-bottom .ds-nav-item { min-width:0;color:var(--foreground-secondary); }
+.vc-daily-premium .ds-root .ds-bottom .ds-nav-item[aria-current=page] { background:transparent;color:var(--foreground); }
+.vc-daily-premium .ds-root .ds-bottom .ds-nav-scan { color:var(--background); }
+.vc-daily-premium .ds-root .ds-bottom .ds-nav-scan>span[aria-hidden=true]:first-child { background:var(--foreground);backdrop-filter:none;box-shadow:none; }
+.vc-daily-premium .ds-profile>[aria-label]>[data-slot=card]:not(.ds-profile-membership) { background:transparent;border-radius:0;box-shadow:none; }
+.vc-daily-premium .ds-profile .ds-profile-tier { padding:20px 22px; }
+.vc-daily-premium .ds-profile .ds-profile-tier>span[aria-hidden=true]:first-child { background:transparent;box-shadow:none;backdrop-filter:none; }
+.vc-daily-premium .ds-profile .ds-profile-points { padding:0 22px 22px; }
+
+/* Icon-only scan action with a moving scan beam. */
+.vc-daily-premium .ds-root .ds-bottom .ds-nav-scan { width:48px;height:48px;align-self:center;justify-self:center;padding:0; }
+.ds-nav-scan>span:last-child { position:relative; }
+.ds-nav-scan>span:last-child::after { content:"";position:absolute;left:4px;right:4px;top:5px;height:2px;border-radius:var(--radius-8);background:currentColor;box-shadow:0 0 5px color-mix(in srgb,currentColor 35%,transparent);pointer-events:none;animation:vc-scan-beam 2.4s ease-in-out infinite; }
+@keyframes vc-scan-beam { 0%,100% { transform:translateY(0);opacity:.35; } 50% { transform:translateY(13px);opacity:1; } }
+@media(prefers-reduced-motion:reduce) { .ds-nav-scan>span:last-child::after { animation:none; } }
+
+/* Shared rounded glass and floating elevation across every navigation surface. */
+.vc-daily-premium .ds-shell .ds-spaces-glass,
+.vc-daily-premium .ds-root .ds-bottom-inner.vc-liquid-surface { border-radius:var(--radius-28);padding:5px; }
+.vc-daily-premium .ds-root .ds-bottom-inner>.vc-liquid-lens { inset:5px auto 5px 5px;width:calc((100% - 10px) / var(--lens-count));border-radius:var(--radius-28);background:color-mix(in srgb,var(--foreground) 9%,transparent); }
+.vc-daily-premium .ds-root .ds-bottom-inner .ds-nav-item[aria-current=page] { background:transparent; }
+.vc-daily-premium :is(.ds-spaces-glass,.ds-bottom-inner)>.vc-liquid-lens { transition:transform .45s cubic-bezier(.22,1,.36,1);will-change:transform; }
+@media(prefers-reduced-motion:reduce) { .vc-daily-premium :is(.ds-spaces-glass,.ds-bottom-inner)>.vc-liquid-lens { transition:none; } }
+
+.vc-daily-premium .ds-root .ds-bottom-inner.vc-liquid-surface {
+  box-shadow:0 3px 10px color-mix(in srgb,var(--color-grey-1000) 30%,transparent),0 10px 40px color-mix(in srgb,var(--color-grey-1000) 48%,transparent);
+}
+.vc-daily-premium .ds-root .ds-bottom { background:transparent; }
+.vc-daily-premium .ds-root .ds-bottom-inner>.vc-liquid-optics {
+  border-radius:inherit;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--daily-glass-reflection) 18%,transparent),color-mix(in srgb,var(--daily-glass) 72%,transparent));
+  backdrop-filter:blur(24px) saturate(120%);-webkit-backdrop-filter:blur(24px) saturate(120%);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--daily-glass-reflection) 65%,transparent),inset 0 0 0 1px color-mix(in srgb,var(--foreground) 8%,transparent);
+}
+
+/* Float the glass bar over the screen without a full-width backing plate. */
+.vc-daily-premium .ds-root .ds-bottom::before {
+  content:none;
+}
+.vc-daily-premium .ds-root .ds-bottom>.ds-bottom-inner,
+.vc-daily-premium .ds-root .ds-bottom>.bg-foreground { position:relative;z-index:1; }
+
+/* One shared pre-rendered light clip replaces competing CSS card effects. */
+.vc-card-light-video { position:absolute!important;inset:0;width:100%;height:100%;object-fit:fill;z-index:4;pointer-events:none;mix-blend-mode:screen;border-radius:inherit; }
+.vc-daily-premium .ds-hero-card::after { content:none; }
+.vc-daily-premium .ds-hero-card .vc-card-light-video { height:100%; }
+@media(prefers-reduced-motion:reduce) { .vc-card-light-video { display:none; } }
+.ds-profile-membership { position:relative;isolation:isolate;overflow:hidden; }

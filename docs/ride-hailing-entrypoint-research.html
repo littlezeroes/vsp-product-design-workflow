@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Ride-hailing Super App — Entrypoint UX Research</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 860px; margin: 40px auto; padding: 0 24px; color: #2f2f2f; line-height: 1.6; }
+  h1 { font-size: 28px; border-bottom: 1px solid #eaeaea; padding-bottom: 8px; }
+  h2 { font-size: 22px; margin-top: 32px; }
+  h3 { font-size: 17px; margin-top: 24px; }
+  blockquote { border-left: 3px solid #d3d3d3; padding-left: 12px; color: #555; margin: 12px 0; }
+  pre { background: #f7f6f3; padding: 12px 16px; border-radius: 6px; overflow-x: auto; font-family: 'SF Mono', Menlo, monospace; font-size: 13px; }
+  code { background: #f7f6f3; padding: 2px 5px; border-radius: 4px; font-family: 'SF Mono', Menlo, monospace; font-size: 13px; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+  th, td { border: 1px solid #e0e0e0; padding: 8px 12px; text-align: left; vertical-align: top; }
+  th { background: #f7f6f3; font-weight: 600; }
+  hr { border: none; border-top: 1px solid #eaeaea; margin: 32px 0; }
+  ul, ol { padding-left: 24px; }
+  li { margin: 4px 0; }
+</style>
+</head>
+<body>
+
+<h1>Ride-hailing Super App — Entrypoint UX Research</h1>
+
+<blockquote>
+<p><strong>Status:</strong> Draft v1<br>
+<strong>Author:</strong> VSP Design (huykieu)<br>
+<strong>Date:</strong> 2026-04-29<br>
+<strong>Audience:</strong> Product, Design, BOD<br>
+<strong>Scope:</strong> Home screen (entrypoint) của các ride-hailing super app trong khu vực SEA + MENA, lấy XanhSM làm chủ thể nghiên cứu.</p>
+</blockquote>
+
+<hr>
+
+<h2>0. TL;DR</h2>
+<ul>
+  <li><strong>Entrypoint của ride-hailing super app đã hội tụ về một IA chuẩn 5 zone.</strong> Khác biệt giữa Gojek, Grab, Careem nằm ở <strong>cách prioritize wallet, content và service</strong>, không phải ở layout.</li>
+  <li><strong>Wallet hub là retention loop quan trọng nhất</strong> — Gojek đặt wallet ngay trên cùng vì đó là daily-active driver. Grab và Careem nudge wallet activation.</li>
+  <li><strong>XanhSM hiện đang ở giai đoạn chuyển tiếp</strong> từ "ride app thuần" → "super app". Entrypoint hiện tại có 3 điểm sáng (AI prompt, visual taste, gamification) nhưng cũng có 3 gap quan trọng (thiếu wallet surface, hero duplicate với grid, service grid loãng do bị VinFast asset products chiếm 50%).</li>
+  <li><strong>Đề xuất:</strong> giữ AI prompt làm signature, bổ sung wallet hub, dọn lại hero để loại redundancy, restructure service grid về daily-use services.</li>
+</ul>
+
+<hr>
+
+<h2>1. Method</h2>
+<ul>
+  <li><strong>Subject:</strong> 5 ảnh chụp entrypoint của Gojek (2 variant), Grab, Careem (2 variant), so sánh với entrypoint XanhSM hiện tại.</li>
+  <li><strong>Lens:</strong> IA decomposition (zone-by-zone) + UX heuristics + product strategy (retention loop, daily active driver).</li>
+  <li><strong>Scope giới hạn:</strong> chỉ home screen lúc user đã đăng nhập. Không cover onboarding, post-ride, in-trip.</li>
+</ul>
+
+<hr>
+
+<h2>2. Bối cảnh thị trường</h2>
+
+<h3>2.1 Super app evolution</h3>
+<p>Ride-hailing super app trải qua 3 giai đoạn:</p>
+<table>
+  <tr><th>Stage</th><th>Focus</th><th>Entrypoint character</th></tr>
+  <tr><td><strong>1. Pure ride</strong> (2012–2016)</td><td>Đặt xe nhanh</td><td>Bản đồ + nút "Book"</td></tr>
+  <tr><td><strong>2. Service expansion</strong> (2016–2020)</td><td>Food, delivery, payment</td><td>Service grid 4×n</td></tr>
+  <tr><td><strong>3. Super app / lifestyle</strong> (2020–nay)</td><td>Discovery, finance, content</td><td>Service grid + content feed + wallet hub</td></tr>
+</table>
+<p>XanhSM đang ở <strong>stage 2 → 3</strong>. Gojek/Grab đã ở stage 3 ổn định.</p>
+
+<h3>2.2 Daily active driver</h3>
+<p>Trong super app, services được phân loại theo tần suất:</p>
+<pre>DAILY        Ride, Food, Wallet (top up, pay)
+WEEKLY       Delivery, Mart, Bills
+MONTHLY      Membership, Travel, Subscription
+RARE         Buy car, Insurance, Loan</pre>
+<p>→ <strong>Quy tắc:</strong> zone đắt giá nhất (top-fold) phải dành cho <strong>daily</strong> services.</p>
+
+<h3>2.3 Vietnam context</h3>
+<ul>
+  <li>Grab dominant với ~70% share, Be ~20%, XanhSM mới nhưng tăng trưởng nhanh nhờ EV + VinGroup ecosystem.</li>
+  <li>User Việt Nam có 2 hành vi đặc thù:
+    <ol>
+      <li><strong>Quen với Grab pattern</strong> — change là cost.</li>
+      <li><strong>Sensitive với promo</strong> — banner và voucher có ROI cao hơn các thị trường khác.</li>
+    </ol>
+  </li>
+</ul>
+
+<hr>
+
+<h2>3. Competitive teardown</h2>
+
+<h3>3.1 Gojek (Indonesia) — Wallet-first</h3>
+<p>GoPay là DNA, ride là vehicle để monetize wallet.</p>
+<pre>1. Search "Find services, food, or places"   ← universal intent
+2. Banner promo (food deal)
+3. WALLET HUB (RpO/GoPay + Pay/TopUp/More)    ← daily action #1
+4. Service grid 4×2
+   GoRide / GoCar / GoFood / GoSend
+   GoMart / GoTagihan / GoShop / More
+5. gojekPLUS subscription banner               ← retention
+6. Content feed (Tokopedia cross-sell)
+7. Bottom nav: Home / Promo / Activity / Chat</pre>
+<p><strong>Insights:</strong> Wallet hub đặt ngay sau search → mỗi lần mở app, user thấy số dư → friction để top up cực thấp. "Promo" có tab riêng. 8/8 service grid là daily/weekly services.</p>
+
+<h3>3.2 Grab (SEA) — Marketplace + Finance</h3>
+<pre>1. Search "Search places"                      ← destination intent
+2. Service grid 4×2
+   Food / Transport / Mart / DineOut
+   Shopping / Chope / Ride later / All
+3. Shortcut row: Activate GrabPay / Add Email / GrabReward
+4. Travel Pass subscription banner
+5. Promo strip (10%/50%/15% off rides)
+6. Content feed
+7. Bottom nav: Discover / Activity / Finance / Messages</pre>
+<p><strong>Insights:</strong> "Ride later" là service riêng. Shortcut row = onboarding nudges thông minh, biến mất khi user đã activate đủ. Bottom nav có "Finance" tab riêng → wallet ngang hàng core flows.</p>
+
+<h3>3.3 Careem (MENA) — Discovery + retail</h3>
+<pre>1. Search "Discover food / Discover places"    ← discovery intent
+2. Sign-up / Plus Week banner
+3. Service grid 4×2
+   Rides / Food / Quik / Pay
+   Hala Taxi / Box / Electronics / Home & Spa
+4. Shortcut row: Top up / Ride to / Saved address
+5. Hala Taxi feature banner
+6. Promo grid (50% off, AED 500 off)
+7. Brand list feed</pre>
+<p><strong>Insights:</strong> "Pay" là 1 ô trong grid, không là hub riêng → trade-off: wallet ít visibility nhưng grid sạch. "Quik" (q-commerce) ngang hàng Rides/Food. Search prompt adaptive theo context.</p>
+
+<h3>3.4 XanhSM (current) — AI-prompt + VinFast ecosystem</h3>
+<pre>1. Search "Bạn muốn đi đâu?"                    ← destination intent
+2. AI suggest block "Di chuyển nhanh với Bike"  ← personalization (UNIQUE)
+   - Đặt xe đi The Coffee House
+   - Đặt xe đi AMERICANO COFFEE
+3. Filter chip: Đặt đồ ăn / Đặt xe ô tô
+4. Hero card 2×1: Gọi xe / Gọi đồ ăn           ← duplicate of grid
+5. Service grid 4×2
+   Xe máy / Giao hàng / Hội viên / Thẻ quà tặng
+   Thuê xe tự lái / VinBus / Liên tỉnh / Mua VinFast
+6. GreenSM rewards banner
+7. Bottom nav 5 tabs + floating Trophy (gamification)</pre>
+<p><strong>Insights:</strong> AI prompt là dấu ấn duy nhất trong khu vực. Service grid 4/8 ô là VinFast asset products → tần suất thấp. Không có wallet hub dù chiến lược BIDV-link đã công bố.</p>
+
+<hr>
+
+<h2>4. IA framework — 5 zone universal</h2>
+<pre>┌─────────────────────────────────────────────┐
+│ ZONE 1 — Search / Discovery                  │
+│   intent capture: destination | service | content │
+├─────────────────────────────────────────────┤
+│ ZONE 2 — Quick Action                        │
+│   wallet hub | shortcut row | personalized prompt │
+├─────────────────────────────────────────────┤
+│ ZONE 3 — Service Grid (4×2 = 8 cells)        │
+├─────────────────────────────────────────────┤
+│ ZONE 4 — Content Feed                        │
+│   promo | subscription | gamification | banner │
+├─────────────────────────────────────────────┤
+│ ZONE 5 — System Nav (4–5 tab)                │
+└─────────────────────────────────────────────┘</pre>
+
+<p><strong>Quy tắc:</strong></p>
+<ul>
+  <li>Zone 1 và 3 là invariant — mọi app đều có.</li>
+  <li>Zone 2 là <strong>đòn bẩy chiến lược</strong> — chỗ tuyên bố DNA:
+    <ul>
+      <li>Wallet → wallet-first (Gojek)</li>
+      <li>Shortcut adaptive → onboarding-first (Grab)</li>
+      <li>AI prompt → AI-first (XanhSM)</li>
+      <li>Bỏ trống → discovery-first, banner chiếm chỗ (Careem)</li>
+    </ul>
+  </li>
+  <li>Zone 4 cho retention/cross-sell. Zone 5 cho navigation depth.</li>
+</ul>
+
+<hr>
+
+<h2>5. XanhSM diagnosis &amp; principles</h2>
+
+<h3>5.1 Heuristic check</h3>
+<table>
+  <tr><th>Heuristic</th><th>Pass?</th><th>Note</th></tr>
+  <tr><td><strong>One entrypoint per flow</strong></td><td>❌</td><td>3 entrypoint cho đặt xe máy: AI prompt + Hero "Gọi xe" + grid "Xe máy"</td></tr>
+  <tr><td><strong>Daily before monthly</strong> (top-fold)</td><td>❌</td><td>4/8 ô grid là VinFast asset (Thuê xe, VinBus, Liên tỉnh, Mua VinFast) — monthly/rare</td></tr>
+  <tr><td><strong>Wallet earns surface</strong></td><td>❌</td><td>Không có wallet hub. Embedded wallet không có nơi để land</td></tr>
+  <tr><td><strong>Search intent rõ</strong></td><td>✅</td><td>Destination-first khớp DNA ride</td></tr>
+  <tr><td><strong>Personalization context-aware</strong></td><td>⚠️</td><td>AI prompt có nhưng chưa rõ time/location aware, chưa có dismiss</td></tr>
+  <tr><td><strong>Filter chip ở đúng vị trí</strong></td><td>❌</td><td>Chip thường modify list bên dưới; ở đây modify block phía trên → confusing</td></tr>
+</table>
+
+<h3>5.2 Strengths cần giữ</h3>
+<ol>
+  <li><strong>AI prompt block</strong> — signature differentiator, không đối thủ nào có.</li>
+  <li><strong>Visual taste</strong> — pastel teal, glassmorphism bottom nav, premium hơn Grab/Gojek.</li>
+  <li><strong>Gamification surface</strong> — floating trophy, lifestyle-friendly hơn promo banner truyền thống.</li>
+</ol>
+
+<h3>5.3 Risk</h3>
+<ul>
+  <li><strong>Giữ nguyên khi launch wallet:</strong> wallet không có entry surface → adoption chậm → break promise của VSP × XanhSM strategy.</li>
+  <li><strong>Rip &amp; replace theo Grab pattern:</strong> mất AI prompt → mất differentiator duy nhất.</li>
+</ul>
+
+<h3>5.4 5 design principles (guardrail)</h3>
+<ol>
+  <li><strong>One entrypoint per flow.</strong> Mỗi flow chính chỉ có 1 nơi khởi động. AI prompt OK nếu là personalized shortcut, không duplicate hero + grid cho cùng service.</li>
+  <li><strong>Daily before monthly.</strong> Top-fold (zone 1–3) chỉ chứa daily/weekly services. VinFast asset products move xuống "Xem tất cả" hoặc dedicated VinFast hub.</li>
+  <li><strong>Wallet earns its place.</strong> Wallet phải hiện diện ở zone 2 — không chiếm chỗ AI prompt mà bổ sung <strong>ở dưới</strong> AI prompt.</li>
+  <li><strong>AI prompt là signature, không phải gimmick.</strong> Phải context-aware (time, location, history) và có "tại sao" minh bạch.</li>
+  <li><strong>Trade content for action.</strong> Giảm banner promo top-fold. Promo có activity tab riêng (như Gojek). Top-fold ưu tiên action.</li>
+</ol>
+
+<hr>
+
+<h2>6. Decision options</h2>
+<p>3 hướng đi để chốt với Product/BOD:</p>
+
+<h3>Option A — Hold (giữ nguyên)</h3>
+<blockquote>Chấp nhận entrypoint hiện tại, không thay đổi cho đến khi có data.</blockquote>
+<ul>
+  <li><strong>Cost:</strong> rất thấp.</li>
+  <li><strong>Risk:</strong> wallet launch không có surface → adoption thấp; service grid loãng tiếp tục đẩy daily flow xuống.</li>
+  <li><strong>Phù hợp khi:</strong> team không có bandwidth, hoặc đang muốn thu thập baseline trước khi can thiệp.</li>
+</ul>
+
+<h3>Option B — Evolve có chọn lọc ⭐ (recommended)</h3>
+<blockquote>Giữ AI prompt làm signature, dọn redundancy, bổ sung wallet hub theo wallet-nudge pattern (Grab).</blockquote>
+<p><strong>Thay đổi:</strong></p>
+<ul>
+  <li>Bỏ hero card 2×1 "Gọi xe / Gọi đồ ăn" (duplicate với grid và AI prompt).</li>
+  <li>Đổi filter chip → segmented control trong AI block hoặc bỏ luôn.</li>
+  <li>Thêm <strong>wallet shortcut row</strong> ngay dưới AI prompt: <code>Số dư · Top up · Pay · Lịch sử</code> (pattern Grab — chỉ hiện khi wallet activated; nếu chưa, hiện "Activate VSP wallet").</li>
+  <li>Restructure service grid: giữ 4 ô daily (Xe máy, Giao hàng, Hội viên, Thẻ quà tặng), gom 4 ô VinFast vào dedicated "VinFast Hub" hoặc đẩy "Xem tất cả".</li>
+  <li>AI prompt: thêm context (sáng → cà phê, chiều → về nhà), thêm dismiss "Không phải", hiện badge "Vì bạn đi 3 lần/tuần".</li>
+</ul>
+<ul>
+  <li><strong>Cost:</strong> 1–2 sprint design + dev.</li>
+  <li><strong>Risk:</strong> thấp — không phá visual taste, giữ AI signature.</li>
+  <li><strong>Phù hợp khi:</strong> muốn launch wallet trong Q3 và tránh disruption lớn.</li>
+</ul>
+
+<h3>Option C — Rip &amp; rebuild theo Gojek pattern</h3>
+<blockquote>Wallet-first super app — wallet hub chiếm zone 2, AI prompt thành phần tử nhỏ trong zone 4.</blockquote>
+<p><strong>Thay đổi:</strong></p>
+<ul>
+  <li>Wallet hub full-width ngay sau search (theo pattern Gojek).</li>
+  <li>AI prompt thu nhỏ thành 1 row insight ở zone 4.</li>
+  <li>Service grid full daily-use, không còn VinFast asset.</li>
+  <li>Bottom nav restructure: thêm "Finance" tab.</li>
+</ul>
+<ul>
+  <li><strong>Cost:</strong> 4–6 sprint, kéo theo nhiều flow downstream.</li>
+  <li><strong>Risk:</strong> cao — mất differentiator AI prompt; user XanhSM hiện hữu phải re-learn.</li>
+  <li><strong>Phù hợp khi:</strong> wallet trở thành business priority #1, AI prompt đo được không hiệu quả.</li>
+</ul>
+
+<h3>Recommendation</h3>
+<p><strong>Đi Option B trong 6 tháng đầu.</strong> Đo wallet adoption, AI prompt CTR, service grid usage. Sau 6 tháng, nếu wallet adoption &lt; target → escalate sang Option C; nếu AI prompt CTR &lt; 5% → cân nhắc demote AI prompt.</p>
+
+<hr>
+
+<h2>Source</h2>
+<ul>
+  <li>5 ảnh chụp entrypoint do team thu thập (nguồn Mobbin): Gojek variant 1 &amp; 2, Grab, Careem variant 1 &amp; 2.</li>
+  <li>XanhSM screenshot ngày 2026-04-29 (user's device).</li>
+</ul>
+
+</body>
+</html>

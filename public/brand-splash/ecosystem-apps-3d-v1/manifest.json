@@ -1,0 +1,13 @@
+{
+  "baseAnimation": "optical-rim-v1",
+  "sourceReferences": "/brand-splash/ecosystem-apps/sources.json",
+  "icons": [
+    "vinfast",
+    "vinhomes",
+    "vinmec",
+    "vinpearl",
+    "vinwonders",
+    "xanhsm"
+  ],
+  "generation": "image_gen: rendered dimensional assets, not CSS/SVG simulation"
+}

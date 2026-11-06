@@ -1,0 +1,41 @@
+{
+  "reference.jpg": {
+    "url": "https://i.pinimg.com/736x/78/48/ac/7848ac39328e48c8abe0fb5aeba7733e.jpg",
+    "credit": "Ảnh người dùng cung cấp; chưa xác minh tác giả"
+  },
+  "edge.jpg": {
+    "derivedFrom": "reference.jpg",
+    "crop": [
+      230,
+      80,
+      370,
+      270
+    ]
+  },
+  "face.jpg": {
+    "derivedFrom": "reference.jpg",
+    "crop": [
+      297,
+      220,
+      422,
+      433
+    ]
+  },
+  "depth.jpg": {
+    "derivedFrom": "reference.jpg",
+    "crop": [
+      408,
+      435,
+      590,
+      635
+    ]
+  },
+  "dispersion.jpg": {
+    "url": "https://raw.githubusercontent.com/KhronosGroup/glTF/main/extensions/2.0/Khronos/KHR_materials_dispersion/figures/Dispersion.jpg",
+    "credit": "Khronos Group"
+  },
+  "volume.png": {
+    "url": "https://raw.githubusercontent.com/KhronosGroup/glTF/main/extensions/2.0/Khronos/KHR_materials_volume/figures/thin-thick-rendering.png",
+    "credit": "Khronos Group"
+  }
+}

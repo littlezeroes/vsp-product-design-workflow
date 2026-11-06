@@ -1,0 +1,4 @@
+interface:
+  display_name: "VSP Product"
+  short_description: "Chọn vấn đề, phân kỳ sản phẩm và hợp nhất bằng chứng"
+  default_prompt: "Dùng $vsp-product đọc hiện trạng, chọn hành trình cần giải quyết và hợp nhất đề xuất UX, Business thành phương án kiểm chứng được."

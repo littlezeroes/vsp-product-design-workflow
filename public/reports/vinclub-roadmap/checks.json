@@ -1,0 +1,153 @@
+{
+  "date": "2026-11-01T17:04:47.539Z",
+  "checks": [
+    {
+      "name": "current finance preserved",
+      "pass": true
+    },
+    {
+      "name": "current additions correct",
+      "pass": true
+    },
+    {
+      "name": "feb finance preserved",
+      "pass": true
+    },
+    {
+      "name": "feb additions correct",
+      "pass": true
+    },
+    {
+      "name": "end finance preserved",
+      "pass": true
+    },
+    {
+      "name": "end additions correct",
+      "pass": true
+    },
+    {
+      "name": "February member rights entry",
+      "pass": true
+    },
+    {
+      "name": "bundle composition explicit",
+      "pass": true
+    },
+    {
+      "name": "bundle saved as interest not purchased",
+      "pass": true
+    },
+    {
+      "name": "future catalogue filters",
+      "pass": true
+    },
+    {
+      "name": "future catalogue destination",
+      "pass": true
+    },
+    {
+      "name": "future event tab becomes discovery",
+      "pass": true
+    },
+    {
+      "name": "past Tet campaign not carried to future",
+      "pass": true
+    },
+    {
+      "name": "overflow 360",
+      "pass": true
+    },
+    {
+      "name": "overflow 390",
+      "pass": true
+    },
+    {
+      "name": "overflow 430",
+      "pass": true
+    },
+    {
+      "name": "previous UI not changed",
+      "pass": true
+    },
+    {
+      "name": "runtime errors",
+      "pass": true
+    }
+  ],
+  "metrics": {
+    "current": [
+      {
+        "id": "vr-vinpay-services",
+        "y": 276,
+        "height": 140
+      },
+      {
+        "id": "vr-offer-stories",
+        "y": 484,
+        "height": 168
+      },
+      {
+        "id": "vr-fy",
+        "y": 652,
+        "height": 430
+      }
+    ],
+    "feb": [
+      {
+        "id": "member-context",
+        "y": 266,
+        "height": 75.5
+      },
+      {
+        "id": "vr-vinpay-services",
+        "y": 341.5,
+        "height": 104
+      },
+      {
+        "id": "vr-offer-stories",
+        "y": 513.5,
+        "height": 168
+      },
+      {
+        "id": "cross-pnl-bundle",
+        "y": 681.5,
+        "height": 256
+      },
+      {
+        "id": "vr-fy",
+        "y": 937.5,
+        "height": 430
+      }
+    ],
+    "end": [
+      {
+        "id": "ecosystem-search",
+        "y": 252,
+        "height": 185.5
+      },
+      {
+        "id": "vr-vinpay-services",
+        "y": 437.5,
+        "height": 108
+      },
+      {
+        "id": "vr-offer-stories",
+        "y": 613.5,
+        "height": 168
+      },
+      {
+        "id": "cross-pnl-bundle",
+        "y": 781.5,
+        "height": 256
+      },
+      {
+        "id": "vr-fy",
+        "y": 1037.5,
+        "height": 430
+      }
+    ]
+  },
+  "errors": [],
+  "pass": true,
+  "note": "Three actual content/layout versions. Future is proposal with unconfirmed delivery dates, not production capabilities. No human UT."
+}

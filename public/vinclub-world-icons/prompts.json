@@ -1,0 +1,17 @@
+{
+  "generator": "built-in image_gen__imagegen",
+  "assets": [
+    {
+      "path": "public/vinclub-world-icons/earth.png",
+      "prompt": "Use case: stylized-concept. Asset: premium 3D Earth globe icon for VinClub film. One isolated spherical Earth, recognizable raised simplified continents including Asia facing camera, polished champagne gold continents over deep warm bronze satin ocean, small sculptural gold orbital ribbon curving behind sphere. Match luxury gold 3D miniature service icons, black and champagne brand film, tactile rounded bevels, sophisticated product render, soft warm key light upper left, clean silhouette, three-quarter view. Globe occupies 75 percent of square frame centered. Actual transparent background, no floor, no rectangular background, no text letters logos watermark, no blue or green, no stand. Crisp readable at small icon sizes."
+    },
+    {
+      "path": "public/vinclub-world-icons/earth-life.png",
+      "prompt": "Use case: stylized-concept. Asset: premium 3D Earth globe lifestyle icon for VinClub film. One isolated spherical Earth with raised simplified recognizable gold continents, deep warm bronze satin ocean. Tiny elegant rounded gold home and compact gold car integrated on upper right globe rim, not floating separate. Luxury champagne gold miniature service icon family, tactile sculptural rounded bevels, soft warm key light upper left, sophisticated product render, three-quarter view, globe occupies 75 percent square frame centered. Actual transparent background, no floor no rectangular background, no text letters logos watermark, no blue green, no stand. Crisp simple readable silhouette."
+    },
+    {
+      "path": "public/vinclub-world-icons/earth-travel.png",
+      "prompt": "Use case: stylized-concept. Asset: premium 3D Earth globe travel icon for VinClub film. One isolated spherical Earth with raised simplified recognizable champagne gold continents and deep warm bronze satin ocean. One small elegant champagne gold passenger airplane following a thin gold curved orbit behind upper globe, connected coherent sculptural composition. Same luxury gold miniature service icon family, tactile rounded bevels, soft warm upper left key light, sophisticated product render, three-quarter view, globe occupies 75 percent square frame centered. Actual transparent background, no floor no rectangular background, no text letters logos watermark, no blue green, no stand. Crisp simple readable silhouette."
+    }
+  ]
+}

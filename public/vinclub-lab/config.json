@@ -1,0 +1,304 @@
+{
+  "version": 6,
+  "title": "VinClub — IA × Z Lab",
+  "ia": [
+    {
+      "id": "member",
+      "name": "01 · Giá trị hội viên",
+      "promise": "Tôi có gì và dùng được vào việc gì?",
+      "ai": "Trợ lý giải thích điểm, quyền lợi và gợi ý cách sử dụng.",
+      "mini": "Điểm đến thực hiện thanh toán, đổi voucher hoặc sử dụng dịch vụ.",
+      "order": [
+        "value",
+        "benefits",
+        "redeem",
+        "actions"
+      ],
+      "focus": "value",
+      "risk": "Dễ thành dashboard điểm ít lý do quay lại.",
+      "demo": "Có điểm → xem quyền lợi → chọn voucher → đổi bằng điểm.",
+      "organizingUnit": "Nguồn giá trị → nơi chấp nhận → quyền lợi đổi được",
+      "rule": "Điểm, tiền ví và quyền lợi là ba đối tượng truy cập riêng.",
+      "condition": "User đã có điểm, nhưng chưa biết dùng ở đâu.",
+      "sharedScenario": "VPoint → nơi chấp nhận → Học phí → chọn hóa đơn → thanh toán"
+    },
+    {
+      "id": "needs",
+      "name": "02 · Nhu cầu dẫn dắt",
+      "promise": "Tôi muốn làm một việc, app giúp tôi hoàn thành.",
+      "ai": "Điều phối: hiểu nhu cầu, đề xuất dịch vụ và nguồn thanh toán phù hợp.",
+      "mini": "Bộ thực thi tác vụ; mở với ngữ cảnh người dùng vừa chọn.",
+      "order": [
+        "goals",
+        "plan",
+        "walletline"
+      ],
+      "focus": "goals",
+      "risk": "Cần đủ cụ thể để tránh một ô tìm kiếm quá chung chung.",
+      "demo": "Đóng học phí → xem lựa chọn điểm/tiền → vào dịch vụ → xác nhận.",
+      "organizingUnit": "Mục tiêu đời sống → phương án → dịch vụ thực hiện",
+      "rule": "Một mục tiêu có thể gọi nhiều mini app; dịch vụ được nhóm theo việc muốn hoàn thành.",
+      "condition": "User biết việc cần làm, chưa biết dịch vụ nào và quyền lợi nào phù hợp.",
+      "sharedScenario": "Gia đình → Đóng học phí → chọn trường → quyền lợi → dịch vụ thanh toán"
+    },
+    {
+      "id": "ecosystem",
+      "name": "03 · Hệ sinh thái dịch vụ",
+      "promise": "Một nơi vào tất cả dịch vụ Vin tôi cần.",
+      "ai": "Tìm kiếm xuyên dịch vụ và giúp chọn, không chiếm cửa vào chính.",
+      "mini": "Đơn vị điều hướng chính: dịch vụ thường dùng và danh mục đầy đủ.",
+      "order": [
+        "serviceSearch",
+        "directory",
+        "recentApps",
+        "walletline"
+      ],
+      "focus": "serviceSearch",
+      "risk": "Dễ thành thư mục logo; phải có tác vụ cụ thể và entry ưu tiên.",
+      "demo": "Chọn V-Smart Pay → thanh toán hóa đơn → xem quyền lợi liên quan.",
+      "organizingUnit": "Danh mục dịch vụ → mini app → tác vụ bên trong",
+      "rule": "Mini app có không gian riêng; tài khoản và nguồn thanh toán dùng chung.",
+      "condition": "User biết nhà cung cấp hoặc dịch vụ muốn mở.",
+      "sharedScenario": "Giáo dục → Vinschool → Học phí → chọn hóa đơn → thanh toán"
+    },
+    {
+      "id": "context",
+      "name": "04 · Ngữ cảnh chủ động",
+      "promise": "App chuẩn bị đúng việc tôi cần làm lúc này.",
+      "ai": "Ưu tiên module theo thời điểm, giao dịch, lịch sử và nhu cầu.",
+      "mini": "Xuất hiện bên trong gợi ý để hoàn thành việc; vẫn có danh mục truy cập.",
+      "order": [
+        "walletline",
+        "timeline",
+        "upcoming"
+      ],
+      "focus": "walletline",
+      "risk": "Gợi ý sai sẽ mất niềm tin; cần lý do và khả năng bỏ qua.",
+      "demo": "Hóa đơn sắp đến hạn → gợi ý quyền lợi → mở thanh toán → kết quả.",
+      "organizingUnit": "Thời điểm → việc cần xử lý → hành động đã chuẩn bị",
+      "rule": "Home là hàng đợi việc và timeline; từng tác vụ gắn provider, nguồn tiền và thời hạn.",
+      "condition": "Có dữ liệu hóa đơn/lịch sử để chuẩn bị đúng việc.",
+      "sharedScenario": "Học phí đến hạn hôm nay → kiểm tra hóa đơn đã chuẩn bị → xác nhận"
+    },
+    {
+      "id": "conversation",
+      "name": "05 · Hội thoại dẫn dắt",
+      "promise": "Nói nhu cầu, nhận lựa chọn và hành động trong một hành trình.",
+      "ai": "Cửa vào chính qua text/voice; trả action card thay vì chỉ văn bản.",
+      "mini": "Công cụ được gọi qua action card; mở sâu khi cần tác vụ phức tạp.",
+      "order": [
+        "walletline",
+        "workspace",
+        "composer"
+      ],
+      "focus": "walletline",
+      "risk": "User không phải lúc nào cũng muốn chat; luôn giữ đường tắt.",
+      "demo": "Tìm voucher phù hợp → AI đưa 2 lựa chọn → chọn → đổi điểm.",
+      "organizingUnit": "Yêu cầu → hội thoại → action card → thực thi",
+      "rule": "Một workspace hội thoại; dịch vụ xuất hiện trong kết quả, không có danh mục chiếm Home.",
+      "condition": "User có nhu cầu khó diễn đạt bằng danh mục hoặc cần so sánh.",
+      "sharedScenario": "“Đóng học phí cho con” → hỏi trường → action card hóa đơn → xác nhận"
+    },
+    {
+      "id": "superhub",
+      "name": "06 · Super App Hub",
+      "promise": "Dịch vụ thường dùng ở ngay trước mắt; một tài khoản để tiếp tục mọi việc.",
+      "ai": "Ô tìm kiếm hiểu nhu cầu, dẫn đến dịch vụ hoặc tác vụ; không buộc user chat.",
+      "mini": "Cửa vào chính: hai dịch vụ ưu tiên và lưới shortcut cá nhân hóa.",
+      "order": [
+        "hubSearch",
+        "hubWallet",
+        "hubFeatured",
+        "hubShortcuts",
+        "hubOffer"
+      ],
+      "focus": "hubFeatured",
+      "risk": "Quá nhiều dịch vụ sẽ loãng ưu tiên; giới hạn shortcut và cho phép ghim.",
+      "demo": "Chạm Vinschool → chọn học phí → kiểm tra → xác nhận.",
+      "organizingUnit": "Dịch vụ ưu tiên → shortcut thường dùng → ưu đãi liên quan",
+      "rule": "Ví và điểm là thanh tiện ích; mini app chiếm vùng trung tâm, voucher hỗ trợ khám phá.",
+      "condition": "User quay lại thường xuyên và dùng nhiều dịch vụ của tập đoàn.",
+      "sharedScenario": "Vinschool ở shortcut → Học phí → chọn hóa đơn → thanh toán"
+    },
+    {
+      "id": "minimalhub",
+      "name": "07 · Super App tối giản",
+      "promise": "Một nơi giữ giá trị, hai cửa để sử dụng.",
+      "ai": "Tìm kiếm theo nhu cầu, chỉ mở khi user cần; không thêm một khối AI riêng.",
+      "mini": "Ẩn sau cửa Dịch vụ; Home ưu tiên truy cập thay vì trưng toàn bộ danh mục.",
+      "order": [
+        "minimalAccount",
+        "minimalDoors",
+        "minimalSearch"
+      ],
+      "focus": "minimalDoors",
+      "risk": "Thêm một bước để vào mini app; kiểm chứng tốc độ với người dùng thường xuyên.",
+      "demo": "Dịch vụ → Vinschool → Học phí → kiểm tra hóa đơn.",
+      "organizingUnit": "Tài khoản → hai cửa tác vụ → tìm kiếm tùy chọn",
+      "rule": "Home không có feed voucher, carousel ưu đãi hay grid logo; Khám phá chỉ có voucher và dịch vụ.",
+      "condition": "Cần Home sạch, rõ và dễ hiểu cho cả khách hàng mới và hội viên nhiều điểm.",
+      "sharedScenario": "Dịch vụ → Vinschool → Học phí → chọn hóa đơn → thanh toán"
+    },
+    {
+      "id": "daily",
+      "name": "02 · AI-first",
+      "order": [
+        "dailyIdentity",
+        "aiHero",
+        "dailyPayment",
+        "directApps",
+        "nearbyMap",
+        "voucherList"
+      ],
+      "promise": "Nói nhu cầu với AI hoặc chạm mini app để làm ngay.",
+      "rule": "VPoint nhỏ trên cùng; AI và Map là hai section độc lập; Payment trước grid mini app; list voucher cuối Home.",
+      "focus": "aiHero",
+      "ai": "AI ở trên: tìm kiếm và khám phá quanh bạn; chat mua hàng và bản đồ 3D là tầm nhìn concept.",
+      "mini": "Gọi xe, giao đồ ăn, Vinmec, học phí, khách sạn và du lịch mở trực tiếp từ Home.",
+      "risk": "Bản đồ cần dữ liệu địa điểm thực; hiệu quả thương mại và mua hàng qua AI chưa được kiểm chứng.",
+      "demo": "Home → mini app Học phí → kiểm tra hóa đơn → xác nhận demo.",
+      "organizingUnit": "AI là cửa vào chính; grid mini app là đường tắt trực tiếp.",
+      "condition": "Cần vừa dùng dịch vụ ngay vừa truyền tải tầm nhìn Super App.",
+      "sharedScenario": "Học phí ngay ở Home → chọn hóa đơn → thanh toán"
+    },
+    {
+      "id": "dualsurface",
+      "name": "03 · Cân bằng / hướng của bạn",
+      "order": [
+        "futureAI",
+        "minimalAccount",
+        "directApps",
+        "hubOffer"
+      ],
+      "promise": "Giữ cấu trúc bạn đề xuất, cân bằng giá trị hội viên và dịch vụ.",
+      "rule": "Giữ ba tab Thanh toán / VinClub / Khám phá. VinClub: AI, thẻ hội viên, grid mini app và voucher. Khám phá: chỉ voucher và dịch vụ.",
+      "focus": "directApps",
+      "ai": "AI ở trên: tìm kiếm và khám phá quanh bạn; chat mua hàng và bản đồ 3D là tầm nhìn concept.",
+      "mini": "Gọi xe, giao đồ ăn, Vinmec, học phí, khách sạn và du lịch mở trực tiếp từ Home.",
+      "risk": "Bản đồ cần dữ liệu địa điểm thực; hiệu quả thương mại và mua hàng qua AI chưa được kiểm chứng.",
+      "demo": "Home → mini app Học phí → kiểm tra hóa đơn → xác nhận demo.",
+      "organizingUnit": "Ba tab: Thanh toán / VinClub / Khám phá",
+      "condition": "Cần vừa dùng dịch vụ ngay vừa truyền tải tầm nhìn Super App.",
+      "sharedScenario": "Học phí ngay ở Home → chọn hóa đơn → thanh toán"
+    }
+  ],
+  "visual": [
+    {
+      "id": "metal",
+      "name": "01 · Sculpted Metal",
+      "material": "Satin metal / ánh sáng / thẻ chế tác",
+      "signature": "Thẻ hội viên phản hồi khi chạm",
+      "suitable": [
+        "member",
+        "needs",
+        "context",
+        "minimalhub"
+      ]
+    },
+    {
+      "id": "glass",
+      "name": "02 · Optical Glass",
+      "material": "Kính quang học / lớp nổi",
+      "signature": "Panel biến hình thành entry dịch vụ",
+      "suitable": [
+        "needs",
+        "ecosystem",
+        "context",
+        "superhub",
+        "minimalhub",
+        "daily",
+        "dualsurface"
+      ]
+    },
+    {
+      "id": "spatial",
+      "name": "04 · Spatial Ecosystem",
+      "material": "Không gian 2.5D / cổng kết nối",
+      "signature": "Portal dẫn vào mini app",
+      "suitable": [
+        "ecosystem",
+        "needs",
+        "superhub",
+        "daily",
+        "dualsurface"
+      ]
+    },
+    {
+      "id": "concierge",
+      "name": "05 · Personal Concierge",
+      "material": "Ánh sáng mềm / typography / nội dung chọn lọc",
+      "signature": "Gợi ý chuyển thành hành động",
+      "suitable": [
+        "context",
+        "conversation",
+        "needs",
+        "daily",
+        "dualsurface"
+      ]
+    },
+    {
+      "id": "luminous",
+      "name": "06 · Luminous Minimal",
+      "material": "Monochrome / ruby / shape riêng",
+      "signature": "Dấu hiệu giá trị phản hồi bằng ánh sáng",
+      "suitable": [
+        "member",
+        "conversation",
+        "context",
+        "minimalhub"
+      ]
+    }
+  ],
+  "process": [
+    {
+      "id": "brief",
+      "name": "0 · Nền chung",
+      "input": "Đối tượng, phạm vi, ba không gian, module bắt buộc",
+      "output": "Một brief dùng chung",
+      "check": "VPoint và tiền ví riêng; nhu cầu demo cụ thể"
+    },
+    {
+      "id": "ia",
+      "name": "Z1 · IA / khung nhà",
+      "input": "10 giả thuyết về vai trò AI và mini app",
+      "output": "10 wireframe với bố cục và cửa vào khác nhau",
+      "check": "Thấy hành động chính; biết entry mini app và giá trị hội viên"
+    },
+    {
+      "id": "interaction",
+      "name": "Z2 · Interaction / state",
+      "input": "IA + một nhu cầu có kịch bản",
+      "output": "Idle → gợi ý → mở tác vụ → xác nhận → kết quả",
+      "check": "Có đường tắt, quay lại và trạng thái lỗi; user kiểm soát thanh toán"
+    },
+    {
+      "id": "visual",
+      "name": "Z3 · Visual",
+      "input": "IA + 5 visual recipe đã chọn",
+      "output": "50 tổ hợp sơ bộ; shortlist theo độ phù hợp",
+      "check": "Khác biệt về hierarchy, chữ, material; đọc rõ số và tác vụ"
+    },
+    {
+      "id": "motion",
+      "name": "Z4 · Wow / Three.js",
+      "input": "Visual recipe + signature interaction",
+      "output": "5 scene study chạy thật trong mobile web",
+      "check": "Responsive; pointer/touch; reduced motion; DOM giữ nội dung"
+    },
+    {
+      "id": "review",
+      "name": "Review / vòng lặp",
+      "input": "Ảnh 5 IA + ảnh 50 tổ hợp + kiểm tra browser",
+      "output": "Gallery và cấu hình có thể tái tạo",
+      "check": "Không overflow; không lỗi JS; chọn theme không thay IA"
+    }
+  ],
+  "assumptions": [
+    "Dữ liệu hội viên và số dư là demo.",
+    "AI chạy bằng kịch bản; chưa kết nối model hoặc dữ liệu cá nhân.",
+    "Thanh toán học phí bằng VPoint là giả định concept, cần xác nhận quy tắc.",
+    "Mini app đang là các panel prototype, không thực hiện giao dịch.",
+    "Visual và scene là study sơ bộ để kiểm tra phối tầng; chưa phải 25 concept hi-fi hoàn thiện.",
+    "Bản đồ là sơ đồ địa điểm minh họa, không có geolocation, routing hay mua sắm thật; chế độ 3D là scene study."
+  ]
+}

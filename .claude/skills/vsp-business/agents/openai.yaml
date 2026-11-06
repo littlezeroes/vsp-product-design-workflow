@@ -1,0 +1,4 @@
+interface:
+  display_name: "VSP Business"
+  short_description: "Phân tích nguồn tiền, chi phí và điều kiện vận hành"
+  default_prompt: "Dùng $vsp-business xác định ai trả tiền, ai hưởng doanh thu, chi phí và điều kiện để phương án này vận hành."

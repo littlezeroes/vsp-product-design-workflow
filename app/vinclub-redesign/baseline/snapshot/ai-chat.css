@@ -1,0 +1,115 @@
+.vc-ai-chat { --background:var(--color-grey-00);--foreground:var(--color-grey-1000);--foreground-secondary:var(--color-grey-600);--secondary:var(--color-grey-100);--card:var(--color-grey-50);--card-foreground:var(--foreground);--btn-secondary-bg:var(--secondary);--btn-secondary-fg:var(--foreground);--disabled-bg:var(--color-grey-100);--disabled-fg:var(--color-grey-400);position:fixed;inset:0;z-index:160;display:flex;flex-direction:column;background:var(--background);color:var(--foreground);color-scheme:light;animation:vc-ai-enter .24s ease-out; }
+.vc-ai-scroll { flex:1;min-height:0;overflow-y:auto; }
+.vc-ai-welcome { min-height:310px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:24px;padding-bottom:24px; }
+.vc-ai-welcome h1 { font-size:22px;letter-spacing:-.6px;text-align:center; }
+.vc-ai-hero-bot { display:flex;justify-content:center;align-items:center;width:100%; }
+.vc-ai-chat .ds-ai-avatar { position:relative;display:block;flex-shrink:0; }
+.vc-ai-chat .ds-ai-avatar canvas { position:absolute;inset:0;pointer-events:none; }
+.vc-ai-chat .ds-ai-avatar[data-ready=true]>img { visibility:hidden; }
+.vc-ai-chat button>span:first-child { background:var(--secondary);backdrop-filter:none;box-shadow:none; }
+.vc-ai-bottom { position:relative;inset:auto;flex-shrink:0;background:var(--background); }
+.vc-ai-chat .vc-ai-composer { position:relative;isolation:isolate;padding:12px;border-radius:var(--radius-28);background:var(--card);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--danger) 24%,transparent),0 2px 6px color-mix(in srgb,var(--color-grey-1000) 6%,transparent),0 12px 36px -8px color-mix(in srgb,var(--color-grey-1000) 18%,transparent); }
+.vc-ai-input-row { display:flex;align-items:center; }
+.vc-ai-chat .vc-ai-input { border:0;box-shadow:none;background:transparent;padding:0;height:44px;font-size:14px;border-radius:var(--radius-8); }
+.vc-ai-chat .vc-ai-input::placeholder { color:var(--foreground-secondary); }
+.vc-ai-chat .vc-ai-input:focus-visible { box-shadow:none;outline:none; }
+.vc-ai-composer-tools { display:flex;align-items:center;justify-content:space-between;padding-top:8px; }
+.vc-ai-composer-tools button { width:36px;height:36px;padding:0; }
+.vc-ai-chat .vc-ai-composer-tools button[type=submit]>span:first-child { background:var(--foreground); }
+.vc-ai-chat .vc-ai-composer-tools button[type=button]>span:first-child { background:transparent; }
+.vc-ai-suggestion-list { display:flex;flex-direction:column;gap:8px; }
+.vc-ai-suggestion-row { display:flex;align-items:center;gap:12px;min-width:0; }
+.vc-ai-chat .vc-ai-list-choice { flex:1;min-width:0;padding:8px 0;height:auto;white-space:normal;text-align:left;justify-content:flex-start; }
+.vc-ai-list-choice>span:last-child { display:flex;justify-content:space-between;align-items:center;width:100%;min-width:0;gap:12px; }
+.vc-ai-list-choice>span:last-child>span { flex:1;min-width:0;display:flex;flex-direction:column;gap:4px; }
+.vc-ai-list-choice strong { font-size:13px;font-weight:500;white-space:normal;overflow-wrap:anywhere; }
+.vc-ai-list-choice>span:last-child>span>span { color:var(--foreground-secondary);font-size:11px;font-weight:400;line-height:17px;white-space:normal;overflow-wrap:anywhere; }
+.vc-ai-list-choice svg { flex-shrink:0; }
+.vc-ai-chat .vc-ai-list-choice>span:first-child,.vc-ai-chat .vc-ai-inline-suggestions>span:first-child { background:transparent; }
+.vc-ai-chat .vc-ai-inline-suggestions { width:auto;height:auto;margin-left:auto;margin-right:12px;padding:4px 0;font-size:11px;font-weight:400; }
+.vc-ai-composer-dropdown { padding-top:12px;max-height:230px;overflow-y:auto;animation:vc-ai-enter .2s ease-out; }
+.vc-ai-composer-dropdown .daily-icon { width:32px;height:32px; }
+.vc-ai-messages { display:flex;flex-direction:column;gap:24px; }
+.vc-ai-message { font-size:14px;line-height:1.7;overflow-wrap:anywhere; }
+.vc-ai-message-user { align-self:flex-end;max-width:88%;background:var(--secondary);border-radius:var(--radius-14);padding:12px 16px; }
+.vc-ai-message-assistant { align-self:flex-start; }
+.vc-ai-author { font-size:11px;font-weight:600;color:var(--foreground-secondary);margin-bottom:8px; }
+.vc-ai-thinking { font-size:12px; }
+.vc-ai-thinking span { animation:vc-ai-think 1s ease-in-out infinite; }
+@property --ai-chat-border-angle { syntax:"<angle>";initial-value:0deg;inherits:false; }
+.vc-ai-composer::after { content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:conic-gradient(from var(--ai-chat-border-angle),transparent 0deg 230deg,color-mix(in srgb,var(--danger) 35%,transparent) 265deg,var(--danger) 305deg,transparent 350deg);mask:linear-gradient(var(--foreground) 0 0) content-box,linear-gradient(var(--foreground) 0 0);mask-composite:exclude;animation:vc-ai-border-orbit 6s linear infinite; }
+@keyframes vc-ai-border-orbit { to { --ai-chat-border-angle:360deg; } }
+@keyframes vc-ai-enter { from { opacity:0;transform:translateY(12px); } to { opacity:1;transform:translateY(0); } }
+@keyframes vc-ai-think { 50% { opacity:.3; } }
+.vc-ai-booking { background:var(--card);color:var(--foreground); }
+.vc-ai-booking-image { position:relative;height:150px; }
+.vc-ai-booking-image img { object-fit:cover; }
+.vc-ai-booking-tag { position:absolute;left:16px;bottom:12px;font-size:10px;letter-spacing:.7px;padding:6px 10px;border-radius:var(--radius-8);background:var(--background);color:var(--foreground); }
+.vc-ai-booking-body { padding:16px; }
+.vc-ai-booking-fields { display:flex;flex-direction:column;gap:16px;margin-top:16px; }
+.vc-ai-booking-fields label { font-size:12px;color:var(--foreground-secondary); }
+.vc-ai-booking-fields input { margin-top:8px;border-radius:var(--radius-14);background:var(--background);color:var(--foreground);height:44px;font-size:13px; }
+.vc-ai-booking-options { display:flex;flex-direction:column;gap:8px;margin-top:16px; }
+.vc-ai-chat .vc-ai-booking-option { height:auto;padding:12px;white-space:normal;text-align:left; }
+.vc-ai-booking-option>span:first-child { border-radius:inherit; }
+.vc-ai-booking-option>span:last-child { display:flex;width:100%;gap:12px;min-width:0; }
+.vc-ai-booking-option strong,.vc-ai-booking-option>span:last-child>span>span { display:block; }
+.vc-ai-booking-option strong { font-size:12px;font-weight:500; }
+.vc-ai-booking-option>span:last-child>span>span { font-size:11px;color:var(--foreground-secondary);font-weight:400;line-height:18px; }
+.vc-ai-chat .vc-ai-booking-option[aria-pressed=true]>span:first-child { box-shadow:inset 0 0 0 1px var(--foreground); }
+.vc-ai-route { display:flex;align-items:flex-start;gap:8px;background:var(--secondary);padding:12px;margin-top:16px;font-size:12px; }
+.vc-ai-route p { display:flex;flex-direction:column;gap:4px; }
+.vc-ai-route>svg { flex-shrink:0; }
+.vc-ai-quantity { display:flex;justify-content:space-between;align-items:center;margin-top:16px; }
+.vc-ai-quantity>div { display:flex;align-items:center;gap:12px;font-size:13px; }
+.vc-ai-summary { padding:12px;background:var(--secondary);margin-top:16px;display:flex;flex-direction:column;gap:10px;font-size:12px; }
+.vc-ai-summary h3 { font-size:14px;font-weight:500; }
+.vc-ai-summary p { display:flex;align-items:flex-start;gap:6px;color:var(--foreground-secondary); }
+.vc-ai-summary p svg { flex-shrink:0; }
+.vc-ai-summary>div { display:flex;justify-content:space-between;gap:8px; }
+.vc-ai-payment { display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;font-size:12px; }
+.vc-ai-payment select { background:var(--secondary);color:var(--foreground);border-radius:var(--radius-8);padding:8px; }
+.vc-ai-status { padding:12px;background:var(--secondary);display:flex;gap:10px;margin-top:16px; }
+.vc-ai-status h3 { font-size:13px;font-weight:500; }
+.vc-ai-status p { font-size:11px;color:var(--foreground-secondary);margin-top:4px; }
+.vc-ai-chat .vc-ai-flow-next { color:var(--background);font-size:13px; }
+.vc-ai-chat .vc-ai-flow-next>span:first-child { background:var(--foreground); }
+@media(prefers-reduced-motion:reduce) { .vc-ai-chat,.vc-ai-thinking span,.vc-ai-composer::after,.vc-ai-composer-dropdown { animation:none; } }
+.vc-ai-list-choice>span:last-child>span { padding-inline:4px;overflow:visible; }
+.vc-ai-composer-tools { align-items:flex-start;gap:8px; }
+.vc-ai-chat .vc-ai-voice button { width:auto;min-height:36px;height:auto;padding:8px 12px;font-size:12px; }
+.vc-ai-voice { min-width:0; }
+.vc-ai-voice button[aria-pressed=true] { color:var(--info); }
+.vc-ai-voice button[aria-pressed=true] svg { animation:vc-ai-think .8s ease-in-out infinite; }
+.vc-ai-voice p { max-width:260px;line-height:18px; }
+.vc-ai-welcome { min-height:310px; }
+.vc-ai-booking-image { height:190px; }
+.vc-ai-booking-image img { object-fit:contain;background:var(--secondary); }
+@media(prefers-reduced-motion:reduce) { .vc-ai-voice button[aria-pressed=true] svg { animation:none; } }
+
+.vc-ai-confirm-heading { display:flex;align-items:center;gap:12px; }
+.vc-ai-confirm-actions { display:flex;gap:8px;margin-top:16px; }
+.vc-ai-confirm-actions>button:first-child { flex:1; }
+.vc-ai-confirm-status { display:flex;align-items:center;gap:8px;margin-top:16px;font-size:13px; }
+.vc-ai-booking-body { padding:22px; }
+
+.vc-ai-welcome-ideas { height:24px;width:100%;display:flex;justify-content:center;overflow:hidden;font-size:14px;line-height:24px; }
+.vc-ai-welcome-ideas>span { display:block;animation:vc-ai-idea-in .55s cubic-bezier(.22,1,.36,1) both; }
+@keyframes vc-ai-idea-in { from { opacity:0;transform:translateY(12px);filter:blur(3px); } to { opacity:1;transform:translateY(0);filter:blur(0); } }
+@media(prefers-reduced-motion:reduce) { .vc-ai-welcome-ideas>span { animation:none; } }
+
+/* Welcome animation belongs inside the AI chat screen. */
+.vc-ai-welcome { padding-top:32px;padding-bottom:16px;min-height:340px; }
+.vc-ai-speech { position:relative;z-index:2;max-width:100%;padding:12px 18px;font-size:14px;line-height:20px;font-weight:500;margin-bottom:8px;animation:vc-ai-speech-cycle 4.2s ease-in-out both; }
+.vc-ai-speech::after { content:"";position:absolute;left:calc(50% - 6px);bottom:-9px;width:14px;height:12px;background:var(--secondary);clip-path:polygon(0 0,100% 0,35% 100%); }
+.vc-ai-character { position:relative;width:144px;height:144px;isolation:isolate; }
+.vc-ai-character .ds-ai-avatar { position:relative;z-index:1; }
+.vc-ai-service-burst { position:absolute;inset:0;z-index:0;pointer-events:none; }
+.vc-ai-flying-service { position:absolute;left:52px;top:52px;width:40px;height:40px;opacity:0;animation:vc-ai-service-left 4.2s cubic-bezier(.22,1,.36,1) both; }
+.vc-ai-flying-service:nth-child(2) { animation-name:vc-ai-service-up;animation-delay:.14s; }
+.vc-ai-flying-service:nth-child(3) { animation-name:vc-ai-service-right;animation-delay:.28s; }
+@keyframes vc-ai-speech-cycle { 0% { opacity:0;transform:translateY(6px) scale(.98); } 14%,88% { opacity:1;transform:translateY(0) scale(1); } 100% { opacity:0;transform:translateY(-3px); } }
+@keyframes vc-ai-service-left { 0%,5% { opacity:0;transform:translate(0,0) scale(.25); } 18%,30% { opacity:.95; } 48%,100% { opacity:0;transform:translate(-94px,-52px) scale(.9) rotate(-18deg); } }
+@keyframes vc-ai-service-up { 0%,5% { opacity:0;transform:translate(0,0) scale(.25); } 18%,30% { opacity:.9; } 48%,100% { opacity:0;transform:translate(68px,-82px) scale(.85) rotate(12deg); } }
+@keyframes vc-ai-service-right { 0%,5% { opacity:0;transform:translate(0,0) scale(.25); } 18%,30% { opacity:.95; } 48%,100% { opacity:0;transform:translate(100px,4px) scale(.9) rotate(18deg); } }
+@media(prefers-reduced-motion:reduce) { .vc-ai-speech { animation:none; }.vc-ai-service-burst { display:none; } }

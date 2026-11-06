@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-02",
+  "status": "research only; live model unchanged",
+  "audit": {
+    "meshes": 315,
+    "materials": 13,
+    "textures": 0,
+    "normalMaps": 0,
+    "occlusionMaps": 0,
+    "roughnessMaps": 0,
+    "blenderViewTransform": "AgX",
+    "webToneMapping": "ACESFilmic",
+    "note": "Different render pipelines require a controlled comparison; mismatch cause is not yet measured."
+  },
+  "references": [
+    {
+      "name": "Ảnh mày gửi",
+      "image": "user-reference.png",
+      "url": null,
+      "lesson": "Khối kiến trúc sáng nhưng có bóng sâu; nước đậm hơn nền, bờ sông và phố tạo nhiều lớp. Ảnh nhỏ nên chỉ dùng để đọc bố cục và tương phản."
+    },
+    {
+      "name": "Chipsa — Donstroy",
+      "image": "donstroy.png",
+      "url": "https://dribbble.com/shots/27307159-Donstroy-3D-City-Navigation-for-Premium-Real-Estate",
+      "lesson": "Studio dùng nhà clay trung tính cho nền, vật liệu đầy đủ ở khu chính. Học hierarchy và chi tiết đường phố; đây là video render, không phải bằng chứng chạy realtime trên mobile."
+    },
+    {
+      "name": "Gleb — Smart Home",
+      "image": "gleb-smart-home.png",
+      "url": "https://dribbble.com/shots/15236890-Smart-Home-app-Onboarding-by-Milkinside",
+      "lesson": "Quan sát: vật thể sáng có cạnh, khe và phản xạ rõ; một vùng màu ấm làm focal point. Mượn cách phân biệt vật liệu, không bê palette lavender vào VinClub."
+    }
+  ],
+  "recommendation": "Architectural realism with restrained premium accents",
+  "materials": [
+    [
+      "Đá limestone",
+      "Ivory trung tính",
+      "#E8E2D7",
+      "0.55–0.7",
+      "0",
+      "Mạch ghép, hạt mịn rất nhẹ, bệ và bậc sảnh"
+    ],
+    [
+      "Kính architectural",
+      "Xanh xám rõ khối",
+      "#748B8D",
+      "0.12–0.2",
+      "0",
+      "Khung kính có độ sâu, phản xạ môi trường; transmission chỉ ở sảnh gần"
+    ],
+    [
+      "Kim loại champagne",
+      "Vàng nhạt có highlight",
+      "#BEA47A",
+      "0.25–0.38",
+      "0.85–1",
+      "Chỉ dùng ở cửa, tay vịn, logo, mái che"
+    ],
+    [
+      "Đường và vỉa hè",
+      "Stone / greige",
+      "#C5BDAF",
+      "0.8–0.95",
+      "0",
+      "Khác cao độ, mép bó vỉa, joints và vạch qua đường"
+    ],
+    [
+      "Nước",
+      "Jade có độ sâu",
+      "#397E80",
+      "0.1–0.2",
+      "0",
+      "Mép bờ nông sáng, lòng sông đậm, gợn và phản xạ nhẹ"
+    ],
+    [
+      "Cây xanh",
+      "Sage + olive",
+      "#7D8B66",
+      "0.85–1",
+      "0",
+      "3–4 tông, nhiều cụm tán và thân cây; giảm cây hình viên kẹo"
+    ],
+    [
+      "Điểm thương hiệu",
+      "Ruby",
+      "#8E2434",
+      "0.2–0.32",
+      "0",
+      "Logo / plaque nhỏ, không phủ cả mặt đứng"
+    ]
+  ],
+  "note": "Palette and roughness numbers are proposed starting values, not measured values from references."
+}

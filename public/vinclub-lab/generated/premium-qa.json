@@ -1,0 +1,151 @@
+{
+  "date": "2026-10-02T09:34:30.655Z",
+  "results": [
+    {
+      "id": "atlas",
+      "width": 320,
+      "contrastChecked": 36,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 320,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 0,
+      "miniAppCount": 9
+    },
+    {
+      "id": "atlas",
+      "width": 390,
+      "contrastChecked": 36,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 9
+    },
+    {
+      "id": "atlas",
+      "width": 430,
+      "contrastChecked": 36,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 430,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 9
+    },
+    {
+      "id": "daily",
+      "width": 320,
+      "contrastChecked": 33,
+      "gradientExcluded": 3,
+      "contrastFailures": [],
+      "phoneWidth": 320,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "daily",
+      "width": 390,
+      "contrastChecked": 33,
+      "gradientExcluded": 3,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "daily",
+      "width": 430,
+      "contrastChecked": 33,
+      "gradientExcluded": 3,
+      "contrastFailures": [],
+      "phoneWidth": 430,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 320,
+      "contrastChecked": 20,
+      "gradientExcluded": 4,
+      "contrastFailures": [],
+      "phoneWidth": 320,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 390,
+      "contrastChecked": 20,
+      "gradientExcluded": 4,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 430,
+      "contrastChecked": 20,
+      "gradientExcluded": 4,
+      "contrastFailures": [],
+      "phoneWidth": 430,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    }
+  ],
+  "checks": [
+    {
+      "id": "atlas",
+      "task": "Direct mini app entry",
+      "passed": true
+    },
+    {
+      "id": "atlas",
+      "task": "V-Smart Pay in mini app grid",
+      "passed": true
+    },
+    {
+      "id": "daily",
+      "task": "Direct mini app entry",
+      "passed": true
+    },
+    {
+      "id": "daily",
+      "task": "Payment retains four services",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "Direct mini app entry",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "AI has no map or 3D",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "Three spaces",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

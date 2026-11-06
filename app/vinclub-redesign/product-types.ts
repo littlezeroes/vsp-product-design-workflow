@@ -1,0 +1,14 @@
+import type { ReactNode } from "react";
+export type Domain = "home"|"notifications"|"services"|"offers"|"offer"|"membership"|"wallet"|"bills"|"bill"|"transfer"|"deposit"|"withdraw"|"qr"|"shopping"|"product"|"cart"|"checkout"|"receipt"|"experiences"|"experience"|"booking"|"life"|"asset"|"care"|"rule"|"assistant"|"account"|"activity"|"service-request"|"charging";
+export type Screen = {kind:Domain;id?:string};
+export type ProductDesign={slug:string;name:string;label:string;strategy:string;hero:string;asset:string;navigation:{label:string;kind:Domain}[]};
+export type Bill={id:string;title:string;amount:number;due:string;asset:string;paid:boolean};
+export type Offer={id:string;title:string;brand:string;description:string;terms:string;points:number;image:string;saved:boolean;redeemed:boolean};
+export type Product={id:string;name:string;price:number;stock:number;image:string;category:string};
+export type Experience={id:string;name:string;price:number;kind:"stay"|"ticket";image:string;description:string};
+export type RecordEntry={id:string;kind:string;title:string;amount:number;status:string;detail:string;date:string;fields:Record<string,string>};
+export type Asset={id:string;name:string;type:"home"|"car";description:string};
+export type Store={name:string;balance:number;points:number;bills:Bill[];offers:Offer[];products:Product[];experiences:Experience[];assets:Asset[];cart:Record<string,number>;records:RecordEntry[];rules:Record<string,{enabled:boolean;days:number;limit:number}>;preferences:Record<string,string>};
+export type StoreApi={data:Store;update:(fn:(prev:Store)=>Store)=>void;record:(entry:Omit<RecordEntry,"id"|"date">)=>RecordEntry;};
+export type ScreenView={title:string;body:ReactNode;action?:{label:string;run:()=>void;disabled?:boolean};secondary?:{label:string;run:()=>void};};
+export type DomainProps={design:ProductDesign;store:StoreApi;screen:Screen;navigate:(screen:Screen)=>void;back:()=>void;};

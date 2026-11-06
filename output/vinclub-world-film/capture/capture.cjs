@@ -79,9 +79,9 @@ async function session(browser,{viewport,dpr=2,url}){
     await tap(btn('Quay lại Home'));await wait(900);
     await s.clip('vinpay',5.5,async()=>{await tap(tab('VinPay'));await wait(2200);await s.scroll('.ds-scroll',240,1400)});
     await s.scroll('.ds-scroll',0,10);
-    await s.clip('vinlife',6.5,async()=>{await tap(tab('VinLife'));await wait(2600);await s.scroll('.ds-scroll',330,1600)});
+    await s.clip('vinlife',6.5,async()=>{await tap(tab('VinCare'));await wait(2600);await s.scroll('.ds-scroll',330,1600)});
     await s.scroll('.ds-scroll',0,10);await tap(tab('VinClub'));await wait(1200);
-    await s.clip('ai',11,async()=>{await tap(p.locator('.ds-ai'));await wait(1500);const box=p.locator('.vc-ai-chat textarea, .vc-ai-chat input').first();await s.type(box,'Có ưu đãi nào dành cho tôi hôm nay?');await wait(350);await tap(btn('Gửi tin nhắn'));await wait(4200)});
+    await s.clip('ai',11,async()=>{await tap(p.locator('.ds-ai'));await wait(1500);const box=p.locator('.vc-ai-chat textarea, .vc-ai-chat input').first();await s.type(box,'Đặt xe đưa tôi đến Vincom');await wait(350);await tap(btn('Gửi tin nhắn'));await wait(4200)});
     await s.clip('ai-voice',5,async()=>{await tap(btn('Nói với AI'));await wait(3200)});
     const stop=btn('Dừng ghi âm');if(await stop.count())await tap(stop);
     await p.goto(BASE+'/vinclub-dualsurface/ui');await p.locator('.vc-gold-splash').waitFor({state:'detached'});await s.prepare();await wait(500);

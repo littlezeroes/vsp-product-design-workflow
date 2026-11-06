@@ -1,0 +1,596 @@
+{
+  "version": "final-source-first-1",
+  "status": "Đề xuất cuối để review; chưa phải user approval hay human UT",
+  "finalRecommendation": {
+    "title": "Giữ StackHome nguồn, làm rõ nội dung và sửa flow tại chỗ",
+    "composition": [
+      "membership",
+      "wallet",
+      "financial-pair",
+      "personalized-heading",
+      "daily-story + brand-benefits (cùng rail)",
+      "experiences",
+      "navigation (fixed)"
+    ],
+    "why": "Giữ nhịp tài sản → hai lợi ích tài chính → đề nghị thương hiệu nhỏ dễ khám phá → trải nghiệm ảnh lớn, đúng source localhost3300.",
+    "renderContract": "Reuse export StackHome từ ref-layouts.tsx; không dựng lại Home bằng V5 generic cards.",
+    "requiredOptions": {
+      "header": 1,
+      "wallet": 2,
+      "products": 3,
+      "productCount": 2,
+      "vouchers": 1,
+      "feed": 2,
+      "hierarchy": 1,
+      "story": 1,
+      "offerHeader": 1,
+      "walletState": 1,
+      "vinclubState": 1
+    },
+    "adaptations": [
+      "Nhãn Product1/2 → Tích lũy/Tín dụng, giữ lợi ích tài chính",
+      "Sửa hit area story nếu lỗi pointer tái hiện",
+      "Đích chi tiết theo offer/product id khi có flow; không báo giao dịch thật"
+    ],
+    "visualSystem": "Gold shader nguồn → ví carbon → paper sáng/pastel thương hiệu → trải nghiệm ảnh lớn. Dùng token semantic và radius named khi adaptation."
+  },
+  "sourceRoot": "/Users/huykieu/Documents/vinpay-all",
+  "sourceUrl": "http://localhost:3300/ui-templates/sumeria/vsp?mode=light",
+  "evidence": "/reports/vinclub-decision-v5/ux.json",
+  "measurementStatus": "Bounds kế thừa phiên đo baseline trong iframe parent từ ux.json, có thể lệch khi đổi nội dung; không tuyên bố đã đo final mới.",
+  "reusePolicy": {
+    "originalcode": "Source là code của dự án; reuse StackHome cùng CSS cascade, assets, state và handlers. Không clone UI bên ngoài.",
+    "nonExported": "Pouch, ProductCases, OfferCards, VoucherLower, ForYou là nội bộ ref-layouts.tsx; reuse qua StackHome, chỉ tách export khi thực sự cần và giữ parity.",
+    "cssOrder": [
+      "ref-layouts.css",
+      "approaches.css",
+      "approaches-more.css",
+      "vinclub-home.css",
+      "directions.css",
+      "brand-colors.css",
+      "hierarchy.css"
+    ],
+    "assets": "Giữ URL assets source; không thay bằng minh họa ngẫu nhiên."
+  },
+  "blocks": [
+    {
+      "id": "membership",
+      "title": "Hội viên & VPoint",
+      "role": "Nhận biết tôi là ai, có gì; mở tiến trình hạng.",
+      "sourceComponent": "StackHome → header/tag + AnimatedNumber",
+      "sourcePath": "app/(vinclub)/vinclub-home/ref-layouts.tsx",
+      "selector": ".vr-brand.vr-hello.vs-pts",
+      "lineRefs": [
+        "ref-layouts.tsx:387",
+        "ref-layouts.tsx:393",
+        "ref-layouts.tsx:395",
+        "hierarchy.css:69",
+        "hierarchy.css:75"
+      ],
+      "reuse": "originalcode reuse",
+      "layout": {
+        "width": 390,
+        "height": "auto; chưa đo mới",
+        "gap": "16px theo cascade cần xác nhận",
+        "padding": "4px 22px 24px",
+        "radius": "none",
+        "notes": "Nền gold shader gốc; số điểm 38/46; hạng bên phải. Không dựng hero loyalty mới."
+      },
+      "content": {
+        "greeting": "Xin chào, Minh",
+        "points": 12450,
+        "unit": "VPoint",
+        "tier": "Vàng",
+        "tierHint": "Xem tiến trình",
+        "states": [
+          "active",
+          "not activated"
+        ],
+        "contract": [
+          "memberId",
+          "displayName",
+          "tier",
+          "points",
+          "membershipState"
+        ]
+      },
+      "interactions": [
+        "Chạm điểm/hạng → Hội viên; chưa kích hoạt → Kích hoạt VinClub"
+      ],
+      "keepChange": "Giữ vị trí, shader, layout và ảnh hạng gốc; tên/số điểm là fixture.",
+      "rejectedAlternative": {
+        "status": "giả thuyết thiết kế; không phải quyết định bác bỏ của user",
+        "proposal": "Một banner hội viên lớn",
+        "reason": "Tăng chiều cao trạng thái tĩnh, đẩy sản phẩm và ưu đãi xuống."
+      },
+      "phaseFeb": "Dựng đủ trạng thái active/inactive với dữ liệu demo có nhãn.",
+      "endFuture": "Nối hồ sơ/điểm/hạng thật sau khi có API."
+    },
+    {
+      "id": "wallet",
+      "title": "Ví VinClub",
+      "role": "Đọc số dư, vào ví hoặc kích hoạt.",
+      "sourceComponent": "StackHome → Pouch + WalletInside + WalletActivation",
+      "sourcePath": "app/(vinclub)/vinclub-home/ref-layouts.tsx",
+      "selector": ".vr-pouches .vr-pouch[data-kind=\"wallet\"]",
+      "lineRefs": [
+        "ref-layouts.tsx:299",
+        "ref-layouts.tsx:307",
+        "ref-layouts.tsx:339",
+        "ref-layouts.tsx:399",
+        "ref-layouts.css:358",
+        "ref-layouts.css:812"
+      ],
+      "reuse": "originalcode reuse",
+      "layout": {
+        "width": 346,
+        "height": {
+          "container": 199,
+          "cover": 237
+        },
+        "gap": 0,
+        "padding": "Khung x=22; chữ cấp màn hình giữ trục x=22 theo CSS gốc",
+        "radius": "Giữ treatment ví gốc; xác nhận computed radius",
+        "notes": "199 là container, KHÔNG phải chiều cao cover. Chồng lớp chủ ý với sheet; không ép toàn bộ ví về 199px.",
+        "measuredBounds": {
+          "viewportWidth": 390,
+          "containerHeight": 198.984375,
+          "coverHeight": 236.9921875,
+          "evidence": "vinclub-decision-v5/ux.json; đo iframe bên trong parent, chưa đo lại"
+        }
+      },
+      "content": {
+        "title": "Ví VinClub",
+        "balance": "28.650.000 ₫",
+        "cta": "Xem chi tiết",
+        "states": [
+          "active balance",
+          "inactive",
+          "new activated zero"
+        ],
+        "contract": [
+          "walletState",
+          "balance",
+          "currency",
+          "openWallet",
+          "activationComplete"
+        ]
+      },
+      "interactions": [
+        "Ví active → WalletInside iframe Home ví",
+        "Inactive → WalletActivation; hoàn tất → 0 ₫",
+        "Đóng ví về Home; giảm motion theo preference"
+      ],
+      "keepChange": "Giữ carbon material, snap, số dư, animation và iframe gốc.",
+      "rejectedAlternative": {
+        "status": "giả thuyết thiết kế; không phải quyết định bác bỏ của user",
+        "proposal": "Thay ví bằng summary phẳng",
+        "reason": "Mất nhận diện vật thể và flow vào ví đã có nguồn."
+      },
+      "phaseFeb": "Reuse nguồn; kiểm tra click, back và activation demo.",
+      "endFuture": "Số dư/lịch sử thật chỉ khi tích hợp ví."
+    },
+    {
+      "id": "financial-pair",
+      "title": "Hai sản phẩm tài chính",
+      "role": "Phân biệt lợi ích tích lũy và hạn mức chi tiêu; mở chi tiết riêng.",
+      "sourceComponent": "VoucherLower → ProductCases(count=2)",
+      "sourcePath": "app/(vinclub)/vinclub-home/ref-layouts.tsx",
+      "selector": ".vr-vinpay-services[data-service-mode=\"cards\"]",
+      "lineRefs": [
+        "ref-layouts.tsx:228",
+        "ref-layouts.tsx:233",
+        "ref-layouts.tsx:236",
+        "ref-layouts.css:393",
+        "ref-layouts.css:804",
+        "ref-layouts.css:834"
+      ],
+      "reuse": "originalcode reuse + adaptation nhãn/đích",
+      "layout": {
+        "width": 390,
+        "height": "auto theo nhãn; chưa đo mới",
+        "gap": 12,
+        "padding": "20px 22px 0; mỗi card 12px",
+        "radius": "rounded-14",
+        "notes": "Hai cột (346−12)/2=167px ở viewport390. Icon44 → tên → mô tả; không dùng column-reverse thắng cũ.",
+        "measuredBounds": {
+          "top": 275.1953125,
+          "evidence": "vinclub-decision-v5/ux.json; baseline, không phải final"
+        }
+      },
+      "content": {
+        "items": [
+          {
+            "name": "Tích lũy",
+            "benefit": "Tích lũy linh hoạt",
+            "type": "savings",
+            "rate": "Chỉ hiện khi có mức và điều kiện được duyệt"
+          },
+          {
+            "name": "Tín dụng",
+            "benefit": "Chi tiêu linh hoạt",
+            "type": "credit",
+            "limit": "Chỉ hiện hạn mức cá nhân khi đủ điều kiện"
+          }
+        ],
+        "contract": [
+          "productId",
+          "type",
+          "name",
+          "benefit",
+          "eligibility",
+          "terms",
+          "detailDestination"
+        ],
+        "rule": "Không thay bằng Nạp tiền/Chuyển tiền/shortcut. Không tự đặt lãi suất, hoàn tiền hay cam kết phê duyệt."
+      },
+      "interactions": [
+        "Chạm card mở đúng thông tin tài chính; CTA xin tư vấn/đăng ký chỉ khi có flow thật"
+      ],
+      "keepChange": "Adaptation nội dung nhỏ: đổi Product1/2 thành tên tài chính; giữ hai card, icon và ngôn ngữ lợi ích.",
+      "rejectedAlternative": {
+        "status": "giả thuyết thiết kế; không phải quyết định bác bỏ của user",
+        "proposal": "Tăng thành grid dịch vụ chuyển tiền/nạp tiền",
+        "reason": "Đổi phạm vi sản phẩm tài chính thành thao tác ví, sai vai trò nguồn và brief."
+      },
+      "phaseFeb": "Hai entry tài chính; thông tin/điều kiện demo rõ.",
+      "endFuture": "Kết nối đối tác, eligibility, consent và trạng thái yêu cầu theo hợp đồng."
+    },
+    {
+      "id": "personalized-heading",
+      "title": "Dành cho bạn",
+      "role": "Đặt ngữ cảnh cho một rail chung gồm story và ưu đãi thương hiệu.",
+      "sourceComponent": "VoucherLower",
+      "sourcePath": "app/(vinclub)/vinclub-home/ref-layouts.tsx",
+      "selector": ".vr-offers-section-head",
+      "lineRefs": [
+        "ref-layouts.tsx:288",
+        "ref-layouts.tsx:291",
+        "ref-layouts.css:931"
+      ],
+      "reuse": "originalcode reuse",
+      "layout": {
+        "width": 390,
+        "height": "auto",
+        "gap": 12,
+        "padding": "24px 22px 12px",
+        "radius": "none",
+        "notes": "h2 18/26; Xem tất cả cùng baseline. Không tách story thành section cao riêng."
+      },
+      "content": {
+        "title": "Dành cho bạn",
+        "action": "Xem tất cả",
+        "contract": [
+          "recommendationContext",
+          "offersDestination"
+        ],
+        "claim": "Cá nhân hóa là mục tiêu; source hiện dùng fixture, chưa có recommender thật."
+      },
+      "interactions": [
+        "Xem tất cả → Ưu đãi"
+      ],
+      "keepChange": "Giữ title và đường xem đủ; không nói thuật toán đã cá nhân hóa.",
+      "rejectedAlternative": {
+        "status": "giả thuyết thiết kế; không phải quyết định bác bỏ của user",
+        "proposal": "Đưa quà thành hero riêng trên sản phẩm",
+        "reason": "Tăng nhấn game và đẩy cặp tài chính khỏi nhịp nguồn."
+      },
+      "phaseFeb": "Rail fixture theo cùng nội dung nguồn.",
+      "endFuture": "Ranking theo hội viên/ngữ cảnh khi có dữ liệu và đo lường."
+    },
+    {
+      "id": "daily-story",
+      "title": "Quà mỗi ngày",
+      "role": "Entry nhỏ tạo khám phá; viewer chứa nội dung sâu.",
+      "sourceComponent": "HomeStory(children=GiftDeck)",
+      "sourcePath": "app/(vinclub)/vinclub-home/home-story.tsx",
+      "selector": ".vr-offer-stories .vr-home-story-frame",
+      "lineRefs": [
+        "home-story.tsx:11",
+        "home-story.tsx:36",
+        "home-story.tsx:43",
+        "home-story.tsx:48",
+        "ref-layouts.tsx:273",
+        "ref-layouts.css:910",
+        "ref-layouts.css:954"
+      ],
+      "reuse": "originalcode reuse",
+      "layout": {
+        "width": 112,
+        "height": 160,
+        "gap": "12px tới offer kế",
+        "padding": "Frame2px; label12px/10px",
+        "radius": "rounded-28",
+        "notes": "Ảnh /vinclub-duo/stories/daily-gift-ivory-v5.png; giữ first item cùng rail.",
+        "measuredBounds": {
+          "top": 483.125,
+          "width": 112,
+          "height": 160,
+          "evidence": "vinclub-decision-v5/ux.json; baseline"
+        }
+      },
+      "content": {
+        "label": "Quà mỗi ngày",
+        "brand": "VinClub",
+        "steps": [
+          "Intro",
+          "Scratch",
+          "GreenSM",
+          "WinMart"
+        ],
+        "contract": [
+          "campaignId",
+          "banner",
+          "rewardTerms",
+          "claimState",
+          "ownedRewardDestination"
+        ],
+        "claim": "Source scratch là demo; không ghi đã cộng tiền/điểm thật."
+      },
+      "interactions": [
+        "Normal click mở viewer",
+        "Mũi tên/swipe/Escape/close và restore focus",
+        "Nhận demo phải có trạng thái và đích tìm lại"
+      ],
+      "keepChange": "Giữ artwork và viewer; bắt buộc sửa hit area/stacking nếu còn bị offer cạnh chặn pointer.",
+      "rejectedAlternative": {
+        "status": "giả thuyết thiết kế; không phải quyết định bác bỏ của user",
+        "proposal": "Thẻ cào lớn luôn hiện trên Home",
+        "reason": "Chiếm màn trước khi khách có ý định; ngân sách/thưởng chưa được xác thực."
+      },
+      "phaseFeb": "Viewer và nhận quà demo rõ; không hứa reward thật.",
+      "endFuture": "Reward ledger, tồn kho, điều kiện, ngân sách và tìm lại quà khi được duyệt."
+    },
+    {
+      "id": "brand-benefits",
+      "title": "Rail ưu đãi thương hiệu",
+      "role": "Thấy thương hiệu + lợi ích + điều kiện; chọn một đề nghị.",
+      "sourceComponent": "OfferCards + VOUCHERS",
+      "sourcePath": "app/(vinclub)/vinclub-home/ref-layouts.tsx",
+      "selector": ".vr-offer-stories .vr-offer-story",
+      "lineRefs": [
+        "ref-layouts.tsx:29",
+        "ref-layouts.tsx:271",
+        "ref-layouts.tsx:274",
+        "ref-layouts.tsx:283",
+        "ref-layouts.css:658",
+        "ref-layouts.css:713",
+        "hierarchy.css:85",
+        "hierarchy.css:87"
+      ],
+      "reuse": "originalcode reuse",
+      "layout": {
+        "width": 160,
+        "height": 160,
+        "gap": 12,
+        "padding": "Rail0 22px 8px; card14px",
+        "radius": "rounded-28",
+        "notes": "Rail chung story112 + các offer160; giữ artwork nguyên màu và pastel riêng thương hiệu. Card sau phải ló để báo có thể vuốt."
+      },
+      "content": {
+        "items": [
+          {
+            "brand": "Vinmec",
+            "lead": "Giảm đến",
+            "value": "20%",
+            "condition": "Gói khám"
+          },
+          {
+            "brand": "GreenSM",
+            "lead": "Hoàn đến",
+            "value": "15%",
+            "condition": "Mọi chuyến"
+          },
+          {
+            "brand": "WinMart",
+            "lead": "Giảm đến",
+            "value": "10%",
+            "condition": "Tối đa 100.000đ"
+          },
+          {
+            "brand": "Vinpearl",
+            "lead": "Giảm đến",
+            "value": "15%",
+            "condition": "Phòng nghỉ"
+          },
+          {
+            "brand": "VinWonders",
+            "lead": "Giảm đến",
+            "value": "25%",
+            "condition": "Vé vào cổng"
+          },
+          {
+            "brand": "VinBus",
+            "lead": "Hoàn đến",
+            "value": "30%",
+            "condition": "Vé tháng"
+          }
+        ],
+        "contract": [
+          "offerId",
+          "brand",
+          "art",
+          "benefitType",
+          "maximumBenefit",
+          "conditions",
+          "eligibility",
+          "expiresAt",
+          "ownedState"
+        ]
+      },
+      "interactions": [
+        "Swipe/snap ngang",
+        "Source dispatch vinclub:offers mở hub chung; đích offerId là adaptation đề xuất",
+        "Phải thấy điều kiện trước xác nhận sử dụng"
+      ],
+      "keepChange": "Giữ toàn bộ 6 thương hiệu; không biến đề nghị thành voucher đã sở hữu.",
+      "rejectedAlternative": {
+        "status": "giả thuyết thiết kế; không phải quyết định bác bỏ của user",
+        "proposal": "Grid toàn bộ 6 offer ngay Home",
+        "reason": "Cho so sánh tốt hơn nhưng đẩy trải nghiệm quá sâu; archive như lựa chọn kiểm chứng, chưa là user rejection."
+      },
+      "phaseFeb": "Catalog/chi tiết demo, phân biệt khám phá và sở hữu.",
+      "endFuture": "Điều kiện/eligibility thật, lưu/tìm lại và xác nhận giao dịch khi đã tích hợp."
+    },
+    {
+      "id": "experiences",
+      "title": "Khám phá trải nghiệm",
+      "role": "Ảnh lớn giúp hình dung trước khi xem điều kiện.",
+      "sourceComponent": "ForYou(layout=2)",
+      "sourcePath": "app/(vinclub)/vinclub-home/ref-layouts.tsx",
+      "selector": ".vr-fy[data-feed=\"2\"]",
+      "lineRefs": [
+        "ref-layouts.tsx:120",
+        "ref-layouts.tsx:124",
+        "ref-layouts.tsx:140",
+        "ref-layouts.tsx:147",
+        "ref-layouts.css:593",
+        "ref-layouts.css:595",
+        "ref-layouts.css:837"
+      ],
+      "reuse": "originalcode reuse",
+      "layout": {
+        "width": "Card calc(100% − 24px) trong rail; xác nhận theo computed",
+        "height": "1:1 theo chiều rộng card",
+        "gap": 12,
+        "padding": "Title24px 22px 12px; rail0 22px 16px; card text20px",
+        "radius": "rounded-28 + getSvgPath smoothing0.6",
+        "notes": "Không thay bằng card voucher nhỏ. Hai ảnh nguồn VinFast/Đảo Ngọc; CTA secondary trong ảnh.",
+        "measuredBounds": {
+          "top": 713.0859375,
+          "evidence": "vinclub-decision-v5/ux.json; baseline"
+        }
+      },
+      "content": {
+        "items": [
+          {
+            "title": "Lái thử VinFast",
+            "meta": "VinFast · Xe điện",
+            "image": "/vinclub-duo/foryou/vinfast-day-v1.png"
+          },
+          {
+            "title": "Đến với Đảo Ngọc",
+            "meta": "Biển xanh · Nghỉ dưỡng",
+            "image": "/vinclub-duo/foryou/dao-ngoc-day-v1.png"
+          }
+        ],
+        "contract": [
+          "experienceId",
+          "title",
+          "image",
+          "place",
+          "availability",
+          "priceOrQuoteRule",
+          "terms",
+          "nextAction"
+        ],
+        "rule": "Không tự bổ sung giá hay trạng thái booking."
+      },
+      "interactions": [
+        "Swipe ngang",
+        "Khám phá → BottomSheet thông tin nguồn",
+        "Close trở về đúng Home; gửi yêu cầu không đồng nghĩa đặt thành công"
+      ],
+      "keepChange": "Giữ tỷ lệ lớn, ảnh, overlay và smooth corners nguồn.",
+      "rejectedAlternative": {
+        "status": "giả thuyết thiết kế; không phải quyết định bác bỏ của user",
+        "proposal": "Lưới ảnh nhỏ hai cột",
+        "reason": "Dễ thấy nhiều item nhưng mất vai trò hình dung và thu hẹp vùng đọc chữ/CTA."
+      },
+      "phaseFeb": "Chi tiết trải nghiệm demo có ranh giới trạng thái.",
+      "endFuture": "Booking/lead chỉ có khi consent, tiếp nhận và theo dõi thật."
+    },
+    {
+      "id": "navigation",
+      "title": "Điều hướng cố định",
+      "role": "Giữ đường tìm lại và chuyển hub ổn định.",
+      "sourceComponent": "VinClubHome page → nav.vk-bar + vk-indicator",
+      "sourcePath": "app/(vinclub)/vinclub-home/page.tsx",
+      "selector": "nav.vk-bar",
+      "lineRefs": [
+        "page.tsx:140",
+        "page.tsx:146",
+        "page.tsx:152",
+        "vinclub-home.css:62"
+      ],
+      "reuse": "originalcode reuse",
+      "layout": {
+        "width": 346,
+        "height": 62,
+        "gap": "5 vị trí gồm QR giữa",
+        "padding": "4px; khung cách mép22px; bottom20px",
+        "radius": "Giữ pill navigation gốc; không dùng radius card thay thế",
+        "notes": "Home indicator139×5; source nav là floating FixedBottom. Không thêm primary CTA toàn Home."
+      },
+      "content": {
+        "tabs": [
+          "Trang chủ",
+          "Ưu đãi",
+          "Quét QR",
+          "Sự kiện",
+          "Hạng"
+        ],
+        "contract": [
+          "activeTab",
+          "openTab",
+          "scanDestination",
+          "homeReturnState"
+        ]
+      },
+      "interactions": [
+        "Tab mở đúng hub và active aria-current",
+        "QR nguồn chỉ có affordance; không gọi là quét đã hoạt động",
+        "Mọi full-screen giữ indicator"
+      ],
+      "keepChange": "Reuse nav nguồn; kiểm tra QR trước khi công bố flow.",
+      "rejectedAlternative": {
+        "status": "giả thuyết thiết kế; không phải quyết định bác bỏ của user",
+        "proposal": "CTA đăng ký cố định thay nav",
+        "reason": "Home có nhiều mục tiêu, không có một cam kết duy nhất."
+      },
+      "phaseFeb": "Bốn hub demo chạy; QR ghi rõ mô phỏng nếu chưa nối.",
+      "endFuture": "Hoạt động/tài sản/yêu cầu tìm lại trong hub đúng loại; QR thật sau tích hợp."
+    }
+  ],
+  "variants": [
+    {
+      "id": "baseline-final",
+      "name": "A · StackHome nguồn, chọn final",
+      "status": "recommended",
+      "sameContent": true,
+      "composition": "Hạng/điểm → ví → 2 card tài chính → story112 + 6 offer160 cùng rail → 2 trải nghiệm lớn → nav",
+      "options": {
+        "productCount": 2,
+        "feed": 2,
+        "story": 1
+      },
+      "tradeoff": "Rail cần đường Xem tất cả; đổi lại giữ trải nghiệm gần hơn vùng đầu."
+    },
+    {
+      "id": "increased-service-grid",
+      "name": "B · Grid mở rộng vùng dịch vụ",
+      "status": "archived alternative; chưa có user rejection",
+      "sameContent": true,
+      "composition": "Giữ cùng toàn bộ nội dung; trình bày chính 2 sản phẩm tài chính thành grid gọn có nhãn/benefit, không thêm shortcut mới. Các khối sau giữ nguyên.",
+      "tradeoff": "Tìm sản phẩm nhanh hơn khi khách có ý định; lợi ích/điều kiện dễ bị rút gọn quá mức.",
+      "hypothesis": "Chỉ mở thêm ô nếu có sản phẩm tài chính thật; không mặc định tăng số lượng dịch vụ."
+    },
+    {
+      "id": "big-offer",
+      "name": "C · Một offer lớn trước rail",
+      "status": "archived alternative; chưa có user rejection",
+      "sameContent": true,
+      "composition": "Giữ thứ tự khối và cùng 6 offer; offer đầu mở rộng đủ346px, story và 5 offer còn lại rail bên dưới; trải nghiệm vẫn lớn.",
+      "tradeoff": "Đọc điều kiện offer đầu tốt hơn nhưng thêm chiều cao, ưu ái một thương hiệu và đẩy trải nghiệm xuống.",
+      "hypothesis": "Chỉ chọn khi có campaign phù hợp rõ; chưa có bằng chứng conversion."
+    }
+  ],
+  "validation": [
+    "So final với source tại cùng390px và cùng fixture",
+    "Đọc số dư/hạng, chọn phân biệt tích lũy với tín dụng",
+    "Normal pointer story mở không bị offer chặn; close/focus/keyboard",
+    "Vuốt đến thương hiệu thứ4 và mở đúng chi tiết",
+    "Khám phá/đóng experience, tab/back và tìm lại tài sản",
+    "Human UT mới kiểm chứng hiểu và tìm đường; không suy conversion từ screenshot."
+  ]
+}

@@ -1,5 +1,8 @@
 # Workflows
 
+## Product Decision — UX × Business × Product × Visual × CEO
+[Workflow năm vai trò](product-decision/workflow.md): đọc lịch sử lựa chọn → phân tích UX/kinh tế → hợp nhất → build/harness khi được giao → trình quyết định.
+
 ## UXUI Pipeline (11 steps)
 See [[workflows/uxui-pipeline/workflow|workflow.md]] for full spec.
 
@@ -22,3 +25,6 @@ See [[workflows/uxui-pipeline/workflow|workflow.md]] for full spec.
 
 ---
 Related: [[agents/index|Agents]] · [[knowledge/pipeline|Pipeline]] · [[features/index|Features]]
+
+## Home Rethink
+- [Independent feedback → implementation → verification loop](home-feedback-loop/workflow.md)

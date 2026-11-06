@@ -1,0 +1,76 @@
+<style>
+  body { font: 12px/1.5 Inter, system-ui, sans-serif; margin: 0; padding: 12px; color: #1f1f1f; }
+  h3 { margin: 4px 0 8px; font-size: 13px; }
+  fieldset { border: 1px solid #e5e5e5; border-radius: 8px; margin: 0 0 10px; padding: 8px 10px; }
+  legend { font-weight: 600; padding: 0 4px; }
+  label { display: block; }
+  textarea { width: 100%; box-sizing: border-box; height: 90px; font: 11px/1.4 ui-monospace, monospace; }
+  button { padding: 8px 12px; border-radius: 6px; border: 1px solid #1f1f1f; background: #fff; cursor: pointer; margin-right: 6px; }
+  button.danger { background: #1f1f1f; color: #fff; }
+  #log { white-space: pre-wrap; font: 11px/1.4 ui-monospace, monospace; background: #f5f5f5; border-radius: 6px; padding: 8px; max-height: 220px; overflow: auto; margin-top: 10px; }
+</style>
+<h3>VSP DS Migrator</h3>
+<fieldset>
+  <legend>Scope</legend>
+  <label><input type="radio" name="scope" value="page" checked> Current page</label>
+  <label><input type="radio" name="scope" value="all"> All pages</label>
+</fieldset>
+<fieldset>
+  <legend>Passes (run in this order)</legend>
+  <label><input type="checkbox" value="instances" checked> 1 · Remote instances → local components</label>
+  <label><input type="checkbox" value="styles" checked> 2 · Remote styles → local styles (by name)</label>
+  <label><input type="checkbox" value="variables" checked> 3 · Remote variables → local variables (by name)</label>
+</fieldset>
+<fieldset>
+  <legend>Name mapping (JSON, optional)</legend>
+  <textarea id="mapping">{
+  "components": { "(V2CAKE) checkbox": "[VSP] checkbox" },
+  "styles": { "body/XS": "Body/XS", "title/XS-Subtle": "Title/XS-Subtle" },
+  "variables": {}
+}</textarea>
+</fieldset>
+<button id="dry">Dry run (report only)</button>
+<button id="apply" class="danger">Apply</button>
+<button id="dl">Download report</button>
+<div id="log">Run a dry run first. Apply on a Figma branch.</div>
+<script>
+  const $ = (s) => document.querySelector(s);
+  let last = null;
+  function run(apply) {
+    let mapping;
+    try { mapping = JSON.parse($('#mapping').value || '{}'); } catch (e) { $('#log').textContent = 'Mapping JSON invalid: ' + e.message; return; }
+    if (apply && !confirm('Apply changes to ' + (document.querySelector('[name=scope]:checked').value === 'all' ? 'ALL pages' : 'current page') + '?')) return;
+    const passes = [...document.querySelectorAll('fieldset input[type=checkbox]:checked')].map((i) => i.value);
+    $('#log').textContent = 'Running…';
+    parent.postMessage({ pluginMessage: { type: 'run', apply, passes, mapping, scope: document.querySelector('[name=scope]:checked').value } }, '*');
+  }
+  $('#dry').onclick = () => run(false);
+  $('#apply').onclick = () => run(true);
+  $('#dl').onclick = () => {
+    if (!last) return;
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(last, null, 2)], { type: 'application/json' }));
+    a.download = 'vsp-ds-migration-report.json';
+    a.click();
+  };
+  function summarize(o) {
+    const lines = [(o.apply ? 'APPLIED' : 'DRY RUN') + ' · scope=' + o.scope];
+    if (o.duplicates.length) lines.push('\n⚠ Duplicate local component names: ' + o.duplicates.join(', '));
+    for (const k of ['instances', 'styles', 'variables']) {
+      const r = o[k]; if (!r) continue;
+      const ok = r.stats.filter((s) => s.target), miss = r.stats.filter((s) => !s.target);
+      const n = (a) => a.reduce((t, s) => t + s.count, 0);
+      lines.push('\n## ' + k + ' — matched ' + n(ok) + ' · unmatched ' + n(miss) +
+        (r.swapped != null ? ' · swapped ' + r.swapped : '') + (r.fixed != null ? ' · fixed ' + r.fixed : '') + (r.skipped ? ' · skipped ' + r.skipped : ''));
+      for (const s of miss.sort((a, b) => b.count - a.count).slice(0, 25)) lines.push('  ✗ ' + s.count + '× ' + s.remote);
+      for (const s of ok.sort((a, b) => b.count - a.count).slice(0, 10)) lines.push('  ✓ ' + s.count + '× ' + s.remote + ' → ' + s.target);
+    }
+    return lines.join('\n');
+  }
+  onmessage = (e) => {
+    const m = e.data.pluginMessage;
+    if (m.type === 'progress') $('#log').textContent = m.msg;
+    if (m.type === 'error') $('#log').textContent = 'Error: ' + m.msg;
+    if (m.type === 'done') { last = m.out; $('#log').textContent = summarize(m.out); }
+  };
+</script>

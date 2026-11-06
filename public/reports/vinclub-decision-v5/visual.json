@@ -1,0 +1,138 @@
+{
+  "role": "vsp-visual",
+  "status": "final visual pass complete for supplied final Home, ticket summary, experience form and slide preview; no blocking visual defect observed in these renders",
+  "scope": "Read-only UI review; wrote only visual role/skill/report.",
+  "evidence": [
+    {
+      "path": "evidence/ux-baseline.png",
+      "type": "observed source baseline",
+      "note": "Warm gold / carbon wallet / paper cards / dimensional existing illustrations. Baseline animated points happen to be captured midtransition; do not reproduce broken numerals."
+    },
+    {
+      "path": "/tmp/v5-visual-current.png",
+      "type": "observed v5 render",
+      "url": "http://localhost:3250/vinclub-decision-v5?embed=1",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "note": "Captured before root-owner radius correction."
+    }
+  ],
+  "direction": {
+    "brand": "Warm gold membership header, carbon wallet, pale paper foreground; retain existing VinClub image language.",
+    "hierarchy": "Assets read first; task cards next; restrained gift and offer rail; large image only for experience discovery.",
+    "material": "Gold light and dark wallet can carry brand; paper surfaces keep actions legible. No evidence supports glass everywhere.",
+    "slidesAndFinalUI": "Reuse same palette, type, named shapes, images and explicit prototype states. Replace before screenshot with final screenshot after fixes; include decision evidence beside rationale."
+  },
+  "blockDecisions": [
+    {
+      "block": "Header and wallet",
+      "keep": "Gold/black contrast and 22px asset text axis.",
+      "change": "Resolve Button rounded-full cascade. Current computed border radius 33554400px clips wallet label; use named radius tokens with winning scoped specificity.",
+      "priority": "P0",
+      "evidence": "live computed CSS and /tmp/v5-visual-current.png"
+    },
+    {
+      "block": "Services and offer rail",
+      "keep": "Two real task labels, 12px gap, existing object illustrations.",
+      "change": "Restore rectangular named-radius card silhouettes. Rounded-full clips offer brand and lower image; check full 200.000 đ label after correction.",
+      "priority": "P0",
+      "evidence": "live computed CSS: services167x110, story112x160, offer160x160 all have huge border radius"
+    },
+    {
+      "block": "Experience",
+      "keep": "Photographic large card and restrained title over image.",
+      "change": "Review at scrolled position: title/image crop and CTA contrast, then capture final screenshot.",
+      "priority": "P1",
+      "evidence": "partial card visible at bottom; full scroll not reviewed"
+    },
+    {
+      "block": "Bottom navigation",
+      "keep": "Persistent tab labels and home indicator.",
+      "change": "Source floating dock with prominent QR differs from new full-width dock. State the intentional simplification; avoid claiming exact fidelity.",
+      "priority": "P2",
+      "evidence": "baseline vs before image"
+    }
+  ],
+  "checks": {
+    "observed": [
+      "Actual browser render at 390x844",
+      "Source baseline and live computed border radii",
+      "Semantic token usage in page stylesheet and library Button composition"
+    ],
+    "pending": [
+      "Scrolled experience and all success/empty states outside supplied final screenshots",
+      "Measured text contrast across gradients/photos",
+      "Narrow viewport, keyboard focus, dark mode and reduced-motion checks",
+      "Independent measurement of smooth-corner equivalence (owner evidence preserved)"
+    ],
+    "resolved": [
+      "After-fix screenshot and clipping inspection for supplied Home",
+      "Ticket detail summary visual inspection",
+      "Experience form visual inspection",
+      "Floating source dock and QR emphasis restored",
+      "Slide preview uses corrected final UI"
+    ]
+  },
+  "limitations": [
+    "No human UT; no conversion/retention claims.",
+    "Parent owns app changes; this role did not modify UI.",
+    "Final build success cannot replace a screenshot review."
+  ],
+  "handoff": "Supplied final screenshots and slide preview visually reviewed; no blocking defects observed in these renders. Use final evidence for presentation; keep unmeasured checks and prototype boundaries explicit.",
+  "ownerVerification": {
+    "source": "harness.json + evidence/final-*-home.png",
+    "pass": true,
+    "fixes": [
+      "Named radii explicitly override Button rounded-full; smooth .6 computed clip path.",
+      "Wallet carbon layer237px with overlap retained; report distinguishes source reserved space199px.",
+      "Source floating dock and QR emphasis retained in new route.",
+      "Final UI uses real shared VSP components; art reused from source."
+    ],
+    "boundary": "Initial visual report preserves pre-fix observations. Final checks are separate owner evidence."
+  },
+  "finalVisualReview": {
+    "reviewer": "vsp-visual",
+    "method": "Direct visual inspection of four owner-supplied final PNGs; no new live computed-style check in this pass.",
+    "evidence": [
+      "evidence/final-daily-home.png",
+      "evidence/spend-ticket-summary.png",
+      "evidence/experience-form.png",
+      "evidence/slides-preview.png"
+    ],
+    "resolved": [
+      {
+        "observation": "Header and wallet P0",
+        "result": "Final screenshot restores visible wallet label and full balance inside contained carbon surface; gold header and 22px asset text axis remain coherent."
+      },
+      {
+        "observation": "Services and offer rail P0",
+        "result": "Final screenshot has contained service cards and rectangular rounded gift/offer silhouettes; VinWonders brand and full 200.000 đ amount are readable. Partial next VinFast card communicates horizontal rail continuation."
+      },
+      {
+        "observation": "Bottom navigation P2",
+        "result": "Final screenshots retain floating rounded dock, emphasized QR and home indicator; previous full-width dock observation is historical."
+      },
+      {
+        "observation": "Ticket summary",
+        "result": "Two tickets, 400.000 đ subtotal, −50.000 đ discount and 350.000 đ total form a clear hierarchy; primary action repeats the total. Conditions remain readable."
+      },
+      {
+        "observation": "Experience form",
+        "result": "Date, time choice, phone and consent form coherent groups; request wording distinguishes submission from confirmed booking. No clipping or overlap visible."
+      },
+      {
+        "observation": "Slide/final UI handoff",
+        "result": "Slide preview uses corrected final UI with consistent gold/carbon/paper and rounded cards. Decision text and prototype boundary remain readable; no old radius defect visible."
+      }
+    ],
+    "remainingLimits": [
+      "Full experience image/CTA below fold was not inspected in these four screenshots.",
+      "This visual pass does not measure contrast ratios or verify keyboard, dark mode, narrow widths or reduced motion.",
+      "Success and empty states are outside these supplied four images; owner harness verification remains separate.",
+      "Smooth .6 and computed named radii are supported by preserved ownerVerification, not independently remeasured in this final pass."
+    ],
+    "conclusion": "Visual quality is ready for the bounded prototype review and slide presentation shown. Original pre-fix observations remain preserved as history."
+  }
+}

@@ -1,0 +1,48 @@
+.charge-widget { width:100%; padding:18px 20px; white-space:normal; text-align:left; overflow:hidden; color:var(--foreground); background:var(--background); border-radius:var(--radius-16); }
+.vc-premium-home .charge-home-section .charge-widget>span:first-child { background:linear-gradient(115deg,var(--card),var(--background) 72%); border-radius:inherit; }
+.charge-widget>span:last-child { display:block; width:100%; }
+.charge-widget-content { display:block; width:100%; }
+.charge-widget-top,.charge-widget-bottom { display:flex; justify-content:space-between; align-items:center; }
+.charge-kicker { display:block; font-size:9px; letter-spacing:1.2px; font-weight:500; color:var(--foreground-secondary); }
+.charge-model { display:block; font-size:16px; font-weight:500; margin-top:6px; }
+.charge-status { display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:500; color:var(--charge-accent); white-space:nowrap; }
+.charge-widget-middle { display:flex; align-items:center; min-height:157px; padding-bottom:12px; position:relative; }
+.charge-reading { font-size:46px; font-weight:400; letter-spacing:-2px; line-height:1; position:relative; z-index:2; }
+.charge-reading>span { font-size:19px; letter-spacing:-1px; margin-left:3px; color:var(--foreground-secondary); }
+.charge-stage { position:relative; width:220px; height:145px; isolation:isolate; margin-left:auto; }
+.charge-progress { display:block; height:3px; border-radius:var(--radius-8); overflow:hidden; background:var(--secondary); }
+.charge-progress>span { display:block; width:72%; height:100%; position:relative; background:var(--charge-accent); border-radius:inherit; }
+.charge-progress>span:after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--foreground) 70%,transparent),transparent); transform:translateX(-100%); animation:charge-flow 2.8s ease-in-out infinite; }
+.charge-widget-bottom { margin-top:12px; font-size:11px; font-weight:400; }
+.charge-detail { position:fixed; inset:0; z-index:150; display:flex; flex-direction:column; background:var(--background); color:var(--foreground); animation:charge-enter .25s ease-out; }
+.charge-detail-scroll { flex:1; overflow-y:auto; padding-bottom:165px; }
+.charge-stage-large { width:100%; height:300px; margin:0; }
+.charge-detail-reading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.charge-detail-reading .charge-reading { font-size:64px; }
+.charge-metrics { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.charge-fixed { background:var(--background); }
+.charge-model-stage { pointer-events:none; }
+.charge-model-stage canvas { display:block; width:100%; height:100%; }
+.charge-paused .charge-progress>span:after { animation:none; }
+@keyframes charge-flow { to{transform:translateX(100%)} }
+@keyframes charge-enter { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+@media(prefers-reduced-motion:reduce) { .charge-detail,.charge-progress>span:after { animation:none; } }
+
+.charge-replay { margin-bottom:16px; font-size:11px; }
+.charge-widget { --background:var(--color-grey-1000); --card:var(--color-grey-900); --foreground:var(--color-grey-00); --foreground-secondary:var(--color-grey-400); --secondary:var(--color-grey-800); }
+.charge-model-loading { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:6px; padding:12px; font-size:10px; font-weight:400; color:var(--foreground-secondary); }
+.vc-premium-home .ds-personal-space .charge-home-section .charge-widget {
+  --background:var(--color-grey-1000); --card:var(--color-grey-900);
+  --foreground:var(--color-grey-00); --foreground-secondary:var(--color-grey-400); --secondary:var(--color-grey-800);
+  background:var(--background);color:var(--foreground);border-radius:var(--radius-16);
+}
+.vc-premium-home .ds-personal-space .charge-home-section .charge-widget>span:first-child { background:linear-gradient(115deg,var(--card),var(--background) 72%); }
+
+.charge-widget,.charge-detail { --charge-accent:var(--success); }
+.vc-premium-home .ds-personal-space .charge-home-section .charge-widget {
+  --background:var(--color-grey-00);--card:var(--color-grey-00);
+  --foreground:var(--color-grey-950);--foreground-secondary:var(--color-grey-500);--secondary:var(--color-grey-100);
+  background:var(--card);color:var(--foreground);border-radius:var(--radius-28);
+  box-shadow:0 2px 8px color-mix(in srgb,var(--foreground) 6%,transparent);
+}
+.vc-premium-home .ds-personal-space .charge-home-section .charge-widget>span:first-child { background:var(--card); }

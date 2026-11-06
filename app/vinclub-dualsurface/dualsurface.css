@@ -1,0 +1,759 @@
+.ds-root { --ds-ink:var(--foreground); --ds-paper:var(--background); height:100dvh; overflow:hidden; background:var(--ds-ink); }
+.ds-shell { height:100%; display:flex; flex-direction:column; }
+.ds-dark-header { --background:var(--ds-ink); --foreground:var(--ds-paper); --foreground-secondary:color-mix(in srgb,var(--ds-paper) 65%,transparent); --btn-secondary-bg:transparent; background:var(--background); color:var(--foreground); flex-shrink:0; }
+.ds-brand { font-family:Georgia,serif; font-size:25px; font-style:italic; }
+.ds-brand-logo { display:block;width:24px;height:15px;flex-shrink:0;background:currentColor;mask:url("/vinclub-assets/vinclub-logo.svg") center / contain no-repeat; }
+.ds-main-header>div:last-child { padding-left:22px;padding-right:22px;gap:8px;align-items:center; }
+.ds-main-header>div:last-child p { font-size:16px;line-height:24px; }
+.ds-spaces { display:flex; gap:5px; padding-top:0; padding-bottom:14px; }
+.ds-spaces button { height:34px; flex:1; min-width:0; background:transparent; color:var(--foreground-secondary); font-size:12px; padding:0 7px; }
+.ds-spaces button[aria-current=page] { color:var(--foreground); background:color-mix(in srgb,var(--foreground) 10%,transparent); box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--foreground) 22%,transparent); }
+.ds-scroll { flex:1; overflow-y:auto; overflow-x:hidden; scrollbar-width:none; background:linear-gradient(var(--ds-ink),var(--secondary)); }
+.ds-scroll::-webkit-scrollbar { display:none; }
+.ds-stage { position:relative;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden; }
+.ds-scroll { min-height:0; }
+.vc-daily-premium .ds-home-stage { background:var(--color-grey-950); }
+.vc-daily-premium .ds-home-stage .ds-hero { position:absolute!important;inset:0 0 auto;transform:translateY(var(--card-parallax,0px)); }
+.vc-daily-premium .ds-home-stage .ds-scroll { position:relative;z-index:1;margin-top:calc(96px - var(--sheet-collapse,0px));border-radius:var(--radius-28) var(--radius-28) 0 0;background:var(--background)!important; }
+.vc-daily-premium .ds-home-stage .ds-surface { border-radius:0;min-height:calc(100dvh + 96px);transform:translateY(var(--sheet-collapse,0px)); }
+.ds-hero { height:135px; padding-top:7px; position:relative; }
+.ds-hero-card { width:100%; height:170px; position:relative; overflow:hidden; display:block; background:transparent; padding:0; color:var(--ds-paper); }
+.ds-hero-card>.vc-membership-visual { position:absolute; inset:0; height:170px; }
+.ds-hero-card .vc-membership-stage { height:170px; aspect-ratio:auto; }
+.ds-hero-card .vc-membership-stage video { object-fit:cover; object-position:center; }
+.ds-hero-card .vc-card-lettering { display:none; }
+.ds-hero-identity { position:absolute; left:22px; top:24px; display:flex; flex-direction:column; align-items:flex-start; gap:16px; }
+.ds-hero-identity>.ds-serif { font-size:20px; font-weight:500; letter-spacing:-.5px; }
+.ds-tier-progress { width:114px; height:3px; background:color-mix(in srgb,var(--color-grey-1000) 20%,transparent); position:relative; border-radius:var(--radius-8); }
+.ds-tier-progress::before { content:""; position:absolute; left:0;top:0; width:42%; height:100%; background:var(--color-grey-1000); border-radius:inherit; }
+.ds-hero-points { position:absolute; right:22px; top:22px; padding:6px 10px; line-height:20px; background:color-mix(in srgb,var(--ds-ink) 25%,transparent); border-radius:var(--radius-14); font-size:12px; box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ds-paper) 22%,transparent); }
+.ds-hero-points small { font-size:10px; }
+.ds-surface { position:relative; background:var(--background); min-height:650px; padding-bottom:112px; border-bottom-left-radius:0; border-bottom-right-radius:0; }
+.ds-ai-section { padding-top:14px; }
+.ds-ai { min-height:46px; height:auto; padding:8px 9px; background:var(--background); box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--foreground) 15%,transparent); gap:7px; }
+.ds-ai-copy { font-size:11px; line-height:1.5; flex:1; text-align:left; }
+.ds-ai-copy strong { display:inline; font-weight:600; }
+.ds-promo-section { padding-top:14px; }
+.ds-promo-rail { display:flex; gap:10px; overflow-x:auto; margin-right:-22px; padding-right:22px; scrollbar-width:none; }
+.ds-promo { position:relative; flex:0 0 152px; height:106px; background:var(--secondary); padding:12px; display:block; overflow:hidden; text-align:left; }
+.ds-promo>span { position:relative; z-index:1; display:block; font-size:11px; line-height:1.6; font-weight:500; }
+.ds-promo strong { display:block; font-size:13px; font-weight:600; }
+.ds-promo .vc-service-icon,.ds-promo .daily-icon { position:absolute; width:78px; height:78px; right:0; bottom:-12px; }
+.ds-promo-arrow { position:absolute; bottom:12px; left:12px; color:var(--foreground-secondary); }
+.ds-services { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px 8px; }
+.ds-service { display:flex; flex-direction:column; height:auto; min-width:0; padding:0 0 5px; gap:5px; background:transparent; border-radius:var(--radius-28); font-size:11px; }
+.ds-service .vc-service-icon { width:57px; height:57px; }
+.ds-service:hover { background:var(--secondary); }
+.ds-small-link { background:transparent; height:24px; min-height:24px; font-size:10px; padding:0; }
+
+.ds-events>div:first-child { padding-top:24px; }
+.ds-events>div:first-child>span { font-size:9px; }
+.ds-event-rail { display:flex; gap:12px; overflow-x:auto; margin-right:-22px; padding-right:22px; scrollbar-width:none; }
+.ds-event { flex:0 0 194px; display:block; background:var(--secondary); }
+.ds-event-image { height:130px; position:relative; overflow:hidden; }
+.ds-event-image img { object-fit:cover; }
+.ds-event-image>span { position:absolute; top:10px; left:10px; background:var(--background); padding:5px 7px; border-radius:var(--radius-8); font-size:7px; letter-spacing:1px; }
+.ds-event-copy { padding:12px; }
+.ds-eyebrow { font-size:9px; line-height:1.6; font-weight:600; letter-spacing:1.2px; color:var(--foreground-secondary); }
+.ds-serif { font-family:var(--font-google-sans-flex),Arial,sans-serif; font-weight:500; letter-spacing:-.6px; }
+.ds-hero-identity>.ds-serif,
+.ds-membership-card-copy>.ds-serif { font-family:Georgia,'Times New Roman',serif; }
+.ds-membership-card-copy>.ds-serif { font-weight:400;letter-spacing:-1.2px; }
+.ds-offer { display:block; background:var(--secondary); }
+.ds-offer-photo { position:relative; height:210px; overflow:hidden; }
+.ds-offer-photo img { object-fit:cover; }
+.ds-photo-tag { position:absolute; left:22px; top:22px; padding:8px 10px; background:var(--background); color:var(--foreground); font-size:8px; letter-spacing:1.2px; border-radius:var(--radius-8); }
+.ds-offer-title { font-size:30px; line-height:1.12; margin-top:12px; }
+.ds-wallet { background:var(--secondary); gap:20px; }
+.ds-balance { font-size:37px; letter-spacing:-1.6px; }
+.ds-balance span { font-size:16px; }
+.ds-payment-actions { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding-top:16px; }
+.ds-payment-actions button { height:auto; padding:14px 8px; flex-direction:column; font-size:12px; }
+.ds-transaction { display:flex; gap:12px; align-items:center; padding:14px 0; }
+.ds-points { font-size:34px; line-height:1.2; letter-spacing:-1.3px; font-weight:500; }
+.ds-points span { font-size:12px; letter-spacing:0; color:var(--foreground-secondary); }
+.ds-bottom { background:transparent; padding-top:0; pointer-events:none; }
+.ds-bottom-inner { pointer-events:auto; display:grid; grid-template-columns:repeat(4,1fr); gap:3px; padding:8px 7px; background:color-mix(in srgb,var(--background) 80%,transparent); backdrop-filter:blur(22px); box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--background) 70%,transparent),0 8px 35px color-mix(in srgb,var(--foreground) 14%,transparent); }
+.ds-nav-item { height:51px; padding:4px; background:transparent; flex-direction:column; gap:4px; font-size:9px; }
+.ds-nav-item[aria-current=page] { background:color-mix(in srgb,var(--foreground) 10%,transparent); }
+.ds-dialog-backdrop { position:fixed; inset:0; z-index:100; display:flex; background:var(--background); }
+.ds-dialog { width:100%; height:100dvh; display:flex; flex-direction:column; overflow:hidden; }
+.ds-dialog-content { overflow-y:auto; flex:1; }
+.ds-dialog-title { font-size:34px; line-height:1.1; margin:24px 0 18px; }
+.ds-select { width:100%; padding:14px; color:var(--foreground); }
+.ds-catalog { height:auto; padding:10px 0; background:transparent; gap:12px; }
+.ds-success { color:var(--success); margin-top:16px; }
+.ds-hero-card { border-radius:var(--radius-14); }
+.ds-promo { border-radius:var(--radius-14); }
+.ds-hero-card>span:first-child { background:transparent; border-radius:var(--radius-28); }
+.ds-hero-card>span:last-child { display:block; width:100%; height:100%; position:relative; }
+.ds-hero-card .vc-membership-visual { position:absolute; inset:0; height:170px; }
+.ds-hero-card .vc-membership-stage { border-radius:var(--radius-14); }
+.ds-hero-card .vc-membership-stage { height:auto; aspect-ratio:616 / 386; }
+.ds-hero-card .vc-membership-stage video { object-fit:contain; }
+.ds-promo>span:first-child { position:absolute; inset:0; z-index:0; border-radius:var(--radius-14); }
+.ds-promo>span:last-child { position:relative; display:block; width:100%; height:100%; z-index:1; }
+.ds-promo>span:last-child>span { display:block; width:110px; font-size:10px; line-height:1.6; }
+.ds-promo .vc-service-icon,.ds-promo .daily-icon { right:-20px; bottom:-20px; width:72px; height:72px; }
+.ds-service>span:first-child { background:transparent; }
+.ds-service>span:last-child { flex-direction:column; gap:5px; width:100%; }
+.ds-nav-item>span:last-child { flex-direction:column; gap:4px; }
+.ds-nav-item>span:first-child { background:transparent; }
+@media(prefers-reduced-motion:reduce) { .ds-root *, .ds-root *::before { transition:none!important; animation:none!important; } }
+.ds-city-map{height:250px;overflow:hidden;position:relative}.ds-city-map>div{height:100%;width:100%}
+.vc-premium-home{min-height:100dvh;background:var(--background);color:var(--foreground)}.ds-root{background:var(--background)}.ds-dark-header{--background:var(--ds-paper);--foreground:var(--ds-ink);--foreground-secondary:color-mix(in srgb,var(--ds-ink) 65%,transparent)}.ds-scroll{background:linear-gradient(var(--background),var(--secondary))}.ds-surface{background:linear-gradient(155deg,color-mix(in srgb,var(--foreground) 3%,var(--background)),var(--background))}.ds-promo,.ds-event,.ds-wallet{background:linear-gradient(135deg,color-mix(in srgb,var(--foreground) 8%,var(--background)),var(--secondary));box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 8%,transparent)}.ds-commerce-switch{display:flex;gap:5px;padding:5px;margin-top:24px;background:color-mix(in srgb,var(--foreground) 5%,transparent);backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 8%,transparent)}.ds-commerce-switch button{flex:1;font-size:11px}.ds-commerce-switch button>span:first-child{background:transparent}.ds-commerce-switch button[aria-pressed=true]>span:first-child{background:var(--secondary)}.ds-city-map{transition:height .6s ease}.ds-city-expanded .ds-city-map{height:350px}.ds-bottom-inner{background:color-mix(in srgb,var(--secondary) 83%,transparent);box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 12%,transparent),0 12px 30px color-mix(in srgb,var(--background) 75%,transparent)}
+
+/* VinClub warm premium palette, shared with Daily. */
+.ds-payment-mode {
+  background:radial-gradient(ellipse at 0% 0%,color-mix(in srgb,var(--daily-accent-surface) 90%,transparent),transparent 65%),radial-gradient(ellipse at 100% 40%,color-mix(in srgb,var(--daily-accent) 18%,transparent),transparent 56%),linear-gradient(155deg,var(--background),var(--secondary));
+}
+.ds-payment-mode .ds-dark-header { background:transparent;  }
+.ds-payment-mode .ds-dark-header>div,.ds-payment-mode .ds-scroll,.ds-payment-mode .ds-surface { background:transparent; }
+.ds-payment-mode .ds-dark-header { color:var(--ds-ink); }
+.ds-payment-mode .ds-spaces { gap:4px; }
+.ds-payment-mode .ds-spaces button[aria-current=page] { color:var(--daily-accent);box-shadow:inset 0 1px 0 var(--daily-glass-edge),0 4px 12px color-mix(in srgb,var(--daily-accent) 8%,transparent);background:color-mix(in srgb,var(--daily-glass) 50%,transparent); }
+.ds-payment-mode .ds-spaces button>span:first-child { background:transparent; }
+.ds-payment-mode .ds-surface { padding-bottom:0; }
+.ds-payment-balance { display:flex;flex-direction:column;align-items:center;padding-top:36px;padding-bottom:32px;gap:12px; }
+.ds-payment-balance>div button>span:first-child,.ds-payment-link>span:first-child { background:transparent; }
+.ds-payment-amount { font-size:clamp(34px,10.8vw,48px);font-weight:500;letter-spacing:-2px;line-height:1.15;white-space:nowrap;font-variant-numeric:tabular-nums; }
+.ds-payment-amount>span { font-size:22px;letter-spacing:0;margin-left:5px;color:var(--daily-accent); }
+.ds-payment-balance>button>span:first-child { background:color-mix(in srgb,var(--daily-glass) 45%,transparent);box-shadow:inset 0 1px 0 var(--daily-glass-edge); }
+.ds-payment-shortcuts { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));row-gap:22px;column-gap:8px;padding-bottom:30px; }
+.ds-payment-shortcut { height:auto;padding:0;min-width:0;font-size:11px;font-weight:500;color:var(--foreground);border-radius:0;overflow:visible; }
+.ds-payment-shortcut>span:first-child { background:transparent; }
+.ds-payment-shortcut>span:last-child { flex-direction:column;gap:9px;width:100%; }
+.ds-payment-shortcut>span:last-child>span:last-child { white-space:nowrap; }
+.ds-payment-icon { width:52px;height:52px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-14);color:var(--daily-accent);background:linear-gradient(145deg,color-mix(in srgb,var(--daily-glass) 80%,transparent),color-mix(in srgb,var(--daily-accent-surface) 36%,transparent));backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 var(--daily-glass-edge),inset 0 0 0 1px color-mix(in srgb,var(--daily-glass-edge) 45%,transparent),0 6px 18px color-mix(in srgb,var(--daily-accent) 10%,transparent);flex-shrink:0; }
+.ds-payment-sheet { padding-top:12px;padding-bottom:32px;background:linear-gradient(155deg,color-mix(in srgb,var(--daily-glass) 60%,transparent),color-mix(in srgb,var(--background) 82%,transparent));backdrop-filter:blur(24px);box-shadow:inset 0 1px 0 var(--daily-glass-edge),0 -8px 32px color-mix(in srgb,var(--daily-accent) 5%,transparent);border-bottom-left-radius:0;border-bottom-right-radius:0; }
+.ds-payment-handle { width:32px;height:4px;border-radius:var(--radius-8);margin:0 auto;background:color-mix(in srgb,var(--daily-accent) 24%,transparent); }
+.ds-payment-widget { background:linear-gradient(135deg,color-mix(in srgb,var(--daily-glass) 55%,transparent),color-mix(in srgb,var(--secondary) 55%,transparent));backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 var(--daily-glass-edge),inset 0 0 0 1px color-mix(in srgb,var(--daily-glass-edge) 30%,transparent),0 8px 24px color-mix(in srgb,var(--daily-accent) 6%,transparent); }
+.ds-payment-widget [class*="text-md"] { font-size:12px;line-height:18px; }
+.ds-payment-widget [class*="text-md"].font-normal { font-size:11px; }
+.ds-payment-bill-list>button { padding-top:8px;padding-bottom:8px; }
+.ds-payment-bill-list>button:last-child { padding-bottom:0; }
+.ds-payment-widget [class*="w-11"],.ds-account-sheet [class*="w-11"] { width:36px;height:36px;color:var(--daily-accent);background:color-mix(in srgb,var(--daily-accent-surface) 65%,var(--background)); }
+.ds-payment-link { padding:0;font-size:11px;color:var(--daily-accent); }
+.ds-payment-badge { display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:500;padding:5px 8px;border-radius:var(--radius-8);color:var(--daily-accent);background:color-mix(in srgb,var(--daily-accent-surface) 65%,transparent); }
+
+
+.ds-payment-mode .ds-nav-item[aria-current=page] { color:var(--daily-accent);background:color-mix(in srgb,var(--daily-accent-surface) 58%,transparent); }
+.ds-account-sheet { padding-top:12px;max-height:85dvh;overflow-y:auto;background:color-mix(in srgb,var(--background) 92%,transparent);backdrop-filter:blur(28px);box-shadow:inset 0 1px 0 var(--daily-glass-edge);color:var(--foreground); }
+
+/* The same neutral surfaces and glass navigation in every VinClub space. */
+.vc-daily-premium .ds-shell,.vc-daily-premium .ds-scroll,.vc-daily-premium .ds-surface{background:var(--background)}
+.vc-daily-premium .ds-spaces button{background:transparent;box-shadow:none;font-weight:500}
+.vc-daily-premium .ds-bottom{background:linear-gradient(transparent,color-mix(in srgb,var(--background) 92%,transparent));backdrop-filter:none}
+.vc-daily-premium .ds-bottom-inner{
+  background:color-mix(in srgb,var(--daily-glass) 68%,transparent);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  box-shadow:inset 0 1px 0 var(--daily-glass-edge),inset 0 -1px 0 color-mix(in srgb,var(--foreground) 8%,transparent),0 6px 24px color-mix(in srgb,var(--foreground) 8%,transparent);
+}
+.vc-daily-premium .ds-nav-item[aria-current=page]{color:var(--foreground);background:color-mix(in srgb,var(--foreground) 8%,transparent)}
+
+/* Home: cream glass tabs and a membership card straddling the sheet. */
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) {
+  --home-card-height:clamp(170px,calc((100vw - 44px) * .6266),230px);
+  --home-cream:color-mix(in srgb,var(--color-grey-50) 80%,var(--color-orange-50));
+}
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-dark-header {
+  --background:var(--color-grey-950);
+  --foreground:var(--home-cream);
+  --foreground-secondary:color-mix(in srgb,var(--home-cream) 76%,transparent);
+  background:var(--background);color:var(--foreground);
+}
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-scroll { background:var(--color-grey-950); }
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-hero {
+  height:calc(var(--home-card-height) / 2 + 16px);
+  padding-top:16px;background:var(--color-grey-950);z-index:2;
+}
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-hero-card {
+  height:var(--home-card-height);border-radius:var(--radius-14);color:var(--home-cream);
+  box-shadow:0 14px 36px color-mix(in srgb,var(--color-grey-950) 28%,transparent);
+}
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-hero-card .vc-membership-visual,
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-hero-card .vc-membership-stage { height:100%;aspect-ratio:auto; }
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-surface {
+  padding-top:calc(var(--home-card-height) / 2 + 24px);
+  box-shadow:inset 0 1px 0 var(--daily-glass-edge);
+}
+/* One continuous glass control with a sliding lens for the selected tab. */
+.ds-spaces-glass { display:contents; }
+.vc-daily-premium .ds-shell .ds-spaces { padding-top:8px;padding-bottom:12px; }
+.vc-daily-premium .ds-shell .ds-spaces-glass {
+  position:relative;isolation:isolate;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;padding:5px;gap:0;border-radius:var(--radius-28);
+  background:linear-gradient(115deg,color-mix(in srgb,var(--home-cream) 16%,transparent),color-mix(in srgb,var(--home-cream) 5%,transparent) 44%,color-mix(in srgb,var(--home-cream) 11%,transparent));
+  backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--home-cream) 34%,transparent),inset 0 -1px 0 color-mix(in srgb,var(--home-cream) 12%,transparent),inset 1px 0 0 color-mix(in srgb,var(--home-cream) 14%,transparent),0 8px 24px color-mix(in srgb,var(--color-grey-950) 35%,transparent);
+}
+.vc-daily-premium .ds-shell .ds-spaces-glass::before {
+  content:"";position:absolute;top:5px;bottom:5px;left:5px;width:calc((100% - 10px) / 3);border-radius:var(--radius-28);pointer-events:none;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--home-cream) 26%,transparent),color-mix(in srgb,var(--home-cream) 10%,transparent) 55%,color-mix(in srgb,var(--home-cream) 18%,transparent));
+  box-shadow:inset 0 1px 1px color-mix(in srgb,var(--home-cream) 65%,transparent),inset 0 -1px 1px color-mix(in srgb,var(--home-cream) 22%,transparent),0 3px 10px color-mix(in srgb,var(--color-grey-950) 28%,transparent);
+  transition:transform .4s cubic-bezier(.2,.8,.2,1);
+}
+.vc-daily-premium .ds-shell .ds-spaces-glass[data-space="VinClub"]::before { transform:translateX(100%); }
+.vc-daily-premium .ds-shell .ds-spaces-glass[data-space="Khám phá"]::before { transform:translateX(200%); }
+.vc-daily-premium .ds-shell .ds-spaces button,
+.vc-daily-premium .ds-shell .ds-spaces button[aria-current=page] {
+  position:relative;z-index:1;height:38px;color:var(--home-cream);font-size:12px;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;font-weight:500;
+}
+.vc-daily-premium .ds-shell .ds-spaces button[aria-current=page] { font-weight:600; }
+.vc-daily-premium .ds-shell .ds-spaces button>span:first-child,
+.vc-daily-premium .ds-shell .ds-spaces button[aria-current=page]>span:first-child { background:transparent;box-shadow:none; }
+
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-dark-header>div button>span:first-child {
+  background:color-mix(in srgb,var(--home-cream) 10%,transparent);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--home-cream) 20%,transparent);
+}
+
+/* The sheet covers the lower half of the membership card. */
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-scroll { isolation:isolate; }
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-hero { position:relative;z-index:0;overflow:visible; }
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-hero-card { position:relative;z-index:1; }
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-surface { position:relative;z-index:1;padding-top:24px; }
+
+/* Payment owns a dark semantic palette, independent of the preview theme. */
+.ds-payment-theme {
+  --background:var(--color-grey-1000);
+  --foreground:color-mix(in srgb,var(--color-grey-50) 85%,var(--color-orange-50));
+  --foreground-secondary:var(--color-grey-400);
+  --secondary:var(--color-grey-900);
+  --secondary-foreground:var(--foreground);
+  --card:var(--color-grey-900);
+  --card-foreground:var(--foreground);
+  --popover:var(--color-grey-900);
+  --popover-foreground:var(--foreground);
+  --primary:var(--foreground);
+  --primary-foreground:var(--background);
+  --border:var(--color-grey-800);
+  --input:var(--color-grey-800);
+  --ring:var(--foreground);
+  --btn-secondary-bg:color-mix(in srgb,var(--foreground) 9%,transparent);
+  --daily-accent:var(--foreground);
+  --daily-accent-surface:var(--secondary);
+  --daily-glass:var(--secondary);
+  --daily-glass-edge:color-mix(in srgb,var(--foreground) 15%,transparent);
+  --home-cream:var(--foreground);
+  --ds-ink:var(--foreground);
+  --ds-paper:var(--background);
+  background:var(--background);color:var(--foreground);
+}
+.vc-daily-premium .ds-shell.ds-payment-mode,
+.vc-daily-premium .ds-payment-mode .ds-scroll,
+.vc-daily-premium .ds-payment-mode .ds-surface { background:var(--background); }
+.vc-daily-premium .ds-payment-mode .ds-dark-header {
+  --background:var(--color-grey-1000);
+  --foreground:var(--home-cream);
+  --foreground-secondary:var(--color-grey-400);
+  color:var(--foreground);background:var(--background);
+}
+.vc-daily-premium .ds-payment-mode .ds-payment-sheet {
+  --background:var(--color-grey-00);
+  --foreground:var(--color-grey-950);
+  --foreground-secondary:var(--color-grey-500);
+  --secondary:var(--color-grey-100);
+  --secondary-foreground:var(--foreground);
+  --card:var(--color-grey-00);
+  --card-foreground:var(--foreground);
+  --primary:var(--foreground);
+  --primary-foreground:var(--color-grey-50);
+  --border:var(--color-grey-200);
+  --btn-secondary-bg:color-mix(in srgb,var(--foreground) 5%,transparent);
+  --daily-accent:var(--foreground);
+  --daily-accent-surface:var(--secondary);
+  --daily-glass:var(--card);
+  --daily-glass-edge:color-mix(in srgb,var(--foreground) 5%,transparent);
+  background:var(--background);color:var(--foreground);box-shadow:none;backdrop-filter:none;padding-bottom:120px;
+}
+.vc-daily-premium .ds-payment-mode .ds-bottom {
+  --background:var(--color-grey-00);
+  --foreground:var(--color-grey-950);
+  --secondary:var(--color-grey-100);
+  --daily-glass:var(--color-grey-00);
+  --daily-glass-edge:color-mix(in srgb,var(--foreground) 8%,transparent);
+  --daily-accent:var(--foreground);
+  --daily-accent-surface:var(--secondary);
+  background:transparent;backdrop-filter:none;
+}
+.ds-payment-icon-frame { width:62px;height:62px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid color-mix(in srgb,var(--foreground) 14%,transparent);background:linear-gradient(145deg,color-mix(in srgb,var(--foreground) 9%,transparent),color-mix(in srgb,var(--foreground) 3%,transparent));box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 6%,transparent); }
+.ds-payment-mode .ds-payment-widget { background:var(--card);box-shadow:inset 0 1px 0 var(--daily-glass-edge); }
+.ds-payment-mode .ds-payment-shortcut>span:last-child { gap:8px; }
+.ds-payment-mode .ds-payment-shortcut .ds-payment-raster { background:none;box-shadow:none; }
+.ds-payment-mode .ds-payment-widget [class*="w-11"],
+.ds-account-sheet.ds-payment-theme [class*="w-11"] { width:40px;height:40px;background:transparent; }
+
+.ds-account-sheet.ds-payment-theme { background:var(--background);color:var(--foreground); }
+
+/* Dedicated personal and experience screens share the same header and bottom bar. */
+.vc-daily-premium .ds-shell.ds-content-mode .ds-surface{padding-top:0;border-radius:var(--radius-28);min-height:100%;padding-bottom:120px}
+.vc-daily-premium .ds-shell.ds-content-mode .ds-scroll{background:var(--background)}
+.ds-personal-space .charge-home-section{padding-top:12px}
+.ds-experience-filters{display:flex;gap:8px;padding-bottom:12px}
+.vc-daily-premium .ds-experience-filters button[aria-pressed=true]>span:first-child{background:var(--foreground)}
+.vc-daily-premium .ds-experience-filters button[aria-pressed=true]{color:var(--background)}
+.ds-experience-map{height:330px;position:relative;overflow:hidden;background:var(--secondary)}
+.ds-experience-map>.mini-city{height:100%;width:100%}
+.ds-experience-map-label{position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:6px;padding:7px 10px;font-size:10px;pointer-events:none}
+.ds-experience-options{display:flex;flex-direction:column;gap:8px}
+.ds-experience-option{width:100%;padding:10px 0;white-space:normal}
+.vc-daily-premium .ds-experience-option>span:first-child{background:transparent;box-shadow:none;backdrop-filter:none}
+.ds-experience-option>span:last-child{width:100%;justify-content:flex-start;gap:12px}
+.ds-experience-thumb{position:relative;width:64px;height:64px;overflow:hidden;flex-shrink:0}
+.ds-experience-thumb img{object-fit:cover}
+.ds-plan-label{display:flex;flex-direction:column;gap:8px;padding-top:24px;font-size:14px;font-weight:500}
+.ds-action-sheet{max-width:430px;width:100%;margin:0 auto;max-height:90dvh;overflow:auto;background:var(--background);color:var(--foreground)}
+.ds-map-sheet{height:100dvh;width:100%;max-width:430px;margin:0 auto;background:var(--background);color:var(--foreground)}
+.ds-expanded-map{flex:1;min-height:0;padding-top:24px;padding-bottom:12px}
+.ds-expanded-map>.mini-city{height:100%;width:100%}
+
+.ds-discovery-rail { display:flex;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-left:0;margin-right:-22px;padding-right:22px;padding-bottom:8px;scrollbar-width:none; }
+.ds-discovery-rail::-webkit-scrollbar { display:none; }
+.ds-discovery-card { flex:0 0 244px;scroll-snap-align:start; }
+.ds-discovery-art { height:132px;position:relative;overflow:hidden; }
+.ds-discovery-art img { object-fit:cover;object-position:70% center; }
+.ds-discovery-icon-art { display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,color-mix(in srgb,var(--daily-glass) 70%,var(--secondary)),var(--secondary)); }
+.ds-discovery-icon-art img { object-fit:contain; }
+.ds-discovery-copy { padding:16px; }
+.ds-discovery-copy>p { min-height:40px; }
+.ds-discovery-link { margin-top:16px;font-size:12px; }
+.ds-discovery-link>span:first-child { background:color-mix(in srgb,var(--background) 72%,transparent); }
+.ds-home-offer-art { position:relative;height:144px;overflow:hidden; }
+.ds-home-offer-art>img { object-fit:cover;object-position:70% center; }
+.ds-home-offer-brand { position:absolute;left:16px;top:16px;background:color-mix(in srgb,var(--background) 90%,transparent);color:var(--foreground);padding:6px 8px;font-size:9px;letter-spacing:1px;font-weight:600;backdrop-filter:blur(12px); }
+.ds-home-offer { box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 6%,transparent); }
+@media(prefers-reduced-motion:reduce) { .ds-discovery-rail { scroll-behavior:auto; } }
+
+/* Spacing only: preserve the membership card and overlapping sheet. */
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-spaces { padding-top:4px;padding-bottom:4px; }
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-hero { padding-top:8px;height:96px; }
+.vc-daily-premium .ds-shell:not(.ds-payment-mode):not(.ds-content-mode) .ds-surface { padding-top:12px; }
+.vc-daily-premium .ds-shell:not(.ds-payment-mode) .ds-ai-section { padding-top:8px; }
+
+/* Living assets share a cool, miniature 3D art direction. */
+.ds-personal-space{background:var(--secondary);padding-bottom:12px}
+.ds-personal-space .charge-home-section{padding-top:24px}
+.ds-personal-space .charge-widget{background:var(--card);color:var(--foreground);box-shadow:none}
+.ds-living-home-image{position:relative;height:208px}
+.ds-living-home-image img,.ds-living-service-image img,.ds-living-detail-image img{object-fit:cover}
+ .ds-living-banner{height:auto;padding:16px 22px;text-align:left;white-space:normal;background:var(--card);box-shadow:none}
+.vc-premium-home .ds-living-banner>span:first-child{background:transparent;border-radius:var(--radius-14)}
+.ds-living-banner-content{display:flex;width:100%;align-items:center;gap:12px}
+.ds-living-banner-icon{display:flex;align-items:center;flex-shrink:0;width:56px}
+.ds-living-banner-icon img{width:56px;height:56px;object-fit:contain}
+.ds-living-banner-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
+.ds-living-banner-kicker{font-size:8px;letter-spacing:1px;color:var(--foreground-secondary);font-weight:500}
+.ds-living-banner-copy strong{font-size:14px;line-height:1.4;font-weight:600}
+.ds-living-banner-copy>span:last-child{font-size:11px;line-height:1.5;font-weight:400;color:var(--foreground-secondary)}
+.ds-living-detail-image{position:relative;height:160px;overflow:hidden}
+.ds-plan-label{display:flex;flex-direction:column;gap:8px;padding-top:16px;font-size:14px}
+.ds-living-service-sheet{max-height:90dvh;overflow-y:auto}
+
+.ds-personal-space .charge-widget{--background:inherit;--card:inherit;--foreground:inherit;--foreground-secondary:inherit;--secondary:inherit;border-radius:var(--radius-28)}
+.vc-premium-home .ds-personal-space .charge-home-section .charge-widget>span:first-child{background:var(--card)}
+
+/* Personal space: light header, focused asset sections, grouped bill deck. */
+.ds-personal-mode .ds-personal-space{padding-bottom:24px}
+.ds-personal-mode .ds-living-home-image{height:160px}
+.ds-personal-mode .charge-home-section{padding-top:0}
+.ds-personal-recommendations{display:flex;flex-direction:column;background:var(--card);border-radius:var(--radius-28);padding:16px 22px}
+.ds-personal-recommendations .ds-living-banner{padding:10px 0;border-radius:var(--radius-14)}
+.ds-personal-recommendations .ds-living-banner-kicker:empty{display:none}
+.ds-personal-recommendations .ds-living-banner-icon,.ds-personal-recommendations .ds-living-banner-icon img{width:44px;height:44px}
+.ds-personal-recommendations .ds-living-banner-copy>span:last-child{font-size:11px}
+.ds-bill-stack{display:flex;flex-direction:column;isolation:isolate;padding-top:4px}
+.ds-bill-stack-card{position:relative;padding-bottom:16px;border-radius:0;background:var(--card);box-shadow:0 -2px 4px color-mix(in srgb,var(--foreground) 6%,transparent)}
+.ds-bill-stack-card+.ds-bill-stack-card{margin-top:-12px}
+.ds-bill-stack-card:last-child{padding-bottom:0}
+.ds-bill-group-button{height:64px;padding:12px 22px;justify-content:space-between;gap:8px;border-radius:0;font-size:14px}
+.vc-premium-home .ds-bill-group-button>span:first-child{background:transparent}
+.ds-bill-group-label{display:flex;align-items:center;gap:10px}
+.ds-bill-group-count{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--foreground-secondary);font-weight:400}
+.ds-bill-stack-card[data-expanded=true] .ds-bill-group-count svg{transform:rotate(90deg)}
+.ds-personal-bill-row p,.ds-personal-bill-row span{font-size:12px;line-height:18px}
+.ds-personal-bill-row p:first-child{font-size:13px}
+.ds-personal-offer-row p{font-size:12px;line-height:18px}
+.ds-personal-offer-row p:first-child{font-size:14px}
+.ds-personal-service-symbol{display:flex;justify-content:flex-start}
+
+.ds-bill-group-button>span:last-child{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px}
+.vc-premium-home .ds-personal-recommendations .ds-living-banner>span:first-child,.vc-premium-home .ds-bill-group-button>span:first-child{background:transparent;box-shadow:none;border:0}
+
+.ds-personal-mode .ds-bill-group-button{height:64px}
+.ds-personal-mode .ds-bill-group-label{font-size:13px;gap:8px}
+.ds-personal-mode .ds-bill-group-count{font-size:12px;color:var(--foreground);font-weight:500}
+.ds-personal-mode .ds-home-offer{background:var(--card)}
+
+.ds-service-section { padding-top:20px; }
+
+/* Anchor the progress fill and give the points label consistent inner spacing. */
+.ds-tier-progress { display:block;flex-shrink:0; }
+.ds-hero-points { display:inline-flex;align-items:center;gap:4px;padding:4px 10px;line-height:20px;white-space:nowrap; }
+.ds-hero-points>span { display:block; }
+@media(max-width:359px) {
+  .ds-hero-identity { left:16px;top:18px;gap:12px; }
+  .ds-hero-identity>.ds-serif { font-size:18px; }
+  .ds-hero-points { right:16px;top:18px;padding:6px 8px;font-size:11px;gap:3px; }
+  .ds-hero-points small { font-size:9px; }
+}
+
+/* Align the badge and membership title through one shared row. */
+.ds-hero-heading { position:absolute;top:16px;left:22px;right:22px;display:flex;align-items:center;justify-content:space-between;gap:12px; }
+.ds-hero-heading .ds-hero-identity { position:relative;left:auto;top:auto;gap:0; }
+.ds-hero-heading .ds-hero-identity>.ds-serif { line-height:24px; }
+.ds-hero-heading .ds-tier-progress { position:absolute;left:0;top:calc(100% + 8px); }
+.ds-hero-heading .ds-hero-points { position:static;flex-shrink:0; }
+@media(max-width:359px) { .ds-hero-heading { top:16px;left:16px;right:16px;gap:8px; } }
+
+/* Compact bill stack: contact shadows separate the three paper layers. */
+.ds-bill-deck { position:relative;isolation:isolate;margin:12px 18px 0;padding-bottom:14px; }
+.ds-bill-deck-back { position:absolute;inset:0 0 14px;pointer-events:none; }
+.ds-bill-deck-back-far { transform:translate(7px,8px) rotate(5deg);z-index:0;box-shadow:0 6px 12px color-mix(in srgb,var(--color-grey-1000) 12%,transparent); }
+.ds-bill-deck-back-near { transform:translate(-5px,5px) rotate(-4deg);z-index:1;box-shadow:0 3px 8px color-mix(in srgb,var(--color-grey-1000) 16%,transparent); }
+.ds-bill-deck-front { position:relative;z-index:2;overflow:hidden;box-shadow:0 2px 5px color-mix(in srgb,var(--color-grey-1000) 12%,transparent),0 16px 28px -8px color-mix(in srgb,var(--color-grey-1000) 28%,transparent); }
+.ds-bill-deck-trigger { width:100%;aspect-ratio:1.18;height:auto;padding:18px 22px;text-align:left;white-space:normal;border-radius:var(--radius-36); }
+.vc-daily-premium .ds-bill-deck-trigger>span:first-child { background:transparent;box-shadow:none;backdrop-filter:none; }
+.ds-bill-deck-trigger>span:last-child { width:100%;height:100%;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:12px; }
+.ds-bill-deck-meta { display:flex;align-items:center;justify-content:space-between;width:100%;font-size:12px;font-weight:400;color:var(--foreground-secondary); }
+.ds-bill-deck-identity { display:flex;flex-direction:column;align-items:flex-start;gap:6px; }
+.ds-bill-deck-identity>img { width:72px;height:72px;margin-bottom:4px; }
+.ds-bill-deck-navigation { display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px; }
+.ds-bill-deck-navigation button { width:36px;height:36px;padding:0; }
+@media(prefers-reduced-motion:no-preference) { .ds-bill-deck-front { animation:ds-bill-reveal .22s ease-out; } @keyframes ds-bill-reveal { from { opacity:.7;transform:translateY(4px); } to { opacity:1;transform:translateY(0); } } }
+.vc-daily-premium .ds-bill-deck-trigger>span[aria-hidden=true]:first-child { display:none; }
+.vc-daily-premium .ds-bill-deck-front { box-shadow:0 2px 6px color-mix(in srgb,var(--color-grey-1000) 10%,transparent),0 18px 30px -8px color-mix(in srgb,var(--color-grey-1000) 22%,transparent); }
+
+/* Keep the sheet edge on the scroll viewport in every space. */
+.vc-daily-premium .ds-stage:not(.ds-home-stage) { background:var(--color-grey-950); }
+.vc-daily-premium .ds-stage:not(.ds-home-stage)>.ds-scroll { border-radius:var(--radius-28) var(--radius-28) 0 0; }
+.vc-daily-premium .ds-stage:not(.ds-home-stage)>.ds-scroll>.ds-surface { border-radius:0; }
+
+.vc-daily-premium :is(.ds-bill-deck-front,.ds-bill-deck-back) { border-radius:var(--radius-36); }
+
+/* The same square cards unfold from the deck, above the blurred shell. */
+.ds-root:has(.ds-bill-deck[data-expanded=true]) .ds-shell { filter:blur(14px);pointer-events:none; }
+body:has(.ds-bill-expanded) [data-slot=sheet-overlay] { background:color-mix(in srgb,var(--color-grey-00) 80%,transparent); }
+.ds-bill-expanded { inset:0;height:100dvh;max-width:430px;margin:auto;padding:54px 0 24px;gap:20px;background:transparent;box-shadow:none;overflow-y:auto;animation:none!important; }
+.ds-bill-expanded-header { display:flex;align-items:center;justify-content:space-between;gap:12px; }
+.ds-bill-expanded-grid { display:grid;grid-template-columns:1fr;gap:24px;padding-left:40px;padding-right:40px; }
+.ds-bill-expanded-card { aspect-ratio:1;border-radius:var(--radius-36);transform-origin:top left;overflow:hidden;box-shadow:0 2px 6px color-mix(in srgb,var(--color-grey-1000) 10%,transparent),0 18px 30px -8px color-mix(in srgb,var(--color-grey-1000) 22%,transparent); }
+.ds-bill-expanded-trigger { width:100%;height:100%;padding:20px 22px;white-space:normal;text-align:left;border-radius:var(--radius-36); }
+.vc-daily-premium .ds-bill-expanded-trigger>span:first-child { display:none; }
+.ds-bill-expanded-trigger>span:last-child { flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:8px;width:100%;height:100%; }
+.ds-bill-expanded-trigger img { width:88px;height:88px;margin-bottom:12px; }
+.ds-bill-expanded-trigger>span:last-child>span:nth-of-type(1) { font-size:16px; }
+.ds-bill-expanded-trigger>span:last-child>span:nth-of-type(2) { font-size:24px;line-height:32px; }
+.ds-bill-expanded-close { align-self:center;flex-shrink:0; }
+
+/* The label stays still while suggested requests slide into view. */
+.ds-ai-avatar { position:relative;display:block;width:38px;height:38px;flex-shrink:0; }
+.ds-ai-avatar canvas { position:absolute;inset:0;pointer-events:none; }
+.ds-ai-avatar[data-ready=true]>img { visibility:hidden; }
+.ds-ai .ds-ai-copy { display:flex;align-items:center;gap:4px;min-width:0;font-size:14px;line-height:20px;font-weight:600; }
+.ds-ai-label { flex-shrink:0; }
+.ds-ai-rotator { display:block;min-width:0;overflow:hidden;height:20px;flex:1; }
+.ds-ai-suggestion { display:block;line-height:20px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:var(--color-red-500);font-weight:500;animation:ds-ai-slide-up 3.4s cubic-bezier(.22,1,.36,1) both; }
+@keyframes ds-ai-slide-up {
+  0% { transform:translateY(100%);opacity:0; }
+  14%,86% { transform:translateY(0);opacity:1; }
+  100% { transform:translateY(-100%);opacity:0; }
+}
+
+@property --ds-ai-border-angle {
+  syntax:"<angle>";
+  inherits:false;
+  initial-value:0deg;
+}
+.ds-ai::after {
+  content:"";position:absolute;inset:0;z-index:20;pointer-events:none;border-radius:inherit;padding:1px;
+  background:conic-gradient(from var(--ds-ai-border-angle),transparent 0deg 240deg,color-mix(in srgb,var(--color-red-500) 12%,transparent) 280deg,color-mix(in srgb,var(--color-red-500) 50%,transparent) 315deg,transparent 350deg);
+  mask:linear-gradient(var(--foreground) 0 0) content-box,linear-gradient(var(--foreground) 0 0);
+  mask-composite:exclude;
+  animation:ds-ai-border-orbit 7s linear infinite;
+}
+@keyframes ds-ai-border-orbit { to { --ds-ai-border-angle:360deg; } }
+@media(prefers-reduced-motion:reduce) { .ds-ai::after { animation:none;opacity:.35; } }
+
+
+.ds-membership {
+  --background:var(--color-grey-950);
+  --foreground:var(--color-grey-00);
+  --foreground-secondary:var(--color-grey-400);
+  --secondary:var(--color-grey-900);
+  --card:var(--secondary);
+  --card-foreground:var(--foreground);
+  --btn-secondary-bg:var(--secondary);
+  position:fixed;inset:0;z-index:110;display:flex;flex-direction:column;
+  background:var(--background);color:var(--foreground);overflow:hidden;
+}
+.ds-membership-scroll { flex:1;min-height:0;overflow-y:auto;padding-top:8px;padding-bottom:24px; }
+.ds-membership-card { position:relative;overflow:hidden;aspect-ratio:616/386; }
+.ds-membership-card .vc-membership-visual { height:100%; }
+.ds-membership-card .vc-membership-stage { width:100%;height:100%;aspect-ratio:616/386; }
+.ds-membership-card .vc-membership-stage video { width:100%;height:100%;object-fit:contain; }
+.ds-membership-card .vc-card-lettering { display:none; }
+.ds-membership-card-copy { position:absolute;inset:20px 22px auto;display:flex;flex-direction:column;gap:12px;color:var(--color-grey-00);text-shadow:0 1px 8px var(--color-grey-950);pointer-events:none; }
+.ds-membership-card-copy>span { font-size:20px;line-height:24px; }
+.ds-membership-card-copy>small { font-size:12px;line-height:20px; }
+.ds-membership-tiers { display:flex;gap:4px;margin-top:16px;padding:4px;background:var(--secondary);border-radius:var(--radius-14); }
+.ds-membership-tiers button { flex:1;padding-inline:8px; }
+.vc-daily-premium .ds-membership button>span[aria-hidden="true"]:first-child { background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none; }
+.vc-daily-premium .ds-membership-tiers button { color:var(--foreground-secondary);font-size:12px; }
+.vc-daily-premium .ds-membership-tiers button[aria-pressed=true] { color:var(--foreground); }
+.vc-daily-premium .ds-membership-tiers button[aria-pressed=true]>span[aria-hidden="true"]:first-child { background:var(--color-grey-700);border-radius:var(--radius-8); }
+.ds-membership-benefit { padding-block:8px; }
+.ds-membership-benefit>div:last-child { width:auto;max-width:65%; }
+.ds-membership-benefit>div:first-child>p { font-size:14px;font-weight:400; }
+.ds-membership-benefit>div:last-child span { font-size:14px;font-weight:400;color:var(--foreground-secondary); }
+.ds-membership-balance { display:flex;align-items:baseline;gap:8px; }
+.ds-membership-balance>span:first-child { font-size:32px;line-height:40px;font-weight:500;letter-spacing:-1px; }
+.ds-membership-offer { width:100%;height:auto;display:flex;padding:0;white-space:normal;text-align:left; }
+.ds-membership-offer>span:last-child { width:100%;gap:12px; }
+.ds-membership-offer img { width:64px;height:64px;flex-shrink:0; }
+.ds-membership-offer-copy { display:flex;flex:1;min-width:0;flex-direction:column;gap:4px; }
+.ds-membership-offer-copy strong { font-size:14px;line-height:20px;font-weight:500; }
+/* The Home card flies to its destination without animating layout. */
+.ds-membership-flight { position:fixed;z-index:2;pointer-events:none;transform-origin:top left;will-change:transform; }
+.vc-daily-premium .ds-membership-flight .ds-hero-card { width:100%;height:100%;margin:0;box-shadow:none; }
+.ds-membership-flight .vc-membership-stage img { width:100%;height:100%;object-fit:contain; }
+
+/* Warm cream is shared by the greeting, logo, status icons and tabs. */
+.vc-daily-premium .ds-shell .ds-dark-header {
+  --home-cream:var(--color-orange-100);
+  --foreground:var(--home-cream);
+  --foreground-secondary:var(--home-cream);
+  --btn-secondary-fg:var(--home-cream);
+  color:var(--foreground);
+}
+.vc-daily-premium .ds-dark-header .ds-brand-logo { color:var(--home-cream); }
+
+/* Compact rectangular bill cards keep assets above the bill summary. */
+.ds-personal-mode .ds-bill-deck { margin:0;padding-bottom:8px; }
+.vc-daily-premium :is(.ds-bill-deck-front,.ds-bill-deck-back) { border-radius:var(--radius-28); }
+.ds-bill-deck-trigger { aspect-ratio:auto;height:156px;padding:16px 22px;border-radius:var(--radius-28); }
+.ds-bill-deck-trigger>span:last-child { justify-content:center;gap:8px; }
+.ds-bill-deck-meta { position:absolute;right:0;top:0;width:auto;font-size:10px; }
+.ds-bill-deck-identity { width:100%;display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:16px;row-gap:4px;align-items:center; }
+.ds-bill-deck-identity>img { grid-row:1 / 4;width:56px;height:56px;margin:0; }
+.ds-bill-deck-identity>span { grid-column:2; }
+.ds-bill-deck-identity>span.text-2xl { font-size:20px;line-height:28px; }
+.ds-bill-expanded-grid { gap:12px;padding-left:22px;padding-right:22px; }
+.ds-bill-expanded-card { aspect-ratio:auto;height:140px;border-radius:var(--radius-28); }
+.ds-bill-expanded-trigger { padding:16px 22px;border-radius:var(--radius-28); }
+.ds-bill-expanded-trigger>span:last-child { display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:16px;row-gap:4px;align-content:center;align-items:center; }
+.ds-bill-expanded-trigger img { grid-row:1 / 4;width:56px;height:56px;margin:0; }
+.ds-bill-expanded-trigger>span:last-child>span { grid-column:2; }
+.ds-bill-expanded-trigger>span:last-child>span:nth-of-type(2) { font-size:20px;line-height:28px; }
+
+.ds-member-tabs { margin-top:0; }
+.ds-member-tablist { height:44px;padding:0;gap:24px;justify-content:flex-start; }
+.ds-member-tablist [data-slot=tabs-trigger] { flex:0 1 auto;height:44px;padding:0;border-radius:0;font-size:14px;color:var(--foreground-secondary); }
+.ds-member-tablist [data-slot=tabs-trigger][data-state=active] { color:var(--foreground);background:transparent; }
+.ds-member-tablist [data-slot=tabs-trigger]::after { bottom:0; }
+.ds-member-pane[data-state=inactive] { display:none; }
+.ds-member-progress { display:block;appearance:none;width:100%;height:4px;border:0;border-radius:var(--radius-8);overflow:hidden;background:var(--color-grey-700);color:var(--foreground); }
+.ds-member-progress::-webkit-progress-bar { background:var(--color-grey-700);border-radius:var(--radius-8); }
+.ds-member-progress::-webkit-progress-value { background:var(--foreground);border-radius:var(--radius-8); }
+.ds-member-progress::-moz-progress-bar { background:var(--foreground);border-radius:var(--radius-8); }
+.ds-membership-benefit>div:first-child:has(svg) { width:24px;height:24px;background:transparent; }
+.ds-membership-benefit>div:has(>p)>p:first-child { font-size:14px;font-weight:400; }
+.ds-membership-benefit>div:last-child { max-width:60%; }
+.ds-vpoint-guide { padding-block:8px; }
+.ds-vpoint-guide>div>p:first-child { font-size:14px;font-weight:500; }
+.ds-vpoint-guide>div>p:nth-child(2) { white-space:normal;font-size:14px;line-height:20px; }
+.ds-member-offers .ds-home-offer { color:var(--foreground); }
+
+.ds-member-card-progress { position:absolute;left:22px;right:22px;bottom:16px;color:var(--color-grey-950);padding:0;background:transparent; }
+.ds-member-card-progress .ds-member-progress { margin-top:8px;--foreground:var(--color-grey-950); }
+.ds-member-card-progress>p { font-size:9px;line-height:14px;margin-top:6px; }
+.ds-member-privilege-button { width:100%;height:auto;padding:10px 0;white-space:normal;text-align:left; }
+.ds-member-privilege-button>span:first-child { background:transparent;box-shadow:none; }
+.ds-member-privilege-button>span:last-child { width:100%;justify-content:flex-start;gap:12px; }
+.ds-member-privilege-button img { width:20px;height:20px;flex-shrink:0;object-fit:contain; }
+.ds-member-privilege-copy { display:flex;flex-direction:column;gap:4px; }
+.ds-member-privilege-copy>strong { font-size:14px;line-height:20px;font-weight:600; }
+.ds-member-privilege-detail { margin:0 0 8px 52px;padding:12px;animation:ds-bill-reveal .22s ease-out; }
+
+/* A miniature card and status make the membership ladder readable. */
+.ds-membership-tiers { gap:4px;padding:4px;background:transparent; }
+.vc-daily-premium .ds-membership-tiers button { height:auto;min-width:0;padding:8px 4px; }
+.ds-membership-tiers button>span:last-child { flex-direction:column;gap:4px;width:100%; }
+.ds-membership-tiers img { width:100%;max-width:48px;height:30px;object-fit:contain; }
+.ds-membership-tiers small { font-size:9px;line-height:14px;font-weight:400; }
+.vc-daily-premium .ds-membership-tiers button[aria-pressed=true]>span[aria-hidden=true]:first-child { background:var(--secondary);border-radius:var(--radius-14); }
+.ds-member-privilege-detail { margin-left:32px; }
+.ds-membership-balance .ds-vpoint-logo { display:block;width:28px;height:18px;flex-shrink:0;background:var(--foreground);mask:url("/vinclub-assets/vinclub-logo.svg") center / contain no-repeat; }
+
+.ds-personal-recommendations { padding:0;background:transparent;border-radius:0;gap:8px; }
+.ds-personal-recommendation-rail { display:flex;gap:12px;overflow-x:auto;margin-right:-22px;padding:0 22px 8px 0;scrollbar-width:none; }
+.ds-personal-recommendations .ds-living-banner { flex:0 0 auto;width:max-content;height:52px;padding:8px;background:var(--card);border-radius:var(--radius-14); }
+.ds-personal-recommendations .ds-living-banner>span:last-child,.ds-personal-recommendations .ds-living-banner-content { width:auto; }
+.ds-personal-recommendations .ds-living-banner-copy { flex:0 0 auto; }
+.ds-personal-recommendations .ds-living-banner-icon,.ds-personal-recommendations .ds-living-banner-icon img { width:32px;height:32px; }
+.ds-personal-recommendations .ds-living-banner-content { gap:6px; }
+.ds-personal-recommendations .ds-living-banner-copy strong { font-size:12px;line-height:18px; }
+.ds-personal-recommendations .ds-living-banner-copy>span:last-child { display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:11px;line-height:16px; }
+.ds-personal-mode .ds-bill-deck-trigger { height:124px;padding:12px 22px; }
+.vc-daily-premium .ds-personal-mode .ds-bill-deck-front { box-shadow:0 3px 6px color-mix(in srgb,var(--color-grey-950) 18%,transparent),0 10px 18px -3px color-mix(in srgb,var(--color-grey-950) 28%,transparent); }
+.ds-personal-mode .ds-bill-deck { padding-bottom:16px; }
+
+/* Offers and account use an uninterrupted semantic surface. */
+.vc-daily-premium .ds-shell.ds-light-page { background:var(--background); }
+.vc-daily-premium .ds-shell.ds-light-page .ds-surface { background:var(--background);border-radius:0; }
+.ds-light-header { flex-shrink:0; }
+.ds-light-header>div:last-child { padding-left:22px; }
+.ds-offers-search { padding:0; }
+.ds-offers-search>div { background:var(--secondary);min-height:48px; }
+.ds-offers-categories { display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-right:-22px;padding:16px 22px 0 0; }
+.ds-offers-categories button { flex-shrink:0;height:38px;font-size:12px;padding:0 12px;gap:6px; }
+.ds-offers-categories button[aria-pressed=true] { color:var(--background); }
+.ds-offers-categories button[aria-pressed=true]>span:first-child { background:var(--foreground); }
+.ds-offers-browser .ds-home-offer { background:var(--background); }
+.ds-offers-browser .ds-home-offer-art { height:128px; }
+.ds-offers-browser .ds-home-offer-copy h3 { min-height:40px; }
+.ds-profile-identity { display:flex;align-items:center;gap:16px; }
+.ds-profile-verified { display:flex;align-items:center;gap:4px;font-size:11px;color:var(--foreground-secondary);margin-top:8px; }
+.ds-profile-text-link { background:transparent;padding:0;font-size:12px; }
+.ds-profile-tier { width:100%;height:auto;padding:20px 22px;gap:16px;background:transparent; }
+.ds-profile-tier>span:first-child { background:transparent; }
+.ds-profile-tier>span:last-child { width:100%;gap:16px; }
+.ds-profile-tier img { border-radius:var(--radius-8);width:90px;height:auto; }
+.ds-profile-points { display:flex;gap:16px;align-items:center;justify-content:space-between;padding:0 22px 22px; }
+.ds-profile-progress { width:124px;flex-shrink:0; }
+.ds-profile-progress progress { appearance:none;width:100%;height:4px;margin-top:10px;border-radius:var(--radius-8);overflow:hidden;background:color-mix(in srgb,var(--foreground) 10%,transparent); }
+.ds-profile-progress progress::-webkit-progress-bar { background:color-mix(in srgb,var(--foreground) 10%,transparent); }
+.ds-profile-progress progress::-webkit-progress-value { background:var(--foreground);border-radius:var(--radius-8); }
+.ds-profile-progress progress::-moz-progress-bar { background:var(--foreground); }
+.ds-profile [data-slot=card] .w-11 { background:transparent;width:28px;height:36px; }
+.ds-profile [data-slot=card] .text-md { font-size:14px; }
+.ds-profile [data-slot=card] button>svg:last-child { width:16px; }
+.ds-profile-logout { background:transparent;padding-left:0; }
+.ds-profile-sheet { max-height:86dvh;display:flex;flex-direction:column;background:var(--background);color:var(--foreground); }
+.ds-profile-sheet-scroll { overflow-y:auto;min-height:0;flex:1; }
+.ds-profile-assets { height:86dvh; }
+.vc-daily-premium .ds-shell.ds-light-page.ds-content-mode .ds-scroll,
+.vc-daily-premium .ds-shell.ds-light-page.ds-content-mode .ds-surface { background:var(--background);border-radius:0; }
+.vc-daily-premium .ds-light-page .ds-light-header { box-shadow:none;border:0; }
+.vc-daily-premium .ds-light-page .ds-offers-categories button[aria-pressed=true]>span:first-child { background:var(--foreground); }
+.vc-daily-premium .ds-light-page .ds-profile-tier>span:first-child { background:transparent;box-shadow:none; }
+.vc-daily-premium .ds-light-page .ds-profile-membership { border-radius:var(--radius-28); }
+.ds-profile-tier { padding:12px 22px; }
+.ds-profile-tier img { width:76px; }
+.ds-profile-points { padding-bottom:16px; }
+.ds-profile [data-slot=card] .w-11 { height:28px; }
+.ds-profile [data-slot=card] .w-full.flex.items-center { padding-top:8px;padding-bottom:8px; }
+.vc-daily-premium .ds-bill-expanded-card { box-shadow:0 3px 6px color-mix(in srgb,var(--color-grey-950) 14%,transparent),0 10px 18px -3px color-mix(in srgb,var(--color-grey-950) 22%,transparent); }
+
+.ds-personal-recommendations .ds-living-banner-copy strong { white-space:nowrap; }
+
+.ds-payment-balance { padding-top:24px;padding-bottom:24px;gap:12px; }
+.vc-daily-premium .ds-payment-autoearn { height:auto;padding:0;font-size:12px; }
+.ds-payment-autoearn>span:last-child { flex-direction:column;gap:4px; }
+.ds-payment-autoearn>span:last-child>span { display:flex;align-items:center;gap:8px; }
+.vc-daily-premium .ds-payment-autoearn>span:first-child { background:transparent;backdrop-filter:none;box-shadow:none; }
+.ds-payment-money-actions { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%;margin-top:8px; }
+.ds-payment-money-actions button { padding:12px 8px;font-size:12px; }
+.ds-payment-money-actions button>span:last-child { gap:6px; }
+.ds-payment-reserve { position:relative;min-height:210px;overflow:hidden;background:linear-gradient(125deg,color-mix(in srgb,var(--foreground) 12%,var(--background)),color-mix(in srgb,var(--foreground) 4%,var(--background)));box-shadow:inset 0 1px 0 color-mix(in srgb,var(--foreground) 18%,transparent)!important; }
+.ds-reserve-copy { position:relative;z-index:1;width:62%;padding:22px; }
+.ds-reserve-visual { position:absolute;right:-12px;top:30px;width:148px;height:148px;display:flex;align-items:center;justify-content:center;pointer-events:none; }
+.ds-reserve-visual canvas { position:absolute;inset:0; }
+.ds-reserve-visual[data-ready=true]>svg { visibility:hidden; }
+.ds-payment-shortcut>span:last-child>span:last-child { white-space:normal;text-align:center;line-height:16px;min-height:32px; }
+.ds-payment-shortcuts { padding-bottom:0; }
+
+.vc-daily-premium .ds-payment-autoearn { color:var(--success);font-weight:500;font-size:11px;max-width:100%; }
+.ds-payment-autoearn>span:last-child { flex-direction:row;gap:4px;white-space:nowrap; }
+.vc-daily-premium .ds-payment-money-actions button:first-child { color:var(--background); }
+.vc-daily-premium .ds-payment-money-actions button:first-child>span[aria-hidden=true]:first-child { background:var(--foreground);backdrop-filter:none;box-shadow:none; }
+.ds-payment-reserve { min-height:180px; }
+.vc-daily-premium .ds-reserve-open { width:100%;height:auto;padding:0;text-align:left;white-space:normal;border-radius:var(--radius-28); }
+.vc-daily-premium .ds-reserve-open>span[aria-hidden=true]:first-child { background:transparent;backdrop-filter:none;box-shadow:none; }
+.ds-reserve-open>span:last-child { display:grid;grid-template-columns:1fr 1fr;width:100%;gap:0; }
+.ds-reserve-open .ds-reserve-copy { display:flex;flex-direction:column;width:100%;padding:20px 0 20px 22px;min-width:0;font-weight:400; }
+.ds-reserve-copy strong { font-size:16px;line-height:22px; }
+.ds-reserve-render { width:100%;height:auto;align-self:center;object-fit:contain; }
+
+/* A glass reserve card with the original savings illustration. */
+.vc-daily-premium .ds-payment-reserve.ds-reserve-glass-card {
+  display:grid;grid-template-columns:minmax(0,1fr) 44%;align-items:center;
+  height:var(--home-card-height,216px);min-height:180px;aspect-ratio:auto;
+  overflow:hidden;border-radius:var(--radius-28);
+  background:linear-gradient(135deg,color-mix(in srgb,var(--daily-glass-reflection) 22%,transparent),color-mix(in srgb,var(--daily-glass) 38%,transparent));
+  backdrop-filter:blur(20px) saturate(115%);-webkit-backdrop-filter:blur(20px) saturate(115%);
+  box-shadow:0 8px 24px color-mix(in srgb,var(--foreground) 10%,transparent)!important;
+}
+.ds-reserve-glass-card .ds-reserve-copy { display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:100%;padding:22px 0 22px 22px;text-shadow:none;min-width:0; }
+.ds-reserve-amount { font-size:24px;line-height:32px;font-weight:600;letter-spacing:-.6px;white-space:nowrap; }
+.vc-daily-premium .ds-reserve-withdraw { margin-top:12px;padding:0;height:32px;font-size:12px; }
+.vc-daily-premium .ds-reserve-withdraw>span[aria-hidden=true]:first-child { background:transparent;box-shadow:none;backdrop-filter:none; }
+.ds-reserve-glass-card .ds-reserve-render { position:relative;width:100%;height:auto;object-fit:contain;pointer-events:none; }
+
+.vc-daily-premium .ds-payment-autoearn { color:var(--foreground);font-size:13px;line-height:20px; }
+.ds-payment-autoearn>span:last-child>span { display:inline; }
+.vc-daily-premium .ds-payment-autoearn>span[aria-hidden=true]:first-child { background:transparent;box-shadow:none;backdrop-filter:none; }
+
+/* Match Home: the foreground sheet covers the lower half of the card. */
+.ds-payment-home { --reserve-card-height:clamp(200px,calc((100vw - 44px) * .6266),230px); }
+.ds-reserve-stage { position:relative;z-index:0;padding-bottom:0; }
+.vc-daily-premium .ds-payment-reserve.ds-reserve-glass-card { height:var(--reserve-card-height);min-height:0;display:block; }
+.ds-reserve-glass-card .ds-reserve-copy { position:relative;z-index:1;width:100%;height:calc(var(--reserve-card-height) / 2);padding:12px 22px;gap:2px;justify-content:flex-start; }
+.ds-reserve-amount { font-size:22px;line-height:28px; }
+.vc-daily-premium .ds-reserve-withdraw { margin-top:0;height:28px;min-height:28px; }
+.ds-reserve-glass-card .ds-reserve-render { position:absolute;right:12px;top:0;width:112px;height:112px; }
+.vc-daily-premium .ds-payment-mode .ds-payment-sheet { position:relative;z-index:1;margin-top:calc(var(--reserve-card-height) / -2); }
+
+/* Match the rendered glass corners so the card rim is not clipped. */
+.vc-daily-premium .ds-payment-reserve.ds-reserve-glass-card {
+  border-radius:var(--radius-14);
+  background:linear-gradient(110deg,color-mix(in srgb,var(--color-grey-1000) 24%,transparent),transparent 70%),url('/vinclub-assets/cards/glass.png') center / 100% 100% no-repeat;
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+  box-shadow:0 12px 28px color-mix(in srgb,var(--color-grey-1000) 20%,transparent)!important;
+}
+.ds-reserve-glass-card .ds-reserve-copy { padding-top:14px;gap:3px; }
+.ds-reserve-glass-card h2 { color:var(--home-cream);opacity:.8;font-size:12px;line-height:18px; }
+.ds-reserve-glass-card .ds-reserve-amount { color:var(--home-cream);font-size:23px;line-height:29px;letter-spacing:-.7px; }
+.vc-daily-premium .ds-reserve-glass-card .ds-reserve-withdraw { color:var(--home-cream);font-weight:500; }
+.ds-reserve-glass-card .ds-reserve-render { width:124px;height:124px;right:8px;top:-8px; }
+
+/* The Blender MP4 is the card itself: one surface and one optical bevel. */
+.ds-hero-card .vc-card-lettering,.ds-membership-card .vc-card-lettering { display:none; }
+.ds-membership-card .vc-membership-visual,.ds-membership-card .vc-membership-stage { height:100%; }
+.ds-hero-card .vc-membership-stage video,.ds-membership-card .vc-membership-stage video { width:100%;height:100%;object-fit:fill; }
+
+
+/* Page headers flow into content without a separator. */
+.vc-daily-premium .ds-shell :is(.ds-main-header,.ds-light-header) { border:0;box-shadow:none; }
+.vc-daily-premium .ds-shell.ds-content-mode .ds-surface { box-shadow:none; }
+
+.ds-profile-identity { flex-direction:column;align-items:center;gap:12px; }
+.ds-profile-identity-copy { display:flex;flex-direction:column;align-items:center;max-width:100%; }
+.ds-profile-identity .ds-profile-verified { justify-content:center; }
+
+/* Balance and three compact actions share one row. */
+.ds-payment-balance { align-items:flex-start;gap:4px;padding-top:16px;padding-bottom:24px; }
+.ds-payment-balance-row { display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%; }
+.ds-payment-balance-row .ds-payment-amount { font-size:clamp(22px,6.7vw,28px);line-height:36px;letter-spacing:-1px;min-width:0; }
+.ds-payment-balance-row .ds-payment-amount>span { font-size:14px;margin-left:3px; }
+.ds-payment-balance-row .ds-payment-money-actions { display:flex;gap:6px;width:auto;margin:0;flex-shrink:0; }
+.ds-payment-balance-row .ds-payment-money-actions button { width:36px;height:36px;padding:0; }
+.vc-daily-premium .ds-payment-balance .ds-payment-autoearn { font-size:11px;line-height:18px;margin-top:6px; }
+
+/* Keep the existing 3D controls outside the card artwork. */
+.ds-membership-card:has(.vc-membership-toggle) { aspect-ratio:auto;overflow:visible; }
+.ds-membership-card:has(.vc-membership-toggle) .vc-membership-visual,
+.ds-membership-card:has(.vc-membership-toggle) .vc-membership-stage { height:auto; }
+.ds-membership-card:has(.vc-membership-toggle) .ds-member-card-progress { bottom:60px;pointer-events:none; }
+.ds-membership-card:has(canvas) .ds-membership-card-copy,
+.ds-membership-card:has(canvas) .ds-member-card-progress { visibility:hidden; }
+
+/* VinPay balance: centered summary, labelled actions below Auto Earn. */
+.vc-daily-premium .ds-payment-balance { align-items:center;gap:8px; }
+.vc-daily-premium .ds-payment-balance-row { justify-content:center; }
+.vc-daily-premium .ds-payment-balance .ds-payment-autoearn { margin-top:0; }
+.vc-daily-premium .ds-payment-balance .ds-payment-money-actions { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%;margin-top:12px; }
+.vc-daily-premium .ds-payment-balance .ds-payment-money-actions button { min-height:48px;padding:12px 4px;font-size:12px; }
+.vc-daily-premium .ds-payment-balance .ds-payment-money-actions button>span:last-child { flex-direction:row;gap:6px; }
+
+.vc-daily-premium .ds-payment-balance-row .ds-payment-amount { font-size:40px;line-height:48px;letter-spacing:-1px;font-weight:600; }
+.vc-daily-premium .ds-payment-balance-row .ds-payment-amount>span { font-size:24px;line-height:32px;margin-left:4px; }

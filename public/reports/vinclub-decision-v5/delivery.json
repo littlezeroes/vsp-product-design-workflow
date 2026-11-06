@@ -1,0 +1,28 @@
+{
+  "version": "V5",
+  "roles": [
+    "UX",
+    "Business",
+    "Product",
+    "Visual",
+    "CEO"
+  ],
+  "prototype": "/vinclub-decision-v5",
+  "uiScenarios": [
+    "daily",
+    "spend",
+    "experience"
+  ],
+  "report": "index.html",
+  "slides": "slides.html",
+  "pptx": "vinclub-v5.pptx",
+  "pdf": "vinclub-v5.pdf",
+  "slideCount": 18,
+  "humanUT": "NOT_RUN",
+  "automatedQA": {
+    "passed": 47,
+    "total": 47,
+    "pass": true
+  },
+  "previousVersions": "preserved"
+}

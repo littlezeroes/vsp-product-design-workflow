@@ -1,0 +1,10 @@
+@font-face{font-family:'Google Sans Flex';font-style:normal;font-weight:400;font-display:swap;src:url('/vinclub-duo/fonts/google-sans-flex-400.ttf') format('truetype')}
+@font-face{font-family:'Google Sans Flex';font-style:normal;font-weight:500;font-display:swap;src:url('/vinclub-duo/fonts/google-sans-flex-500.ttf') format('truetype')}
+@font-face{font-family:'Google Sans Flex';font-style:normal;font-weight:600;font-display:swap;src:url('/vinclub-duo/fonts/google-sans-flex-600.ttf') format('truetype')}
+@font-face{font-family:'Google Sans Flex';font-style:normal;font-weight:700;font-display:swap;src:url('/vinclub-duo/fonts/google-sans-flex-700.ttf') format('truetype')}
+.duo-font-root{display:contents;--font-geist-sans:'Google Sans Flex',sans-serif;font-family:'Google Sans Flex',sans-serif;font-optical-sizing:auto}
+body:has(.duo-font-root){--font-geist-sans:'Google Sans Flex',sans-serif;font-family:'Google Sans Flex',sans-serif}
+.duo-font-root :is(button,input,select,textarea),body:has(.duo-font-root) .vc-ai-chat{font-family:'Google Sans Flex',sans-serif}
+/* Home's premium wrapper and font-sans utilities must share the route font. */
+.duo-font-root{--font-google-sans-flex:'Google Sans Flex',sans-serif;--font-sans:'Google Sans Flex',sans-serif}
+.duo-font-root .vc-daily-premium,.duo-font-root .duo-task-home,.duo-font-root .font-sans{font-family:'Google Sans Flex',sans-serif}

@@ -1,0 +1,23 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import "./iphone-preview.css";
+import { DailyIcon, PaymentIcon, iconApproaches } from "./daily-icons";
+
+const options = { daily:{name:"Daily",description:"Trợ lý cho mỗi ngày"}, dualsurface:{name:"Dualsurface",description:"VinPay · VinClub · VinCare"} };
+
+export function IPhonePreview({version}:{version:keyof typeof options}) {
+  const viewport=useRef<HTMLDivElement>(null);
+  const frame=useRef<HTMLIFrameElement>(null);
+  const [scale,setScale]=useState(1);
+  const [dark,setDark]=useState(false);
+  const [configOpen,setConfigOpen]=useState(false);
+  const [iconApproach,setIconApproach]=useState(1);
+  useEffect(()=>{frame.current?.contentWindow?.postMessage({type:"daily-icons",approach:iconApproach},location.origin);},[iconApproach]);
+  useEffect(()=>{const node=viewport.current;if(!node)return;const resize=new ResizeObserver(()=>setScale(node.clientWidth/390));resize.observe(node);return()=>resize.disconnect();},[]);
+  const applyTheme=()=>{frame.current?.contentDocument?.documentElement.classList.toggle("dark",dark);frame.current?.contentWindow?.postMessage({type:"daily-icons",approach:iconApproach},location.origin);};
+  useEffect(()=>{frame.current?.contentDocument?.documentElement.classList.toggle("dark",dark);},[dark]);
+  return <main className="iphone-preview bg-secondary text-foreground"><header className="iphone-preview-heading px-[22px]"><div><p className="text-xs text-foreground-secondary tracking-widest">VINCLUB / MOBILE DEMO</p><h1 className="text-2xl font-semibold mt-[8px]">{options[version].name}</h1><p className="text-sm text-foreground-secondary mt-[8px]">{options[version].description}</p></div>{version==="dualsurface"&&<Button variant="secondary" size="32" onClick={()=>{if(frame.current)frame.current.src=`/vinclub-${version}/ui?splash=${Date.now()}`;}}>Xem lại splash</Button>}<Button variant="secondary" size="32" aria-pressed={dark} onClick={()=>setDark(v=>!v)}>{dark?"Giao diện sáng":"Giao diện tối"}</Button></header><nav className="iphone-preview-options px-[22px]" aria-label="Chọn phiên bản">{Object.entries(options).map(([key,value])=><Link key={key} href={`/vinclub-${key}`} aria-current={version===key?"page":undefined} className="rounded-full">{value.name}</Link>)}</nav>{(version==="daily"||version==="dualsurface")&&<section className="icon-config px-[22px]"><Button variant="secondary" size="32" aria-expanded={configOpen} onClick={()=>setConfigOpen(v=>!v)}>Config icon · {iconApproaches.find(item=>item.id===iconApproach)?.name}</Button>{configOpen&&<div className="icon-config-panel"><p className="text-sm font-semibold">10 hướng vật liệu · Premium 3D</p><p className="text-xs text-foreground-secondary mt-[8px]">Góc nghiêng 30–55°. Mỗi bộ phối nhiều vật liệu và cách dựng hình khác nhau. Kem–champagne chủ đạo, ít đen; gold và đỏ là điểm nhấn.</p><div className="icon-config-current icon-config-services">{["car","food","medical","school","hotel","travel","flight","shopping","payment"].map(name=><DailyIcon key={name} name={name} size={80} approach={iconApproach}/>)}</div>{version==="dualsurface"&&<><p className="text-xs text-foreground-secondary mt-[12px]">Payment · cùng bộ vật liệu</p><div className="icon-config-current">{["deposit","transfer","withdraw","scan","bill","insurance","credit","bank"].map(name=><PaymentIcon key={name} name={name} size={64} approach={iconApproach}/>)}</div></>}<div className="icon-config-grid">{iconApproaches.map((item,index)=><Button key={item.name} variant="secondary" className="icon-config-choice" aria-pressed={iconApproach===item.id} onClick={()=>setIconApproach(item.id)}><span className="icon-config-samples">{["car","medical","shopping"].map(name=><DailyIcon key={name} name={name} size={40} approach={item.id}/>)}</span><span><span className="text-sm">{String(index+1).padStart(2,"0")} · {item.name}</span><small>{item.note}</small></span></Button>)}</div></div>}</section>}<div className="iphone-device rounded-28"><span className="iphone-side-button iphone-side-button-a" aria-hidden="true"/><span className="iphone-side-button iphone-side-button-b" aria-hidden="true"/><div className="iphone-viewport rounded-28" ref={viewport} style={{height:844*scale}}><iframe ref={frame} onLoad={applyTheme} title={`VinClub ${options[version].name} · iPhone demo`} src={`/vinclub-${version}/ui`} width="390" height="844" style={{transform:`scale(${scale})`}}/><div className="iphone-island" aria-hidden="true"/></div></div><p className="iphone-preview-caption px-[22px] text-xs text-foreground-secondary">Cuộn trong màn hình · chạm để thử các tính năng</p></main>;
+}

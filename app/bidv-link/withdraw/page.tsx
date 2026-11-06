@@ -144,53 +144,54 @@ function WithdrawContent() {
 
   return (
     <div className="relative w-full max-w-[390px] min-h-screen bg-background text-foreground flex flex-col">
-      {/* Header: default variant with back arrow */}
-      <Header
-        variant="default"
-        leading={
-          <button
-            type="button"
-            onClick={() => router.back()}
-            className="w-[44px] h-[44px] flex items-center justify-center rounded-full"
-          >
-            <ChevronLeft size={18} className="text-foreground" />
-          </button>
-        }
-      />
-
-      {/* Tab switcher */}
-      <TabSwitcher active="withdraw" />
+      {/* Custom header: back + tab switcher center + spacer */}
+      <div className="h-[54px] shrink-0" />
+      <div className="flex items-center gap-2 pl-[8px] pr-[8px] h-[56px] shrink-0">
+        <button
+          type="button"
+          onClick={() => router.back()}
+          className="w-[44px] h-[44px] flex items-center justify-center rounded-full shrink-0"
+        >
+          <ChevronLeft size={18} className="text-foreground" />
+        </button>
+        <div className="flex-1 flex justify-center">
+          <TabSwitcher active="withdraw" />
+        </div>
+        <div className="w-[44px] shrink-0" />
+      </div>
 
       <div className="flex-1 flex flex-col pb-[100px]">
         {/* Balance display — centered */}
-        <div className="px-[22px] pt-[16px] flex justify-center">
-          <p className="text-sm font-normal leading-5 text-foreground-secondary">
+        <div className="px-[22px] pt-[12px] flex justify-center">
+          <p className="text-[13px] font-normal leading-[18px] text-foreground-secondary">
             Số dư ví{" "}
             <span className="font-bold text-foreground-secondary">{formatVND(walletBalance)}đ</span>
           </p>
         </div>
 
         {/* Bank destination card */}
-        <div className="pt-[20px]">
+        <div className="pt-[14px]">
           <BankDestCard />
         </div>
 
         {/* Amount display */}
-        <div className="px-[22px] pt-[24px] flex flex-col items-center">
+        <div className="px-[22px] pt-[16px] flex flex-col items-center">
           <div className="flex items-center gap-[2px]">
-            <p className="text-[40px] font-bold tabular-nums text-foreground leading-tight">
+            <p className="text-[34px] font-bold tabular-nums text-foreground leading-tight">
               {amount === 0 ? "0" : formatVND(amount)}đ
             </p>
             {/* Blue cursor line */}
-            <div className="w-[2px] h-[36px] bg-info animate-pulse rounded-full" />
+            <div className="w-[2px] h-[30px] bg-info animate-pulse rounded-full" />
           </div>
           {error && (
-            <p className="text-xs font-normal leading-5 text-danger mt-[4px]">{error}</p>
+            <p className="text-xs font-normal leading-[18px] text-danger mt-[2px]">{error}</p>
           )}
         </div>
 
-        {/* Quick amount chips */}
-        <div className="pt-[24px]">
+        <div className="flex-1" />
+
+        {/* Quick amount chips — ngay sát bàn phím */}
+        <div className="pb-[10px]">
           <div className="px-[22px]">
             <div className="flex gap-[8px] justify-center">
               {QUICK_AMOUNTS.map((val) => (
@@ -198,9 +199,9 @@ function WithdrawContent() {
                   key={val}
                   type="button"
                   onClick={() => setAmount(val)}
-                  className={`px-[16px] py-[8px] rounded-full text-sm font-semibold leading-5 transition-colors ${
+                  className={`px-[14px] py-[6px] rounded-full text-[13px] font-semibold leading-[18px] transition-colors ${
                     amount === val
-                      ? "bg-foreground text-background"
+                      ? "bg-[#28bdbf] text-white"
                       : "bg-secondary text-foreground"
                   }`}
                 >
@@ -212,7 +213,7 @@ function WithdrawContent() {
         </div>
 
         {/* Custom Numpad */}
-        <div className="pt-[32px] mt-auto">
+        <div>
           <div className="px-[22px]">
             <Numpad onInput={handleAmountInput} />
           </div>

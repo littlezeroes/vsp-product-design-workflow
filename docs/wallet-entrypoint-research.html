@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Ví VSP trên home XanhSM — Đặt ở đâu, hiển thị thế nào</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 880px; margin: 40px auto; padding: 0 24px; color: #2f2f2f; line-height: 1.7; }
+  h1 { font-size: 28px; border-bottom: 1px solid #eaeaea; padding-bottom: 8px; }
+  h2 { font-size: 22px; margin-top: 40px; }
+  h3 { font-size: 17px; margin-top: 28px; }
+  blockquote { border-left: 3px solid #d3d3d3; padding-left: 14px; color: #555; margin: 14px 0; }
+  code { background: #f7f6f3; padding: 2px 5px; border-radius: 4px; font-family: 'SF Mono', Menlo, monospace; font-size: 13px; }
+  hr { border: none; border-top: 1px solid #eaeaea; margin: 36px 0; }
+  ul, ol { padding-left: 24px; }
+  li { margin: 6px 0; }
+  figure { margin: 20px 0; text-align: center; }
+  figure img { max-width: 280px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  figcaption { color: #777; font-size: 13px; margin-top: 8px; font-style: italic; }
+  .row { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin: 20px 0; }
+  .row figure { margin: 0; flex: 0 0 auto; }
+  .row img { max-width: 240px; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 14px; }
+  th, td { border: 1px solid #e0e0e0; padding: 10px 12px; text-align: left; vertical-align: top; }
+  th { background: #f7f6f3; font-weight: 600; }
+  .funnel { margin: 24px 0; }
+  .funnel-row { margin: 6px 0; }
+  .funnel-bar { background: linear-gradient(90deg, #2dbcb4 0%, #5fd4cc 100%); color: #fff; padding: 10px 16px; border-radius: 6px; font-weight: 500; font-size: 14px; }
+  .journey-map { font-size: 13px; }
+  .journey-map thead th { text-align: center; padding: 14px 10px; vertical-align: top; background: #f7f6f3; }
+  .journey-map tbody th { font-weight: 500; color: #666; width: 120px; background: #fafafa; }
+  .journey-map .stage-num { font-size: 22px; color: #2dbcb4; font-weight: 700; line-height: 1; display: block; margin-bottom: 4px; }
+  .journey-map small { color: #999; font-weight: normal; font-size: 12px; }
+  .funnel-mini { background: linear-gradient(90deg, #2dbcb4, #5fd4cc); color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 500; display: inline-block; }
+  .emotion { font-size: 22px; }
+  .competitor-table { font-size: 13px; }
+  .thumb { width: 110px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: block; }
+  .story-table { font-size: 14px; }
+  .story-table th { background: #fafafa; color: #333; font-weight: 600; width: 240px; vertical-align: top; }
+  .story-table td { vertical-align: top; line-height: 1.6; }
+  .story-so { color: #777; font-style: italic; display: inline-block; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<h1>Ví VSP trên home XanhSM — Đặt ở đâu, hiển thị thế nào</h1>
+
+<blockquote>
+<p><strong>Tác giả:</strong> Huy Kiều · <strong>Ngày:</strong> 29/04/2026<br>
+<strong>Đối tượng đọc:</strong> Product team VSP × XanhSM</p>
+</blockquote>
+
+<hr>
+
+<h2>1. Bối cảnh</h2>
+
+<p>Slide V-Smart Pay × GSM của Product đã chốt việc tích hợp ví VSP vào XanhSM. Service tree, onboarding flow và 10 state cho các flow phụ đã có. Phần còn thiếu là <strong>điểm đáp xuống của ví trên home XanhSM</strong> — và đó là điểm quyết định adoption rate trong 90 ngày đầu launch.</p>
+
+<figure>
+  <img src="img/wallet-entrypoint/xanhsm-home.png" alt="Home XanhSM hiện tại">
+  <figcaption>Home XanhSM hiện tại — không có chỗ cho ví VSP</figcaption>
+</figure>
+
+<p>Home XanhSM hôm nay đã chật: search, khối AI gợi ý, hero "Gọi xe / Gọi đồ ăn", lưới 8 service, banner GreenSM. Entrypoint thanh toán đang nằm sâu trong Profile, ẩn dưới Green Race — depth 3 tap. Khi launch ví VSP, depth này sẽ giết retention loop. Ví không phải một service thêm vào lưới — ví là <strong>infrastructure thanh toán</strong>.</p>
+
+<hr>
+
+<h2>2. User stories</h2>
+
+<table class="story-table">
+  <tbody>
+    <tr>
+      <th>As a XanhSM user thường xuyên đặt xe</th>
+      <td>tôi muốn thấy số dư ví ngay khi mở app, <br><span class="story-so">để biết mình thanh toán bằng ví được hay phải dùng tiền mặt — không phải đào 3 tap qua Profile.</span></td>
+    </tr>
+    <tr>
+      <th>As a XanhSM user mới (chưa có ví VSP)</th>
+      <td>tôi muốn thấy lý do đủ rõ và phần thưởng đủ cụ thể, <br><span class="story-so">để bỏ công đi qua eKYC + link ngân hàng — thay vì bỏ qua việc setup.</span></td>
+    </tr>
+    <tr>
+      <th>As a Product team</th>
+      <td>chúng tôi muốn entrypoint có state khớp 1-1 với onboarding flow đã chốt, <br><span class="story-so">để không phải redesign flow và launch trong 1–2 sprint.</span></td>
+    </tr>
+    <tr>
+      <th>As a Design team</th>
+      <td>chúng tôi muốn entrypoint không đụng các yếu tố khác biệt của XanhSM, <br><span class="story-so">để giữ DNA "đi xe" và không phá visual taste hiện có.</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>3. Mục tiêu thiết kế</h2>
+
+<ul>
+  <li><strong>Depth 0</strong> — entrypoint visible ngay trên home, không cần tap để vào</li>
+  <li><strong>Một component, nhiều state</strong> — render khác nhau theo từng giai đoạn onboarding (chưa có ví → đang activate → đã activate → balance thấp). Không bao giờ trống, không bao giờ thừa</li>
+  <li><strong>Activation motivation</strong> — đủ động lực để user kích hoạt ví trong 3 lần đầu mở app</li>
+  <li><strong>3 use case core trong 1 tap</strong> — Nạp tiền · Quét QR · Chuyển tiền</li>
+</ul>
+
+<hr>
+
+<h2>4. Constraint thiết kế</h2>
+
+<ul>
+  <li>Không đụng AI gợi ý, hero card, lưới service, bottom nav — đây là các yếu tố tạo nên DNA XanhSM</li>
+  <li>Khớp 1-1 với onboarding flow Product đã chốt: PIN → eKYC → Liên kết ngân hàng</li>
+  <li>Đồng bộ với visual system XanhSM: pastel teal, smooth corner, glassmorphism</li>
+  <li>Không tie vào campaign ngắn hạn (Kỷ Sự Xanh / Green Race) — entrypoint là core navigation, campaign sẽ thay đổi theo thời gian</li>
+</ul>
+
+<hr>
+
+<h2>Đối thủ làm gì</h2>
+
+<table class="competitor-table">
+  <thead>
+    <tr>
+      <th>App</th>
+      <th>UI</th>
+      <th>Vị trí entrypoint</th>
+      <th>Hình thức</th>
+      <th>Hiện số dư?</th>
+      <th>Quick action</th>
+      <th>Surface phụ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gojek 2026</td>
+      <td><img src="img/wallet-entrypoint/gojek-rpo.png" alt="Gojek 2026" class="thumb"></td>
+      <td>Top fold, ngay dưới search</td>
+      <td>Card full-width</td>
+      <td>✅ luôn</td>
+      <td>Pay · Top Up · More</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Grab</td>
+      <td><img src="img/wallet-entrypoint/grab.png" alt="Grab" class="thumb"></td>
+      <td>Sau lưới service</td>
+      <td>Shortcut row 3 ô (conditional)</td>
+      <td>❌ trên home</td>
+      <td>Activate (chưa) — nhảy sang tab Finance (đã)</td>
+      <td>Tab Finance trong bottom nav</td>
+    </tr>
+    <tr>
+      <td>Careem (Top up shortcut)</td>
+      <td><img src="img/wallet-entrypoint/careem-topup.png" alt="Careem Top up" class="thumb"></td>
+      <td>Sau lưới service</td>
+      <td>Shortcut row 3 ô</td>
+      <td>✅ compact (label "Balance")</td>
+      <td>Top up now</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Tại sao họ làm vậy</h2>
+
+<p>Mỗi cách đặt ví là một pattern UI ngắm vào một khoảnh khắc cụ thể trong hành trình của user. Vẽ ra hành trình đó để thấy ai đang đánh ở đâu:</p>
+
+<table class="journey-map">
+  <thead>
+    <tr>
+      <th></th>
+      <th><span class="stage-num">①</span><strong>Awareness</strong><br><small>Nhận biết</small></th>
+      <th><span class="stage-num">②</span><strong>Activation</strong><br><small>Kích hoạt</small></th>
+      <th><span class="stage-num">③</span><strong>First Use</strong><br><small>Dùng lần đầu</small></th>
+      <th><span class="stage-num">④</span><strong>Habit Loop</strong><br><small>Thói quen</small></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Phễu user</th>
+      <td><div class="funnel-mini" style="width:100%">100%</div></td>
+      <td><div class="funnel-mini" style="width:60%">~40%</div></td>
+      <td><div class="funnel-mini" style="width:30%">~20%</div></td>
+      <td><div class="funnel-mini" style="width:18%">~10%</div></td>
+    </tr>
+    <tr>
+      <th>User nghĩ gì</th>
+      <td>"Cái gì mới — có liên quan tôi không?"</td>
+      <td>"Đáng bỏ công làm không?"</td>
+      <td>"Mở khoá rồi thì dùng sao?"</td>
+      <td>"Đó là tiền của tôi"</td>
+    </tr>
+    <tr>
+      <th>Khoảnh khắc</th>
+      <td>Lướt qua lưới service trên home</td>
+      <td>Khi nhìn thấy ưu đãi hoặc cần thanh toán</td>
+      <td>Ngay sau khi activate, balance còn 0</td>
+      <td>Mỗi lần mở app, đặc biệt khi balance thấp</td>
+    </tr>
+    <tr>
+      <th>Cảm xúc</th>
+      <td><span class="emotion">🤔</span> Tò mò</td>
+      <td><span class="emotion">🤨</span> Phân vân</td>
+      <td><span class="emotion">😊</span> Hứng thú</td>
+      <td><span class="emotion">😌</span> Phản xạ</td>
+    </tr>
+    <tr>
+      <th>Động lực</th>
+      <td>Discovery thụ động — chưa cần lý do mạnh</td>
+      <td><strong>Tiền</strong> — claim cây xanh đổi ra 50.000₫ vào ví VSP</td>
+      <td>Có sẵn balance từ phần thưởng activate, dùng cho cuốc xe đầu tiên</td>
+      <td>Tiện — không cần ATM, không phải nhập lại thẻ</td>
+    </tr>
+    <tr>
+      <th>UI Pattern</th>
+      <td><strong>Service tile</strong> trong lưới — 1 ô ngang hàng các service khác</td>
+      <td><strong>Onboarding banner</strong> — full-width banner có CTA và reward rõ ràng</td>
+      <td><strong>Wallet hub</strong> full-width — show balance và 3 quick action (Nạp / QR / Chuyển)</td>
+      <td><strong>Top-up shortcut tag</strong> — row compact có balance + nút "Nạp tiền"</td>
+    </tr>
+    <tr>
+      <th>Tham khảo</th>
+      <td>Careem</td>
+      <td>Grab</td>
+      <td>Gojek</td>
+      <td>Careem (variant)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Không có pattern tốt nhất. Chỉ có pattern phù hợp với giai đoạn.</strong> Đặt Wallet hub của Gojek cho user đang ở Awareness sẽ tạo card trống — vô nghĩa và chiếm chỗ. Đặt Service tile của Careem cho user đã thành thói quen sẽ bắt họ tốn tap để xem balance.</p>
+
+<hr>
+
+<h2>Đề xuất cho XanhSM</h2>
+
+<p>Ngày launch ví VSP, đa số user XanhSM sẽ ở stage <strong>Aware → Activate</strong>. Đây là điều kiện đầu vào quyết định pattern chọn.</p>
+
+<p>Đặt ví VSP ngay <strong>dưới khối AI gợi ý</strong>, trên hero card "Gọi xe / Gọi đồ ăn". Vị trí này chiếm prime real estate (zone 2 — chỉ sau search) nhưng không đụng AI prompt vốn là điểm khác biệt của XanhSM, cũng không thay thế hero hay lưới service hiện có.</p>
+
+<p>Quan trọng hơn vị trí là cách entrypoint thay đổi theo state user — cùng một component, render khác nhau theo việc user đã đi đến bước nào trong onboarding flow Product đã chốt. Mỗi state nhắm vào một tâm lý khác nhau trong phễu.</p>
+
+<h3>State 1 — Chưa liên kết ví VSP (Aware → Activate)</h3>
+
+<p>Phần lớn user trong tháng đầu sẽ ở state này. Entrypoint hiển thị như một lời mời: <em>"Liên kết ví VSP — nhận 50.000₫"</em>, kèm câu phụ giải thích lợi ích ("Thanh toán nhanh hơn cho mọi cuốc xe") và nút "Liên kết →".</p>
+
+<p>Pattern này lấy từ Grab activate row, đặt cao hơn vì XanhSM cần đẩy adoption nhanh — và kích hoạt 2 tâm lý: completion bias (làm cho xong task này) và incentive (50.000₫ là phần thưởng cụ thể).</p>
+
+<h3>State 2 — Đang activate (Activate → First use)</h3>
+
+<p>Nếu user đã link nhưng chưa eKYC, message đổi thành <em>"Hoàn tất xác minh để dùng đầy đủ"</em>. Đã eKYC nhưng chưa link bank: <em>"Liên kết ngân hàng để nạp tiền"</em>. Mỗi step trong onboarding flow có message khớp — vẫn cùng vị trí, cùng affordance.</p>
+
+<p>Đây là điều Gojek dạy: một component, nhiều state, không bao giờ trống.</p>
+
+<h3>State 3 — Đã activate (First use → Habit)</h3>
+
+<p>Khi user hoàn tất, entrypoint biến thành Wallet Hub — hiển thị balance, kèm 3 nút: <strong>Nạp tiền · Quét QR · Chuyển tiền</strong>. Ba nút khớp với ba use case trong slide Product (Top up Green e-Card, Service payment, Transfer) và là 3 feature core của GrabPay.</p>
+
+<p>Khi balance thấp dưới 50.000₫, "Nạp tiền" được nhấn mạnh thành primary action — kích hoạt loss aversion và đẩy user top up trước khi đặt xe.</p>
+
+<h3>Vì sao chọn cách này</h3>
+
+<p>Một, nó tôn trọng thực tế phễu adoption. Ngày 1 không thể có Wallet Hub trống — phải bắt đầu bằng nudge, evolve dần lên hub. Hai, state machine của entrypoint khớp 1-1 với Onboarding flow Product đã chốt, không cần redesign flow. Ba, nó không đụng ba thứ khác biệt của XanhSM: AI prompt, lưới service VinFast, bottom nav có Trophy.</p>
+
+<hr>
+
+<h2>Câu hỏi cần Product trả lời</h2>
+
+<ul>
+  <li>Khi user đã activate, có cần thêm tab "Ví" trong bottom nav như Grab Finance không, hay Wallet Hub trên home là đủ? Nếu có tab riêng, cái nào trong 4 tab hiện tại sẽ bị thay (vì bottom nav không thể quá 5 tab cộng floating Trophy)?</li>
+  <li>Câu mời ở State 1 ("nhận 50.000₫") có ngân sách marketing thực không, hay chỉ là placeholder? Nếu không có incentive, message sẽ phải đổi hướng — ví dụ "Thanh toán nhanh hơn 30%".</li>
+  <li>Khi user thanh toán cuốc xe mà ví VSP balance = 0, flow xử lý ra sao — fall back sang tiền mặt, hay block và bắt top up trước? Việc này ảnh hưởng tới logic State 3 (balance thấp).</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Workflow Comparison — Condensed</title>
+<style>
+  :root {
+    --bg: #ffffff; --fg: #111418; --muted: #6b7075;
+    --line: #e7e7e8; --soft: #f6f6f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font: 15px/1.6 -apple-system, "Mona Sans", "Inter", sans-serif;
+    padding: 64px 24px 96px; max-width: 920px; margin: 0 auto;
+    letter-spacing: -0.005em;
+  }
+  header { margin-bottom: 56px; }
+  .badge {
+    display: inline-block; font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); padding: 6px 10px;
+    border: 1px solid var(--line); border-radius: 999px; margin-bottom: 16px;
+  }
+  h1 { font-size: 36px; line-height: 1.15; letter-spacing: -0.025em; font-weight: 600; }
+  h1 em { font-style: normal; font-weight: 400; color: var(--muted); }
+  .sub { color: var(--muted); margin-top: 8px; font-size: 14px; }
+
+  section { margin: 48px 0; }
+  h2 {
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500; margin-bottom: 16px;
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  h2 .num {
+    color: var(--fg); font-weight: 600; min-width: 18px;
+  }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 14px;
+    border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+  }
+  th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: var(--soft); }
+  th.win { background: var(--fg); color: var(--bg); position: relative; }
+  th.win::after {
+    content: "★"; margin-left: 6px; color: var(--bg);
+  }
+  td.win { background: #fafafa; font-weight: 500; }
+  tr:last-child td { border-bottom: none; }
+  td.label { font-weight: 600; width: 28%; }
+  td.muted { color: var(--muted); }
+
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .card {
+    background: var(--bg); border: 1px solid var(--line);
+    border-radius: 12px; padding: 20px;
+  }
+  .card h4 { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; color: var(--muted); font-weight: 600; }
+  .card .flow { font-size: 17px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .card .note { color: var(--muted); font-size: 13px; }
+  .card.winner {
+    background: var(--fg); color: var(--bg); border-color: var(--fg);
+    position: relative;
+  }
+  .card.winner h4 { color: rgba(255,255,255,0.6); }
+  .card.winner .note { color: rgba(255,255,255,0.7); }
+  .card.winner .flow { font-weight: 600; }
+  .card.winner::after {
+    content: "RECOMMENDED";
+    position: absolute; top: 14px; right: 14px;
+    font-size: 9px; letter-spacing: 0.14em; font-weight: 700;
+    padding: 4px 8px; border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px; color: rgba(255,255,255,0.85);
+  }
+
+  .chain {
+    background: var(--soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px 20px; font-size: 14px; font-weight: 500;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  }
+  .chain b { font-weight: 600; }
+  .chain span.arrow { color: var(--muted); }
+
+  blockquote {
+    border-left: 2px solid var(--fg); padding: 4px 0 4px 16px;
+    margin: 4px 0; font-size: 15px; line-height: 1.7; color: var(--fg);
+  }
+
+  ol.principles { list-style: none; counter-reset: p; }
+  ol.principles li {
+    counter-increment: p; padding: 14px 18px 14px 50px; position: relative;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+    margin-bottom: 8px; font-size: 14px;
+  }
+  ol.principles li::before {
+    content: counter(p); position: absolute; left: 16px; top: 14px;
+    width: 22px; height: 22px; border-radius: 999px;
+    background: var(--fg); color: var(--bg); font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.principles strong { display: block; margin-bottom: 2px; }
+  ol.principles span { color: var(--muted); }
+
+  .triad { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+  .triad .card { padding: 18px; }
+  .triad .card .role { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; color: var(--muted); }
+  .triad .card .title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .triad .card .desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  @media (max-width: 720px) {
+    body { padding: 40px 16px 64px; }
+    h1 { font-size: 28px; }
+    .duo, .triad { grid-template-columns: 1fr; }
+    table { font-size: 13px; }
+    th, td { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">V-Smart Pay · Internal · 2026</div>
+  <h1>Workflow Comparison <em>& Innovation Strategy</em></h1>
+  <p class="sub">Truyền thống vs Design-led — gọn trong 1 trang.</p>
+</header>
+
+<section>
+  <h2><span class="num">1</span>2 mô hình — one-liner</h2>
+  <div class="duo">
+    <div class="card">
+      <h4>Truyền thống</h4>
+      <p class="flow">PO → Designer → Developer</p>
+      <p class="note">Waterfall, 3 bức tường. Không ai thấy sản phẩm cuối cho đến khi quá muộn.</p>
+    </div>
+    <div class="card winner">
+      <h4>Design-led (Cake)</h4>
+      <p class="flow">UX/UI ↔ Product ↔ Tech</p>
+      <p class="note">Thread 2 chiều, mọi người cùng nhìn 1 thứ, không ai chờ ai.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">2</span>Khoảng cách Design ↔ Tech</h2>
+  <table>
+    <thead><tr><th>Tiêu chí</th><th>Truyền thống</th><th class="win">Design-led</th></tr></thead>
+    <tbody>
+      <tr><td class="label">Cọ xát Design × Tech</td><td class="muted">Gần như không có</td><td class="win">Hằng ngày trên thread</td></tr>
+      <tr><td class="label">Giao tiếp</td><td class="muted">Văn bản + họp</td><td class="win">Hình ảnh + comment realtime</td></tr>
+      <tr><td class="label">Sáng tạo</td><td class="muted">Giới hạn trong Spec</td><td class="win">"Điên" nhờ cọ xát liên tục</td></tr>
+      <tr><td class="label">Phản hồi</td><td class="muted">Chờ vẽ/code xong</td><td class="win">Iterate ngay từ bản nháp</td></tr>
+      <tr><td class="label">Vòng lặp / tuần</td><td class="muted">1 vòng / 2 tuần</td><td class="win">Hàng chục vòng / tuần</td></tr>
+      <tr><td class="label">Họp sync</td><td class="muted">Liên tục</td><td class="win">~ 0</td></tr>
+      <tr><td class="label">Output</td><td class="muted">Safe, spec-compliant</td><td class="win">Battle-tested, bold</td></tr>
+      <tr><td class="label">Designer role</td><td class="muted">Thợ vẽ thực thi</td><td class="win">Product Creator</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2><span class="num">3</span>3 điểm nghẽn mô hình cũ</h2>
+  <table>
+    <thead><tr><th>Gap</th><th>Hậu quả</th></tr></thead>
+    <tbody>
+      <tr><td class="label">Communication</td><td class="muted">Designer thiếu tech context → vẽ thứ không khả thi.</td></tr>
+      <tr><td class="label">"Safe" ideas</td><td class="muted">Quy trình cứng → ngại đề xuất → sản phẩm nhàm chán.</td></tr>
+      <tr><td class="label">Meeting overload</td><td class="muted">Họp để clarify spec → mất momentum.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2><span class="num">4</span>Chuỗi nhân quả</h2>
+  <div class="chain">
+    <b>Cọ xát sớm</b><span class="arrow">→</span>
+    <b>Iterate nhanh</b><span class="arrow">→</span>
+    <b>Phương án bất ngờ</b><span class="arrow">→</span>
+    <b>Bold features</b><span class="arrow">→</span>
+    <b>Sản phẩm có Soul</b>
+  </div>
+  <p class="sub" style="margin-top:14px;">
+    <strong>40–50%</strong> thời gian freed khỏi họp → dồn vào iterate. Thử A → B → Tech gợi C → twist thành D, tất cả trong 1 tuần.
+  </p>
+</section>
+
+<section>
+  <h2><span class="num">5</span>Thế chân vạc (Triad)</h2>
+  <div class="triad">
+    <div class="card">
+      <p class="role">Head</p>
+      <p class="title">Taste & Principle</p>
+      <p class="desc">Đặt "Soul" — định hướng nghệ thuật, chuẩn mực.</p>
+    </div>
+    <div class="card">
+      <p class="role">Lead</p>
+      <p class="title">Strategy & Flow</p>
+      <p class="desc">Kết nối UX với business problem.</p>
+    </div>
+    <div class="card">
+      <p class="role">Execution</p>
+      <p class="title">Crafting</p>
+      <p class="desc">Hiện thực hoá với độ tinh xảo cao nhất.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">6</span>4 nguyên tắc áp dụng VSP</h2>
+  <ol class="principles">
+    <li><strong>Thread-first</strong><span>PO + Designer + Tech cùng draft trên thread. Không họp cho đến khi cần.</span></li>
+    <li><strong>Multi-stakeholder sớm</strong><span>Nhiều PO, sếp, Tech lead comment từ bản nháp → giảm surprise cuối.</span></li>
+    <li><strong>Iterate trước khi chốt</strong><span>Không freeze design. Battle-test đến khi cả Tech lẫn Product gật đầu.</span></li>
+    <li><strong>Zero tolerance output tệ</strong><span>Transparency = peer pressure tích cực. Không cần KPI.</span></li>
+  </ol>
+</section>
+
+<section>
+  <h2><span class="num">7</span>Bottom line</h2>
+  <blockquote>
+    Không phải đổi cách <strong>vẽ</strong> — mà đổi cách <strong>nghĩ</strong>.<br>
+    Designer từ <strong>thợ vẽ</strong> → <strong>Product Creator</strong>.<br>
+    <strong>Cọ xát mỗi ngày</strong>, không phải mỗi sprint.<br>
+    Design có tiếng nói cấp <strong>Head/Director</strong> → sản phẩm có <strong>Soul</strong>.
+  </blockquote>
+</section>
+
+</body>
+</html>

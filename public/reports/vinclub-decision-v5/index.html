@@ -1,0 +1,1103 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VinClub V5 · Quyết định thiết kế & Final UI</title><style>:root{  --color-grey-00:   #ffffff;
+  --color-grey-25:   #fdfdfd;
+  --color-grey-50:   #fafafa;
+  --color-grey-100:  #f5f5f5;
+  --color-grey-150:  #f3f3f3;
+  --color-grey-200:  #e5e5e5;
+  --color-grey-300:  #d4d4d4;
+  --color-grey-400:  #a1a1a1;
+  --color-grey-500:  #737373;
+  --color-grey-600:  #525252;
+  --color-grey-700:  #404040;
+  --color-grey-750:  #343434;
+  --color-grey-800:  #262626;
+  --color-grey-850:  #1f1f1f;
+  --color-grey-900:  #171717;
+  --color-grey-950:  #121212;
+  --color-grey-1000: #080808;
+  --color-green-50:  #e5fcf6;
+  --color-green-100: #ccf8ed;
+  --color-green-200: #99f1da;
+  --color-green-300: #66ebc8;
+  --color-green-400: #33e4b5;
+  --color-green-500: #00dda3;
+  --color-green-600: #00b182;
+  --color-green-700: #008562;
+  --color-green-800: #005841;
+  --color-green-900: #002c21;
+  --color-green-950: #001610;
+  --color-red-50:  #fde5ea;
+  --color-red-100: #fbccd5;
+  --color-red-200: #f9b2bf;
+  --color-red-300: #f36680;
+  --color-red-400: #ef3355;
+  --color-red-500: #eb002b;
+  --color-red-600: #bc0022;
+  --color-red-700: #8d001a;
+  --color-red-800: #5e0011;
+  --color-red-900: #2f0009;
+  --color-red-950: #180004;
+  --color-blue-50:  #eff6ff;
+  --color-blue-100: #eff6ff;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-450: #4c94f8;
+  --color-blue-500: #2b7fff;
+  --color-blue-600: #155dfc;
+  --color-blue-700: #155dfc;
+  --color-blue-800: #193cb8;
+  --color-blue-900: #1c398e;
+  --color-blue-950: #162456;
+  --color-yellow-50:  #fefce8;
+  --color-yellow-100: #fef9c3;
+  --color-yellow-200: #fef08a;
+  --color-yellow-300: #fde047;
+  --color-yellow-400: #facc15;
+  --color-yellow-500: #eab308;
+  --color-yellow-600: #ca8a04;
+  --color-yellow-700: #a16207;
+  --color-yellow-800: #854d0e;
+  --color-yellow-900: #713f12;
+  --color-yellow-950: #422006;
+  --color-rose-50:  #fff1f2;
+  --color-rose-100: #ffe4e6;
+  --color-rose-200: #fecdd3;
+  --color-rose-300: #fda4af;
+  --color-rose-400: #fb7185;
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
+  --color-rose-700: #be123c;
+  --color-rose-800: #9f1239;
+  --color-rose-900: #881337;
+  --color-rose-950: #4c0519;
+  --color-orange-50:  #fff7ed;
+  --color-orange-100: #ffedd5;
+  --color-orange-200: #fed7aa;
+  --color-orange-300: #fdba74;
+  --color-orange-400: #fb923c;
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c2410c;
+  --color-orange-800: #9a3412;
+  --color-orange-900: #7c2d12;
+  --color-orange-950: #431407;
+  --color-lime-50:  #f7fee7;
+  --color-lime-100: #ecfccb;
+  --color-lime-200: #d9f99d;
+  --color-lime-300: #bef264;
+  --color-lime-400: #a3e635;
+  --color-lime-500: #84cc16;
+  --color-lime-600: #65a30d;
+  --color-lime-700: #4d7c0f;
+  --color-lime-800: #3f6212;
+  --color-lime-900: #365314;
+  --color-lime-950: #1a2e05;
+  --color-teal-50:  #f0fdfa;
+  --color-teal-100: #ccfbf1;
+  --color-teal-200: #99f6e4;
+  --color-teal-300: #5eead4;
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f766e;
+  --color-teal-800: #115e59;
+  --color-teal-900: #134e4a;
+  --color-teal-950: #042f2e;
+  --color-cyan-50:  #ecfeff;
+  --color-cyan-100: #cffafe;
+  --color-cyan-200: #a5f3fc;
+  --color-cyan-300: #67e8f9;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+  --color-cyan-600: #0891b2;
+  --color-cyan-700: #0e7490;
+  --color-cyan-800: #155e75;
+  --color-cyan-900: #164e63;
+  --color-cyan-950: #053345;
+  --color-indigo-50:  #eef2ff;
+  --color-indigo-100: #e0e7ff;
+  --color-indigo-200: #c7d2fe;
+  --color-indigo-300: #a5b4fc;
+  --color-indigo-400: #818cf8;
+  --color-indigo-500: #6366f1;
+  --color-indigo-600: #4f46e5;
+  --color-indigo-700: #4338ca;
+  --color-indigo-800: #3730a3;
+  --color-indigo-900: #312e81;
+  --color-indigo-950: #1e1b4b;
+  --color-purple-50:  #f3e8ff;
+  --color-purple-100: #f3e8ff;
+  --color-purple-200: #e9d5ff;
+  --color-purple-300: #d8b4fe;
+  --color-purple-400: #c084fc;
+  --color-purple-500: #a855f7;
+  --color-purple-600: #9333ea;
+  --color-purple-700: #7e22ce;
+  --color-purple-800: #6b21a8;
+  --color-purple-900: #581c87;
+  --color-purple-950: #3b0764;
+  --color-fuchsia-50:  #fdf4ff;
+  --color-fuchsia-100: #fae8ff;
+  --color-fuchsia-200: #f5d0fe;
+  --color-fuchsia-300: #f0abfc;
+  --color-fuchsia-400: #e879f9;
+  --color-fuchsia-500: #d946ef;
+  --color-fuchsia-600: #c026d3;
+  --color-fuchsia-700: #a21caf;
+  --color-fuchsia-800: #86198f;
+  --color-fuchsia-900: #701a75;
+  --color-fuchsia-950: #4a044e;
+  --color-dark-matter-25:    #dee9e6;
+  --color-dark-matter-50:    #cdddd8;
+  --color-dark-matter-100:   #bcd0ca;
+  --color-dark-matter-200:   #abc4bc;
+  --color-dark-matter-300:   #89aa9f;
+  --color-dark-matter-400:   #679183;
+  --color-dark-matter-500:   #457867;
+  --color-dark-matter-600:   #376052;
+  --color-dark-matter-700:   #29483e;
+  --color-dark-matter-750:   #1f3730;
+  --color-dark-matter-800:   #1c3029;
+  --color-dark-matter-850:   #15241f;
+  --color-dark-matter-900:   #13201c;
+  --color-dark-matter-950:   #0e1815;
+  --color-dark-matter-1000:  #070c0a;
+  --color-decor-sand: var(--decor-sand);
+  --color-decor-sand-subtle: var(--decor-sand-subtle);
+  --color-decor-clay: var(--decor-clay);
+  --color-decor-clay-subtle: var(--decor-clay-subtle);
+  --color-decor-butter: var(--decor-butter);
+  --color-decor-butter-subtle: var(--decor-butter-subtle);
+  --color-decor-sage: var(--decor-sage);
+  --color-decor-sage-subtle: var(--decor-sage-subtle);
+  --color-decor-lagoon: var(--decor-lagoon);
+  --color-decor-lagoon-subtle: var(--decor-lagoon-subtle);
+  --color-decor-denim: var(--decor-denim);
+  --color-decor-denim-subtle: var(--decor-denim-subtle);
+  --color-decor-lilac: var(--decor-lilac);
+  --color-decor-lilac-subtle: var(--decor-lilac-subtle);
+  --color-decor-rose: var(--decor-rose);
+  --color-decor-rose-subtle: var(--decor-rose-subtle);
+  --color-background:          var(--background);
+  --color-foreground:          var(--foreground);
+  --color-card:                var(--card);
+  --color-card-foreground:     var(--card-foreground);
+  --color-popover:             var(--popover);
+  --color-popover-foreground:  var(--popover-foreground);
+  --color-primary:             var(--primary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-secondary:           var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:               var(--muted);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-accent:              var(--accent);
+  --color-accent-foreground:   var(--accent-foreground);
+  --color-destructive:         var(--destructive);
+  --color-border:              var(--border);
+  --color-border-bold:         var(--border-bold);
+  --color-input:               var(--input);
+  --color-ring:                var(--ring);
+  --color-success:             var(--success);
+  --color-success-foreground:  var(--success-foreground);
+  --color-warning:             var(--warning);
+  --color-warning-foreground:  var(--warning-foreground);
+  --color-info:                var(--info);
+  --color-info-foreground:     var(--info-foreground);
+  --color-danger:              var(--danger);
+  --color-danger-foreground:   var(--danger-foreground);
+  --color-brand-secondary:     var(--brand-secondary);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-disabled-fg:         var(--disabled-fg);
+  --color-disabled-bg:         var(--disabled-bg);
+  --color-disabled-border:     var(--disabled-border);
+  --color-sub-primary:         var(--sub-primary);
+  --color-card-accent:         var(--card-accent);
+  --color-card-accent-foreground: var(--card-accent-foreground);
+  --color-overlay:             var(--overlay);
+  --color-toast:               var(--toast);
+  --color-island:              var(--island);
+  --color-search:              var(--search);
+  --color-btn-secondary-bg:    var(--btn-secondary-bg);
+  --color-outline-subtle:      var(--outline-subtle);
+  --color-outline-base:        var(--outline-base);
+  --color-outline-strong:      var(--outline-strong);
+  --color-sidebar:                       var(--sidebar);
+  --color-sidebar-foreground:            var(--sidebar-foreground);
+  --color-sidebar-primary:               var(--sidebar-primary);
+  --color-sidebar-primary-foreground:    var(--sidebar-primary-foreground);
+  --color-sidebar-accent:                var(--sidebar-accent);
+  --color-sidebar-accent-foreground:     var(--sidebar-accent-foreground);
+  --color-sidebar-border:                var(--sidebar-border);
+  --color-sidebar-ring:                  var(--sidebar-ring);
+--background:var(--color-grey-50);--surface:var(--color-grey-00);--foreground:var(--color-grey-900);--foreground-secondary:var(--color-grey-600);--secondary:var(--color-grey-100);--radius-8:8px;--radius-14:14px;--radius-28:28px}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}body{margin:0;background:var(--background);color:var(--foreground);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit;text-underline-offset:4px}.container{max-width:1320px;margin:auto;padding:0 22px}.hero{padding-top:54px;padding-bottom:36px;background:radial-gradient(ellipse at 80% 0,var(--color-yellow-200),transparent 60%),var(--surface)}.eyebrow{font:11px ui-monospace,monospace;letter-spacing:.1em;color:var(--foreground-secondary)}h1{font-size:clamp(36px,5vw,64px);line-height:1.08;letter-spacing:-.055em;margin:24px 0}h1 span{color:var(--foreground-secondary)}.lead{max-width:900px;font-size:20px;line-height:1.6}h2{font-size:30px;line-height:1.2;letter-spacing:-.035em;margin:0}h3{font-size:19px;line-height:1.4;margin:10px 0}.section{padding-top:40px}.heading{padding:24px 0 12px}.heading small{font-size:10px;letter-spacing:.1em;color:var(--foreground-secondary)}.links{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.link{padding:10px 15px;background:var(--secondary);border-radius:var(--radius-8);font-size:13px;text-decoration:none}.link.main{background:var(--foreground);color:var(--surface)}nav{position:sticky;top:0;z-index:2;background:var(--surface);box-shadow:0 8px 20px color-mix(in srgb,var(--foreground) 4%,transparent)}.nav{display:flex;gap:18px;overflow:auto;padding-block:14px;white-space:nowrap;font-size:12px}.decision{padding:24px;background:var(--color-green-50);color:var(--color-green-900);border-radius:var(--radius-28);margin-top:24px}.decision p{margin-bottom:0}.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{padding:24px;background:var(--surface);border-radius:var(--radius-28);min-width:0}.card p{font-size:14px;color:var(--foreground-secondary)}.phone-image{width:195px;max-width:100%;height:auto;display:block;margin:20px auto;border-radius:var(--radius-14)}.capture-pair{display:flex;justify-content:center;gap:18px;align-items:flex-start;flex-wrap:wrap}.capture-pair figure{margin:0}.capture-pair img{width:250px;max-width:100%;border-radius:var(--radius-28)}figcaption{font-size:11px;color:var(--foreground-secondary);max-width:270px;margin-top:8px}.tag{display:inline-block;font-size:10px;line-height:16px;border-radius:var(--radius-8);padding:4px 8px;background:var(--secondary)}.new{color:var(--color-red-800);background:var(--color-red-50)}.green{color:var(--color-green-800);background:var(--color-green-50)}.table-wrap{overflow:auto;background:var(--surface);border-radius:var(--radius-28)}table{border-collapse:collapse;width:100%;min-width:850px;text-align:left}th{background:var(--secondary);color:var(--foreground-secondary);font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:16px}td{font-size:13px;vertical-align:top;padding:20px 16px}tr:nth-child(even){background:color-mix(in srgb,var(--secondary) 45%,var(--surface))}.muted{color:var(--foreground-secondary)}.small{font-size:12px}.money-line{font-size:32px;letter-spacing:-.04em;font-weight:650}.principle{font-size:24px;line-height:1.4;letter-spacing:-.03em}.evidence-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.evidence-grid figure{margin:0;min-width:0}.evidence-grid img{width:100%;height:auto;border-radius:var(--radius-14)}.evidence-grid p{font-size:11px}.source details{margin:12px 0;background:var(--surface);padding:16px;border-radius:var(--radius-14)}.source pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px}footer{padding:40px 22px;background:var(--surface);margin-top:40px;font-size:12px;color:var(--foreground-secondary)}.indicator{width:139px;height:5px;background:var(--foreground);border-radius:var(--radius-8);margin:24px auto 0}.swatches{display:flex;gap:8px;margin:16px 0}.swatches span{width:40px;height:40px;border-radius:var(--radius-8)}.swatches span:nth-child(1){background:var(--color-yellow-200)}.swatches span:nth-child(2){background:var(--color-grey-900)}.swatches span:nth-child(3){background:var(--color-grey-100)}.swatches span:nth-child(4){background:var(--color-blue-100)}.swatches span:nth-child(5){background:var(--color-green-100)}@media(max-width:850px){.three,.two{grid-template-columns:1fr}.evidence-grid{grid-template-columns:repeat(2,1fr)}.hero{padding-top:32px}.lead{font-size:17px}}@media print{nav,.links{display:none}.section,.card,tr{break-inside:avoid}table{min-width:0}td{font-size:10px;padding:10px}}
+</style></head><body><header class="hero"><div class="container"><div class="eyebrow">VINCLUB / V5 / UX × BUSINESS × PRODUCT × VISUAL × CEO</div><h1>Giữ nhịp Home.<br><span>Nối tiếp hành trình.</span></h1><p class="lead">Khách thấy mình có gì, có thứ muốn chạm thử, rồi dùng được quyền lợi hoặc gửi được nhu cầu. V5 giữ hướng source đã chọn và hoàn thiện các đoạn còn đứt.</p><div class="links"><a class="link main" href="/vinclub-decision-v5?scenario=spend">Mở Final UI ↗</a><a class="link" href="slides.html">Trình chiếu slide</a><a class="link" href="vinclub-v5.pptx">PowerPoint</a><a class="link" href="vinclub-v5.pdf">PDF</a><a class="link" href="../vinclub-lab-v3/index.html">Giữ lại V3</a><a class="link" href="../vinclub-decision-v4/index.html">Giữ lại V4</a></div><span class="tag green">47/47 kiểm tra tự động đạt</span> <span class="tag">Human UT chưa chạy</span> <span class="tag">Prototype · không thanh toán / gửi lead thật</span></div></header><nav><div class="container nav"><a href="#decision">Khuyến nghị</a><a href="#source">Source & lựa chọn</a><a href="#ui">Final UI</a><a href="#visual">Visual system</a><a href="#money">Nguồn tiền</a><a href="#phase">3 mốc</a><a href="#proof">Bằng chứng</a><a href="#roles">5 vai trò</a></div></nav><main class="container"><section id="decision" class="section"><div class="heading"><small>01 / KẾT QUẢ</small><h2>Giữ Home chung. Ưu tiên dùng quyền lợi.</h2></div><div class="decision"><p><strong>Khuyến nghị:</strong> ưu tiên vòng B — quyền lợi hiện hữu → giá cuối minh bạch → giao dịch tìm lại được. Giữ A để kiểm tra động lực nhận và dùng quà; C để kiểm tra ý định trải nghiệm và lịch chờ tiếp nhận. Đây là ba hoàn cảnh của cùng IA, chưa phải ba phương án đã có dữ liệu thắng / thua.</p><p><strong>Đã làm trong V5:</strong> sửa nhãn sản phẩm, entry quà bấm được, cấp một lần trong phiên, voucher áp dụng vào đơn, vé / yêu cầu có nơi tìm lại, giữ nhịp visual nguồn. <strong>Chưa làm:</strong> ngân sách thật, tồn vé, thanh toán, phát vé hoặc API lead P&L.</p></div></section><section id="source" class="section"><div class="heading"><small>02 / UX ĐỌC SOURCE</small><h2>Không thiết kế lại từ một tờ giấy trắng.</h2></div><div class="two"><article class="card"><div class="capture-pair"><figure><img src="evidence/ux-baseline.png" alt="Baseline thật tại port3300"><figcaption>Baseline: ảnh UX agent chụp từ iframe port3300. Giá trị và trạng thái có animation.</figcaption></figure><figure><img src="evidence/final-daily-home.png" alt="Final UI V5"><figcaption>V5: bản thử mới, giữ nhịp asset → tác vụ → lời mời → trải nghiệm; đổi có chủ đích, không tuyên bố pixel-identical.</figcaption></figure></div></article><article class="card"><h3>Ba điều đã sửa cách hiểu</h3><p><strong>38px là không gian dự trữ:</strong> container ví option2 ≈199px, cover vẫn≈237px. V5 giữ overlap, không nói ví gốc đã thu nhỏ toàn bộ.</p><p><strong>Archive không đồng nghĩa user bác bỏ:</strong> có skin, composition và ghi chú tác giả; không gán lý do chọn/bỏ khi chưa có quyết định.</p><p><strong>Cấu hình không đồng nghĩa render:</strong> tham số iframe khác default/confirmed; CSS cuối ghi đè products3. Baseline normal click story bị thẻ bên cạnh chặn trong môi trường kiểm tra; V5 đã kiểm tra pointer bình thường.</p><p class="small muted">Ảnh, phép đo và giới hạn: <a href="ux.json">UX evidence</a>.</p></article></div><div class="heading"><h3>Quyết định layout theo vai trò từng khối</h3></div><div class="table-wrap"><table><thead><tr><th>Khối / vai trò</th><th>Quan sát nguồn</th><th>Quyết định</th><th>Đánh đổi / kiểm chứng</th></tr></thead><tbody><tr><td><strong>Tài sản: hạng, VPoint, ví</strong><br><span class="tag">Nhận biết tôi có gì; mở quản lý khi cần</span></td><td>12.450 VPoint, hạng Vàng và ví 28.650.000 ₫ đứng đầu; wallet cover 237px trong container199px.</td><td>Giữ số dư/hạng và đích quản lý; kiểm tra overlap/legibility trước khi thu gọn thêm; không lấy cover199 làm thông số.</td><td>Thu gọn quá mức giảm nhận diện ví; UT đọc số dư và tìm lịch sử.</td></tr><tr><td><strong>Dịch vụ</strong><br><span class="tag">Chọn việc cần làm nhanh</span></td><td>Hai card generic Product1/2, Tích lũy linh hoạt/Chi tiêu linh hoạt; icon-title-description cuối cascade.</td><td>Dùng hai card cho hai lựa chọn có tên/đầu ra rõ; số lượng lớn chuyển grid có Xem thêm. Không tăng số ô chỉ để lấp Home.</td><td>Card lớn chiếm chỗ ưu đãi; UT chọn đúng dịch vụ và kể lại sẽ nhận gì.</td></tr><tr><td><strong>Ưu đãi</strong><br><span class="tag">Khám phá lời đề nghị, khác với tài sản đã sở hữu</span></td><td>Rail Dành cho bạn + Xem tất cả, nhiều thương hiệu; chạm dispatch offers chung.</td><td>Giữ rail để gợi ý, Xem tất cả cho tìm kiếm/so sánh; card mở đúng đề nghị và điều kiện thay vì chỉ mở catalog chung. Tách Đã lưu/của tôi khỏi đề nghị khám phá.</td><td>Nội dung ngoài màn dễ bị bỏ qua; thử tìm thương hiệu thứ4 và tìm lại voucher sau lưu.</td></tr><tr><td><strong>Quà mỗi ngày</strong><br><span class="tag">Lời mời nhẹ, mở sâu khi có quan tâm</span></td><td>Story là item đầu rail112×160 tại y483; mở viewer bốn bước, scratch ở bước1. Normal pointer entry failed: adjacent Vinmec background intercepted click; four-step viewer is source behavior, not passed interaction.</td><td>Fix pointer hit area/stacking before validating normal story opening. Giữ entry nhỏ; hiển thị trạng thái đã nhận và đích Quà của tôi sau nhận. Thưởng/điều kiện chỉ hiện khi có thật.</td><td>Thêm bước trước quà; cần kiểm tra khách hiểu thưởng/điều kiện và đi tiếp đâu.</td></tr><tr><td><strong>Trải nghiệm</strong><br><span class="tag">Hình dung chuyến đi hoặc dịch vụ đáng tham gia</span></td><td>Hai ảnh lớn Lái thử VinFast/Đến với Đảo Ngọc; rail bắt đầu y713.</td><td>Giữ ảnh lớn có chọn lọc; kèm giá hoặc nguyên tắc báo giá, điều kiện, địa điểm và bước tiếp rõ. Với tác vụ đặt cụ thể dùng list/lọc ở tầng sau.</td><td>Ảnh chiếm chiều cao và chưa chứng minh nhu cầu; UT tìm điều kiện và phân biệt xem thông tin/gửi yêu cầu/đã đặt.</td></tr><tr><td><strong>Điều hướng và hoạt động</strong><br><span class="tag">Tìm lại tài sản, yêu cầu và hỗ trợ</span></td><td>Bottom Trang chủ/Ưu đãi/Sự kiện/Hạng; Home không có CTA cam kết đơn nhất.</td><td>Giữ bottom ổn định; đặt trạng thái đã lưu/đang xử lý ở đúng hub; chỉ thêm CTA cố định trong flow có một cam kết.</td><td>Thêm hub có thể tăng lựa chọn; UT quay lại tìm tài sản sau rời màn.</td></tr></tbody></table></div></section><section id="ui" class="section"><div class="heading"><small>03 / FINAL UI</small><h2>Ba hoàn cảnh, ba đường nhận giá trị.</h2></div><p class="muted">Chuyển tình huống bằng panel là thao tác nghiên cứu, chưa phải cá nhân hóa tự động. Nhãn giả lập nằm trong UI vì cần tránh hiểu là thanh toán / cấp vé / giữ lịch thật.</p><div class="three"><article class="card"><span class="eyebrow">CÙNG IA / KHÁC HOÀN CẢNH</span><h3>A · Mở ra khám phá quà</h3><a href="/vinclub-decision-v5?scenario=daily"><img class="phone-image" src="evidence/final-daily-home.png" alt="Final Home daily"></a><p><strong>Ai dùng:</strong> Chưa định mua, muốn xem mình nhận được gì.</p><p><strong>Hành trình:</strong> Story nhỏ → nhận voucher mẫu → xem điều kiện → dùng vào vé → tìm lại.</p><p><strong>Layout:</strong> Giữ entry nhỏ trong rail; phần thưởng không chiếm cả Home.</p><p><strong>Đánh đổi:</strong> Thêm bước trước mua; cần ngân sách và cơ chế cấp một lần.</p><a class="link" href="/vinclub-decision-v5?scenario=daily">Bấm thử tình huống daily ↗</a></article><article class="card"><span class="eyebrow">CÙNG IA / KHÁC HOÀN CẢNH</span><h3>B · Dùng quyền lợi đang có</h3><a href="/vinclub-decision-v5?scenario=spend"><img class="phone-image" src="evidence/final-spend-home.png" alt="Final Home spend"></a><p><strong>Ai dùng:</strong> Có voucher, muốn mua vé cho gia đình.</p><p><strong>Hành trình:</strong> Voucher sẵn có → 2 vé → áp dụng giảm → tổng tiền → vé của tôi.</p><p><strong>Layout:</strong> Đưa tài sản đủ điều kiện lên đầu rail, tổng tiền hiện ngay khi chọn.</p><p><strong>Đánh đổi:</strong> Chỉ phù hợp khách có nhu cầu; chưa có tích hợp vé / thanh toán.</p><a class="link" href="/vinclub-decision-v5?scenario=spend">Bấm thử tình huống spend ↗</a></article><article class="card"><span class="eyebrow">CÙNG IA / KHÁC HOÀN CẢNH</span><h3>C · Muốn trải nghiệm thực tế</h3><a href="/vinclub-decision-v5?scenario=experience"><img class="phone-image" src="evidence/final-experience-home.png" alt="Final Home experience"></a><p><strong>Ai dùng:</strong> Đang cân nhắc xe, chưa quyết định mua.</p><p><strong>Hành trình:</strong> Ảnh lớn → ngày / giờ → consent → yêu cầu chờ xác nhận → tìm lại.</p><p><strong>Layout:</strong> Giữ ảnh để hình dung, đưa form và điều kiện ở bước sau.</p><p><strong>Đánh đổi:</strong> Chưa có showroom / nguồn lịch / đơn vị tiếp nhận thật.</p><a class="link" href="/vinclub-decision-v5?scenario=experience">Bấm thử tình huống experience ↗</a></article></div><div class="heading"><h3>Vòng B nhìn và bấm được</h3></div><div class="evidence-grid"><figure><img src="evidence/final-spend-home.png" alt="Quyền lợi đủ điều kiện trên Home"><figcaption>Quyền lợi đủ điều kiện trên Home</figcaption></figure><figure><img src="evidence/spend-ticket-summary.png" alt="2 vé · 400.000 − 50.000 = 350.000 đ"><figcaption>2 vé · 400.000 − 50.000 = 350.000 đ</figcaption></figure><figure><img src="evidence/ticket-error.png" alt="Lỗi mẫu giữ lại quyền lợi để thử lại"><figcaption>Lỗi mẫu giữ lại quyền lợi để thử lại</figcaption></figure><figure><img src="evidence/ticket-success.png" alt="Xác nhận chỉ tạo bản ghi mẫu"><figcaption>Xác nhận chỉ tạo bản ghi mẫu</figcaption></figure><figure><img src="evidence/ticket-owned.png" alt="Tìm lại vé và số tiền trong Của tôi"><figcaption>Tìm lại vé và số tiền trong Của tôi</figcaption></figure></div></section><section id="visual" class="section"><div class="heading"><small>04 / VISUAL DESIGN</small><h2>Mỗi lớp có một vai trò thị giác.</h2></div><div class="three"><article class="card"><h3>Vàng ấm · carbon · paper</h3><div class="swatches"><span></span><span></span><span></span><span></span><span></span></div><p>Vàng tạo nhận diện vùng thành viên; carbon phân biệt tài sản tiền; paper sáng giữ vùng thao tác dễ đọc. Màu pastel phân biệt lời đề nghị, không dùng một skin phủ mọi khối.</p></article><article class="card"><h3>Chữ · hình khối · ảnh</h3><p>Số điểm / số dư đọc nhanh; sản phẩm có tên tác vụ; offer nổi giá trị; ảnh lớn dành cho việc hình dung. Dùng lại icon/ảnh từ source. Named radius14/28 và smooth60%; trục chữ cấp màn hình22px.</p></article><article class="card"><h3>Phản hồi và chuyển động</h3><p>Nhấn nhẹ card, phản hồi nhận quà, áp dụng voucher thay giá ngay, success nói đúng trạng thái. Có reduced motion. Dock giữ QR nổi bật; không thêm CTA primary toàn Home.</p></article></div><div class="decision"><p class="principle"><strong>Triết lý thiết kế rút từ quyết định:</strong> Cho khách thấy giá trị đang có, tạo lời mời vừa đủ và giữ rõ bước tiếp theo.</p><p>“Thấy” bằng số / tài sản rõ; “muốn chạm” bằng story / ảnh; “dùng được” bằng điều kiện / giá cuối / đích kết quả. Đây là nguyên tắc triển khai, chưa phải claim tăng dopamine hay conversion.</p></div></section><section id="money" class="section"><div class="heading"><small>05 / BUSINESS</small><h2>400.000 đ tiền vé chưa phải doanh thu VinClub.</h2></div><article class="card"><div class="money-line">400.000 − 50.000 = 350.000 đ</div><p>Giá và voucher là dữ liệu mẫu. Đơn vị bán hưởng tiền dịch vụ; bên tài trợ chịu chi phí giảm giá; phần nền tảng chỉ xác định khi có hợp đồng và đối soát. Không tự đặt phí để chứng minh phương án có lãi.</p></article><div class="table-wrap"><table><thead><tr><th>Nhánh / giá trị khách</th><th>Khi nào tạo giá trị kinh tế</th><th>Phần nền tảng</th><th>Điều kiện / rào chắn</th></tr></thead><tbody><tr><td><strong>DAILY</strong><br>Biết mình có gì, nhận quyền lợi phù hợp và dùng được ngay thay vì chỉ sưu tập vật phẩm.</td><td>Sự kiện tạo giá trị là quyền lợi được sử dụng có xác nhận hoặc giao dịch mục tiêu hoàn tất; mở story và cào xong chỉ là tương tác.</td><td>Không có doanh thu trực tiếp được chứng minh từ nhận quà. Giá trị kỳ vọng là giao dịch tăng thêm và dùng chéo P&amp;L; chỉ tính phí hay phần hưởng khi hợp đồng và đối soát xác nhận. Mua/nạp VPoint và số dư ví không tự là doanh thu nền tảng.</td><td>Không mặc định tặng mỗi ngày vô hạn. Chỉ hiện quà có chủ ngân sách, tồn, điều kiện, hạn và đường dùng; ngừng cấp khi hết hạn mức. Không lấy DAU hoặc lượt cào làm chứng cứ có lãi.</td></tr><tr><td><strong>SPEND</strong><br>Chọn ưu đãi đúng nhu cầu và thương hiệu, biết số tiền thực trả, nơi hoàn tất và cách dùng VPoint.</td><td>Giao dịch hợp lệ sau hủy/hoàn và xác nhận sử dụng ưu đãi; với đối tác ngoài cần attribution và kết quả chuyển đổi được đối tác xác nhận.</td><td>Doanh số P&amp;L và GMV phải báo cáo riêng với doanh thu/phần hưởng VinClub hoặc VinPay. B3 nêu mô hình giới thiệu hưởng hoa hồng ngoài HST nhưng chưa có biểu phí hay đối tác ký kết. Phí thanh toán cũng chưa được chứng minh; thanh toán qua ví không tự tạo doanh thu phí.</td><td>Không nhầm trợ giá với cầu tăng thêm: khách vốn sẽ mua vẫn có thể nhận giảm giá. Chỉ mở thương hiệu có nguồn cung và xác nhận dùng; không hứa checkout thống nhất khi giao dịch kết thúc ở đối tác.</td></tr><tr><td><strong>EXPERIENCE</strong><br>Khám phá xe, nhà hoặc kỳ nghỉ để hiểu lựa chọn, rồi chủ động đăng ký tư vấn/lịch trải nghiệm phù hợp.</td><td>Lead được P&amp;L chấp nhận đủ chuẩn và lịch hẹn được xác nhận là giá trị vận hành ban đầu; tham dự và giao dịch là kết quả sau đó. Chỉ có sự kiện tính phí khi thỏa thuận quy định rõ.</td><td>Chưa có bằng chứng phí lead, phí lịch hẹn hay hoa hồng bán xe/nhà. Đánh giá trước bằng chi phí mỗi lead được chấp nhận, mỗi lịch tham dự và đóng góp doanh số P&amp;L có attribution; không ghi giá trị nhà/xe, tiền cọc hay lượt xem 3D thành doanh thu VinClub.</td><td>Có người nhận và SLA trước khi mở form. Không tự xác nhận lịch khi P&amp;L chưa có suất. Chỉ thu dữ liệu phục vụ mục đích đã đồng ý; không gộp lượt khám phá, lead, lịch và doanh số thành một conversion.</td></tr></tbody></table></div></section><section id="phase" class="section"><div class="heading"><small>06 / PRODUCT</small><h2>Phân kỳ theo hành trình có thể vận hành.</h2></div><div class="three"><article class="card"><span class="eyebrow">HIỆN TẠI</span><h3>Hội viên hiện hữu và người dùng demo</h3><p>Baseline source có Home, Hội viên, ví/activation, offers, story và nội dung trải nghiệm; khả năng tích hợp chưa xác minh</p><p><strong>Điều kiện:</strong> Tách code demo, trạng thái roadmap và năng lực production</p><p><strong>Độ chắc:</strong> Cao với giá trị code; giới hạn với readiness vận hành</p></article><article class="card"><span class="eyebrow">ĐẾN 02/2027</span><h3>Hội viên có quyền lợi, khách mua vé và khách quan tâm O2O</h3><p>Gia nhập/nhận quà → dùng quyền lợi/đặt vé; khám phá → yêu cầu lịch; VPoint khấu trừ tại thanh toán khi sẵn sàng</p><p><strong>Điều kiện:</strong> Vé phụ thuộc nguồn nội dung và zone; thanh toán phụ thuộc nền tảng kết nối; lịch O2O phụ thuộc P&amp;L tiếp nhận; quà cần ngân sách và luật cấp</p><p><strong>Độ chắc:</strong> Hạn được ghi trong kế hoạch; chưa chứng minh đã giao. Thứ tự và danh mục cửa được B3 cho phép điều chỉnh</p></article><article class="card"><span class="eyebrow">KHUNG CUỐI 2027</span><h3>Mở rộng theo nguồn cung và đối tượng đã chứng minh giá trị</h3><p>Tái sử dụng chiến dịch đã vận hành, mở rộng danh mục có kết quả theo dõi được; không mặc định mở super-app</p><p><strong>Điều kiện:</strong> Duhat chưa có kế hoạch SDK; dữ liệu catalogue/tồn kho; 3D mobile; nhân lực, chính sách và nguồn cung P&amp;L</p><p><strong>Độ chắc:</strong> Cao rằng 30/06 là hạn của tái sử dụng chiến dịch; thấp/chưa chốt với scope mở rộng đến cuối năm</p></article></div></section><section class="section"><div class="heading"><small>07 / SO SÁNH ĐỐI THỦ</small><h2>Học cơ chế, không sao chép danh mục.</h2></div><div class="table-wrap"><table><thead><tr><th>Tham chiếu</th><th>Cách đọc mô hình</th><th>Quyết định cho VinClub</th></tr></thead><tbody><tr><td>Tata Neu</td><td>Điểm chung nối nhiều thương hiệu.</td><td>VinClub cần thể hiện nơi dùng điểm, không chỉ số dư. <a href="https://www.tatadigital.in/what-we-do" target="_blank" rel="noopener">Nguồn ↗</a></td></tr><tr><td>Grab</td><td>Tác vụ và trạng thái đơn hỗ trợ nhu cầu thường ngày.</td><td>Dịch vụ phải có đích và kết quả, không chỉ icon mở danh mục. <a href="https://www.grab.com/sg/about/superapp/" target="_blank" rel="noopener">Nguồn ↗</a></td></tr><tr><td>Marriott Bonvoy</td><td>Quyền lợi gắn với hạng và hành trình sử dụng.</td><td>Tách quyền lợi đã có với nội dung chào mời. <a href="https://traveler.marriott.com/travel-tips/marriott-bonvoy-app-features/" target="_blank" rel="noopener">Nguồn ↗</a></td></tr><tr><td>ShopBack</td><td>Chuyển khách sang đối tác và ghi nhận kết quả.</td><td>Click chưa phải mua; rõ nơi giao dịch và điều kiện ghi nhận. <a href="https://business.shopback.com/sg/form" target="_blank" rel="noopener">Nguồn ↗</a></td></tr><tr><td>Weixin / WeChat</td><td>Giao tiếp nối dịch vụ.</td><td>Không để Chat thành phụ thuộc ra mắt khi chưa có SDK. <a href="https://www.tencent.com/products/weixin-wechat/" target="_blank" rel="noopener">Nguồn ↗</a></td></tr></tbody></table></div><p class="small muted">Diễn giải kiến trúc từ nguồn chính thức; không xem thứ tự tab là đã xác minh hiện hành.</p></section><section id="proof" class="section"><div class="heading"><small>08 / BẰNG CHỨNG</small><h2>Đã kiểm tra đến đâu?</h2></div><div class="two"><article class="card"><span class="tag green">47/47 kiểm tra tự động đạt</span><h3>Đã chạy bằng máy</h3><p>Pointer story, shape/smooth, mobile/desktop, quyền lợi đổi tổng tiền, lỗi giữ voucher, xác nhận và tìm lại vé, không nhận lại quà sau dùng, form đúng điều kiện, lịch chờ và session không lưu số điện thoại.</p><a href="harness.json">Mở log từng check ↗</a><p class="small">Lint V5 đạt. TypeScript toàn repo còn lỗi ngoài route V5; <a href="evidence/typecheck-scope.json">xem phạm vi kiểm tra</a>.</p></article><article class="card"><span class="tag new">CHƯA CÓ HUMAN UT</span><h3>Chưa được kết luận</h3><p>Chưa có retention, conversion, ROI hoặc đánh giá người thật. Vòng thử tiếp theo dùng đúng nhóm cho từng job, luân phiên thứ tự khi so layout; không chấm O2O chỉ bằng mua vé.</p><a href="../vinclub-lab-v3/ut-plan.json">Protocol UT đã chuẩn bị ↗</a></article></div></section><section id="roles" class="section source"><div class="heading"><small>09 / NĂM VAI TRÒ THỰC THI</small><h2>Có kết luận riêng và dấu vết hợp nhất.</h2></div><details><summary><strong>UX</strong> · Giữ nhịp nhận biết tài sản → chọn dịch vụ/lợi ích → hình dung trải nghiệm. Thay Product 1/2 bằng tên tác vụ thật và nối quà/ưu đãi về nơi tìm lại; đây là đề xuất cần UT, chưa có chứng cứ tăng chuyển đổi. Layout wallet=2 giảm container 38px nhưng cover vẫn 237px: không thể gọi là đã thu nhỏ toàn bộ ví.</summary><pre>{
+  &quot;executiveFinding&quot;: &quot;Giữ nhịp nhận biết tài sản → chọn dịch vụ/lợi ích → hình dung trải nghiệm. Thay Product 1/2 bằng tên tác vụ thật và nối quà/ưu đãi về nơi tìm lại; đây là đề xuất cần UT, chưa có chứng cứ tăng chuyển đổi. Layout wallet=2 giảm container 38px nhưng cover vẫn 237px: không thể gọi là đã thu nhỏ toàn bộ ví.&quot;,
+  &quot;baseline&quot;: {
+    &quot;status&quot;: &quot;quan sát render + đọc source; không phải human UT&quot;,
+    &quot;parentUrl&quot;: &quot;http://localhost:3300/ui-templates/sumeria/vsp?mode=light&quot;,
+    &quot;childUrl&quot;: &quot;http://localhost:3300/vinclub-home?embedded=1&amp;skin=3&amp;hook=1&amp;style=8&amp;pos=1&amp;vinclubState=1&amp;giftTone=1&amp;giftCount=1&amp;walletState=1&amp;approach=stack&amp;mode=light&quot;,
+    &quot;process&quot;: &quot;node PID 87296; lsof cwd /Users/huykieu/Documents/vinpay-all&quot;,
+    &quot;actualParams&quot;: {
+      &quot;embedded&quot;: 1,
+      &quot;skin&quot;: 3,
+      &quot;hook&quot;: 1,
+      &quot;style&quot;: 8,
+      &quot;pos&quot;: 1,
+      &quot;vinclubState&quot;: 1,
+      &quot;giftTone&quot;: 1,
+      &quot;giftCount&quot;: 1,
+      &quot;walletState&quot;: 1,
+      &quot;approach&quot;: &quot;stack&quot;,
+      &quot;mode&quot;: &quot;light&quot;
+    },
+    &quot;confirmed&quot;: {
+      &quot;header&quot;: 1,
+      &quot;wallet&quot;: 2,
+      &quot;products&quot;: 3,
+      &quot;vouchers&quot;: 1,
+      &quot;feed&quot;: 2,
+      &quot;style&quot;: 3,
+      &quot;pos&quot;: 1
+    },
+    &quot;effective&quot;: &quot;Default header1 wallet2 products3 productCount2 vouchers1 feed2 hierarchy1 story1; URL style8 accepted; URL skin3 forcibly normalized to2, resulting data-skin=carbon. Confirmed object hides controls; it does not enforce values over URL. Gift HomeStory hardcodes kind1 look3 count1 tone1 independently of general picks.&quot;,
+    &quot;limitations&quot;: [
+      &quot;Fresh Playwright browser, not user storage/session. Parent opened VinClub button; screenshot captures direct child inside parent, not standalone splash.&quot;,
+      &quot;Figures and products are source sample data; rendered affordances are not evidence of real reward settlement, lead, booking or payment.&quot;,
+      &quot;Evidence is desktop host with 390px child; no human comprehension or conversion study.&quot;,
+      &quot;Interaction check: normal click on Quà mỗi ngày timed out at 30s because adjacent Vinmec offer absolute span intercepted pointer events. Viewer implementation inspected in source, normal entry opening NOT verified. No force-click used.&quot;
+    ],
+    &quot;evidence&quot;: [
+      &quot;evidence/ux-baseline.png&quot;
+    ],
+    &quot;source&quot;: [
+      &quot;app/(vinpay)/ui-templates/sumeria/vsp/client.tsx:279&quot;,
+      &quot;app/(vinclub)/vinclub-home/page.tsx:41&quot;,
+      &quot;app/(vinclub)/vinclub-home/page.tsx:69&quot;,
+      &quot;app/(vinclub)/vinclub-home/page.tsx:88&quot;
+    ]
+  },
+  &quot;blockDecisions&quot;: [
+    {
+      &quot;block&quot;: &quot;Tài sản: hạng, VPoint, ví&quot;,
+      &quot;role&quot;: &quot;Nhận biết tôi có gì; mở quản lý khi cần&quot;,
+      &quot;observed&quot;: &quot;12.450 VPoint, hạng Vàng và ví 28.650.000 ₫ đứng đầu; wallet cover 237px trong container199px.&quot;,
+      &quot;keep/change&quot;: &quot;keep/change&quot;,
+      &quot;layoutDecision&quot;: &quot;Giữ số dư/hạng và đích quản lý; kiểm tra overlap/legibility trước khi thu gọn thêm; không lấy cover199 làm thông số.&quot;,
+      &quot;why&quot;: &quot;Tài sản cần đọc đúng nhưng không chiếm hết viewport. Mức chú ý vừa, chữ cấp màn hình giữ trục22px.&quot;,
+      &quot;tradeoff&quot;: &quot;Thu gọn quá mức giảm nhận diện ví; UT đọc số dư và tìm lịch sử.&quot;,
+      &quot;source&quot;: &quot;ref-layouts.tsx:385–409; ref-layouts.css:358; evidence/ux-baseline.png&quot;
+    },
+    {
+      &quot;block&quot;: &quot;Dịch vụ&quot;,
+      &quot;role&quot;: &quot;Chọn việc cần làm nhanh&quot;,
+      &quot;observed&quot;: &quot;Hai card generic Product1/2, Tích lũy linh hoạt/Chi tiêu linh hoạt; icon-title-description cuối cascade.&quot;,
+      &quot;keep/change&quot;: &quot;change&quot;,
+      &quot;layoutDecision&quot;: &quot;Dùng hai card cho hai lựa chọn có tên/đầu ra rõ; số lượng lớn chuyển grid có Xem thêm. Không tăng số ô chỉ để lấp Home.&quot;,
+      &quot;why&quot;: &quot;Với hai lựa chọn cần so lợi ích; nhãn Product không giúp dự đoán đích. Ưu tiên sau trạng thái vì có ý định cụ thể.&quot;,
+      &quot;tradeoff&quot;: &quot;Card lớn chiếm chỗ ưu đãi; UT chọn đúng dịch vụ và kể lại sẽ nhận gì.&quot;,
+      &quot;source&quot;: &quot;ref-layouts.tsx:VoucherLower; ref-layouts.css:804&quot;
+    },
+    {
+      &quot;block&quot;: &quot;Ưu đãi&quot;,
+      &quot;role&quot;: &quot;Khám phá lời đề nghị, khác với tài sản đã sở hữu&quot;,
+      &quot;observed&quot;: &quot;Rail Dành cho bạn + Xem tất cả, nhiều thương hiệu; chạm dispatch offers chung.&quot;,
+      &quot;keep/change&quot;: &quot;keep/change&quot;,
+      &quot;layoutDecision&quot;: &quot;Giữ rail để gợi ý, Xem tất cả cho tìm kiếm/so sánh; card mở đúng đề nghị và điều kiện thay vì chỉ mở catalog chung. Tách Đã lưu/của tôi khỏi đề nghị khám phá.&quot;,
+      &quot;why&quot;: &quot;Rail giới hạn lựa chọn ban đầu; đường đầy đủ hỗ trợ tác vụ tìm voucher cụ thể.&quot;,
+      &quot;tradeoff&quot;: &quot;Nội dung ngoài màn dễ bị bỏ qua; thử tìm thương hiệu thứ4 và tìm lại voucher sau lưu.&quot;,
+      &quot;source&quot;: &quot;ref-layouts.tsx:271–293; evidence/ux-baseline.png&quot;
+    },
+    {
+      &quot;block&quot;: &quot;Quà mỗi ngày&quot;,
+      &quot;role&quot;: &quot;Lời mời nhẹ, mở sâu khi có quan tâm&quot;,
+      &quot;observed&quot;: &quot;Story là item đầu rail112×160 tại y483; mở viewer bốn bước, scratch ở bước1. Normal pointer entry failed: adjacent Vinmec background intercepted click; four-step viewer is source behavior, not passed interaction.&quot;,
+      &quot;keep/change&quot;: &quot;keep/change&quot;,
+      &quot;layoutDecision&quot;: &quot;Fix pointer hit area/stacking before validating normal story opening. Giữ entry nhỏ; hiển thị trạng thái đã nhận và đích Quà của tôi sau nhận. Thưởng/điều kiện chỉ hiện khi có thật.&quot;,
+      &quot;why&quot;: &quot;Không để game lấn dịch vụ; sau nhận phải có giá trị dùng và nơi tìm lại, không chỉ animation.&quot;,
+      &quot;tradeoff&quot;: &quot;Thêm bước trước quà; cần kiểm tra khách hiểu thưởng/điều kiện và đi tiếp đâu.&quot;,
+      &quot;source&quot;: &quot;home-story.tsx:11–60; ref-layouts.tsx:273&quot;
+    },
+    {
+      &quot;block&quot;: &quot;Trải nghiệm&quot;,
+      &quot;role&quot;: &quot;Hình dung chuyến đi hoặc dịch vụ đáng tham gia&quot;,
+      &quot;observed&quot;: &quot;Hai ảnh lớn Lái thử VinFast/Đến với Đảo Ngọc; rail bắt đầu y713.&quot;,
+      &quot;keep/change&quot;: &quot;keep/change&quot;,
+      &quot;layoutDecision&quot;: &quot;Giữ ảnh lớn có chọn lọc; kèm giá hoặc nguyên tắc báo giá, điều kiện, địa điểm và bước tiếp rõ. Với tác vụ đặt cụ thể dùng list/lọc ở tầng sau.&quot;,
+      &quot;why&quot;: &quot;Ảnh phục vụ tưởng tượng; thông tin ràng buộc phục vụ quyết định. Ưu tiên sau tác vụ tần suất cao.&quot;,
+      &quot;tradeoff&quot;: &quot;Ảnh chiếm chiều cao và chưa chứng minh nhu cầu; UT tìm điều kiện và phân biệt xem thông tin/gửi yêu cầu/đã đặt.&quot;,
+      &quot;source&quot;: &quot;ref-layouts.tsx:ForYou; evidence/ux-baseline.png&quot;
+    },
+    {
+      &quot;block&quot;: &quot;Điều hướng và hoạt động&quot;,
+      &quot;role&quot;: &quot;Tìm lại tài sản, yêu cầu và hỗ trợ&quot;,
+      &quot;observed&quot;: &quot;Bottom Trang chủ/Ưu đãi/Sự kiện/Hạng; Home không có CTA cam kết đơn nhất.&quot;,
+      &quot;keep/change&quot;: &quot;keep/change&quot;,
+      &quot;layoutDecision&quot;: &quot;Giữ bottom ổn định; đặt trạng thái đã lưu/đang xử lý ở đúng hub; chỉ thêm CTA cố định trong flow có một cam kết.&quot;,
+      &quot;why&quot;: &quot;Home nhiều ý định không cần primary cố định. Tìm lại là phần tiếp theo của nhận quà/lưu deal/đăng ký.&quot;,
+      &quot;tradeoff&quot;: &quot;Thêm hub có thể tăng lựa chọn; UT quay lại tìm tài sản sau rời màn.&quot;,
+      &quot;source&quot;: &quot;page.tsx navigation; home-story.tsx campaign dispatch&quot;
+    }
+  ],
+  &quot;archivedLessons&quot;: [
+    {
+      &quot;lesson&quot;: &quot;Archive hierarchy2–8 changes skin/banner, header/paper/wallet palette and icon/art/photo filtering; it is primarily visual treatment, not seven new IA or behavioral models.&quot;,
+      &quot;source&quot;: &quot;hierarchy.ts:1; hierarchy.css:19–48; page.tsx:122&quot;,
+      &quot;evidenceType&quot;: &quot;source-note&quot;,
+      &quot;notProven&quot;: &quot;Archive label Các option chưa chọn is not a recorded user rejection.&quot;
+    },
+    {
+      &quot;lesson&quot;: &quot;Award belongs after an achievement; expiry only when assets actually expire; distant progress can discourage. Gate these by real state rather than permanent Home pressure.&quot;,
+      &quot;source&quot;: &quot;hooks.tsx:24–44 NOTES&quot;,
+      &quot;evidenceType&quot;: &quot;source-note&quot;,
+      &quot;notProven&quot;: &quot;Design judgements from competitor references, explicitly no usage data.&quot;
+    },
+    {
+      &quot;lesson&quot;: &quot;Scratch/gift can create a small entry but must connect to usable value; source itself warns opening then leaving and reward budget.&quot;,
+      &quot;source&quot;: &quot;hooks.tsx NOTES scratch/gift; home-story.tsx:45&quot;,
+      &quot;evidenceType&quot;: &quot;source-note&quot;,
+      &quot;notProven&quot;: &quot;No observed retention lift or stakeholder rejection.&quot;
+    }
+  ],
+  &quot;scenarios&quot;: [
+    {
+      &quot;id&quot;: &quot;daily&quot;,
+      &quot;audience&quot;: &quot;Hội viên đang có quyền lợi phù hợp&quot;,
+      &quot;openReason&quot;: &quot;Kiểm tra quà mới có điều kiện rõ&quot;,
+      &quot;homePriority&quot;: &quot;Trạng thái gọn → quà nhỏ → ưu đãi có thể dùng&quot;,
+      &quot;action&quot;: &quot;Mở quà, lưu vào kho, xem nơi dùng&quot;,
+      &quot;receivedValue&quot;: &quot;Quyền lợi xác nhận và có thể tìm lại&quot;,
+      &quot;returnReason&quot;: &quot;Có nội dung mới phù hợp hoặc quyền lợi cần dùng&quot;,
+      &quot;risk&quot;: &quot;Mở xong thoát, quà thiếu giá trị/ngân sách&quot;,
+      &quot;evidenceType&quot;: &quot;giả thuyết cần human UT; không có số conversion&quot;
+    },
+    {
+      &quot;id&quot;: &quot;spend&quot;,
+      &quot;audience&quot;: &quot;Khách chuẩn bị chi tiêu thật tại thương hiệu&quot;,
+      &quot;openReason&quot;: &quot;Tìm ưu đãi áp dụng cho giao dịch dự định&quot;,
+      &quot;homePriority&quot;: &quot;Dịch vụ/ưu đãi theo ngữ cảnh, tìm kiếm và Đã lưu&quot;,
+      &quot;action&quot;: &quot;Kiểm tra điều kiện rồi dùng đúng kênh&quot;,
+      &quot;receivedValue&quot;: &quot;Lợi ích đã áp dụng chỉ xác nhận sau giao dịch&quot;,
+      &quot;returnReason&quot;: &quot;Tra lịch sử/lợi ích thực nhận và lần mua tiếp&quot;,
+      &quot;risk&quot;: &quot;Nhầm % tối đa thành tiền tiết kiệm bảo đảm&quot;,
+      &quot;evidenceType&quot;: &quot;giả thuyết cần human UT; không có số conversion&quot;
+    },
+    {
+      &quot;id&quot;: &quot;experience&quot;,
+      &quot;audience&quot;: &quot;Khách có dự định cuối tuần hoặc dịch vụ lớn&quot;,
+      &quot;openReason&quot;: &quot;Khám phá lựa chọn phù hợp và điều kiện&quot;,
+      &quot;homePriority&quot;: &quot;Ảnh có chọn lọc → giá/địa điểm → chi tiết&quot;,
+      &quot;action&quot;: &quot;Xem điều kiện, lưu hoặc gửi yêu cầu có đồng ý&quot;,
+      &quot;receivedValue&quot;: &quot;Lựa chọn rõ; yêu cầu có mã/trạng thái nếu đã gửi&quot;,
+      &quot;returnReason&quot;: &quot;Theo dõi phản hồi hoặc tiếp tục kế hoạch đã lưu&quot;,
+      &quot;risk&quot;: &quot;Nhầm lead đã gửi thành booking đã xác nhận&quot;,
+      &quot;evidenceType&quot;: &quot;giả thuyết cần human UT; không có số conversion&quot;
+    }
+  ],
+  &quot;facts&quot;: {
+    &quot;walletHeights&quot;: {
+      &quot;viewportWidth&quot;: 390,
+      &quot;containerOption2&quot;: 198.984375,
+      &quot;coverOption2&quot;: 236.9921875,
+      &quot;containerOption1Source&quot;: 237,
+      &quot;differenceContainerOnly&quot;: 38.015625,
+      &quot;servicesY&quot;: 275.1953125,
+      &quot;giftRailY&quot;: 483.125,
+      &quot;experienceY&quot;: 713.0859375,
+      &quot;measurement&quot;: &quot;getBoundingClientRect after parent VinClub open; transforms produce fractional px&quot;
+    },
+    &quot;cssOverride&quot;: &quot;ref-layouts.css:413 reverses service copy for products3; :804 resets column so final is icon → title → description. hierarchy.css:53 champagne58% superseded by :69 gold30035%, then :75–76 gold50058%; :65 art saturation superseded :85 filter:none. WinMart paper :60 then :80 then :87 red100/orange50.&quot;,
+    &quot;scope&quot;: &quot;Read-only production review; writes restricted to report/evidence in vsp-ui.&quot;
+  }
+}</pre><a href="ux.json">Đọc JSON gốc</a></details><details><summary><strong>Business</strong> · Home đã chọn có cơ sở kinh tế khi nối điểm/ví đang có với quyền lợi dùng được và hành động mua hoặc hẹn thật. Quà mỗi ngày là chi phí kích hoạt cần chứng minh tăng thêm; ưu đãi tạo doanh số cho P&amp;L trước khi có thể tạo phần hưởng của nền tảng; khám phá trải nghiệm tạo nhu cầu trước khi thành lead đủ chuẩn. Chưa có bằng chứng phí, ngân sách, biên lợi nhuận hoặc kết quả triển khai để kết luận VinClub có lãi.</summary><pre>{
+  &quot;executiveFinding&quot;: &quot;Home đã chọn có cơ sở kinh tế khi nối điểm/ví đang có với quyền lợi dùng được và hành động mua hoặc hẹn thật. Quà mỗi ngày là chi phí kích hoạt cần chứng minh tăng thêm; ưu đãi tạo doanh số cho P&amp;L trước khi có thể tạo phần hưởng của nền tảng; khám phá trải nghiệm tạo nhu cầu trước khi thành lead đủ chuẩn. Chưa có bằng chứng phí, ngân sách, biên lợi nhuận hoặc kết quả triển khai để kết luận VinClub có lãi.&quot;,
+  &quot;chains&quot;: [
+    {
+      &quot;id&quot;: &quot;daily&quot;,
+      &quot;customerValue&quot;: &quot;Biết mình có gì, nhận quyền lợi phù hợp và dùng được ngay thay vì chỉ sưu tập vật phẩm.&quot;,
+      &quot;steps&quot;: [
+        &quot;Vào Home, thấy VPoint và quyền lợi khả dụng&quot;,
+        &quot;Mở story Quà mỗi ngày; xem điều kiện và kết quả thật từ hệ thống&quot;,
+        &quot;Nhận điểm/voucher vào ví quyền lợi với hạn và nơi dùng&quot;,
+        &quot;Chọn đổi hoặc dùng tại P&amp;L/merchant đủ điều kiện&quot;,
+        &quot;Điểm bán xác nhận sử dụng; đơn và phần điểm/tiền được đối chiếu&quot;,
+        &quot;Theo dõi hủy/hoàn, chi phí quyền lợi và lần sử dụng tiếp theo&quot;
+      ],
+      &quot;trigger&quot;: &quot;Sự kiện tạo giá trị là quyền lợi được sử dụng có xác nhận hoặc giao dịch mục tiêu hoàn tất; mở story và cào xong chỉ là tương tác.&quot;,
+      &quot;whoPays&quot;: &quot;P&amp;L/merchant hoặc ngân sách chiến dịch VinClub chịu tài trợ theo thỏa thuận chưa được cung cấp; khách trả phần còn lại nếu giao dịch có điều kiện chi tiêu.&quot;,
+      &quot;whoReceives&quot;: &quot;Khách nhận giá trị quyền lợi thực dùng; đơn vị bán nhận phần tiền hàng/dịch vụ và khoản bù ưu đãi nếu có cơ chế được duyệt.&quot;,
+      &quot;platformRevenue&quot;: &quot;Không có doanh thu trực tiếp được chứng minh từ nhận quà. Giá trị kỳ vọng là giao dịch tăng thêm và dùng chéo P&amp;L; chỉ tính phí hay phần hưởng khi hợp đồng và đối soát xác nhận. Mua/nạp VPoint và số dư ví không tự là doanh thu nền tảng.&quot;,
+      &quot;costs&quot;: [
+        &quot;Tài trợ điểm/voucher theo cơ chế phát hành và sử dụng&quot;,
+        &quot;Nguồn cung, tồn quà/suất, vận hành phát thưởng và hỗ trợ&quot;,
+        &quot;Gian lận, cấp trùng, hoàn/thu hồi, đối soát nghĩa vụ điểm&quot;,
+        &quot;Nội dung story và đo lường&quot;
+      ],
+      &quot;readiness&quot;: &quot;B3 ghi ví/sổ cái điểm, tiêu VPoint, phát hành/vòng đời voucher, portal điểm bán và đối soát HOÀN THÀNH; đây là trạng thái tài liệu cần nghiệm thu trong hành trình Home. Đổi quà và lịch sử/hạn điểm dự kiến 30/11/2026; không đồng nghĩa đã có nguồn quà hằng ngày. Demo ScratchRow chỉ đổi trạng thái local thành Quà đã mở; chưa phát thưởng, lưu entitlement hay xác nhận dùng thật.&quot;,
+      &quot;metric&quot;: &quot;Tỷ lệ quyền lợi được dùng có xác nhận trên số đã cấp; khách mua lặp sau sử dụng; tỷ lệ dùng chéo P&amp;L; chi phí mỗi người dùng tăng thêm. Khi đủ dữ liệu: lợi nhuận đóng góp tăng thêm = phần đóng góp giao dịch tăng thêm − tài trợ − phí biến đổi − gian lận − vận hành; đối chiếu nhóm holdout phù hợp.&quot;,
+      &quot;guardrail&quot;: &quot;Không mặc định tặng mỗi ngày vô hạn. Chỉ hiện quà có chủ ngân sách, tồn, điều kiện, hạn và đường dùng; ngừng cấp khi hết hạn mức. Không lấy DAU hoặc lượt cào làm chứng cứ có lãi.&quot;,
+      &quot;source&quot;: [
+        &quot;B3 hiện hành: 1.2.2.2; 1.2.3.5–8,11; 1.3.1.2–3; 4.4–4.6&quot;,
+        &quot;home-story.tsx: HomeStory bước mở thẻ cào và chuyển sang Ưu đãi&quot;,
+        &quot;ref-layouts.tsx: ScratchRow, OffersPage dùng state mẫu&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;spend&quot;,
+      &quot;customerValue&quot;: &quot;Chọn ưu đãi đúng nhu cầu và thương hiệu, biết số tiền thực trả, nơi hoàn tất và cách dùng VPoint.&quot;,
+      &quot;steps&quot;: [
+        &quot;Thấy voucher thương hiệu có ngữ cảnh trên Home&quot;,
+        &quot;Xem mức hưởng, điều kiện, hạn, địa điểm và tồn&quot;,
+        &quot;Nhận/chọn voucher hoặc đổi bằng VPoint&quot;,
+        &quot;Chuyển tới điểm bán/kênh đặt dịch vụ được nêu rõ&quot;,
+        &quot;Đơn vị bán xác nhận giao dịch và dùng voucher; Merchant Portal nhận số tiền và ảnh hóa đơn khi chưa tích hợp POS&quot;,
+        &quot;Loại đơn hủy/hoàn và đối soát tiền hàng, tài trợ, điểm, phần hưởng nền tảng nếu có&quot;
+      ],
+      &quot;trigger&quot;: &quot;Giao dịch hợp lệ sau hủy/hoàn và xác nhận sử dụng ưu đãi; với đối tác ngoài cần attribution và kết quả chuyển đổi được đối tác xác nhận.&quot;,
+      &quot;whoPays&quot;: &quot;Khách thanh toán tiền hàng; nhà tài trợ chịu giảm giá/điểm theo chiến dịch; đối tác trả hoa hồng hoặc phí chỉ nếu đã thỏa thuận.&quot;,
+      &quot;whoReceives&quot;: &quot;P&amp;L/merchant cung ứng nhận tiền bán; khách nhận lợi ích thực dùng; nền tảng chỉ nhận phần được xác nhận theo mô hình hợp tác.&quot;,
+      &quot;platformRevenue&quot;: &quot;Doanh số P&amp;L và GMV phải báo cáo riêng với doanh thu/phần hưởng VinClub hoặc VinPay. B3 nêu mô hình giới thiệu hưởng hoa hồng ngoài HST nhưng chưa có biểu phí hay đối tác ký kết. Phí thanh toán cũng chưa được chứng minh; thanh toán qua ví không tự tạo doanh thu phí.&quot;,
+      &quot;costs&quot;: [
+        &quot;Phần giảm giá/hoàn điểm do từng bên chịu&quot;,
+        &quot;Tích hợp, phát mã, xác thực hóa đơn, chống dùng lặp&quot;,
+        &quot;Phí thanh toán và chi phí phục vụ nếu mô hình thực tế phát sinh&quot;,
+        &quot;Hỗ trợ, xử lý hủy/hoàn và đối soát merchant&quot;
+      ],
+      &quot;readiness&quot;: &quot;B3 ưu tiên SPDV nội bộ theo thu lead, mua trực tiếp hoặc voucher; vé sự kiện dự kiến 31/12/2026 nhưng phụ thuộc nguồn vé/lịch. Merchant Portal xác nhận hóa đơn dự kiến 24/12/2026, không tích hợp POS. Affiliate ngoài HST chưa có deadline hiện hành, phụ thuộc thỏa thuận và kết nối. Demo OfferCards chỉ chuyển tới Ưu đãi; OffersPage gắn Đã dùng bằng state local, chưa chứng minh mua hay redemption.&quot;,
+      &quot;metric&quot;: &quot;Giao dịch hợp lệ có attribution; tỷ lệ dùng voucher đến mua; chi tiêu và lợi nhuận đóng góp tăng thêm so với nhóm đối chứng; tỷ lệ hủy/hoàn và sai lệch đối soát; phần hưởng nền tảng đã xác nhận, tách tổng tiền đơn.&quot;,
+      &quot;guardrail&quot;: &quot;Không nhầm trợ giá với cầu tăng thêm: khách vốn sẽ mua vẫn có thể nhận giảm giá. Chỉ mở thương hiệu có nguồn cung và xác nhận dùng; không hứa checkout thống nhất khi giao dịch kết thúc ở đối tác.&quot;,
+      &quot;source&quot;: [
+        &quot;B1: 2.1, hoa hồng đối tác là nguồn thu phụ&quot;,
+        &quot;B3 hiện hành: 2.1.2–4, 2.1.4.4; 1.2.2.1; 1.2.4.7&quot;,
+        &quot;ref-layouts.tsx: OfferCards, OffersPage, MINE_VOUCHERS là dữ liệu mẫu&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;experience&quot;,
+      &quot;customerValue&quot;: &quot;Khám phá xe, nhà hoặc kỳ nghỉ để hiểu lựa chọn, rồi chủ động đăng ký tư vấn/lịch trải nghiệm phù hợp.&quot;,
+      &quot;steps&quot;: [
+        &quot;Mở card khám phá trên Home&quot;,
+        &quot;Xem thông tin/sa bàn hoặc nội dung giới thiệu có nguồn cung&quot;,
+        &quot;Chọn sản phẩm, khu vực, nhu cầu và khung giờ&quot;,
+        &quot;Đồng ý chuyển dữ liệu tối thiểu cho P&amp;L cụ thể&quot;,
+        &quot;P&amp;L tiếp nhận, kiểm tra lead trùng và đủ chuẩn, xác nhận lịch&quot;,
+        &quot;Ghi nhận đến hẹn, giao dịch sau trải nghiệm và kết quả hủy/hoàn; phản hồi trạng thái về VinClub&quot;
+      ],
+      &quot;trigger&quot;: &quot;Lead được P&amp;L chấp nhận đủ chuẩn và lịch hẹn được xác nhận là giá trị vận hành ban đầu; tham dự và giao dịch là kết quả sau đó. Chỉ có sự kiện tính phí khi thỏa thuận quy định rõ.&quot;,
+      &quot;whoPays&quot;: &quot;P&amp;L và/hoặc VinClub chịu chi phí nội dung, sa bàn, thu nhận và chăm sóc lead theo phân công chưa chốt; khách chỉ trả cho SPDV/đặt chỗ khi hành trình bán tương ứng sẵn sàng.&quot;,
+      &quot;whoReceives&quot;: &quot;P&amp;L nhận nhu cầu và cơ hội bán, nhận tiền giao dịch SPDV thực tế; khách nhận tư vấn/trải nghiệm được xác nhận.&quot;,
+      &quot;platformRevenue&quot;: &quot;Chưa có bằng chứng phí lead, phí lịch hẹn hay hoa hồng bán xe/nhà. Đánh giá trước bằng chi phí mỗi lead được chấp nhận, mỗi lịch tham dự và đóng góp doanh số P&amp;L có attribution; không ghi giá trị nhà/xe, tiền cọc hay lượt xem 3D thành doanh thu VinClub.&quot;,
+      &quot;costs&quot;: [
+        &quot;Dữ liệu và sản xuất nội dung/3D, tối ưu thiết bị&quot;,
+        &quot;Tích hợp chuyển lead, điều phối lịch và phản hồi trạng thái&quot;,
+        &quot;Nhân sự P&amp;L tiếp nhận, tư vấn, tổ chức trải nghiệm&quot;,
+        &quot;Quà thu hút, chống lead rác/trùng và hỗ trợ khách&quot;
+      ],
+      &quot;readiness&quot;: &quot;B3 đặt khám phá sa bàn, trợ lý và lịch trải nghiệm mốc 31/12/2026; tái sử dụng dữ liệu Vinhomes Market và phụ thuộc nguồn P&amp;L. Cửa VinFast 22/01/2027 và Vinhomes 29/01/2027 dự kiến chuyển nhu cầu với consent. Demo ForYou chỉ mở BottomSheet ảnh/mô tả; chưa có form, consent, tiếp nhận lead hay lịch hẹn.&quot;,
+      &quot;metric&quot;: &quot;Tỷ lệ lead được P&amp;L chấp nhận; thời gian tiếp nhận; lịch xác nhận/lead; tham dự/lịch; giao dịch/lead theo cửa sổ attribution thống nhất; chi phí mỗi lead đủ chuẩn và mỗi lịch tham dự, kèm tỷ lệ trùng/rác.&quot;,
+      &quot;guardrail&quot;: &quot;Có người nhận và SLA trước khi mở form. Không tự xác nhận lịch khi P&amp;L chưa có suất. Chỉ thu dữ liệu phục vụ mục đích đã đồng ý; không gộp lượt khám phá, lead, lịch và doanh số thành một conversion.&quot;,
+      &quot;source&quot;: [
+        &quot;B1: 2.2, Sales Kit và thử nghiệm Đảo Ngọc Ocean Park 3&quot;,
+        &quot;B3 hiện hành: 2.2.1.1–3; 2.2.2; 1.3.2.2–3&quot;,
+        &quot;ref-layouts.tsx: FOR_YOU và ForYou BottomSheet&quot;
+      ]
+    }
+  ],
+  &quot;sourceVsUnknown&quot;: {
+    &quot;confirmedInSource&quot;: [
+      &quot;B3 hiện hành ghi nền tảng điểm, voucher, portal và nhiều nhánh đối soát HOÀN THÀNH; đây là bằng chứng kế hoạch/trạng thái nguồn, chưa là kiểm thử production&quot;,
+      &quot;Merchant Portal được định hướng xác nhận tại gian hàng không cần POS, nhập số tiền và ảnh hóa đơn&quot;,
+      &quot;Mô hình ngoài HST là giới thiệu hưởng hoa hồng với phụ thuộc thỏa thuận, chuyển đổi và đối soát&quot;,
+      &quot;Source demo có ví/điểm, story quà, voucher thương hiệu và card trải nghiệm; số dư, tỷ lệ ưu đãi và kết quả nhận/dùng là mẫu&quot;
+    ],
+    &quot;unknownBeforeCommitment&quot;: [
+      &quot;Chủ ngân sách và giá vốn từng quyền lợi; cơ chế nghĩa vụ điểm và bù trừ giữa các đơn vị&quot;,
+      &quot;Danh sách P&amp;L/merchant cam kết nguồn cung, tồn, người vận hành và thời gian hỗ trợ&quot;,
+      &quot;Hợp đồng phần hưởng nền tảng, phí, thời điểm xác nhận và điều kiện hủy/hoàn&quot;,
+      &quot;Tracking xuyên kênh, tỷ lệ khớp hóa đơn/đơn và phản hồi kết quả từ P&amp;L&quot;,
+      &quot;Chi tiêu nền, biên đóng góp, chi phí thực phục vụ và mức tăng thêm so với holdout&quot;
+    ],
+    &quot;historyRule&quot;: &quot;Chỉ dùng mốc SHEET B3 hiện hành. Không chuyển deadline 30/06/2027 hay 30/09/2027 trong B3_ARCHIVED thành cam kết hiện hành; B1/B2 cung cấp định hướng, không chứng minh tiến độ.&quot;
+  },
+  &quot;phaseFeb2027&quot;: {
+    &quot;decision&quot;: &quot;Ưu tiên vòng kín quyền lợi → sử dụng → đối soát, kèm một luồng O2O có P&amp;L nhận lead. Home giữ vai trò lối vào; không mở rộng nguồn thu chỉ vì có card.&quot;,
+    &quot;sourceMilestones&quot;: [
+      &quot;Quà chào mừng và định danh chia sẻ: 24/12/2026; ưu đãi giao dịch: 15/01/2027&quot;,
+      &quot;Voucher/quà và lịch sử điểm: 30/11/2026; đối soát điểm: 24/12/2026&quot;,
+      &quot;VinPay SDK trên VinClub: 24/12/2026; QR/hóa đơn/thanh toán nhúng: 31/12/2026, phụ thuộc nền tảng tích hợp&quot;,
+      &quot;Khấu trừ VPoint trong thanh toán: 28/02/2027; không hứa phối hợp điểm + tiền toàn bộ sớm hơn nghiệm thu&quot;,
+      &quot;5 cửa Tết dự kiến lần lượt 15/01, 22/01, 29/01, 05/02, 12/02; hoàn tất 19/02 và tổng kết 26/02/2027; thứ tự có thể đổi theo readiness&quot;
+    ],
+    &quot;releaseGate&quot;: &quot;Một quyền lợi có chủ tài trợ/tồn/hạn/đường dùng và xác nhận merchant; một voucher đi đến giao dịch có đối soát; một trải nghiệm có consent, lead được nhận và lịch phản hồi. Chỉ mở các nhánh vượt gate, ghi rõ chưa có dữ liệu tăng thêm khi mới chạy.&quot;,
+    &quot;review&quot;: &quot;Báo cáo đồng thời tiền hàng P&amp;L, quyền lợi đã dùng, chi phí tài trợ, sai lệch và phần hưởng nền tảng đã xác nhận; dùng holdout nếu đủ mẫu để tránh kết luận từ mùa Tết hoặc lượt mở app.&quot;
+  },
+  &quot;end2027&quot;: {
+    &quot;status&quot;: &quot;Đề xuất mục tiêu và điều kiện đầu tư, không phải deadline đã được B3 hiện hành cam kết.&quot;,
+    &quot;target&quot;: &quot;Nhân rộng những vòng tạo giá trị đã đo được: ưu đãi theo ngữ cảnh có giao dịch xác nhận, O2O có tiếp nhận và tham dự, quyền lợi được dùng lại với chi phí kiểm soát được.&quot;,
+    &quot;conditions&quot;: [
+      &quot;Ký mô hình đối tác và xác định phần hưởng, dữ liệu chuyển đổi, hủy/hoàn trước khi mở affiliate&quot;,
+      &quot;Chỉ tăng ngân sách quà khi chứng minh lợi nhuận đóng góp hoặc mục tiêu tăng thêm có ngưỡng được chủ ngân sách duyệt&quot;,
+      &quot;Chuẩn hóa chương trình tái sử dụng theo mốc B3 30/06/2027, rồi đánh giá độ bền sau mùa chiến dịch&quot;,
+      &quot;Bundle chỉ mở với cấu phần, giá so mua lẻ, tồn/công suất, quyền dùng và phân bổ doanh thu liên P&amp;L; không mặc định thuê bao hội viên&quot;
+    ],
+    &quot;success&quot;: &quot;Có thể đối chiếu riêng giá trị khách nhận, đóng góp bán hàng P&amp;L, tiền nền tảng thực hưởng và toàn bộ chi phí biến đổi; có kết quả tăng thêm đủ cơ sở để quyết định mở rộng.&quot;
+  },
+  &quot;recommendation&quot;: &quot;Chốt hướng wallet/points + story gift + brand offers + experience với ba hợp đồng vận hành trước: ai tài trợ và xác nhận dùng quà; ai xác nhận đơn và phần hưởng ưu đãi; ai nhận và phản hồi lead/lịch. Dồn đầu tư giai đoạn đầu vào vòng kín redemption và kết quả P&amp;L, giới hạn quà theo ngân sách có thật, thí điểm O2O hẹp. Chưa dùng nhận quà để chứng minh giữ chân hay dùng doanh số P&amp;L để chứng minh doanh thu nền tảng. Chưa lấy chat/AI làm phụ thuộc ra mắt vì B3 ghi Duhat chưa có kế hoạch SDK.&quot;
+}</pre><a href="business.json">Đọc JSON gốc</a></details><details><summary><strong>Product</strong> · Giữ một Home chung đã có lựa chọn; dùng ba composition theo hoàn cảnh để kiểm chứng ba vòng giá trị khác nhau. Ưu tiên chứng minh quyền lợi hiện hữu dùng được trong một đơn hàng; quà hằng ngày và O2O là hai nhánh thử có điều kiện riêng. Chưa có dữ liệu để tuyên bố một nhánh thắng.</summary><pre>{
+  &quot;role&quot;: &quot;Product&quot;,
+  &quot;executiveRecommendation&quot;: &quot;Giữ một Home chung đã có lựa chọn; dùng ba composition theo hoàn cảnh để kiểm chứng ba vòng giá trị khác nhau. Ưu tiên chứng minh quyền lợi hiện hữu dùng được trong một đơn hàng; quà hằng ngày và O2O là hai nhánh thử có điều kiện riêng. Chưa có dữ liệu để tuyên bố một nhánh thắng.&quot;,
+  &quot;problem&quot;: &quot;Home hiện diễn đạt hạng, điểm, ví, dịch vụ và ưu đãi, nhưng một thao tác nhận quà hay mở bài trải nghiệm chưa chứng minh khách đã nhận giá trị thực, hoàn tất mua hàng hoặc có lịch hẹn được P&amp;L tiếp nhận. Cần nối lý do mở app tới hành động, kết quả và lý do quay lại mà không xóa lịch sử V1–V4.&quot;,
+  &quot;evidenceBoundary&quot;: {
+    &quot;observed&quot;: &quot;Đọc code nguồn; chưa tự xác minh baseline đang render hay API production. HOÀN THÀNH là trạng thái trong B3, không phải kết luận QA vận hành.&quot;,
+    &quot;chosenSourceTheme&quot;: &quot;Nguồn có points+wallet, hai dịch vụ, ưu đãi/story, feed trải nghiệm; giữ theme và ảnh nguồn như giả định thiết kế đã chọn. Không suy diễn theme là kết quả UT.&quot;,
+    &quot;freshHypothesis&quot;: &quot;Ba scenario daily/spend/experience cùng đường đi tiếp theo và điều kiện nghiệm thu là đề xuất mới để thử; chưa phải quyết định chiến lược đã chốt.&quot;,
+    &quot;sources&quot;: [
+      &quot;vinclub-home/page.tsx:41,69&quot;,
+      &quot;vinclub-home/ref-layouts.tsx:38–53,HOOK_DETAILS,FOR_YOU&quot;,
+      &quot;vinclub-home/hooks.tsx:gift,voucher và nhược điểm mở xong thoát&quot;,
+      &quot;vinclub-home/home-story.tsx:story và điều hướng ưu đãi&quot;,
+      &quot;/tmp/vinclub-strategy.txt — SHEET B3 hiện hành, không dùng B3_ARCHIVED để cam kết hạn&quot;,
+      &quot;/tmp/dao-ngoc-report-text.txt — báo cáo bản dùng thử 31/10, kế hoạch 07/11&quot;
+    ]
+  },
+  &quot;preserveDecisions&quot;: [
+    {
+      &quot;decision&quot;: &quot;Giữ V1–V4 và thêm v5 độc lập&quot;,
+      &quot;status&quot;: &quot;Ràng buộc nhiệm vụ, không ghi đè lựa chọn cũ&quot;
+    },
+    {
+      &quot;decision&quot;: &quot;Header1, wallet2, products3, vouchers1, feed2, style3, pos1&quot;,
+      &quot;status&quot;: &quot;Code đánh dấu CONFIRMED_STACK_OPTIONS; đây là lựa chọn được ghi nhận&quot;
+    },
+    {
+      &quot;decision&quot;: &quot;Hai dịch vụ, story có mặt, gift ba thẻ/tone2&quot;,
+      &quot;status&quot;: &quot;Giá trị mặc định source; không nâng thành quyết định đã chốt&quot;
+    },
+    {
+      &quot;decision&quot;: &quot;Hạng và VPoint mở Hội viên; ví mở ngữ cảnh ví; service/offer/experience có đích riêng&quot;,
+      &quot;status&quot;: &quot;Bảo tồn mô hình điều hướng source&quot;
+    },
+    {
+      &quot;decision&quot;: &quot;Không đặt CTA primary cố định ép mọi khách làm một việc trên Home&quot;,
+      &quot;status&quot;: &quot;Quyết định v5 phù hợp Home nhiều nhu cầu; CTA chính ở tác vụ cụ thể&quot;
+    },
+    {
+      &quot;decision&quot;: &quot;V5 dùng VinFast lái thử với ảnh vinfast-day-v1.png; ghi nhận mismatch Đảo Ngọc là bằng chứng nội dung, không sửa source&quot;,
+      &quot;status&quot;: &quot;Báo cáo nguồn; sửa ngữ nghĩa card nghỉ dưỡng biển hiện có nếu dùng cho cùng dự án&quot;
+    }
+  ],
+  &quot;scenarios&quot;: [
+    {
+      &quot;id&quot;: &quot;daily&quot;,
+      &quot;title&quot;: &quot;Được nhận diện → mở quà → dùng quyền lợi&quot;,
+      &quot;user&quot;: &quot;Hội viên đã kích hoạt, có điểm/quyền lợi; đang mở app khám phá, chưa có nhu cầu mua ngay&quot;,
+      &quot;job&quot;: &quot;Biết hôm nay mình được gì và dùng được ở đâu&quot;,
+      &quot;loop&quot;: {
+        &quot;open&quot;: &quot;Nhận diện hạng và quyền lợi đang có&quot;,
+        &quot;action&quot;: &quot;Xem điều kiện, nhận một quà mẫu&quot;,
+        &quot;value&quot;: &quot;Quà xuất hiện trong tài sản và dẫn sang một nơi áp dụng phù hợp&quot;,
+        &quot;return&quot;: &quot;Theo dõi quà còn hạn hoặc lần dùng tiếp theo; không chỉ chuỗi điểm danh&quot;
+      },
+      &quot;scope&quot;: &quot;Demo nhận quà một lần trong phiên, trạng thái đã nhận, tài sản đã lưu và đích sử dụng; không biến +50 điểm mẫu thành số dư thật&quot;,
+      &quot;acceptance&quot;: [
+        &quot;Trước khi nhận thấy điều kiện và thời hạn&quot;,
+        &quot;Nhận lại không cấp trùng trong cùng phiên&quot;,
+        &quot;Nhận xong có quyền lợi trong tài sản, quay lại vẫn tìm được trong phiên&quot;,
+        &quot;Có đường dùng thưởng; đo cả sử dụng sau nhận thay vì chỉ số lượt mở&quot;
+      ],
+      &quot;dependency&quot;: [
+        &quot;Nguồn ngân sách/quà và người chịu chi&quot;,
+        &quot;Danh mục, tồn kho, luật cấp và chống trùng&quot;,
+        &quot;Dữ liệu hạng và xác nhận giao dịch từ P&amp;L&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;spend&quot;,
+      &quot;title&quot;: &quot;Voucher đang có → đơn hai vé → số phải trả rõ&quot;,
+      &quot;user&quot;: &quot;Hội viên đã có voucher, đang có nhu cầu mua hai vé mẫu&quot;,
+      &quot;job&quot;: &quot;Tìm tài sản hiện có và dùng đúng quyền lợi cho một đơn cụ thể&quot;,
+      &quot;loop&quot;: {
+        &quot;open&quot;: &quot;Có nhu cầu mua vé hoặc sắp hết hạn voucher&quot;,
+        &quot;action&quot;: &quot;Từ voucher hiện có sang đơn hai vé, xem điều kiện và áp dụng&quot;,
+        &quot;value&quot;: &quot;Thấy giá gốc, giảm, điểm nếu đủ điều kiện, số phải trả và kết quả mẫu&quot;,
+        &quot;return&quot;: &quot;Tìm lại vé/quyền lợi còn lại và trạng thái giao dịch&quot;
+      },
+      &quot;scope&quot;: &quot;Đơn mẫu hai vé và voucher mẫu hợp lệ/không hợp lệ; không đồng nhất xác nhận demo với thanh toán hay phát hành vé thật&quot;,
+      &quot;acceptance&quot;: [
+        &quot;Tìm được voucher đã sở hữu mà không phải đổi lại&quot;,
+        &quot;Hiện đơn tối thiểu, hạn và phạm vi áp dụng trước xác nhận&quot;,
+        &quot;Tổng tiền khớp số lượng hai vé; không giảm hai lần khi thao tác lặp&quot;,
+        &quot;Có trạng thái kết quả và đường về tài sản; lỗi điều kiện không làm mất voucher&quot;
+      ],
+      &quot;dependency&quot;: [
+        &quot;Nguồn vé, zone, lịch và tồn của VP-OTA/Vinpearl/VinWonders/VEC&quot;,
+        &quot;SDK ví và trạng thái thanh toán–đơn hàng&quot;,
+        &quot;Luật kết hợp voucher/VPoint, hoàn/hủy và đối soát&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;experience&quot;,
+      &quot;title&quot;: &quot;Ảnh lớn → tự khám phá → yêu cầu lịch trải nghiệm&quot;,
+      &quot;user&quot;: &quot;Khách quan tâm nhà/xe, cần hình dung trước khi quyết định; có thể đến từ sales kit&quot;,
+      &quot;job&quot;: &quot;Khám phá theo nhịp riêng và gửi một nhu cầu tư vấn/tham quan rõ ràng&quot;,
+      &quot;loop&quot;: {
+        &quot;open&quot;: &quot;Tò mò hoặc đang cân nhắc một dự án/sản phẩm&quot;,
+        &quot;action&quot;: &quot;Xem hình/không gian, chọn đối tượng quan tâm, gửi yêu cầu cùng consent&quot;,
+        &quot;value&quot;: &quot;Có mã yêu cầu và trạng thái chờ tiếp nhận; lịch chỉ xác nhận khi P&amp;L trả về&quot;,
+        &quot;return&quot;: &quot;Xem trạng thái, lịch được xác nhận và chuẩn bị chuyến đi&quot;
+      },
+      &quot;scope&quot;: &quot;V5 dùng art VinFast hiện có, thông tin xe và form yêu cầu lái thử mẫu, kết quả phiên; không giả lập 3D đã tích hợp, lead thật hay lịch hẹn đã được chấp nhận&quot;,
+      &quot;acceptance&quot;: [
+        &quot;Dùng đúng VinFast và mục đích lái thử; không tái sử dụng card Đảo Ngọc nghỉ dưỡng cho dự án nhà ở&quot;,
+        &quot;Xem thông tin không bị bắt buộc mở trợ lý&quot;,
+        &quot;Consent chủ động trước chuyển dữ liệu; kiểm tra trường bắt buộc&quot;,
+        &quot;Gửi xong ghi rõ yêu cầu mẫu/chờ xác nhận, không nói lịch đã được giữ&quot;,
+        &quot;Có quay lại/đổi hoặc hủy yêu cầu trong demo nếu hỗ trợ&quot;
+      ],
+      &quot;dependency&quot;: [
+        &quot;Bản vẽ, dữ liệu 3D và thông tin/giỏ hàng do P&amp;L cung cấp&quot;,
+        &quot;Bản nhẹ và kiểm thử hiệu năng thiết bị di động&quot;,
+        &quot;Đơn vị tiếp nhận, SLA và phản hồi trạng thái lịch&quot;,
+        &quot;Quyền dữ liệu, phạm vi cung ứng và điều kiện đặt cọc nếu bổ sung sau&quot;
+      ]
+    }
+  ],
+  &quot;phases&quot;: {
+    &quot;current&quot;: {
+      &quot;user&quot;: &quot;Hội viên hiện hữu và người dùng demo&quot;,
+      &quot;journey&quot;: &quot;Baseline source có Home, Hội viên, ví/activation, offers, story và nội dung trải nghiệm; khả năng tích hợp chưa xác minh&quot;,
+      &quot;capability&quot;: &quot;B3 ghi hoàn thành tài khoản, hợp nhất danh tính, eKYC, consent, sổ cái/tiêu điểm, xét hạng và hồ sơ hạng&quot;,
+      &quot;dependency&quot;: &quot;Tách code demo, trạng thái roadmap và năng lực production&quot;,
+      &quot;acceptance&quot;: &quot;Chạy được ba đường demo với dữ liệu mẫu và ghi rõ các gap&quot;,
+      &quot;dateSource&quot;: &quot;Quan sát source tại lần review; không coi là release production&quot;,
+      &quot;certainty&quot;: &quot;Cao với giá trị code; giới hạn với readiness vận hành&quot;
+    },
+    &quot;feb2027&quot;: {
+      &quot;user&quot;: &quot;Hội viên có quyền lợi, khách mua vé và khách quan tâm O2O&quot;,
+      &quot;journey&quot;: &quot;Gia nhập/nhận quà → dùng quyền lợi/đặt vé; khám phá → yêu cầu lịch; VPoint khấu trừ tại thanh toán khi sẵn sàng&quot;,
+      &quot;capability&quot;: &quot;B3: đổi voucher 30/11/2026; nguồn tiền SDK 24/12/2026; vé sự kiện và O2O 31/12/2026; VPoint khấu trừ 28/02/2027; chiến dịch 5 cửa 15/01–26/02/2027&quot;,
+      &quot;dependency&quot;: &quot;Vé phụ thuộc nguồn nội dung và zone; thanh toán phụ thuộc nền tảng kết nối; lịch O2O phụ thuộc P&amp;L tiếp nhận; quà cần ngân sách và luật cấp&quot;,
+      &quot;acceptance&quot;: &quot;Có xác nhận/hoàn/hủy, đối soát và xử lý lỗi thật trước mở giao dịch; lịch có phản hồi P&amp;L; chiến dịch có trạng thái cửa chưa mở&quot;,
+      &quot;dateSource&quot;: &quot;SHEET B3 hiện hành, các hàng có hạn ≤28/02/2027&quot;,
+      &quot;certainty&quot;: &quot;Hạn được ghi trong kế hoạch; chưa chứng minh đã giao. Thứ tự và danh mục cửa được B3 cho phép điều chỉnh&quot;
+    },
+    &quot;end2027&quot;: {
+      &quot;user&quot;: &quot;Mở rộng theo nguồn cung và đối tượng đã chứng minh giá trị&quot;,
+      &quot;journey&quot;: &quot;Tái sử dụng chiến dịch đã vận hành, mở rộng danh mục có kết quả theo dõi được; không mặc định mở super-app&quot;,
+      &quot;capability&quot;: &quot;Mục tái sử dụng chiến dịch có hạn 30/06/2027. Marketplace AI, đối tác ngoài, Vincom catalogue, cư dân số và đặc quyền cao cấp là hướng phát triển/điều kiện, chưa có hạn cuối 2027 trong B3 hiện hành&quot;,
+      &quot;dependency&quot;: &quot;Duhat chưa có kế hoạch SDK; dữ liệu catalogue/tồn kho; 3D mobile; nhân lực, chính sách và nguồn cung P&amp;L&quot;,
+      &quot;acceptance&quot;: &quot;Chỉ mở nhánh mới khi có supply owner, API/đối soát hoặc chuyển giao có xác nhận, và phép thử riêng&quot;,
+      &quot;dateSource&quot;: &quot;B3 hiện hành; không dùng ngày trong B3_ARCHIVED làm cam kết&quot;,
+      &quot;certainty&quot;: &quot;Cao rằng 30/06 là hạn của tái sử dụng chiến dịch; thấp/chưa chốt với scope mở rộng đến cuối năm&quot;
+    }
+  },
+  &quot;compareCriteria&quot;: [
+    {
+      &quot;criterion&quot;: &quot;Hoàn tất job riêng&quot;,
+      &quot;method&quot;: &quot;Daily: từ nhận tới dùng; Spend: áp dụng đúng và tìm lại tài sản; Experience: gửi nhu cầu hợp lệ và hiểu trạng thái lịch&quot;,
+      &quot;gate&quot;: &quot;Lỗi chặn tác vụ loại khỏi khuyến nghị, không bù bằng điểm thẩm mỹ&quot;
+    },
+    {
+      &quot;criterion&quot;: &quot;Tìm đường trên Home chung&quot;,
+      &quot;method&quot;: &quot;Cùng kiểm tra tìm VPoint, ví, voucher, dịch vụ và trải nghiệm; tác vụ này so tính phủ, không dùng để chọn chiến lược tăng trưởng&quot;
+    },
+    {
+      &quot;criterion&quot;: &quot;Giá trị và chi phí vận hành&quot;,
+      &quot;method&quot;: &quot;Đo giá trị đã dùng, giao dịch gia tăng hoặc lead được chấp nhận; gắn ngân sách thưởng, đối soát, SLA theo scenario&quot;
+    },
+    {
+      &quot;criterion&quot;: &quot;Mức sẵn sàng&quot;,
+      &quot;method&quot;: &quot;Supply, dữ liệu, tích hợp, xử lý thất bại, nguồn lực; chỉ chấm bằng bằng chứng&quot;
+    },
+    {
+      &quot;criterion&quot;: &quot;Chất lượng thiết kế&quot;,
+      &quot;method&quot;: &quot;Hierarchy, trục chữ, đọc điều kiện, trạng thái và khả năng thao tác; theme đẹp không chứng minh retention&quot;
+    }
+  ],
+  &quot;philosophy&quot;: {
+    &quot;product&quot;: [
+      {
+        &quot;principle&quot;: &quot;Quyền lợi phải dùng được&quot;,
+        &quot;decision&quot;: &quot;Mọi quà có tài sản, điều kiện và đích sử dụng; không kết thúc ở Đã nhận&quot;
+      },
+      {
+        &quot;principle&quot;: &quot;Thành viên được nhận diện trước khi bị chào bán&quot;,
+        &quot;decision&quot;: &quot;Giữ hạng/điểm ở đầu Home, dùng quyền lợi hiện có trước yêu cầu mua thêm&quot;
+      },
+      {
+        &quot;principle&quot;: &quot;Khám phá dẫn tới hành động thực có tiếp nhận&quot;,
+        &quot;decision&quot;: &quot;O2O giữ tự khám phá và form yêu cầu; chưa có P&amp;L phản hồi thì chỉ là chờ xác nhận&quot;
+      }
+    ],
+    &quot;design&quot;: [
+      {
+        &quot;principle&quot;: &quot;Giảm cạnh tranh giữa các lớp nội dung&quot;,
+        &quot;decision&quot;: &quot;Giữ wallet option2 (giảm không gian container dự trữ/độ chồng, không khẳng định thu nhỏ vật thể ví: cover vẫn 237px), hai service lợi ích trước option3, rail offer/story và feed ảnh lớn option2; không thêm primary CTA toàn Home&quot;
+      },
+      {
+        &quot;principle&quot;: &quot;Thông tin đi cùng lựa chọn&quot;,
+        &quot;decision&quot;: &quot;Điều kiện/giá cuối/consent nằm ngay trước hành động có hệ quả; trạng thái sau thao tác phải được phản ánh trong tài sản&quot;
+      }
+    ],
+    &quot;language&quot;: &quot;Giữ theme đã chọn từ nguồn, icon/art phục vụ phân biệt dịch vụ; dùng chữ cụ thể như Đã lưu, Chờ xác nhận, Dữ liệu mẫu. Không thay thành trăm skin để gọi là trăm UX.&quot;,
+    &quot;businessBoundary&quot;: &quot;Mở app, nhận quà, gửi form và click đối tác là hành vi trung gian. Chỉ ghi doanh thu/giá trị thương mại khi có kết quả giao dịch hoặc lead và quy tắc ghi nhận được xác nhận.&quot;
+  },
+  &quot;testPlan&quot;: {
+    &quot;automated&quot;: {
+      &quot;status&quot;: &quot;Protocol đề xuất; Product chưa thực thi renderer QA&quot;,
+      &quot;checks&quot;: [
+        &quot;Ba scenario mở đúng đích, back/close giữ ngữ cảnh&quot;,
+        &quot;Nhận quà không trùng trong phiên, tài sản phản ánh trạng thái&quot;,
+        &quot;Đơn hai vé tính đúng; voucher không hợp lệ có lý do; thao tác lặp không nhân giảm&quot;,
+        &quot;Form O2O chặn thiếu trường/consent, kết quả ghi đúng trạng thái mẫu&quot;,
+        &quot;Responsive, keyboard, tên truy cập, không tràn vùng FixedBottom/Home indicator&quot;,
+        &quot;V1–V4 còn truy cập và không bị ghi đè&quot;
+      ]
+    },
+    &quot;human&quot;: {
+      &quot;status&quot;: &quot;Chưa chạy UT; không có số người hay tỷ lệ thành công thực nghiệm&quot;,
+      &quot;protocol&quot;: &quot;Tuyển hội viên có voucher/điểm, người đang cần vé, và người cân nhắc nhà/xe theo đúng scenario. Cho nhiệm vụ không gợi ý đường đi; đổi thứ tự khi so composition. Ghi hoàn tất độc lập, bước lạc, hiểu sai điều kiện và hiểu sai trạng thái. Phỏng vấn lại lý do mở và lý do quay lại.&quot;,
+      &quot;decisionRule&quot;: &quot;Sửa mọi lỗi chặn hoặc hiểu sai tiền/consent/lịch trước kết luận. Dùng nghiên cứu này đánh giá khả dụng; retention và giá trị gia tăng cần pilot có dữ liệu thực, ngân sách và nhóm so phù hợp.&quot;
+    },
+    &quot;analytics&quot;: [
+      &quot;home_context_view&quot;,
+      &quot;benefit_terms_view&quot;,
+      &quot;gift_claimed&quot;,
+      &quot;asset_opened&quot;,
+      &quot;reward_redeemed_confirmed&quot;,
+      &quot;voucher_applied&quot;,
+      &quot;order_payment_confirmed&quot;,
+      &quot;experience_view&quot;,
+      &quot;lead_consent_given&quot;,
+      &quot;lead_submitted&quot;,
+      &quot;lead_accepted&quot;,
+      &quot;appointment_confirmed&quot;
+    ],
+    &quot;privacy&quot;: &quot;Event production chỉ thiết kế sau khi chốt mục đích và dữ liệu cần thiết; prototype không gửi dữ liệu khách.&quot;
+  },
+  &quot;CEOdecisionQuestions&quot;: [
+    &quot;Ưu tiên chứng minh dùng quyền lợi hiện hữu trước hay mua tăng trưởng bằng quà; ngưỡng chi phí và chủ ngân sách là gì?&quot;,
+    &quot;P&amp;L nào cung cấp một hành trình đủ khép kín đầu tiên, gồm hoàn/hủy và đối soát?&quot;,
+    &quot;Lead được chấp nhận và lịch xác nhận nghĩa là gì, ai nhận và ai chịu SLA?&quot;,
+    &quot;Điều kiện nào cho phép chuyển từ ba pilot sang mở rộng; điều kiện nào buộc dừng một nhánh?&quot;,
+    &quot;Có chấp nhận giữ AI/Chat/cư dân số ngoài mốc cam kết khi B3 hiện hành chưa có SDK/hạn chốt?&quot;
+  ]
+}</pre><a href="product.json">Đọc JSON gốc</a></details><details><summary><strong>Visual</strong> · Kế thừa vàng ấm, carbon, paper và ảnh / vật thể từ source; sửa hình bo bị style Button ghi đè. UI cuối có smooth corner60%, dock QR, trạng thái error/empty/success và reduced motion.</summary><pre>{
+  &quot;role&quot;: &quot;vsp-visual&quot;,
+  &quot;status&quot;: &quot;final visual pass complete for supplied final Home, ticket summary, experience form and slide preview; no blocking visual defect observed in these renders&quot;,
+  &quot;scope&quot;: &quot;Read-only UI review; wrote only visual role/skill/report.&quot;,
+  &quot;evidence&quot;: [
+    {
+      &quot;path&quot;: &quot;evidence/ux-baseline.png&quot;,
+      &quot;type&quot;: &quot;observed source baseline&quot;,
+      &quot;note&quot;: &quot;Warm gold / carbon wallet / paper cards / dimensional existing illustrations. Baseline animated points happen to be captured midtransition; do not reproduce broken numerals.&quot;
+    },
+    {
+      &quot;path&quot;: &quot;/tmp/v5-visual-current.png&quot;,
+      &quot;type&quot;: &quot;observed v5 render&quot;,
+      &quot;url&quot;: &quot;http://localhost:3250/vinclub-decision-v5?embed=1&quot;,
+      &quot;viewport&quot;: {
+        &quot;width&quot;: 390,
+        &quot;height&quot;: 844
+      },
+      &quot;note&quot;: &quot;Captured before root-owner radius correction.&quot;
+    }
+  ],
+  &quot;direction&quot;: {
+    &quot;brand&quot;: &quot;Warm gold membership header, carbon wallet, pale paper foreground; retain existing VinClub image language.&quot;,
+    &quot;hierarchy&quot;: &quot;Assets read first; task cards next; restrained gift and offer rail; large image only for experience discovery.&quot;,
+    &quot;material&quot;: &quot;Gold light and dark wallet can carry brand; paper surfaces keep actions legible. No evidence supports glass everywhere.&quot;,
+    &quot;slidesAndFinalUI&quot;: &quot;Reuse same palette, type, named shapes, images and explicit prototype states. Replace before screenshot with final screenshot after fixes; include decision evidence beside rationale.&quot;
+  },
+  &quot;blockDecisions&quot;: [
+    {
+      &quot;block&quot;: &quot;Header and wallet&quot;,
+      &quot;keep&quot;: &quot;Gold/black contrast and 22px asset text axis.&quot;,
+      &quot;change&quot;: &quot;Resolve Button rounded-full cascade. Current computed border radius 33554400px clips wallet label; use named radius tokens with winning scoped specificity.&quot;,
+      &quot;priority&quot;: &quot;P0&quot;,
+      &quot;evidence&quot;: &quot;live computed CSS and /tmp/v5-visual-current.png&quot;
+    },
+    {
+      &quot;block&quot;: &quot;Services and offer rail&quot;,
+      &quot;keep&quot;: &quot;Two real task labels, 12px gap, existing object illustrations.&quot;,
+      &quot;change&quot;: &quot;Restore rectangular named-radius card silhouettes. Rounded-full clips offer brand and lower image; check full 200.000 đ label after correction.&quot;,
+      &quot;priority&quot;: &quot;P0&quot;,
+      &quot;evidence&quot;: &quot;live computed CSS: services167x110, story112x160, offer160x160 all have huge border radius&quot;
+    },
+    {
+      &quot;block&quot;: &quot;Experience&quot;,
+      &quot;keep&quot;: &quot;Photographic large card and restrained title over image.&quot;,
+      &quot;change&quot;: &quot;Review at scrolled position: title/image crop and CTA contrast, then capture final screenshot.&quot;,
+      &quot;priority&quot;: &quot;P1&quot;,
+      &quot;evidence&quot;: &quot;partial card visible at bottom; full scroll not reviewed&quot;
+    },
+    {
+      &quot;block&quot;: &quot;Bottom navigation&quot;,
+      &quot;keep&quot;: &quot;Persistent tab labels and home indicator.&quot;,
+      &quot;change&quot;: &quot;Source floating dock with prominent QR differs from new full-width dock. State the intentional simplification; avoid claiming exact fidelity.&quot;,
+      &quot;priority&quot;: &quot;P2&quot;,
+      &quot;evidence&quot;: &quot;baseline vs before image&quot;
+    }
+  ],
+  &quot;checks&quot;: {
+    &quot;observed&quot;: [
+      &quot;Actual browser render at 390x844&quot;,
+      &quot;Source baseline and live computed border radii&quot;,
+      &quot;Semantic token usage in page stylesheet and library Button composition&quot;
+    ],
+    &quot;pending&quot;: [
+      &quot;Scrolled experience and all success/empty states outside supplied final screenshots&quot;,
+      &quot;Measured text contrast across gradients/photos&quot;,
+      &quot;Narrow viewport, keyboard focus, dark mode and reduced-motion checks&quot;,
+      &quot;Independent measurement of smooth-corner equivalence (owner evidence preserved)&quot;
+    ],
+    &quot;resolved&quot;: [
+      &quot;After-fix screenshot and clipping inspection for supplied Home&quot;,
+      &quot;Ticket detail summary visual inspection&quot;,
+      &quot;Experience form visual inspection&quot;,
+      &quot;Floating source dock and QR emphasis restored&quot;,
+      &quot;Slide preview uses corrected final UI&quot;
+    ]
+  },
+  &quot;limitations&quot;: [
+    &quot;No human UT; no conversion/retention claims.&quot;,
+    &quot;Parent owns app changes; this role did not modify UI.&quot;,
+    &quot;Final build success cannot replace a screenshot review.&quot;
+  ],
+  &quot;handoff&quot;: &quot;Supplied final screenshots and slide preview visually reviewed; no blocking defects observed in these renders. Use final evidence for presentation; keep unmeasured checks and prototype boundaries explicit.&quot;,
+  &quot;ownerVerification&quot;: {
+    &quot;source&quot;: &quot;harness.json + evidence/final-*-home.png&quot;,
+    &quot;pass&quot;: true,
+    &quot;fixes&quot;: [
+      &quot;Named radii explicitly override Button rounded-full; smooth .6 computed clip path.&quot;,
+      &quot;Wallet carbon layer237px with overlap retained; report distinguishes source reserved space199px.&quot;,
+      &quot;Source floating dock and QR emphasis retained in new route.&quot;,
+      &quot;Final UI uses real shared VSP components; art reused from source.&quot;
+    ],
+    &quot;boundary&quot;: &quot;Initial visual report preserves pre-fix observations. Final checks are separate owner evidence.&quot;
+  },
+  &quot;finalVisualReview&quot;: {
+    &quot;reviewer&quot;: &quot;vsp-visual&quot;,
+    &quot;method&quot;: &quot;Direct visual inspection of four owner-supplied final PNGs; no new live computed-style check in this pass.&quot;,
+    &quot;evidence&quot;: [
+      &quot;evidence/final-daily-home.png&quot;,
+      &quot;evidence/spend-ticket-summary.png&quot;,
+      &quot;evidence/experience-form.png&quot;,
+      &quot;evidence/slides-preview.png&quot;
+    ],
+    &quot;resolved&quot;: [
+      {
+        &quot;observation&quot;: &quot;Header and wallet P0&quot;,
+        &quot;result&quot;: &quot;Final screenshot restores visible wallet label and full balance inside contained carbon surface; gold header and 22px asset text axis remain coherent.&quot;
+      },
+      {
+        &quot;observation&quot;: &quot;Services and offer rail P0&quot;,
+        &quot;result&quot;: &quot;Final screenshot has contained service cards and rectangular rounded gift/offer silhouettes; VinWonders brand and full 200.000 đ amount are readable. Partial next VinFast card communicates horizontal rail continuation.&quot;
+      },
+      {
+        &quot;observation&quot;: &quot;Bottom navigation P2&quot;,
+        &quot;result&quot;: &quot;Final screenshots retain floating rounded dock, emphasized QR and home indicator; previous full-width dock observation is historical.&quot;
+      },
+      {
+        &quot;observation&quot;: &quot;Ticket summary&quot;,
+        &quot;result&quot;: &quot;Two tickets, 400.000 đ subtotal, −50.000 đ discount and 350.000 đ total form a clear hierarchy; primary action repeats the total. Conditions remain readable.&quot;
+      },
+      {
+        &quot;observation&quot;: &quot;Experience form&quot;,
+        &quot;result&quot;: &quot;Date, time choice, phone and consent form coherent groups; request wording distinguishes submission from confirmed booking. No clipping or overlap visible.&quot;
+      },
+      {
+        &quot;observation&quot;: &quot;Slide/final UI handoff&quot;,
+        &quot;result&quot;: &quot;Slide preview uses corrected final UI with consistent gold/carbon/paper and rounded cards. Decision text and prototype boundary remain readable; no old radius defect visible.&quot;
+      }
+    ],
+    &quot;remainingLimits&quot;: [
+      &quot;Full experience image/CTA below fold was not inspected in these four screenshots.&quot;,
+      &quot;This visual pass does not measure contrast ratios or verify keyboard, dark mode, narrow widths or reduced motion.&quot;,
+      &quot;Success and empty states are outside these supplied four images; owner harness verification remains separate.&quot;,
+      &quot;Smooth .6 and computed named radii are supported by preserved ownerVerification, not independently remeasured in this final pass.&quot;
+    ],
+    &quot;conclusion&quot;: &quot;Visual quality is ready for the bounded prototype review and slide presentation shown. Original pre-fix observations remain preserved as history.&quot;
+  }
+}</pre><a href="visual.json">Đọc JSON gốc</a></details><details><summary><strong>CEO</strong> · Giữ một Home chung và dùng V5 để kiểm chứng ba hoàn cảnh. Ưu tiên vòng dùng quyền lợi đang có → đơn minh bạch → tìm lại tài sản; quà là nhánh kích hoạt có hạn mức, lái thử là nhánh yêu cầu có người tiếp nhận. Đề xuất thí điểm hẹp khi từng nhánh đủ vận hành, chưa khuyến nghị mở rộng hoặc tăng ngân sách từ kết quả demo.</summary><pre>{
+  &quot;role&quot;: &quot;CEO review — recommendation, not approval&quot;,
+  &quot;executiveRecommendation&quot;: &quot;Giữ một Home chung và dùng V5 để kiểm chứng ba hoàn cảnh. Ưu tiên vòng dùng quyền lợi đang có → đơn minh bạch → tìm lại tài sản; quà là nhánh kích hoạt có hạn mức, lái thử là nhánh yêu cầu có người tiếp nhận. Đề xuất thí điểm hẹp khi từng nhánh đủ vận hành, chưa khuyến nghị mở rộng hoặc tăng ngân sách từ kết quả demo.&quot;,
+  &quot;reviewBasis&quot;: {
+    &quot;read&quot;: [
+      &quot;ux.json&quot;,
+      &quot;business.json&quot;,
+      &quot;product.json&quot;,
+      &quot;app/vinclub-decision-v5/page.tsx&quot;
+    ],
+    &quot;verification&quot;: &quot;Đọc artifact và code V5; CEO chưa tự chạy browser/harness. Baseline screenshot và lỗi pointer là quan sát do UX ghi nhận. Chưa có human UT, dữ liệu chuyển đổi hay doanh thu tăng thêm.&quot;,
+    &quot;prototype&quot;: &quot;http://localhost:3250/vinclub-decision-v5?scenario=daily&quot;,
+    &quot;baselineEvidence&quot;: &quot;evidence/ux-baseline.png&quot;,
+    &quot;sourcePreserved&quot;: &quot;Không sửa port3300 hay V1–V4.&quot;
+  },
+  &quot;decisions&quot;: [
+    {
+      &quot;decision&quot;: &quot;Giữ khung nhận biết tài sản → chọn tác vụ → khám phá.&quot;,
+      &quot;why&quot;: &quot;Khách biết mình có gì trước khi được mời mua; Home có nhiều lý do vào.&quot;,
+      &quot;evidence&quot;: &quot;Baseline có hạng/VPoint/ví, hai service, rail offer/story và ảnh trải nghiệm; V5 giữ các vai trò này.&quot;,
+      &quot;tradeoff&quot;: &quot;Nhiều mục vẫn tranh sự chú ý; không có dữ liệu chứng minh thứ tự này tối ưu.&quot;,
+      &quot;condition&quot;: &quot;Kiểm tra khách tìm đúng ví, voucher và trải nghiệm; xử lý mọi lỗi chặn.&quot;
+    },
+    {
+      &quot;decision&quot;: &quot;Chọn spend làm vòng chứng minh giá trị đầu tiên.&quot;,
+      &quot;why&quot;: &quot;Khách có nhu cầu và quyền lợi sẵn có; có thể lần từ quyền lợi tới giá cuối và kết quả.&quot;,
+      &quot;evidence&quot;: &quot;Code V5 khởi tạo voucher ở spend, tính 2×200.000−50.000=350.000đ, đánh dấu voucher đã dùng và lưu vé mẫu trong Của tôi.&quot;,
+      &quot;tradeoff&quot;: &quot;Demo chưa có tồn vé, thanh toán, phát hành, hoàn/hủy hoặc đối soát.&quot;,
+      &quot;condition&quot;: &quot;Một nhà cung cấp xác nhận toàn vòng, quy tắc voucher và xử lý lỗi trước giao dịch thật.&quot;
+    },
+    {
+      &quot;decision&quot;: &quot;Giữ quà trong entry nhỏ, không mua tăng trưởng bằng lượt mở story.&quot;,
+      &quot;why&quot;: &quot;Quà có ý nghĩa khi dùng được; phát thưởng tạo chi phí trước khi tạo giá trị tăng thêm.&quot;,
+      &quot;evidence&quot;: &quot;V5 nối quà mẫu 50.000đ với đơn vé và tài sản phiên; Business chưa có bằng chứng ngân sách/phần hưởng.&quot;,
+      &quot;tradeoff&quot;: &quot;Thêm bước trước tác vụ mua; nguồn cung và gian lận tăng công vận hành.&quot;,
+      &quot;condition&quot;: &quot;Có chủ ngân sách, tồn/hạn/đường dùng, chống cấp trùng; đo sử dụng xác nhận và chi phí thay vì chỉ lượt nhận.&quot;
+    },
+    {
+      &quot;decision&quot;: &quot;Giữ nhánh lái thử với trạng thái yêu cầu chờ xác nhận.&quot;,
+      &quot;why&quot;: &quot;Ảnh giúp hình dung, form giúp chuyển ý định thành nhu cầu cụ thể mà không giả định đã giữ lịch.&quot;,
+      &quot;evidence&quot;: &quot;V5 dùng ảnh VinFast, ngày/giờ, điện thoại hợp lệ và consent; kết quả ghi chưa được VinFast tiếp nhận, không lưu/gửi điện thoại.&quot;,
+      &quot;tradeoff&quot;: &quot;Chưa có khám phá 3D, lựa chọn showroom/xe, API lead hoặc phản hồi lịch.&quot;,
+      &quot;condition&quot;: &quot;Có P&amp;L nhận yêu cầu, SLA và trạng thái phản hồi; không gọi gửi form là booking hoặc doanh thu.&quot;
+    },
+    {
+      &quot;decision&quot;: &quot;Giữ ba scenario như ngữ cảnh của cùng IA, chưa chọn ba chiến lược cạnh tranh.&quot;,
+      &quot;why&quot;: &quot;Mỗi scenario phục vụ khách và tác vụ khác nhau nên không thể xếp thắng/thua bằng một điểm tổng.&quot;,
+      &quot;evidence&quot;: &quot;Daily/spend/experience cùng khung Home; spend thêm voucher đầu rail, experience đổi tiêu đề ưu tiên; đường tác vụ vẫn dùng chung.&quot;,
+      &quot;tradeoff&quot;: &quot;Chưa kiểm chứng cá nhân hóa tự động hoặc thay đổi thứ tự toàn bộ layout.&quot;,
+      &quot;condition&quot;: &quot;So hoàn tất job trong đúng nhóm; khi so IA phải dùng cùng người, cùng nhiệm vụ và nội dung.&quot;
+    }
+  ],
+  &quot;optionsComparison&quot;: [
+    {
+      &quot;option&quot;: &quot;Daily&quot;,
+      &quot;customerValue&quot;: &quot;Nhận và tìm lại quyền lợi dùng được&quot;,
+      &quot;economics&quot;: &quot;Chi phí tài trợ trước; chưa chứng minh doanh thu&quot;,
+      &quot;feasibility&quot;: &quot;Chuỗi demo có; cấp thưởng thật chưa có&quot;,
+      &quot;tradeoff&quot;: &quot;Dễ tối ưu lượt mở thay vì giá trị dùng&quot;,
+      &quot;evidence&quot;: &quot;Code V5 + Business; chưa UT&quot;
+    },
+    {
+      &quot;option&quot;: &quot;Spend&quot;,
+      &quot;customerValue&quot;: &quot;Dùng voucher có sẵn với tổng tiền rõ&quot;,
+      &quot;economics&quot;: &quot;Doanh số P&amp;L khác phần hưởng nền tảng&quot;,
+      &quot;feasibility&quot;: &quot;Tính tiền và tài sản mẫu có; giao dịch thật chưa có&quot;,
+      &quot;tradeoff&quot;: &quot;Tồn vé, hoàn/hủy, đối soát&quot;,
+      &quot;evidence&quot;: &quot;2 vé mẫu 350.000đ sau voucher; chưa giao dịch&quot;
+    },
+    {
+      &quot;option&quot;: &quot;Experience&quot;,
+      &quot;customerValue&quot;: &quot;Hình dung và gửi yêu cầu lịch rõ&quot;,
+      &quot;economics&quot;: &quot;Lead chỉ có giá trị khi đủ chuẩn/được nhận&quot;,
+      &quot;feasibility&quot;: &quot;Form/consent mẫu có; P&amp;L chưa nhận&quot;,
+      &quot;tradeoff&quot;: &quot;Chi phí nội dung, chuyển giao và SLA&quot;,
+      &quot;evidence&quot;: &quot;Code ghi chờ xác nhận; chưa lead thật&quot;
+    }
+  ],
+  &quot;disagreeWithPreviousWork&quot;: [
+    {
+      &quot;claim&quot;: &quot;100 biến thể là 100 phương án UX được kiểm chứng.&quot;,
+      &quot;correction&quot;: &quot;Skin, màu, banner và cách lọc ảnh không tự tạo IA khác nhau. Kho biến thể là tham khảo biểu đạt; không phải bằng chứng loại/chọn của người dùng.&quot;
+    },
+    {
+      &quot;claim&quot;: &quot;Wallet2 thu nhỏ vật thể ví 38px.&quot;,
+      &quot;correction&quot;: &quot;UX đo container khoảng199px so237px: giảm38px KHÔNG GIAN DỰ TRỮ. Cover vẫn khoảng237px; phải kiểm tra overlap và khả năng đọc, không quảng bá thu nhỏ toàn bộ ví.&quot;
+    },
+    {
+      &quot;claim&quot;: &quot;Lượt nhận quà, click đối tác hoặc doanh số P&amp;L chứng minh doanh thu nền tảng.&quot;,
+      &quot;correction&quot;: &quot;Đây là các tầng kết quả khác nhau; phần hưởng phải có hợp đồng, xác nhận và đối soát; giá trị tăng thêm cần phép so phù hợp.&quot;
+    },
+    {
+      &quot;claim&quot;: &quot;Có code story nghĩa là entry dùng được.&quot;,
+      &quot;correction&quot;: &quot;UX ghi normal click nguồn bị span ưu đãi Vinmec chặn. V5 dùng nút story riêng; code cho thấy xử lý hit-area khác nhưng chỉ browser/harness mới xác minh fix trên V5, không chứng minh nguồn3300 được sửa.&quot;
+    },
+    {
+      &quot;claim&quot;: &quot;Ba scenario là ba IA cạnh tranh hoặc ngày B3 là năng lực đã giao.&quot;,
+      &quot;correction&quot;: &quot;Đây là ba ngữ cảnh chung khung; B3 là kế hoạch/trạng thái tài liệu, cần nghiệm thu từng hành trình.&quot;
+    }
+  ],
+  &quot;actualDemoChanges&quot;: [
+    &quot;Tên service cụ thể Dùng quyền lợi/Đặt trải nghiệm thay nhãn generic.&quot;,
+    &quot;Quà dẫn tới voucher, đơn vé và kho tài sản; spend khởi tạo tài sản sẵn có.&quot;,
+    &quot;Đơn vé có số lượng, chọn áp dụng voucher, tổng tiền và bản ghi kết quả mẫu.&quot;,
+    &quot;Yêu cầu VinFast có ngày/giờ, kiểm tra điện thoại và consent; lưu trạng thái chờ trong Của tôi.&quot;,
+    &quot;Trạng thái lưu session theo scenario; không gọi payment, ticketing hoặc lead API thật.&quot;
+  ],
+  &quot;currentLimitations&quot;: [
+    &quot;CEO chưa thực thi harness; mọi nhận định hoạt động hiện là đọc code trừ quan sát baseline do UX cung cấp.&quot;,
+    &quot;Code tại lúc review dùng một gift boolean cho cả sở hữu/đã nhận; khi tiêu voucher về false có khả năng nhận lại quà trong phiên. Đã gửi Product/implementation yêu cầu tách claimed khỏi available; cần xác minh lại bản cuối.&quot;,
+    &quot;Không có human UT, retention, conversion, ROI hoặc nghiệm thu API.&quot;
+  ],
+  &quot;nowLater&quot;: {
+    &quot;now&quot;: &quot;Hoàn thiện và kiểm tra ba đường demo, ưu tiên vòng spend; giữ nguồn và V1–V4 để so. Chỉ gọi đây là prototype có dữ liệu mẫu.&quot;,
+    &quot;pilotGate&quot;: &quot;Một quyền lợi/đơn có nhà cung cấp và đối soát; một chiến dịch có ngân sách/chống trùng; một lead có nơi nhận và phản hồi. Nhánh nào thiếu gate tiếp tục ở demo.&quot;,
+    &quot;later&quot;: &quot;Mở rộng danh mục/chiến dịch sau kết quả xác nhận; AI/chat/3D và mở rộng2027 phụ thuộc nguồn lực, SDK, dữ liệu và phép thử riêng, không thành điều kiện giả cho bản đầu.&quot;
+  },
+  &quot;slides&quot;: [
+    {
+      &quot;slide&quot;: 1,
+      &quot;question&quot;: &quot;Khách mở VinClub để làm việc gì?&quot;,
+      &quot;answer&quot;: &quot;Ba hoàn cảnh: tìm quà phù hợp, dùng quyền lợi cho đơn thật, hoặc cân nhắc trải nghiệm; mỗi hoàn cảnh có đường mở → hành động → nhận giá trị → quay lại.&quot;
+    },
+    {
+      &quot;slide&quot;: 2,
+      &quot;question&quot;: &quot;Baseline thực tế đang hiển thị điều gì?&quot;,
+      &quot;answer&quot;: &quot;Dùng evidence/ux-baseline.png, URL child/parent và effective params của UX; ghi ảnh quan sát ở390px, không phải UT. Normal click story nguồn bị offer span chặn.&quot;
+    },
+    {
+      &quot;slide&quot;: 3,
+      &quot;question&quot;: &quot;Mỗi khối Home giữ vai trò gì?&quot;,
+      &quot;answer&quot;: &quot;Tài sản để nhận diện, service để chọn việc, offer để cân nhắc quyền lợi, story để mời nhẹ, ảnh lớn để hình dung. Wallet2 giảm38px không gian dự trữ; cover vẫn237px.&quot;
+    },
+    {
+      &quot;slide&quot;: 4,
+      &quot;question&quot;: &quot;Vì sao có ba option nhưng chưa có option thắng?&quot;,
+      &quot;answer&quot;: &quot;Ba context composition cùng IA và tác vụ khác nhau; chưa phải A/B ba IA. So usability trong job riêng; so IA cần nhiệm vụ tương đương.&quot;
+    },
+    {
+      &quot;slide&quot;: 5,
+      &quot;question&quot;: &quot;Daily đã nối giá trị ra sao?&quot;,
+      &quot;answer&quot;: &quot;Quà mẫu → voucher50.000đ → đơn vé → Của tôi; không có phát thưởng thật. Giữ entry nhỏ và kiểm tra cấp trùng sau dùng.&quot;
+    },
+    {
+      &quot;slide&quot;: 6,
+      &quot;question&quot;: &quot;Spend đã thay đổi quyết định mua thế nào?&quot;,
+      &quot;answer&quot;: &quot;Voucher sở hữu dẫn tới2vé×200.000đ, giảm50.000đ, còn350.000đ; xác nhận chỉ tạo vé mẫu tìm lại được.&quot;
+    },
+    {
+      &quot;slide&quot;: 7,
+      &quot;question&quot;: &quot;Experience đã chuyển khám phá thành gì?&quot;,
+      &quot;answer&quot;: &quot;Ảnh VinFast → ngày/giờ → consent → yêu cầu mẫu chờ xác nhận; chưa có lịch giữ chỗ hay lead P&amp;L.&quot;
+    },
+    {
+      &quot;slide&quot;: 8,
+      &quot;question&quot;: &quot;Tiền đến từ đâu và ai chịu chi phí?&quot;,
+      &quot;answer&quot;: &quot;Quà do ngân sách/P&amp;L tài trợ; merchant hưởng doanh số; nền tảng chỉ có phần hưởng khi hợp đồng/đối soát xác nhận. Lead và điểm/ví không tự là doanh thu.&quot;
+    },
+    {
+      &quot;slide&quot;: 9,
+      &quot;question&quot;: &quot;Phần nào làm ngay, phần nào cần điều kiện?&quot;,
+      &quot;answer&quot;: &quot;Ngay: kiểm tra demo và vòng spend. Pilot: nguồn cung, thanh toán/đối soát, chống trùng, tiếp nhận lead. Mở rộng/AI/3D theo readiness; B3 không phải nghiệm thu.&quot;
+    },
+    {
+      &quot;slide&quot;: 10,
+      &quot;question&quot;: &quot;Bằng chứng hiện đủ kết luận đến đâu?&quot;,
+      &quot;answer&quot;: &quot;Có quan sát baseline, code và prototype; CEO chưa chạy harness. Không có human UT hay dữ liệu conversion; harness pass cũng chỉ chứng minh kiểm tra kỹ thuật đã nêu.&quot;
+    },
+    {
+      &quot;slide&quot;: 11,
+      &quot;question&quot;: &quot;Khuyến nghị cụ thể là gì?&quot;,
+      &quot;answer&quot;: &quot;Giữ Home và ba context, ưu tiên pilot dùng quyền lợi hiện hữu; giới hạn daily và O2O theo gate riêng. Đây là khuyến nghị có điều kiện, không phải approval triển khai hoặc chi tiền.&quot;
+    }
+  ],
+  &quot;decisionChangingEvidence&quot;: &quot;Nếu khách không tìm/hiểu đúng quyền lợi, sửa IA trước mở rộng; nếu không có provider/đối soát, spend ở demo; nếu lead không được nhận, dừng tăng acquisition O2O; nếu quà không tạo sử dụng tăng thêm trong hạn mức, không tăng ngân sách.&quot;,
+  &quot;ownerVerification&quot;: {
+    &quot;source&quot;: &quot;harness.json&quot;,
+    &quot;pass&quot;: true,
+    &quot;claimOnce&quot;: &quot;claimed separated from available; consumed reward cannot be regranted in same demo session&quot;,
+    &quot;boundary&quot;: &quot;Independent CEO review was code-only. Final owner tests do not become human UT.&quot;
+  }
+}</pre><a href="ceo.json">Đọc JSON gốc</a></details></section><section class="section"><div class="heading"><small>10 / CEO REVIEW</small><h2>Ưu tiên thí điểm vòng dùng quyền lợi.</h2></div><article class="card"><p><strong>Giữ:</strong> một Home, cách phân vai nội dung và các version cũ.</p><p><strong>Chọn trước:</strong> một nhà cung cấp cho vòng quyền lợi → giao dịch → kết quả xác nhận. Đây là phạm vi nhỏ nhất chứng minh khách dùng được giá trị, trước khi tăng danh mục.</p><p><strong>Có điều kiện:</strong> quà cần chủ ngân sách, hạn/tồn và chống cấp trùng; O2O cần bên nhận và phản hồi lịch. Không chờ AI/Chat để ra mắt vòng cơ bản.</p><p><strong>Quyết định có thể thay đổi khi:</strong> khách không hiểu tài sản/quyền lợi, không tìm lại được kết quả, hoặc nguồn cung/chi phí không đủ vận hành.</p></article><p class="small muted">B3 hiện hành dùng cho hạn; không lấy B3_ARCHIVED làm cam kết. DOCX Đảo Ngọc dùng cho cách lập luận. Deck GSM dùng để phân biệt triết lý sản phẩm / thiết kế / ngôn ngữ, không dùng làm bằng chứng hiệu quả. Các mô hình đối thủ là diễn giải từ nguồn chính thức đã đọc trong phiên, không khẳng định layout tab hiện hành.</p><div class="links"><a class="link main" href="/vinclub-decision-v5?scenario=spend">Xem Final UI</a><a class="link" href="slides.html">Xem slide</a></div></section></main><footer><div class="container">V5 độc lập · source port3300 và V1–V4 giữ nguyên · Review không phải approval production.<div class="indicator"></div></div></footer></body></html>

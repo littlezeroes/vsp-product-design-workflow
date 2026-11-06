@@ -1,0 +1,185 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "V-SmartPay" [ref=e4] [cursor=pointer]:
+        - /url: "#"
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "Lợi ích" [ref=e7] [cursor=pointer]:
+            - /url: "#loi-ich"
+        - listitem [ref=e8]:
+          - link "Mô phỏng" [ref=e9] [cursor=pointer]:
+            - /url: "#mo-phong"
+        - listitem [ref=e10]:
+          - link "Đăng ký" [ref=e11] [cursor=pointer]:
+            - /url: "#dang-ky"
+        - listitem [ref=e12]:
+          - link "Kiểm tra tiền lời" [ref=e13] [cursor=pointer]:
+            - /url: "#kiem-tra"
+        - listitem [ref=e14]:
+          - link "FAQ" [ref=e15] [cursor=pointer]:
+            - /url: "#faq"
+  - generic [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e19]: ✦ V-Smart Save
+      - heading "Sinh lời mỗi ngày lên đến 5%/năm" [level=1] [ref=e20]:
+        - text: Sinh lời mỗi ngày
+        - generic [ref=e21]: lên đến 5%/năm
+      - paragraph [ref=e22]: Tiền nhàn rỗi trong ví V-SmartPay tự động sinh lời mỗi ngày. Rút tiền tức thì, miễn phí, không kỳ hạn.
+      - link "Khám phá ngay →" [ref=e23] [cursor=pointer]:
+        - /url: "#dang-ky"
+    - img "V-SmartPay home screen" [ref=e25]
+  - generic [ref=e27]:
+    - generic [ref=e28]:
+      - paragraph [ref=e29]: Tại sao chọn V-Smart Save
+      - heading "Lợi ích nổi bật" [level=2] [ref=e30]
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e33]: 🛡️
+        - heading "An toàn & đảm bảo" [level=3] [ref=e34]
+        - paragraph [ref=e35]: Lưu ký tại Ngân hàng TMCP Kỹ Thương Việt Nam, được bảo đảm bởi WealthNet & TechcomCapital
+      - generic [ref=e36]:
+        - generic [ref=e37]: 📈
+        - heading "Lợi suất hấp dẫn" [level=3] [ref=e38]
+        - paragraph [ref=e39]: Sinh lời lên đến 5%/năm — Tiền nhàn rỗi được tự động sinh lời hàng ngày
+      - generic [ref=e40]:
+        - generic [ref=e41]: ⚡
+        - heading "Rút tiền tức thì" [level=3] [ref=e42]
+        - paragraph [ref=e43]: Rút tiền bất kỳ lúc nào, miễn phí hoàn toàn, không mất lãi ngày đã sinh lời
+  - generic [ref=e45]:
+    - generic [ref=e46]:
+      - paragraph [ref=e47]: Thử tính xem
+      - heading "Mô phỏng lợi nhuận bình quân" [level=2] [ref=e48]
+    - generic [ref=e49]:
+      - generic [ref=e50]:
+        - generic [ref=e51]:
+          - paragraph [ref=e52]: Số tiền gửi
+          - generic [ref=e53]: 50.000.000 đ
+        - generic [ref=e55]:
+          - paragraph [ref=e56]: Lợi nhuận ước tính 1 tháng
+          - generic [ref=e57]:
+            - generic [ref=e58]: "205.479"
+            - generic [ref=e59]: đ
+      - paragraph [ref=e60]: Tiền lời tích lũy theo ngày
+      - paragraph [ref=e63]: "* Tính theo lợi suất 5%/năm. Lợi suất thực tế có thể thay đổi theo từng thời kỳ. Số dư tối đa tham gia 100.000.000đ."
+  - generic [ref=e65]:
+    - generic [ref=e66]:
+      - paragraph [ref=e67]: Hướng dẫn sử dụng
+      - heading "Đăng ký V-Smart Save" [level=2] [ref=e68]
+    - generic [ref=e69]:
+      - generic [ref=e70]:
+        - img "Bước 1 - Màn hình chủ V-SmartPay" [ref=e72]
+        - generic [ref=e73]:
+          - generic [ref=e74]: "1"
+          - heading "Mở ví V-SmartPay" [level=3] [ref=e75]
+          - paragraph [ref=e76]:
+            - text: Tại màn hình chủ, bạn sẽ thấy banner
+            - strong [ref=e77]: "\"Sinh lời mỗi ngày\""
+            - text: . Bấm vào nút
+            - strong [ref=e78]: "\"Khám phá ngay\""
+            - text: để tìm hiểu sản phẩm V-Smart Save.
+      - generic [ref=e79]:
+        - img "Bước 2 - Tìm hiểu sản phẩm" [ref=e81]
+        - generic [ref=e82]:
+          - generic [ref=e83]: "2"
+          - heading "Tìm hiểu sản phẩm" [level=3] [ref=e84]
+          - paragraph [ref=e85]:
+            - text: "Xem các thông tin về lợi ích: lợi suất"
+            - strong [ref=e86]: lên đến 5%/năm
+            - text: ", cách tính tiền lời và thời điểm nhận tiền. Bấm"
+            - strong [ref=e87]: "\"Tiếp tục\""
+            - text: để qua bước tiếp theo.
+      - generic [ref=e88]:
+        - img "Bước 3 - Xác nhận thông tin" [ref=e90]
+        - generic [ref=e91]:
+          - generic [ref=e92]: "3"
+          - heading "Xác nhận thông tin" [level=3] [ref=e93]
+          - paragraph [ref=e94]:
+            - text: Kiểm tra thông tin khách hàng và tóm tắt sản phẩm (sinh lời
+            - strong [ref=e95]: 5%/năm
+            - text: ", số dư tối đa"
+            - strong [ref=e96]: 100.000.000đ
+            - text: ", rút tiền tức thì miễn phí). Chọn chấp nhận chính sách và bấm"
+            - strong [ref=e97]: "\"Tiếp tục\""
+            - text: .
+      - generic [ref=e98]:
+        - img "Bước 4 - Đăng ký thành công" [ref=e100]
+        - generic [ref=e101]:
+          - generic [ref=e102]: "4"
+          - heading "Đăng ký thành công!" [level=3] [ref=e103]
+          - paragraph [ref=e104]:
+            - text: V-Smart Save đã được kích hoạt. Bấm
+            - strong [ref=e105]: "\"Nạp tiền ngay\""
+            - text: để bắt đầu sinh lời, hoặc
+            - strong [ref=e106]: "\"Chi tiết sinh lời\""
+            - text: để vào trang chủ sản phẩm.
+  - generic [ref=e108]:
+    - generic [ref=e109]:
+      - paragraph [ref=e110]: Hướng dẫn sử dụng
+      - heading "Kiểm tra tiền lời" [level=2] [ref=e111]
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - img "Màn hình Số dư sinh lời" [ref=e114]
+        - generic: "1"
+        - generic: "2"
+        - generic: "3"
+      - generic [ref=e115]:
+        - generic [ref=e116]:
+          - generic [ref=e117]: "1"
+          - img "Chi tiết tiền lời" [ref=e118]
+          - paragraph [ref=e119]: Chi tiết tiền lời
+        - generic [ref=e120]:
+          - generic [ref=e121]: "2"
+          - img "Công thức tính tiền lời" [ref=e122]
+          - paragraph [ref=e123]: Công thức tính tiền lời
+        - generic [ref=e124]:
+          - generic [ref=e125]: "3"
+          - img "Thời điểm nhận tiền lời" [ref=e126]
+          - paragraph [ref=e127]: Thời điểm nhận tiền lời
+  - generic [ref=e129]:
+    - generic [ref=e130]:
+      - paragraph [ref=e131]: Giải đáp thắc mắc
+      - heading "Câu hỏi thường gặp" [level=2] [ref=e132]
+    - generic [ref=e133]:
+      - generic [ref=e134]:
+        - button "Sinh lời được tính như thế nào? +" [ref=e135] [cursor=pointer]:
+          - text: Sinh lời được tính như thế nào?
+          - generic [ref=e136]: +
+        - generic: Lợi nhuận tạm tính theo ngày = (Số dư sinh lời × Tỷ suất sinh lời) / 365 ngày. Lợi nhuận tháng = Tổng lợi nhuận tạm tính mỗi ngày trong tháng. Tỷ suất sinh lời có thể thay đổi theo từng thời kỳ.
+      - generic [ref=e137]:
+        - button "Tiền lời được trả khi nào? +" [ref=e138] [cursor=pointer]:
+          - text: Tiền lời được trả khi nào?
+          - generic [ref=e139]: +
+        - generic:
+          - text: Tiền lời được chi trả trong vòng
+          - strong [ref=e140]: 5 ngày làm việc
+          - text: "tính từ ngày cuối cùng của tháng, không tính ngày lễ và ngày nghỉ. Ví dụ: tiền lời tháng 3 (01/03–31/03) sẽ được nhận trong khoảng 1/4–5/4."
+      - generic [ref=e141]:
+        - button "Số dư tối đa là bao nhiêu? +" [ref=e142] [cursor=pointer]:
+          - text: Số dư tối đa là bao nhiêu?
+          - generic [ref=e143]: +
+        - generic:
+          - text: Số dư tối đa tham gia V-Smart Save là
+          - strong [ref=e144]: 100.000.000đ
+          - text: (một trăm triệu đồng). Phần số dư vượt mức này sẽ không được tính lãi.
+      - generic [ref=e145]:
+        - button "Rút tiền có mất bao lâu không? +" [ref=e146] [cursor=pointer]:
+          - text: Rút tiền có mất bao lâu không?
+          - generic [ref=e147]: +
+        - generic:
+          - text: Rút tiền từ V-Smart Save là
+          - strong [ref=e148]: tức thì và miễn phí
+          - text: . Số tiền rút được trả về ví V-SmartPay ngay lập tức, không cần chờ đợi và không mất phí giao dịch.
+      - generic [ref=e149]:
+        - button "Sản phẩm có an toàn không? +" [ref=e150] [cursor=pointer]:
+          - text: Sản phẩm có an toàn không?
+          - generic [ref=e151]: +
+        - generic: V-Smart Save do CTCP WealthNet cung cấp. Số tiền đầu tư được tính toán, phân bổ và ủy thác đầu tư bởi CTCP Quản lý Quỹ Kỹ Thương, lưu ký tại Ngân hàng TMCP Kỹ Thương Việt Nam (Techcombank).
+  - contentinfo [ref=e152]:
+    - generic [ref=e153]:
+      - generic [ref=e154]:
+        - generic [ref=e155]: WealthNet
+        - generic [ref=e157]: TechcomCapital
+        - generic [ref=e159]: Techcombank
+      - paragraph [ref=e162]: V-Smart Save là sản phẩm được cung cấp bởi CTCP WealthNet. Số tiền đầu tư của người dùng chuyển vào V-Smart Save sẽ được tính toán, phân bổ và ủy thác đầu tư cho CTCP Quản lý Quỹ Kỹ Thương và được lưu ký tại Ngân hàng TMCP Kỹ Thương Việt Nam.
+      - paragraph [ref=e163]: © 2026 V-SmartPay. Tất cả quyền được bảo lưu.

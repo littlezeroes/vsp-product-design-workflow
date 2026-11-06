@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,7 +23,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
   "include": [
@@ -28,7 +34,20 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    ".next-mini-app-3250/dev/types/**/*.ts",
+    ".next-3250/types/**/*.ts",
+    ".next-3250/dev/types/**/*.ts",
+    ".next-deploy-vinclub/types/**/*.ts",
+    ".next-deploy-vinclub/dev/types/**/*.ts",
+    ".next-dev-3250/types/**/*.ts",
+    ".next-dev-3250/dev/types/**/*.ts",
+    ".next-3300/types/**/*.ts",
+    ".next-3300/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "scripts", "figma-plugin"]
+  "exclude": [
+    "node_modules",
+    "scripts",
+    "figma-plugin"
+  ]
 }

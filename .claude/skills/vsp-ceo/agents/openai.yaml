@@ -1,0 +1,4 @@
+interface:
+  display_name: "VSP CEO Review"
+  short_description: "Phản biện và trình phương án để ra quyết định"
+  default_prompt: "Dùng $vsp-ceo phản biện phương án và viết bản trình quyết định bằng hành trình, demo, nguồn tiền, đánh đổi và bằng chứng."

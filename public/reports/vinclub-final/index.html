@@ -1,0 +1,1114 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VinClub · Bản vẽ layout và phương án cuối</title><style>:root{  --color-grey-00:   #ffffff;
+  --color-grey-25:   #fdfdfd;
+  --color-grey-50:   #fafafa;
+  --color-grey-100:  #f5f5f5;
+  --color-grey-150:  #f3f3f3;
+  --color-grey-200:  #e5e5e5;
+  --color-grey-300:  #d4d4d4;
+  --color-grey-400:  #a1a1a1;
+  --color-grey-500:  #737373;
+  --color-grey-600:  #525252;
+  --color-grey-700:  #404040;
+  --color-grey-750:  #343434;
+  --color-grey-800:  #262626;
+  --color-grey-850:  #1f1f1f;
+  --color-grey-900:  #171717;
+  --color-grey-950:  #121212;
+  --color-grey-1000: #080808;
+  --color-green-50:  #e5fcf6;
+  --color-green-100: #ccf8ed;
+  --color-green-200: #99f1da;
+  --color-green-300: #66ebc8;
+  --color-green-400: #33e4b5;
+  --color-green-500: #00dda3;
+  --color-green-600: #00b182;
+  --color-green-700: #008562;
+  --color-green-800: #005841;
+  --color-green-900: #002c21;
+  --color-green-950: #001610;
+  --color-red-50:  #fde5ea;
+  --color-red-100: #fbccd5;
+  --color-red-200: #f9b2bf;
+  --color-red-300: #f36680;
+  --color-red-400: #ef3355;
+  --color-red-500: #eb002b;
+  --color-red-600: #bc0022;
+  --color-red-700: #8d001a;
+  --color-red-800: #5e0011;
+  --color-red-900: #2f0009;
+  --color-red-950: #180004;
+  --color-blue-50:  #eff6ff;
+  --color-blue-100: #eff6ff;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-450: #4c94f8;
+  --color-blue-500: #2b7fff;
+  --color-blue-600: #155dfc;
+  --color-blue-700: #155dfc;
+  --color-blue-800: #193cb8;
+  --color-blue-900: #1c398e;
+  --color-blue-950: #162456;
+  --color-yellow-50:  #fefce8;
+  --color-yellow-100: #fef9c3;
+  --color-yellow-200: #fef08a;
+  --color-yellow-300: #fde047;
+  --color-yellow-400: #facc15;
+  --color-yellow-500: #eab308;
+  --color-yellow-600: #ca8a04;
+  --color-yellow-700: #a16207;
+  --color-yellow-800: #854d0e;
+  --color-yellow-900: #713f12;
+  --color-yellow-950: #422006;
+  --color-rose-50:  #fff1f2;
+  --color-rose-100: #ffe4e6;
+  --color-rose-200: #fecdd3;
+  --color-rose-300: #fda4af;
+  --color-rose-400: #fb7185;
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
+  --color-rose-700: #be123c;
+  --color-rose-800: #9f1239;
+  --color-rose-900: #881337;
+  --color-rose-950: #4c0519;
+  --color-orange-50:  #fff7ed;
+  --color-orange-100: #ffedd5;
+  --color-orange-200: #fed7aa;
+  --color-orange-300: #fdba74;
+  --color-orange-400: #fb923c;
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c2410c;
+  --color-orange-800: #9a3412;
+  --color-orange-900: #7c2d12;
+  --color-orange-950: #431407;
+  --color-lime-50:  #f7fee7;
+  --color-lime-100: #ecfccb;
+  --color-lime-200: #d9f99d;
+  --color-lime-300: #bef264;
+  --color-lime-400: #a3e635;
+  --color-lime-500: #84cc16;
+  --color-lime-600: #65a30d;
+  --color-lime-700: #4d7c0f;
+  --color-lime-800: #3f6212;
+  --color-lime-900: #365314;
+  --color-lime-950: #1a2e05;
+  --color-teal-50:  #f0fdfa;
+  --color-teal-100: #ccfbf1;
+  --color-teal-200: #99f6e4;
+  --color-teal-300: #5eead4;
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f766e;
+  --color-teal-800: #115e59;
+  --color-teal-900: #134e4a;
+  --color-teal-950: #042f2e;
+  --color-cyan-50:  #ecfeff;
+  --color-cyan-100: #cffafe;
+  --color-cyan-200: #a5f3fc;
+  --color-cyan-300: #67e8f9;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+  --color-cyan-600: #0891b2;
+  --color-cyan-700: #0e7490;
+  --color-cyan-800: #155e75;
+  --color-cyan-900: #164e63;
+  --color-cyan-950: #053345;
+  --color-indigo-50:  #eef2ff;
+  --color-indigo-100: #e0e7ff;
+  --color-indigo-200: #c7d2fe;
+  --color-indigo-300: #a5b4fc;
+  --color-indigo-400: #818cf8;
+  --color-indigo-500: #6366f1;
+  --color-indigo-600: #4f46e5;
+  --color-indigo-700: #4338ca;
+  --color-indigo-800: #3730a3;
+  --color-indigo-900: #312e81;
+  --color-indigo-950: #1e1b4b;
+  --color-purple-50:  #f3e8ff;
+  --color-purple-100: #f3e8ff;
+  --color-purple-200: #e9d5ff;
+  --color-purple-300: #d8b4fe;
+  --color-purple-400: #c084fc;
+  --color-purple-500: #a855f7;
+  --color-purple-600: #9333ea;
+  --color-purple-700: #7e22ce;
+  --color-purple-800: #6b21a8;
+  --color-purple-900: #581c87;
+  --color-purple-950: #3b0764;
+  --color-fuchsia-50:  #fdf4ff;
+  --color-fuchsia-100: #fae8ff;
+  --color-fuchsia-200: #f5d0fe;
+  --color-fuchsia-300: #f0abfc;
+  --color-fuchsia-400: #e879f9;
+  --color-fuchsia-500: #d946ef;
+  --color-fuchsia-600: #c026d3;
+  --color-fuchsia-700: #a21caf;
+  --color-fuchsia-800: #86198f;
+  --color-fuchsia-900: #701a75;
+  --color-fuchsia-950: #4a044e;
+  --color-dark-matter-25:    #dee9e6;
+  --color-dark-matter-50:    #cdddd8;
+  --color-dark-matter-100:   #bcd0ca;
+  --color-dark-matter-200:   #abc4bc;
+  --color-dark-matter-300:   #89aa9f;
+  --color-dark-matter-400:   #679183;
+  --color-dark-matter-500:   #457867;
+  --color-dark-matter-600:   #376052;
+  --color-dark-matter-700:   #29483e;
+  --color-dark-matter-750:   #1f3730;
+  --color-dark-matter-800:   #1c3029;
+  --color-dark-matter-850:   #15241f;
+  --color-dark-matter-900:   #13201c;
+  --color-dark-matter-950:   #0e1815;
+  --color-dark-matter-1000:  #070c0a;
+  --color-decor-sand: var(--decor-sand);
+  --color-decor-sand-subtle: var(--decor-sand-subtle);
+  --color-decor-clay: var(--decor-clay);
+  --color-decor-clay-subtle: var(--decor-clay-subtle);
+  --color-decor-butter: var(--decor-butter);
+  --color-decor-butter-subtle: var(--decor-butter-subtle);
+  --color-decor-sage: var(--decor-sage);
+  --color-decor-sage-subtle: var(--decor-sage-subtle);
+  --color-decor-lagoon: var(--decor-lagoon);
+  --color-decor-lagoon-subtle: var(--decor-lagoon-subtle);
+  --color-decor-denim: var(--decor-denim);
+  --color-decor-denim-subtle: var(--decor-denim-subtle);
+  --color-decor-lilac: var(--decor-lilac);
+  --color-decor-lilac-subtle: var(--decor-lilac-subtle);
+  --color-decor-rose: var(--decor-rose);
+  --color-decor-rose-subtle: var(--decor-rose-subtle);
+  --color-background:          var(--background);
+  --color-foreground:          var(--foreground);
+  --color-card:                var(--card);
+  --color-card-foreground:     var(--card-foreground);
+  --color-popover:             var(--popover);
+  --color-popover-foreground:  var(--popover-foreground);
+  --color-primary:             var(--primary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-secondary:           var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:               var(--muted);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-accent:              var(--accent);
+  --color-accent-foreground:   var(--accent-foreground);
+  --color-destructive:         var(--destructive);
+  --color-border:              var(--border);
+  --color-border-bold:         var(--border-bold);
+  --color-input:               var(--input);
+  --color-ring:                var(--ring);
+  --color-success:             var(--success);
+  --color-success-foreground:  var(--success-foreground);
+  --color-warning:             var(--warning);
+  --color-warning-foreground:  var(--warning-foreground);
+  --color-info:                var(--info);
+  --color-info-foreground:     var(--info-foreground);
+  --color-danger:              var(--danger);
+  --color-danger-foreground:   var(--danger-foreground);
+  --color-brand-secondary:     var(--brand-secondary);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-disabled-fg:         var(--disabled-fg);
+  --color-disabled-bg:         var(--disabled-bg);
+  --color-disabled-border:     var(--disabled-border);
+  --color-sub-primary:         var(--sub-primary);
+  --color-card-accent:         var(--card-accent);
+  --color-card-accent-foreground: var(--card-accent-foreground);
+  --color-overlay:             var(--overlay);
+  --color-toast:               var(--toast);
+  --color-island:              var(--island);
+  --color-search:              var(--search);
+  --color-btn-secondary-bg:    var(--btn-secondary-bg);
+  --color-outline-subtle:      var(--outline-subtle);
+  --color-outline-base:        var(--outline-base);
+  --color-outline-strong:      var(--outline-strong);
+  --color-sidebar:                       var(--sidebar);
+  --color-sidebar-foreground:            var(--sidebar-foreground);
+  --color-sidebar-primary:               var(--sidebar-primary);
+  --color-sidebar-primary-foreground:    var(--sidebar-primary-foreground);
+  --color-sidebar-accent:                var(--sidebar-accent);
+  --color-sidebar-accent-foreground:     var(--sidebar-accent-foreground);
+  --color-sidebar-border:                var(--sidebar-border);
+  --color-sidebar-ring:                  var(--sidebar-ring);--bg:var(--color-grey-50);--paper:var(--color-grey-00);--ink:var(--color-grey-900);--sub:var(--color-grey-600);--wash:var(--color-grey-100)}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}a{color:inherit;text-underline-offset:4px}.container{max-width:1380px;padding:0 22px;margin:auto}header{padding:48px 0 32px;background:var(--paper)}.eyebrow{font:11px ui-monospace,monospace;letter-spacing:.1em;color:var(--sub)}h1{font-size:clamp(36px,5vw,64px);line-height:1.08;letter-spacing:-.05em;margin:22px 0}h2{font-size:30px;line-height:1.2;letter-spacing:-.035em;margin:0}h3{font-size:20px;line-height:1.4;margin:8px 0}.lead{font-size:19px;max-width:900px}.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.link{display:inline-block;padding:10px 16px;background:var(--wash);border-radius:8px;font-size:13px;text-decoration:none}.primary{background:var(--ink);color:var(--paper)}nav{position:sticky;top:0;background:var(--paper);z-index:2;box-shadow:0 6px 20px color-mix(in srgb,var(--ink) 4%,transparent)}nav .container{display:flex;gap:20px;overflow:auto;padding-block:14px;white-space:nowrap;font-size:12px}section{padding-top:40px;scroll-margin-top:70px}.heading{padding:24px 0 12px}.two,.three{display:grid;gap:18px;align-items:start}.two{grid-template-columns:repeat(2,minmax(0,1fr))}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card{padding:24px;border-radius:28px;background:var(--paper);min-width:0}.card p{font-size:14px;color:var(--sub)}.phone{width:100%;max-width:280px;height:auto;display:block;margin:18px auto;border-radius:28px}.phone.tall{max-width:300px}.badge{font-size:10px;border-radius:8px;padding:4px 8px;background:var(--wash);display:inline-block}.new{color:var(--color-red-800);background:var(--color-red-50)}.chosen{background:var(--color-green-50);color:var(--color-green-900)}.callout{padding:22px;background:var(--color-green-50);color:var(--color-green-900);border-radius:28px;margin:18px 0}.muted{color:var(--sub)}.small{font-size:12px}.blueprint{width:100%;height:auto;display:block}.block{display:grid;grid-template-columns:240px 1fr;gap:24px;background:var(--paper);padding:24px;border-radius:28px;margin:18px 0}.block-images img{display:block;max-width:100%;height:auto;margin:10px 0;border-radius:14px}.block-images small{font-size:10px;color:var(--sub)}.block h3{font-size:23px}.specs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}.specs span{background:var(--wash);padding:10px;border-radius:8px;font-size:12px}.block code{font-size:11px;overflow-wrap:anywhere;color:var(--sub)}.block li{font-size:13px;margin:6px 0}.table-wrap{overflow:auto;background:var(--paper);border-radius:28px}table{width:100%;min-width:1000px;border-collapse:collapse;text-align:left}th{font-size:10px;letter-spacing:.04em;background:var(--wash);padding:16px;color:var(--sub)}td{font-size:12px;padding:18px 16px;vertical-align:top}tr:nth-child(even){background:color-mix(in srgb,var(--wash) 50%,var(--paper))}.flow-images{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.flow-images figure{margin:0}.flow-images img{width:100%;border-radius:14px}figcaption{font-size:11px;color:var(--sub);margin-top:8px}details{margin:12px 0;padding:16px;background:var(--paper);border-radius:14px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px}footer{margin-top:40px;padding:32px 22px;background:var(--paper);font-size:12px;color:var(--sub)}.indicator{width:139px;height:5px;border-radius:8px;background:var(--ink);margin:24px auto 0}@media(max-width:850px){.two,.three{grid-template-columns:1fr}.block{grid-template-columns:1fr}.block-images{display:flex;gap:12px;align-items:start;overflow:auto}.block-images img{max-width:200px}.flow-images{grid-template-columns:repeat(2,1fr)}.specs{grid-template-columns:1fr}}
+</style></head><body><header><div class="container"><div class="eyebrow">VINCLUB / PHƯƠNG ÁN CUỐI / KẾ THỪA SOURCE</div><h1>Một Home.<br/>Giữ đúng sáu lớp của bạn.</h1><p class="lead">Dùng lại block thật từ code cũ; không lấy V5 làm nền. Bản này chỉ rõ từng block lấy ở đâu, kích thước bao nhiêu, giữ gì, sửa gì và tính năng B3 nằm ở màn nào.</p><div class="links"><a class="link primary" href="/vinclub-final">Mở UI cuối ↗</a><a class="link" href="#drawing">Xem bản vẽ chi tiết</a><a class="link" href="slides.html">Xem slide</a><a class="link" href="vinclub-final.pptx">PowerPoint</a><a class="link" href="vinclub-final.pdf">PDF</a></div></div></header><nav><div class="container"><a href="#choice">Chốt layout</a><a href="#drawing">Bản vẽ</a><a href="#blocks">8 block / nguồn</a><a href="#phases">Tính năng vào đâu</a><a href="#money">Nguồn tiền</a><a href="#ui">UI phía sau</a><a href="#checks">Kiểm chứng</a></div></nav><main class="container"><section id="choice"><div class="heading"><span class="eyebrow">01 / PHƯƠNG ÁN CHỌN</span><h2>Ví gọn, hai sản phẩm tài chính, rail ưu đãi và ảnh trải nghiệm lớn.</h2></div><div class="callout"><strong>Giữ nguyên trục:</strong> Hội viên / VPoint → Ví → Sinh lời / Vay nhanh → Quà + ưu đãi thương hiệu → Trải nghiệm → Năm mục điều hướng.<p><strong>Chỉ sửa có mục đích:</strong> làm rõ nhãn sản phẩm, sửa vùng chạm story, mở đúng ưu đãi, ẩn nút Tết khi cuộn để không che CTA, đặt quản lý đã lưu ở tầng sâu, nối trải nghiệm tới yêu cầu. Không đưa đơn vé lên thay ưu đãi và không thay cặp tài chính bằng shortcut.</p></div><div class="three"><article class="card"><span class="badge chosen">CHỌN</span><h3>Ví gọn + hai sản phẩm</h3><img class="phone" src="evidence/selected-top.png" alt="Ví gọn + hai sản phẩm"><p>Giữ hai lợi ích tài chính. Rail bắt đầu y484, trải nghiệm y652 (gồm tiêu đề).</p><p><strong>Lý do:</strong> Không thay cấu trúc đã chọn.</p><a class="link" href="/vinclub-final?layout=selected">Xem layout ↗</a></article><article class="card"><span class="badge ">KHÔNG CHỌN</span><h3>Ví lớn</h3><img class="phone" src="evidence/wallet-large-top.png" alt="Ví lớn"><p>Tăng container237px, đẩy các section sau xuống38px; rail y522.</p><p><strong>Lý do:</strong> Thêm diện tích cho thông tin tĩnh mà không có thêm tác vụ.</p><a class="link" href="/vinclub-final?layout=wallet-large">Xem layout ↗</a></article><article class="card"><span class="badge ">KHÔNG CHỌN</span><h3>Lưới sáu dịch vụ</h3><img class="phone" src="evidence/service-grid-top.png" alt="Lưới sáu dịch vụ"><p>Khối dịch vụ cao180px; rail y524, đẩy trải nghiệm xuống40px.</p><p><strong>Lý do:</strong> Trộn tiện ích với cặp sản phẩm tài chính; cạnh tranh với rail ưu đãi.</p><a class="link" href="/vinclub-final?layout=service-grid">Xem layout ↗</a></article></div></section><section id="drawing"><div class="heading"><span class="eyebrow">02 / BẢN VẼ CÓ KÍCH THƯỚC</span><h2>Đặt cạnh UI gốc và UI dựng.</h2></div><div class="two"><article class="card"><img class="blueprint" src="layout-drawing.svg" alt="Bản vẽ từng block với kích thước source"><p class="small muted">Sơ đồ dùng geometry CSSpx mới đo ở viewport390×844. Đường đỏ là hết viewport; dock nổi cố định. Bản vẽ là tài liệu giải thích, không được dùng làm nền ảnh giả UI.</p></article><div class="two"><article class="card"><h3>UI gốc</h3><img class="phone tall" src="evidence/source-unfolded.png" alt="UI gốc trải toàn nội dung"><p class="small muted">Ảnh trải nội dung để xem toàn bộ thứ tự; không phải viewport điện thoại cao1200px.</p></article><article class="card"><h3>UI phương án chọn</h3><img class="phone tall" src="evidence/selected-unfolded.png" alt="UI cuối dùng source blocks"><p class="small muted">Renderer thật: StackHome + CSS / tài sản gốc, không raster hóa text. Khác có chủ đích ở nhãn và hành vi tầng sâu.</p></article></div></div></section><section id="blocks"><div class="heading"><span class="eyebrow">03 / BLOCK ĐỂ DỰNG</span><h2>Từng block: ảnh nguồn → thông số → component → tương tác.</h2></div><p class="muted">Hội viên, ví, hai sản phẩm, rail và ảnh lớn được compose qua StackHome. Các helper nội bộ vẫn dùng qua component này; không tạo lại Button, Card, ItemList hay typography system.</p><article class="block" id="block-1"><div class="block-images"><small>BLOCK NGUỒN</small><img src="evidence/source-membership.png" alt="Block nguồn Hội viên &amp; VPoint"><small>BLOCK TRONG BẢN CHỌN</small><img src="evidence/selected-membership.png" alt="Block dựng Hội viên &amp; VPoint"></div><div><span class="eyebrow">BLOCK 01 / originalcode reuse</span><h3>Hội viên &amp; VPoint</h3><p>Nhận biết tôi là ai, có gì; mở tiến trình hạng.</p><div class="specs"><span>x=0 / y=54</span><span>390 × 97 px</span><span>padding 4px 22px 24px</span></div><p><strong>Clone / dùng lại từ:</strong> StackHome → header/tag + AnimatedNumber</p><code>app/(vinclub)/vinclub-home/ref-layouts.tsx · ref-layouts.tsx:387; ref-layouts.tsx:393; ref-layouts.tsx:395; hierarchy.css:69; hierarchy.css:75</code><p><strong>Giữ:</strong> Giữ vị trí, shader, layout và ảnh hạng gốc; tên/số điểm là fixture.</p><p><span class="badge new">ĐÍCH VPOINT RIÊNG</span> Chạm VPoint mở quản lý điểm; chạm hạng mở Hội viên. Không thêm một hero hội viên mới.</p><strong>Bấm vào đâu?</strong><ul><li>Chạm điểm/hạng → Hội viên; chưa kích hoạt → Kích hoạt VinClub</li></ul><p class="small muted"><strong>Không chọn cách khác vì:</strong> Tăng chiều cao trạng thái tĩnh, đẩy sản phẩm và ưu đãi xuống. Đây là lý do đề xuất của nhóm, không gán thành quyết định bác bỏ trước đây của bạn.</p></div></article><article class="block" id="block-2"><div class="block-images"><small>BLOCK NGUỒN</small><img src="evidence/source-wallet.png" alt="Block nguồn Ví VinClub"><small>BLOCK TRONG BẢN CHỌN</small><img src="evidence/selected-wallet.png" alt="Block dựng Ví VinClub"></div><div><span class="eyebrow">BLOCK 02 / originalcode reuse</span><h3>Ví VinClub</h3><p>Đọc số dư, vào ví hoặc kích hoạt.</p><div class="specs"><span>x=10 / y=151</span><span>370 × 199 px</span><span>padding 0px</span></div><p><strong>Clone / dùng lại từ:</strong> StackHome → Pouch + WalletInside + WalletActivation</p><code>app/(vinclub)/vinclub-home/ref-layouts.tsx · ref-layouts.tsx:299; ref-layouts.tsx:307; ref-layouts.tsx:339; ref-layouts.tsx:399; ref-layouts.css:358; ref-layouts.css:812</code><p><strong>Giữ:</strong> Giữ carbon material, snap, số dư, animation và iframe gốc.</p><strong>Bấm vào đâu?</strong><ul><li>Ví active → WalletInside iframe Home ví</li><li>Inactive → WalletActivation; hoàn tất → 0 ₫</li><li>Đóng ví về Home; giảm motion theo preference</li></ul><p class="small muted"><strong>Không chọn cách khác vì:</strong> Mất nhận diện vật thể và flow vào ví đã có nguồn. Đây là lý do đề xuất của nhóm, không gán thành quyết định bác bỏ trước đây của bạn.</p></div></article><article class="block" id="block-3"><div class="block-images"><small>BLOCK NGUỒN</small><img src="evidence/source-financial.png" alt="Block nguồn Hai sản phẩm tài chính"><small>BLOCK TRONG BẢN CHỌN</small><img src="evidence/selected-financial.png" alt="Block dựng Hai sản phẩm tài chính"></div><div><span class="eyebrow">BLOCK 03 / originalcode reuse + adaptation nhãn/đích</span><h3>Hai sản phẩm tài chính</h3><p>Phân biệt lợi ích tích lũy và hạn mức chi tiêu; mở chi tiết riêng.</p><div class="specs"><span>x=0 / y=276</span><span>390 × 140 px</span><span>padding 20px 22px 0px</span></div><p><strong>Clone / dùng lại từ:</strong> VoucherLower → ProductCases(count=2)</p><code>app/(vinclub)/vinclub-home/ref-layouts.tsx · ref-layouts.tsx:228; ref-layouts.tsx:233; ref-layouts.tsx:236; ref-layouts.css:393; ref-layouts.css:804; ref-layouts.css:834</code><p><strong>Giữ:</strong> Adaptation nội dung nhỏ: đổi Product1/2 thành tên tài chính; giữ hai card, icon và ngôn ngữ lợi ích.</p><p><span class="badge new">CHỈ ĐỔI NHÃN VÀ NỐI ĐÍCH</span> Product1/2 → Sinh lời/Vay nhanh; giữ hai lợi ích Tích lũy linh hoạt/Chi tiêu linh hoạt. Không thay thành shortcut.</p><strong>Bấm vào đâu?</strong><ul><li>Chạm card mở đúng thông tin tài chính; CTA xin tư vấn/đăng ký chỉ khi có flow thật</li></ul><p class="small muted"><strong>Không chọn cách khác vì:</strong> Đổi phạm vi sản phẩm tài chính thành thao tác ví, sai vai trò nguồn và brief. Đây là lý do đề xuất của nhóm, không gán thành quyết định bác bỏ trước đây của bạn.</p></div></article><article class="block" id="block-4"><div class="block-images"><small>BLOCK NGUỒN</small><img src="evidence/source-benefits.png" alt="Block nguồn Dành cho bạn"><small>BLOCK TRONG BẢN CHỌN</small><img src="evidence/selected-benefits.png" alt="Block dựng Dành cho bạn"></div><div><span class="eyebrow">BLOCK 04 / originalcode reuse</span><h3>Dành cho bạn</h3><p>Đặt ngữ cảnh cho một rail chung gồm story và ưu đãi thương hiệu.</p><div class="specs"><span>x=0 / y=484</span><span>390 × 168 px</span><span>padding 0px 22px 8px</span></div><p><strong>Clone / dùng lại từ:</strong> VoucherLower</p><code>app/(vinclub)/vinclub-home/ref-layouts.tsx · ref-layouts.tsx:288; ref-layouts.tsx:291; ref-layouts.css:931</code><p><strong>Giữ:</strong> Giữ title và đường xem đủ; không nói thuật toán đã cá nhân hóa.</p><strong>Bấm vào đâu?</strong><ul><li>Xem tất cả → Ưu đãi</li></ul><p class="small muted"><strong>Không chọn cách khác vì:</strong> Tăng nhấn game và đẩy cặp tài chính khỏi nhịp nguồn. Đây là lý do đề xuất của nhóm, không gán thành quyết định bác bỏ trước đây của bạn.</p></div></article><article class="block" id="block-5"><div class="block-images"><small>BLOCK NGUỒN</small><img src="evidence/source-benefits.png" alt="Block nguồn Quà mỗi ngày"><small>BLOCK TRONG BẢN CHỌN</small><img src="evidence/selected-benefits.png" alt="Block dựng Quà mỗi ngày"></div><div><span class="eyebrow">BLOCK 05 / originalcode reuse</span><h3>Quà mỗi ngày</h3><p>Entry nhỏ tạo khám phá; viewer chứa nội dung sâu.</p><div class="specs"><span>x=0 / y=484</span><span>390 × 168 px</span><span>padding 0px 22px 8px</span></div><p><strong>Clone / dùng lại từ:</strong> HomeStory(children=GiftDeck)</p><code>app/(vinclub)/vinclub-home/home-story.tsx · home-story.tsx:11; home-story.tsx:36; home-story.tsx:43; home-story.tsx:48; ref-layouts.tsx:273; ref-layouts.css:910; ref-layouts.css:954</code><p><strong>Giữ:</strong> Giữ artwork và viewer; bắt buộc sửa hit area/stacking nếu còn bị offer cạnh chặn pointer.</p><strong>Bấm vào đâu?</strong><ul><li>Normal click mở viewer</li><li>Mũi tên/swipe/Escape/close và restore focus</li><li>Nhận demo phải có trạng thái và đích tìm lại</li></ul><p class="small muted"><strong>Không chọn cách khác vì:</strong> Chiếm màn trước khi khách có ý định; ngân sách/thưởng chưa được xác thực. Đây là lý do đề xuất của nhóm, không gán thành quyết định bác bỏ trước đây của bạn.</p></div></article><article class="block" id="block-6"><div class="block-images"><small>BLOCK NGUỒN</small><img src="evidence/source-benefits.png" alt="Block nguồn Rail ưu đãi thương hiệu"><small>BLOCK TRONG BẢN CHỌN</small><img src="evidence/selected-benefits.png" alt="Block dựng Rail ưu đãi thương hiệu"></div><div><span class="eyebrow">BLOCK 06 / originalcode reuse</span><h3>Rail ưu đãi thương hiệu</h3><p>Thấy thương hiệu + lợi ích + điều kiện; chọn một đề nghị.</p><div class="specs"><span>x=0 / y=484</span><span>390 × 168 px</span><span>padding 0px 22px 8px</span></div><p><strong>Clone / dùng lại từ:</strong> OfferCards + VOUCHERS</p><code>app/(vinclub)/vinclub-home/ref-layouts.tsx · ref-layouts.tsx:29; ref-layouts.tsx:271; ref-layouts.tsx:274; ref-layouts.tsx:283; ref-layouts.css:658; ref-layouts.css:713; hierarchy.css:85; hierarchy.css:87</code><p><strong>Giữ:</strong> Giữ toàn bộ 6 thương hiệu; không biến đề nghị thành voucher đã sở hữu.</p><p><span class="badge new">CHI TIẾT ĐÚNG THƯƠNG HIỆU</span> Giữ rail mức hưởng; Của tôi nằm trong Ưu đãi, không đưa vé giá bán lên chiếm vị trí lời đề nghị.</p><strong>Bấm vào đâu?</strong><ul><li>Swipe/snap ngang</li><li>Source dispatch vinclub:offers mở hub chung; đích offerId là adaptation đề xuất</li><li>Phải thấy điều kiện trước xác nhận sử dụng</li></ul><p class="small muted"><strong>Không chọn cách khác vì:</strong> Cho so sánh tốt hơn nhưng đẩy trải nghiệm quá sâu; archive như lựa chọn kiểm chứng, chưa là user rejection. Đây là lý do đề xuất của nhóm, không gán thành quyết định bác bỏ trước đây của bạn.</p></div></article><article class="block" id="block-7"><div class="block-images"><small>BLOCK NGUỒN</small><img src="evidence/source-experiences.png" alt="Block nguồn Khám phá trải nghiệm"><small>BLOCK TRONG BẢN CHỌN</small><img src="evidence/selected-experiences.png" alt="Block dựng Khám phá trải nghiệm"></div><div><span class="eyebrow">BLOCK 07 / originalcode reuse</span><h3>Khám phá trải nghiệm</h3><p>Ảnh lớn giúp hình dung trước khi xem điều kiện.</p><div class="specs"><span>x=0 / y=652</span><span>390 × 430 px</span><span>padding 0px</span></div><p><strong>Clone / dùng lại từ:</strong> ForYou(layout=2)</p><code>app/(vinclub)/vinclub-home/ref-layouts.tsx · ref-layouts.tsx:120; ref-layouts.tsx:124; ref-layouts.tsx:140; ref-layouts.tsx:147; ref-layouts.css:593; ref-layouts.css:595; ref-layouts.css:837</code><p><strong>Giữ:</strong> Giữ tỷ lệ lớn, ảnh, overlay và smooth corners nguồn.</p><strong>Bấm vào đâu?</strong><ul><li>Swipe ngang</li><li>Khám phá → BottomSheet thông tin nguồn</li><li>Close trở về đúng Home; gửi yêu cầu không đồng nghĩa đặt thành công</li></ul><p class="small muted"><strong>Không chọn cách khác vì:</strong> Dễ thấy nhiều item nhưng mất vai trò hình dung và thu hẹp vùng đọc chữ/CTA. Đây là lý do đề xuất của nhóm, không gán thành quyết định bác bỏ trước đây của bạn.</p></div></article><article class="block" id="block-8"><div class="block-images"><small>BLOCK NGUỒN</small><img src="evidence/source-navigation.png" alt="Block nguồn Điều hướng cố định"><small>BLOCK TRONG BẢN CHỌN</small><img src="evidence/selected-navigation.png" alt="Block dựng Điều hướng cố định"></div><div><span class="eyebrow">BLOCK 08 / originalcode reuse</span><h3>Điều hướng cố định</h3><p>Giữ đường tìm lại và chuyển hub ổn định.</p><div class="specs"><span>x=22 / y=762</span><span>346 × 62 px</span><span>padding 4px</span></div><p><strong>Clone / dùng lại từ:</strong> VinClubHome page → nav.vk-bar + vk-indicator</p><code>app/(vinclub)/vinclub-home/page.tsx · page.tsx:140; page.tsx:146; page.tsx:152; vinclub-home.css:62</code><p><strong>Giữ:</strong> Reuse nav nguồn; kiểm tra QR trước khi công bố flow.</p><strong>Bấm vào đâu?</strong><ul><li>Tab mở đúng hub và active aria-current</li><li>QR nguồn chỉ có affordance; không gọi là quét đã hoạt động</li><li>Mọi full-screen giữ indicator</li></ul><p class="small muted"><strong>Không chọn cách khác vì:</strong> Home có nhiều mục tiêu, không có một cam kết duy nhất. Đây là lý do đề xuất của nhóm, không gán thành quyết định bác bỏ trước đây của bạn.</p></div></article></section><section id="phases"><div class="heading"><span class="eyebrow">04 / B3 ĐƯỢC ĐẶT VÀO ĐÂU?</span><h2>Thêm tính năng ở đúng lớp, không thêm block tùy tiện.</h2></div><p><span class="badge new">PHẦN BỔ SUNG / MỞ RỘNG</span> Hai cột tương lai mô tả scope kế hoạch và điều kiện; UI demo không phải chứng cứ API đã bàn giao.</p><div class="table-wrap"><table><thead><tr><th>Tính năng</th><th>Điểm vào trên Home</th><th>Màn phía sau</th><th>Hiện tại</th><th>02/2027</th><th>Cuối 2027</th><th>Giá trị kinh doanh</th></tr></thead><tbody><tr><td>Hạng, quyền lợi, số dư và lịch sử VPoint</td><td>Lớp 1: hạng + VPoint</td><td>Hội viên → Điểm / Quyền lợi / Tiến độ hạng</td><td>Có bề mặt nguồn; B3 ghi hoàn thành hồ sơ hạng và sổ cái, chưa kiểm chứng production</td><td>B3 30/11/2026: lịch sử/hạn điểm, tiến độ hạng; 24/12: cấp quyền lợi và đối soát</td><td>Mở rộng quyền lợi theo nguồn cung; không tự thêm tab</td><td>Thúc đẩy sử dụng và chi tiêu chéo; VPoint không phải tiền ví hay doanh thu</td></tr><tr><td>Ví VinPay, liên kết ngân hàng, nạp/rút và lịch sử</td><td>Lớp 2: ví độc lập với VPoint</td><td>Ví VinPay → nguồn tiền / giao dịch</td><td>Có ví và đường kích hoạt trong nguồn; B3 ghi hoàn thành liên kết ngân hàng ở ví, không đồng nghĩa SDK trên VinClub đã xong</td><td>SDK trên VinClub hạn 24/12/2026</td><td>Mở rộng kết nối theo nghiệm thu, giữ lớp ví</td><td>Nguồn tiền cho giao dịch; tiền nạp và số dư không phải doanh thu</td></tr><tr><td>Sinh lời</td><td>Lớp 3: thẻ tài chính Sinh lời</td><td>VinPay → chi tiết sản phẩm → điều kiện → đăng ký</td><td>Source có saving; lợi suất 5,7%/năm là số mẫu. B3 ghi hoàn thành kích hoạt Sinh lời ở ví</td><td>Giữ thẻ và chuyển đúng sản phẩm khi VinPay hỗ trợ; không cam kết lãi suất hay tích hợp VinClub đã giao</td><td>Tối ưu bán chéo theo dữ liệu đủ điều kiện; không tăng số thẻ mặc định</td><td>Bán chéo sản phẩm tài chính cho VinPay; cơ chế thu và bên hưởng cần hợp đồng</td></tr><tr><td>Vay nhanh / quyền lợi tín dụng</td><td>Lớp 3: thẻ tài chính Vay nhanh</td><td>VinPay → chi tiết tín dụng → kiểm tra điều kiện / đăng ký</td><td>Source có vay với hạn mức 50 triệu mẫu; B3 hiện hành không chốt ngày phát hành tín dụng</td><td>Giữ vai trò thẻ tài chính; chỉ cho đăng ký thật khi sản phẩm và đối tác đã sẵn sàng; không hứa duyệt</td><td>Mở theo sản phẩm được chốt, chưa có hạn cam kết trong B3</td><td>Bán chéo tín dụng; phí giới thiệu/chia sẻ doanh thu chưa xác nhận</td></tr><tr><td>QR, hóa đơn, tiện ích, QR xuyên biên giới</td><td>Lớp 2: Mở ví; lớp 6: QR</td><td>Ví → Thanh toán / Hóa đơn; QR → quét và xác nhận</td><td>Điểm vào ví/QR có nguồn; readiness mỗi dịch vụ chưa kiểm chứng</td><td>QR + hóa đơn 31/12/2026; QR xuyên biên giới 28/02/2027</td><td>Mở rộng mạng chấp nhận có kiểm soát; không tạo khối tiện ích mới trên Home</td><td>Phí thanh toán chỉ theo hợp đồng xác nhận; TPV không phải doanh thu</td></tr><tr><td>Dùng VPoint khấu trừ tiền đơn</td><td>Lớp 1: Điểm; lớp 4/5: món hoặc dịch vụ áp dụng</td><td>Chi tiết quyền lợi → đơn hàng → thanh toán</td><td>B3 ghi Tiêu VPoint hoàn thành; cơ chế khấu trừ tích hợp đang có hạn riêng</td><td>Khấu trừ tại checkout hạn 28/02/2027; hiển thị điểm dùng được và số tiền còn lại</td><td>Mở rộng từng đơn vị đủ đối soát, không gộp tiền ví với điểm</td><td>Tăng sử dụng quyền lợi và giao dịch; trừ điểm không tự là doanh thu</td></tr><tr><td>Voucher, quà đã sở hữu và quà sinh nhật</td><td>Lớp 4: rail ưu đãi thương hiệu + quà</td><td>Ưu đãi → Voucher của tôi / đổi quà / nơi sử dụng</td><td>Nguồn có rail và quà; B3 ghi ví voucher hoàn thành; quà hằng ngày vẫn là demo</td><td>Đổi quà 30/11; quà sinh nhật hội viên cao cấp 31/12/2026; quà chào mừng 24/12</td><td>Duy trì theo ngân sách và nguồn cung, không buộc quà hằng ngày thành quyền lợi vĩnh viễn</td><td>Tạo sử dụng tăng thêm; cần trừ chi phí tài trợ và vận hành</td></tr><tr><td>Vé sự kiện</td><td>Lớp 5: card sự kiện; lớp 6: Sự kiện</td><td>Sự kiện → chi tiết / zone → đặt vé → vé của tôi</td><td>Nguồn có tab Sự kiện; đặt vé thật chưa kiểm chứng</td><td>B3 hạn 31/12/2026, giai đoạn 1 theo zone; chỉ bật sự kiện có nguồn vé</td><td>Mở rộng theo lịch và tồn của nhà cung cấp</td><td>Doanh thu bán vé thuộc bên cung cấp; phần nền tảng hưởng theo thỏa thuận, chưa có tỷ lệ</td></tr><tr><td>Sa bàn ảo, nhà mẫu, lái thử và lịch O2O</td><td>Lớp 5: card lifestyle ảnh lớn đúng nội dung</td><td>Chi tiết trải nghiệm → khám phá / 3D nhẹ → yêu cầu lịch → theo dõi</td><td>Nguồn có VinFast và nội dung nghỉ dưỡng Đảo Ngọc; ảnh nghỉ dưỡng không chứng minh dự án nhà ở hay sa bàn đã tích hợp</td><td>Khám phá 3D, trợ lý và lịch có hạn 31/12/2026 trong B3; lịch chỉ xác nhận khi P&amp;L phản hồi</td><td>Mở rộng theo dữ liệu dự án và hiệu năng; cư dân số chưa có hạn</td><td>Lead được tiếp nhận, lịch và giao dịch P&amp;L là các bước khác nhau; chưa xác nhận phí lead</td></tr><tr><td>Mở Cửa Tết, nhiệm vụ và giới thiệu có chuyển đổi</td><td>Lớp 4: card chiến dịch trong rail quà; lớp 5 chỉ khi có trải nghiệm liên quan</td><td>Sảnh chiến dịch → cửa → nhiệm vụ / quyền lợi → dịch vụ P&amp;L</td><td>Có hook quà mẫu; chiến dịch chưa được xem là triển khai</td><td>5 cửa 15/01–12/02; hoàn tất 19/02, tổng kết 26/02; referral 15/01/2027. Thứ tự có thể điều chỉnh</td><td>Tái sử dụng cấu hình hạn 30/06/2027; không cố định khối Tết trên Home quanh năm</td><td>Tăng sử dụng chéo và lượt ghé xác thực; hiệu quả sau trừ thưởng, không lấy lượt mở app làm doanh thu</td></tr><tr><td>Gói ưu đãi liên P&amp;L, gói gia đình và đặc quyền cao cấp</td><td>Lớp 1: quyền lợi hạng; lớp 4: gói; lớp 5: trải nghiệm đặc quyền</td><td>Hội viên / Ưu đãi → cấu phần gói → mua / quản lý quyền sử dụng</td><td>B3 hồ sơ hạng hoàn thành; chưa xác nhận gói đang bán</td><td>Gói cá nhân/nhóm, quản lý quyền lợi và đối soát gói hạn 31/12/2026; đặc quyền cao cấp phụ thuộc bộ phận Đặc quyền</td><td>Mở theo nguồn cung và kết quả pilot; không suy ra có phí hội viên định kỳ</td><td>Bán chéo và phân bổ tiền gói cho P&amp;L; cần tách nghĩa vụ cung ứng và phần nền tảng</td></tr><tr><td>Đối tác ngoài HST, affiliate và gian hàng Vincom</td><td>Lớp 4: ưu đãi thương hiệu; lớp 5: tuyển chọn nội dung phù hợp</td><td>Ưu đãi → thương hiệu / gian hàng → đối tác hoặc đơn hàng</td><td>Rail có thương hiệu mẫu; chưa chứng minh catalogue hay affiliate production</td><td>Merchant portal xác nhận dùng ưu đãi hạn 24/12/2026; marketplace/affiliate rộng chưa có hạn</td><td>Mở từng đối tác sau khi khép kín attribution, xác nhận đơn và đối soát; không mặc định thêm tab Chợ</td><td>Affiliate chỉ có hoa hồng sau giao dịch đủ điều kiện theo hợp đồng; click chuyển đi chưa tạo thu nhập</td></tr><tr><td>Chat, AI shopping, OA cộng đồng và cư dân số</td><td>Giữ trong đích sâu của trải nghiệm/dịch vụ; không thêm Home block hoặc tab ở bản chốt</td><td>Chi tiết trải nghiệm / dịch vụ → hỗ trợ; cộng đồng nếu tích hợp được</td><td>Chưa có bằng chứng triển khai trong baseline</td><td>Không cam kết trước 02/2027: Duhat chưa có kế hoạch SDK; AI marketplace và cư dân số chưa có hạn</td><td>Hướng mở rộng có điều kiện, chưa phải cam kết cuối 2027; pilot nhỏ khi có dữ liệu và năng lực</td><td>Hỗ trợ giữ chân, chuyển đổi và giảm chi phí; chưa có nguồn thu độc lập được xác nhận</td></tr></tbody></table></div></section><section id="money"><div class="heading"><span class="eyebrow">05 / TÁCH HAI NHÁNH KINH TẾ</span><h2>Tài chính VinPay và sử dụng dịch vụ P&L.</h2></div><div class="two"><article class="card"><h3>Ví + Sinh lời + Vay nhanh</h3><p>Ví, thanh toán, Sinh lời và tín dụng hỗ trợ giao dịch và bán chéo tài chính.</p><p><strong>Ai trả / ai hưởng:</strong> Khách hoặc đối tác chi trả theo hợp đồng từng sản phẩm; phần VinPay hưởng phải được chủ sản phẩm xác nhận.</p><p><strong>Không được nhầm:</strong> Số dư, nạp ví, TPV và hạn mức tín dụng không phải doanh thu. Lãi suất, phê duyệt và phí/chia sẻ doanh thu chưa xác nhận.</p><p><strong>Đo:</strong> Tài khoản đủ điều kiện kích hoạt, giao dịch thành công, sử dụng sản phẩm và lợi nhuận đóng góp sau chi phí khi có dữ liệu.</p></article><article class="card"><h3>Ưu đãi + vé / gói + O2O</h3><p>Quyền lợi, vé, gói và O2O làm khách sử dụng dịch vụ P&amp;L; đối tác ngoài có khả năng affiliate.</p><p><strong>Ai trả / ai hưởng:</strong> Khách trả tiền vé/gói/dịch vụ cho bên cung ứng; P&amp;L/merchant tài trợ quyền lợi. Phần nền tảng chỉ tồn tại khi có thỏa thuận.</p><p><strong>Không được nhầm:</strong> Tách GMV khỏi doanh thu nền tảng; thưởng/voucher có chi phí và nghĩa vụ. Lead gửi khác lead được nhận, lịch hẹn và giao dịch.</p><p><strong>Đo:</strong> Quyền lợi thực dùng, đơn được xác nhận sau hủy/hoàn, chi tiêu tăng thêm, lead được tiếp nhận và kết quả O2O.</p></article></div></section><section id="ui"><div class="heading"><span class="eyebrow">06 / MÀN PHÍA SAU ĐÃ DỰNG</span><h2>Block đúng vai trò, bấm tới đúng đích.</h2></div><div class="flow-images"><figure><img src="evidence/final-financial-detail.png" alt="Card tài chính → tìm hiểu sản phẩm, không biến thành mua vé"><figcaption>Card tài chính → tìm hiểu sản phẩm, không biến thành mua vé</figcaption></figure><figure><img src="evidence/final-story.png" alt="Story quà → viewer nguồn, giữ tương tác nguồn"><figcaption>Story quà → viewer nguồn, giữ tương tác nguồn</figcaption></figure><figure><img src="evidence/final-owned.png" alt="Ưu đãi → chi tiết thương hiệu → đã lưu trong Ưu đãi / Của tôi"><figcaption>Ưu đãi → chi tiết thương hiệu → đã lưu trong Ưu đãi / Của tôi</figcaption></figure><figure><img src="evidence/final-request.png" alt="Ảnh VinFast → tìm hiểu → yêu cầu lịch chờ xác nhận"><figcaption>Ảnh VinFast → tìm hiểu → yêu cầu lịch chờ xác nhận</figcaption></figure></div></section><section id="checks"><div class="heading"><span class="eyebrow">07 / GIỚI HẠN VÀ BẰNG CHỨNG</span><h2>Đo lại layout; không gọi demo là sản phẩm đã vận hành.</h2></div><article class="card"><p><strong>Geometry:</strong> cả sáu vùng chính ở bản chọn có x/y/width/height trùng source trong phép đo lần này. membership: y54 / h97 · wallet: y151 / h199 · financial: y276 / h140 · benefits: y484 / h168 · experiences: y652 / h430 · navigation: y762 / h62.</p><p><strong>Flow:</strong> 15/15 check đạt: tài chính đúng vai, story bấm được, ưu đãi theo thương hiệu và tìm lại, lịch có consent và trạng thái chờ, không tràn ở360/390/430.</p><p><strong>Pixel:</strong> đo strict bằng Stealuxe với crop rõ390×844; chưa đạt0pixel: 156,143/329,160 pixel khác ở threshold0; không resize/mask. Nhãn/hành vi thay đổi và source có shader/animation. Xem kết quả riêng thay vì dùng số ảnh để suy ra chất lượng UX.</p><p><strong>Chưa có:</strong> human UT, lợi nhuận, ngân sách thưởng, điều khoản tài chính, phát voucher hoặc tiếp nhận lịch thật. Cuối2027 không tự gán hạn cho AI/Chat/cư dân số.</p><a href="checks.json">Log kiểm tra</a> · <a href="geometry.json">Geometry đo mới</a> · <a href="strict-pixel.json">Pixel diff</a></article><details><summary>Chi tiết quyết định Product / Business</summary><pre>{
+  &quot;recommendation&quot;: &quot;Chốt một Home theo StackHome gốc: hội viên/điểm → ví VinPay → hai sản phẩm tài chính → ưu đãi thương hiệu và quà → trải nghiệm lifestyle ảnh lớn → điều hướng gốc. Bổ sung hành trình vào đúng lớp và màn sâu; không dùng ba Home theo scenario làm phương án cuối.&quot;,
+  &quot;whyNotV5&quot;: [
+    &quot;V5 đọc sai hai thẻ tài chính Sinh lời/Vay nhanh thành hai shortcut quyền lợi; làm mất vai trò bán chéo VinPay.&quot;,
+    &quot;Ba composition daily/spend/experience là ba tác vụ thử, không thay thế được một Home đủ kiến trúc đã chọn.&quot;,
+    &quot;Phải trả lời tính năng mới đi đâu và tạo giá trị cho ai; đặt lại nhãn và tạo thêm tab chưa giải quyết điều đó.&quot;,
+    &quot;Giữ phần hữu ích của V5: trạng thái tài sản sau nhận, checkout rõ và lead chờ xác nhận; đưa xuống các luồng thay vì thay kiến trúc Home.&quot;
+  ],
+  &quot;retainedArchitecture&quot;: [
+    {
+      &quot;layer&quot;: 1,
+      &quot;name&quot;: &quot;Hội viên và VPoint&quot;,
+      &quot;purpose&quot;: &quot;Biết hạng, điểm và quyền lợi đang có&quot;,
+      &quot;entry&quot;: &quot;Hội viên / Điểm&quot;
+    },
+    {
+      &quot;layer&quot;: 2,
+      &quot;name&quot;: &quot;Ví VinPay&quot;,
+      &quot;purpose&quot;: &quot;Xem tiền ví và mở thao tác thanh toán&quot;,
+      &quot;entry&quot;: &quot;Ví&quot;
+    },
+    {
+      &quot;layer&quot;: 3,
+      &quot;name&quot;: &quot;Hai sản phẩm tài chính&quot;,
+      &quot;purpose&quot;: &quot;Sinh lời và Vay nhanh với lợi ích cụ thể; số liệu nguồn là mẫu&quot;,
+      &quot;entry&quot;: &quot;Chi tiết từng sản phẩm VinPay&quot;
+    },
+    {
+      &quot;layer&quot;: 4,
+      &quot;name&quot;: &quot;Ưu đãi thương hiệu và rail quà&quot;,
+      &quot;purpose&quot;: &quot;Tìm ưu đãi, nhận/đổi và dùng quà; chiến dịch có thời hạn nằm tại đây&quot;,
+      &quot;entry&quot;: &quot;Ưu đãi / Voucher của tôi / sảnh chiến dịch&quot;
+    },
+    {
+      &quot;layer&quot;: 5,
+      &quot;name&quot;: &quot;Trải nghiệm lifestyle ảnh lớn&quot;,
+      &quot;purpose&quot;: &quot;Tạo hứng thú khám phá xe, điểm đến, sự kiện và O2O đúng nguồn cung&quot;,
+      &quot;entry&quot;: &quot;Chi tiết trải nghiệm / đặt vé / yêu cầu lịch&quot;
+    },
+    {
+      &quot;layer&quot;: 6,
+      &quot;name&quot;: &quot;Điều hướng gốc&quot;,
+      &quot;items&quot;: [
+        &quot;Trang chủ&quot;,
+        &quot;Ưu đãi&quot;,
+        &quot;QR&quot;,
+        &quot;Sự kiện&quot;,
+        &quot;Hạng&quot;
+      ],
+      &quot;purpose&quot;: &quot;Giữ đường vào quen thuộc; không thay bằng tab tài sản/chợ/chat&quot;
+    }
+  ],
+  &quot;additions&quot;: [
+    {
+      &quot;feature&quot;: &quot;Hạng, quyền lợi, số dư và lịch sử VPoint&quot;,
+      &quot;homeEntry&quot;: &quot;Lớp 1: hạng + VPoint&quot;,
+      &quot;destination&quot;: &quot;Hội viên → Điểm / Quyền lợi / Tiến độ hạng&quot;,
+      &quot;current&quot;: &quot;Có bề mặt nguồn; B3 ghi hoàn thành hồ sơ hạng và sổ cái, chưa kiểm chứng production&quot;,
+      &quot;feb2027&quot;: &quot;B3 30/11/2026: lịch sử/hạn điểm, tiến độ hạng; 24/12: cấp quyền lợi và đối soát&quot;,
+      &quot;end2027&quot;: &quot;Mở rộng quyền lợi theo nguồn cung; không tự thêm tab&quot;,
+      &quot;source&quot;: &quot;SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.2.3, 3.2.1&quot;,
+      &quot;commercialValue&quot;: &quot;Thúc đẩy sử dụng và chi tiêu chéo; VPoint không phải tiền ví hay doanh thu&quot;,
+      &quot;dependency&quot;: &quot;Luật hạng, nguồn điểm, chống trùng và đối soát&quot;
+    },
+    {
+      &quot;feature&quot;: &quot;Ví VinPay, liên kết ngân hàng, nạp/rút và lịch sử&quot;,
+      &quot;homeEntry&quot;: &quot;Lớp 2: ví độc lập với VPoint&quot;,
+      &quot;destination&quot;: &quot;Ví VinPay → nguồn tiền / giao dịch&quot;,
+      &quot;current&quot;: &quot;Có ví và đường kích hoạt trong nguồn; B3 ghi hoàn thành liên kết ngân hàng ở ví, không đồng nghĩa SDK trên VinClub đã xong&quot;,
+      &quot;feb2027&quot;: &quot;SDK trên VinClub hạn 24/12/2026&quot;,
+      &quot;end2027&quot;: &quot;Mở rộng kết nối theo nghiệm thu, giữ lớp ví&quot;,
+      &quot;source&quot;: &quot;SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.2.4.1, 1.2.4.4&quot;,
+      &quot;commercialValue&quot;: &quot;Nguồn tiền cho giao dịch; tiền nạp và số dư không phải doanh thu&quot;,
+      &quot;dependency&quot;: &quot;SDK, eKYC, sổ cái, trạng thái và tra soát&quot;
+    },
+    {
+      &quot;feature&quot;: &quot;Sinh lời&quot;,
+      &quot;homeEntry&quot;: &quot;Lớp 3: thẻ tài chính Sinh lời&quot;,
+      &quot;destination&quot;: &quot;VinPay → chi tiết sản phẩm → điều kiện → đăng ký&quot;,
+      &quot;current&quot;: &quot;Source có saving; lợi suất 5,7%/năm là số mẫu. B3 ghi hoàn thành kích hoạt Sinh lời ở ví&quot;,
+      &quot;feb2027&quot;: &quot;Giữ thẻ và chuyển đúng sản phẩm khi VinPay hỗ trợ; không cam kết lãi suất hay tích hợp VinClub đã giao&quot;,
+      &quot;end2027&quot;: &quot;Tối ưu bán chéo theo dữ liệu đủ điều kiện; không tăng số thẻ mặc định&quot;,
+      &quot;source&quot;: &quot;ref-layouts.tsx PRODUCT_CASES; SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.2.4.3&quot;,
+      &quot;commercialValue&quot;: &quot;Bán chéo sản phẩm tài chính cho VinPay; cơ chế thu và bên hưởng cần hợp đồng&quot;,
+      &quot;dependency&quot;: &quot;Chủ thể cung cấp, điều khoản, lãi suất hiện hành, rủi ro, tích hợp&quot;
+    },
+    {
+      &quot;feature&quot;: &quot;Vay nhanh / quyền lợi tín dụng&quot;,
+      &quot;homeEntry&quot;: &quot;Lớp 3: thẻ tài chính Vay nhanh&quot;,
+      &quot;destination&quot;: &quot;VinPay → chi tiết tín dụng → kiểm tra điều kiện / đăng ký&quot;,
+      &quot;current&quot;: &quot;Source có vay với hạn mức 50 triệu mẫu; B3 hiện hành không chốt ngày phát hành tín dụng&quot;,
+      &quot;feb2027&quot;: &quot;Giữ vai trò thẻ tài chính; chỉ cho đăng ký thật khi sản phẩm và đối tác đã sẵn sàng; không hứa duyệt&quot;,
+      &quot;end2027&quot;: &quot;Mở theo sản phẩm được chốt, chưa có hạn cam kết trong B3&quot;,
+      &quot;source&quot;: &quot;ref-layouts.tsx PRODUCT_CASES&quot;,
+      &quot;commercialValue&quot;: &quot;Bán chéo tín dụng; phí giới thiệu/chia sẻ doanh thu chưa xác nhận&quot;,
+      &quot;dependency&quot;: &quot;Đối tác cấp tín dụng, điều kiện, thẩm định, consent, lãi/phí và hỗ trợ&quot;
+    },
+    {
+      &quot;feature&quot;: &quot;QR, hóa đơn, tiện ích, QR xuyên biên giới&quot;,
+      &quot;homeEntry&quot;: &quot;Lớp 2: Mở ví; lớp 6: QR&quot;,
+      &quot;destination&quot;: &quot;Ví → Thanh toán / Hóa đơn; QR → quét và xác nhận&quot;,
+      &quot;current&quot;: &quot;Điểm vào ví/QR có nguồn; readiness mỗi dịch vụ chưa kiểm chứng&quot;,
+      &quot;feb2027&quot;: &quot;QR + hóa đơn 31/12/2026; QR xuyên biên giới 28/02/2027&quot;,
+      &quot;end2027&quot;: &quot;Mở rộng mạng chấp nhận có kiểm soát; không tạo khối tiện ích mới trên Home&quot;,
+      &quot;source&quot;: &quot;SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.2.4.5–8&quot;,
+      &quot;commercialValue&quot;: &quot;Phí thanh toán chỉ theo hợp đồng xác nhận; TPV không phải doanh thu&quot;,
+      &quot;dependency&quot;: &quot;Mạng thanh toán, merchant, nguồn tiền, tra soát, phí và tỷ giá nếu có&quot;
+    },
+    {
+      &quot;feature&quot;: &quot;Dùng VPoint khấu trừ tiền đơn&quot;,
+      &quot;homeEntry&quot;: &quot;Lớp 1: Điểm; lớp 4/5: món hoặc dịch vụ áp dụng&quot;,
+      &quot;destination&quot;: &quot;Chi tiết quyền lợi → đơn hàng → thanh toán&quot;,
+      &quot;current&quot;: &quot;B3 ghi Tiêu VPoint hoàn thành; cơ chế khấu trừ tích hợp đang có hạn riêng&quot;,
+      &quot;feb2027&quot;: &quot;Khấu trừ tại checkout hạn 28/02/2027; hiển thị điểm dùng được và số tiền còn lại&quot;,
+      &quot;end2027&quot;: &quot;Mở rộng từng đơn vị đủ đối soát, không gộp tiền ví với điểm&quot;,
+      &quot;source&quot;: &quot;SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.2.2.1; 1.2.3.6&quot;,
+      &quot;commercialValue&quot;: &quot;Tăng sử dụng quyền lợi và giao dịch; trừ điểm không tự là doanh thu&quot;,
+      &quot;dependency&quot;: &quot;Luật quy đổi, quyền kết hợp voucher, hoàn/hủy và quyết toán&quot;
+    },
+    {
+      &quot;feature&quot;: &quot;Voucher, quà đã sở hữu và quà sinh nhật&quot;,
+      &quot;homeEntry&quot;: &quot;Lớp 4: rail ưu đãi thương hiệu + quà&quot;,
+      &quot;destination&quot;: &quot;Ưu đãi → Voucher của tôi / đổi quà / nơi sử dụng&quot;,
+      &quot;current&quot;: &quot;Nguồn có rail và quà; B3 ghi ví voucher hoàn thành; quà hằng ngày vẫn là demo&quot;,
+      &quot;feb2027&quot;: &quot;Đổi quà 30/11; quà sinh nhật hội viên cao cấp 31/12/2026; quà chào mừng 24/12&quot;,
+      &quot;end2027&quot;: &quot;Duy trì theo ngân sách và nguồn cung, không buộc quà hằng ngày thành quyền lợi vĩnh viễn&quot;,
+      &quot;source&quot;: &quot;SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.2.2.2, 1.3.1.2, 3.2.2.1, 4.4&quot;,
+      &quot;commercialValue&quot;: &quot;Tạo sử dụng tăng thêm; cần trừ chi phí tài trợ và vận hành&quot;,
+      &quot;dependency&quot;: &quot;Người chịu ngân sách, tồn, thể lệ, chống cấp trùng, xác nhận dùng&quot;
+    },
+    {
+      &quot;feature&quot;: &quot;Vé sự kiện&quot;,
+      &quot;homeEntry&quot;: &quot;Lớp 5: card sự kiện; lớp 6: Sự kiện&quot;,
+      &quot;destination&quot;: &quot;Sự kiện → chi tiết / zone → đặt vé → vé của tôi&quot;,
+      &quot;current&quot;: &quot;Nguồn có tab Sự kiện; đặt vé thật chưa kiểm chứng&quot;,
+      &quot;feb2027&quot;: &quot;B3 hạn 31/12/2026, giai đoạn 1 theo zone; chỉ bật sự kiện có nguồn vé&quot;,
+      &quot;end2027&quot;: &quot;Mở rộng theo lịch và tồn của nhà cung cấp&quot;,
+      &quot;source&quot;: &quot;SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 2.1.2.1&quot;,
+      &quot;commercialValue&quot;: &quot;Doanh thu bán vé thuộc bên cung cấp; phần nền tảng hưởng theo thỏa thuận, chưa có tỷ lệ&quot;,
+      &quot;dependency&quot;: &quot;VP-OTA/Vinpearl/VinWonders/VEC, lịch, tồn, hoàn/hủy, phát hành vé&quot;
+    },
+    {
+      &quot;feature&quot;: &quot;Sa bàn ảo, nhà mẫu, lái thử và lịch O2O&quot;,
+      &quot;homeEntry&quot;: &quot;Lớp 5: card lifestyle ảnh lớn đúng nội dung&quot;,
+      &quot;destination&quot;: &quot;Chi tiết trải nghiệm → khám phá / 3D nhẹ → yêu cầu lịch → theo dõi&quot;,
+      &quot;current&quot;: &quot;Nguồn có VinFast và nội dung nghỉ dưỡng Đảo Ngọc; ảnh nghỉ dưỡng không chứng minh dự án nhà ở hay sa bàn đã tích hợp&quot;,
+      &quot;feb2027&quot;: &quot;Khám phá 3D, trợ lý và lịch có hạn 31/12/2026 trong B3; lịch chỉ xác nhận khi P&amp;L phản hồi&quot;,
+      &quot;end2027&quot;: &quot;Mở rộng theo dữ liệu dự án và hiệu năng; cư dân số chưa có hạn&quot;,
+      &quot;source&quot;: &quot;SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 2.2.1; ref-layouts.tsx FOR_YOU&quot;,
+      &quot;commercialValue&quot;: &quot;Lead được tiếp nhận, lịch và giao dịch P&amp;L là các bước khác nhau; chưa xác nhận phí lead&quot;,
+      &quot;dependency&quot;: &quot;Dữ liệu 3D/giỏ hàng, consent, người nhận lead, SLA và phản hồi lịch&quot;
+    },
+    {
+      &quot;feature&quot;: &quot;Mở Cửa Tết, nhiệm vụ và giới thiệu có chuyển đổi&quot;,
+      &quot;homeEntry&quot;: &quot;Lớp 4: card chiến dịch trong rail quà; lớp 5 chỉ khi có trải nghiệm liên quan&quot;,
+      &quot;destination&quot;: &quot;Sảnh chiến dịch → cửa → nhiệm vụ / quyền lợi → dịch vụ P&amp;L&quot;,
+      &quot;current&quot;: &quot;Có hook quà mẫu; chiến dịch chưa được xem là triển khai&quot;,
+      &quot;feb2027&quot;: &quot;5 cửa 15/01–12/02; hoàn tất 19/02, tổng kết 26/02; referral 15/01/2027. Thứ tự có thể điều chỉnh&quot;,
+      &quot;end2027&quot;: &quot;Tái sử dụng cấu hình hạn 30/06/2027; không cố định khối Tết trên Home quanh năm&quot;,
+      &quot;source&quot;: &quot;SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.3.2, 1.3.3&quot;,
+      &quot;commercialValue&quot;: &quot;Tăng sử dụng chéo và lượt ghé xác thực; hiệu quả sau trừ thưởng, không lấy lượt mở app làm doanh thu&quot;,
+      &quot;dependency&quot;: &quot;Thể lệ, ngân sách từng P&amp;L, chống gian lận, nguồn cung và đối soát kết quả&quot;
+    },
+    {
+      &quot;feature&quot;: &quot;Gói ưu đãi liên P&amp;L, gói gia đình và đặc quyền cao cấp&quot;,
+      &quot;homeEntry&quot;: &quot;Lớp 1: quyền lợi hạng; lớp 4: gói; lớp 5: trải nghiệm đặc quyền&quot;,
+      &quot;destination&quot;: &quot;Hội viên / Ưu đãi → cấu phần gói → mua / quản lý quyền sử dụng&quot;,
+      &quot;current&quot;: &quot;B3 hồ sơ hạng hoàn thành; chưa xác nhận gói đang bán&quot;,
+      &quot;feb2027&quot;: &quot;Gói cá nhân/nhóm, quản lý quyền lợi và đối soát gói hạn 31/12/2026; đặc quyền cao cấp phụ thuộc bộ phận Đặc quyền&quot;,
+      &quot;end2027&quot;: &quot;Mở theo nguồn cung và kết quả pilot; không suy ra có phí hội viên định kỳ&quot;,
+      &quot;source&quot;: &quot;SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 3.1, 3.3&quot;,
+      &quot;commercialValue&quot;: &quot;Bán chéo và phân bổ tiền gói cho P&amp;L; cần tách nghĩa vụ cung ứng và phần nền tảng&quot;,
+      &quot;dependency&quot;: &quot;Giá so mua lẻ, hạn, công suất, quyền dùng nhóm, hỗ trợ và phân bổ doanh thu&quot;
+    },
+    {
+      &quot;feature&quot;: &quot;Đối tác ngoài HST, affiliate và gian hàng Vincom&quot;,
+      &quot;homeEntry&quot;: &quot;Lớp 4: ưu đãi thương hiệu; lớp 5: tuyển chọn nội dung phù hợp&quot;,
+      &quot;destination&quot;: &quot;Ưu đãi → thương hiệu / gian hàng → đối tác hoặc đơn hàng&quot;,
+      &quot;current&quot;: &quot;Rail có thương hiệu mẫu; chưa chứng minh catalogue hay affiliate production&quot;,
+      &quot;feb2027&quot;: &quot;Merchant portal xác nhận dùng ưu đãi hạn 24/12/2026; marketplace/affiliate rộng chưa có hạn&quot;,
+      &quot;end2027&quot;: &quot;Mở từng đối tác sau khi khép kín attribution, xác nhận đơn và đối soát; không mặc định thêm tab Chợ&quot;,
+      &quot;source&quot;: &quot;SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 2.1.3, 2.1.4&quot;,
+      &quot;commercialValue&quot;: &quot;Affiliate chỉ có hoa hồng sau giao dịch đủ điều kiện theo hợp đồng; click chuyển đi chưa tạo thu nhập&quot;,
+      &quot;dependency&quot;: &quot;Hợp tác, catalogue, tồn, portal/hóa đơn, attribution, hủy/hoàn và đối soát&quot;
+    },
+    {
+      &quot;feature&quot;: &quot;Chat, AI shopping, OA cộng đồng và cư dân số&quot;,
+      &quot;homeEntry&quot;: &quot;Giữ trong đích sâu của trải nghiệm/dịch vụ; không thêm Home block hoặc tab ở bản chốt&quot;,
+      &quot;destination&quot;: &quot;Chi tiết trải nghiệm / dịch vụ → hỗ trợ; cộng đồng nếu tích hợp được&quot;,
+      &quot;current&quot;: &quot;Chưa có bằng chứng triển khai trong baseline&quot;,
+      &quot;feb2027&quot;: &quot;Không cam kết trước 02/2027: Duhat chưa có kế hoạch SDK; AI marketplace và cư dân số chưa có hạn&quot;,
+      &quot;end2027&quot;: &quot;Hướng mở rộng có điều kiện, chưa phải cam kết cuối 2027; pilot nhỏ khi có dữ liệu và năng lực&quot;,
+      &quot;source&quot;: &quot;SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.1, 2.1.1, 2.2.2&quot;,
+      &quot;commercialValue&quot;: &quot;Hỗ trợ giữ chân, chuyển đổi và giảm chi phí; chưa có nguồn thu độc lập được xác nhận&quot;,
+      &quot;dependency&quot;: &quot;SDK Duhat, kiểm duyệt, catalogue đúng, kiểm thử AI, consent, dữ liệu 3D/mobile&quot;
+    }
+  ],
+  &quot;moneyChapter&quot;: {
+    &quot;financialVinPay&quot;: {
+      &quot;role&quot;: &quot;Ví, thanh toán, Sinh lời và tín dụng hỗ trợ giao dịch và bán chéo tài chính.&quot;,
+      &quot;payerAndRecipient&quot;: &quot;Khách hoặc đối tác chi trả theo hợp đồng từng sản phẩm; phần VinPay hưởng phải được chủ sản phẩm xác nhận.&quot;,
+      &quot;recognition&quot;: &quot;Số dư, nạp ví, TPV và hạn mức tín dụng không phải doanh thu. Lãi suất, phê duyệt và phí/chia sẻ doanh thu chưa xác nhận.&quot;,
+      &quot;measure&quot;: &quot;Tài khoản đủ điều kiện kích hoạt, giao dịch thành công, sử dụng sản phẩm và lợi nhuận đóng góp sau chi phí khi có dữ liệu.&quot;
+    },
+    &quot;loyaltyPnL&quot;: {
+      &quot;role&quot;: &quot;Quyền lợi, vé, gói và O2O làm khách sử dụng dịch vụ P&amp;L; đối tác ngoài có khả năng affiliate.&quot;,
+      &quot;payerAndRecipient&quot;: &quot;Khách trả tiền vé/gói/dịch vụ cho bên cung ứng; P&amp;L/merchant tài trợ quyền lợi. Phần nền tảng chỉ tồn tại khi có thỏa thuận.&quot;,
+      &quot;recognition&quot;: &quot;Tách GMV khỏi doanh thu nền tảng; thưởng/voucher có chi phí và nghĩa vụ. Lead gửi khác lead được nhận, lịch hẹn và giao dịch.&quot;,
+      &quot;measure&quot;: &quot;Quyền lợi thực dùng, đơn được xác nhận sau hủy/hoàn, chi tiêu tăng thêm, lead được tiếp nhận và kết quả O2O.&quot;
+    },
+    &quot;pilot&quot;: &quot;Chọn một nhà cung cấp có đủ nguồn, giá, quyền lợi, thanh toán/tiếp nhận, hỗ trợ và đối soát; đo từ mở quyền lợi tới sử dụng hoặc lịch được xác nhận. Chưa có dữ liệu để hứa tăng conversion hay retention.&quot;
+  },
+  &quot;philosophy&quot;: {
+    &quot;product&quot;: &quot;Khách mở Home thấy mình đang có gì, biết dùng ở đâu, rồi chọn dịch vụ theo nhu cầu. Quà nhận xong phải tìm lại và sử dụng được.&quot;,
+    &quot;design&quot;: &quot;Giữ phân cấp sáu lớp và hai thẻ tài chính. Rail dành cho lựa chọn nhanh; ảnh lớn dành cho khám phá. Điều kiện, số phải trả và trạng thái nằm tại màn quyết định.&quot;,
+    &quot;business&quot;: &quot;Tách giá trị tài chính VinPay với giá trị bán dịch vụ P&amp;L. Chỉ gọi là doanh thu khi xác định ai trả, ai hưởng và điều kiện ghi nhận.&quot;
+  },
+  &quot;evidenceBoundary&quot;: {
+    &quot;source&quot;: &quot;/Users/huykieu/Documents/vinpay-all/app/(vinclub)/vinclub-home/{hooks,ref-layouts}.tsx; /tmp/vinclub-strategy.txt SHEET B3 hiện hành&quot;,
+    &quot;current&quot;: &quot;Quan sát source và trạng thái tài liệu, chưa chứng minh production hay UT.&quot;,
+    &quot;feb2027&quot;: &quot;Chỉ lấy hạn ≤28/02/2027 từ B3 hiện hành, vẫn có điều kiện nghiệm thu.&quot;,
+    &quot;end2027&quot;: &quot;Tái sử dụng chiến dịch có hạn 30/06/2027; các mở rộng chưa có hạn không được gắn cam kết 31/12/2027.&quot;,
+    &quot;priorError&quot;: &quot;V5 nhầm hai sản phẩm thành hai dịch vụ; số lãi suất/hạn mức và tỷ lệ ưu đãi trong source là mẫu.&quot;
+  },
+  &quot;slideOutline&quot;: [
+    {
+      &quot;slide&quot;: 1,
+      &quot;question&quot;: &quot;Chốt phương án nào?&quot;,
+      &quot;answer&quot;: &quot;Một Home giữ sáu lớp của StackHome, nối tính năng mới vào hành trình sâu.&quot;
+    },
+    {
+      &quot;slide&quot;: 2,
+      &quot;question&quot;: &quot;Source đã chọn điều gì?&quot;,
+      &quot;answer&quot;: &quot;Hạng/điểm, ví, hai thẻ tài chính, rail ưu đãi/quà, lifestyle ảnh lớn và năm tab gốc.&quot;
+    },
+    {
+      &quot;slide&quot;: 3,
+      &quot;question&quot;: &quot;V5 sai ở đâu?&quot;,
+      &quot;answer&quot;: &quot;Thay hai sản phẩm tài chính bằng shortcut và biến ba tác vụ thử thành ba phương án Home.&quot;
+    },
+    {
+      &quot;slide&quot;: 4,
+      &quot;question&quot;: &quot;Khách mở Home để làm gì?&quot;,
+      &quot;answer&quot;: &quot;Nhận diện quyền lợi và tiền đang có, dùng ưu đãi hoặc khám phá trải nghiệm theo nhu cầu.&quot;
+    },
+    {
+      &quot;slide&quot;: 5,
+      &quot;question&quot;: &quot;Tính năng mới được đặt ở đâu?&quot;,
+      &quot;answer&quot;: &quot;Matrix Home entry → destination; không tự thêm khối/tab cho mỗi feature.&quot;
+    },
+    {
+      &quot;slide&quot;: 6,
+      &quot;question&quot;: &quot;Luồng dùng quyền lợi kết thúc thế nào?&quot;,
+      &quot;answer&quot;: &quot;Điều kiện → tài sản → nơi dùng → checkout rõ → kết quả và tìm lại.&quot;
+    },
+    {
+      &quot;slide&quot;: 7,
+      &quot;question&quot;: &quot;Trải nghiệm lớn dẫn tới hành động gì?&quot;,
+      &quot;answer&quot;: &quot;Tự khám phá → vé hoặc yêu cầu lịch → P&amp;L tiếp nhận → theo dõi; ảnh nguồn đúng nội dung.&quot;
+    },
+    {
+      &quot;slide&quot;: 8,
+      &quot;question&quot;: &quot;VinPay tạo giá trị tài chính ở đâu?&quot;,
+      &quot;answer&quot;: &quot;Ví/thanh toán/Sinh lời/tín dụng; phân biệt bán chéo với dòng tiền và doanh thu chưa xác nhận.&quot;
+    },
+    {
+      &quot;slide&quot;: 9,
+      &quot;question&quot;: &quot;Loyalty đưa giá trị về P&amp;L bằng cách nào?&quot;,
+      &quot;answer&quot;: &quot;Dùng quyền lợi, bán vé/gói, affiliate xác nhận và O2O có tiếp nhận; trừ ngân sách thưởng và chi phí.&quot;
+    },
+    {
+      &quot;slide&quot;: 10,
+      &quot;question&quot;: &quot;Đến 02/2027 có thể hoàn tất những gì?&quot;,
+      &quot;answer&quot;: &quot;Các mục B3 có hạn và điều kiện nguồn cung/tích hợp; chiến dịch năm cửa có lịch mở, hoàn và tổng kết.&quot;
+    },
+    {
+      &quot;slide&quot;: 11,
+      &quot;question&quot;: &quot;Cuối 2027 mở rộng theo điều kiện nào?&quot;,
+      &quot;answer&quot;: &quot;Tái dùng chiến dịch 30/06; marketplace/Chat/AI/cư dân số mở theo readiness, chưa gắn ngày cam kết.&quot;
+    },
+    {
+      &quot;slide&quot;: 12,
+      &quot;question&quot;: &quot;Bằng chứng nào cho phép mở rộng?&quot;,
+      &quot;answer&quot;: &quot;Luồng chạy đúng, khách hiểu/dùng được, kết quả P&amp;L xác nhận và kinh tế sau chi phí; UT/pilot chưa chạy phải ghi rõ.&quot;
+    }
+  ]
+}</pre></details><details><summary>Manifest block và nguồn / các unknown</summary><pre>{
+  &quot;version&quot;: &quot;final-source-first-1&quot;,
+  &quot;status&quot;: &quot;Đề xuất cuối để review; chưa phải user approval hay human UT&quot;,
+  &quot;finalRecommendation&quot;: {
+    &quot;title&quot;: &quot;Giữ StackHome nguồn, làm rõ nội dung và sửa flow tại chỗ&quot;,
+    &quot;composition&quot;: [
+      &quot;membership&quot;,
+      &quot;wallet&quot;,
+      &quot;financial-pair&quot;,
+      &quot;personalized-heading&quot;,
+      &quot;daily-story + brand-benefits (cùng rail)&quot;,
+      &quot;experiences&quot;,
+      &quot;navigation (fixed)&quot;
+    ],
+    &quot;why&quot;: &quot;Giữ nhịp tài sản → hai lợi ích tài chính → đề nghị thương hiệu nhỏ dễ khám phá → trải nghiệm ảnh lớn, đúng source localhost3300.&quot;,
+    &quot;renderContract&quot;: &quot;Reuse export StackHome từ ref-layouts.tsx; không dựng lại Home bằng V5 generic cards.&quot;,
+    &quot;requiredOptions&quot;: {
+      &quot;header&quot;: 1,
+      &quot;wallet&quot;: 2,
+      &quot;products&quot;: 3,
+      &quot;productCount&quot;: 2,
+      &quot;vouchers&quot;: 1,
+      &quot;feed&quot;: 2,
+      &quot;hierarchy&quot;: 1,
+      &quot;story&quot;: 1,
+      &quot;offerHeader&quot;: 1,
+      &quot;walletState&quot;: 1,
+      &quot;vinclubState&quot;: 1
+    },
+    &quot;adaptations&quot;: [
+      &quot;Nhãn Product1/2 → Tích lũy/Tín dụng, giữ lợi ích tài chính&quot;,
+      &quot;Sửa hit area story nếu lỗi pointer tái hiện&quot;,
+      &quot;Đích chi tiết theo offer/product id khi có flow; không báo giao dịch thật&quot;
+    ],
+    &quot;visualSystem&quot;: &quot;Gold shader nguồn → ví carbon → paper sáng/pastel thương hiệu → trải nghiệm ảnh lớn. Dùng token semantic và radius named khi adaptation.&quot;
+  },
+  &quot;sourceRoot&quot;: &quot;/Users/huykieu/Documents/vinpay-all&quot;,
+  &quot;sourceUrl&quot;: &quot;http://localhost:3300/ui-templates/sumeria/vsp?mode=light&quot;,
+  &quot;evidence&quot;: &quot;/reports/vinclub-decision-v5/ux.json&quot;,
+  &quot;measurementStatus&quot;: &quot;Bounds kế thừa phiên đo baseline trong iframe parent từ ux.json, có thể lệch khi đổi nội dung; không tuyên bố đã đo final mới.&quot;,
+  &quot;reusePolicy&quot;: {
+    &quot;originalcode&quot;: &quot;Source là code của dự án; reuse StackHome cùng CSS cascade, assets, state và handlers. Không clone UI bên ngoài.&quot;,
+    &quot;nonExported&quot;: &quot;Pouch, ProductCases, OfferCards, VoucherLower, ForYou là nội bộ ref-layouts.tsx; reuse qua StackHome, chỉ tách export khi thực sự cần và giữ parity.&quot;,
+    &quot;cssOrder&quot;: [
+      &quot;ref-layouts.css&quot;,
+      &quot;approaches.css&quot;,
+      &quot;approaches-more.css&quot;,
+      &quot;vinclub-home.css&quot;,
+      &quot;directions.css&quot;,
+      &quot;brand-colors.css&quot;,
+      &quot;hierarchy.css&quot;
+    ],
+    &quot;assets&quot;: &quot;Giữ URL assets source; không thay bằng minh họa ngẫu nhiên.&quot;
+  },
+  &quot;blocks&quot;: [
+    {
+      &quot;id&quot;: &quot;membership&quot;,
+      &quot;title&quot;: &quot;Hội viên &amp; VPoint&quot;,
+      &quot;role&quot;: &quot;Nhận biết tôi là ai, có gì; mở tiến trình hạng.&quot;,
+      &quot;sourceComponent&quot;: &quot;StackHome → header/tag + AnimatedNumber&quot;,
+      &quot;sourcePath&quot;: &quot;app/(vinclub)/vinclub-home/ref-layouts.tsx&quot;,
+      &quot;selector&quot;: &quot;.vr-brand.vr-hello.vs-pts&quot;,
+      &quot;lineRefs&quot;: [
+        &quot;ref-layouts.tsx:387&quot;,
+        &quot;ref-layouts.tsx:393&quot;,
+        &quot;ref-layouts.tsx:395&quot;,
+        &quot;hierarchy.css:69&quot;,
+        &quot;hierarchy.css:75&quot;
+      ],
+      &quot;reuse&quot;: &quot;originalcode reuse&quot;,
+      &quot;layout&quot;: {
+        &quot;width&quot;: 390,
+        &quot;height&quot;: &quot;auto; chưa đo mới&quot;,
+        &quot;gap&quot;: &quot;16px theo cascade cần xác nhận&quot;,
+        &quot;padding&quot;: &quot;4px 22px 24px&quot;,
+        &quot;radius&quot;: &quot;none&quot;,
+        &quot;notes&quot;: &quot;Nền gold shader gốc; số điểm 38/46; hạng bên phải. Không dựng hero loyalty mới.&quot;
+      },
+      &quot;content&quot;: {
+        &quot;greeting&quot;: &quot;Xin chào, Minh&quot;,
+        &quot;points&quot;: 12450,
+        &quot;unit&quot;: &quot;VPoint&quot;,
+        &quot;tier&quot;: &quot;Vàng&quot;,
+        &quot;tierHint&quot;: &quot;Xem tiến trình&quot;,
+        &quot;states&quot;: [
+          &quot;active&quot;,
+          &quot;not activated&quot;
+        ],
+        &quot;contract&quot;: [
+          &quot;memberId&quot;,
+          &quot;displayName&quot;,
+          &quot;tier&quot;,
+          &quot;points&quot;,
+          &quot;membershipState&quot;
+        ]
+      },
+      &quot;interactions&quot;: [
+        &quot;Chạm điểm/hạng → Hội viên; chưa kích hoạt → Kích hoạt VinClub&quot;
+      ],
+      &quot;keepChange&quot;: &quot;Giữ vị trí, shader, layout và ảnh hạng gốc; tên/số điểm là fixture.&quot;,
+      &quot;rejectedAlternative&quot;: {
+        &quot;status&quot;: &quot;giả thuyết thiết kế; không phải quyết định bác bỏ của user&quot;,
+        &quot;proposal&quot;: &quot;Một banner hội viên lớn&quot;,
+        &quot;reason&quot;: &quot;Tăng chiều cao trạng thái tĩnh, đẩy sản phẩm và ưu đãi xuống.&quot;
+      },
+      &quot;phaseFeb&quot;: &quot;Dựng đủ trạng thái active/inactive với dữ liệu demo có nhãn.&quot;,
+      &quot;endFuture&quot;: &quot;Nối hồ sơ/điểm/hạng thật sau khi có API.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;wallet&quot;,
+      &quot;title&quot;: &quot;Ví VinClub&quot;,
+      &quot;role&quot;: &quot;Đọc số dư, vào ví hoặc kích hoạt.&quot;,
+      &quot;sourceComponent&quot;: &quot;StackHome → Pouch + WalletInside + WalletActivation&quot;,
+      &quot;sourcePath&quot;: &quot;app/(vinclub)/vinclub-home/ref-layouts.tsx&quot;,
+      &quot;selector&quot;: &quot;.vr-pouches .vr-pouch[data-kind=\&quot;wallet\&quot;]&quot;,
+      &quot;lineRefs&quot;: [
+        &quot;ref-layouts.tsx:299&quot;,
+        &quot;ref-layouts.tsx:307&quot;,
+        &quot;ref-layouts.tsx:339&quot;,
+        &quot;ref-layouts.tsx:399&quot;,
+        &quot;ref-layouts.css:358&quot;,
+        &quot;ref-layouts.css:812&quot;
+      ],
+      &quot;reuse&quot;: &quot;originalcode reuse&quot;,
+      &quot;layout&quot;: {
+        &quot;width&quot;: 346,
+        &quot;height&quot;: {
+          &quot;container&quot;: 199,
+          &quot;cover&quot;: 237
+        },
+        &quot;gap&quot;: 0,
+        &quot;padding&quot;: &quot;Khung x=22; chữ cấp màn hình giữ trục x=22 theo CSS gốc&quot;,
+        &quot;radius&quot;: &quot;Giữ treatment ví gốc; xác nhận computed radius&quot;,
+        &quot;notes&quot;: &quot;199 là container, KHÔNG phải chiều cao cover. Chồng lớp chủ ý với sheet; không ép toàn bộ ví về 199px.&quot;,
+        &quot;measuredBounds&quot;: {
+          &quot;viewportWidth&quot;: 390,
+          &quot;containerHeight&quot;: 198.984375,
+          &quot;coverHeight&quot;: 236.9921875,
+          &quot;evidence&quot;: &quot;vinclub-decision-v5/ux.json; đo iframe bên trong parent, chưa đo lại&quot;
+        }
+      },
+      &quot;content&quot;: {
+        &quot;title&quot;: &quot;Ví VinClub&quot;,
+        &quot;balance&quot;: &quot;28.650.000 ₫&quot;,
+        &quot;cta&quot;: &quot;Xem chi tiết&quot;,
+        &quot;states&quot;: [
+          &quot;active balance&quot;,
+          &quot;inactive&quot;,
+          &quot;new activated zero&quot;
+        ],
+        &quot;contract&quot;: [
+          &quot;walletState&quot;,
+          &quot;balance&quot;,
+          &quot;currency&quot;,
+          &quot;openWallet&quot;,
+          &quot;activationComplete&quot;
+        ]
+      },
+      &quot;interactions&quot;: [
+        &quot;Ví active → WalletInside iframe Home ví&quot;,
+        &quot;Inactive → WalletActivation; hoàn tất → 0 ₫&quot;,
+        &quot;Đóng ví về Home; giảm motion theo preference&quot;
+      ],
+      &quot;keepChange&quot;: &quot;Giữ carbon material, snap, số dư, animation và iframe gốc.&quot;,
+      &quot;rejectedAlternative&quot;: {
+        &quot;status&quot;: &quot;giả thuyết thiết kế; không phải quyết định bác bỏ của user&quot;,
+        &quot;proposal&quot;: &quot;Thay ví bằng summary phẳng&quot;,
+        &quot;reason&quot;: &quot;Mất nhận diện vật thể và flow vào ví đã có nguồn.&quot;
+      },
+      &quot;phaseFeb&quot;: &quot;Reuse nguồn; kiểm tra click, back và activation demo.&quot;,
+      &quot;endFuture&quot;: &quot;Số dư/lịch sử thật chỉ khi tích hợp ví.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;financial-pair&quot;,
+      &quot;title&quot;: &quot;Hai sản phẩm tài chính&quot;,
+      &quot;role&quot;: &quot;Phân biệt lợi ích tích lũy và hạn mức chi tiêu; mở chi tiết riêng.&quot;,
+      &quot;sourceComponent&quot;: &quot;VoucherLower → ProductCases(count=2)&quot;,
+      &quot;sourcePath&quot;: &quot;app/(vinclub)/vinclub-home/ref-layouts.tsx&quot;,
+      &quot;selector&quot;: &quot;.vr-vinpay-services[data-service-mode=\&quot;cards\&quot;]&quot;,
+      &quot;lineRefs&quot;: [
+        &quot;ref-layouts.tsx:228&quot;,
+        &quot;ref-layouts.tsx:233&quot;,
+        &quot;ref-layouts.tsx:236&quot;,
+        &quot;ref-layouts.css:393&quot;,
+        &quot;ref-layouts.css:804&quot;,
+        &quot;ref-layouts.css:834&quot;
+      ],
+      &quot;reuse&quot;: &quot;originalcode reuse + adaptation nhãn/đích&quot;,
+      &quot;layout&quot;: {
+        &quot;width&quot;: 390,
+        &quot;height&quot;: &quot;auto theo nhãn; chưa đo mới&quot;,
+        &quot;gap&quot;: 12,
+        &quot;padding&quot;: &quot;20px 22px 0; mỗi card 12px&quot;,
+        &quot;radius&quot;: &quot;rounded-14&quot;,
+        &quot;notes&quot;: &quot;Hai cột (346−12)/2=167px ở viewport390. Icon44 → tên → mô tả; không dùng column-reverse thắng cũ.&quot;,
+        &quot;measuredBounds&quot;: {
+          &quot;top&quot;: 275.1953125,
+          &quot;evidence&quot;: &quot;vinclub-decision-v5/ux.json; baseline, không phải final&quot;
+        }
+      },
+      &quot;content&quot;: {
+        &quot;items&quot;: [
+          {
+            &quot;name&quot;: &quot;Tích lũy&quot;,
+            &quot;benefit&quot;: &quot;Tích lũy linh hoạt&quot;,
+            &quot;type&quot;: &quot;savings&quot;,
+            &quot;rate&quot;: &quot;Chỉ hiện khi có mức và điều kiện được duyệt&quot;
+          },
+          {
+            &quot;name&quot;: &quot;Tín dụng&quot;,
+            &quot;benefit&quot;: &quot;Chi tiêu linh hoạt&quot;,
+            &quot;type&quot;: &quot;credit&quot;,
+            &quot;limit&quot;: &quot;Chỉ hiện hạn mức cá nhân khi đủ điều kiện&quot;
+          }
+        ],
+        &quot;contract&quot;: [
+          &quot;productId&quot;,
+          &quot;type&quot;,
+          &quot;name&quot;,
+          &quot;benefit&quot;,
+          &quot;eligibility&quot;,
+          &quot;terms&quot;,
+          &quot;detailDestination&quot;
+        ],
+        &quot;rule&quot;: &quot;Không thay bằng Nạp tiền/Chuyển tiền/shortcut. Không tự đặt lãi suất, hoàn tiền hay cam kết phê duyệt.&quot;
+      },
+      &quot;interactions&quot;: [
+        &quot;Chạm card mở đúng thông tin tài chính; CTA xin tư vấn/đăng ký chỉ khi có flow thật&quot;
+      ],
+      &quot;keepChange&quot;: &quot;Adaptation nội dung nhỏ: đổi Product1/2 thành tên tài chính; giữ hai card, icon và ngôn ngữ lợi ích.&quot;,
+      &quot;rejectedAlternative&quot;: {
+        &quot;status&quot;: &quot;giả thuyết thiết kế; không phải quyết định bác bỏ của user&quot;,
+        &quot;proposal&quot;: &quot;Tăng thành grid dịch vụ chuyển tiền/nạp tiền&quot;,
+        &quot;reason&quot;: &quot;Đổi phạm vi sản phẩm tài chính thành thao tác ví, sai vai trò nguồn và brief.&quot;
+      },
+      &quot;phaseFeb&quot;: &quot;Hai entry tài chính; thông tin/điều kiện demo rõ.&quot;,
+      &quot;endFuture&quot;: &quot;Kết nối đối tác, eligibility, consent và trạng thái yêu cầu theo hợp đồng.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;personalized-heading&quot;,
+      &quot;title&quot;: &quot;Dành cho bạn&quot;,
+      &quot;role&quot;: &quot;Đặt ngữ cảnh cho một rail chung gồm story và ưu đãi thương hiệu.&quot;,
+      &quot;sourceComponent&quot;: &quot;VoucherLower&quot;,
+      &quot;sourcePath&quot;: &quot;app/(vinclub)/vinclub-home/ref-layouts.tsx&quot;,
+      &quot;selector&quot;: &quot;.vr-offers-section-head&quot;,
+      &quot;lineRefs&quot;: [
+        &quot;ref-layouts.tsx:288&quot;,
+        &quot;ref-layouts.tsx:291&quot;,
+        &quot;ref-layouts.css:931&quot;
+      ],
+      &quot;reuse&quot;: &quot;originalcode reuse&quot;,
+      &quot;layout&quot;: {
+        &quot;width&quot;: 390,
+        &quot;height&quot;: &quot;auto&quot;,
+        &quot;gap&quot;: 12,
+        &quot;padding&quot;: &quot;24px 22px 12px&quot;,
+        &quot;radius&quot;: &quot;none&quot;,
+        &quot;notes&quot;: &quot;h2 18/26; Xem tất cả cùng baseline. Không tách story thành section cao riêng.&quot;
+      },
+      &quot;content&quot;: {
+        &quot;title&quot;: &quot;Dành cho bạn&quot;,
+        &quot;action&quot;: &quot;Xem tất cả&quot;,
+        &quot;contract&quot;: [
+          &quot;recommendationContext&quot;,
+          &quot;offersDestination&quot;
+        ],
+        &quot;claim&quot;: &quot;Cá nhân hóa là mục tiêu; source hiện dùng fixture, chưa có recommender thật.&quot;
+      },
+      &quot;interactions&quot;: [
+        &quot;Xem tất cả → Ưu đãi&quot;
+      ],
+      &quot;keepChange&quot;: &quot;Giữ title và đường xem đủ; không nói thuật toán đã cá nhân hóa.&quot;,
+      &quot;rejectedAlternative&quot;: {
+        &quot;status&quot;: &quot;giả thuyết thiết kế; không phải quyết định bác bỏ của user&quot;,
+        &quot;proposal&quot;: &quot;Đưa quà thành hero riêng trên sản phẩm&quot;,
+        &quot;reason&quot;: &quot;Tăng nhấn game và đẩy cặp tài chính khỏi nhịp nguồn.&quot;
+      },
+      &quot;phaseFeb&quot;: &quot;Rail fixture theo cùng nội dung nguồn.&quot;,
+      &quot;endFuture&quot;: &quot;Ranking theo hội viên/ngữ cảnh khi có dữ liệu và đo lường.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;daily-story&quot;,
+      &quot;title&quot;: &quot;Quà mỗi ngày&quot;,
+      &quot;role&quot;: &quot;Entry nhỏ tạo khám phá; viewer chứa nội dung sâu.&quot;,
+      &quot;sourceComponent&quot;: &quot;HomeStory(children=GiftDeck)&quot;,
+      &quot;sourcePath&quot;: &quot;app/(vinclub)/vinclub-home/home-story.tsx&quot;,
+      &quot;selector&quot;: &quot;.vr-offer-stories .vr-home-story-frame&quot;,
+      &quot;lineRefs&quot;: [
+        &quot;home-story.tsx:11&quot;,
+        &quot;home-story.tsx:36&quot;,
+        &quot;home-story.tsx:43&quot;,
+        &quot;home-story.tsx:48&quot;,
+        &quot;ref-layouts.tsx:273&quot;,
+        &quot;ref-layouts.css:910&quot;,
+        &quot;ref-layouts.css:954&quot;
+      ],
+      &quot;reuse&quot;: &quot;originalcode reuse&quot;,
+      &quot;layout&quot;: {
+        &quot;width&quot;: 112,
+        &quot;height&quot;: 160,
+        &quot;gap&quot;: &quot;12px tới offer kế&quot;,
+        &quot;padding&quot;: &quot;Frame2px; label12px/10px&quot;,
+        &quot;radius&quot;: &quot;rounded-28&quot;,
+        &quot;notes&quot;: &quot;Ảnh /vinclub-duo/stories/daily-gift-ivory-v5.png; giữ first item cùng rail.&quot;,
+        &quot;measuredBounds&quot;: {
+          &quot;top&quot;: 483.125,
+          &quot;width&quot;: 112,
+          &quot;height&quot;: 160,
+          &quot;evidence&quot;: &quot;vinclub-decision-v5/ux.json; baseline&quot;
+        }
+      },
+      &quot;content&quot;: {
+        &quot;label&quot;: &quot;Quà mỗi ngày&quot;,
+        &quot;brand&quot;: &quot;VinClub&quot;,
+        &quot;steps&quot;: [
+          &quot;Intro&quot;,
+          &quot;Scratch&quot;,
+          &quot;GreenSM&quot;,
+          &quot;WinMart&quot;
+        ],
+        &quot;contract&quot;: [
+          &quot;campaignId&quot;,
+          &quot;banner&quot;,
+          &quot;rewardTerms&quot;,
+          &quot;claimState&quot;,
+          &quot;ownedRewardDestination&quot;
+        ],
+        &quot;claim&quot;: &quot;Source scratch là demo; không ghi đã cộng tiền/điểm thật.&quot;
+      },
+      &quot;interactions&quot;: [
+        &quot;Normal click mở viewer&quot;,
+        &quot;Mũi tên/swipe/Escape/close và restore focus&quot;,
+        &quot;Nhận demo phải có trạng thái và đích tìm lại&quot;
+      ],
+      &quot;keepChange&quot;: &quot;Giữ artwork và viewer; bắt buộc sửa hit area/stacking nếu còn bị offer cạnh chặn pointer.&quot;,
+      &quot;rejectedAlternative&quot;: {
+        &quot;status&quot;: &quot;giả thuyết thiết kế; không phải quyết định bác bỏ của user&quot;,
+        &quot;proposal&quot;: &quot;Thẻ cào lớn luôn hiện trên Home&quot;,
+        &quot;reason&quot;: &quot;Chiếm màn trước khi khách có ý định; ngân sách/thưởng chưa được xác thực.&quot;
+      },
+      &quot;phaseFeb&quot;: &quot;Viewer và nhận quà demo rõ; không hứa reward thật.&quot;,
+      &quot;endFuture&quot;: &quot;Reward ledger, tồn kho, điều kiện, ngân sách và tìm lại quà khi được duyệt.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;brand-benefits&quot;,
+      &quot;title&quot;: &quot;Rail ưu đãi thương hiệu&quot;,
+      &quot;role&quot;: &quot;Thấy thương hiệu + lợi ích + điều kiện; chọn một đề nghị.&quot;,
+      &quot;sourceComponent&quot;: &quot;OfferCards + VOUCHERS&quot;,
+      &quot;sourcePath&quot;: &quot;app/(vinclub)/vinclub-home/ref-layouts.tsx&quot;,
+      &quot;selector&quot;: &quot;.vr-offer-stories .vr-offer-story&quot;,
+      &quot;lineRefs&quot;: [
+        &quot;ref-layouts.tsx:29&quot;,
+        &quot;ref-layouts.tsx:271&quot;,
+        &quot;ref-layouts.tsx:274&quot;,
+        &quot;ref-layouts.tsx:283&quot;,
+        &quot;ref-layouts.css:658&quot;,
+        &quot;ref-layouts.css:713&quot;,
+        &quot;hierarchy.css:85&quot;,
+        &quot;hierarchy.css:87&quot;
+      ],
+      &quot;reuse&quot;: &quot;originalcode reuse&quot;,
+      &quot;layout&quot;: {
+        &quot;width&quot;: 160,
+        &quot;height&quot;: 160,
+        &quot;gap&quot;: 12,
+        &quot;padding&quot;: &quot;Rail0 22px 8px; card14px&quot;,
+        &quot;radius&quot;: &quot;rounded-28&quot;,
+        &quot;notes&quot;: &quot;Rail chung story112 + các offer160; giữ artwork nguyên màu và pastel riêng thương hiệu. Card sau phải ló để báo có thể vuốt.&quot;
+      },
+      &quot;content&quot;: {
+        &quot;items&quot;: [
+          {
+            &quot;brand&quot;: &quot;Vinmec&quot;,
+            &quot;lead&quot;: &quot;Giảm đến&quot;,
+            &quot;value&quot;: &quot;20%&quot;,
+            &quot;condition&quot;: &quot;Gói khám&quot;
+          },
+          {
+            &quot;brand&quot;: &quot;GreenSM&quot;,
+            &quot;lead&quot;: &quot;Hoàn đến&quot;,
+            &quot;value&quot;: &quot;15%&quot;,
+            &quot;condition&quot;: &quot;Mọi chuyến&quot;
+          },
+          {
+            &quot;brand&quot;: &quot;WinMart&quot;,
+            &quot;lead&quot;: &quot;Giảm đến&quot;,
+            &quot;value&quot;: &quot;10%&quot;,
+            &quot;condition&quot;: &quot;Tối đa 100.000đ&quot;
+          },
+          {
+            &quot;brand&quot;: &quot;Vinpearl&quot;,
+            &quot;lead&quot;: &quot;Giảm đến&quot;,
+            &quot;value&quot;: &quot;15%&quot;,
+            &quot;condition&quot;: &quot;Phòng nghỉ&quot;
+          },
+          {
+            &quot;brand&quot;: &quot;VinWonders&quot;,
+            &quot;lead&quot;: &quot;Giảm đến&quot;,
+            &quot;value&quot;: &quot;25%&quot;,
+            &quot;condition&quot;: &quot;Vé vào cổng&quot;
+          },
+          {
+            &quot;brand&quot;: &quot;VinBus&quot;,
+            &quot;lead&quot;: &quot;Hoàn đến&quot;,
+            &quot;value&quot;: &quot;30%&quot;,
+            &quot;condition&quot;: &quot;Vé tháng&quot;
+          }
+        ],
+        &quot;contract&quot;: [
+          &quot;offerId&quot;,
+          &quot;brand&quot;,
+          &quot;art&quot;,
+          &quot;benefitType&quot;,
+          &quot;maximumBenefit&quot;,
+          &quot;conditions&quot;,
+          &quot;eligibility&quot;,
+          &quot;expiresAt&quot;,
+          &quot;ownedState&quot;
+        ]
+      },
+      &quot;interactions&quot;: [
+        &quot;Swipe/snap ngang&quot;,
+        &quot;Source dispatch vinclub:offers mở hub chung; đích offerId là adaptation đề xuất&quot;,
+        &quot;Phải thấy điều kiện trước xác nhận sử dụng&quot;
+      ],
+      &quot;keepChange&quot;: &quot;Giữ toàn bộ 6 thương hiệu; không biến đề nghị thành voucher đã sở hữu.&quot;,
+      &quot;rejectedAlternative&quot;: {
+        &quot;status&quot;: &quot;giả thuyết thiết kế; không phải quyết định bác bỏ của user&quot;,
+        &quot;proposal&quot;: &quot;Grid toàn bộ 6 offer ngay Home&quot;,
+        &quot;reason&quot;: &quot;Cho so sánh tốt hơn nhưng đẩy trải nghiệm quá sâu; archive như lựa chọn kiểm chứng, chưa là user rejection.&quot;
+      },
+      &quot;phaseFeb&quot;: &quot;Catalog/chi tiết demo, phân biệt khám phá và sở hữu.&quot;,
+      &quot;endFuture&quot;: &quot;Điều kiện/eligibility thật, lưu/tìm lại và xác nhận giao dịch khi đã tích hợp.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;experiences&quot;,
+      &quot;title&quot;: &quot;Khám phá trải nghiệm&quot;,
+      &quot;role&quot;: &quot;Ảnh lớn giúp hình dung trước khi xem điều kiện.&quot;,
+      &quot;sourceComponent&quot;: &quot;ForYou(layout=2)&quot;,
+      &quot;sourcePath&quot;: &quot;app/(vinclub)/vinclub-home/ref-layouts.tsx&quot;,
+      &quot;selector&quot;: &quot;.vr-fy[data-feed=\&quot;2\&quot;]&quot;,
+      &quot;lineRefs&quot;: [
+        &quot;ref-layouts.tsx:120&quot;,
+        &quot;ref-layouts.tsx:124&quot;,
+        &quot;ref-layouts.tsx:140&quot;,
+        &quot;ref-layouts.tsx:147&quot;,
+        &quot;ref-layouts.css:593&quot;,
+        &quot;ref-layouts.css:595&quot;,
+        &quot;ref-layouts.css:837&quot;
+      ],
+      &quot;reuse&quot;: &quot;originalcode reuse&quot;,
+      &quot;layout&quot;: {
+        &quot;width&quot;: &quot;Card calc(100% − 24px) trong rail; xác nhận theo computed&quot;,
+        &quot;height&quot;: &quot;1:1 theo chiều rộng card&quot;,
+        &quot;gap&quot;: 12,
+        &quot;padding&quot;: &quot;Title24px 22px 12px; rail0 22px 16px; card text20px&quot;,
+        &quot;radius&quot;: &quot;rounded-28 + getSvgPath smoothing0.6&quot;,
+        &quot;notes&quot;: &quot;Không thay bằng card voucher nhỏ. Hai ảnh nguồn VinFast/Đảo Ngọc; CTA secondary trong ảnh.&quot;,
+        &quot;measuredBounds&quot;: {
+          &quot;top&quot;: 713.0859375,
+          &quot;evidence&quot;: &quot;vinclub-decision-v5/ux.json; baseline&quot;
+        }
+      },
+      &quot;content&quot;: {
+        &quot;items&quot;: [
+          {
+            &quot;title&quot;: &quot;Lái thử VinFast&quot;,
+            &quot;meta&quot;: &quot;VinFast · Xe điện&quot;,
+            &quot;image&quot;: &quot;/vinclub-duo/foryou/vinfast-day-v1.png&quot;
+          },
+          {
+            &quot;title&quot;: &quot;Đến với Đảo Ngọc&quot;,
+            &quot;meta&quot;: &quot;Biển xanh · Nghỉ dưỡng&quot;,
+            &quot;image&quot;: &quot;/vinclub-duo/foryou/dao-ngoc-day-v1.png&quot;
+          }
+        ],
+        &quot;contract&quot;: [
+          &quot;experienceId&quot;,
+          &quot;title&quot;,
+          &quot;image&quot;,
+          &quot;place&quot;,
+          &quot;availability&quot;,
+          &quot;priceOrQuoteRule&quot;,
+          &quot;terms&quot;,
+          &quot;nextAction&quot;
+        ],
+        &quot;rule&quot;: &quot;Không tự bổ sung giá hay trạng thái booking.&quot;
+      },
+      &quot;interactions&quot;: [
+        &quot;Swipe ngang&quot;,
+        &quot;Khám phá → BottomSheet thông tin nguồn&quot;,
+        &quot;Close trở về đúng Home; gửi yêu cầu không đồng nghĩa đặt thành công&quot;
+      ],
+      &quot;keepChange&quot;: &quot;Giữ tỷ lệ lớn, ảnh, overlay và smooth corners nguồn.&quot;,
+      &quot;rejectedAlternative&quot;: {
+        &quot;status&quot;: &quot;giả thuyết thiết kế; không phải quyết định bác bỏ của user&quot;,
+        &quot;proposal&quot;: &quot;Lưới ảnh nhỏ hai cột&quot;,
+        &quot;reason&quot;: &quot;Dễ thấy nhiều item nhưng mất vai trò hình dung và thu hẹp vùng đọc chữ/CTA.&quot;
+      },
+      &quot;phaseFeb&quot;: &quot;Chi tiết trải nghiệm demo có ranh giới trạng thái.&quot;,
+      &quot;endFuture&quot;: &quot;Booking/lead chỉ có khi consent, tiếp nhận và theo dõi thật.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;navigation&quot;,
+      &quot;title&quot;: &quot;Điều hướng cố định&quot;,
+      &quot;role&quot;: &quot;Giữ đường tìm lại và chuyển hub ổn định.&quot;,
+      &quot;sourceComponent&quot;: &quot;VinClubHome page → nav.vk-bar + vk-indicator&quot;,
+      &quot;sourcePath&quot;: &quot;app/(vinclub)/vinclub-home/page.tsx&quot;,
+      &quot;selector&quot;: &quot;nav.vk-bar&quot;,
+      &quot;lineRefs&quot;: [
+        &quot;page.tsx:140&quot;,
+        &quot;page.tsx:146&quot;,
+        &quot;page.tsx:152&quot;,
+        &quot;vinclub-home.css:62&quot;
+      ],
+      &quot;reuse&quot;: &quot;originalcode reuse&quot;,
+      &quot;layout&quot;: {
+        &quot;width&quot;: 346,
+        &quot;height&quot;: 62,
+        &quot;gap&quot;: &quot;5 vị trí gồm QR giữa&quot;,
+        &quot;padding&quot;: &quot;4px; khung cách mép22px; bottom20px&quot;,
+        &quot;radius&quot;: &quot;Giữ pill navigation gốc; không dùng radius card thay thế&quot;,
+        &quot;notes&quot;: &quot;Home indicator139×5; source nav là floating FixedBottom. Không thêm primary CTA toàn Home.&quot;
+      },
+      &quot;content&quot;: {
+        &quot;tabs&quot;: [
+          &quot;Trang chủ&quot;,
+          &quot;Ưu đãi&quot;,
+          &quot;Quét QR&quot;,
+          &quot;Sự kiện&quot;,
+          &quot;Hạng&quot;
+        ],
+        &quot;contract&quot;: [
+          &quot;activeTab&quot;,
+          &quot;openTab&quot;,
+          &quot;scanDestination&quot;,
+          &quot;homeReturnState&quot;
+        ]
+      },
+      &quot;interactions&quot;: [
+        &quot;Tab mở đúng hub và active aria-current&quot;,
+        &quot;QR nguồn chỉ có affordance; không gọi là quét đã hoạt động&quot;,
+        &quot;Mọi full-screen giữ indicator&quot;
+      ],
+      &quot;keepChange&quot;: &quot;Reuse nav nguồn; kiểm tra QR trước khi công bố flow.&quot;,
+      &quot;rejectedAlternative&quot;: {
+        &quot;status&quot;: &quot;giả thuyết thiết kế; không phải quyết định bác bỏ của user&quot;,
+        &quot;proposal&quot;: &quot;CTA đăng ký cố định thay nav&quot;,
+        &quot;reason&quot;: &quot;Home có nhiều mục tiêu, không có một cam kết duy nhất.&quot;
+      },
+      &quot;phaseFeb&quot;: &quot;Bốn hub demo chạy; QR ghi rõ mô phỏng nếu chưa nối.&quot;,
+      &quot;endFuture&quot;: &quot;Hoạt động/tài sản/yêu cầu tìm lại trong hub đúng loại; QR thật sau tích hợp.&quot;
+    }
+  ],
+  &quot;variants&quot;: [
+    {
+      &quot;id&quot;: &quot;baseline-final&quot;,
+      &quot;name&quot;: &quot;A · StackHome nguồn, chọn final&quot;,
+      &quot;status&quot;: &quot;recommended&quot;,
+      &quot;sameContent&quot;: true,
+      &quot;composition&quot;: &quot;Hạng/điểm → ví → 2 card tài chính → story112 + 6 offer160 cùng rail → 2 trải nghiệm lớn → nav&quot;,
+      &quot;options&quot;: {
+        &quot;productCount&quot;: 2,
+        &quot;feed&quot;: 2,
+        &quot;story&quot;: 1
+      },
+      &quot;tradeoff&quot;: &quot;Rail cần đường Xem tất cả; đổi lại giữ trải nghiệm gần hơn vùng đầu.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;increased-service-grid&quot;,
+      &quot;name&quot;: &quot;B · Grid mở rộng vùng dịch vụ&quot;,
+      &quot;status&quot;: &quot;archived alternative; chưa có user rejection&quot;,
+      &quot;sameContent&quot;: true,
+      &quot;composition&quot;: &quot;Giữ cùng toàn bộ nội dung; trình bày chính 2 sản phẩm tài chính thành grid gọn có nhãn/benefit, không thêm shortcut mới. Các khối sau giữ nguyên.&quot;,
+      &quot;tradeoff&quot;: &quot;Tìm sản phẩm nhanh hơn khi khách có ý định; lợi ích/điều kiện dễ bị rút gọn quá mức.&quot;,
+      &quot;hypothesis&quot;: &quot;Chỉ mở thêm ô nếu có sản phẩm tài chính thật; không mặc định tăng số lượng dịch vụ.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;big-offer&quot;,
+      &quot;name&quot;: &quot;C · Một offer lớn trước rail&quot;,
+      &quot;status&quot;: &quot;archived alternative; chưa có user rejection&quot;,
+      &quot;sameContent&quot;: true,
+      &quot;composition&quot;: &quot;Giữ thứ tự khối và cùng 6 offer; offer đầu mở rộng đủ346px, story và 5 offer còn lại rail bên dưới; trải nghiệm vẫn lớn.&quot;,
+      &quot;tradeoff&quot;: &quot;Đọc điều kiện offer đầu tốt hơn nhưng thêm chiều cao, ưu ái một thương hiệu và đẩy trải nghiệm xuống.&quot;,
+      &quot;hypothesis&quot;: &quot;Chỉ chọn khi có campaign phù hợp rõ; chưa có bằng chứng conversion.&quot;
+    }
+  ],
+  &quot;validation&quot;: [
+    &quot;So final với source tại cùng390px và cùng fixture&quot;,
+    &quot;Đọc số dư/hạng, chọn phân biệt tích lũy với tín dụng&quot;,
+    &quot;Normal pointer story mở không bị offer chặn; close/focus/keyboard&quot;,
+    &quot;Vuốt đến thương hiệu thứ4 và mở đúng chi tiết&quot;,
+    &quot;Khám phá/đóng experience, tab/back và tìm lại tài sản&quot;,
+    &quot;Human UT mới kiểm chứng hiểu và tìm đường; không suy conversion từ screenshot.&quot;
+  ]
+}</pre></details><div class="links"><a class="link primary" href="/vinclub-final">Mở UI cuối</a><a class="link" href="slides.html">Mở slide</a><a class="link" href="../vinclub-decision-v5/index.html">V5 giữ lại để đối chiếu</a></div></section></main><footer><div class="container">Phương án cuối dùng source3300 làm chuẩn hình thức; V1–V5 và source gốc giữ nguyên. Mở rộng API là optional, màn cũ không truyền prop mới vẫn giữ hành vi cũ.<div class="indicator"></div></div></footer></body></html>

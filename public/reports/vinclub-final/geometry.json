@@ -1,0 +1,277 @@
+{
+  "note": "DOM measurement CSSpx; unfolded captures explicitly change container height for diagrams only",
+  "geometry": {
+    "source": [
+      {
+        "id": "membership",
+        "selector": ".vr-brand",
+        "x": 0,
+        "y": 54,
+        "width": 390,
+        "height": 97,
+        "padding": "4px 22px 24px",
+        "gap": "4px 8px",
+        "radius": "0px"
+      },
+      {
+        "id": "wallet",
+        "selector": ".vr-pouches",
+        "x": 10,
+        "y": 151,
+        "width": 370,
+        "height": 199,
+        "padding": "0px",
+        "gap": "10px",
+        "radius": "0px"
+      },
+      {
+        "id": "financial",
+        "selector": ".vr-vinpay-services",
+        "x": 0,
+        "y": 276,
+        "width": 390,
+        "height": 140,
+        "padding": "20px 22px 0px",
+        "gap": "12px",
+        "radius": "0px"
+      },
+      {
+        "id": "benefits",
+        "selector": ".vr-offer-stories",
+        "x": 0,
+        "y": 484,
+        "width": 390,
+        "height": 168,
+        "padding": "0px 22px 8px",
+        "gap": "12px",
+        "radius": "0px"
+      },
+      {
+        "id": "experiences",
+        "selector": ".vr-fy",
+        "x": 0,
+        "y": 652,
+        "width": 390,
+        "height": 430,
+        "padding": "0px",
+        "gap": "normal",
+        "radius": "0px"
+      },
+      {
+        "id": "navigation",
+        "selector": ".vk-bar",
+        "x": 22,
+        "y": 762,
+        "width": 346,
+        "height": 62,
+        "padding": "4px",
+        "gap": "normal",
+        "radius": "31px"
+      }
+    ],
+    "selected": [
+      {
+        "id": "membership",
+        "selector": ".vr-brand",
+        "x": 0,
+        "y": 54,
+        "width": 390,
+        "height": 97,
+        "padding": "4px 22px 24px",
+        "gap": "4px 8px",
+        "radius": "0px"
+      },
+      {
+        "id": "wallet",
+        "selector": ".vr-pouches",
+        "x": 10,
+        "y": 151,
+        "width": 370,
+        "height": 199,
+        "padding": "0px",
+        "gap": "10px",
+        "radius": "0px"
+      },
+      {
+        "id": "financial",
+        "selector": ".vr-vinpay-services",
+        "x": 0,
+        "y": 276,
+        "width": 390,
+        "height": 140,
+        "padding": "20px 22px 0px",
+        "gap": "12px",
+        "radius": "0px"
+      },
+      {
+        "id": "benefits",
+        "selector": ".vr-offer-stories",
+        "x": 0,
+        "y": 484,
+        "width": 390,
+        "height": 168,
+        "padding": "0px 22px 8px",
+        "gap": "12px",
+        "radius": "0px"
+      },
+      {
+        "id": "experiences",
+        "selector": ".vr-fy",
+        "x": 0,
+        "y": 652,
+        "width": 390,
+        "height": 430,
+        "padding": "0px",
+        "gap": "normal",
+        "radius": "0px"
+      },
+      {
+        "id": "navigation",
+        "selector": ".vk-bar",
+        "x": 22,
+        "y": 762,
+        "width": 346,
+        "height": 62,
+        "padding": "4px",
+        "gap": "normal",
+        "radius": "31px"
+      }
+    ],
+    "wallet-large": [
+      {
+        "id": "membership",
+        "selector": ".vr-brand",
+        "x": 0,
+        "y": 54,
+        "width": 390,
+        "height": 97,
+        "padding": "4px 22px 24px",
+        "gap": "4px 8px",
+        "radius": "0px"
+      },
+      {
+        "id": "wallet",
+        "selector": ".vr-pouches",
+        "x": 10,
+        "y": 151,
+        "width": 370,
+        "height": 237,
+        "padding": "0px",
+        "gap": "10px",
+        "radius": "0px"
+      },
+      {
+        "id": "financial",
+        "selector": ".vr-vinpay-services",
+        "x": 0,
+        "y": 314,
+        "width": 390,
+        "height": 140,
+        "padding": "20px 22px 0px",
+        "gap": "12px",
+        "radius": "0px"
+      },
+      {
+        "id": "benefits",
+        "selector": ".vr-offer-stories",
+        "x": 0,
+        "y": 522,
+        "width": 390,
+        "height": 168,
+        "padding": "0px 22px 8px",
+        "gap": "12px",
+        "radius": "0px"
+      },
+      {
+        "id": "experiences",
+        "selector": ".vr-fy",
+        "x": 0,
+        "y": 690,
+        "width": 390,
+        "height": 430,
+        "padding": "0px",
+        "gap": "normal",
+        "radius": "0px"
+      },
+      {
+        "id": "navigation",
+        "selector": ".vk-bar",
+        "x": 22,
+        "y": 762,
+        "width": 346,
+        "height": 62,
+        "padding": "4px",
+        "gap": "normal",
+        "radius": "31px"
+      }
+    ],
+    "service-grid": [
+      {
+        "id": "membership",
+        "selector": ".vr-brand",
+        "x": 0,
+        "y": 54,
+        "width": 390,
+        "height": 97,
+        "padding": "4px 22px 24px",
+        "gap": "4px 8px",
+        "radius": "0px"
+      },
+      {
+        "id": "wallet",
+        "selector": ".vr-pouches",
+        "x": 10,
+        "y": 151,
+        "width": 370,
+        "height": 199,
+        "padding": "0px",
+        "gap": "10px",
+        "radius": "0px"
+      },
+      {
+        "id": "financial",
+        "selector": ".vr-vinpay-services",
+        "x": 0,
+        "y": 276,
+        "width": 390,
+        "height": 180,
+        "padding": "20px 32px 0px",
+        "gap": "16px 0px",
+        "radius": "0px"
+      },
+      {
+        "id": "benefits",
+        "selector": ".vr-offer-stories",
+        "x": 0,
+        "y": 524,
+        "width": 390,
+        "height": 168,
+        "padding": "0px 22px 8px",
+        "gap": "12px",
+        "radius": "0px"
+      },
+      {
+        "id": "experiences",
+        "selector": ".vr-fy",
+        "x": 0,
+        "y": 692,
+        "width": 390,
+        "height": 430,
+        "padding": "0px",
+        "gap": "normal",
+        "radius": "0px"
+      },
+      {
+        "id": "navigation",
+        "selector": ".vk-bar",
+        "x": 22,
+        "y": 762,
+        "width": 346,
+        "height": 62,
+        "padding": "4px",
+        "gap": "normal",
+        "radius": "31px"
+      }
+    ]
+  }
+}

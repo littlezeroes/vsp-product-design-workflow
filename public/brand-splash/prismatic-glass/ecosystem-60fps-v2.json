@@ -1,0 +1,14 @@
+{
+  "fps": 60,
+  "nativeFrames": true,
+  "size": 768,
+  "apps": [
+    "VinFast",
+    "Vinhomes Resident",
+    "MyVinmec",
+    "MyVinpearl",
+    "VinWonders",
+    "Green SM"
+  ],
+  "sources": "/brand-splash/ecosystem-apps/sources.json"
+}

@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-01T16:13:13.189Z",
+  "checks": [
+    {
+      "name": "financial pair kept",
+      "pass": true
+    },
+    {
+      "name": "original membership wallet offers experience",
+      "pass": true
+    },
+    {
+      "name": "no generic primary CTA on Home",
+      "pass": true
+    },
+    {
+      "name": "financial destination kept",
+      "pass": true
+    },
+    {
+      "name": "story pointer works",
+      "pass": true
+    },
+    {
+      "name": "brand offer direct",
+      "pass": true
+    },
+    {
+      "name": "saved benefit findable",
+      "pass": true
+    },
+    {
+      "name": "request gate disabled",
+      "pass": true
+    },
+    {
+      "name": "request not fake confirmed",
+      "pass": true
+    },
+    {
+      "name": "no page overflow 360",
+      "pass": true
+    },
+    {
+      "name": "no page overflow 390",
+      "pass": true
+    },
+    {
+      "name": "no page overflow 430",
+      "pass": true
+    },
+    {
+      "name": "campaign source entry",
+      "pass": true
+    },
+    {
+      "name": "campaign close returns Home",
+      "pass": true
+    },
+    {
+      "name": "runtime clean",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "pass": true,
+  "scope": "Source-faithful component composition + new deep entry demos. Not human UT, no actual financial/merchant transactions."
+}

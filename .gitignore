@@ -15,6 +15,7 @@
 
 # next.js
 /.next/
+/.next-*/
 /out/
 
 # production
@@ -44,3 +45,12 @@ next-env.d.ts
 
 # root-level screenshots (debug/reference only, not for deploy)
 /*.png
+
+# Render outputs / heavy assets (kept local, not in git)
+/output/
+/blender/
+/Ref/
+**/node_modules/
+/public/vinclub-film-v6.mp4
+/public/vinclub-film-v8.mp4
+/public/vinclub-film-v9.mp4

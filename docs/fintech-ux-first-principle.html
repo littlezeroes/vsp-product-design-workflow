@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fintech UX — First Principle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;500&family=Google+Sans+Display:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf9;
+    --paper: #ffffff;
+    --ink: #1c1917;
+    --ink-2: #57534e;
+    --ink-3: #a8a29e;
+    --line: #e7e5e4;
+    --line-strong: #1c1917;
+    --serif: 'Google Sans Display', 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --sans: 'Google Sans Text', 'Google Sans', -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+    --mono: 'Google Sans Code', 'JetBrains Mono', 'SF Mono', 'Menlo', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+  }
+
+  /* Masthead */
+  .masthead {
+    margin-bottom: 64px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .doc-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+  h1.title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  h1.title em { font-style: normal; font-weight: 400; }
+  .lede {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 17px;
+    color: var(--ink-2);
+    max-width: 580px;
+  }
+
+  /* Sections */
+  section { margin-bottom: 48px; }
+
+  h2.section-h {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  h2.section-h .num {
+    color: var(--ink-3);
+    font-family: var(--mono);
+    margin-right: 8px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  h3.lead {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  p { margin-bottom: 12px; }
+  p.muted { color: var(--ink-2); font-size: 14.5px; }
+
+  /* Pullout */
+  .pullout {
+    margin: 20px 0;
+    padding: 20px 24px;
+    background: var(--paper);
+    border-left: 2px solid var(--ink);
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+  .pullout mark {
+    background: #d1f5ee;
+    color: inherit;
+    padding: 0 6px;
+    border-radius: 4px;
+    font-style: normal;
+  }
+
+  /* Tables */
+  .table-wrap { margin: 16px 0; overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+  }
+  thead th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-2);
+    padding: 10px 16px 10px 0;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  tbody td {
+    padding: 12px 16px 12px 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tbody tr:last-child td { border-bottom: 1px solid var(--line-strong); }
+  tbody td.key { font-weight: 500; }
+  tbody td.muted { color: var(--ink-2); }
+  tbody td.metric {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+
+  /* Bare list */
+  ol.bare {
+    list-style: none;
+    counter-reset: item;
+    margin: 12px 0;
+  }
+  ol.bare li {
+    counter-increment: item;
+    padding: 10px 0 10px 40px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  ol.bare li:last-child { border-bottom: 1px solid var(--line-strong); }
+  ol.bare li::before {
+    content: counter(item, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    font-family: var(--mono);
+    color: var(--ink-3);
+    font-size: 12px;
+    top: 12px;
+  }
+
+  /* Chain */
+  .chain {
+    margin: 16px 0;
+    padding: 16px 20px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    font-size: 14px;
+    line-height: 1.9;
+  }
+  .chain b { display: inline-block; min-width: 130px; }
+  .chain span.arrow { color: var(--ink-3); margin-right: 6px; font-family: var(--mono); }
+
+  /* Part divider */
+  .part-divider {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin: 64px 0 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line-strong);
+  }
+  .part-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-3);
+  }
+  .part-name {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  /* Sub-lead */
+  h4.sub-lead {
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-2);
+    margin: 28px 0 8px;
+  }
+
+  /* Clean dash list */
+  ul.list {
+    list-style: none;
+    margin: 8px 0 16px;
+    padding-left: 0;
+  }
+  ul.list li {
+    padding: 4px 0 4px 24px;
+    position: relative;
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  ul.list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink-3);
+  }
+
+  /* Statement paragraph */
+  p.statement {
+    margin: 16px 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  p.statement.lead-in {
+    color: var(--ink-2);
+  }
+
+  /* Figure */
+  figure.figure {
+    margin: 24px 0;
+    text-align: center;
+  }
+  figure.figure img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  figure.figure figcaption {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--ink-3);
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Questions list inside table */
+  ul.questions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.questions li {
+    position: relative;
+    padding: 4px 0 4px 18px;
+    line-height: 1.5;
+  }
+  ul.questions li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink-3);
+  }
+
+  /* Colophon */
+  .colophon {
+    margin-top: 80px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--ink-3);
+    font-family: var(--mono);
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 48px 20px 72px; }
+    h1.title { font-size: 28px; }
+    h3.lead { font-size: 18px; }
+    .pullout { font-size: 18px; }
+    .chain b { display: block; min-width: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="doc-meta">
+    <span>VSP · Design Foundations — Huy Kieu</span>
+    <span>v3.0</span>
+  </div>
+  <h1 class="title">Fintech <em>Design Principle</em></h1>
+</header>
+
+<section>
+  <h2 class="section-h">First Principle</h2>
+
+  <div class="pullout">
+    More trust. Less friction. <mark>Greater money movement.</mark>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Principle</th><th>Product meaning</th><th>Business outcome</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="key">More trust</td>
+          <td class="muted">Hệ thống tạo cảm giác rõ ràng, an toàn, nhất quán và kiểm soát được</td>
+          <td class="muted">User sẵn sàng sử dụng sản phẩm tài chính</td>
+        </tr>
+        <tr>
+          <td class="key">Less friction</td>
+          <td class="muted">Loại bỏ điểm gây do dự: thiếu hierarchy, thiếu consistency, UI khó scan, thông tin mơ hồ, feedback chậm</td>
+          <td class="muted">User hoàn tất giao dịch dễ hơn</td>
+        </tr>
+        <tr>
+          <td class="key">Greater money movement</td>
+          <td class="muted">Khi trust tăng và friction giảm, user sẵn sàng để tiền đi qua hệ thống nhiều hơn</td>
+          <td class="muted">Tăng giao dịch, balance, adoption và usage frequency</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-h">Product Design Principle → Experience Outcomes</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Product Design Principle</th><th>Experience outcome</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="key">Hierarchy</td><td class="muted">User nhìn 3s là biết thông tin nào quan trọng, action nào cần làm</td></tr>
+        <tr><td class="key">Alignment</td><td class="muted">UI ngay hàng tuyệt đối</td></tr>
+        <tr><td class="key">Consistent</td><td class="muted">Các flow có cùng logic hành vi, user dễ làm quen và lặp lại</td></tr>
+        <tr><td class="key">Visibility of system status</td><td class="muted">User biết tiền đang ở trạng thái nào: processing, success, failed, pending, enable, disable</td></tr>
+        <tr><td class="key">Navigation</td><td class="muted">User không bị lạc trong các flow tài chính nhiều bước</td></tr>
+        <tr><td class="key">Transparent</td><td class="muted">Khi lỗi xảy ra, user hiểu nguyên nhân, hậu quả và bước tiếp theo</td></tr>
+        <tr><td class="key">Low cognitive load</td><td class="muted">Giảm do dự, giảm đọc sai, giảm quyết định vội</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-h">Design System Is a Tool, Not Principle</h2>
+
+  <div class="pullout">
+    Không phải rule cố định, không tự nghĩ ra — phải dựa trên <mark>UX pattern đã được research kỹ</mark>.
+  </div>
+
+  <p class="statement">Component, token, pattern, motion, layout — đều là tool. Có thể thay đổi miễn còn phục vụ principle.</p>
+
+  <p class="statement">UX phải follow các ông lớn — Apple, Google, Stripe, Cash App, Robinhood. User đã được educate bởi họ; tự sáng tạo pattern mới buộc user phải re-learn.</p>
+</section>
+
+<section>
+  <h2 class="section-h">UX Design Review Framework</h2>
+
+  <figure class="figure">
+    <img src="https://www.softformance.com/wp-content/uploads/2022/09/1.3-The-five-elements-of-UX.jpg" alt="The Five Elements of UX (Jesse James Garrett)" loading="lazy" />
+    <figcaption>The Five Elements of UX — Jesse James Garrett</figcaption>
+  </figure>
+
+  <p class="statement">Review một flow theo ba tầng từ Garrett's framework: <em>Structure</em>, <em>Skeleton</em>, <em>Surface</em>. Mỗi tầng có một bộ câu hỏi cố định.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Layer</th><th>Review questions</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="key">Structure</td>
+          <td class="muted">
+            <ul class="questions">
+              <li>Flow có rõ và dễ đoán không?</li>
+              <li>State của hệ thống có rõ không?</li>
+              <li>Edge case, lỗi và recovery path đã được cover chưa?</li>
+              <li>Flow này có thể tốt hơn đối thủ không?</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="key">Skeleton</td>
+          <td class="muted">
+            <ul class="questions">
+              <li>Hierarchy đã đủ rõ để user biết đâu là thông tin/action chính chưa?</li>
+              <li>Layout đã alignment chuẩn, dễ scan và tạo cảm giác professional chưa?</li>
+              <li>Pattern, CTA, component và interaction đã consistent chưa?</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="key">Surface</td>
+          <td class="muted">
+            <ul class="questions">
+              <li>UI có đủ clean, modern, premium, hơn hẳn các đối thủ chưa?</li>
+              <li>Content/copy đã rõ trạng thái, consequence và next step chưa?</li>
+              <li>Color, icon, motion, feedback có hỗ trợ hiểu nhanh hơn hay chỉ để trang trí?</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<footer class="colophon">
+  <span>VSP Design Foundations</span>
+  <span>fintech-ux-first-principle.html</span>
+</footer>
+
+</body>
+</html>

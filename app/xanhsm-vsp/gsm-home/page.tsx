@@ -25,6 +25,7 @@ import {
  */
 
 type HomeState = "no-vsp" | "active"
+type Variant = "full" | "tile" | "strip"
 
 const BG_GRAD = "linear-gradient(180deg, #c9e7e8 0%, #e8f3f3 45%, #f4f6f7 100%)"
 const GREEN_RACE = "#b0e8c4"
@@ -57,6 +58,7 @@ function HomeInner() {
   const params = useSearchParams()
   const router = useRouter()
   const state = (params.get("state") as HomeState) ?? "no-vsp"
+  const variant = (params.get("variant") as Variant) ?? "full"
 
   return (
     <div
@@ -83,6 +85,120 @@ function HomeInner() {
             <span className="text-[16px] text-foreground-secondary font-normal">Bạn muốn đi đâu?</span>
           </button>
         </div>
+
+        {/* VSP Strip — variant=strip · thanh ngang gọn dưới search */}
+        {variant === "strip" && state === "active" && (
+          <div className="px-[18px] pb-[14px]">
+            <button
+              onClick={() => router.push("/xanhsm-vsp/wallet?state=active")}
+              className="w-full h-[56px] rounded-[18px] px-[14px] flex items-center gap-[12px] active:opacity-90"
+              style={{
+                background: "linear-gradient(90deg, #28bdbf 0%, #0b5457 100%)",
+                boxShadow: "0 3px 10px rgba(40,189,191,0.22)",
+              }}
+            >
+              <Image src="/vsp-logo.png" alt="VSP" width={32} height={32} className="rounded-[20%] shrink-0" />
+              <div className="flex-1 min-w-0 text-left">
+                <div className="text-[10px] font-bold text-white/75 uppercase tracking-wide leading-none">Ví V-Smart Pay</div>
+                <div className="text-[16px] font-black text-white leading-none mt-[3px]">156.000<span className="text-[11px] font-bold text-white/60 ml-[2px]">₫</span></div>
+              </div>
+              <div className="flex gap-[6px]">
+                {[Plus, ArrowLeftRight, QrCode].map((Ic, i) => (
+                  <div key={i} className="w-[30px] h-[30px] rounded-full bg-white/15 flex items-center justify-center">
+                    <Ic size={14} className="text-white" strokeWidth={2.4} />
+                  </div>
+                ))}
+              </div>
+            </button>
+          </div>
+        )}
+        {variant === "strip" && state === "no-vsp" && (
+          <div className="px-[18px] pb-[14px]">
+            <button
+              onClick={() => router.push("/xanhsm-vsp/profile?state=no-vsp")}
+              className="w-full h-[52px] rounded-[18px] px-[14px] flex items-center gap-[12px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.05)]"
+              style={{ border: "1.5px dashed #bfd5d4" }}
+            >
+              <div className="w-[34px] h-[34px] rounded-[11px] flex items-center justify-center shrink-0" style={{ background: "#e5f2f3" }}>
+                <Image src="/vsp-logo.png" alt="VSP" width={22} height={22} className="rounded-[22%]" />
+              </div>
+              <div className="flex-1 min-w-0 text-left">
+                <div className="text-[13px] font-black leading-tight">Mở ví VSP — nhận 50.000₫</div>
+                <div className="text-[10.5px] text-foreground-secondary leading-tight mt-[2px]">Thanh toán Xanh SM 0 phí</div>
+              </div>
+              <span className="h-[28px] px-[12px] rounded-full text-[11px] font-bold text-white flex items-center shrink-0" style={{ background: "#28bdbf" }}>Kích hoạt</span>
+            </button>
+          </div>
+        )}
+
+        {/* VSP Full card — variant=full · GoPay-on-GoJek style: high up, right after search */}
+        {variant === "full" && (
+          <div className="px-[18px] pb-[18px]">
+            {state === "active" ? (
+              <button
+                onClick={() => router.push("/xanhsm-vsp/wallet?state=active")}
+                className="w-full rounded-[22px] overflow-hidden text-left active:opacity-90"
+                style={{
+                  background: "linear-gradient(135deg, #28bdbf 0%, #0b5457 100%)",
+                  boxShadow: "0 4px 14px rgba(40,189,191,0.25)",
+                }}
+              >
+                <div className="px-[16px] pt-[14px] pb-[12px] flex items-center gap-[12px]">
+                  <Image src="/vsp-logo.png" alt="VSP" width={38} height={38} className="rounded-[22%] shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[10px] font-bold text-white/75 uppercase tracking-wide leading-none">Ví V-Smart Pay</div>
+                    <div className="text-[20px] font-black text-white leading-none mt-[5px] tracking-[-0.3px]">
+                      156.000<span className="text-[12px] font-bold text-white/60 ml-[2px]">₫</span>
+                    </div>
+                  </div>
+                  <ChevronRight size={16} className="text-white/70 shrink-0" />
+                </div>
+                <div className="grid grid-cols-3 border-t border-white/15">
+                  {[
+                    { icon: Plus, label: "Nạp", key: "topup" },
+                    { icon: ArrowLeftRight, label: "Chuyển", key: "transfer" },
+                    { icon: QrCode, label: "QR", key: "qr" },
+                  ].map((a, i) => (
+                    <div
+                      key={a.key}
+                      className={`py-[10px] flex flex-col items-center gap-[4px] ${i > 0 ? "border-l border-white/15" : ""}`}
+                    >
+                      <a.icon size={16} className="text-white" strokeWidth={2.2} />
+                      <span className="text-[11px] font-bold text-white leading-none">{a.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </button>
+            ) : (
+              <button
+                onClick={() => router.push("/xanhsm-vsp/profile?state=no-vsp")}
+                className="w-full rounded-[22px] overflow-hidden text-left active:opacity-90 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.05)]"
+                style={{ border: "1.5px dashed #bfd5d4" }}
+              >
+                <div className="px-[16px] py-[14px] flex items-center gap-[12px]">
+                  <div
+                    className="w-[42px] h-[42px] rounded-[13px] flex items-center justify-center shrink-0"
+                    style={{ background: "#e5f2f3" }}
+                  >
+                    <Image src="/vsp-logo.png" alt="VSP" width={26} height={26} className="rounded-[22%]" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[14px] font-black leading-tight">Kích hoạt ví VSP</div>
+                    <div className="text-[11.5px] text-foreground-secondary mt-[3px] leading-tight">
+                      Nhận <span className="font-bold" style={{ color: "#0b5457" }}>50.000₫</span> · thanh toán 0 phí
+                    </div>
+                  </div>
+                  <span
+                    className="h-[32px] px-[14px] rounded-full text-[12px] font-bold text-white flex items-center shrink-0"
+                    style={{ background: "#28bdbf", boxShadow: "0 2px 8px rgba(40,189,191,0.35)" }}
+                  >
+                    Kích hoạt
+                  </span>
+                </div>
+              </button>
+            )}
+          </div>
+        )}
 
         {/* Quick-route card */}
         <div className="px-[18px] pb-[18px]">
@@ -145,6 +261,33 @@ function HomeInner() {
           <button className="text-[13px] text-foreground-secondary font-medium">Xem tất cả</button>
         </div>
         <div className="px-[18px] grid grid-cols-4 gap-[10px] pb-[20px]">
+          {/* VSP tile · variant=tile · ngồi đầu services grid như 1 service */}
+          {variant === "tile" && (
+            <button
+              onClick={() => router.push(state === "active" ? "/xanhsm-vsp/wallet?state=active" : "/xanhsm-vsp/profile?state=no-vsp")}
+              className="rounded-[18px] h-[100px] flex flex-col items-center justify-center gap-[4px] pt-[6px] relative active:opacity-90"
+              style={{
+                background: state === "active" ? "linear-gradient(160deg, #28bdbf 0%, #0b5457 100%)" : "#ffffff",
+                boxShadow: state === "active" ? "0 3px 10px rgba(40,189,191,0.25)" : "0 1px 4px rgba(0,0,0,0.04)",
+                border: state === "no-vsp" ? "1.5px dashed #bfd5d4" : "none",
+              }}
+            >
+              <div className="w-[48px] h-[48px] flex items-center justify-center">
+                <Image src="/vsp-logo.png" alt="VSP" width={state === "active" ? 36 : 32} height={state === "active" ? 36 : 32} className="rounded-[22%]" />
+              </div>
+              {state === "active" ? (
+                <>
+                  <span className="text-[11px] font-black text-white leading-none">156K</span>
+                  <span className="text-[8.5px] font-bold text-white/75 leading-none">VSP Wallet</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-[10px] font-bold text-foreground leading-[1.1]">Mở ví VSP</span>
+                  <span className="text-[8.5px] font-bold leading-none" style={{ color: "#0b5457" }}>+50K</span>
+                </>
+              )}
+            </button>
+          )}
           {SERVICES.map((s) => (
             <button
               key={s.label}
@@ -182,72 +325,8 @@ function HomeInner() {
           </div>
         </div>
 
-        {/* VSP card — below banner. active: wallet · no-vsp: activation CTA */}
-        <div className="px-[18px] pb-[140px]">
-          {state === "active" ? (
-            <button
-              onClick={() => router.push("/xanhsm-vsp/wallet?state=active")}
-              className="w-full rounded-[22px] overflow-hidden text-left active:opacity-90"
-              style={{
-                background: "linear-gradient(135deg, #28bdbf 0%, #0b5457 100%)",
-                boxShadow: "0 4px 14px rgba(40,189,191,0.25)",
-              }}
-            >
-              <div className="px-[16px] pt-[14px] pb-[12px] flex items-center gap-[12px]">
-                <Image src="/vsp-logo.png" alt="VSP" width={38} height={38} className="rounded-[22%] shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <div className="text-[10px] font-bold text-white/75 uppercase tracking-wide leading-none">Ví V-Smart Pay</div>
-                  <div className="text-[20px] font-black text-white leading-none mt-[5px] tracking-[-0.3px]">
-                    156.000<span className="text-[12px] font-bold text-white/60 ml-[2px]">₫</span>
-                  </div>
-                </div>
-                <ChevronRight size={16} className="text-white/70 shrink-0" />
-              </div>
-              <div className="grid grid-cols-3 border-t border-white/15">
-                {[
-                  { icon: Plus, label: "Nạp", key: "topup" },
-                  { icon: ArrowLeftRight, label: "Chuyển", key: "transfer" },
-                  { icon: QrCode, label: "QR", key: "qr" },
-                ].map((a, i) => (
-                  <div
-                    key={a.key}
-                    className={`py-[10px] flex flex-col items-center gap-[4px] ${i > 0 ? "border-l border-white/15" : ""}`}
-                  >
-                    <a.icon size={16} className="text-white" strokeWidth={2.2} />
-                    <span className="text-[11px] font-bold text-white leading-none">{a.label}</span>
-                  </div>
-                ))}
-              </div>
-            </button>
-          ) : (
-            <button
-              onClick={() => router.push("/xanhsm-vsp/profile?state=no-vsp")}
-              className="w-full rounded-[22px] overflow-hidden text-left active:opacity-90 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.05)]"
-              style={{ border: "1.5px dashed #bfd5d4" }}
-            >
-              <div className="px-[16px] py-[14px] flex items-center gap-[12px]">
-                <div
-                  className="w-[42px] h-[42px] rounded-[13px] flex items-center justify-center shrink-0"
-                  style={{ background: "#e5f2f3" }}
-                >
-                  <Image src="/vsp-logo.png" alt="VSP" width={26} height={26} className="rounded-[22%]" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-[14px] font-black leading-tight">Kích hoạt ví VSP</div>
-                  <div className="text-[11.5px] text-foreground-secondary mt-[3px] leading-tight">
-                    Nhận <span className="font-bold" style={{ color: "#0b5457" }}>50.000₫</span> · thanh toán 0 phí
-                  </div>
-                </div>
-                <span
-                  className="h-[32px] px-[14px] rounded-full text-[12px] font-bold text-white flex items-center shrink-0"
-                  style={{ background: "#28bdbf", boxShadow: "0 2px 8px rgba(40,189,191,0.35)" }}
-                >
-                  Kích hoạt
-                </span>
-              </div>
-            </button>
-          )}
-        </div>
+        {/* Spacer for floating bottom nav */}
+        <div className="pb-[140px]" />
       </div>
 
       {/* ═══ Bottom Nav — floating blur pill + GreenRace chip ═══ */}

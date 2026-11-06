@@ -1,0 +1,331 @@
+{
+  "id": "cf00adb902614cab",
+  "screen_id": "277afab344f2437f",
+  "created_at": "2026-11-01T16:07:15.270335+00:00",
+  "report": {
+    "schema_version": 1,
+    "metric_definition": {
+      "name": "max_channel_absolute_rgb_error",
+      "pixel_error": "max(abs(reference_rgb - candidate_rgb)) / 255",
+      "mismatch_rule": "pixel_error > threshold",
+      "threshold": 0.0,
+      "mae_rgb_8bit": "Mean absolute difference across examined RGB channels, range 0..255",
+      "perceptual": false,
+      "alpha_policy": "Composite both images over opaque white before RGB comparison",
+      "geometry_policy": "Explicit crops only; no resize, alignment or EXIF rotation"
+    },
+    "inputs": {
+      "reference": {
+        "source": "/Users/huykieu/Documents/Stealuxe/.reaui/projects/04cbec3df3dd47e5/screens/277afab344f2437f/source.png",
+        "original_size": [
+          390,
+          845
+        ],
+        "original_mode": "RGB",
+        "crop": [
+          0,
+          0,
+          390,
+          844
+        ],
+        "compared_size": [
+          390,
+          844
+        ]
+      },
+      "candidate": {
+        "source": "/Users/huykieu/Documents/Stealuxe/.reaui/projects/04cbec3df3dd47e5/comparisons/cf00adb902614cab/candidate.png",
+        "original_size": [
+          390,
+          844
+        ],
+        "original_mode": "RGB",
+        "crop": null,
+        "compared_size": [
+          390,
+          844
+        ]
+      }
+    },
+    "dimensions": {
+      "width": 390,
+      "height": 844
+    },
+    "pixels": {
+      "total": 329160,
+      "masked": 0,
+      "examined": 329160,
+      "mismatched": 329156
+    },
+    "metrics": {
+      "mismatch_ratio": 0.9999878478551464,
+      "mae_rgb_8bit": 196.0195720419654,
+      "mae_rgb_normalized": 0.7687042040861388,
+      "max_channel_error_normalized": 1.0
+    },
+    "masks": {
+      "coordinate_space": "cropped comparison canvas, half-open pixel bounds",
+      "rectangles": [],
+      "overlap_policy": "Union; count each masked pixel once"
+    },
+    "tile_grid": {
+      "tile_size_pixels": 64,
+      "total_tiles": 98,
+      "examined_tiles": 98,
+      "maximum_reported_tiles": 12,
+      "ranking": "Mismatch ratio, then MAE, then maximum error descending; top/left ties"
+    },
+    "worst_tiles": [
+      {
+        "pixel_box": [
+          320,
+          320,
+          384,
+          384
+        ],
+        "normalized_box": [
+          0.8205128205128205,
+          0.3791469194312796,
+          0.9846153846153847,
+          0.4549763033175355
+        ],
+        "examined_pixels": 4096,
+        "mismatched_pixels": 4096,
+        "mismatch_ratio": 1.0,
+        "mae_rgb_8bit": 253.75,
+        "max_channel_error_normalized": 1.0
+      },
+      {
+        "pixel_box": [
+          320,
+          384,
+          384,
+          448
+        ],
+        "normalized_box": [
+          0.8205128205128205,
+          0.4549763033175355,
+          0.9846153846153847,
+          0.5308056872037915
+        ],
+        "examined_pixels": 4096,
+        "mismatched_pixels": 4096,
+        "mismatch_ratio": 1.0,
+        "mae_rgb_8bit": 251.841552734375,
+        "max_channel_error_normalized": 1.0
+      },
+      {
+        "pixel_box": [
+          384,
+          320,
+          390,
+          384
+        ],
+        "normalized_box": [
+          0.9846153846153847,
+          0.3791469194312796,
+          1.0,
+          0.4549763033175355
+        ],
+        "examined_pixels": 384,
+        "mismatched_pixels": 384,
+        "mismatch_ratio": 1.0,
+        "mae_rgb_8bit": 250.0,
+        "max_channel_error_normalized": 0.9803921568627451
+      },
+      {
+        "pixel_box": [
+          384,
+          384,
+          390,
+          448
+        ],
+        "normalized_box": [
+          0.9846153846153847,
+          0.4549763033175355,
+          1.0,
+          0.5308056872037915
+        ],
+        "examined_pixels": 384,
+        "mismatched_pixels": 384,
+        "mismatch_ratio": 1.0,
+        "mae_rgb_8bit": 250.0,
+        "max_channel_error_normalized": 0.9803921568627451
+      },
+      {
+        "pixel_box": [
+          320,
+          640,
+          384,
+          704
+        ],
+        "normalized_box": [
+          0.8205128205128205,
+          0.7582938388625592,
+          0.9846153846153847,
+          0.8341232227488151
+        ],
+        "examined_pixels": 4096,
+        "mismatched_pixels": 4096,
+        "mismatch_ratio": 1.0,
+        "mae_rgb_8bit": 249.537353515625,
+        "max_channel_error_normalized": 0.984313725490196
+      },
+      {
+        "pixel_box": [
+          384,
+          640,
+          390,
+          704
+        ],
+        "normalized_box": [
+          0.9846153846153847,
+          0.7582938388625592,
+          1.0,
+          0.8341232227488151
+        ],
+        "examined_pixels": 384,
+        "mismatched_pixels": 384,
+        "mismatch_ratio": 1.0,
+        "mae_rgb_8bit": 249.4375,
+        "max_channel_error_normalized": 0.9803921568627451
+      },
+      {
+        "pixel_box": [
+          64,
+          320,
+          128,
+          384
+        ],
+        "normalized_box": [
+          0.1641025641025641,
+          0.3791469194312796,
+          0.3282051282051282,
+          0.4549763033175355
+        ],
+        "examined_pixels": 4096,
+        "mismatched_pixels": 4096,
+        "mismatch_ratio": 1.0,
+        "mae_rgb_8bit": 249.37410481770834,
+        "max_channel_error_normalized": 1.0
+      },
+      {
+        "pixel_box": [
+          256,
+          320,
+          320,
+          384
+        ],
+        "normalized_box": [
+          0.6564102564102564,
+          0.3791469194312796,
+          0.8205128205128205,
+          0.4549763033175355
+        ],
+        "examined_pixels": 4096,
+        "mismatched_pixels": 4096,
+        "mismatch_ratio": 1.0,
+        "mae_rgb_8bit": 248.572509765625,
+        "max_channel_error_normalized": 1.0
+      },
+      {
+        "pixel_box": [
+          0,
+          384,
+          64,
+          448
+        ],
+        "normalized_box": [
+          0.0,
+          0.4549763033175355,
+          0.1641025641025641,
+          0.5308056872037915
+        ],
+        "examined_pixels": 4096,
+        "mismatched_pixels": 4096,
+        "mismatch_ratio": 1.0,
+        "mae_rgb_8bit": 247.00862630208334,
+        "max_channel_error_normalized": 1.0
+      },
+      {
+        "pixel_box": [
+          256,
+          640,
+          320,
+          704
+        ],
+        "normalized_box": [
+          0.6564102564102564,
+          0.7582938388625592,
+          0.8205128205128205,
+          0.8341232227488151
+        ],
+        "examined_pixels": 4096,
+        "mismatched_pixels": 4096,
+        "mismatch_ratio": 1.0,
+        "mae_rgb_8bit": 245.29549153645834,
+        "max_channel_error_normalized": 1.0
+      },
+      {
+        "pixel_box": [
+          256,
+          448,
+          320,
+          512
+        ],
+        "normalized_box": [
+          0.6564102564102564,
+          0.5308056872037915,
+          0.8205128205128205,
+          0.6066350710900474
+        ],
+        "examined_pixels": 4096,
+        "mismatched_pixels": 4096,
+        "mismatch_ratio": 1.0,
+        "mae_rgb_8bit": 242.17057291666666,
+        "max_channel_error_normalized": 1.0
+      },
+      {
+        "pixel_box": [
+          64,
+          384,
+          128,
+          448
+        ],
+        "normalized_box": [
+          0.1641025641025641,
+          0.4549763033175355,
+          0.3282051282051282,
+          0.5308056872037915
+        ],
+        "examined_pixels": 4096,
+        "mismatched_pixels": 4096,
+        "mismatch_ratio": 1.0,
+        "mae_rgb_8bit": 241.61962890625,
+        "max_channel_error_normalized": 1.0
+      }
+    ],
+    "visualization": {
+      "overlay": "50% reference + 50% candidate; ignored pixels are gray checkerboard",
+      "diff": "Absolute RGB error: black=zero, red=medium, yellow=maximum; blue-gray=ignored"
+    },
+    "artifacts": {
+      "overlay": "/Users/huykieu/Documents/Stealuxe/.reaui/projects/04cbec3df3dd47e5/comparisons/cf00adb902614cab/overlay.png",
+      "diff": "/Users/huykieu/Documents/Stealuxe/.reaui/projects/04cbec3df3dd47e5/comparisons/cf00adb902614cab/diff.png",
+      "report": "/Users/huykieu/Documents/Stealuxe/.reaui/projects/04cbec3df3dd47e5/comparisons/cf00adb902614cab/report.json"
+    },
+    "acceptance": {
+      "pixel_perfect": false,
+      "scope": "complete declared comparison canvas",
+      "strict": true,
+      "original_source_sha256": "3dd14fe56470a68113cdf8e80e94771da65f013eeadd958361698dbdfab8440b",
+      "candidate_sha256": "3e27e0ec9c0f3d339072f7d972aef3fb18da16c0764921e896d8dd394f45a4b7"
+    }
+  },
+  "artifacts": {
+    "diff": "/api/projects/04cbec3df3dd47e5/comparisons/cf00adb902614cab/diff.png",
+    "overlay": "/api/projects/04cbec3df3dd47e5/comparisons/cf00adb902614cab/overlay.png",
+    "report": "/api/projects/04cbec3df3dd47e5/comparisons/cf00adb902614cab/report.json",
+    "candidate": "/api/projects/04cbec3df3dd47e5/comparisons/cf00adb902614cab/candidate.png"
+  }
+}

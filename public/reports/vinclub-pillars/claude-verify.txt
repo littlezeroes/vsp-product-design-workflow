@@ -1,0 +1,56 @@
+**Kết luận:** chưa nên dùng bản này. Cần sửa 3 lỗi nặng: nhận định cuối 2027, cột Metric lẫn với mục tiêu, và lý do chưa có hạn của Đặc quyền cao cấp. Các phần còn lại chủ yếu thiếu nghĩa hoặc cần ghi rõ hơn.
+
+## E: cần sửa
+
+| Ô/bullet | Nguồn | Vấn đề | Sửa thành |
+|---|---|---|---|
+| **Chú thích cuối 2027** | B3 1.3.2.8 | Nguồn không có mốc cuối 2027. Mốc 30/06/2027 là giữa năm, nên cách viết hiện tại dễ bị hiểu nhầm. | "Nguồn không ghi mốc cuối 2027. Mốc muộn nhất là 30/06/2027 (tái sử dụng chiến dịch). Mục chưa có hạn không được suy thành cam kết." |
+| **VinCare/Scope:** "Đặc quyền… phụ thuộc nguồn cung" | B3 3.1 cột F | Sai lý do phụ thuộc. | "Phụ thuộc kế hoạch của Bộ phận Đặc quyền theo chỉ đạo của CT; chưa có hạn." |
+| **Header Metric:** "Nguồn nêu hướng đo gì?" | B1 cột F | Đoạn trích không có header hay nhãn metric. Cột F mô tả tác động/mục tiêu, nên phần lớn cột Metric là suy từ mục tiêu. | "Kết quả kỳ vọng và dữ liệu nguồn ghi nhận (chưa phải KPI)". |
+| **Tiện ích/Metric:** "Tăng trưởng tự nhiên; chuyển tương tác thành giao dịch" | B1 1.1 cột F | Đây là mục tiêu, không phải metric, và lặp ý cột Strategy. | Chuyển sang Strategy và xóa ở Metric. |
+| **Chú thích Metric:** "chưa quy định đầy đủ công thức, kỳ đo hoặc target" | Toàn bộ trích | "Chưa đầy đủ" ngụ ý đã có một phần. | "Đoạn trích không nêu công thức, kỳ đo hoặc target." |
+| **Tiện ích/Strategy:** "Mở rộng tích/tiêu điểm, thanh toán, bán chéo" | B1 1.2 cột D, F | Nguồn không đặt mở rộng thanh toán thành mục tiêu; thanh toán là "phương thức hỗ trợ". Câu này cũng thiếu ý thu hút Đối tác. | "Mở rộng điểm chạm và phạm vi dùng VPoint trong/ngoài hệ sinh thái; thu hút Đối tác, bán chéo. Thanh toán là phương thức hỗ trợ." |
+| **Tiện ích/Scope:** "Cộng đồng/AI… chưa có hạn" | B3 1.1 cột F | Thiếu rào cản chính. | Thêm: "Duhat chưa có kế hoạch phát triển và cung cấp SDK tích hợp." |
+| **Tiện ích/Scope:** "Điểm, tài khoản, thanh toán; merchant" | B3 1.2.1–1.2.5 | Tóm tắt quá rộng, làm mất các năng lực có hạn. | Nêu thêm: QR (cả xuyên biên giới), hóa đơn, thanh toán nhúng, điểm CBNV, đa hệ điểm, đối soát điểm. Merchant gồm POS/QR, thu chi hộ, cổng online, trợ lý. |
+| **Tiện ích/Scope:** "Gia nhập…" | B3 1.3.1.4 | Thiếu định danh và quyền chia sẻ giữa VinClub/PnL (24/12/2026). | Thêm mục này. |
+| **Tiện ích/Scope:** "…và Tết" | B3 1.3.2 cột F | Thiếu lưu ý rằng lịch có thể đổi. | Thêm: "Thứ tự và danh mục cửa có thể điều chỉnh theo mức sẵn sàng của PnL." |
+| **Thương mại/Scope:** "Marketplace rộng, AI Shopping, cư dân số" | B3 2.1.3, 2.1.4, 2.2.1 | "Marketplace rộng" mơ hồ. Giữ chỗ/đặt cọc cũng chưa có dòng nào có hạn. | Ghi rõ: dịch vụ thiết yếu/đối tác ngoài HST, Vincom Online, giữ chỗ/đặt cọc đều chưa có hạn. |
+| **Thương mại/Strategy và Metric:** "tiền cọc" | B1 2.2 cột F; B3 2.2.1 | Mục tiêu có tiền cọc, nhưng scope có hạn chỉ tới đặt lịch. | Thêm: "Tiền cọc là mục tiêu; chưa có hạng mục đặt cọc có hạn." |
+| **Thương mại/Metric:** "hoa hồng đối tác" | B1 2.1 cột F; B3 2.1.3 | Thiếu ngữ cảnh: đây là nguồn thu phụ, gắn với mô hình chưa có hạn. | "Hoa hồng đối tác (nguồn thu phụ, mô hình chưa có hạn)." |
+| **Thương mại/Metric** | B1 2.1, 2.2 cột F | Thiếu các kết quả nguồn có nêu. | Thêm: tần suất quay lại, cư dân giới thiệu, danh sách quan tâm trước mở bán. |
+| **VinCare/Scope:** "sinh nhật", "Mua gói" | B3 3.2.2.1, 3.3.1 cột F | Thiếu trạng thái thí điểm và phạm vi. | "Thí điểm voucher sinh nhật cho hạng cao cấp"; "Thí điểm gói độc quyền; mua cá nhân/nhóm". |
+| **VinCare/Scope** | B3 3.2.2 | Thiếu phần cá nhân hóa rộng hơn. Chỉ sinh nhật/dịp đặc biệt có hạn. | Thêm: "Cá nhân hóa theo hành vi/giá trị: chưa có hạn." |
+| **VinCare/Metric** | B3 3.2.1.4, 3.2.2.1 | Thiếu dữ liệu theo dõi có trong nguồn. | Thêm: hạn dùng, số lần hưởng, kết quả nhận và sử dụng quyền lợi. |
+| **VinCare/UX:** "Gói thể hiện cấu phần và quyền sử dụng" | B1 3.3 cột D, E; B3 3.3.1 | Thiếu giá trị chính của gói. | Thêm: "giá và quyền lợi so với mua lẻ, theo hạng". |
+| **Nền tảng vận hành:** "năng lực hỗ trợ chung, không phải trụ cột thứ tư" | B3 mục 4–6 | Chỉ mục 6 là "dùng chung". "Không phải trụ cột thứ tư" là suy luận vì B3 đánh số ngang hàng. | "B3 mục 4–6 là hệ thống vận hành và quản trị của VinClub, ví V-Smart và phần dùng chung; B1 không xếp vào 3 trụ cột." |
+
+## I: phải để màu xanh
+
+- **Tiện ích/UX:** "Việc thường dùng dễ tới." và "Chiến dịch có điểm vào theo thời điểm." Câu sau chỉ có cơ sở một phần từ "hiển thị lịch mở" (B3 1.3.2.1).
+- **Thương mại/UX, "Tách mua vé, đổi ưu đãi và đăng ký trải nghiệm":** cần sửa cả nội dung. Ở B3 2.1.4.4, nhân viên gian hàng xác nhận ưu đãi trên Merchant Portal, không phải khách tự đổi.
+- **Thương mại/UX, "Mỗi sản phẩm dẫn tới đúng hành động":** suy từ B3 2.1.2 (thu lead, đặt mua hoặc bán voucher theo từng P&L).
+- **Thương mại/UX, "Ảnh giúp hiểu sản phẩm, không thay thông tin":** đề xuất thuần túy. Nguồn nói về sa bàn và SPDV 3D, nên đổi "Ảnh" thành "Hình ảnh/3D".
+- **Tiện ích/Strategy và Metric, "điểm chạm hằng ngày, tăng trưởng tự nhiên":** nội dung có nguồn, nhưng chỉ gắn với mục 1.1 chưa có hạn. Nhận định rằng scope đến 02/2027 chưa bảo đảm được mục tiêu này là suy luận, nên nếu thêm vào thì để màu xanh.
+
+## S: giữ nguyên
+
+- **Mã dòng:** B1 và B3 ở cả 3 trụ cột đều đúng.
+- **Tiện ích:** "Gia nhập, quà chào mừng, ưu đãi giao dịch, giới thiệu"; "Tần suất tương tác, chi tiêu, quay lại"; "Tổng kết Tết…" (B3 1.3.2.7).
+- **Thương mại:**
+  - Strategy "Tạo lý do quay lại…" và "Bán chéo; tạo lead, lịch hẹn".
+  - Scope "Vé sự kiện; xác nhận ưu đãi tại gian hàng" và "Khám phá 3D, dẫn đường/tư vấn, đặt lịch thực tế".
+  - Metric "Tỷ lệ tiêu VPoint"; "Khách tiềm năng, lịch hẹn; chi phí nhà mẫu/showroom".
+- **VinCare:**
+  - Strategy cả 2 bullet.
+  - Scope "Hạng, tiến độ, phân phối quyền lợi".
+  - Scope "Dùng/quản lý quyền lợi, đối soát liên P&L".
+  - Metric "Tương tác, tần suất sử dụng, tỷ lệ giữ chân" và "Hiệu quả sử dụng ưu đãi; giá trị mỗi khách hàng".
+- **Có nguồn trực tiếp, không chỉ là đề xuất UX:**
+  - "Điểm và quyền lợi gắn tại lúc thanh toán" (B1 1.2; B3 1.2.4).
+  - "Cho thấy quyền lợi đang có và điều kiện dùng" (B3 3.2.1.2).
+  - "Tiến độ hạng kèm phần còn thiếu" (B3 3.2.1.3).
+- **Chú thích:** "Gói liên P&L thuộc VinCare" và "Không tự thêm KPI".
+
+**Hai điểm chưa kiểm chứng được:**
+- "B1/B3 hiện hành": đoạn trích không có thông tin về phiên bản.
+- "Xem toàn bộ nguồn và filter ngày .": câu đang cụt, có thể do mất link khi trích text, nên cần kiểm tra lại trong HTML gốc.

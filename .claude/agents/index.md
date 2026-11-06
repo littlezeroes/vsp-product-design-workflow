@@ -1,5 +1,13 @@
 # Agents
 
+## Product Decision Team
+- [VSP UX](vsp-ux.md) — source, IA, vai trò nội dung và cách chọn layout
+- [VSP Business](vsp-business.md) — nguồn tiền, chi phí, nguồn cung và đối soát
+- [VSP Product](vsp-product.md) — bài toán, hợp nhất phương án, phân kỳ và kiểm chứng
+- [VSP Visual Design](vsp-visual.md) — chữ, màu, vật liệu, hình ảnh, motion và kiểm tra render
+- [VSP CEO Review](vsp-ceo.md) — phản biện và bản trình quyết định
+- [Workflow năm vai trò](../workflows/product-decision/workflow.md)
+
 ## UXUI Team
 - [[vi-lead|Vi — Lead / Orchestrator]]
 - [[nate-researcher|Nate — UX Researcher]]
@@ -25,3 +33,7 @@
 
 ---
 Related: [[workflows/index|Workflows]] · [[knowledge/pipeline|Pipeline]] · [[skills/README|Skills]]
+
+## Home Rethink
+- [VinClub Home Feedback](vinclub-home-feedback.md) — independent rendered-layout and motion critique, complete information/flows, verified fix loop.
+- [Feedback loop](../workflows/home-feedback-loop/workflow.md)

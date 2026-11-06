@@ -1,0 +1,20 @@
+[
+  {
+    "name": "sneakers",
+    "prompt": "Use case: product-mockup. Ecommerce product detail asset for Vietnamese premium shopping app. Subject: one pair of elegant ivory and muted sage everyday sneakers, sculpted leather and mesh details. Original unbranded object, no logo, no text. A polished soft 3D studio render with fine tactile detail, pale miniature material language, upper left softbox, gentle shadow, three-quarter elevated angle, centered isolated object with generous margin, genuinely transparent background. Refined and understated, legible as 160px product image. No tile, no frame, no scene.",
+    "generator": "GPT Image built-in imagegen",
+    "output": "/vinclub-assets/products/sneakers.webp"
+  },
+  {
+    "name": "serum",
+    "prompt": "Use case: product-mockup. Ecommerce product detail asset for Vietnamese premium shopping app. Subject: a frosted pearl skincare serum bottle with rounded glass dropper and subtle blush label with no text. Original unbranded object, no logo, no text. A polished soft 3D studio render with fine tactile detail, pale miniature material language, upper left softbox, gentle shadow, three-quarter elevated angle, centered isolated object with generous margin, genuinely transparent background. Refined and understated, legible as 160px product image. No tile, no frame, no scene.",
+    "generator": "GPT Image built-in imagegen",
+    "output": "/vinclub-assets/products/serum.webp"
+  },
+  {
+    "name": "headphones",
+    "prompt": "Use case: product-mockup. Ecommerce product detail asset for Vietnamese premium shopping app. Subject: a pair of sculpted over-ear wireless headphones, matte porcelain white ear cups and warm silver headband. Original unbranded object, no logo, no text. A polished soft 3D studio render with fine tactile detail, pale miniature material language, upper left softbox, gentle shadow, three-quarter elevated angle, centered isolated object with generous margin, genuinely transparent background. Refined and understated, legible as 160px product image. No tile, no frame, no scene.",
+    "generator": "GPT Image built-in imagegen",
+    "output": "/vinclub-assets/products/headphones.webp"
+  }
+]

@@ -1,0 +1,65 @@
+{
+  "executiveFinding": "Home đã chọn có cơ sở kinh tế khi nối điểm/ví đang có với quyền lợi dùng được và hành động mua hoặc hẹn thật. Quà mỗi ngày là chi phí kích hoạt cần chứng minh tăng thêm; ưu đãi tạo doanh số cho P&L trước khi có thể tạo phần hưởng của nền tảng; khám phá trải nghiệm tạo nhu cầu trước khi thành lead đủ chuẩn. Chưa có bằng chứng phí, ngân sách, biên lợi nhuận hoặc kết quả triển khai để kết luận VinClub có lãi.",
+  "chains": [
+    {
+      "id": "daily",
+      "customerValue": "Biết mình có gì, nhận quyền lợi phù hợp và dùng được ngay thay vì chỉ sưu tập vật phẩm.",
+      "steps": ["Vào Home, thấy VPoint và quyền lợi khả dụng", "Mở story Quà mỗi ngày; xem điều kiện và kết quả thật từ hệ thống", "Nhận điểm/voucher vào ví quyền lợi với hạn và nơi dùng", "Chọn đổi hoặc dùng tại P&L/merchant đủ điều kiện", "Điểm bán xác nhận sử dụng; đơn và phần điểm/tiền được đối chiếu", "Theo dõi hủy/hoàn, chi phí quyền lợi và lần sử dụng tiếp theo"],
+      "trigger": "Sự kiện tạo giá trị là quyền lợi được sử dụng có xác nhận hoặc giao dịch mục tiêu hoàn tất; mở story và cào xong chỉ là tương tác.",
+      "whoPays": "P&L/merchant hoặc ngân sách chiến dịch VinClub chịu tài trợ theo thỏa thuận chưa được cung cấp; khách trả phần còn lại nếu giao dịch có điều kiện chi tiêu.",
+      "whoReceives": "Khách nhận giá trị quyền lợi thực dùng; đơn vị bán nhận phần tiền hàng/dịch vụ và khoản bù ưu đãi nếu có cơ chế được duyệt.",
+      "platformRevenue": "Không có doanh thu trực tiếp được chứng minh từ nhận quà. Giá trị kỳ vọng là giao dịch tăng thêm và dùng chéo P&L; chỉ tính phí hay phần hưởng khi hợp đồng và đối soát xác nhận. Mua/nạp VPoint và số dư ví không tự là doanh thu nền tảng.",
+      "costs": ["Tài trợ điểm/voucher theo cơ chế phát hành và sử dụng", "Nguồn cung, tồn quà/suất, vận hành phát thưởng và hỗ trợ", "Gian lận, cấp trùng, hoàn/thu hồi, đối soát nghĩa vụ điểm", "Nội dung story và đo lường"],
+      "readiness": "B3 ghi ví/sổ cái điểm, tiêu VPoint, phát hành/vòng đời voucher, portal điểm bán và đối soát HOÀN THÀNH; đây là trạng thái tài liệu cần nghiệm thu trong hành trình Home. Đổi quà và lịch sử/hạn điểm dự kiến 30/11/2026; không đồng nghĩa đã có nguồn quà hằng ngày. Demo ScratchRow chỉ đổi trạng thái local thành Quà đã mở; chưa phát thưởng, lưu entitlement hay xác nhận dùng thật.",
+      "metric": "Tỷ lệ quyền lợi được dùng có xác nhận trên số đã cấp; khách mua lặp sau sử dụng; tỷ lệ dùng chéo P&L; chi phí mỗi người dùng tăng thêm. Khi đủ dữ liệu: lợi nhuận đóng góp tăng thêm = phần đóng góp giao dịch tăng thêm − tài trợ − phí biến đổi − gian lận − vận hành; đối chiếu nhóm holdout phù hợp.",
+      "guardrail": "Không mặc định tặng mỗi ngày vô hạn. Chỉ hiện quà có chủ ngân sách, tồn, điều kiện, hạn và đường dùng; ngừng cấp khi hết hạn mức. Không lấy DAU hoặc lượt cào làm chứng cứ có lãi.",
+      "source": ["B3 hiện hành: 1.2.2.2; 1.2.3.5–8,11; 1.3.1.2–3; 4.4–4.6", "home-story.tsx: HomeStory bước mở thẻ cào và chuyển sang Ưu đãi", "ref-layouts.tsx: ScratchRow, OffersPage dùng state mẫu"]
+    },
+    {
+      "id": "spend",
+      "customerValue": "Chọn ưu đãi đúng nhu cầu và thương hiệu, biết số tiền thực trả, nơi hoàn tất và cách dùng VPoint.",
+      "steps": ["Thấy voucher thương hiệu có ngữ cảnh trên Home", "Xem mức hưởng, điều kiện, hạn, địa điểm và tồn", "Nhận/chọn voucher hoặc đổi bằng VPoint", "Chuyển tới điểm bán/kênh đặt dịch vụ được nêu rõ", "Đơn vị bán xác nhận giao dịch và dùng voucher; Merchant Portal nhận số tiền và ảnh hóa đơn khi chưa tích hợp POS", "Loại đơn hủy/hoàn và đối soát tiền hàng, tài trợ, điểm, phần hưởng nền tảng nếu có"],
+      "trigger": "Giao dịch hợp lệ sau hủy/hoàn và xác nhận sử dụng ưu đãi; với đối tác ngoài cần attribution và kết quả chuyển đổi được đối tác xác nhận.",
+      "whoPays": "Khách thanh toán tiền hàng; nhà tài trợ chịu giảm giá/điểm theo chiến dịch; đối tác trả hoa hồng hoặc phí chỉ nếu đã thỏa thuận.",
+      "whoReceives": "P&L/merchant cung ứng nhận tiền bán; khách nhận lợi ích thực dùng; nền tảng chỉ nhận phần được xác nhận theo mô hình hợp tác.",
+      "platformRevenue": "Doanh số P&L và GMV phải báo cáo riêng với doanh thu/phần hưởng VinClub hoặc VinPay. B3 nêu mô hình giới thiệu hưởng hoa hồng ngoài HST nhưng chưa có biểu phí hay đối tác ký kết. Phí thanh toán cũng chưa được chứng minh; thanh toán qua ví không tự tạo doanh thu phí.",
+      "costs": ["Phần giảm giá/hoàn điểm do từng bên chịu", "Tích hợp, phát mã, xác thực hóa đơn, chống dùng lặp", "Phí thanh toán và chi phí phục vụ nếu mô hình thực tế phát sinh", "Hỗ trợ, xử lý hủy/hoàn và đối soát merchant"],
+      "readiness": "B3 ưu tiên SPDV nội bộ theo thu lead, mua trực tiếp hoặc voucher; vé sự kiện dự kiến 31/12/2026 nhưng phụ thuộc nguồn vé/lịch. Merchant Portal xác nhận hóa đơn dự kiến 24/12/2026, không tích hợp POS. Affiliate ngoài HST chưa có deadline hiện hành, phụ thuộc thỏa thuận và kết nối. Demo OfferCards chỉ chuyển tới Ưu đãi; OffersPage gắn Đã dùng bằng state local, chưa chứng minh mua hay redemption.",
+      "metric": "Giao dịch hợp lệ có attribution; tỷ lệ dùng voucher đến mua; chi tiêu và lợi nhuận đóng góp tăng thêm so với nhóm đối chứng; tỷ lệ hủy/hoàn và sai lệch đối soát; phần hưởng nền tảng đã xác nhận, tách tổng tiền đơn.",
+      "guardrail": "Không nhầm trợ giá với cầu tăng thêm: khách vốn sẽ mua vẫn có thể nhận giảm giá. Chỉ mở thương hiệu có nguồn cung và xác nhận dùng; không hứa checkout thống nhất khi giao dịch kết thúc ở đối tác.",
+      "source": ["B1: 2.1, hoa hồng đối tác là nguồn thu phụ", "B3 hiện hành: 2.1.2–4, 2.1.4.4; 1.2.2.1; 1.2.4.7", "ref-layouts.tsx: OfferCards, OffersPage, MINE_VOUCHERS là dữ liệu mẫu"]
+    },
+    {
+      "id": "experience",
+      "customerValue": "Khám phá xe, nhà hoặc kỳ nghỉ để hiểu lựa chọn, rồi chủ động đăng ký tư vấn/lịch trải nghiệm phù hợp.",
+      "steps": ["Mở card khám phá trên Home", "Xem thông tin/sa bàn hoặc nội dung giới thiệu có nguồn cung", "Chọn sản phẩm, khu vực, nhu cầu và khung giờ", "Đồng ý chuyển dữ liệu tối thiểu cho P&L cụ thể", "P&L tiếp nhận, kiểm tra lead trùng và đủ chuẩn, xác nhận lịch", "Ghi nhận đến hẹn, giao dịch sau trải nghiệm và kết quả hủy/hoàn; phản hồi trạng thái về VinClub"],
+      "trigger": "Lead được P&L chấp nhận đủ chuẩn và lịch hẹn được xác nhận là giá trị vận hành ban đầu; tham dự và giao dịch là kết quả sau đó. Chỉ có sự kiện tính phí khi thỏa thuận quy định rõ.",
+      "whoPays": "P&L và/hoặc VinClub chịu chi phí nội dung, sa bàn, thu nhận và chăm sóc lead theo phân công chưa chốt; khách chỉ trả cho SPDV/đặt chỗ khi hành trình bán tương ứng sẵn sàng.",
+      "whoReceives": "P&L nhận nhu cầu và cơ hội bán, nhận tiền giao dịch SPDV thực tế; khách nhận tư vấn/trải nghiệm được xác nhận.",
+      "platformRevenue": "Chưa có bằng chứng phí lead, phí lịch hẹn hay hoa hồng bán xe/nhà. Đánh giá trước bằng chi phí mỗi lead được chấp nhận, mỗi lịch tham dự và đóng góp doanh số P&L có attribution; không ghi giá trị nhà/xe, tiền cọc hay lượt xem 3D thành doanh thu VinClub.",
+      "costs": ["Dữ liệu và sản xuất nội dung/3D, tối ưu thiết bị", "Tích hợp chuyển lead, điều phối lịch và phản hồi trạng thái", "Nhân sự P&L tiếp nhận, tư vấn, tổ chức trải nghiệm", "Quà thu hút, chống lead rác/trùng và hỗ trợ khách"],
+      "readiness": "B3 đặt khám phá sa bàn, trợ lý và lịch trải nghiệm mốc 31/12/2026; tái sử dụng dữ liệu Vinhomes Market và phụ thuộc nguồn P&L. Cửa VinFast 22/01/2027 và Vinhomes 29/01/2027 dự kiến chuyển nhu cầu với consent. Demo ForYou chỉ mở BottomSheet ảnh/mô tả; chưa có form, consent, tiếp nhận lead hay lịch hẹn.",
+      "metric": "Tỷ lệ lead được P&L chấp nhận; thời gian tiếp nhận; lịch xác nhận/lead; tham dự/lịch; giao dịch/lead theo cửa sổ attribution thống nhất; chi phí mỗi lead đủ chuẩn và mỗi lịch tham dự, kèm tỷ lệ trùng/rác.",
+      "guardrail": "Có người nhận và SLA trước khi mở form. Không tự xác nhận lịch khi P&L chưa có suất. Chỉ thu dữ liệu phục vụ mục đích đã đồng ý; không gộp lượt khám phá, lead, lịch và doanh số thành một conversion.",
+      "source": ["B1: 2.2, Sales Kit và thử nghiệm Đảo Ngọc Ocean Park 3", "B3 hiện hành: 2.2.1.1–3; 2.2.2; 1.3.2.2–3", "ref-layouts.tsx: FOR_YOU và ForYou BottomSheet"]
+    }
+  ],
+  "sourceVsUnknown": {
+    "confirmedInSource": ["B3 hiện hành ghi nền tảng điểm, voucher, portal và nhiều nhánh đối soát HOÀN THÀNH; đây là bằng chứng kế hoạch/trạng thái nguồn, chưa là kiểm thử production", "Merchant Portal được định hướng xác nhận tại gian hàng không cần POS, nhập số tiền và ảnh hóa đơn", "Mô hình ngoài HST là giới thiệu hưởng hoa hồng với phụ thuộc thỏa thuận, chuyển đổi và đối soát", "Source demo có ví/điểm, story quà, voucher thương hiệu và card trải nghiệm; số dư, tỷ lệ ưu đãi và kết quả nhận/dùng là mẫu"],
+    "unknownBeforeCommitment": ["Chủ ngân sách và giá vốn từng quyền lợi; cơ chế nghĩa vụ điểm và bù trừ giữa các đơn vị", "Danh sách P&L/merchant cam kết nguồn cung, tồn, người vận hành và thời gian hỗ trợ", "Hợp đồng phần hưởng nền tảng, phí, thời điểm xác nhận và điều kiện hủy/hoàn", "Tracking xuyên kênh, tỷ lệ khớp hóa đơn/đơn và phản hồi kết quả từ P&L", "Chi tiêu nền, biên đóng góp, chi phí thực phục vụ và mức tăng thêm so với holdout"],
+    "historyRule": "Chỉ dùng mốc SHEET B3 hiện hành. Không chuyển deadline 30/06/2027 hay 30/09/2027 trong B3_ARCHIVED thành cam kết hiện hành; B1/B2 cung cấp định hướng, không chứng minh tiến độ."
+  },
+  "phaseFeb2027": {
+    "decision": "Ưu tiên vòng kín quyền lợi → sử dụng → đối soát, kèm một luồng O2O có P&L nhận lead. Home giữ vai trò lối vào; không mở rộng nguồn thu chỉ vì có card.",
+    "sourceMilestones": ["Quà chào mừng và định danh chia sẻ: 24/12/2026; ưu đãi giao dịch: 15/01/2027", "Voucher/quà và lịch sử điểm: 30/11/2026; đối soát điểm: 24/12/2026", "VinPay SDK trên VinClub: 24/12/2026; QR/hóa đơn/thanh toán nhúng: 31/12/2026, phụ thuộc nền tảng tích hợp", "Khấu trừ VPoint trong thanh toán: 28/02/2027; không hứa phối hợp điểm + tiền toàn bộ sớm hơn nghiệm thu", "5 cửa Tết dự kiến lần lượt 15/01, 22/01, 29/01, 05/02, 12/02; hoàn tất 19/02 và tổng kết 26/02/2027; thứ tự có thể đổi theo readiness"],
+    "releaseGate": "Một quyền lợi có chủ tài trợ/tồn/hạn/đường dùng và xác nhận merchant; một voucher đi đến giao dịch có đối soát; một trải nghiệm có consent, lead được nhận và lịch phản hồi. Chỉ mở các nhánh vượt gate, ghi rõ chưa có dữ liệu tăng thêm khi mới chạy.",
+    "review": "Báo cáo đồng thời tiền hàng P&L, quyền lợi đã dùng, chi phí tài trợ, sai lệch và phần hưởng nền tảng đã xác nhận; dùng holdout nếu đủ mẫu để tránh kết luận từ mùa Tết hoặc lượt mở app."
+  },
+  "end2027": {
+    "status": "Đề xuất mục tiêu và điều kiện đầu tư, không phải deadline đã được B3 hiện hành cam kết.",
+    "target": "Nhân rộng những vòng tạo giá trị đã đo được: ưu đãi theo ngữ cảnh có giao dịch xác nhận, O2O có tiếp nhận và tham dự, quyền lợi được dùng lại với chi phí kiểm soát được.",
+    "conditions": ["Ký mô hình đối tác và xác định phần hưởng, dữ liệu chuyển đổi, hủy/hoàn trước khi mở affiliate", "Chỉ tăng ngân sách quà khi chứng minh lợi nhuận đóng góp hoặc mục tiêu tăng thêm có ngưỡng được chủ ngân sách duyệt", "Chuẩn hóa chương trình tái sử dụng theo mốc B3 30/06/2027, rồi đánh giá độ bền sau mùa chiến dịch", "Bundle chỉ mở với cấu phần, giá so mua lẻ, tồn/công suất, quyền dùng và phân bổ doanh thu liên P&L; không mặc định thuê bao hội viên"],
+    "success": "Có thể đối chiếu riêng giá trị khách nhận, đóng góp bán hàng P&L, tiền nền tảng thực hưởng và toàn bộ chi phí biến đổi; có kết quả tăng thêm đủ cơ sở để quyết định mở rộng."
+  },
+  "recommendation": "Chốt hướng wallet/points + story gift + brand offers + experience với ba hợp đồng vận hành trước: ai tài trợ và xác nhận dùng quà; ai xác nhận đơn và phần hưởng ưu đãi; ai nhận và phản hồi lead/lịch. Dồn đầu tư giai đoạn đầu vào vòng kín redemption và kết quả P&L, giới hạn quà theo ngân sách có thật, thí điểm O2O hẹp. Chưa dùng nhận quà để chứng minh giữ chân hay dùng doanh số P&L để chứng minh doanh thu nền tảng. Chưa lấy chat/AI làm phụ thuộc ra mắt vì B3 ghi Duhat chưa có kế hoạch SDK."
+}

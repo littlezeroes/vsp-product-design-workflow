@@ -1,0 +1,1437 @@
+{
+  "generatedAt": "2026-11-01T14:47:54.668Z",
+  "scope": "Automated structural and interaction checks, NOT human usability findings",
+  "variants": 100,
+  "uniqueScreens": 100,
+  "pass": true,
+  "results": [
+    {
+      "ia": 1,
+      "ui": 1,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 1,
+      "ui": 2,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 1,
+      "ui": 3,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 1,
+      "ui": 4,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 1,
+      "ui": 5,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 1,
+      "ui": 6,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 1,
+      "ui": 7,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 1,
+      "ui": 8,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 1,
+      "ui": 9,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 1,
+      "ui": 10,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 2,
+      "ui": 1,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 2,
+      "ui": 2,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 2,
+      "ui": 3,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 2,
+      "ui": 4,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 2,
+      "ui": 5,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 2,
+      "ui": 6,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 2,
+      "ui": 7,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 2,
+      "ui": 8,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 2,
+      "ui": 9,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 2,
+      "ui": 10,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 3,
+      "ui": 1,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 3,
+      "ui": 2,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 3,
+      "ui": 3,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 3,
+      "ui": 4,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 3,
+      "ui": 5,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 3,
+      "ui": 6,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 3,
+      "ui": 7,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 3,
+      "ui": 8,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 3,
+      "ui": 9,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 3,
+      "ui": 10,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 4,
+      "ui": 1,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 4,
+      "ui": 2,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 4,
+      "ui": 3,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 4,
+      "ui": 4,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 4,
+      "ui": 5,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 4,
+      "ui": 6,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 4,
+      "ui": 7,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 4,
+      "ui": 8,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 4,
+      "ui": 9,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 4,
+      "ui": 10,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 5,
+      "ui": 1,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 5,
+      "ui": 2,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 5,
+      "ui": 3,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 5,
+      "ui": 4,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 5,
+      "ui": 5,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 5,
+      "ui": 6,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 5,
+      "ui": 7,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 5,
+      "ui": 8,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 5,
+      "ui": 9,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 5,
+      "ui": 10,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 6,
+      "ui": 1,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 6,
+      "ui": 2,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 6,
+      "ui": 3,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 6,
+      "ui": 4,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 6,
+      "ui": 5,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 6,
+      "ui": 6,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 6,
+      "ui": 7,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 6,
+      "ui": 8,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 6,
+      "ui": 9,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 6,
+      "ui": 10,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 7,
+      "ui": 1,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 7,
+      "ui": 2,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 7,
+      "ui": 3,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 7,
+      "ui": 4,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 7,
+      "ui": 5,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 7,
+      "ui": 6,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 7,
+      "ui": 7,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 7,
+      "ui": 8,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 7,
+      "ui": 9,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 7,
+      "ui": 10,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 8,
+      "ui": 1,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 8,
+      "ui": 2,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 8,
+      "ui": 3,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 8,
+      "ui": 4,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 8,
+      "ui": 5,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 8,
+      "ui": 6,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 8,
+      "ui": 7,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 8,
+      "ui": 8,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 8,
+      "ui": 9,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 8,
+      "ui": 10,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 9,
+      "ui": 1,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 9,
+      "ui": 2,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 9,
+      "ui": 3,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 9,
+      "ui": 4,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 9,
+      "ui": 5,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 9,
+      "ui": 6,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 9,
+      "ui": 7,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 9,
+      "ui": 8,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 9,
+      "ui": 9,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 9,
+      "ui": 10,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 10,
+      "ui": 1,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 10,
+      "ui": 2,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 10,
+      "ui": 3,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 10,
+      "ui": 4,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 10,
+      "ui": 5,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 10,
+      "ui": 6,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 10,
+      "ui": 7,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 10,
+      "ui": 8,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 10,
+      "ui": 9,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    },
+    {
+      "ia": 10,
+      "ui": 10,
+      "checks": {
+        "mobileOverflow": true,
+        "onePrimary": true,
+        "homeIndicator": true,
+        "headerSectionsBottom": true,
+        "tabsValid": true,
+        "primaryOpensDetail": true,
+        "desktopOverflow": true
+      },
+      "pass": true
+    }
+  ],
+  "flows": [
+    {
+      "name": "points",
+      "pass": true
+    },
+    {
+      "name": "redeem",
+      "pass": true
+    },
+    {
+      "name": "ticket",
+      "pass": true
+    },
+    {
+      "name": "bundle",
+      "pass": true
+    },
+    {
+      "name": "o2o",
+      "pass": true
+    },
+    {
+      "name": "wallet",
+      "pass": true
+    }
+  ],
+  "matrix100": true,
+  "pageErrors": []
+}

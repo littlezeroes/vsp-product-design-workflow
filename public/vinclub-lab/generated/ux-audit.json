@@ -1,0 +1,426 @@
+{
+  "date": "2026-10-02T08:07:44.110Z",
+  "method": "Desktop Chromium mobile viewports with isolated phone preview; no user participants",
+  "results": [
+    {
+      "id": "atlas",
+      "width": 320,
+      "visual": "wire",
+      "contrastChecked": 35,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 320,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 9
+    },
+    {
+      "id": "atlas",
+      "width": 390,
+      "visual": "wire",
+      "contrastChecked": 35,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 9
+    },
+    {
+      "id": "atlas",
+      "width": 390,
+      "visual": "metal",
+      "contrastChecked": 34,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 9
+    },
+    {
+      "id": "atlas",
+      "width": 390,
+      "visual": "glass",
+      "contrastChecked": 34,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 9
+    },
+    {
+      "id": "atlas",
+      "width": 390,
+      "visual": "spatial",
+      "contrastChecked": 34,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 9
+    },
+    {
+      "id": "atlas",
+      "width": 390,
+      "visual": "concierge",
+      "contrastChecked": 34,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 9
+    },
+    {
+      "id": "atlas",
+      "width": 390,
+      "visual": "luminous",
+      "contrastChecked": 34,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 9
+    },
+    {
+      "id": "atlas",
+      "width": 430,
+      "visual": "wire",
+      "contrastChecked": 35,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 430,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 9
+    },
+    {
+      "id": "daily",
+      "width": 320,
+      "visual": "wire",
+      "contrastChecked": 35,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 320,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "daily",
+      "width": 390,
+      "visual": "wire",
+      "contrastChecked": 35,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "daily",
+      "width": 390,
+      "visual": "metal",
+      "contrastChecked": 34,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "daily",
+      "width": 390,
+      "visual": "glass",
+      "contrastChecked": 34,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "daily",
+      "width": 390,
+      "visual": "spatial",
+      "contrastChecked": 34,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "daily",
+      "width": 390,
+      "visual": "concierge",
+      "contrastChecked": 34,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "daily",
+      "width": 390,
+      "visual": "luminous",
+      "contrastChecked": 34,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "daily",
+      "width": 430,
+      "visual": "wire",
+      "contrastChecked": 35,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 430,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 4,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 320,
+      "visual": "wire",
+      "contrastChecked": 25,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 320,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 390,
+      "visual": "wire",
+      "contrastChecked": 25,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 390,
+      "visual": "metal",
+      "contrastChecked": 20,
+      "gradientExcluded": 4,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 390,
+      "visual": "glass",
+      "contrastChecked": 20,
+      "gradientExcluded": 4,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 390,
+      "visual": "spatial",
+      "contrastChecked": 24,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 390,
+      "visual": "concierge",
+      "contrastChecked": 24,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 390,
+      "visual": "luminous",
+      "contrastChecked": 24,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 390,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    },
+    {
+      "id": "dualsurface",
+      "width": 430,
+      "visual": "wire",
+      "contrastChecked": 25,
+      "gradientExcluded": 0,
+      "contrastFailures": [],
+      "phoneWidth": 430,
+      "scrollOverflow": false,
+      "smallTargets": [],
+      "appsAboveFold": 8,
+      "miniAppCount": 8
+    }
+  ],
+  "checks": [
+    {
+      "id": "atlas",
+      "task": "Gọi xe does not show amount form",
+      "passed": true
+    },
+    {
+      "id": "atlas",
+      "task": "Escape closes dialog and restores entry focus",
+      "passed": true
+    },
+    {
+      "id": "atlas",
+      "task": "Học phí reaches payment demo",
+      "passed": true
+    },
+    {
+      "id": "atlas",
+      "task": "Voucher list is the last Home section",
+      "passed": true
+    },
+    {
+      "id": "atlas",
+      "task": "V-Smart Pay is a mini app with financial services",
+      "passed": true
+    },
+    {
+      "id": "atlas",
+      "task": "Map has equivalent place list",
+      "passed": true
+    },
+    {
+      "id": "daily",
+      "task": "Gọi xe does not show amount form",
+      "passed": true
+    },
+    {
+      "id": "daily",
+      "task": "Escape closes dialog and restores entry focus",
+      "passed": true
+    },
+    {
+      "id": "daily",
+      "task": "Học phí reaches payment demo",
+      "passed": true
+    },
+    {
+      "id": "daily",
+      "task": "Visible Payment entry opens four V-Smart Pay services",
+      "passed": true
+    },
+    {
+      "id": "daily",
+      "task": "Small VPoint above AI; Payment before mini app grid",
+      "passed": true
+    },
+    {
+      "id": "daily",
+      "task": "Voucher list is the last Home section",
+      "passed": true
+    },
+    {
+      "id": "daily",
+      "task": "AI opens separately from Map",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "Gọi xe does not show amount form",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "Escape closes dialog and restores entry focus",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "Học phí reaches payment demo",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "Balanced AI has no map or 3D",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "Membership entry opens membership, not point payment",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "Khám phá only vouchers and services",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "Payment tab prioritizes wallet money",
+      "passed": true
+    },
+    {
+      "id": "dualsurface",
+      "task": "V-Smart Pay has no ecosystem mini-app grid",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

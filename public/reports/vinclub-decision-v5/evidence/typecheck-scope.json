@@ -1,0 +1,7 @@
+{
+  "time": "2026-11-01T15:43:06.658876+00:00",
+  "repositoryTypecheck": "fails on existing diagnostics outside V5 route",
+  "v5RouteDiagnostics": [],
+  "exampleExistingDiagnostic": "app/brand-splash/glass-scene.tsx(90,45): error TS2345: Argument of type 'BufferGeometry<NormalOrGLBufferAttributes, BufferGeometryEventMap>' is not assignable to parameter of type 'BufferGeometry<NormalBufferAttributes, BufferGeometryEventMap>'.",
+  "routeLint": "passed"
+}

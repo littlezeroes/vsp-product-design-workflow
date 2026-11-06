@@ -1,0 +1,193 @@
+@reference "../globals.css";
+.commerce-v3 {
+  padding-bottom: 24px;
+}
+.commerce-v3 .commerce-image {
+  height: 152px;
+}
+.commerce-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.commerce-catalogue {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.commerce-catalogue .commerce-product {
+  padding: 12px;
+  gap: 10px;
+  min-width: 0;
+}
+.commerce-catalogue .commerce-image {
+  height: 108px;
+}
+.commerce-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  font-size: 16px;
+}
+.commerce-balance {
+  background: var(--foreground);
+  color: var(--background);
+}
+.commerce-balance p {
+  color: inherit;
+}
+.commerce-today .commerce-feature {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.commerce-savings .commerce-balance {
+  background: var(--brand-secondary);
+  color: var(--foreground);
+}
+.commerce-savings .commerce-product {
+  position: relative;
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+.commerce-household .commerce-feature {
+  background: var(--brand-secondary);
+}
+.commerce-household .commerce-catalogue {
+  grid-template-columns: 1fr;
+}
+.commerce-household .commerce-product {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+}
+.commerce-household .commerce-product img {
+  grid-row: span 3;
+  height: 112px;
+}
+.commerce-household .commerce-product button {
+  grid-column: 1/-1;
+}
+.commerce-journey .commerce-feature {
+  padding: 0;
+  overflow: hidden;
+  gap: 0;
+}
+.commerce-journey .commerce-feature img {
+  height: 224px;
+  border-radius: 0;
+}
+.commerce-journey .commerce-feature h2,
+.commerce-journey .commerce-feature p {
+  margin: 0 12px;
+  padding-top: 12px;
+}
+.commerce-journey .commerce-feature h2 {
+  padding-bottom: 12px;
+}
+.commerce-journey .commerce-product {
+  padding: 0;
+  overflow: hidden;
+}
+.commerce-journey .commerce-product img {
+  height: 160px;
+  border-radius: 0;
+}
+.commerce-journey .commerce-product > :not(img) {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+.commerce-journey .commerce-product button {
+  margin-bottom: 12px;
+}
+.commerce-neighborhood .commerce-feature {
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+.commerce-neighborhood .commerce-shortcuts {
+  grid-template-columns: repeat(2, 1fr);
+}
+.commerce-autopilot .commerce-feature {
+  @apply rounded-28;
+}
+.commerce-autopilot .commerce-product {
+  @apply rounded-28;
+}
+.commerce-autopilot .commerce-balance {
+  background: var(--secondary);
+  color: var(--foreground);
+  box-shadow: inset 4px 0 0 var(--brand-secondary);
+}
+.commerce-concierge .commerce-feature {
+  @apply rounded-28;
+  background: var(--brand-secondary);
+}
+.commerce-concierge .commerce-catalogue {
+  grid-template-columns: 1fr;
+}
+.commerce-concierge .commerce-product {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+}
+.commerce-concierge .commerce-product img {
+  grid-row: span 3;
+}
+.commerce-concierge .commerce-product button {
+  grid-column: 1/-1;
+}
+.commerce-membership h2 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.commerce-membership .commerce-feature {
+  background: var(--foreground);
+  color: var(--background);
+}
+.commerce-membership .commerce-feature p {
+  color: inherit;
+}
+.commerce-membership .commerce-feature img {
+  height: 230px;
+}
+.commerce-membership .commerce-catalogue {
+  grid-template-columns: 1fr;
+}
+.commerce-membership .commerce-product img {
+  height: 200px;
+}
+.commerce-wellbeing .commerce-feature {
+  background: var(--secondary);
+  gap: 16px;
+}
+.commerce-wellbeing .commerce-catalogue {
+  gap: 16px;
+}
+.commerce-wellbeing .commerce-product {
+  padding: 12px;
+}
+.commerce-transparent .commerce-feature {
+  background: var(--background);
+  box-shadow: inset 0 0 0 1px var(--border);
+  @apply rounded-28;
+}
+.commerce-transparent .commerce-receipt {
+  @apply rounded-28;
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+.commerce-transparent .commerce-product {
+  background: var(--background);
+  box-shadow: inset 0 0 0 1px var(--border);
+  @apply rounded-28;
+}
+.commerce-transparent .commerce-catalogue {
+  grid-template-columns: 1fr;
+}
+.commerce-transparent .commerce-product {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+}
+.commerce-transparent .commerce-product img {
+  grid-row: span 3;
+  height: 96px;
+}
+.commerce-transparent .commerce-product button {
+  grid-column: 1/-1;
+}

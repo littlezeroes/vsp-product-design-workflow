@@ -1,0 +1,240 @@
+{
+  "role": "Product",
+  "executiveRecommendation": "Giữ một Home chung đã có lựa chọn; dùng ba composition theo hoàn cảnh để kiểm chứng ba vòng giá trị khác nhau. Ưu tiên chứng minh quyền lợi hiện hữu dùng được trong một đơn hàng; quà hằng ngày và O2O là hai nhánh thử có điều kiện riêng. Chưa có dữ liệu để tuyên bố một nhánh thắng.",
+  "problem": "Home hiện diễn đạt hạng, điểm, ví, dịch vụ và ưu đãi, nhưng một thao tác nhận quà hay mở bài trải nghiệm chưa chứng minh khách đã nhận giá trị thực, hoàn tất mua hàng hoặc có lịch hẹn được P&L tiếp nhận. Cần nối lý do mở app tới hành động, kết quả và lý do quay lại mà không xóa lịch sử V1–V4.",
+  "evidenceBoundary": {
+    "observed": "Đọc code nguồn; chưa tự xác minh baseline đang render hay API production. HOÀN THÀNH là trạng thái trong B3, không phải kết luận QA vận hành.",
+    "chosenSourceTheme": "Nguồn có points+wallet, hai dịch vụ, ưu đãi/story, feed trải nghiệm; giữ theme và ảnh nguồn như giả định thiết kế đã chọn. Không suy diễn theme là kết quả UT.",
+    "freshHypothesis": "Ba scenario daily/spend/experience cùng đường đi tiếp theo và điều kiện nghiệm thu là đề xuất mới để thử; chưa phải quyết định chiến lược đã chốt.",
+    "sources": [
+      "vinclub-home/page.tsx:41,69",
+      "vinclub-home/ref-layouts.tsx:38–53,HOOK_DETAILS,FOR_YOU",
+      "vinclub-home/hooks.tsx:gift,voucher và nhược điểm mở xong thoát",
+      "vinclub-home/home-story.tsx:story và điều hướng ưu đãi",
+      "/tmp/vinclub-strategy.txt — SHEET B3 hiện hành, không dùng B3_ARCHIVED để cam kết hạn",
+      "/tmp/dao-ngoc-report-text.txt — báo cáo bản dùng thử 31/10, kế hoạch 07/11"
+    ]
+  },
+  "preserveDecisions": [
+    {
+      "decision": "Giữ V1–V4 và thêm v5 độc lập",
+      "status": "Ràng buộc nhiệm vụ, không ghi đè lựa chọn cũ"
+    },
+    {
+      "decision": "Header1, wallet2, products3, vouchers1, feed2, style3, pos1",
+      "status": "Code đánh dấu CONFIRMED_STACK_OPTIONS; đây là lựa chọn được ghi nhận"
+    },
+    {
+      "decision": "Hai dịch vụ, story có mặt, gift ba thẻ/tone2",
+      "status": "Giá trị mặc định source; không nâng thành quyết định đã chốt"
+    },
+    {
+      "decision": "Hạng và VPoint mở Hội viên; ví mở ngữ cảnh ví; service/offer/experience có đích riêng",
+      "status": "Bảo tồn mô hình điều hướng source"
+    },
+    {
+      "decision": "Không đặt CTA primary cố định ép mọi khách làm một việc trên Home",
+      "status": "Quyết định v5 phù hợp Home nhiều nhu cầu; CTA chính ở tác vụ cụ thể"
+    },
+    {
+      "decision": "V5 dùng VinFast lái thử với ảnh vinfast-day-v1.png; ghi nhận mismatch Đảo Ngọc là bằng chứng nội dung, không sửa source",
+      "status": "Báo cáo nguồn; sửa ngữ nghĩa card nghỉ dưỡng biển hiện có nếu dùng cho cùng dự án"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "daily",
+      "title": "Được nhận diện → mở quà → dùng quyền lợi",
+      "user": "Hội viên đã kích hoạt, có điểm/quyền lợi; đang mở app khám phá, chưa có nhu cầu mua ngay",
+      "job": "Biết hôm nay mình được gì và dùng được ở đâu",
+      "loop": {
+        "open": "Nhận diện hạng và quyền lợi đang có",
+        "action": "Xem điều kiện, nhận một quà mẫu",
+        "value": "Quà xuất hiện trong tài sản và dẫn sang một nơi áp dụng phù hợp",
+        "return": "Theo dõi quà còn hạn hoặc lần dùng tiếp theo; không chỉ chuỗi điểm danh"
+      },
+      "scope": "Demo nhận quà một lần trong phiên, trạng thái đã nhận, tài sản đã lưu và đích sử dụng; không biến +50 điểm mẫu thành số dư thật",
+      "acceptance": [
+        "Trước khi nhận thấy điều kiện và thời hạn",
+        "Nhận lại không cấp trùng trong cùng phiên",
+        "Nhận xong có quyền lợi trong tài sản, quay lại vẫn tìm được trong phiên",
+        "Có đường dùng thưởng; đo cả sử dụng sau nhận thay vì chỉ số lượt mở"
+      ],
+      "dependency": [
+        "Nguồn ngân sách/quà và người chịu chi",
+        "Danh mục, tồn kho, luật cấp và chống trùng",
+        "Dữ liệu hạng và xác nhận giao dịch từ P&L"
+      ]
+    },
+    {
+      "id": "spend",
+      "title": "Voucher đang có → đơn hai vé → số phải trả rõ",
+      "user": "Hội viên đã có voucher, đang có nhu cầu mua hai vé mẫu",
+      "job": "Tìm tài sản hiện có và dùng đúng quyền lợi cho một đơn cụ thể",
+      "loop": {
+        "open": "Có nhu cầu mua vé hoặc sắp hết hạn voucher",
+        "action": "Từ voucher hiện có sang đơn hai vé, xem điều kiện và áp dụng",
+        "value": "Thấy giá gốc, giảm, điểm nếu đủ điều kiện, số phải trả và kết quả mẫu",
+        "return": "Tìm lại vé/quyền lợi còn lại và trạng thái giao dịch"
+      },
+      "scope": "Đơn mẫu hai vé và voucher mẫu hợp lệ/không hợp lệ; không đồng nhất xác nhận demo với thanh toán hay phát hành vé thật",
+      "acceptance": [
+        "Tìm được voucher đã sở hữu mà không phải đổi lại",
+        "Hiện đơn tối thiểu, hạn và phạm vi áp dụng trước xác nhận",
+        "Tổng tiền khớp số lượng hai vé; không giảm hai lần khi thao tác lặp",
+        "Có trạng thái kết quả và đường về tài sản; lỗi điều kiện không làm mất voucher"
+      ],
+      "dependency": [
+        "Nguồn vé, zone, lịch và tồn của VP-OTA/Vinpearl/VinWonders/VEC",
+        "SDK ví và trạng thái thanh toán–đơn hàng",
+        "Luật kết hợp voucher/VPoint, hoàn/hủy và đối soát"
+      ]
+    },
+    {
+      "id": "experience",
+      "title": "Ảnh lớn → tự khám phá → yêu cầu lịch trải nghiệm",
+      "user": "Khách quan tâm nhà/xe, cần hình dung trước khi quyết định; có thể đến từ sales kit",
+      "job": "Khám phá theo nhịp riêng và gửi một nhu cầu tư vấn/tham quan rõ ràng",
+      "loop": {
+        "open": "Tò mò hoặc đang cân nhắc một dự án/sản phẩm",
+        "action": "Xem hình/không gian, chọn đối tượng quan tâm, gửi yêu cầu cùng consent",
+        "value": "Có mã yêu cầu và trạng thái chờ tiếp nhận; lịch chỉ xác nhận khi P&L trả về",
+        "return": "Xem trạng thái, lịch được xác nhận và chuẩn bị chuyến đi"
+      },
+      "scope": "V5 dùng art VinFast hiện có, thông tin xe và form yêu cầu lái thử mẫu, kết quả phiên; không giả lập 3D đã tích hợp, lead thật hay lịch hẹn đã được chấp nhận",
+      "acceptance": [
+        "Dùng đúng VinFast và mục đích lái thử; không tái sử dụng card Đảo Ngọc nghỉ dưỡng cho dự án nhà ở",
+        "Xem thông tin không bị bắt buộc mở trợ lý",
+        "Consent chủ động trước chuyển dữ liệu; kiểm tra trường bắt buộc",
+        "Gửi xong ghi rõ yêu cầu mẫu/chờ xác nhận, không nói lịch đã được giữ",
+        "Có quay lại/đổi hoặc hủy yêu cầu trong demo nếu hỗ trợ"
+      ],
+      "dependency": [
+        "Bản vẽ, dữ liệu 3D và thông tin/giỏ hàng do P&L cung cấp",
+        "Bản nhẹ và kiểm thử hiệu năng thiết bị di động",
+        "Đơn vị tiếp nhận, SLA và phản hồi trạng thái lịch",
+        "Quyền dữ liệu, phạm vi cung ứng và điều kiện đặt cọc nếu bổ sung sau"
+      ]
+    }
+  ],
+  "phases": {
+    "current": {
+      "user": "Hội viên hiện hữu và người dùng demo",
+      "journey": "Baseline source có Home, Hội viên, ví/activation, offers, story và nội dung trải nghiệm; khả năng tích hợp chưa xác minh",
+      "capability": "B3 ghi hoàn thành tài khoản, hợp nhất danh tính, eKYC, consent, sổ cái/tiêu điểm, xét hạng và hồ sơ hạng",
+      "dependency": "Tách code demo, trạng thái roadmap và năng lực production",
+      "acceptance": "Chạy được ba đường demo với dữ liệu mẫu và ghi rõ các gap",
+      "dateSource": "Quan sát source tại lần review; không coi là release production",
+      "certainty": "Cao với giá trị code; giới hạn với readiness vận hành"
+    },
+    "feb2027": {
+      "user": "Hội viên có quyền lợi, khách mua vé và khách quan tâm O2O",
+      "journey": "Gia nhập/nhận quà → dùng quyền lợi/đặt vé; khám phá → yêu cầu lịch; VPoint khấu trừ tại thanh toán khi sẵn sàng",
+      "capability": "B3: đổi voucher 30/11/2026; nguồn tiền SDK 24/12/2026; vé sự kiện và O2O 31/12/2026; VPoint khấu trừ 28/02/2027; chiến dịch 5 cửa 15/01–26/02/2027",
+      "dependency": "Vé phụ thuộc nguồn nội dung và zone; thanh toán phụ thuộc nền tảng kết nối; lịch O2O phụ thuộc P&L tiếp nhận; quà cần ngân sách và luật cấp",
+      "acceptance": "Có xác nhận/hoàn/hủy, đối soát và xử lý lỗi thật trước mở giao dịch; lịch có phản hồi P&L; chiến dịch có trạng thái cửa chưa mở",
+      "dateSource": "SHEET B3 hiện hành, các hàng có hạn ≤28/02/2027",
+      "certainty": "Hạn được ghi trong kế hoạch; chưa chứng minh đã giao. Thứ tự và danh mục cửa được B3 cho phép điều chỉnh"
+    },
+    "end2027": {
+      "user": "Mở rộng theo nguồn cung và đối tượng đã chứng minh giá trị",
+      "journey": "Tái sử dụng chiến dịch đã vận hành, mở rộng danh mục có kết quả theo dõi được; không mặc định mở super-app",
+      "capability": "Mục tái sử dụng chiến dịch có hạn 30/06/2027. Marketplace AI, đối tác ngoài, Vincom catalogue, cư dân số và đặc quyền cao cấp là hướng phát triển/điều kiện, chưa có hạn cuối 2027 trong B3 hiện hành",
+      "dependency": "Duhat chưa có kế hoạch SDK; dữ liệu catalogue/tồn kho; 3D mobile; nhân lực, chính sách và nguồn cung P&L",
+      "acceptance": "Chỉ mở nhánh mới khi có supply owner, API/đối soát hoặc chuyển giao có xác nhận, và phép thử riêng",
+      "dateSource": "B3 hiện hành; không dùng ngày trong B3_ARCHIVED làm cam kết",
+      "certainty": "Cao rằng 30/06 là hạn của tái sử dụng chiến dịch; thấp/chưa chốt với scope mở rộng đến cuối năm"
+    }
+  },
+  "compareCriteria": [
+    {
+      "criterion": "Hoàn tất job riêng",
+      "method": "Daily: từ nhận tới dùng; Spend: áp dụng đúng và tìm lại tài sản; Experience: gửi nhu cầu hợp lệ và hiểu trạng thái lịch",
+      "gate": "Lỗi chặn tác vụ loại khỏi khuyến nghị, không bù bằng điểm thẩm mỹ"
+    },
+    {
+      "criterion": "Tìm đường trên Home chung",
+      "method": "Cùng kiểm tra tìm VPoint, ví, voucher, dịch vụ và trải nghiệm; tác vụ này so tính phủ, không dùng để chọn chiến lược tăng trưởng"
+    },
+    {
+      "criterion": "Giá trị và chi phí vận hành",
+      "method": "Đo giá trị đã dùng, giao dịch gia tăng hoặc lead được chấp nhận; gắn ngân sách thưởng, đối soát, SLA theo scenario"
+    },
+    {
+      "criterion": "Mức sẵn sàng",
+      "method": "Supply, dữ liệu, tích hợp, xử lý thất bại, nguồn lực; chỉ chấm bằng bằng chứng"
+    },
+    {
+      "criterion": "Chất lượng thiết kế",
+      "method": "Hierarchy, trục chữ, đọc điều kiện, trạng thái và khả năng thao tác; theme đẹp không chứng minh retention"
+    }
+  ],
+  "philosophy": {
+    "product": [
+      {
+        "principle": "Quyền lợi phải dùng được",
+        "decision": "Mọi quà có tài sản, điều kiện và đích sử dụng; không kết thúc ở Đã nhận"
+      },
+      {
+        "principle": "Thành viên được nhận diện trước khi bị chào bán",
+        "decision": "Giữ hạng/điểm ở đầu Home, dùng quyền lợi hiện có trước yêu cầu mua thêm"
+      },
+      {
+        "principle": "Khám phá dẫn tới hành động thực có tiếp nhận",
+        "decision": "O2O giữ tự khám phá và form yêu cầu; chưa có P&L phản hồi thì chỉ là chờ xác nhận"
+      }
+    ],
+    "design": [
+      {
+        "principle": "Giảm cạnh tranh giữa các lớp nội dung",
+        "decision": "Giữ wallet option2 (giảm không gian container dự trữ/độ chồng, không khẳng định thu nhỏ vật thể ví: cover vẫn 237px), hai service lợi ích trước option3, rail offer/story và feed ảnh lớn option2; không thêm primary CTA toàn Home"
+      },
+      {
+        "principle": "Thông tin đi cùng lựa chọn",
+        "decision": "Điều kiện/giá cuối/consent nằm ngay trước hành động có hệ quả; trạng thái sau thao tác phải được phản ánh trong tài sản"
+      }
+    ],
+    "language": "Giữ theme đã chọn từ nguồn, icon/art phục vụ phân biệt dịch vụ; dùng chữ cụ thể như Đã lưu, Chờ xác nhận, Dữ liệu mẫu. Không thay thành trăm skin để gọi là trăm UX.",
+    "businessBoundary": "Mở app, nhận quà, gửi form và click đối tác là hành vi trung gian. Chỉ ghi doanh thu/giá trị thương mại khi có kết quả giao dịch hoặc lead và quy tắc ghi nhận được xác nhận."
+  },
+  "testPlan": {
+    "automated": {
+      "status": "Protocol đề xuất; Product chưa thực thi renderer QA",
+      "checks": [
+        "Ba scenario mở đúng đích, back/close giữ ngữ cảnh",
+        "Nhận quà không trùng trong phiên, tài sản phản ánh trạng thái",
+        "Đơn hai vé tính đúng; voucher không hợp lệ có lý do; thao tác lặp không nhân giảm",
+        "Form O2O chặn thiếu trường/consent, kết quả ghi đúng trạng thái mẫu",
+        "Responsive, keyboard, tên truy cập, không tràn vùng FixedBottom/Home indicator",
+        "V1–V4 còn truy cập và không bị ghi đè"
+      ]
+    },
+    "human": {
+      "status": "Chưa chạy UT; không có số người hay tỷ lệ thành công thực nghiệm",
+      "protocol": "Tuyển hội viên có voucher/điểm, người đang cần vé, và người cân nhắc nhà/xe theo đúng scenario. Cho nhiệm vụ không gợi ý đường đi; đổi thứ tự khi so composition. Ghi hoàn tất độc lập, bước lạc, hiểu sai điều kiện và hiểu sai trạng thái. Phỏng vấn lại lý do mở và lý do quay lại.",
+      "decisionRule": "Sửa mọi lỗi chặn hoặc hiểu sai tiền/consent/lịch trước kết luận. Dùng nghiên cứu này đánh giá khả dụng; retention và giá trị gia tăng cần pilot có dữ liệu thực, ngân sách và nhóm so phù hợp."
+    },
+    "analytics": [
+      "home_context_view",
+      "benefit_terms_view",
+      "gift_claimed",
+      "asset_opened",
+      "reward_redeemed_confirmed",
+      "voucher_applied",
+      "order_payment_confirmed",
+      "experience_view",
+      "lead_consent_given",
+      "lead_submitted",
+      "lead_accepted",
+      "appointment_confirmed"
+    ],
+    "privacy": "Event production chỉ thiết kế sau khi chốt mục đích và dữ liệu cần thiết; prototype không gửi dữ liệu khách."
+  },
+  "CEOdecisionQuestions": [
+    "Ưu tiên chứng minh dùng quyền lợi hiện hữu trước hay mua tăng trưởng bằng quà; ngưỡng chi phí và chủ ngân sách là gì?",
+    "P&L nào cung cấp một hành trình đủ khép kín đầu tiên, gồm hoàn/hủy và đối soát?",
+    "Lead được chấp nhận và lịch xác nhận nghĩa là gì, ai nhận và ai chịu SLA?",
+    "Điều kiện nào cho phép chuyển từ ba pilot sang mở rộng; điều kiện nào buộc dừng một nhánh?",
+    "Có chấp nhận giữ AI/Chat/cư dân số ngoài mốc cam kết khi B3 hiện hành chưa có SDK/hạn chốt?"
+  ]
+}

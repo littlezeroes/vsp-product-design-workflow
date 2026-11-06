@@ -1,0 +1,341 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - generic [ref=e6]: VSP × XanhSM
+          - generic [ref=e8]:
+            - text: Embedded
+            - text: wallet flows
+          - generic [ref=e9]: 9 epics · 51 states
+        - button [ref=e10] [cursor=pointer]:
+          - img [ref=e11]
+      - generic [ref=e13]:
+        - generic [ref=e14]:
+          - button "1 Market research · ref 1" [ref=e15] [cursor=pointer]:
+            - generic [ref=e16]: "1"
+            - generic [ref=e17]: Market research · ref
+            - generic [ref=e18]: "1"
+          - generic [ref=e19]:
+            - generic [ref=e20]: Reference · diagram
+            - button "Context reference" [ref=e21] [cursor=pointer]
+        - generic [ref=e22]:
+          - button "2 Opportunity map 1" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]: "2"
+            - generic [ref=e25]: Opportunity map
+            - generic [ref=e26]: "1"
+          - generic [ref=e27]:
+            - generic [ref=e28]: Opportunity matrix
+            - button "Matrix" [ref=e29] [cursor=pointer]
+        - generic [ref=e30]:
+          - button "3 Integration scope flow 1" [ref=e31] [cursor=pointer]:
+            - generic [ref=e32]: "3"
+            - generic [ref=e33]: Integration scope flow
+            - generic [ref=e34]: "1"
+          - generic [ref=e35]:
+            - generic [ref=e36]: VSP × GSM flowchart
+            - button "Flow diagram" [ref=e37] [cursor=pointer]
+        - generic [ref=e38]:
+          - button "4 Onboarding · user 20" [ref=e39] [cursor=pointer]:
+            - generic [ref=e40]: "4"
+            - generic [ref=e41]: Onboarding · user
+            - img [ref=e42]
+            - generic [ref=e46]: "20"
+          - generic [ref=e47]:
+            - generic [ref=e48]: GSM Home · entry
+            - button "Chưa có ví · CTA Mở VSP" [ref=e49] [cursor=pointer]
+            - button "Vừa tạo · nhắc eKYC" [ref=e50] [cursor=pointer]
+            - button "Đã eKYC · nhắc link bank" [ref=e51] [cursor=pointer]
+            - button "Đã link · balance 0" [ref=e52] [cursor=pointer]
+            - button "Active · balance 156K" [ref=e53] [cursor=pointer]
+          - generic [ref=e54]:
+            - generic [ref=e55]: Intro · auto-created
+            - button "Welcome · ví đã tạo" [ref=e56] [cursor=pointer]
+          - generic [ref=e57]:
+            - generic [ref=e58]: PIN setup & confirm
+            - button "Đặt PIN" [ref=e59] [cursor=pointer]
+            - button "Xác nhận PIN" [ref=e60] [cursor=pointer]
+          - generic [ref=e61]:
+            - generic [ref=e62]: PIN login · user cũ
+            - button "Nhập PIN" [ref=e63] [cursor=pointer]
+          - generic [ref=e64]:
+            - generic [ref=e65]: Home-first · PIN xong
+            - button "PIN xong · đề xuất 2 bước" [ref=e66] [cursor=pointer]
+          - generic [ref=e67]:
+            - generic [ref=e68]: eKYC · nhắc + chụp + kết quả
+            - button "Nhắc eKYC" [ref=e69] [cursor=pointer]
+            - button "Chụp CCCD" [ref=e70] [cursor=pointer]
+            - button "eKYC thành công" [ref=e71] [cursor=pointer]
+            - button "eKYC thất bại" [ref=e72] [cursor=pointer]
+          - generic [ref=e73]:
+            - generic [ref=e74]: Link bank · nhắc + chọn + nhập + kết quả
+            - button "Nhắc link bank" [ref=e75] [cursor=pointer]
+            - button "Chọn ngân hàng" [ref=e76] [cursor=pointer]
+            - button "Nhập info + OTP" [ref=e77] [cursor=pointer]
+            - button "Link thành công" [ref=e78] [cursor=pointer]
+            - button "Link thất bại" [ref=e79] [cursor=pointer]
+          - generic [ref=e80]:
+            - generic [ref=e81]: Ready · hoàn tất 3 bước
+            - button "Sẵn sàng · 3 bước xong" [ref=e82] [cursor=pointer]
+        - generic [ref=e83]:
+          - button "5 User · Thanh toán dịch vụ GSM 11" [ref=e84] [cursor=pointer]:
+            - generic [ref=e85]: "5"
+            - generic [ref=e86]: User · Thanh toán dịch vụ GSM
+            - img [ref=e87]
+            - generic [ref=e91]: "11"
+          - generic [ref=e92]:
+            - generic [ref=e93]: VSP Wallet mini
+            - button "Active · balance 156K" [ref=e94] [cursor=pointer]
+            - button "Linked · balance 0" [ref=e95] [cursor=pointer]
+            - button "Fresh · cần eKYC" [ref=e96] [cursor=pointer]
+            - button "eKYC done · cần link" [ref=e97] [cursor=pointer]
+          - generic [ref=e98]:
+            - generic [ref=e99]: Booking · VSP default
+            - button "VSP đủ tiền 156K" [ref=e100] [cursor=pointer]
+          - generic [ref=e101]:
+            - generic [ref=e102]: Booking · thiếu tiền, nạp inline
+            - button "Thiếu 18K" [ref=e103] [cursor=pointer]
+            - button "Sheet SDK nạp" [ref=e104] [cursor=pointer]
+            - button "Sau nạp · đủ" [ref=e105] [cursor=pointer]
+          - generic [ref=e106]:
+            - generic [ref=e107]: Booking · chọn MoMo (cross-sell nhẹ)
+            - button "MoMo · gợi ý VSP" [ref=e108] [cursor=pointer]
+          - generic [ref=e109]:
+            - generic [ref=e110]: Receipt · VSP đã trả
+            - button "Chưa rate driver" [ref=e111] [cursor=pointer]
+            - button "Đã rate 5★" [ref=e112] [cursor=pointer]
+        - generic [ref=e113]:
+          - button "6 User · Green e-Card 6" [ref=e114] [cursor=pointer]:
+            - generic [ref=e115]: "6"
+            - generic [ref=e116]: User · Green e-Card
+            - img [ref=e117]
+            - generic [ref=e121]: "6"
+          - generic [ref=e122]:
+            - generic [ref=e123]: e-Card hub
+            - button "Hub" [ref=e124] [cursor=pointer]
+          - generic [ref=e125]:
+            - generic [ref=e126]: Nạp Green e-Card
+            - button "Chọn mệnh giá" [ref=e127] [cursor=pointer]
+            - button "Confirm PIN" [ref=e128] [cursor=pointer]
+            - button "Thành công" [ref=e129] [cursor=pointer]
+          - generic [ref=e130]:
+            - generic [ref=e131]: Quy đổi thẻ quà tặng → VSP
+            - button "Quy đổi" [ref=e132] [cursor=pointer]
+            - button "Thành công" [ref=e133] [cursor=pointer]
+        - generic [ref=e134]:
+          - button "7 User · Gift card 3" [ref=e135] [cursor=pointer]:
+            - generic [ref=e136]: "7"
+            - generic [ref=e137]: User · Gift card
+            - img [ref=e138]
+            - generic [ref=e142]: "3"
+          - generic [ref=e143]:
+            - generic [ref=e144]: Mua gift card
+            - button "Chọn + người nhận" [ref=e145] [cursor=pointer]
+          - generic [ref=e146]:
+            - generic [ref=e147]: Confirm + Success
+            - button "Confirm" [ref=e148] [cursor=pointer]
+            - button "Success + share Zalo" [ref=e149] [cursor=pointer]
+        - generic [ref=e150]:
+          - button "8 Merchant · Real-time cash out 3" [ref=e151] [cursor=pointer]:
+            - generic [ref=e152]: "8"
+            - generic [ref=e153]: Merchant · Real-time cash out
+            - img [ref=e154]
+            - generic [ref=e158]: "3"
+          - generic [ref=e159]:
+            - generic [ref=e160]: Merchant wallet home
+            - button "Home" [ref=e161] [cursor=pointer]
+          - generic [ref=e162]:
+            - generic [ref=e163]: Cash out về bank
+            - button "Cashout" [ref=e164] [cursor=pointer]
+            - button "Thành công" [ref=e165] [cursor=pointer]
+        - generic [ref=e166]:
+          - button "9 Driver · TKĐB + Withdrawal 5" [ref=e167] [cursor=pointer]:
+            - generic [ref=e168]: "9"
+            - generic [ref=e169]: Driver · TKĐB + Withdrawal
+            - img [ref=e170]
+            - generic [ref=e174]: "5"
+          - generic [ref=e175]:
+            - generic [ref=e176]: Driver wallet home
+            - button "Home" [ref=e177] [cursor=pointer]
+          - generic [ref=e178]:
+            - generic [ref=e179]: Nạp TKĐB
+            - button "Nạp TKĐB" [ref=e180] [cursor=pointer]
+          - generic [ref=e181]:
+            - generic [ref=e182]: Pocket history
+            - button "Pocket" [ref=e183] [cursor=pointer]
+          - generic [ref=e184]:
+            - generic [ref=e185]: Rút về tknn
+            - button "Withdraw" [ref=e186] [cursor=pointer]
+            - button "Thành công" [ref=e187] [cursor=pointer]
+      - generic [ref=e188]:
+        - link "↗ Mở trang chủ GSM riêng" [ref=e189] [cursor=pointer]:
+          - /url: /xanhsm-vsp/gsm-home?state=no-vsp
+        - link "← VSP UI home" [ref=e190] [cursor=pointer]:
+          - /url: /
+    - main [ref=e191]:
+      - generic [ref=e192]:
+        - generic [ref=e193]:
+          - generic [ref=e194]: E4
+          - generic [ref=e195]: GSM Home · entry
+          - generic [ref=e196]: · Active · balance 156K
+        - generic [ref=e197]:
+          - button "UI" [ref=e198] [cursor=pointer]:
+            - img [ref=e199]
+            - text: UI
+          - button "Flow" [ref=e204] [cursor=pointer]:
+            - img [ref=e205]
+            - text: Flow
+        - generic [ref=e209]: 08 / 51
+        - button [ref=e210] [cursor=pointer]:
+          - img [ref=e211]
+        - button [ref=e213] [cursor=pointer]:
+          - img [ref=e214]
+        - button [ref=e216] [cursor=pointer]:
+          - img [ref=e217]
+      - generic [ref=e220]:
+        - generic [ref=e221]:
+          - generic [ref=e222]: Epic 4 · S0
+          - generic [ref=e223]: GSM Home · entry
+          - generic [ref=e224]: VSP card sống trên trang chủ Xanh SM — ngôn ngữ Xanh SM (mint tiffany + map texture + card trắng), VSP brand chỉ dùng cho icon 40×40. 5 state theo progress. Banner nhắc inline trong card, không popup.
+        - generic [ref=e225]:
+          - generic [ref=e226]:
+            - generic [ref=e227]: Integration option
+            - generic [ref=e228]:
+              - button "Full" [active] [ref=e229] [cursor=pointer]
+              - button "MVP A · Icon" [ref=e230] [cursor=pointer]
+              - button "MVP B · Tile" [ref=e231] [cursor=pointer]
+            - generic [ref=e264]:
+              - generic [ref=e265]: Card style
+              - generic [ref=e266]:
+                - button "Compact" [ref=e267] [cursor=pointer]
+                - button "VSP" [ref=e268] [cursor=pointer]
+                - button "Grab" [ref=e269] [cursor=pointer]
+          - iframe [ref=e270]:
+            - generic [active] [ref=f11e1]:
+              - generic [ref=f11e2]:
+                - generic [ref=f11e3]:
+                  - generic [ref=f11e4]:
+                    - generic [ref=f11e5]: 21:44
+                    - generic [ref=f11e6]:
+                      - img [ref=f11e7]
+                      - generic [ref=f11e12]: 5G
+                  - button "Bạn muốn đi đâu?" [ref=f11e17]:
+                    - img [ref=f11e18]
+                    - generic [ref=f11e21]: Bạn muốn đi đâu?
+                  - generic [ref=f11e22]:
+                    - generic [ref=f11e23]:
+                      - img [ref=f11e24]
+                      - generic [ref=f11e27]: Đi xe máy cho nhanh hơn nhé?
+                      - img [ref=f11e28]
+                    - generic [ref=f11e32]:
+                      - button "scooter Đặt xe đi 53 Đường Số 17" [ref=f11e33]:
+                        - img "scooter" [ref=f11e35]
+                        - generic [ref=f11e36]: Đặt xe đi 53 Đường Số 17
+                      - button "scooter Đặt xe đi AMERICANO COFFEE" [ref=f11e37]:
+                        - img "scooter" [ref=f11e39]
+                        - generic [ref=f11e40]: Đặt xe đi AMERICANO COFFEE
+                    - generic [ref=f11e41]:
+                      - button "Đặt xe ô tô" [ref=f11e42]
+                      - button "Đặt đồ ăn" [ref=f11e43]
+                  - generic [ref=f11e44]:
+                    - button "Gọi xe car" [ref=f11e45]:
+                      - generic [ref=f11e46]: Gọi xe
+                      - img "car" [ref=f11e48]
+                    - button "Gọi đồ ăn food" [ref=f11e49]:
+                      - generic [ref=f11e50]: Gọi đồ ăn
+                      - img "food" [ref=f11e52]
+                  - generic [ref=f11e54]:
+                    - generic [ref=f11e55]:
+                      - button "Ví V-Smart Pay 156.000₫" [ref=f11e56]:
+                        - generic [ref=f11e57]:
+                          - generic [ref=f11e58]: Ví V-Smart Pay
+                          - generic [ref=f11e59]: 156.000₫
+                      - button "Kích hoạt V-Smart Save Mới" [ref=f11e60]:
+                        - generic [ref=f11e61]:
+                          - generic [ref=f11e62]: Kích hoạt
+                          - generic [ref=f11e63]:
+                            - text: V-Smart
+                            - text: Save
+                          - generic [ref=f11e64]: Mới
+                          - img [ref=f11e66]
+                    - button "Thêm thẻ ngân hàng Thanh toán bằng thẻ tín dụng" [ref=f11e67]:
+                      - img [ref=f11e69]
+                      - generic [ref=f11e71]:
+                        - generic [ref=f11e72]: Thêm thẻ ngân hàng
+                        - generic [ref=f11e73]: Thanh toán bằng thẻ tín dụng
+                    - generic [ref=f11e74]:
+                      - button "Nạp tiền" [ref=f11e75]:
+                        - img [ref=f11e76]
+                        - generic [ref=f11e77]: Nạp tiền
+                      - button "Quét trả" [ref=f11e78]:
+                        - img [ref=f11e79]
+                        - generic [ref=f11e85]: Quét trả
+                      - button "Chuyển" [ref=f11e86]:
+                        - img [ref=f11e87]
+                        - generic [ref=f11e90]: Chuyển
+                  - generic [ref=f11e91]:
+                    - generic [ref=f11e92]: Dịch vụ khác
+                    - button "Xem tất cả" [ref=f11e93]
+                  - generic [ref=f11e94]:
+                    - button "Xe máy Xe máy" [ref=f11e95]:
+                      - img "Xe máy" [ref=f11e97]
+                      - generic [ref=f11e98]: Xe máy
+                    - button "Giao hàng Giao hàng" [ref=f11e99]:
+                      - img "Giao hàng" [ref=f11e101]
+                      - generic [ref=f11e102]: Giao hàng
+                    - button "Thuê xe tự lái Thuê xe tự lái" [ref=f11e103]:
+                      - img "Thuê xe tự lái" [ref=f11e105]
+                      - generic [ref=f11e106]: Thuê xe tự lái
+                    - button "VinBus VinBus" [ref=f11e107]:
+                      - img "VinBus" [ref=f11e109]
+                      - generic [ref=f11e110]: VinBus
+                    - button "Liên tỉnh Liên tỉnh" [ref=f11e111]:
+                      - img "Liên tỉnh" [ref=f11e113]
+                      - generic [ref=f11e114]: Liên tỉnh
+                    - button "Mua xe VinFast Mua xe VinFast" [ref=f11e115]:
+                      - img "Mua xe VinFast" [ref=f11e117]
+                      - generic [ref=f11e118]: Mua xe VinFast
+                    - button "Hội viên Hội viên" [ref=f11e119]:
+                      - img "Hội viên" [ref=f11e121]
+                      - generic [ref=f11e122]: Hội viên
+                    - button "Thẻ quà tặng Thẻ quà tặng" [ref=f11e123]:
+                      - img "Thẻ quà tặng" [ref=f11e125]
+                      - generic [ref=f11e126]: Thẻ quà tặng
+                  - generic [ref=f11e128]:
+                    - generic [ref=f11e129]:
+                      - generic [ref=f11e130]:
+                        - img [ref=f11e132]
+                        - generic [ref=f11e134]: GREEN SM
+                      - generic [ref=f11e135]: Giao diện hoàn toàn mới
+                    - generic [ref=f11e136]:
+                      - generic [ref=f11e137]: 🚗
+                      - generic [ref=f11e138]: 🏙️
+                - generic [ref=f11e139]:
+                  - generic [ref=f11e140]:
+                    - button [ref=f11e141]:
+                      - img [ref=f11e142]
+                    - button [ref=f11e145]:
+                      - img [ref=f11e146]
+                    - button [ref=f11e149]:
+                      - img [ref=f11e150]
+                    - button [ref=f11e153]:
+                      - img [ref=f11e154]
+                  - button "🌿 XEM NGAY" [ref=f11e157]:
+                    - generic [ref=f11e158]: 🌿
+                    - generic [ref=f11e159]: XEM NGAY
+              - alert [ref=f11e160]
+        - generic [ref=e240]:
+          - generic [ref=e241]: Trạng thái · 5
+          - generic [ref=e242]:
+            - button "Chưa có ví · CTA Mở VSP" [ref=e243] [cursor=pointer]:
+              - generic [ref=e245]: Chưa có ví · CTA Mở VSP
+            - button "Vừa tạo · nhắc eKYC" [ref=e246] [cursor=pointer]:
+              - generic [ref=e248]: Vừa tạo · nhắc eKYC
+            - button "Đã eKYC · nhắc link bank" [ref=e249] [cursor=pointer]:
+              - generic [ref=e251]: Đã eKYC · nhắc link bank
+            - button "Đã link · balance 0" [ref=e252] [cursor=pointer]:
+              - generic [ref=e254]: Đã link · balance 0
+            - button "Active · balance 156K" [ref=e255] [cursor=pointer]:
+              - generic [ref=e257]: Active · balance 156K
+          - generic [ref=e258]: ← → điều hướng · tap để preview
+  - alert [ref=e259]

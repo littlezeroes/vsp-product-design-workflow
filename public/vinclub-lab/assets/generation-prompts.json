@@ -1,0 +1,91 @@
+{
+  "assets": [
+    {
+      "id": "car",
+      "prompt": "Use case: stylized-concept. One isolated premium 3D mobile app icon: A pearl-white VinFast VF8 electric SUV, front three-quarter view, recognizable V-shaped silver grille and LED light signature, black glass roof and realistic wheels. Modern adult geometric forms, medium detail, satin ivory ceramic and brushed champagne metal with ruby red accent. Orthographic front three-quarter camera. Soft studio light upper left. Object fills 76% of square canvas, transparent background. Not retro, not toys, no pedestal, no lettering or watermark. Readable at 48px.",
+      "engine": "built-in image_gen",
+      "source": "car-source.png",
+      "web": "car.webp",
+      "original": "/Users/huykieu/.codex/generated_images/01a0f3f2-1062-7202-ad1b-ef96dad4e8dd/exec-220ab804-34c3-4b53-9c64-6d8316846698.png"
+    },
+    {
+      "id": "food",
+      "prompt": "Use case: stylized-concept. One isolated premium 3D mobile app icon: A small elegant ruby-red takeaway food bag with a minimal ivory folded food box and one pair of champagne chopsticks. Modern adult geometric forms, medium detail, satin ivory ceramic and brushed champagne metal with ruby red accent. Orthographic front three-quarter camera. Soft studio light upper left. Object fills 76% of square canvas, transparent background. Not retro, not toys, no pedestal, no lettering or watermark. Readable at 48px.",
+      "engine": "built-in image_gen",
+      "source": "food-source.png",
+      "web": "food.webp",
+      "original": "/Users/huykieu/.codex/generated_images/01a0f3f2-1062-7202-ad1b-ef96dad4e8dd/exec-6077c2c5-a527-4df7-8090-c9fdcf3b5ad3.png"
+    },
+    {
+      "id": "medical",
+      "prompt": "Use case: stylized-concept. Asset type: one isolated premium 3D mobile app service icon. Subject: An architectural ivory medical cross with a recessed ruby inset, crisp bevels and one satin silver edge. Style: contemporary luxury product render, clean adult geometry with crisp controlled bevels, restrained medium detail, NOT toys, NOT retro, NOT inflated rounded blobs. Consistent materials: satin ivory ceramic, brushed champagne aluminium, small deep ruby-red accent, charcoal details. Camera: orthographic 3/4, object occupies 76 percent of square canvas, centered, generous transparent margins. Soft studio key light from upper left and subtle ambient contact shadow. True transparent background. Single icon only. No pedestal, no text, no watermark, no surrounding objects beyond subject. Must read at 48px.",
+      "engine": "built-in image_gen",
+      "source": "medical-source.png",
+      "web": "medical.webp",
+      "original": "/Users/huykieu/.codex/generated_images/01a0f3f2-1062-7202-ad1b-ef96dad4e8dd/exec-9518e1b0-b3c6-4c2f-93f5-c236a85ddc8e.png"
+    },
+    {
+      "id": "school",
+      "prompt": "One premium isolated 3D mobile app icon: An ivory closed school book with ruby spine and a small champagne graduation cap resting on it. Modern architectural geometry, clean grown-up medium detail, satin ivory ceramic, champagne brushed metal and a small ruby accent. Orthographic three-quarter camera, soft light upper left, central object at 76% of square canvas with transparent margins. No lettering, no pedestal, no extra decorations, not retro, not toy-like. True transparent background. Clear at 48px.",
+      "engine": "built-in image_gen",
+      "source": "school-source.png",
+      "web": "school.webp",
+      "original": "/Users/huykieu/.codex/generated_images/01a0f3f2-1062-7202-ad1b-ef96dad4e8dd/exec-bcbc1f2d-02e9-425e-a5fb-421406baf5e5.png"
+    },
+    {
+      "id": "hotel",
+      "prompt": "One premium isolated 3D mobile app icon: A modern restrained luxury hotel building with six broad ivory floors, bronze glazing and one portico, no tiny trees. Modern architectural geometry, clean grown-up medium detail, satin ivory ceramic, champagne brushed metal and a small ruby accent. Orthographic three-quarter camera, soft light upper left, central object at 76% of square canvas with transparent margins. No lettering, no pedestal, no extra decorations, not retro, not toy-like. True transparent background. Clear at 48px.",
+      "engine": "built-in image_gen",
+      "source": "hotel-source.png",
+      "web": "hotel.webp",
+      "original": "/Users/huykieu/.codex/generated_images/01a0f3f2-1062-7202-ad1b-ef96dad4e8dd/exec-e2a1385c-c609-40fb-85f0-31f7b6316a45.png"
+    },
+    {
+      "id": "travel",
+      "prompt": "One premium isolated 3D mobile app icon: A refined champagne hard-shell carry-on suitcase with ruby leather handle and two small black wheels. Modern architectural geometry, clean grown-up medium detail, satin ivory ceramic, champagne brushed metal and a small ruby accent. Orthographic three-quarter camera, soft light upper left, central object at 76% of square canvas with transparent margins. No lettering, no pedestal, no extra decorations, not retro, not toy-like. True transparent background. Clear at 48px.",
+      "engine": "built-in image_gen",
+      "source": "travel-source.png",
+      "web": "travel.webp",
+      "original": "/Users/huykieu/.codex/generated_images/01a0f3f2-1062-7202-ad1b-ef96dad4e8dd/exec-6ae9a607-1fbc-41ab-89bb-1f2c9134c460.png"
+    },
+    {
+      "id": "flight",
+      "prompt": "One premium isolated 3D mobile app icon: A clean ivory passenger airplane with ruby tail, silver wing edges, three-quarter elevated view, no airline markings. Modern adult geometric forms, medium detail, satin ivory ceramic, champagne brushed metal and small ruby red accents. Orthographic three-quarter camera, soft studio light upper left, object centered at 76% of square canvas with transparent margins. No lettering, no pedestal, no surrounding objects, not retro, not a toy, no inflated rounded shapes. True transparent background. Clear at 48px.",
+      "engine": "built-in image_gen",
+      "source": "flight-source.png",
+      "web": "flight.webp",
+      "original": "/Users/huykieu/.codex/generated_images/01a0f3f2-1062-7202-ad1b-ef96dad4e8dd/exec-1c3862c7-cd68-4bfb-84b0-425db9f8e8b5.png"
+    },
+    {
+      "id": "shopping",
+      "prompt": "One premium isolated 3D mobile app icon: Two elegant shopping bags, one ruby and one warm ivory, with champagne handles, precise folded edges. Modern adult geometric forms, medium detail, satin ivory ceramic, champagne brushed metal and small ruby red accents. Orthographic three-quarter camera, soft studio light upper left, object centered at 76% of square canvas with transparent margins. No lettering, no pedestal, no surrounding objects, not retro, not a toy, no inflated rounded shapes. True transparent background. Clear at 48px.",
+      "engine": "built-in image_gen",
+      "source": "shopping-source.png",
+      "web": "shopping.webp",
+      "original": "/Users/huykieu/.codex/generated_images/01a0f3f2-1062-7202-ad1b-ef96dad4e8dd/exec-409b32e7-a47e-4c8d-9d7a-9be800042ce1.png"
+    },
+    {
+      "id": "payment",
+      "prompt": "One premium isolated 3D mobile app icon: A sculptural champagne payment card standing diagonally with a small ruby contactless chip and an ivory folded bill behind it. Modern adult geometric forms, medium detail, satin ivory ceramic, champagne brushed metal and small ruby red accents. Orthographic three-quarter camera, soft studio light upper left, object centered at 76% of square canvas with transparent margins. No lettering, no pedestal, no surrounding objects, not retro, not a toy, no inflated rounded shapes. True transparent background. Clear at 48px.",
+      "engine": "built-in image_gen",
+      "source": "payment-source.png",
+      "web": "payment.webp",
+      "original": "/Users/huykieu/.codex/generated_images/01a0f3f2-1062-7202-ad1b-ef96dad4e8dd/exec-48124c7a-2d40-4d94-ac82-5059d7132a68.png"
+    },
+    {
+      "id": "city",
+      "prompt": "Premium architectural 3D miniature city model for mobile app map background, portrait 4:5. Crisp low-rise warm ivory plaster city blocks, one sculptural glass tower, a jade canal winding diagonally, broad pale boulevards, tiny champagne metal trees. Isometric camera fixed high above city. Refined medium details, gallery lighting, clean soft shadows, realistic materials, contemporary futuristic luxury, NOT toys or neon sci-fi. Entire canvas filled with model. No UI, no text, no symbols, no labels. Fictional geography.",
+      "engine": "built-in image_gen",
+      "source": "city-source.png",
+      "web": "city.webp"
+    },
+    {
+      "id": "resort",
+      "prompt": "Editorial architecture photograph, wide 16:9 composition, fictional luxury coastal resort in Vietnam with infinity pool, ivory minimalist terraces, a few elegant palms, turquoise sea and a quiet horizon, late afternoon champagne sunlight. Contemporary premium architecture magazine art direction, clean restrained details, natural realistic reflections, no people, no text, no branding, no watermark. A photographic campaign image for a luxury loyalty voucher, not an actual branded hotel.",
+      "engine": "built-in image_gen",
+      "source": "resort-source.png",
+      "web": "resort.webp"
+    }
+  ],
+  "processing": "Original PNGs retained; delivery WebP encoded with Sharp, transparent alpha preserved."
+}

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VSP × GreenSM — UX Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --paper: #ffffff;
+    --soft: #f5f5f5;
+    --ink: #0a0a0a;
+    --ink-2: #525252;
+    --ink-3: #a3a3a3;
+    --line: #e5e5e5;
+    --line-2: #d4d4d4;
+    --line-strong: #0a0a0a;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', 'Menlo', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 72px 32px 120px;
+  }
+
+  /* Masthead */
+  .masthead {
+    margin-bottom: 56px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .doc-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+  h1.title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  h1.title em { font-style: normal; font-weight: 500; color: var(--ink-2); }
+  .lede {
+    font-size: 16px;
+    color: var(--ink-2);
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  /* Section */
+  section { margin-bottom: 56px; }
+  h2.section-h {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  h2.section-h .num {
+    color: var(--ink-3);
+    font-family: var(--mono);
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  h3.lead {
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.4;
+    margin: 16px 0 8px;
+    letter-spacing: -0.005em;
+  }
+  p { margin-bottom: 12px; font-size: 15px; line-height: 1.7; }
+  p.muted { color: var(--ink-2); font-size: 14px; }
+
+  /* Pullout */
+  .pullout {
+    margin: 16px 0;
+    padding: 16px 22px;
+    background: var(--bg);
+    border-left: 3px solid var(--ink);
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .pullout mark { background: transparent; color: inherit; font-weight: 700; }
+
+  /* Pattern card */
+  .pattern {
+    margin: 16px 0;
+    padding: 20px 22px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .pattern .num {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #ffffff;
+    background: var(--ink);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .pattern h4 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .pattern p { font-size: 15px; line-height: 1.65; color: var(--ink); }
+  .pattern .ev {
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-2);
+    background: var(--soft);
+    padding: 12px 14px;
+    border-radius: 4px;
+    line-height: 1.65;
+  }
+  .pattern .ev b { color: var(--ink); font-weight: 600; }
+
+  /* Old vs New */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .compare > div {
+    padding: 18px 20px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .compare .new { border-color: var(--line-strong); border-width: 1.5px; }
+  .compare h5 {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-3);
+    margin-bottom: 8px;
+  }
+  .compare p {
+    font-size: 16px;
+    line-height: 1.45;
+    font-weight: 500;
+    margin: 0;
+    color: var(--ink);
+  }
+  .compare .new p { font-weight: 600; }
+
+  /* Three-way win */
+  .actors {
+    margin: 16px 0;
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .actor-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .actor-row:last-child { border-bottom: 0; }
+  .actor-row .who {
+    font-weight: 600;
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+  }
+  .actor-row .gain { font-size: 14.5px; line-height: 1.6; color: var(--ink); }
+  .actor-row .gain em { font-style: italic; color: var(--ink-2); display: block; margin-top: 4px; font-size: 13.5px; }
+
+  /* ===== TWO-PHASE — HERO SECTION ===== */
+  .two-phase-section {
+    margin: 64px -32px;
+    padding: 48px 32px 56px;
+    background: var(--bg);
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+  }
+  .two-phase-section .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-2);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    margin-bottom: 18px;
+  }
+  .two-phase-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .two-phase-section .lede {
+    font-size: 16px;
+    color: var(--ink-2);
+    margin-bottom: 24px;
+    max-width: 640px;
+  }
+  .two-phase-section .pull-mini {
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.5;
+    margin-bottom: 28px;
+    color: var(--ink);
+    padding-left: 16px;
+    border-left: 3px solid var(--ink);
+  }
+  .two-phase-section .pull-mini mark { background: transparent; color: inherit; font-weight: 700; }
+
+  .phase-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .phase-card {
+    padding: 24px 24px 28px;
+    border-radius: 4px;
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
+  }
+  .phase-card .ph-num {
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .phase-card .ph-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-2);
+    margin-bottom: 16px;
+  }
+  .phase-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+  .phase-card h3 em { font-style: italic; font-weight: 600; }
+  .phase-card .goal {
+    font-size: 14.5px;
+    color: var(--ink);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .phase-card .goal b { font-weight: 600; }
+  .phase-card .focus-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-2);
+    margin-bottom: 10px;
+  }
+  .phase-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 18px;
+  }
+  .phase-card ul li {
+    padding: 5px 0 5px 18px;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .phase-card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink-3);
+  }
+  .phase-card .msg {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink);
+    padding: 12px 14px;
+    background: var(--soft);
+    border-left: 3px solid var(--ink);
+    border-radius: 0 4px 4px 0;
+    font-weight: 500;
+  }
+  .phase-card .msg strong { font-weight: 700; }
+  .phase-card .visual {
+    margin: 16px 0 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--soft);
+  }
+  .phase-card .visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .phase-card .visual-cap {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 16px;
+  }
+
+  /* Blocker */
+  .blocker {
+    margin: 16px 0;
+    padding: 20px 22px;
+    background: var(--paper);
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+  }
+  .blocker h4 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.005em;
+  }
+  .blocker p { font-size: 14.5px; line-height: 1.65; margin-bottom: 8px; }
+  .blocker ul {
+    list-style: none;
+    margin: 8px 0;
+    padding: 0;
+  }
+  .blocker ul li {
+    padding: 4px 0 4px 18px;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .blocker ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink-3);
+  }
+  .blocker .impact {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Colophon */
+  .colophon {
+    margin-top: 80px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 720px) {
+    body { padding: 48px 18px 80px; }
+    h1.title { font-size: 32px; }
+    .compare { grid-template-columns: 1fr; }
+    .actor-row { grid-template-columns: 1fr; gap: 4px; }
+    .two-phase-section { margin: 56px -18px; padding: 40px 22px; }
+    .two-phase-section h2 { font-size: 28px; }
+    .phase-card .ph-num { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="doc-meta">
+    <span>VSP × GreenSM — UX Research · Huy Kieu</span>
+    <span>v1.0</span>
+  </div>
+  <h1 class="title">VSP × GreenSM — <em>UX Research</em></h1>
+  <p class="lede">Market standard, lens shift, and CJM blockers.</p>
+</header>
+
+<!-- 1 — Market Standard -->
+<section>
+  <h2 class="section-h"><span class="num">1</span>Market Standard</h2>
+  <p class="muted">Các platform lớn — Uber, Lyft, Grab, Gojek, DiDi, Kakao T, Careem — đều đi theo cùng một logic:</p>
+  <p>Payment <strong>không phải</strong> điểm bắt đầu. Payment là layer làm cho hành vi chính mượt hơn.</p>
+
+  <div class="pattern">
+    <div class="num">Pattern 1</div>
+    <h4>Ride intent &gt; Payment intent</h4>
+    <p>User không mở GreenSM để "mở ví". Họ mở app vì một job rất rõ: đi xe, đặt đồ ăn, di chuyển, giao nhận.</p>
+    <p>Vai trò đúng của VSP là làm cho payment nhanh hơn, tin cậy hơn, ít phải nghĩ hơn.</p>
+
+    <p style="margin-top:14px;"><b>Thứ tự ưu tiên on-demand</b> (Grab 2025 benchmark):</p>
+    <ol style="list-style:decimal; padding-left:20px; font-size:14.5px; line-height:1.6; color:var(--ink); margin:6px 0 4px;">
+      <li><b>Food / Delivery</b> — largest category. GMV $14.2B / ~64% on-demand GMV.</li>
+      <li><b>Ride-hailing / Mobility</b> — high-trust use case. GMV $7.9B / ~36%.</li>
+      <li><b>Grocery / Mart</b> — growing, ít habitual hơn food.</li>
+      <li><b>Financial services</b> — embedded layer. Revenue $347M.</li>
+    </ol>
+  </div>
+
+  <div class="pattern">
+    <div class="num">Pattern 2</div>
+    <h4>Payment càng invisible càng tốt</h4>
+    <p>Mục tiêu: setup <b>một lần duy nhất</b>, các lần thanh toán sau gần như không tốn thao tác.</p>
+    <p><strong>Cụ thể:</strong></p>
+    <ul style="list-style:none; padding-left:0; margin:6px 0 10px;">
+      <li style="padding:4px 0 4px 18px; position:relative; font-size:14.5px; line-height:1.6;">
+        <span style="position:absolute; left:0; color:var(--ink-3);">—</span>
+        VSP set làm <b>default payment</b> sau lần đầu liên kết.
+      </li>
+      <li style="padding:4px 0 4px 18px; position:relative; font-size:14.5px; line-height:1.6;">
+        <span style="position:absolute; left:0; color:var(--ink-3);">—</span>
+        Mỗi giao dịch sau: <b>tự trừ tiền</b> vào thẻ / nguồn đã liên kết — không cần chọn lại ví.
+      </li>
+      <li style="padding:4px 0 4px 18px; position:relative; font-size:14.5px; line-height:1.6;">
+        <span style="position:absolute; left:0; color:var(--ink-3);">—</span>
+        Số lần click trong checkout flow giảm về mức <b>tối thiểu</b>.
+      </li>
+    </ul>
+  </div>
+
+  <div class="pattern">
+    <div class="num">Pattern 3</div>
+    <h4>Borrow existing trust</h4>
+    <p>Không ai build payment trust từ con số 0. Các platform thắng đều mượn trust từ một ecosystem hoặc payment habit đã tồn tại.</p>
+  </div>
+
+  <div class="pattern">
+    <div class="num">Pattern 4</div>
+    <h4>Finance expansion phải đi sau habit</h4>
+    <p>Layer fintech phải <b>phục vụ thanh toán food / ride dễ dàng trước</b> — rồi mới được phép bán các service khác (loan, insurance, saving, investment).</p>
+    <p>Grab, Gojek, Careem đều theo thứ tự đó: daily behavior → payment habit → financial services.</p>
+  </div>
+</section>
+
+<!-- 2 — Rethink -->
+<section>
+  <h2 class="section-h"><span class="num">2</span>Rethink — Shift the Lens</h2>
+
+  <div class="compare">
+    <div class="old">
+      <h5>Câu hỏi cũ</h5>
+      <p>"Build ví VSP SDK trên GreenSM?"</p>
+    </div>
+    <div class="new">
+      <h5>Câu hỏi đúng hơn</h5>
+      <p>"Làm sao giúp 1.5M user GreenSM thanh toán tiện hơn, smart hơn — và từ đó hình thành thói quen dùng VSP?"</p>
+    </div>
+  </div>
+
+  <p>GreenSM hiện có <strong>1.5M DAU và ~90% retention</strong>. Đây không chỉ là một integration project. Đây là một <strong>acquisition channel</strong> đã có sẵn trust, frequency, và real payment moment.</p>
+</section>
+
+<!-- 3 — Three-Way Win -->
+<section>
+  <h2 class="section-h"><span class="num">3</span>Three-Way Win</h2>
+  <h3 class="lead">Ba bên cùng có lợi.</h3>
+
+  <div class="actors">
+    <div class="actor-row">
+      <div class="who">User GreenSM</div>
+      <div class="gain">
+        Thanh toán tiện hơn, ít friction, reward gắn đúng nhu cầu thật: đi xe, ăn uống, di chuyển hằng ngày.
+      </div>
+    </div>
+    <div class="actor-row">
+      <div class="who">GreenSM</div>
+      <div class="gain">
+        Có thêm mảnh ghép finance còn thiếu trong mobility ecosystem. Tăng retention, transaction fee, tỉ lệ mở app (qua QR / payment moment).
+      </div>
+    </div>
+    <div class="actor-row">
+      <div class="who">VSP</div>
+      <div class="gain">
+        GreenSM trở thành kênh acquisition có trust sẵn. Thay vì bắt user tải ví độc lập, VSP đi vào từ behavior đã có thật.
+        <em>User đang đi GreenSM → cần thanh toán → VSP xuất hiện như phương thức tiện và có lợi hơn.</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 — TWO PHASES (HERO SECTION) -->
+<div class="two-phase-section">
+  <span class="badge">The Approach</span>
+  <h2>Two Phases</h2>
+  <p class="lede">Acquire trước — Monetize sau. Đúng thứ tự, đúng thời điểm.</p>
+  <p class="pull-mini">Phase 1 phải thắng bằng <mark>payment utility + GreenSM trust + reward đúng context</mark>. Phase 2 mở ra khi user đã quen.</p>
+
+  <div class="phase-grid">
+    <div class="phase-card p1">
+      <div class="ph-num">01</div>
+      <div class="ph-tag">Acquire &amp; Build Trust</div>
+      <h3>Make user dùng VSP lần đầu, có lý do dùng lại.</h3>
+      <div class="goal">
+        <b>Mục tiêu:</b> Convert user GreenSM thành user VSP qua payment benefit rõ ràng.
+      </div>
+      <div class="visual">
+        <img src="img/rethink/phase-1.png" alt="Phase 1 — Acquire users qua payment moment trong GreenSM" loading="lazy" />
+      </div>
+      <div class="visual-cap">VSP xuất hiện ngay tại payment moment của GreenSM ride</div>
+      <div class="focus-label">Focus</div>
+      <ul>
+        <li>Awareness trong đúng GreenSM context</li>
+        <li>First transaction</li>
+        <li>Reward gắn với ride / food need</li>
+        <li>Repeat usage</li>
+        <li>Trust through GreenSM / Vingroup identity</li>
+      </ul>
+      <div class="msg">"Thanh toán GreenSM bằng VSP — nhanh hơn, tiện hơn, có lợi hơn."</div>
+    </div>
+
+    <div class="phase-card p2">
+      <div class="ph-num">02</div>
+      <div class="ph-tag">Monetize &amp; Cross-sell</div>
+      <h3>Cross-sell VSP services trên <em>nhiều journey</em> của GreenSM.</h3>
+      <div class="goal">
+        <b>Mục tiêu:</b> Mỗi journey trong GreenSM — ride, food, delivery, booking — đều là một entry point để introduce một VSP service phù hợp. Cross-sell tự nhiên, không bán độc lập.
+      </div>
+      <div class="visual">
+        <img src="img/rethink/phase-2.jpeg" alt="Phase 2 — Cross-sell VSP services across multiple GreenSM journeys" loading="lazy" />
+      </div>
+      <div class="visual-cap">Cross-sell ở nhiều journey: ride · food · delivery · booking</div>
+      <div class="focus-label">Cross-sell entry points</div>
+      <ul>
+        <li>Banner trong màn hình <b>theo dõi xe</b> (lúc user đang chờ tài xế)</li>
+        <li>Hiển thị ở <b>home GreenSM</b> — vị trí cố định, không popup</li>
+        <li>Cần một <b>trang ví riêng</b> trong app để bán đầy đủ các service VSP</li>
+      </ul>
+      <div class="msg">Finance expansion đến <strong>sau</strong> khi payment habit đã hình thành — và phải đi <strong>từ trong</strong> các journey GreenSM, không tách rời.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 5 — CJM Blockers -->
+<section>
+  <h2 class="section-h"><span class="num">5</span>CJM Blockers</h2>
+  <h3 class="lead">Các point còn block — nếu làm hướng này, đây là những thứ phải xử lý.</h3>
+
+  <div class="blocker">
+    <h4>Blocker 1 — Thiếu phương thức liên kết nguồn tiền</h4>
+    <p>Hiện tại VSP chưa đủ lựa chọn nguồn tiền, và chưa có cơ chế <b>thanh toán tự động</b>. Nếu user không thấy phương thức quen dùng, họ <strong>drop ngay</strong> tại bước setup.</p>
+    <p><strong>Tối thiểu cần có:</strong></p>
+    <ul>
+      <li>Thẻ Visa</li>
+      <li>Thẻ Mastercard</li>
+    </ul>
+  </div>
+
+  <div class="blocker">
+    <h4>Blocker 2 — eKYC chưa đủ dễ</h4>
+    <p><strong>Cần đưa eKYC về hướng smart hơn:</strong></p>
+    <ul>
+      <li>Pre-fill từ GreenSM / Vingroup account nếu có</li>
+      <li>Hướng dẫn từng bước rõ ràng</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="colophon">
+  <span>VSP × GreenSM UX Research</span>
+  <span>vsp-greensm-rethink.html</span>
+</footer>
+
+</body>
+</html>

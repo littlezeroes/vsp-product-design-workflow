@@ -1,0 +1,126 @@
+{
+  "reviewer": "competitor_research / independent QA",
+  "reviewedAt": "2026-11-01",
+  "status": "FOCUSED_FIXES_PASS_PROTOCOL_LIMITATIONS_REMAIN",
+  "scope": "Đọc source và focused Playwright mobile 390×844: IA02 UI01, IA04 UI01, IA07 UI01, IA02 UI10. Không thay harness 100 tổ hợp.",
+  "evidence": {
+    "url": "http://localhost:3250/vinclub-ia-lab?ia=2&ui=1",
+    "mobileDocumentWidth": 390,
+    "mobileViewportWidth": 390,
+    "runtimeErrorsObserved": [],
+    "visibleSmallTargetSamples": [
+      {
+        "selector": ".matrix-cell",
+        "width": 28,
+        "height": 30,
+        "location": "reviewer panel"
+      },
+      {
+        "selector": ".layout-focus .lego-heading button",
+        "width": 64.78,
+        "height": 32,
+        "location": "phone / UI10"
+      }
+    ]
+  },
+  "issues": [
+    {
+      "id": "QA01",
+      "severity": "critical",
+      "area": "UT readiness",
+      "finding": "UT03 yêu cầu mua hai vé và tìm lại vé. Demo chỉ hiện một người lớn, không có chọn số lượng / tổng tiền; completion chỉ đổi step, không lưu vé.",
+      "evidence": "flow ticket: 'Ngày 28/02/2027 · 1 người lớn'; primary onClick setStep(1).",
+      "recommendation": "Thêm quantity, total, demo confirmation và vé được lưu để mở lại; hoặc thu hẹp protocol thành kiểm tra tìm đường, không chấm task completion.",
+      "followupStatus": "FIXED_CORE_DEMO_QUANTITY_AND_REVISIT"
+    },
+    {
+      "id": "QA02",
+      "severity": "critical",
+      "area": "UT readiness",
+      "finding": "UT02, UT04 và UT05 yêu cầu tìm lại voucher / gói / lead sau khi thao tác. Các flow không tạo state sở hữu hoặc trạng thái liên kết.",
+      "evidence": "open() đặt flow; completion setStep(1). owned/activity/bundle-owned là nội dung cố định; không nhận dữ liệu từ hành động trước.",
+      "recommendation": "Lưu state demo cho redeem, bundle và O2O, gắn ID và đường trở lại đúng nơi quản lý.",
+      "followupStatus": "PARTIAL_FIXED_SESSION_RECORDS"
+    },
+    {
+      "id": "QA03",
+      "severity": "major",
+      "area": "Wallet / UT06",
+      "finding": "Nguồn tiền và Lịch sử giao dịch chỉ là hàng nội dung, không có onPress. Không hoàn tất tiêu chí UT06 tìm nguồn / lịch sử.",
+      "recommendation": "Bổ sung màn demo nguồn tiền / lịch sử, hoặc sửa phạm vi nhiệm vụ thành nhận diện vị trí.",
+      "followupStatus": "FIXED"
+    },
+    {
+      "id": "QA04",
+      "severity": "major",
+      "area": "IA–CTA mapping",
+      "finding": "CTA cố định không luôn đúng nghĩa IA: IA02 Tìm dịch vụ mở assistant chung; IA05 Chọn dịch vụ đi ngay vé; IA07 Xem gói gia đình mở một gói trực tiếp; IA08 Xem dịch vụ tại đây mở điều kiện ưu đãi.",
+      "evidence": "primaryFlows hardcodes IA02 assistant, IA05 ticket, IA07 bundle, IA08 offer.",
+      "recommendation": "Cho CTA đi vào danh mục / tác vụ đúng nhãn của IA; tránh tạo sai lệch so sánh IA bằng đích đến khác lời hứa.",
+      "followupStatus": "FIXED_TARGETED_MAPPINGS"
+    },
+    {
+      "id": "QA05",
+      "severity": "major",
+      "area": "Accessibility",
+      "finding": "Quay lại là SVG onClick 24px, không phải button, không có role hoặc tabindex; không dùng bàn phím được.",
+      "evidence": "DOM [aria-label='Quay lại']: tag svg, role null, tabindex null, parent DIV.",
+      "recommendation": "Dùng VSP Button 44×44 chứa ChevronLeft; aria-label đặt ở Button.",
+      "followupStatus": "FIXED"
+    },
+    {
+      "id": "QA06",
+      "severity": "major",
+      "area": "Touch targets",
+      "finding": "UI10 Mở và UI06 Xem tất cả dùng size 32; UI10 đo 64.78×32. Ma trận reviewer 28×30.",
+      "recommendation": "Nâng vùng chạm phone controls lên ≥44px; panel matrix cũng cần vùng chạm đủ rộng hoặc hỗ trợ chọn bằng select.",
+      "followupStatus": "FIXED_PHONE_CONTROLS_PANEL_REMAINS"
+    },
+    {
+      "id": "QA07",
+      "severity": "major",
+      "area": "Architecture specificity",
+      "finding": "Đã lưu của IA06 chỉ trỏ tới o2o; chưa có thao tác lưu hoặc dữ liệu đã lưu. Các nhánh assistant / community chủ yếu cùng generic detail.",
+      "recommendation": "Mô phỏng saved state và entry flow riêng đủ để so IA; giữ nhãn 'concept chưa tích hợp' cho SDK/AI.",
+      "followupStatus": "REMAINS_CONCEPT_LIMITATION"
+    }
+  ],
+  "passesObserved": [
+    "Không overflow toàn trang ở 390px cho mẫu IA02 UI01.",
+    "Không thấy pageerror trong các lượt kiểm tra.",
+    "Phone UI01 có header, scroll content, fixed bottom và home indicator.",
+    "Phone UI01 có một primary CTA.",
+    "Các số tiền và hành động đã ghi rõ là dữ liệu demo, chưa giao dịch thật."
+  ],
+  "humanUt": "Chưa chạy; không dùng kết quả Playwright như tỷ lệ thành công của người dùng.",
+  "followup": {
+    "changedFile": "app/vinclub-ia-lab/page.tsx",
+    "fixes": [
+      "IA02/05/08 primary mở danh mục có tìm kiếm; IA07 mở danh sách gói.",
+      "Back dùng VSP Button 44×44 và keyboard semantic; có flow stack.",
+      "Wallet nguồn tiền / lịch sử mở màn dữ liệu mẫu, có liên kết qua lại.",
+      "UI06/10 Mở / Xem tất cả nâng vùng chạm 48px.",
+      "Chỉ vé, gói, đổi điểm, lead tạo completion; màn thông tin dùng Quay lại.",
+      "Màn completion dẫn tới nơi xem lại bản ghi demo.",
+      "O2O dùng VSP TextField / Checkbox; vùng label consent tối thiểu 44px."
+    ],
+    "observedPasses": [
+      "Tìm danh mục gia đình hiển thị Cuối tuần trọn gói.",
+      "Hai vé hiển thị tổng 400.000 đ; complete rồi mở hoạt động thấy bản ghi vé.",
+      "Techcombank •• 6789 hiện trong nguồn tiền; Nạp từ ngân hàng hiện trong lịch sử.",
+      "Back đo đúng 44×44, là button.",
+      "IA07 CTA mở danh sách gói có searchbox.",
+      "UI10 các nút Mở đo 48px cao.",
+      "Không có pageerror trong lượt focused rerun.",
+      "IA06: thiếu phone/consent bị disabled; số 0901234567 và consent cho gửi demo thành công."
+    ],
+    "remaining": [
+      "UT04 chưa có so sánh giá gói với mua lẻ hoặc cấu hình gia đình đầy đủ; chỉ nên đánh giá tìm đường và hiểu gói mẫu.",
+      "UT05 không có sa bàn thực, chỉ nội dung và gửi nhu cầu demo; không chấm khám phá 3D.",
+      "Vé/voucher/gói/lead lưu dạng nhãn trong phiên, chưa là sổ giao dịch có ID/chi tiết riêng.",
+      "Ma trận 100 lựa chọn ở panel reviewer vẫn 28×30; người dùng nên chọn qua select hoặc embed phone.",
+      "IA06 Đã lưu chưa có mô phỏng hành động lưu.",
+      "UT với người thật chưa chạy."
+    ]
+  }
+}

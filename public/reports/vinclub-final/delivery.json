@@ -1,0 +1,27 @@
+{
+  "version": "final-source-composed",
+  "chosenLayout": "selected: wallet2, productCount2, header1, products3, vouchers1, feed2",
+  "source": "localhost3300 VinClub Home",
+  "ui": "/vinclub-final",
+  "board": "index.html",
+  "slides": "slides.html",
+  "pptx": "vinclub-final.pptx",
+  "pdf": "vinclub-final.pdf",
+  "sourceReused": [
+    "StackHome",
+    "ProductCases",
+    "OfferCards",
+    "HomeStory",
+    "ForYou",
+    "Pouch",
+    "WalletInside",
+    "EventsPage",
+    "RankMember"
+  ],
+  "modifications": "Optional product labels/callback and wallet origin; default caller output preserved. Final route CSS fixes scoped only.",
+  "functionalChecks": true,
+  "artifactChecks": true,
+  "pixelPerfect": false,
+  "humanUT": "NOT_RUN",
+  "repoTypes": "Existing errors outside new route; no diagnostics in final route or changed ref-layouts.tsx."
+}

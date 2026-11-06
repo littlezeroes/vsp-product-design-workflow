@@ -25,7 +25,7 @@ FixedBottom: px-[22px] buttons + Home Indicator
 ## Golden Rules (never break)
 1. **Never hardcode color** — always use token class (`text-foreground`, `bg-secondary`, etc.)
 2. **Never rebuild a VSP component** — use the library, compose don't create
-3. **Content column = `px-[22px]`** — always, no exceptions
+3. **Alignment theo cấp nội dung** — chữ cấp màn hình (gồm tên ví và số dư) cùng trục 22px, dù nằm trong card. Service/Quà/Trải nghiệm/Ưu đãi dùng padding nội bộ riêng; card con không ép về trục màn hình. Xem `.claude/design-tokens-reference.md` → Alignment Rules.
 4. **Section title spacing = `pt-[24px] pb-[12px]`**
 5. **`variant="large-title"` NavBar is icon-only** — page name goes in `largeTitle`, NOT `title`
 6. **`ChevronLeft` for back** — never `ArrowLeft`
@@ -33,8 +33,10 @@ FixedBottom: px-[22px] buttons + Home Indicator
 8. **Home indicator on every full-screen page** — `w-[139px] h-[5px] bg-foreground`
 9. **Dark mode via semantic tokens only** — never raw CSS invert
 10. **`text-muted-foreground` is banned** — use `text-foreground-secondary`
-11. **Use named radius tokens** — `rounded-8`, `rounded-14`, `rounded-28` (not `rounded-[Xpx]`)
+11. **Radius theo lớp và khoảng đệm** — dùng `rounded-8`, `rounded-14`, `rounded-28`; góc lồng có đệm đều lấy `R trong = max(0, R ngoài − inset)`. Ảnh sát mép card để card cha clip góc ngoài; không bo thêm góc tiếp giáp phần chữ. Ưu tiên token có sẵn; radius dẫn xuất dùng `calc()` từ token, không hardcode hay đổi giá trị token gốc. Xem “Border Radius Rules” trong `.claude/design-tokens-reference.md`.
 12. **Every screen uses Screen Structure** — Header → Section(s) → FixedBottom
+13. **Card cùng cấp căn theo khung; chữ cùng cấp căn theo chữ** — không dùng một rule kéo mọi text trong card về lề 22px. Card thông thường lề ngoài 22px, padding trong 12px; ví chủ đạo giữ trục chữ 22px.
+14. **Optical alignment và smooth corner** — kiểm tra glyph/icon/baseline trên ảnh; hiệu chỉnh glyph/icon tối đa 1px, không dịch cả khung. Giữ named radius tokens và treatment smooth 60% của dự án.
 
 ## Absolute Don'ts
 - No `border` to separate content sections

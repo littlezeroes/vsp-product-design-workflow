@@ -1,0 +1,8 @@
+.vc-gold-splash {
+  position:fixed;inset:0;z-index:200;overflow:hidden;pointer-events:auto;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--splash-background);contain:strict;
+}
+.vc-gold-splash-video { display:block;width:min(100vw,512px);height:auto; }
+.vc-gold-splash-exit { opacity:0;transition:opacity 230ms cubic-bezier(.22,1,.36,1); }
+@media(prefers-reduced-motion:reduce) { .vc-gold-splash-video { visibility:hidden; } .vc-gold-splash { background:var(--splash-background) url('/vinclub-assets/splash/gold-poster.webp') center / min(100vw,512px) auto no-repeat; } }

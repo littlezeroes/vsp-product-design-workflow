@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>VSP × GreenSM — Color Sync</title>
+<style>
+  :root{
+    --bg:#0a0c11; --panel:#13161c; --panel2:#181b22; --line:#23272f;
+    --fg:#f5f6f7; --fg-sub:#a1aaab; --fg-dim:#828b8c;
+    --brand:#2dccd3;
+    --mono:"SF Mono","JetBrains Mono",Menlo,monospace;
+    --sans:Inter,-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:13px;line-height:1.5}
+  .wrap{max-width:1280px;margin:0 auto;padding:32px 24px 60px}
+  h1{font-size:24px;margin:0 0 4px;letter-spacing:-0.02em}
+  .lead{color:var(--fg-sub);margin:0 0 24px;font-size:13px}
+
+  table{width:100%;border-collapse:separate;border-spacing:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  thead th{background:var(--panel2);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--fg-dim);font-weight:600;text-align:left;padding:10px 14px;border-bottom:1px solid var(--line)}
+  thead th.mode{text-align:center;border-left:1px solid var(--line)}
+  thead .modeLight{background:#1a1d24}
+  thead .modeDark{background:#0f1217}
+  tbody td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+  tbody tr:last-child td{border-bottom:none}
+  tbody td.modeCell{border-left:1px solid var(--line)}
+
+  .name{font-family:var(--mono);font-size:12px;color:var(--fg);word-break:break-word;line-height:1.4}
+  .tag{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;font-size:9px;font-weight:700;letter-spacing:0.04em;font-family:var(--mono);vertical-align:middle}
+  .tag.bug{background:#facc15;color:#0a0c11}
+  .tag.new{background:var(--brand);color:#0a0c11}
+
+  .pair{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px}
+  .chip{width:18px;height:18px;border-radius:5px;border:1px solid rgba(255,255,255,0.08);flex-shrink:0}
+  .old{color:var(--fg-dim);text-decoration:line-through;min-width:68px;display:inline-block}
+  .new{color:var(--brand);min-width:68px;display:inline-block}
+  .arrow{color:var(--fg-dim);font-size:11px}
+
+  .section{margin-top:32px;font-size:13px;color:var(--fg-sub);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .section::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand)}
+
+  .note{background:var(--panel2);border-left:3px solid var(--brand);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0 16px;font-size:12px;color:var(--fg-sub)}
+  .note b{color:var(--fg)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>VSP × GreenSM — Color Sync</h1>
+  <p class="lead">Token VSP cần đổi mã hex để brand-align với GreenSM Foundation. Brand GSM = <b style="color:var(--brand)">cyan/teal #2dccd3</b>.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">Token VSP</th>
+        <th colspan="2" class="mode modeLight">☀ Light mode</th>
+        <th colspan="2" class="mode modeDark">☾ Dark mode</th>
+      </tr>
+      <tr>
+        <th class="modeCell modeLight" style="text-align:left;padding-left:14px;font-size:9px">Cũ</th>
+        <th class="modeLight" style="text-align:left;padding-left:14px;font-size:9px">→ Mới</th>
+        <th class="modeCell modeDark" style="text-align:left;padding-left:14px;font-size:9px">Cũ</th>
+        <th class="modeDark" style="text-align:left;padding-left:14px;font-size:9px">→ Mới</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td><span class="name">backgroundContextualBrand</span></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#1e1e1e"></span><span class="old">#1e1e1e</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#2dccd3"></span><span class="new">#2dccd3</span></div></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#ffffff"></span><span class="old">#ffffff</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#2dccd3"></span><span class="new">#2dccd3</span></div></td>
+      </tr>
+
+      <tr>
+        <td><span class="name">backgroundContextualBrandPressed</span></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#111111"></span><span class="old">#111111</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#1d858b"></span><span class="new">#1d858b</span></div></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#fdfdfd"></span><span class="old">#fdfdfd</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#1d858b"></span><span class="new">#1d858b</span></div></td>
+      </tr>
+
+      <tr>
+        <td><span class="name">borderBrand</span></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#111111"></span><span class="old">#111111</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#2dccd3"></span><span class="new">#2dccd3</span></div></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#111111"></span><span class="old">#111111</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#2dccd3"></span><span class="new">#2dccd3</span></div></td>
+      </tr>
+
+      <tr>
+        <td><span class="name">foregroundBrand</span></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#070707"></span><span class="old">#070707</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#1d858b"></span><span class="new">#1d858b</span></div></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#070707"></span><span class="old">#070707</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#6cdae0"></span><span class="new">#6cdae0</span></div></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>4 token, 8 hex update.</b>
+  </div>
+
+
+  <div class="section">Primitive ramp mới — Brand Cyan <span class="tag new" style="margin-left:4px">NEW</span></div>
+  <p class="lead" style="margin:0 0 10px">VSP chưa có ramp brand cyan. Thêm 9 stop để semantic ở trên có nguồn.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Token primitive mới</th>
+        <th colspan="2" class="mode">Hex (không đổi theo mode)</th>
+        <th class="mode" style="text-align:left;padding-left:14px">Dùng cho</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="name">contextualBrand10</span></td><td colspan="2" class="modeCell"><div class="pair"><span class="chip" style="background:#edfafb"></span><span class="new">#edfafb</span></div></td><td class="modeCell"><span style="color:var(--fg-sub);font-size:12px">brandSubtle light</span></td></tr>
+      <tr><td><span class="name">contextualBrand20</span></td><td colspan="2" class="modeCell"><div class="pair"><span class="chip" style="background:#ccf2f4"></span><span class="new">#ccf2f4</span></div></td><td class="modeCell"></td></tr>
+      <tr><td><span class="name">contextualBrand30</span></td><td colspan="2" class="modeCell"><div class="pair"><span class="chip" style="background:#afebee"></span><span class="new">#afebee</span></div></td><td class="modeCell"></td></tr>
+      <tr><td><span class="name">contextualBrand40</span></td><td colspan="2" class="modeCell"><div class="pair"><span class="chip" style="background:#8de2e7"></span><span class="new">#8de2e7</span></div></td><td class="modeCell"></td></tr>
+      <tr><td><span class="name">contextualBrand50</span></td><td colspan="2" class="modeCell"><div class="pair"><span class="chip" style="background:#6cdae0"></span><span class="new">#6cdae0</span></div></td><td class="modeCell"><span style="color:var(--fg-sub);font-size:12px">foregroundBrand dark</span></td></tr>
+      <tr><td><span class="name">contextualBrand60</span></td><td colspan="2" class="modeCell"><div class="pair"><span class="chip" style="background:#4ed2d9"></span><span class="new">#4ed2d9</span></div></td><td class="modeCell"></td></tr>
+      <tr><td><span class="name">contextualBrand70 ★</span></td><td colspan="2" class="modeCell"><div class="pair"><span class="chip" style="background:#2dccd3"></span><span class="new">#2dccd3</span></div></td><td class="modeCell"><span style="color:var(--fg);font-size:12px"><b>Brand chính</b> · backgroundContextualBrand, borderBrand</span></td></tr>
+      <tr><td><span class="name">contextualBrand80</span></td><td colspan="2" class="modeCell"><div class="pair"><span class="chip" style="background:#1d858b"></span><span class="new">#1d858b</span></div></td><td class="modeCell"><span style="color:var(--fg-sub);font-size:12px">brandPressed, foregroundBrand light</span></td></tr>
+      <tr><td><span class="name">contextualBrand90</span></td><td colspan="2" class="modeCell"><div class="pair"><span class="chip" style="background:#0e4043"></span><span class="new">#0e4043</span></div></td><td class="modeCell"><span style="color:var(--fg-sub);font-size:12px">brandSubtle dark</span></td></tr>
+    </tbody>
+  </table>
+
+
+  <div class="section">Background / Surface — <span style="color:var(--fg-dim);font-weight:400;text-transform:none;letter-spacing:0">so sánh, đề xuất giữ VSP</span></div>
+  <p class="lead" style="margin:0 0 10px">GSM dùng surface ám cyan (<code style="font-family:var(--mono);background:var(--panel2);padding:1px 5px;border-radius:4px;color:var(--brand)">#eef1f2</code>) làm default. VSP dùng pure white. Đổi sẽ làm UI "lạnh" hơn — <b>không đáng đánh đổi</b>, brand cyan đã đủ pop trên nền trắng.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">Token VSP</th>
+        <th colspan="2" class="mode modeLight">☀ Light</th>
+        <th colspan="2" class="mode modeDark">☾ Dark</th>
+        <th rowspan="2" class="mode" style="text-align:left;padding-left:14px">GSM gần nhất</th>
+      </tr>
+      <tr>
+        <th class="modeCell modeLight" style="text-align:left;padding-left:14px;font-size:9px">VSP</th>
+        <th class="modeLight" style="text-align:left;padding-left:14px;font-size:9px">GSM</th>
+        <th class="modeCell modeDark" style="text-align:left;padding-left:14px;font-size:9px">VSP</th>
+        <th class="modeDark" style="text-align:left;padding-left:14px;font-size:9px">GSM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="name">backgroundSurfacePrimary</span></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#ffffff"></span><span class="new">#ffffff</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#eef1f2"></span><span class="old" style="text-decoration:none">#eef1f2</span></div></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#111111"></span><span class="new">#111111</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#0a0c11"></span><span class="old" style="text-decoration:none">#0a0c11</span></div></td>
+        <td class="modeCell"><span style="color:var(--fg-sub);font-size:12px">colorSurface (mode1) / 100</span></td>
+      </tr>
+      <tr>
+        <td><span class="name">backgroundSurfacePrimaryMuted</span></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#fdfdfd"></span><span class="new">#fdfdfd</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#ffffff"></span><span class="old" style="text-decoration:none">#ffffff</span></div></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#111111"></span><span class="new">#111111</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#000000"></span><span class="old" style="text-decoration:none">#000000</span></div></td>
+        <td class="modeCell"><span style="color:var(--fg-sub);font-size:12px">colorSurfaceSub / InverseSurfaceSub</span></td>
+      </tr>
+      <tr>
+        <td><span class="name">backgroundSurfaceSubPrimary</span></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#fafafa"></span><span class="new">#fafafa</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#f5f6f7"></span><span class="old" style="text-decoration:none">#f5f6f7</span></div></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#171717"></span><span class="new">#171717</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#3a3f40"></span><span class="old" style="text-decoration:none">#3a3f40</span></div></td>
+        <td class="modeCell"><span style="color:var(--fg-sub);font-size:12px">colorSurfaceNeutral / InverseSurface</span></td>
+      </tr>
+      <tr>
+        <td><span class="name">backgroundSurfaceSecondary</span></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#f3f3f3"></span><span class="new">#f3f3f3</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#f2f2f4"></span><span class="old" style="text-decoration:none">#f2f2f4</span></div></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#262626"></span><span class="new">#262626</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#606869"></span><span class="old" style="text-decoration:none">#606869</span></div></td>
+        <td class="modeCell"><span style="color:var(--fg-sub);font-size:12px">colorSurfaceEmp / InverseSurfaceEmp</span></td>
+      </tr>
+      <tr>
+        <td><span class="name">backgroundSurfaceTertiary</span></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#e5e5e5"></span><span class="new">#e5e5e5</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#d0d9d9"></span><span class="old" style="text-decoration:none">#d0d9d9</span></div></td>
+        <td class="modeCell"><div class="pair"><span class="chip" style="background:#343434"></span><span class="new">#343434</span></div></td>
+        <td><div class="pair"><span class="chip" style="background:#828b8c"></span><span class="old" style="text-decoration:none">#828b8c</span></div></td>
+        <td class="modeCell"><span style="color:var(--fg-sub);font-size:12px">— (≈ Neutral 40/70)</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="section">Grey ramp primitive — <span style="color:var(--fg-dim);font-weight:400;text-transform:none;letter-spacing:0">so sánh stop-by-stop, đề xuất giữ VSP</span></div>
+  <p class="lead" style="margin:0 0 10px">VSP <b style="color:var(--fg)">brandGrey</b> = 17 stop true neutral. GSM <b style="color:var(--fg)">colorNeutral</b> = 10 stop ám cyan. Đổi = mất 7 stop dark mode + toàn app shift lạnh. <b>Giữ VSP</b>.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>VSP primitive</th>
+        <th>Hex VSP</th>
+        <th>GSM gần nhất</th>
+        <th>Hex GSM</th>
+        <th class="mode" style="text-align:left;padding-left:14px">Δ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="name">brandGrey00</span></td><td><div class="pair"><span class="chip" style="background:#ffffff"></span><span class="new">#ffffff</span></div></td><td><span class="name" style="color:var(--fg-sub)">colorNeutralWhite</span></td><td><div class="pair"><span class="chip" style="background:#ffffff"></span><span class="old" style="text-decoration:none;color:var(--fg-sub)">#ffffff</span></div></td><td class="modeCell"><span style="color:var(--fg-dim);font-size:11px">giống</span></td></tr>
+      <tr><td><span class="name">brandGrey150</span></td><td><div class="pair"><span class="chip" style="background:#f3f3f3"></span><span class="new">#f3f3f3</span></div></td><td><span class="name" style="color:var(--fg-sub)">colorNeutral20</span></td><td><div class="pair"><span class="chip" style="background:#eef1f2"></span><span class="old" style="text-decoration:none;color:var(--fg-sub)">#eef1f2</span></div></td><td class="modeCell"><span style="color:var(--fg-dim);font-size:11px">cyan tint</span></td></tr>
+      <tr><td><span class="name">brandGrey200</span></td><td><div class="pair"><span class="chip" style="background:#e5e5e5"></span><span class="new">#e5e5e5</span></div></td><td><span class="name" style="color:var(--fg-sub)">colorNeutral30</span></td><td><div class="pair"><span class="chip" style="background:#f2f2f4"></span><span class="old" style="text-decoration:none;color:var(--fg-sub)">#f2f2f4</span></div></td><td class="modeCell"><span style="color:var(--fg-dim);font-size:11px">GSM sáng hơn</span></td></tr>
+      <tr><td><span class="name">brandGrey300</span></td><td><div class="pair"><span class="chip" style="background:#d4d4d4"></span><span class="new">#d4d4d4</span></div></td><td><span class="name" style="color:var(--fg-sub)">colorNeutral40</span></td><td><div class="pair"><span class="chip" style="background:#d0d9d9"></span><span class="old" style="text-decoration:none;color:var(--fg-sub)">#d0d9d9</span></div></td><td class="modeCell"><span style="color:var(--fg-dim);font-size:11px">cyan tint</span></td></tr>
+      <tr><td><span class="name">brandGrey400</span></td><td><div class="pair"><span class="chip" style="background:#a0a0a0"></span><span class="new">#a0a0a0</span></div></td><td><span class="name" style="color:var(--fg-sub)">colorNeutral60</span></td><td><div class="pair"><span class="chip" style="background:#a1aaab"></span><span class="old" style="text-decoration:none;color:var(--fg-sub)">#a1aaab</span></div></td><td class="modeCell"><span style="color:var(--fg-dim);font-size:11px">cyan tint</span></td></tr>
+      <tr><td><span class="name">brandGrey500</span></td><td><div class="pair"><span class="chip" style="background:#737373"></span><span class="new">#737373</span></div></td><td><span class="name" style="color:var(--fg-sub)">colorNeutral70</span></td><td><div class="pair"><span class="chip" style="background:#828b8c"></span><span class="old" style="text-decoration:none;color:var(--fg-sub)">#828b8c</span></div></td><td class="modeCell"><span style="color:var(--fg-dim);font-size:11px">cyan tint</span></td></tr>
+      <tr><td><span class="name">brandGrey600</span></td><td><div class="pair"><span class="chip" style="background:#525252"></span><span class="new">#525252</span></div></td><td><span class="name" style="color:var(--fg-sub)">colorNeutral80</span></td><td><div class="pair"><span class="chip" style="background:#606869"></span><span class="old" style="text-decoration:none;color:var(--fg-sub)">#606869</span></div></td><td class="modeCell"><span style="color:var(--fg-dim);font-size:11px">cyan tint</span></td></tr>
+      <tr><td><span class="name">brandGrey700</span></td><td><div class="pair"><span class="chip" style="background:#3f3f3f"></span><span class="new">#3f3f3f</span></div></td><td><span class="name" style="color:var(--fg-sub)">colorNeutral90</span></td><td><div class="pair"><span class="chip" style="background:#3a3f40"></span><span class="old" style="text-decoration:none;color:var(--fg-sub)">#3a3f40</span></div></td><td class="modeCell"><span style="color:var(--fg-dim);font-size:11px">cyan tint</span></td></tr>
+      <tr><td><span class="name">brandGrey1000</span></td><td><div class="pair"><span class="chip" style="background:#070707"></span><span class="new">#070707</span></div></td><td><span class="name" style="color:var(--fg-sub)">colorNeutral100</span></td><td><div class="pair"><span class="chip" style="background:#0a0c11"></span><span class="old" style="text-decoration:none;color:var(--fg-sub)">#0a0c11</span></div></td><td class="modeCell"><span style="color:var(--fg-dim);font-size:11px">cyan tint</span></td></tr>
+      <tr><td colspan="5" style="color:var(--fg-dim);font-size:11px;text-align:center;padding:8px">VSP còn 8 stop khác (25/50/75/100/750/800/850/900/950) — GSM không có equivalent</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+const {chromium}=require('@playwright/test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+fs.mkdirSync('output/envelope-gift-reveal',{recursive:true});
+const base=process.env.BASE_URL || 'http://localhost:3000';
+(async()=>{
+ const browser=await chromium.launch({headless:true});
+ const page=await browser.newPage({viewport:{width:393,height:852},deviceScaleFactor:2});
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(`${base}/envelope-gift-reveal`);await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(200);
+ const root=page.locator('.envelope-gift');
+ await page.screenshot({path:'output/envelope-gift-reveal/sealed.png'});
+ await page.mouse.move(196,510);await page.mouse.down();await page.mouse.move(204,466,{steps:12});await page.waitForTimeout(120);
+ await page.screenshot({path:'output/envelope-gift-reveal/partial.png'});
+ assert(Number(await root.getAttribute('data-progress'))>.1);
+ await page.mouse.up();await page.waitForTimeout(1100);assert.equal(await root.getAttribute('data-phase'),'0');assert(Math.abs(Number(await root.getAttribute('data-progress')))<.001);
+ await page.mouse.move(196,510);await page.mouse.down();await page.mouse.move(230,265,{steps:25});await page.waitForTimeout(150);
+ await page.screenshot({path:'output/envelope-gift-reveal/drag.png'});
+ await page.mouse.up();await page.waitForTimeout(2400);assert.equal(await root.getAttribute('data-phase'),'3');assert.equal(await root.getAttribute('data-flip'),'1.0000');
+ await page.screenshot({path:'output/envelope-gift-reveal/revealed.png'});
+ await page.getByRole('button',{name:'Add to Wallet',exact:true}).click();await page.waitForTimeout(500);assert.equal(await root.getAttribute('data-phase'),'0');
+ await page.getByRole('button',{name:'Lift the flap',exact:true}).click();await page.waitForTimeout(180);
+ await page.mouse.move(195,500);await page.mouse.down();await page.mouse.up();await page.waitForTimeout(1000);assert.equal(await root.getAttribute('data-phase'),'0');
+ await page.mouse.move(195,500);await page.mouse.down();await page.mouse.move(195,440,{steps:8});await page.locator('.gift-drag-area').dispatchEvent('pointercancel');await page.mouse.up();await page.waitForTimeout(1000);assert.equal(await root.getAttribute('data-phase'),'0');
+ await page.getByRole('button',{name:'Lift the flap',exact:true}).click();await page.waitForTimeout(2700);assert.equal(await root.getAttribute('data-phase'),'3');
+ await page.getByRole('button',{name:'Add to Wallet',exact:true}).click();await page.waitForTimeout(500);
+ await page.getByRole('button',{name:'Gift envelope',exact:true}).focus();await page.keyboard.press('Enter');await page.waitForTimeout(2600);assert.equal(await root.getAttribute('data-phase'),'3');
+ for(const width of [320,768,1440]){await page.setViewportSize({width,height:width===320?667:900});await page.waitForTimeout(150);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await page.screenshot({path:`output/envelope-gift-reveal/width-${width}.png`});}
+ const reduced=await browser.newPage({viewport:{width:393,height:852},reducedMotion:'reduce'});reduced.on('pageerror',e=>errors.push(e.message));await reduced.goto(`${base}/envelope-gift-reveal?autoplay=1`);await reduced.waitForTimeout(2300);assert.equal(await reduced.locator('.envelope-gift').getAttribute('data-phase'),'0');await reduced.getByRole('button',{name:'Lift the flap',exact:true}).click();await reduced.waitForTimeout(550);assert.equal(await reduced.locator('.envelope-gift').getAttribute('data-phase'),'3');await reduced.screenshot({path:'output/envelope-gift-reveal/reduced-motion.png'});
+ const autoplay=await browser.newPage({viewport:{width:393,height:852}});await autoplay.goto(`${base}/envelope-gift-reveal?autoplay=1`);await autoplay.waitForTimeout(4400);assert.equal(await autoplay.locator('.envelope-gift').getAttribute('data-phase'),'3');await autoplay.waitForTimeout(4300);assert.equal(await autoplay.locator('.envelope-gift').getAttribute('data-phase'),'0');
+ assert.deepEqual(errors,[]);console.log('PASS: short drag, committed drag, flip, CTA reset, interruption, pointer cancel, button, keyboard, 320/768/1440px, reduced motion, 10s autoplay; no runtime errors.');await browser.close();
+})().catch(e=>{console.error(e);process.exit(1)});

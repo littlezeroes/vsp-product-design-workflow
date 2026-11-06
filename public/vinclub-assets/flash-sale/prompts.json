@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "id": "greensm",
+      "prompt": "Use case: ads-marketing. Create one landscape 3:2 Flash sale card illustration. Subject: a turquoise Green SM VinFast electric taxi SUV in three-quarter front view. Palette: turquoise teal #2DCCD3 and deep petrol teal. Inspired by Wise's confident editorial use of bold solid color fields and simple sculptural imagery, adapted to this brand's colors, no Wise logos or lime green. Premium tactile 3D illustration with realistic materials, oversized simple hero subject, clean strong silhouette and restrained composition. FULL BLEED saturated brand color background reaching every edge. Tone-on-tone floor and backdrop, rich midtone to deep colored surfaces. Absolutely NO white background, NO off-white backdrop, NO cream background, NO white border, NO blank white margin, NO pale studio sweep. Designed to sit elegantly in a dark mode app. Strong directional soft light, crisp detail, subtle contact shadows. All objects within central 80% safe area for cropping. No text, no slogans, no badges, no watermark, no invented offers.",
+      "path": "/Users/huykieu/.codex/generated_images/01a1a47d-2d95-7f23-a06b-ec7d6eac0329/exec-c8d3f139-1d12-426e-a619-cf36e08a8da7.png"
+    },
+    {
+      "id": "vinfast",
+      "prompt": "Use case: ads-marketing. Create one landscape 3:2 Flash sale card illustration. Subject: a silver VinFast electric SUV with distinctive V light signature in three-quarter front view. Palette: VinFast Future Blue royal blue and deep navy. Inspired by Wise's confident editorial use of bold solid color fields and simple sculptural imagery, adapted to this brand's colors, no Wise logos or lime green. Premium tactile 3D illustration with realistic materials, oversized simple hero subject, clean strong silhouette and restrained composition. FULL BLEED saturated brand color background reaching every edge. Tone-on-tone floor and backdrop, rich midtone to deep colored surfaces. Absolutely NO white background, NO off-white backdrop, NO cream background, NO white border, NO blank white margin, NO pale studio sweep. Designed to sit elegantly in a dark mode app. Strong directional soft light, crisp detail, subtle contact shadows. All objects within central 80% safe area for cropping. No text, no slogans, no badges, no watermark, no invented offers.",
+      "path": "/Users/huykieu/.codex/generated_images/01a1a47d-2d95-7f23-a06b-ec7d6eac0329/exec-18969dca-a355-4734-b322-b668bc017a53.png"
+    },
+    {
+      "id": "vinpearl",
+      "prompt": "Use case: ads-marketing. Create one landscape 3:2 Flash sale card illustration. Subject: a sculptural miniature luxury Vinpearl tropical beach resort with palm trees, villas and infinity pool. Palette: Vinpearl warm gold and amber against deep warm bronze. Inspired by Wise's confident editorial use of bold solid color fields and simple sculptural imagery, adapted to this brand's colors, no Wise logos or lime green. Premium tactile 3D illustration with realistic materials, oversized simple hero subject, clean strong silhouette and restrained composition. FULL BLEED saturated brand color background reaching every edge. Tone-on-tone floor and backdrop, rich midtone to deep colored surfaces. Absolutely NO white background, NO off-white backdrop, NO cream background, NO white border, NO blank white margin, NO pale studio sweep. Designed to sit elegantly in a dark mode app. Strong directional soft light, crisp detail, subtle contact shadows. All objects within central 80% safe area for cropping. No text, no slogans, no badges, no watermark, no invented offers.",
+      "path": "/Users/huykieu/.codex/generated_images/01a1a47d-2d95-7f23-a06b-ec7d6eac0329/exec-4ad1bb5d-b57c-400d-9912-bf7a565181b9.png"
+    }
+  ]
+}

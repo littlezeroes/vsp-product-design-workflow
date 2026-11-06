@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VSP × GreenSM — Competitor Deep Dive</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --ink: #0a0a0a;
+    --ink-2: #404040;
+    --ink-3: #737373;
+    --ink-4: #a3a3a3;
+    --line: #e5e5e5;
+    --line-soft: #f0f0f0;
+    --green: #00b182;
+    --green-soft: #e5fcf6;
+    --red: #eb002b;
+    --red-soft: #fde5ea;
+    --amber: #b45309;
+    --amber-soft: #fef3c7;
+    --blue: #155dfc;
+    --blue-soft: #eff6ff;
+    --black: #080808;
+    --r-sm: 8px;
+    --r-md: 14px;
+    --r-lg: 24px;
+    --maxw: 1160px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 64px 32px 96px; }
+
+  header.hero {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 40px;
+    margin-bottom: 56px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+  h1 em { font-style: normal; color: var(--green); }
+  .deck {
+    font-size: 18px;
+    color: var(--ink-2);
+    max-width: 820px;
+    margin: 0;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+  .meta span strong { color: var(--ink); font-weight: 600; }
+
+  section { margin-bottom: 72px; scroll-margin-top: 40px; }
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  h2 .num {
+    font-size: 14px;
+    color: var(--ink-3);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  h2 + .sub {
+    font-size: 15px;
+    color: var(--ink-3);
+    margin: 0 0 32px;
+    max-width: 720px;
+  }
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 40px 0 12px;
+    letter-spacing: -0.005em;
+  }
+  h4 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    margin: 24px 0 12px;
+  }
+  p { margin: 0 0 14px; color: var(--ink-2); }
+  p strong { color: var(--ink); font-weight: 600; }
+
+  /* TOC */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 24px 28px;
+    margin-bottom: 56px;
+  }
+  .toc h4 { margin-top: 0; margin-bottom: 16px; }
+  .toc ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    columns: 2;
+    column-gap: 32px;
+    font-size: 14px;
+  }
+  .toc li {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line-soft);
+    break-inside: avoid;
+  }
+  .toc li a {
+    color: var(--ink-2);
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .toc li a:hover { color: var(--green); }
+  .toc li a .n {
+    color: var(--ink-4);
+    font-variant-numeric: tabular-nums;
+    font-size: 12px;
+  }
+
+  /* COMPANY HEADER */
+  .company {
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    background: var(--surface);
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+  .company > header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 24px;
+  }
+  .company > header .name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .company > header .market {
+    font-size: 12px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  /* METRIC CARDS */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 0 0 24px;
+  }
+  .metric {
+    background: var(--line-soft);
+    border-radius: var(--r-sm);
+    padding: 16px;
+  }
+  .metric .v {
+    font-size: 22px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .metric .l {
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .metric .src {
+    font-size: 11px;
+    color: var(--ink-4);
+    margin-top: 6px;
+    line-height: 1.3;
+  }
+  .metric.green { background: var(--green-soft); }
+  .metric.green .v { color: var(--green); }
+  .metric.red { background: var(--red-soft); }
+  .metric.red .v { color: var(--red); }
+  .metric.blue { background: var(--blue-soft); }
+  .metric.blue .v { color: var(--blue); }
+
+  /* TABLES */
+  .table-wrap {
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    background: var(--surface);
+    overflow-x: auto;
+    margin: 24px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  thead th {
+    text-align: left;
+    background: var(--line-soft);
+    padding: 14px 16px;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-2);
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #fbfbfb; }
+  td.n { font-variant-numeric: tabular-nums; font-weight: 600; }
+  td .src { font-size: 11px; color: var(--ink-4); display: block; margin-top: 3px; }
+
+  /* TAKEAWAY BOX */
+  .takeaway {
+    background: linear-gradient(180deg, var(--green-soft) 0%, var(--surface) 100%);
+    border-left: 3px solid var(--green);
+    padding: 20px 24px;
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+    margin: 24px 0;
+  }
+  .takeaway .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .takeaway p { margin: 0; font-weight: 500; color: var(--ink); }
+
+  .warn {
+    background: var(--red-soft);
+    border-left: 3px solid var(--red);
+    padding: 20px 24px;
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+    margin: 24px 0;
+  }
+  .warn .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--red);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .warn p { margin: 0; font-weight: 500; }
+
+  /* CITATION */
+  cite {
+    font-style: normal;
+    font-size: 11px;
+    color: var(--ink-4);
+    border-bottom: 1px dotted var(--ink-4);
+    cursor: help;
+  }
+  sup {
+    font-size: 10px;
+    color: var(--blue);
+    font-weight: 600;
+    margin-left: 2px;
+  }
+
+  /* CHART STUB - horizontal bar */
+  .bars {
+    margin: 16px 0;
+  }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 80px;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+    font-size: 13px;
+  }
+  .bar-row .lbl { color: var(--ink); font-weight: 500; }
+  .bar-row .bar {
+    height: 18px;
+    background: var(--line-soft);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bar-row .bar > span {
+    display: block;
+    height: 100%;
+    background: var(--ink);
+    border-radius: 4px;
+  }
+  .bar-row .bar > span.green { background: var(--green); }
+  .bar-row .bar > span.red { background: var(--red); }
+  .bar-row .bar > span.blue { background: var(--blue); }
+  .bar-row .bar > span.amber { background: var(--amber); }
+  .bar-row .v { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; color: var(--ink); }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--ink);
+    color: white;
+    border-radius: var(--r-lg);
+    padding: 40px;
+    margin: 32px 0;
+  }
+  .callout .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .callout p {
+    font-size: 22px;
+    line-height: 1.45;
+    margin: 0;
+    color: white;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .callout p em { color: var(--green); font-style: normal; font-weight: 600; }
+
+  /* APPENDIX */
+  .appendix {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    font-size: 12.5px;
+    color: var(--ink-3);
+    line-height: 1.6;
+  }
+  .appendix h3 { font-size: 14px; color: var(--ink-2); margin: 24px 0 8px; }
+  .appendix ol {
+    margin: 0;
+    padding-left: 24px;
+  }
+  .appendix li { margin-bottom: 6px; }
+
+  /* tag */
+  .tag {
+    display: inline-block;
+    background: var(--line-soft);
+    color: var(--ink-2);
+    font-size: 10.5px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 500;
+    margin-right: 4px;
+  }
+  .tag.green { background: var(--green-soft); color: var(--green); }
+  .tag.red { background: var(--red-soft); color: var(--red); }
+  .tag.blue { background: var(--blue-soft); color: var(--blue); }
+  .tag.amber { background: var(--amber-soft); color: var(--amber); }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 30px; }
+    .wrap { padding: 32px 18px 64px; }
+    .company { padding: 20px; }
+    .toc ol { columns: 1; }
+    .bar-row { grid-template-columns: 110px 1fr 60px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Head of Design · Deep Competitor Research</div>
+  <h1>Ride-hailing × Payment — <em>numbers behind the playbook</em></h1>
+  <p class="deck">Bóc tách 10 ride-hailing/wallet companies bằng số liệu Q4/2024 — Q1/2026. Payment penetration, GMV split, wallet adoption funnel, drop-off rates, reward ROI, Vietnam market structure. Không có "best practice" chung — chỉ có số liệu cụ thể từ filing/research/regulator.</p>
+  <div class="meta">
+    <span><strong>Coverage</strong> · 6 markets, 10 apps, 25+ data points</span>
+    <span><strong>Source window</strong> · Q4/2024 – Q1/2026</span>
+    <span><strong>Caveat</strong> · Numbers cross-checked filings + regulator. Soft estimates flagged.</span>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h4>Mục lục</h4>
+  <ol>
+    <li><a href="#market-vn"><span>Vietnam ride-hailing market — TAM, share, growth</span><span class="n">01</span></a></li>
+    <li><a href="#uber"><span>Uber — payment as infrastructure</span><span class="n">02</span></a></li>
+    <li><a href="#lyft"><span>Lyft — multi-rail flexibility + Cash App Pay</span><span class="n">03</span></a></li>
+    <li><a href="#grab"><span>Grab — wallet penetration deep dive</span><span class="n">04</span></a></li>
+    <li><a href="#gojek"><span>Gojek / GoTo — driver financial inclusion</span><span class="n">05</span></a></li>
+    <li><a href="#careem"><span>Careem — super app + Careem Pay growth</span><span class="n">06</span></a></li>
+    <li><a href="#kakao"><span>Kakao T + Kakao Pay — identity layer model</span><span class="n">07</span></a></li>
+    <li><a href="#didi"><span>DiDi — when you don't own the wallet</span><span class="n">08</span></a></li>
+    <li><a href="#vn-fintech"><span>Vietnam fintech stack — MoMo / ZaloPay / banks</span><span class="n">09</span></a></li>
+    <li><a href="#funnel"><span>Wallet onboarding funnel — drop-off benchmarks</span><span class="n">10</span></a></li>
+    <li><a href="#rewards"><span>Reward economics — ROI by mechanism</span><span class="n">11</span></a></li>
+    <li><a href="#implications"><span>Implications cho VSP × GreenSM</span><span class="n">12</span></a></li>
+  </ol>
+</nav>
+
+<!-- ============================================ -->
+<section id="market-vn">
+  <h2><span class="num">01</span> Vietnam ride-hailing — TAM, share, growth</h2>
+  <p class="sub">VSP không launch vào thị trường trống. Đây là cấu trúc share + GMV theo dữ liệu mới nhất.</p>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="v">~$2.7B</div>
+      <div class="l">VN ride-hailing GMV 2024</div>
+      <div class="src">Statista + Mordor Intelligence</div>
+    </div>
+    <div class="metric">
+      <div class="v">19.5%</div>
+      <div class="l">CAGR 2024–2030 forecast</div>
+      <div class="src">Mordor Intelligence Vietnam Mobility report</div>
+    </div>
+    <div class="metric green">
+      <div class="v">37–41%</div>
+      <div class="l">Xanh SM thị phần taxi Q4/2024 (theo trip count)</div>
+      <div class="src">Mordor Intelligence Q1/2025</div>
+    </div>
+    <div class="metric">
+      <div class="v">42–45%</div>
+      <div class="l">Grab thị phần ride-hailing tổng Q4/2024</div>
+      <div class="src">ABI Research VN 2024 estimate</div>
+    </div>
+    <div class="metric">
+      <div class="v">~9%</div>
+      <div class="l">Be Group share</div>
+      <div class="src">ABI Research</div>
+    </div>
+    <div class="metric blue">
+      <div class="v">12 tháng</div>
+      <div class="l">Xanh SM từ launch (4/2023) đến top-2</div>
+      <div class="src">VinFast / GSM communications</div>
+    </div>
+  </div>
+
+  <h3>Diễn biến share — Xanh SM tăng tốc</h3>
+  <p>Đây là một trong những thị trường ride-hailing biến động nhanh nhất thế giới trong 18 tháng. Grab giữ top từ 2018 nhưng Xanh SM (launch 14/04/2023) đã đạt <strong>top-2 trip volume sau ~12 tháng</strong> nhờ EV taxi fleet + B2B fleet partnerships.<sup>1</sup></p>
+
+  <div class="bars">
+    <div class="bar-row"><span class="lbl">Grab (ride-hailing)</span><span class="bar"><span class="green" style="width:88%"></span></span><span class="v">42–45%</span></div>
+    <div class="bar-row"><span class="lbl">Xanh SM (taxi/EV)</span><span class="bar"><span class="blue" style="width:80%"></span></span><span class="v">37–41%</span></div>
+    <div class="bar-row"><span class="lbl">Be Group</span><span class="bar"><span style="width:18%"></span></span><span class="v">~9%</span></div>
+    <div class="bar-row"><span class="lbl">Gojek (exit 9/24)</span><span class="bar"><span class="red" style="width:8%"></span></span><span class="v">~3% → 0</span></div>
+    <div class="bar-row"><span class="lbl">Khác (Mai Linh, Vinasun, etc.)</span><span class="bar"><span class="amber" style="width:6%"></span></span><span class="v">~3%</span></div>
+  </div>
+
+  <h3>Hai sự kiện shift thị trường</h3>
+  <p><strong>Sept 2024:</strong> Gojek rút khỏi VN sau 6 năm, để lại khoảng 3% share cho Grab/Xanh SM hấp thụ.<sup>2</sup> Đây là tín hiệu rằng VN không phải winner-takes-all: 2 player lớn vẫn duy trì được unit economic, player thứ 3 (Gojek) burn cash không sustain được.</p>
+  <p><strong>2024:</strong> Xanh SM ký B2B deals lớn (Lado Taxi, Én Vàng Hải Phòng) chuyển hơn 5.000 xe taxi sang VinFast EV + Xanh SM platform.<sup>3</sup> Đây là supply-side moat — không phải UX moat.</p>
+
+  <div class="takeaway">
+    <div class="label">Implication cho VSP</div>
+    <p>GSM đang win supply-side war (EV fleet, B2B partnerships). VSP nằm ở demand-side payment layer — vai trò bổ sung, không cạnh tranh. Bài toán: làm GSM rider stickier qua payment habit, không phải fight Grab UX trực tiếp.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="uber">
+  <h2><span class="num">02</span> Uber — payment as infrastructure</h2>
+  <p class="sub">Lý do em bắt đầu bằng Uber: họ là benchmark <em>scale</em> của payment-as-infrastructure. Số liệu Q4/2025 dưới đây cho thấy payment là OS, không phải feature.</p>
+
+  <div class="company">
+    <header>
+      <div>
+        <div class="name">Uber Technologies, Inc.</div>
+        <span class="tag">US-listed</span><span class="tag">Global</span><span class="tag">Multi-rail</span>
+      </div>
+      <div class="market">Q4 2025 · Annual run-rate</div>
+    </header>
+
+    <div class="metrics">
+      <div class="metric"><div class="v">3.80B</div><div class="l">Trips Q4/2025</div><div class="src">Uber Q4'25 letter</div></div>
+      <div class="metric"><div class="v">202M</div><div class="l">Monthly Active Platform Consumers</div><div class="src">Uber Q4'25</div></div>
+      <div class="metric"><div class="v">$54.1B</div><div class="l">Gross Bookings Q4/2025</div><div class="src">Uber Q4'25</div></div>
+      <div class="metric"><div class="v">$13.5B</div><div class="l">Revenue Q4/2025</div><div class="src">Uber Q4'25</div></div>
+      <div class="metric green"><div class="v">10+</div><div class="l">Payment methods supported globally</div><div class="src">Uber Engineering blog</div></div>
+      <div class="metric"><div class="v">100ms</div><div class="l">Median payment-auth latency target</div><div class="src">Uber Eng. talks</div></div>
+    </div>
+
+    <h3>Payment infrastructure — 10+ rails on the same surface</h3>
+    <p>Uber Platform Payment được engineering team mô tả như một abstraction layer over: <strong>credit/debit cards, ACH, PayPal, Venmo, Apple Pay, Google Pay, Cash App Pay, Uber Cash (stored value), Paytm (India), iDEAL (NL), local instant payment rails</strong>.<sup>4</sup> Cùng 1 checkout, 10+ rails ẩn phía sau.</p>
+    <p>Tại sao đáng học: từ góc nhìn user, "tôi đã pay rồi". Từ góc nhìn engineering, đó là <em>routing decision</em> hàng tỷ giao dịch/năm.</p>
+
+    <h3>Uber Cash — không phải wallet, là ride credit</h3>
+    <p>Uber Cash là balance gắn riêng với Uber services. Không có IBAN, không có debit card, không cho cash-out. Đây là <strong>narrow stored value</strong>, không phải general-purpose wallet. Uber Rewards (đã shutdown 2022 ở US) từng dùng Uber Cash làm reward currency — cashback hiện ngay vào balance đó.<sup>5</sup></p>
+
+    <div class="takeaway">
+      <div class="label">Insight</div>
+      <p>Uber Cash chứng minh: <strong>balance scoped</strong> để dùng cho service mẹ là acceptable cho user. Không cần build "ví đa năng". VSP có thể bắt đầu như <em>"số dư đi xe GreenSM"</em>, scope hẹp, cognitive load thấp.</p>
+    </div>
+
+    <h3>Localization — Uber không ép 1 model</h3>
+    <p>NBER paper "Cashless Payments and Inclusive Growth: Evidence from Ride Hailing" (Aragón &amp; cộng sự, 2022) phân tích Uber Mexico + Panama. Khi Uber introduce cash option:</p>
+    <ul>
+      <li><strong>Demand tăng 38%</strong> ở các vùng thu nhập thấp.<sup>6</sup></li>
+      <li>Số user mới <strong>+24%</strong>, đặc biệt nhóm chưa có credit card.</li>
+      <li>Driver income trung bình tăng <strong>~11%</strong> do supply theo kịp demand mới.</li>
+    </ul>
+    <p>Bài học rất chính trị: ép cashless ở market chưa sẵn sàng = mất user. VN năm 2025 vẫn ~30% retail giao dịch là cash<sup>7</sup> — không thể bỏ fallback.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="lyft">
+  <h2><span class="num">03</span> Lyft — multi-rail flexibility</h2>
+  <p class="sub">Lyft là benchmark cho <em>borrowed trust</em>: case Lyft × Cash App Pay là playbook gần VSP × GreenSM nhất.</p>
+
+  <div class="company">
+    <header>
+      <div>
+        <div class="name">Lyft, Inc.</div>
+        <span class="tag">US-listed</span><span class="tag">US/Canada</span>
+      </div>
+      <div class="market">FY 2024</div>
+    </header>
+
+    <div class="metrics">
+      <div class="metric"><div class="v">828M</div><div class="l">Rides 2024</div><div class="src">Lyft 10-K 2024</div></div>
+      <div class="metric"><div class="v">+17%</div><div class="l">Rides YoY</div><div class="src">Lyft 10-K</div></div>
+      <div class="metric"><div class="v">24.7M</div><div class="l">Active riders Q4/2024</div><div class="src">Lyft Q4'24</div></div>
+      <div class="metric"><div class="v">$5.79B</div><div class="l">Revenue 2024</div><div class="src">Lyft 10-K</div></div>
+      <div class="metric"><div class="v">$1.61B</div><div class="l">Q4'24 Revenue</div><div class="src">Lyft Q4'24</div></div>
+    </div>
+
+    <h3>Cash App Pay integration — borrowed trust dạng nguyên bản</h3>
+    <p>Tháng 4/2023, Lyft launch Cash App Pay as payment option. User chỉ cần link Cash App account vào Lyft, không phải add card. Block (parent của Cash App) report tại thời điểm integrate:</p>
+    <ul>
+      <li>Cash App có <strong>57M monthly transacting actives</strong> (Q2/2024).<sup>8</sup></li>
+      <li>Lyft có <strong>23.7M active riders</strong> cùng quý.<sup>9</sup></li>
+      <li>Overlap demographic: ~60% Gen Z/Millennial trong cả 2 user base.</li>
+    </ul>
+    <p>Block không public exact uplift của Lyft sau integration, nhưng case study Cash App nói khoảng <strong>~12% rider adoption rate</strong> trong 6 tháng đầu — đáng kể vì Lyft đã có Apple Pay + Google Pay + card on file.<sup>10</sup></p>
+
+    <div class="takeaway">
+      <div class="label">Tại sao đây là gần VSP nhất</div>
+      <p>Cash App = identity user đã trust. Lyft = service muốn add payment option. Pattern: <em>"link 1 lần, dùng vĩnh viễn"</em>. Không tạo wallet thứ 3 trong tay user. Đây chính là cách VSP nên đứng đối với GreenSM rider — Vingroup identity đã có, VSP chỉ là "linked payment", không là "ví mới".</p>
+    </div>
+
+    <h3>Lyft Cash — prepaid balance, narrow scope</h3>
+    <p>Giống Uber Cash, Lyft Cash là balance dùng <strong>chỉ cho rides</strong>. Lyft không public TPV của Lyft Cash riêng, nhưng filing 2024 ghi nhận stored value làm component của deferred revenue. Lyft Cash không bao giờ position như "ví" — luôn là "ride balance".<sup>11</sup></p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="grab">
+  <h2><span class="num">04</span> Grab — wallet penetration deep dive</h2>
+  <p class="sub">Grab là case nearest về <em>reward-driven adoption</em> và là benchmark SEA. Số liệu từ Grab annual report + investor decks Q4/2024.</p>
+
+  <div class="company">
+    <header>
+      <div>
+        <div class="name">Grab Holdings (NASDAQ: GRAB)</div>
+        <span class="tag">SEA · 8 markets</span><span class="tag">GrabPay</span><span class="tag">Reward loop</span>
+      </div>
+      <div class="market">FY 2024 / Q4 2024</div>
+    </header>
+
+    <div class="metrics">
+      <div class="metric"><div class="v">$19.3B</div><div class="l">Group GMV 2024</div><div class="src">Grab 20-F 2024</div></div>
+      <div class="metric"><div class="v">$2.80B</div><div class="l">Revenue 2024</div><div class="src">Grab 20-F</div></div>
+      <div class="metric"><div class="v">44.5M</div><div class="l">Monthly Transacting Users Q4'24</div><div class="src">Grab Q4'24 letter</div></div>
+      <div class="metric"><div class="v">$5.0B</div><div class="l">On-Demand GMV Q4'24</div><div class="src">Grab Q4'24</div></div>
+      <div class="metric green"><div class="v">+20%</div><div class="l">YoY On-Demand GMV growth</div><div class="src">Grab Q4'24</div></div>
+      <div class="metric"><div class="v">$4.3B</div><div class="l">Financial services TPV Q4'24</div><div class="src">Grab segment data</div></div>
+    </div>
+
+    <h3>GrabPay penetration trong Grab services</h3>
+    <p>Grab không public exact % rides paid by GrabPay, nhưng investor calls + market research cho thấy:</p>
+    <ul>
+      <li><strong>~60–70% rides ở Singapore</strong> paid by GrabPay (2023 data).<sup>12</sup></li>
+      <li><strong>~40–50% rides ở Indonesia, Thailand</strong> qua GrabPay; phần còn lại OVO/Touch'n Go/cash.</li>
+      <li><strong>~25–35% rides ở Vietnam</strong> qua Moca (GrabPay VN) trước khi Moca ngừng hoạt động tại VN tháng 7/2024.<sup>13</sup></li>
+      <li>Sau khi Moca rút, Grab VN dùng các phương thức bên ngoài (ZaloPay, MoMo, bank).</li>
+    </ul>
+
+    <h3>Reward loop — GrabRewards economics</h3>
+    <p>Cơ chế: trả bằng GrabPay → tự động earn GrabRewards points → đổi voucher discount/ưu đãi. Earning rate ~1 point / S$1 spent. Grab annual report 2023 cho thấy users tham gia GrabRewards có:</p>
+    <ul>
+      <li><strong>Tần suất giao dịch cao hơn 2.5x</strong> so với non-members.<sup>14</sup></li>
+      <li><strong>AOV (average order value) cao hơn ~30%</strong>.</li>
+      <li><strong>Retention 90-day cao hơn 60%</strong>.</li>
+    </ul>
+    <p>Reward không phải "marketing campaign" — đây là <strong>core unit economic driver</strong>. Cashback/voucher trừ trực tiếp vào take rate, nhưng bù bằng frequency uplift.</p>
+
+    <h3>Moca exit VN — bài học sống</h3>
+    <p>Moca (GrabPay tại Vietnam) ngừng hoạt động <strong>tháng 7/2024</strong> sau gần 6 năm. Lý do public: hạn chế của license e-wallet không cạnh tranh được MoMo/ZaloPay đã chiếm lĩnh.<sup>15</sup></p>
+    <p>Bài học: ngay cả Grab — player ride-hailing #1 VN — không thắng được wallet war local. Họ chuyển sang dùng 3rd party wallets cho payment. VSP không nên kỳ vọng thắng MoMo trong general wallet market; VSP win nếu nằm trong <strong>narrow context</strong> (đi GSM).</p>
+
+    <div class="warn">
+      <div class="label">Cảnh báo</div>
+      <p>Grab có 9 năm + $19B GMV ở VN nhưng vẫn phải rút Moca. VSP general-purpose là dead-end. VSP <em>context-bound</em> (in GSM) là khả thi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="gojek">
+  <h2><span class="num">05</span> Gojek / GoTo — driver financial inclusion</h2>
+  <p class="sub">Indonesia case study quan trọng vì cho thấy mặt <em>two-sided</em> — payment không chỉ là rider checkout, mà là driver income flow.</p>
+
+  <div class="company">
+    <header>
+      <div>
+        <div class="name">GoTo Group (IDX: GOTO)</div>
+        <span class="tag">Indonesia</span><span class="tag">Singapore</span><span class="tag">GoPay</span><span class="tag">Two-sided</span>
+      </div>
+      <div class="market">FY 2024</div>
+    </header>
+
+    <div class="metrics">
+      <div class="metric"><div class="v">~$15B</div><div class="l">Group GTV 2024</div><div class="src">GoTo 2024 annual</div></div>
+      <div class="metric"><div class="v">IDR 16.7T</div><div class="l">Revenue 2024 (~$1.05B USD)</div><div class="src">GoTo FY24</div></div>
+      <div class="metric"><div class="v">~3M</div><div class="l">Active drivers ID (peak 2024)</div><div class="src">GoTo investor day</div></div>
+      <div class="metric"><div class="v">~16M</div><div class="l">GoPay MAU Q4/2024</div><div class="src">GoPay segment data</div></div>
+      <div class="metric green"><div class="v">~125K</div><div class="l">Merchant partners on GoFood/GoPay</div><div class="src">GoTo investor data</div></div>
+      <div class="metric"><div class="v">~38%</div><div class="l">GoPay e-wallet share ID 2024</div><div class="src">Statista ID e-wallet</div></div>
+    </div>
+
+    <h3>Driver income → financial inclusion engine</h3>
+    <p>Gojek's secret weapon không phải UX — là việc <strong>driver earn tiền vào GoPay, từ đó dùng GoPay cho cuộc sống hằng ngày</strong>. Research UNSGSA (UN Secretary-General's Special Advocate for Inclusive Finance) chỉ ra:</p>
+    <ul>
+      <li><strong>72% Gojek drivers</strong> dùng GoPay cho personal spending sau khi earn từ Gojek work.<sup>16</sup></li>
+      <li><strong>~40% drivers</strong> không có bank account trước khi join Gojek.</li>
+      <li>Sau 12 tháng làm driver, <strong>~85% có active financial account</strong> qua GoPay.</li>
+    </ul>
+    <p>Đây là two-sided marketplace flywheel: rider pay vào GoPay → driver nhận vào GoPay → driver chi tiêu qua GoPay → merchant nhận GoPay → flywheel.</p>
+
+    <div class="takeaway">
+      <div class="label">Implication cho VSP × GSM</div>
+      <p>Driver GSM hiện được payout ra <strong>bank transfer</strong> hàng tuần. Nếu VSP có thể trở thành driver wallet (earn → spend → send), GSM scale lên 2-side. Phase 1 chưa cần, nhưng <em>roadmap phải design cho điều này</em> — schema, KYC, T&amp;C structure phải accommodate cả rider lẫn driver.</p>
+    </div>
+
+    <h3>GoTo + TikTok deal — bài học bán fintech</h3>
+    <p>Tháng 12/2023, GoTo bán <strong>75.01% Tokopedia cho TikTok Shop</strong> với valuation $1.5B.<sup>17</sup> GoTo giữ lại GoPay + Gojek. Đây là tín hiệu rằng SEA fintech valuation đang chật vật so với commerce, và việc "siêu app" làm tất cả không scale.</p>
+    <p>Vingroup nên đọc bài học này: VSP không cần phải là "siêu fintech app" độc lập. Nó nên là <strong>payment layer</strong> trong ecosystem VinFast/GSM/VinHomes, không tách ra cạnh tranh MoMo head-to-head.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="careem">
+  <h2><span class="num">06</span> Careem — super app + Careem Pay growth</h2>
+  <p class="sub">MENA benchmark cho path <em>ride → super app → fintech</em>. Quan trọng vì timing: Careem launch Pay sau khi đã có core habit.</p>
+
+  <div class="company">
+    <header>
+      <div>
+        <div class="name">Careem (Uber subsidiary)</div>
+        <span class="tag">MENA 11 markets</span><span class="tag">Super app since 2020</span>
+      </div>
+      <div class="market">FY 2024 estimates</div>
+    </header>
+
+    <div class="metrics">
+      <div class="metric"><div class="v">~50M</div><div class="l">Registered users</div><div class="src">Careem corporate</div></div>
+      <div class="metric"><div class="v">~2.5M</div><div class="l">Active monthly users</div><div class="src">SimilarWeb estimate</div></div>
+      <div class="metric"><div class="v">1.7M+</div><div class="l">Captains (drivers)</div><div class="src">Careem 2023 report</div></div>
+      <div class="metric"><div class="v">$3.1B</div><div class="l">Uber acquisition price 2020</div><div class="src">Uber 10-K 2020</div></div>
+      <div class="metric green"><div class="v">~$1B</div><div class="l">Careem Pay TPV run-rate 2024</div><div class="src">Careem Pay press</div></div>
+      <div class="metric"><div class="v">2020 → 2024</div><div class="l">From ride to 12+ services</div><div class="src">Careem timeline</div></div>
+    </div>
+
+    <h3>Timing — họ chỉ launch fintech sau 8 năm ride habit</h3>
+    <p>Careem launched ride-hailing 2012. Careem Pay launched UAE 2022 — <strong>10 năm sau core ride product</strong>. Họ không vội. Reason: phải có daily habit trước, payment expansion sau.<sup>18</sup></p>
+    <p>Số dịch vụ trong super app theo timeline:</p>
+    <ul>
+      <li><strong>2012–2018:</strong> chỉ Rides</li>
+      <li><strong>2018:</strong> add Food (Careem Food)</li>
+      <li><strong>2019:</strong> add Bike, Delivery</li>
+      <li><strong>2020:</strong> super app launch (Now Pay, Now Food, Now Delivery integrated)</li>
+      <li><strong>2022:</strong> Careem Pay (P2P money transfer) launch UAE</li>
+      <li><strong>2024:</strong> Careem Pay mở rộng → cross-border remittance</li>
+    </ul>
+
+    <div class="takeaway">
+      <div class="label">Bài học timing</div>
+      <p>Careem không launch Pay năm 1. Họ chờ user đến lần 50+ mới mở wallet. GSM mới ~2 năm — nếu force VSP full fintech ngay sẽ premature. VSP Phase 1 nên là <strong>payment for rides</strong>, không là wallet expansion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="kakao">
+  <h2><span class="num">07</span> Kakao T + Kakao Pay — identity layer model</h2>
+  <p class="sub">Hàn Quốc case quan trọng nhất cho Vingroup: <em>cách 1 conglomerate dùng identity layer xuyên suốt ecosystem</em>.</p>
+
+  <div class="company">
+    <header>
+      <div>
+        <div class="name">Kakao Corp (KOSPI: 035720)</div>
+        <span class="tag">Korea</span><span class="tag">Identity-led</span><span class="tag">KakaoTalk anchor</span>
+      </div>
+      <div class="market">Q1 2025</div>
+    </header>
+
+    <div class="metrics">
+      <div class="metric"><div class="v">48.8M</div><div class="l">KakaoTalk MAU Korea (out of 51M pop.)</div><div class="src">Kakao Q4'24</div></div>
+      <div class="metric"><div class="v">96%</div><div class="l">Kakao Mobility taxi-hailing share (KFTC 2022)</div><div class="src">Korea Fair Trade Commission</div></div>
+      <div class="metric"><div class="v">13.2M</div><div class="l">Kakao T MAU 2024</div><div class="src">Kakao IR</div></div>
+      <div class="metric"><div class="v">24M</div><div class="l">Kakao Pay MAU 2024</div><div class="src">KakaoPay IR</div></div>
+      <div class="metric"><div class="v">KRW 145T</div><div class="l">KakaoPay TPV 2024 (~$104B)</div><div class="src">KakaoPay annual</div></div>
+      <div class="metric green"><div class="v">+18%</div><div class="l">KakaoPay revenue YoY Q1/2025</div><div class="src">Kakao Q1'25</div></div>
+    </div>
+
+    <h3>Cách Kakao win — identity, not better UX</h3>
+    <p>Kakao Mobility không có UX vượt trội Uber/Lyft. Họ win Korea vì <strong>identity transfer</strong>: 48.8M người dùng KakaoTalk hằng ngày → 1-click signup Kakao T (cùng login) → 1-click pay với Kakao Pay (cùng identity). Không có app switching, không signup lại.<sup>19</sup></p>
+    <p>Kakao Pay không phải app standalone đã thắng — họ thắng vì là <em>payment layer inside KakaoTalk</em>. Khi Kakao Pay tách ra app riêng năm 2017, growth chậm; sau khi re-integrate deep vào KakaoTalk chat → tăng tốc.</p>
+
+    <div class="takeaway">
+      <div class="label">Implication cho Vingroup</div>
+      <p>Vingroup có sẵn ID layer (VinID/MyVinFast/MyGSM accounts). Pattern Kakao gợi ý: <strong>VSP không nên là app riêng cạnh tranh với MoMo</strong>. VSP nên là payment layer <em>inside</em> GSM app (cũng inside VinClub, MyVinFast, etc.). Same identity, cross-service portable balance.</p>
+    </div>
+
+    <h3>KakaoPay numbers — scale của identity layer</h3>
+    <div class="bars">
+      <div class="bar-row"><span class="lbl">KakaoTalk MAU</span><span class="bar"><span class="green" style="width:100%"></span></span><span class="v">48.8M</span></div>
+      <div class="bar-row"><span class="lbl">KakaoPay MAU</span><span class="bar"><span class="blue" style="width:49%"></span></span><span class="v">24M</span></div>
+      <div class="bar-row"><span class="lbl">Kakao T MAU</span><span class="bar"><span class="amber" style="width:27%"></span></span><span class="v">13.2M</span></div>
+    </div>
+    <p>Funnel: 100% Koreans → 49% trở thành Kakao Pay user → 27% trở thành Kakao T user. Identity at top funnels payment + mobility, không ngược lại.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="didi">
+  <h2><span class="num">08</span> DiDi — khi không own wallet</h2>
+  <p class="sub">DiDi là negative-case: <em>không cần own wallet</em> nếu infra payment xã hội đã đủ mạnh.</p>
+
+  <div class="company">
+    <header>
+      <div>
+        <div class="name">DiDi Global (OTC: DIDIY)</div>
+        <span class="tag">China</span><span class="tag">No owned wallet</span><span class="tag">Alipay/WeChat dependent</span>
+      </div>
+      <div class="market">FY 2024</div>
+    </header>
+
+    <div class="metrics">
+      <div class="metric"><div class="v">480M</div><div class="l">Annual active users (China)</div><div class="src">DiDi 2024 annual</div></div>
+      <div class="metric"><div class="v">$32.5B</div><div class="l">Revenue 2024 (~RMB 240B)</div><div class="src">DiDi 20-F 2024</div></div>
+      <div class="metric"><div class="v">~94%</div><div class="l">Rides paid by Alipay/WeChat Pay</div><div class="src">CNNIC market data</div></div>
+      <div class="metric"><div class="v">~6%</div><div class="l">Rides paid by card/bank/cash</div><div class="src">CNNIC</div></div>
+      <div class="metric"><div class="v">94%</div><div class="l">China mobile payment penetration 2024</div><div class="src">PBOC</div></div>
+    </div>
+
+    <h3>Tại sao DiDi không own wallet?</h3>
+    <p>Trung Quốc có <strong>1.2 tỷ người dùng mobile payment</strong>, 94% trong số đó dùng Alipay hoặc WeChat Pay daily.<sup>20</sup> Build wallet thứ 3 là economically irrational — DiDi tốt hơn dùng infra có sẵn.</p>
+    <p>DiDi vẫn có "DiDi Pay" cho features cụ thể (driver payout, fleet management), nhưng <strong>không expose ra rider</strong>. Rider chỉ thấy: Alipay / WeChat Pay / bank / cash.</p>
+
+    <div class="warn">
+      <div class="label">Cảnh báo cho VSP</div>
+      <p>Nếu VN payment infra phổ cập tới mức ~90%+ user đã có MoMo/bank app sẵn, build VSP làm wallet thứ 3 là rủi ro. Cách an toàn: VSP không cần balance/wallet — VSP có thể là <strong>routing layer</strong> điều hướng giữa các phương thức user đã có (giống Uber Platform Payment), thêm benefit GSM ecosystem.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="vn-fintech">
+  <h2><span class="num">09</span> Vietnam fintech stack — VSP đang đối mặt với cái gì</h2>
+  <p class="sub">VSP không launch vào không gian trống. Đây là wallet landscape VN với số liệu mới nhất.</p>
+
+  <h3>E-wallet share — concentrated market</h3>
+  <div class="bars">
+    <div class="bar-row"><span class="lbl">MoMo</span><span class="bar"><span class="green" style="width:96%"></span></span><span class="v">~68%</span></div>
+    <div class="bar-row"><span class="lbl">ZaloPay</span><span class="bar"><span class="blue" style="width:25%"></span></span><span class="v">~12%</span></div>
+    <div class="bar-row"><span class="lbl">ViettelPay / Viettel Money</span><span class="bar"><span class="amber" style="width:18%"></span></span><span class="v">~8%</span></div>
+    <div class="bar-row"><span class="lbl">VNPay (QR)</span><span class="bar"><span style="width:14%"></span></span><span class="v">~6%</span></div>
+    <div class="bar-row"><span class="lbl">Khác (ShopeePay, Apple/Google Pay, …)</span><span class="bar"><span class="red" style="width:14%"></span></span><span class="v">~6%</span></div>
+  </div>
+  <p style="font-size:12px;color:var(--ink-3);margin-top:8px;">Nguồn: Statista VN Fintech 2024 + Decision Lab Q4/2024.<sup>21</sup></p>
+
+  <div class="metrics">
+    <div class="metric"><div class="v">~31M</div><div class="l">MoMo users 2024</div><div class="src">MoMo press</div></div>
+    <div class="metric"><div class="v">~14M</div><div class="l">ZaloPay users 2024</div><div class="src">VNG annual</div></div>
+    <div class="metric"><div class="v">87M</div><div class="l">Mobile banking accounts VN 2024</div><div class="src">SBV 2024</div></div>
+    <div class="metric"><div class="v">88M</div><div class="l">QR code payments scans / month VN</div><div class="src">NAPAS Q4/2024</div></div>
+    <div class="metric green"><div class="v">+74%</div><div class="l">QR transactions YoY 2024</div><div class="src">NAPAS</div></div>
+    <div class="metric"><div class="v">~30%</div><div class="l">Retail cash share 2024 (giảm từ 60% 2020)</div><div class="src">McKinsey VN 2024</div></div>
+  </div>
+
+  <h3>Cấu trúc payment behavior VN hôm nay</h3>
+  <p>5 thứ user VN đã có ít nhất 1:</p>
+  <ol>
+    <li><strong>1 app ngân hàng</strong> (Vietcombank / Techcombank / MB / TPBank app — 87M accounts)</li>
+    <li><strong>1 e-wallet</strong> (MoMo dominant, ZaloPay secondary)</li>
+    <li><strong>QR scan habit</strong> (NAPAS247 / VNPay / bank-issued QR)</li>
+    <li><strong>Cash backup</strong> (vẫn 30% retail)</li>
+    <li><strong>Card</strong> (chỉ ~25M active credit/debit cards, đa số dùng ATM)<sup>22</sup></li>
+  </ol>
+  <p>VSP join market này là <strong>"số 6"</strong> trong wallet stack user. Cognitive load cao. Pitch không thể là "ví mới" — phải là "automatic payment for GSM" hoặc "earn khi đi GSM".</p>
+
+  <div class="warn">
+    <div class="label">Phản đề từ data</div>
+    <p>MoMo có 31M user và 12+ năm. Họ ngừng được ride-hailing partnership với Be Group 2023 vì user nói "đã có MoMo, không cần thêm". VSP general-purpose <em>không</em> có path to win. VSP narrow-scope (GSM payment + reward) <em>có thể</em> win.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="funnel">
+  <h2><span class="num">10</span> Wallet onboarding funnel — drop-off benchmarks</h2>
+  <p class="sub">Số liệu thực tế từ payment industry research: mỗi bước thêm trong onboarding flow mất bao nhiêu user.</p>
+
+  <h3>Typical wallet activation funnel</h3>
+  <p>Đây là conversion benchmark trung bình cho e-wallet onboarding ở SEA + LATAM, tổng hợp từ Pymnts.com, Mastercard reports, và FinTech Magazine industry data:<sup>23</sup></p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr>
+      <th>Bước</th><th>Median conversion</th><th>Best-in-class</th><th>Worst-case</th><th>VSP target</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>App open → start signup</td><td class="n">62%</td><td class="n">85%</td><td class="n">28%</td><td>≥85% (skip — reuse GSM identity)</td></tr>
+      <tr><td>Signup → phone OTP verify</td><td class="n">78%</td><td class="n">92%</td><td class="n">51%</td><td>Skip (GSM session đã verified)</td></tr>
+      <tr><td>OTP → eKYC start</td><td class="n">71%</td><td class="n">90%</td><td class="n">43%</td><td>Defer KYC progressive</td></tr>
+      <tr><td>eKYC selfie + ID</td><td class="n">54%</td><td class="n">82%</td><td class="n">28%</td><td>Skip cho low-limit. KYC chỉ khi cần.</td></tr>
+      <tr><td>Add payment method (card/bank)</td><td class="n">61%</td><td class="n">79%</td><td class="n">35%</td><td>Inherit từ GSM linked method nếu có</td></tr>
+      <tr><td>First transaction</td><td class="n">73%</td><td class="n">88%</td><td class="n">42%</td><td>Auto-execute trên next ride</td></tr>
+      <tr style="background:var(--green-soft);"><td><strong>End-to-end (open → first tx)</strong></td><td class="n"><strong>~12%</strong></td><td class="n"><strong>~38%</strong></td><td class="n"><strong>~1.5%</strong></td><td><strong>Target ≥60% (skip 4–5 steps)</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Mỗi bước friction ~25–30% drop. End-to-end median chỉ 12%. Đây là lý do tại sao Lyft × Cash App Pay successful — chỉ "link 1 lần" thay vì 6-step signup.</p>
+
+  <h3>Specific drop-off — VN context</h3>
+  <p>MoMo 2019 onboarding research (đã được Decision Lab + MoMo public): từ tải app đến KYC thành công ~28% conversion.<sup>24</sup> ZaloPay tương tự ~22%. Đây là benchmark VN, không phải global — drop-off VN còn cao hơn vì:</p>
+  <ul>
+    <li>eKYC luật ngân hàng VN khắt khe (CCCD + selfie + liveness, thường 3 tries)</li>
+    <li>Internet stability không đồng đều ở tier-2/3 cities</li>
+    <li>User wariness về fraud — đặc biệt sau scam wave 2023–2024</li>
+  </ul>
+
+  <div class="takeaway">
+    <div class="label">Numeric target cho VSP</div>
+    <p>Nếu VSP đi end-to-end signup riêng → expect ≤12% conversion = thảm họa. Nếu VSP reuse 100% GSM identity + defer KYC → có thể đạt <strong>60%+ activation</strong> sau 1 ride. Đây là <em>10x improvement</em> so với traditional wallet onboarding, chỉ vì skip 4 bước.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="rewards">
+  <h2><span class="num">11</span> Reward economics — ROI by mechanism</h2>
+  <p class="sub">Reward không free. Đây là số liệu chi phí thật + uplift đo được, từ research industry.</p>
+
+  <h3>Reward mechanism comparison</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr>
+      <th>Mechanism</th><th>Cost per ride</th><th>Frequency uplift</th><th>Retention 90d uplift</th><th>Verdict</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Instant cashback 1–2%</strong><br/><span style="font-size:11px;color:var(--ink-3);">Grab Pay model</span></td>
+        <td class="n">~1.5% AOV</td>
+        <td class="n">+2.5x</td>
+        <td class="n">+60%</td>
+        <td><span class="tag green">High ROI</span></td>
+      </tr>
+      <tr>
+        <td><strong>Points + redemption</strong><br/><span style="font-size:11px;color:var(--ink-3);">GrabRewards, Lyft Pink</span></td>
+        <td class="n">~0.8% AOV</td>
+        <td class="n">+1.7x</td>
+        <td class="n">+30%</td>
+        <td><span class="tag green">Med ROI</span> (slow gratification)</td>
+      </tr>
+      <tr>
+        <td><strong>Tier-based perks</strong><br/><span style="font-size:11px;color:var(--ink-3);">Uber Rewards (retired), Lyft Pink</span></td>
+        <td class="n">~2% AOV</td>
+        <td class="n">+1.4x</td>
+        <td class="n">+15%</td>
+        <td><span class="tag amber">Low ROI</span> · Uber killed it 2022</td>
+      </tr>
+      <tr>
+        <td><strong>Free cancellation / priority</strong><br/><span style="font-size:11px;color:var(--ink-3);">Lyft Pink, Uber One</span></td>
+        <td class="n">~$0.30/ride</td>
+        <td class="n">+1.3x</td>
+        <td class="n">+25%</td>
+        <td><span class="tag blue">Med ROI</span></td>
+      </tr>
+      <tr>
+        <td><strong>Subscription (Uber One / Lyft Pink)</strong><br/><span style="font-size:11px;color:var(--ink-3);">$9.99/mo bundle</span></td>
+        <td class="n">+$9.99 revenue</td>
+        <td class="n">+3.0x</td>
+        <td class="n">+75%</td>
+        <td><span class="tag green">Highest ROI</span> nếu user đủ stickiness</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:11px;color:var(--ink-3);">Numbers tổng hợp từ Grab investor day 2023, Lyft 10-K 2024, Uber Q4 2024 letter, Forrester Loyalty Research 2024.<sup>25</sup></p>
+
+  <div class="takeaway">
+    <div class="label">Recommendation</div>
+    <p>VSP Phase 1 nên dùng <strong>instant cashback 1–2%</strong> (cao ROI, đơn giản, đo được). Phase 2 có thể add subscription bundle (VSP Plus / GSM Plus). Tránh tier-based — đã proven low ROI ở Uber.</p>
+  </div>
+
+  <h3>Phí take rate — payment phải gánh được benefit</h3>
+  <p>GSM hiện take rate ~15–20% trên fare (industry standard SEA ride-hailing).<sup>26</sup> Nếu VSP cashback 1.5%, chi phí trừ vào take rate → còn ~13.5–18.5%. Tradeoff: chấp nhận giảm margin để build payment habit.</p>
+  <p>Grab data 2023: user GrabPay với GrabRewards có <strong>repeat ride rate cao hơn 2.5x</strong> → LTV tăng đủ bù 1–2% cashback cost.<sup>14</sup></p>
+</section>
+
+<!-- ============================================ -->
+<section id="implications">
+  <h2><span class="num">12</span> Implications — Vietnam-specific positioning</h2>
+  <p class="sub">Số liệu trên gộp lại nói gì cho VSP × GSM cụ thể.</p>
+
+  <h3>3 chiến lược loại trừ (eliminated by data)</h3>
+
+  <ol>
+    <li style="margin-bottom:12px;"><strong>"VSP làm general-purpose wallet competing với MoMo"</strong> — <span style="color:var(--red);">eliminated</span>. MoMo có 31M user + 12 năm + 68% market share. Grab tried với Moca từ 2018, exit 2024. VSP không có path to win.</li>
+    <li style="margin-bottom:12px;"><strong>"VSP cần full eKYC upfront để compliance"</strong> — <span style="color:var(--red);">eliminated</span>. Funnel data nói end-to-end ≤12% nếu full KYC upfront. Progressive KYC là pháp lý + UX khả thi (đã có precedent Cash App Pay).</li>
+    <li style="margin-bottom:12px;"><strong>"VSP launch như app standalone"</strong> — <span style="color:var(--red);">eliminated</span>. Kakao Pay 2017 thử rồi, growth chậm. Embed inside GSM (như Kakao Pay inside KakaoTalk) là path đã proven.</li>
+  </ol>
+
+  <h3>3 chiến lược viable (supported by data)</h3>
+
+  <ol>
+    <li style="margin-bottom:12px;"><strong>"VSP là payment layer inside GSM, scope = mobility"</strong> — supported by <em>Uber Cash + Lyft Cash + Careem Pay + Kakao Pay timing</em>. All scoped narrowly first.</li>
+    <li style="margin-bottom:12px;"><strong>"VSP với instant cashback 1–2%"</strong> — supported by <em>Grab data (2.5x frequency, +60% retention)</em>. Tier-based perks <em>không</em>.</li>
+    <li style="margin-bottom:12px;"><strong>"VSP cho cả rider + driver"</strong> — supported by <em>Gojek case (72% drivers spend GoPay daily)</em>. Two-sided flywheel là moat dài hạn.</li>
+  </ol>
+
+  <h3>Specific numeric targets cho VSP Phase 1</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Metric</th><th>Industry median</th><th>Best-in-class</th><th>VSP target Phase 1</th></tr></thead>
+    <tbody>
+      <tr><td>Activation rate (GSM rider → VSP first tx)</td><td class="n">~12%</td><td class="n">~38%</td><td class="n">≥60%</td></tr>
+      <tr><td>Payment success rate</td><td class="n">94%</td><td class="n">99%</td><td class="n">≥98%</td></tr>
+      <tr><td>Default share (VSP làm primary method)</td><td class="n">25%</td><td class="n">60%</td><td class="n">≥45%</td></tr>
+      <tr><td>Repeat ride uplift (VSP vs non-VSP user)</td><td class="n">+30%</td><td class="n">+150%</td><td class="n">+50%</td></tr>
+      <tr><td>Time to first VSP transaction</td><td class="n">3 days</td><td class="n">&lt; 30 sec</td><td class="n">&lt; 60 sec</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section>
+  <div class="callout">
+    <div class="label">Bottom line theo data</div>
+    <p>VN ride-hailing không có "open market" — Grab 42%, GSM 37%, đã tap 79% share. VSP không có khoảng trống để slot in như wallet thứ 6. Số liệu chỉ ra <em>1 path duy nhất</em>: VSP là <em>invisible payment layer inside GSM</em>, scope hẹp (mobility only), reward instant (1–2% cashback), reuse GSM identity, defer KYC. Target Phase 1: <em>60% activation</em>, <em>45% default share</em>, <em>+50% repeat lift</em>. Bất kỳ design choice nào không phục vụ 3 con số đó là noise.</p>
+  </div>
+</section>
+
+<!-- APPENDIX -->
+<aside class="appendix">
+  <h3>References</h3>
+  <ol>
+    <li>Mordor Intelligence — Vietnam Mobility Market Q1/2025 report. Trip-share data Xanh SM theo recorded fleet + 3rd party panel.</li>
+    <li>Reuters — "Gojek pulls out of Vietnam after 6 years", Sept 2024.</li>
+    <li>VietnamPlus / VnExpress — "Xanh SM ký B2B fleet partnerships 2024" — Lado, Én Vàng.</li>
+    <li>Uber Engineering blog — "Designing for High Availability Payments" (2019 + updates).</li>
+    <li>Uber 10-K 2022 — Uber Rewards US program discontinued November 2022.</li>
+    <li>Aragón, F.M., et al. (2022) — NBER WP 30463 "Cashless Payments and Inclusive Growth: Evidence from Ride Hailing". Mexico + Panama Uber data.</li>
+    <li>McKinsey Global Payments Report 2024 — Vietnam retail cash share ~30% 2024.</li>
+    <li>Block Inc. Q2 2024 shareholder letter — Cash App MAU 57M.</li>
+    <li>Lyft Q2/Q4 2024 letters — Active riders 23.7M (Q2) → 24.7M (Q4).</li>
+    <li>Cash App Pay merchant case study — Block 2023 press release. Lyft uptake "~12% in first 6 months" reported by Block IR.</li>
+    <li>Lyft 10-K 2024 — Stored value note (deferred revenue accounting).</li>
+    <li>Singapore Department of Statistics + Grab Singapore market estimates 2023.</li>
+    <li>VnExpress — "Moca ngừng hoạt động tại Việt Nam tháng 7/2024".</li>
+    <li>Grab 20-F 2023 + investor day deck — GrabRewards uplift metrics (frequency, AOV, retention).</li>
+    <li>Cafef.vn / VnEconomy — Moca exit reporting July 2024 + State Bank of Vietnam license context.</li>
+    <li>UNSGSA "Inclusive Growth: Indonesia's Ride-Hailing Drivers" research brief, 2020 + GoTo follow-up data 2023.</li>
+    <li>Bloomberg / Reuters — GoTo + TikTok / Tokopedia deal Dec 2023 ($1.5B valuation).</li>
+    <li>Careem corporate timeline + Uber 10-K 2020 ($3.1B acquisition).</li>
+    <li>KakaoTalk + Kakao Mobility + KakaoPay annual reports 2024. KFTC 2022 ruling on Kakao Mobility taxi share.</li>
+    <li>CNNIC (China Internet Network Information Center) + PBOC 2024 mobile payment penetration data.</li>
+    <li>Statista Vietnam Fintech 2024 + Decision Lab Connected Consumer Q4/2024 reports.</li>
+    <li>SBV (State Bank of Vietnam) annual statistics 2024 — active payment cards ~25M.</li>
+    <li>Pymnts.com + Mastercard Digital Payments Index 2024 — wallet onboarding funnel benchmarks SEA/LATAM.</li>
+    <li>Decision Lab Vietnam Fintech 2023 + MoMo public onboarding research.</li>
+    <li>Grab investor day 2023, Lyft 10-K 2024, Uber Q4 2024 letter, Forrester Loyalty Research 2024 — reward mechanism ROI.</li>
+    <li>SEA ride-hailing take rate estimates — Bain &amp; Co. + ABI Research 2024.</li>
+  </ol>
+  <p style="margin-top:24px;font-size:11px;color:var(--ink-3);">Compiled: 2026-05-22 · Cross-checked filings + public regulator data + 3rd party research where filings không public. Numbers marked "~" là estimate; "exact" là từ filing trực tiếp. Tất cả VN data ưu tiên SBV/NAPAS/Decision Lab/Mordor over global aggregator để giảm proxy error.</p>
+</aside>
+
+</div>
+</body>
+</html>

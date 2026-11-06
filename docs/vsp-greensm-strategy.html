@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VSP × GreenSM — Strategy Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;500&family=Google+Sans+Display:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf9;
+    --paper: #ffffff;
+    --ink: #1c1917;
+    --ink-2: #57534e;
+    --ink-3: #a8a29e;
+    --line: #e7e5e4;
+    --line-strong: #1c1917;
+    --pain: #ffcdc2;
+    --worry: #ffe0c2;
+    --neutral: #e6e6e6;
+    --good: #c6faf6;
+    --great: #cdf4d3;
+    --benefit: #ffecbd;
+    --insight: #c2e5ff;
+    --strategy: #e4ccff;
+    --highlight: #d1f5ee;
+    --serif: 'Google Sans Display', 'Google Sans', -apple-system, system-ui, sans-serif;
+    --sans: 'Google Sans Text', 'Google Sans', -apple-system, system-ui, sans-serif;
+    --mono: 'Google Sans Code', 'JetBrains Mono', 'SF Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 80px 32px 140px;
+  }
+
+  /* Masthead */
+  .masthead {
+    margin-bottom: 64px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .doc-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+  h1.title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  h1.title em { font-style: normal; font-weight: 400; }
+  .lede {
+    font-size: 18px;
+    color: var(--ink-2);
+    max-width: 580px;
+  }
+
+  /* Section */
+  section { margin-bottom: 56px; }
+  h2.section-h {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  h2.section-h .num {
+    color: var(--ink-3);
+    font-family: var(--mono);
+    margin-right: 8px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  h3.lead {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 16px 0 12px;
+    letter-spacing: -0.01em;
+  }
+  p { margin-bottom: 12px; }
+  p.muted { color: var(--ink-2); font-size: 14.5px; }
+  p.statement { font-size: 16px; line-height: 1.65; margin-bottom: 16px; }
+
+  /* Pullout */
+  .pullout {
+    margin: 20px 0;
+    padding: 24px 28px;
+    background: var(--paper);
+    border-left: 2px solid var(--ink);
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+  }
+  .pullout mark {
+    background: var(--highlight);
+    color: inherit;
+    padding: 0 6px;
+    border-radius: 4px;
+  }
+
+  /* Table */
+  .table-wrap { margin: 16px 0; overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+  }
+  thead th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-2);
+    padding: 10px 16px 10px 0;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  tbody td {
+    padding: 12px 16px 12px 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  tbody tr:last-child td { border-bottom: 1px solid var(--line-strong); }
+  td.key { font-weight: 500; }
+  td.muted { color: var(--ink-2); }
+  td.idx {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-3);
+    white-space: nowrap;
+    padding-right: 12px;
+  }
+  td.tag {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+  td.metric {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+
+  /* Mood chip */
+  .mood {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink);
+  }
+  .mood.pain   { background: var(--pain); }
+  .mood.worry  { background: var(--worry); }
+  .mood.neutral{ background: var(--neutral); }
+  .mood.good   { background: var(--good); }
+  .mood.great  { background: var(--great); }
+
+  /* Bare list */
+  ol.bare {
+    list-style: none;
+    counter-reset: item;
+    margin: 12px 0;
+  }
+  ol.bare li {
+    counter-increment: item;
+    padding: 10px 0 10px 44px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  ol.bare li:last-child { border-bottom: 1px solid var(--line-strong); }
+  ol.bare li::before {
+    content: counter(item, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    font-family: var(--mono);
+    color: var(--ink-3);
+    font-size: 12px;
+    top: 12px;
+  }
+
+  /* Force block */
+  .force-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .force {
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+  }
+  .force.push    { background: #fff5f3; border-color: var(--pain); }
+  .force.pull    { background: #f3fdf6; border-color: var(--great); }
+  .force.anxiety { background: #fff8ee; border-color: var(--worry); }
+  .force.habit   { background: #f3f8ff; border-color: var(--insight); }
+  .force h4 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .force .sub {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+    margin-bottom: 12px;
+  }
+  .force blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--ink);
+    padding: 8px 0 8px 12px;
+    border-left: 2px solid var(--ink);
+    margin-bottom: 12px;
+  }
+  .force .imp {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .force .imp strong { color: var(--ink); }
+
+  /* Colophon */
+  .colophon {
+    margin-top: 96px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 720px) {
+    body { padding: 48px 20px 96px; }
+    h1.title { font-size: 32px; }
+    .force-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="doc-meta">
+    <span>VSP × GreenSM — Strategy Brief · Huy Kieu</span>
+    <span>v1.0</span>
+  </div>
+  <h1 class="title">VSP × GreenSM <em>Strategy Brief</em></h1>
+  <p class="lede">Từ first principle đến action plan — tổng hợp toàn bộ work cho leadership review.</p>
+</header>
+
+<!-- 1 — The Bet -->
+<section>
+  <h2 class="section-h"><span class="num">1</span>The Bet</h2>
+  <div class="pullout">
+    Biến VSP thành <mark>payment mặc định của GreenSM</mark> — bằng trust có sẵn và benefit ngay mỗi chuyến đi.
+  </div>
+  <p class="muted">Mệnh đề chính. Mọi quyết định bên dưới quy về đây.</p>
+</section>
+
+<!-- 2 — First Principle -->
+<section>
+  <h2 class="section-h"><span class="num">2</span>First Principle</h2>
+  <div class="pullout">
+    More trust. Less friction. <mark>Greater money movement.</mark>
+  </div>
+  <p class="statement">Good fintech UX reduces financial anxiety. Mỗi quyết định phải tăng trust, giảm friction, hoặc kích hoạt money movement. Nếu không — đó là decoration.</p>
+</section>
+
+<!-- 3 — Why It Works -->
+<section>
+  <h2 class="section-h"><span class="num">3</span>Why It Works</h2>
+  <h3 class="lead">Ba insight nền tảng — không phải đoán.</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Insight</th><th>Evidence</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="key">User đã trust hệ sinh thái</td><td class="muted">1.5M GreenSM DAU · ~90% retention · hằng ngày dùng Vingroup account</td></tr>
+        <tr><td class="key">User vào GreenSM để đi xe, không phải mở ví</td><td class="muted">Payment intent &lt; Ride intent. Mở ví là task phụ.</td></tr>
+        <tr><td class="key">Payment vô hình là pattern thắng toàn cầu</td><td class="muted">Uber · Lyft · Grab · Gojek · DiDi · Kakao T đều giữ ride intent ở giữa</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 4 — Strategic Principles -->
+<section>
+  <h2 class="section-h"><span class="num">4</span>Strategic Principles</h2>
+  <h3 class="lead">Bốn nguyên tắc khác biệt với competitor.</h3>
+  <ol class="bare">
+    <li><strong>Ride intent &gt; payment intent.</strong> VSP phải giúp thanh toán tốt hơn, không được chen ngang intent đi xe.</li>
+    <li><strong>Borrow trust, không build từ đầu.</strong> Định vị là ví cho GreenSM/Vingroup account user đã dùng hằng ngày.</li>
+    <li><strong>Reward in transaction.</strong> Benefit phải hiện ngay tại chuyến này — không phải sau 1 tháng. Concrete: giảm 10K, cashback 5%, priority pickup.</li>
+    <li><strong>Habit before expansion.</strong> Phase 1 chỉ nói payment/mobility. Đừng kéo "sinh lời, đầu tư, bảo hiểm" vào sớm — sẽ làm GreenSM như marketplace.</li>
+  </ol>
+</section>
+
+<!-- 5 — JTBD -->
+<section>
+  <h2 class="section-h"><span class="num">5</span>Jobs to be Done</h2>
+  <h3 class="lead">Forces of Progress — push, pull, anxiety, habit.</h3>
+  <p class="muted">Target: GreenSM user (1.5M DAU, ~90% retention). Job: Ride · Payment · Food · Others.</p>
+
+  <div class="force-grid">
+    <div class="force push">
+      <h4>Push</h4>
+      <div class="sub">Đẩy khỏi state hiện tại</div>
+      <blockquote>"Tôi chỉ muốn đi xe xong là xong, không muốn còn phải xử lý thanh toán."</blockquote>
+      <div class="imp"><strong>Implication.</strong> Cho dùng thử 1 lần có lợi qua autofill, sau đó suggest đặt VSP làm default.</div>
+    </div>
+    <div class="force pull">
+      <h4>Pull</h4>
+      <div class="sub">Kéo về sản phẩm mới</div>
+      <blockquote>"Nếu đổi sang VSP thì tôi được lợi gì ngay?"</blockquote>
+      <div class="imp"><strong>Implication.</strong> Benefit đủ gần và đủ thật: giảm giá chuyến này, cashback sau chuyến, điểm thưởng, priority.</div>
+    </div>
+    <div class="force anxiety">
+      <h4>Anxiety</h4>
+      <div class="sub">Lo ngại khi đổi</div>
+      <blockquote>"Ví mới có an toàn không? Có bị trừ sai không? Tiền đi đâu?"</blockquote>
+      <div class="imp"><strong>Implication.</strong> Borrow trust từ GreenSM/Vingroup. Minh bạch tiền: rõ số tiền, thời điểm trừ, lịch sử, refund, support.</div>
+    </div>
+    <div class="force habit">
+      <h4>Habit</h4>
+      <div class="sub">Quán tính giữ cái cũ</div>
+      <blockquote>"MoMo / Cash / card đang ổn rồi, đổi làm gì?"</blockquote>
+      <div class="imp"><strong>Implication.</strong> Setup thật dễ, benefit gắn trực tiếp với need. Càng dùng càng lời.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 — Customer Journey -->
+<section>
+  <h2 class="section-h"><span class="num">6</span>Customer Journey</h2>
+  <h3 class="lead">Mười phase — emotional curve quan trọng nhất.</h3>
+  <p class="muted">Valley of despair ở Phase 4 (Setup Execution). Climb-back ở Phase 5 (First Use). Toàn bộ chiến lược UX xoay quanh hai điểm này.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Phase</th><th>Mood</th><th>Core need</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="idx">01</td><td class="key">Awareness</td><td><span class="mood neutral">😐 Neutral</span></td><td class="muted">Cần hiểu nhanh và tin được</td></tr>
+        <tr><td class="idx">02</td><td class="key">Consideration</td><td><span class="mood worry">😟 Skeptical</span></td><td class="muted">Cần lý do gần, thật, có lợi ngay</td></tr>
+        <tr><td class="idx">03</td><td class="key">Setup Intent</td><td><span class="mood worry">😟 Worried</span></td><td class="muted">Tiết kiệm thời gian, chia nhỏ friction</td></tr>
+        <tr><td class="idx">04</td><td class="key">Setup Execution</td><td><span class="mood pain">😣 Frustrated</span></td><td class="muted">Cần flow rõ, ít lỗi — eKYC, NFC, bank dễ fail</td></tr>
+        <tr><td class="idx">05</td><td class="key">First Use</td><td><span class="mood good">🙂 Hopeful</span></td><td class="muted">Cần thấy lợi ích ngay tại moment thanh toán</td></tr>
+        <tr><td class="idx">06</td><td class="key">Post-Use</td><td><span class="mood neutral">😐 Waiting</span></td><td class="muted">Cần benefit đúng hẹn, không lỡ</td></tr>
+        <tr><td class="idx">07</td><td class="key">Repeat Use</td><td><span class="mood good">🙂 Satisfied</span></td><td class="muted">Cần cảm giác càng dùng càng lời</td></tr>
+        <tr><td class="idx">08</td><td class="key">Habit Building</td><td><span class="mood great">😊 Comfortable</span></td><td class="muted">Cần giảm thao tác lặp lại</td></tr>
+        <tr><td class="idx">09</td><td class="key">Default Behavior</td><td><span class="mood great">😊 Effortless</span></td><td class="muted">Tin tưởng default, không lo trừ sai</td></tr>
+        <tr><td class="idx">10</td><td class="key">Expansion</td><td><span class="mood good">🙂 Curious</span></td><td class="muted">Cần mở rộng tự nhiên, không bị bán quá sớm</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="muted">Mỗi phase có chi tiết PAINS · MOVES · BENEFIT · TRUST · MEASURE trong FigJam board.</p>
+</section>
+
+<!-- 7 — Verification Plan -->
+<section>
+  <h2 class="section-h"><span class="num">7</span>What We Verify</h2>
+  <h3 class="lead">Năm hypothesis — không phải cái nào cũng cần test.</h3>
+  <p class="muted">Cắt từ 10 → 5. Chỉ test những điểm có rủi ro lớn nếu sai.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Hypothesis</th><th>Method</th><th>When</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="key">User chưa biết VSP / chưa hiểu liên kết GreenSM-Vingroup</td>
+          <td class="tag">Survey</td>
+          <td class="metric">Before build</td>
+        </tr>
+        <tr>
+          <td class="key">Benefit hook nào hiệu quả nhất để mở ví</td>
+          <td class="tag">Survey + Interview</td>
+          <td class="metric">Before build</td>
+        </tr>
+        <tr>
+          <td class="key">Drop-off cao nhất ở step nào (eKYC / NFC / bank)</td>
+          <td class="tag">Usability + Analytics</td>
+          <td class="metric">Prototype</td>
+        </tr>
+        <tr>
+          <td class="key">Benefit display có drive confidence trước confirm không</td>
+          <td class="tag">Usability + A/B</td>
+          <td class="metric">Prototype</td>
+        </tr>
+        <tr>
+          <td class="key">Timing tối ưu cho default opt-in prompt</td>
+          <td class="tag">A/B Test</td>
+          <td class="metric">Post-launch</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="lead">Không cần dedicated research</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Phase</th><th>Reason</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="key">Setup Intent</td><td class="muted">Benchmark fintech đã có</td></tr>
+        <tr><td class="key">Post-Use</td><td class="muted">Giải bằng copy + notification rõ</td></tr>
+        <tr><td class="key">Repeat Use</td><td class="muted">Analytics cohort tự reveal</td></tr>
+        <tr><td class="key">Default Behavior</td><td class="muted">Đã cover bởi Habit Building A/B</td></tr>
+        <tr><td class="key">Expansion</td><td class="muted">Quá sớm — decide sau Phase 1-2</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 8 — Action Plan -->
+<section>
+  <h2 class="section-h"><span class="num">8</span>Action Plan</h2>
+  <h3 class="lead">Tám tuần từ validate đến MVP.</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Week</th><th>Stage</th><th>Output</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="metric">W1–2</td>
+          <td class="key">Validate</td>
+          <td class="muted">Survey awareness (N=200) + Interview consideration (8 users)</td>
+        </tr>
+        <tr>
+          <td class="metric">W3–4</td>
+          <td class="key">Prototype</td>
+          <td class="muted">Setup flow design + Usability test (5–8 users)</td>
+        </tr>
+        <tr>
+          <td class="metric">W5–6</td>
+          <td class="key">Launch MVP</td>
+          <td class="muted">Autofill + immediate benefit, rollout 10% GreenSM users</td>
+        </tr>
+        <tr>
+          <td class="metric">W7–8</td>
+          <td class="key">Measure</td>
+          <td class="muted">Default opt-in A/B test, iterate based on data</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 9 — Success Metrics -->
+<section>
+  <h2 class="section-h"><span class="num">9</span>Success Metrics</h2>
+  <h3 class="lead">Hai phase, năm số đo.</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Phase</th><th>Metric</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="metric">Phase 1</td><td class="key">VSP attachment rate within GreenSM</td></tr>
+        <tr><td class="metric">Phase 1</td><td class="key">Default payment adoption rate</td></tr>
+        <tr><td class="metric">Phase 1</td><td class="key">Payment completion rate</td></tr>
+        <tr><td class="metric">Phase 1</td><td class="key">Repeat ride/payment rate</td></tr>
+        <tr><td class="metric">Phase 2</td><td class="key">Cross-sell activation (saving · insurance · food)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 10 — The Ask -->
+<section>
+  <h2 class="section-h"><span class="num">10</span>The Ask</h2>
+  <div class="pullout">
+    Cần ba thứ để bắt đầu Phase 1.
+  </div>
+  <ol class="bare">
+    <li><strong>Access</strong> GreenSM user data + push channel cho research và rollout.</li>
+    <li><strong>Engineer-weeks</strong> cho autofill + benefit logic ở payment flow.</li>
+    <li><strong>Budget</strong> cho user research Phase 1 (survey N=200, interview 8 users, usability test 5–8 users).</li>
+  </ol>
+</section>
+
+<!-- 11 — Operating Standard -->
+<section>
+  <h2 class="section-h"><span class="num">11</span>Operating Standard</h2>
+  <h3 class="lead">Mỗi quyết định design phải pass test này.</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Test</th><th>Question</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="key">Trust</td><td class="muted">Quyết định này có làm sản phẩm rõ ràng, nhất quán, đáng tin hơn không?</td></tr>
+        <tr><td class="key">Friction</td><td class="muted">Quyết định này có loại bỏ điểm gây do dự, mơ hồ, khó scan không?</td></tr>
+        <tr><td class="key">Money movement</td><td class="muted">Quyết định này có giúp user sẵn sàng đưa tiền qua hệ thống nhiều hơn không?</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">Trả lời "yes" cho ít nhất một câu — đó là design. Không trả lời được câu nào — đó là decoration.</p>
+</section>
+
+<footer class="colophon">
+  <span>VSP × GreenSM Strategy Brief</span>
+  <span>vsp-greensm-strategy.html</span>
+</footer>
+
+</body>
+</html>

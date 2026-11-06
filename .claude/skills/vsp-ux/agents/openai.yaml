@@ -1,0 +1,4 @@
+interface:
+  display_name: "VSP UX"
+  short_description: "Đọc source, chọn IA và layout theo hành vi thực"
+  default_prompt: "Dùng $vsp-ux đọc source và các option đã thử để phân tích IA, nhịp đọc và chọn layout có bằng chứng."

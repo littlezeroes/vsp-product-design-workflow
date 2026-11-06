@@ -1,0 +1,11 @@
+@reference "../globals.css";
+.vc-machine { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.vc-machine h2 { white-space: pre-line; letter-spacing: -.055em; }
+.vc-machine .vc-rule { position: relative; overflow: hidden; }
+.vc-chat { font-family: inherit; }
+.vc-chat .vc-bubble:nth-child(odd) { @apply rounded-bl-8; }
+.vc-chat .vc-bubble:nth-child(even) { @apply rounded-br-8; }
+.vc-care h2, .vc-care h3 { font-family: Georgia, 'Times New Roman', serif; letter-spacing: -.025em; white-space: pre-line; }
+.vc-care .vc-day { gap: 8px; }
+.vc-ledger { font-variant-numeric: tabular-nums; }
+.vc-ledger .vc-receipt { background-image: radial-gradient(circle, var(--background) 4px, transparent 5px); background-size: 16px 12px; background-repeat: repeat-x; background-position: left bottom; }

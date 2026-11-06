@@ -1,0 +1,514 @@
+[
+  {
+    "id": "IA01",
+    "name": "Hội viên quen thuộc",
+    "philosophy": "Khách mở app để biết mình có gì và dùng ưu đãi.",
+    "audience": "Hội viên hiện hữu, ít giao dịch dịch vụ.",
+    "organizingPrinciple": "Theo các vùng chức năng đang có: điểm, ví, ưu đãi, sự kiện, hạng.",
+    "tabs": [
+      "Trang chủ",
+      "Ưu đãi",
+      "QR",
+      "Sự kiện",
+      "Hạng"
+    ],
+    "homeBlocks": [
+      "identity",
+      "points",
+      "wallet",
+      "services",
+      "offers",
+      "events"
+    ],
+    "primaryAction": "Xem ưu đãi phù hợp",
+    "money": "Vé sự kiện và ưu đãi dẫn tới giao dịch; Home không có nguồn thu riêng.",
+    "strengths": [
+      "Gần prototype hiện tại, giảm thay đổi thói quen.",
+      "Dễ triển khai trên các vùng giao diện đã có."
+    ],
+    "risks": [
+      "Thiếu nơi chứa dịch vụ ngoài sự kiện.",
+      "Dễ trộn quyền lợi đang sở hữu với nội dung khuyến mại."
+    ],
+    "feb2027": "Thêm màn quản lý VPoint, gói và lịch hẹn nhưng giữ khung tab; đây là phương án đối chứng, không phải đích đầy đủ.",
+    "end2027": "Khó mở rộng Marketplace/O2O nếu tiếp tục dồn vào Home.",
+    "dependency": "Cần thống nhất tên Ví VinClub/VinPay và đích VPoint.",
+    "analystScores": {
+      "clarity": 4,
+      "conversion": 2,
+      "retention": 3,
+      "feasibility": 5
+    },
+    "scoreRationale": "Quen thuộc và khả thi cao; khả năng dẫn đa dịch vụ thấp vì danh mục chưa có nơi chứa.",
+    "scoreStatus": "Nhận định chuyên gia trên thang 1–5; chưa có UT người dùng, không phải kết quả chuyển đổi thực.",
+    "baseline": true,
+    "recommendation": "Phương án khám phá; chưa chọn làm hướng mặc định.",
+    "sources": [
+      "Excel B1/B2: định hướng sản phẩm",
+      "Excel B3 hiện hành: phạm vi và hạn theo từng hạng mục",
+      "Prototype Home đã review 01/11/2026; không xác minh backend"
+    ],
+    "version": "v3"
+  },
+  {
+    "id": "IA02",
+    "name": "Làm việc theo nhu cầu",
+    "philosophy": "Giúp khách hoàn tất việc cần làm trước khi giới thiệu thêm.",
+    "audience": "Khách đa nhu cầu, chưa biết hệ sinh thái có gì.",
+    "organizingPrinciple": "Theo việc cần làm: tìm dịch vụ, thanh toán, dùng quyền lợi, quản lý hội viên.",
+    "tabs": [
+      "Trang chủ",
+      "Khám phá",
+      "QR",
+      "Quyền lợi",
+      "Hội viên"
+    ],
+    "homeBlocks": [
+      "identity",
+      "points",
+      "search",
+      "services",
+      "owned",
+      "events",
+      "o2o"
+    ],
+    "primaryAction": "Tìm dịch vụ",
+    "money": "Bán vé/gói, tạo lead tư vấn; hoa hồng hoặc phí chỉ khi có hợp đồng.",
+    "strengths": [
+      "Có nơi chứa rõ cho Marketplace/O2O.",
+      "Tách khám phá với quyền lợi đã nhận."
+    ],
+    "risks": [
+      "Khám phá có thể quá rộng nếu thiếu phân nhóm.",
+      "Cần quản lý đơn, vé và lịch hẹn nhất quán."
+    ],
+    "feb2027": "Ưu tiên vé 2.1.2.1, sa bàn/lịch hẹn 2.2.1.1–3, gói 3.3 và thanh toán theo hạn B3 đến 28/02/2027.",
+    "end2027": "Giữ khung tab; mở rộng dịch vụ, Vincom, đối tác ngoài khi sẵn sàng, không gán hạn chưa có.",
+    "dependency": "Nguồn vé, gói, dữ liệu sa bàn và tiếp nhận lead P&L.",
+    "analystScores": {
+      "clarity": 5,
+      "conversion": 4,
+      "retention": 4,
+      "feasibility": 4
+    },
+    "scoreRationale": "Nhãn theo nhu cầu giúp tìm việc; conversion vẫn cần thử nghiệm với người dùng và nguồn cung thật.",
+    "scoreStatus": "Nhận định chuyên gia trên thang 1–5; chưa có UT người dùng, không phải kết quả chuyển đổi thực.",
+    "baseline": false,
+    "recommendation": "Ưu tiên kiểm thử cho mốc 02/2027: cân bằng phạm vi B3 và khả năng tìm dịch vụ.",
+    "sources": [
+      "Excel B1/B2: định hướng sản phẩm",
+      "Excel B3 hiện hành: phạm vi và hạn theo từng hạng mục",
+      "Prototype Home đã review 01/11/2026; không xác minh backend"
+    ],
+    "version": "v3"
+  },
+  {
+    "id": "IA03",
+    "name": "Quyền lợi đang có",
+    "philosophy": "Biến quyền lợi đã nhận thành việc khách làm được hôm nay.",
+    "audience": "Hội viên đã có điểm, voucher, gói hoặc hạng cao.",
+    "organizingPrinciple": "Theo quyền sở hữu và tình trạng: có, sắp hết hạn, có thể dùng, còn thiếu.",
+    "tabs": [
+      "Hôm nay",
+      "Của tôi",
+      "QR",
+      "Khám phá",
+      "Hội viên"
+    ],
+    "homeBlocks": [
+      "identity",
+      "owned",
+      "points",
+      "bundles",
+      "offers",
+      "activity"
+    ],
+    "primaryAction": "Dùng quyền lợi",
+    "money": "Bán thêm gói và tăng sử dụng dịch vụ P&L; giữ khách không tự là doanh thu.",
+    "strengths": [
+      "Giảm thất lạc voucher và gói.",
+      "Tạo lý do quay lại gắn với giá trị thật."
+    ],
+    "risks": [
+      "Khách mới có ít quyền lợi sẽ thấy Home trống.",
+      "Nhắc hết hạn quá mức tạo áp lực."
+    ],
+    "feb2027": "Ưu tiên phân phối quyền lợi 3.2.1.4, sinh nhật 3.2.2.1, gói 3.3.1–3 và lịch sử điểm 1.2.3.8.",
+    "end2027": "Mở rộng đặc quyền và chăm sóc theo vòng đời khi kế hoạch được chốt; B3 chưa chốt hạn phần mở rộng này.",
+    "dependency": "Dữ liệu cấp/sử dụng quyền lợi, tồn kho và đồng bộ P&L.",
+    "analystScores": {
+      "clarity": 4,
+      "conversion": 4,
+      "retention": 5,
+      "feasibility": 4
+    },
+    "scoreRationale": "Giá trị cho hội viên sở hữu rõ; retention là giả thuyết cần UT và đo sử dụng thực.",
+    "scoreStatus": "Nhận định chuyên gia trên thang 1–5; chưa có UT người dùng, không phải kết quả chuyển đổi thực.",
+    "baseline": false,
+    "recommendation": "Đối chứng giữ chân hội viên: ưu tiên khi khách đã sở hữu nhiều quyền lợi.",
+    "sources": [
+      "Excel B1/B2: định hướng sản phẩm",
+      "Excel B3 hiện hành: phạm vi và hạn theo từng hạng mục",
+      "Prototype Home đã review 01/11/2026; không xác minh backend"
+    ],
+    "version": "v3"
+  },
+  {
+    "id": "IA04",
+    "name": "Thanh toán hằng ngày",
+    "philosophy": "Mỗi lần thanh toán giúp khách nhận và dùng giá trị hội viên.",
+    "audience": "Khách dùng ví thường xuyên, thanh toán QR/hóa đơn.",
+    "organizingPrinciple": "Theo luồng tiền: nguồn tiền → thanh toán → điểm/quyền lợi → lịch sử.",
+    "tabs": [
+      "Ví",
+      "Dịch vụ",
+      "QR",
+      "Quyền lợi",
+      "Tài khoản"
+    ],
+    "homeBlocks": [
+      "wallet",
+      "points",
+      "services",
+      "activity",
+      "owned",
+      "offers"
+    ],
+    "primaryAction": "Quét QR thanh toán",
+    "money": "Phí thanh toán/cổng thanh toán theo thỏa thuận; số dư và tổng giá trị giao dịch không phải doanh thu.",
+    "strengths": [
+      "Có hành vi lặp lại rõ.",
+      "Kết hợp khấu trừ VPoint ở bước trả tiền."
+    ],
+    "risks": [
+      "VinClub dễ bị hiểu thành app ví.",
+      "Che khuất đặc quyền và sản phẩm giá trị lớn."
+    ],
+    "feb2027": "Dựa vào SDK VinPay 1.2.4.4, QR/hóa đơn 1.2.4.5–6, khấu trừ 1.2.2.1 và QR xuyên biên giới 1.2.4.8.",
+    "end2027": "Mở rộng điểm chấp nhận theo đối tác; không suy ra mọi P&L đã tích hợp.",
+    "dependency": "SDK, liên kết ngân hàng, xác thực và kết quả giao dịch.",
+    "analystScores": {
+      "clarity": 5,
+      "conversion": 3,
+      "retention": 4,
+      "feasibility": 4
+    },
+    "scoreRationale": "Thanh toán dễ hiểu; giá trị thu tiền còn phụ thuộc phí và biên lợi nhuận, không chỉ tần suất.",
+    "scoreStatus": "Nhận định chuyên gia trên thang 1–5; chưa có UT người dùng, không phải kết quả chuyển đổi thực.",
+    "baseline": false,
+    "recommendation": "Phương án khám phá; chưa chọn làm hướng mặc định.",
+    "sources": [
+      "Excel B1/B2: định hướng sản phẩm",
+      "Excel B3 hiện hành: phạm vi và hạn theo từng hạng mục",
+      "Prototype Home đã review 01/11/2026; không xác minh backend"
+    ],
+    "version": "v3"
+  },
+  {
+    "id": "IA05",
+    "name": "Chợ tuyển chọn",
+    "philosophy": "Giúp khách chọn ít phương án phù hợp và biết rõ mua ở đâu.",
+    "audience": "Khách có ý định mua vé, dịch vụ hoặc gói.",
+    "organizingPrinciple": "Theo danh mục mua sắm và loại chuyển đổi; ưu tiên giao dịch.",
+    "tabs": [
+      "Khám phá",
+      "Danh mục",
+      "QR",
+      "Của tôi",
+      "Hội viên"
+    ],
+    "homeBlocks": [
+      "search",
+      "services",
+      "events",
+      "bundles",
+      "offers",
+      "owned",
+      "points"
+    ],
+    "primaryAction": "Chọn dịch vụ",
+    "money": "Bán trực tiếp vé/gói; hoa hồng đối tác được xác nhận và đối soát.",
+    "strengths": [
+      "Dễ thấy nơi bán và sản phẩm.",
+      "Phù hợp mở rộng catalogue P&L/đối tác."
+    ],
+    "risks": [
+      "Catalogue rỗng hoặc thiếu giá/tồn kho sẽ giảm tin cậy.",
+      "Dễ giống sàn khuyến mại đại trà."
+    ],
+    "feb2027": "Khởi đầu vé sự kiện và gói có nguồn cung; không giả định full Marketplace có hạn 02/2027.",
+    "end2027": "Danh mục P&L, đối tác ngoài và Vincom là phạm vi cần chốt; B3 không ghi hạn full Marketplace.",
+    "dependency": "Catalogue, giá, tồn kho, deep link/API và đối soát hoa hồng.",
+    "analystScores": {
+      "clarity": 4,
+      "conversion": 5,
+      "retention": 3,
+      "feasibility": 3
+    },
+    "scoreRationale": "Ý định mua cao có thể hỗ trợ conversion; feasibility thấp hơn vì phụ thuộc nguồn cung xuyên P&L.",
+    "scoreStatus": "Nhận định chuyên gia trên thang 1–5; chưa có UT người dùng, không phải kết quả chuyển đổi thực.",
+    "baseline": false,
+    "recommendation": "Phương án khám phá; chưa chọn làm hướng mặc định.",
+    "sources": [
+      "Excel B1/B2: định hướng sản phẩm",
+      "Excel B3 hiện hành: phạm vi và hạn theo từng hạng mục",
+      "Prototype Home đã review 01/11/2026; không xác minh backend"
+    ],
+    "version": "v3"
+  },
+  {
+    "id": "IA06",
+    "name": "Hành trình trải nghiệm",
+    "philosophy": "Cho khách tự khám phá rồi kết nối tư vấn khi sẵn sàng.",
+    "audience": "Khách cân nhắc nhà, xe, kỳ nghỉ; đội bán hàng hỗ trợ.",
+    "organizingPrinciple": "Theo hành trình dài: khám phá → lưu quan tâm → trải nghiệm → lịch hẹn.",
+    "tabs": [
+      "Khám phá",
+      "Đã lưu",
+      "QR",
+      "Lịch hẹn",
+      "Hội viên"
+    ],
+    "homeBlocks": [
+      "identity",
+      "o2o",
+      "services",
+      "events",
+      "activity",
+      "owned"
+    ],
+    "primaryAction": "Đặt lịch trải nghiệm",
+    "money": "Lead và lịch hẹn tạo doanh thu cho P&L khi chuyển đổi; VinClub chỉ có phí/hoa hồng nếu thỏa thuận.",
+    "strengths": [
+      "Hợp mô hình sa bàn và Sales Kit.",
+      "Chuyển động lực khám phá thành yêu cầu đo được."
+    ],
+    "risks": [
+      "Tần suất mua thấp; khó tạo lý do mở app hằng ngày.",
+      "3D nặng và lead không được tiếp nhận sẽ đứt hành trình."
+    ],
+    "feb2027": "Dựa vào 2.2.1.1–3 hạn 31/12/2026: 3D, dẫn đường/tư vấn và lịch trải nghiệm; không hứa đặt cọc.",
+    "end2027": "Mở thêm dự án/cư dân số khi dữ liệu và thí điểm đáp ứng; chưa có hạn cư dân số trong B3.",
+    "dependency": "Dữ liệu Vinhomes Market, tiếp nhận lead, lịch và hiệu năng thiết bị.",
+    "analystScores": {
+      "clarity": 4,
+      "conversion": 4,
+      "retention": 3,
+      "feasibility": 3
+    },
+    "scoreRationale": "Rõ đường lead nhưng phụ thuộc O2O; không dùng số lượt xem 3D làm proxy doanh thu.",
+    "scoreStatus": "Nhận định chuyên gia trên thang 1–5; chưa có UT người dùng, không phải kết quả chuyển đổi thực.",
+    "baseline": false,
+    "recommendation": "Đối chứng tạo lead: ưu tiên khi mục tiêu kinh doanh là O2O nhà/xe.",
+    "sources": [
+      "Excel B1/B2: định hướng sản phẩm",
+      "Excel B3 hiện hành: phạm vi và hạn theo từng hạng mục",
+      "Prototype Home đã review 01/11/2026; không xác minh backend"
+    ],
+    "version": "v3"
+  },
+  {
+    "id": "IA07",
+    "name": "Gói cho gia đình",
+    "philosophy": "Gom nhiều dịch vụ thành lựa chọn có lợi và dễ quản lý.",
+    "audience": "Hộ gia đình, cư dân và nhóm mua gói.",
+    "organizingPrinciple": "Theo đơn vị sử dụng: cá nhân/gia đình → gói → quyền lợi từng thành viên.",
+    "tabs": [
+      "Gia đình",
+      "Gói dịch vụ",
+      "QR",
+      "Quyền lợi",
+      "Hội viên"
+    ],
+    "homeBlocks": [
+      "identity",
+      "bundles",
+      "owned",
+      "services",
+      "points",
+      "activity"
+    ],
+    "primaryAction": "Xem gói gia đình",
+    "money": "Giá bán gói liên P&L; cần phân bổ doanh thu, nghĩa vụ cung ứng và chi phí quyền lợi.",
+    "strengths": [
+      "Giá trị mua chéo dễ giải thích.",
+      "Mỗi gói có lý do mua và đường sử dụng rõ."
+    ],
+    "risks": [
+      "Rủi ro quyền chia sẻ/consent và hạn mức từng thành viên.",
+      "Không được đồng nhất mua gói nhóm với ví điểm gia đình đã sẵn sàng."
+    ],
+    "feb2027": "Dùng 3.3.1–3 hạn 31/12/2026 cho gói cá nhân/nhóm; không coi gom điểm gia đình là scope đã chốt hạn.",
+    "end2027": "Mở rộng gói theo nguồn cung; tích/tiêu điểm gia đình vẫn cần chốt cơ chế và thời hạn.",
+    "dependency": "Cam kết P&L, tồn quyền lợi, consent, phân bổ và hoàn/hủy.",
+    "analystScores": {
+      "clarity": 4,
+      "conversion": 4,
+      "retention": 4,
+      "feasibility": 3
+    },
+    "scoreRationale": "Value proposition cụ thể nhưng vận hành gói và phân quyền phức tạp hơn IA theo nhu cầu.",
+    "scoreStatus": "Nhận định chuyên gia trên thang 1–5; chưa có UT người dùng, không phải kết quả chuyển đổi thực.",
+    "baseline": false,
+    "recommendation": "Phương án khám phá; chưa chọn làm hướng mặc định.",
+    "sources": [
+      "Excel B1/B2: định hướng sản phẩm",
+      "Excel B3 hiện hành: phạm vi và hạn theo từng hạng mục",
+      "Prototype Home đã review 01/11/2026; không xác minh backend"
+    ],
+    "version": "v3"
+  },
+  {
+    "id": "IA08",
+    "name": "Theo nơi khách đang ở",
+    "philosophy": "Cho khách thấy dịch vụ dùng được ở nơi và thời điểm hiện tại.",
+    "audience": "Khách tại Vincom, cư dân, khách tham quan điểm đến.",
+    "organizingPrinciple": "Theo bối cảnh địa điểm: gần đây → quyền lợi tại chỗ → hành động.",
+    "tabs": [
+      "Gần đây",
+      "Khám phá",
+      "QR",
+      "Của tôi",
+      "Hội viên"
+    ],
+    "homeBlocks": [
+      "search",
+      "services",
+      "offers",
+      "owned",
+      "events",
+      "o2o"
+    ],
+    "primaryAction": "Xem dịch vụ tại đây",
+    "money": "Giao dịch tại gian hàng, dùng ưu đãi và lead tại điểm đến; nguồn thu phụ thuộc hợp đồng.",
+    "strengths": [
+      "Nối online-offline cụ thể.",
+      "Giảm tìm kiếm khi khách ở TTTM hoặc dự án."
+    ],
+    "risks": [
+      "Không có location/consent hoặc nguồn cung gần sẽ mất giá trị.",
+      "Dễ nhầm tính năng vị trí đã có hạn trong B3."
+    ],
+    "feb2027": "Thí điểm lựa chọn địa điểm thủ công/QR điểm chạm 1.3.1.1 và xác nhận ưu đãi Merchant 2.1.4.4; không hứa định vị tự động.",
+    "end2027": "Gian hàng và nguồn cung theo địa điểm mở rộng khi P&L sẵn sàng; B3 chưa chốt hạn full Vincom Online.",
+    "dependency": "Hồ sơ địa điểm, merchant portal, quyền dữ liệu và cập nhật khả dụng.",
+    "analystScores": {
+      "clarity": 4,
+      "conversion": 4,
+      "retention": 4,
+      "feasibility": 3
+    },
+    "scoreRationale": "Có thể dẫn hành động tại chỗ; phạm vi dữ liệu vị trí và inventory làm tăng phụ thuộc.",
+    "scoreStatus": "Nhận định chuyên gia trên thang 1–5; chưa có UT người dùng, không phải kết quả chuyển đổi thực.",
+    "baseline": false,
+    "recommendation": "Phương án khám phá; chưa chọn làm hướng mặc định.",
+    "sources": [
+      "Excel B1/B2: định hướng sản phẩm",
+      "Excel B3 hiện hành: phạm vi và hạn theo từng hạng mục",
+      "Prototype Home đã review 01/11/2026; không xác minh backend"
+    ],
+    "version": "v3"
+  },
+  {
+    "id": "IA09",
+    "name": "Nêu nhu cầu với trợ lý",
+    "philosophy": "Một nhu cầu rõ dẫn tới vài lựa chọn có thể thực hiện.",
+    "audience": "Khách chưa biết nên chọn dịch vụ hoặc combo nào.",
+    "organizingPrinciple": "Theo ý định hội thoại: nhu cầu → đề xuất → đối chiếu quyền lợi → xác nhận.",
+    "tabs": [
+      "Trợ lý",
+      "Khám phá",
+      "QR",
+      "Của tôi",
+      "Hội viên"
+    ],
+    "homeBlocks": [
+      "assistant",
+      "search",
+      "services",
+      "bundles",
+      "owned",
+      "activity"
+    ],
+    "primaryAction": "Nêu nhu cầu",
+    "money": "AI hỗ trợ chốt vé/gói hoặc chuyển lead; B3 chưa xác nhận phí dùng AI riêng.",
+    "strengths": [
+      "Có thể phối hợp nhiều dịch vụ theo một nhu cầu.",
+      "Giảm công việc tự ghép quyền lợi."
+    ],
+    "risks": [
+      "AI có thể tư vấn sai giá, tồn kho hoặc quyền lợi.",
+      "Không phù hợp làm phụ thuộc bản tháng 2 nếu dữ liệu chưa đạt."
+    ],
+    "feb2027": "Tháng 2 dùng tìm kiếm/danh mục và gợi ý soạn sẵn có nhãn; chưa coi AI giao dịch là cam kết.",
+    "end2027": "Thí điểm trợ lý khi catalogue, đánh giá độ chính xác và kiểm soát tác vụ đạt yêu cầu; chưa chốt hạn AI Shopping.",
+    "dependency": "Dữ liệu thời gian thực, AI eval, quyền tác vụ, fallback và consent.",
+    "analystScores": {
+      "clarity": 3,
+      "conversion": 4,
+      "retention": 4,
+      "feasibility": 1
+    },
+    "scoreRationale": "Tiềm năng conversion nhưng độ rõ và feasibility thấp khi chưa có catalogue/eval; chưa được người dùng kiểm chứng.",
+    "scoreStatus": "Nhận định chuyên gia trên thang 1–5; chưa có UT người dùng, không phải kết quả chuyển đổi thực.",
+    "baseline": false,
+    "recommendation": "Phương án khám phá; chưa chọn làm hướng mặc định.",
+    "sources": [
+      "Excel B1/B2: định hướng sản phẩm",
+      "Excel B3 hiện hành: phạm vi và hạn theo từng hạng mục",
+      "Prototype Home đã review 01/11/2026; không xác minh backend"
+    ],
+    "version": "v3"
+  },
+  {
+    "id": "IA10",
+    "name": "Cùng nhau lên kế hoạch",
+    "philosophy": "Biến kế hoạch chung thành dịch vụ được đặt và quyền lợi được dùng.",
+    "audience": "Gia đình, nhóm bạn, cộng đồng thành viên xác thực.",
+    "organizingPrinciple": "Theo nhóm và kế hoạch: nhóm → thảo luận → chọn dịch vụ → đặt/hoàn trả.",
+    "tabs": [
+      "Nhóm",
+      "Khám phá",
+      "QR",
+      "Quyền lợi",
+      "Hội viên"
+    ],
+    "homeBlocks": [
+      "community",
+      "tasks",
+      "events",
+      "bundles",
+      "owned",
+      "activity"
+    ],
+    "primaryAction": "Lập kế hoạch chung",
+    "money": "Đơn nhóm và gói tạo giao dịch; không coi tương tác cộng đồng hay phí Chat là doanh thu.",
+    "strengths": [
+      "Có động lực mời bạn và mua chung.",
+      "Kết nối cộng đồng với nhu cầu thật."
+    ],
+    "risks": [
+      "Duhat chưa có kế hoạch SDK.",
+      "Chia hóa đơn phụ thuộc VinPay; cần xác thực và moderation."
+    ],
+    "feb2027": "Không triển khai Chat làm lõi tháng 2; dùng chia sẻ liên kết/mã mời 1.3.3 và mua gói nhóm 3.3.1 nếu sẵn sàng.",
+    "end2027": "Chỉ mở cộng đồng/chat/mua chung khi SDK, phạm vi vận hành và thanh toán được chốt; không tự cam kết cuối 2027.",
+    "dependency": "Duhat SDK, xác thực, moderation, quyền chia sẻ và năng lực chia hóa đơn.",
+    "analystScores": {
+      "clarity": 3,
+      "conversion": 3,
+      "retention": 5,
+      "feasibility": 1
+    },
+    "scoreRationale": "Retention có tiềm năng nhờ quan hệ nhóm nhưng SDK thiếu làm phương án này chưa khả thi làm lõi bản đầu.",
+    "scoreStatus": "Nhận định chuyên gia trên thang 1–5; chưa có UT người dùng, không phải kết quả chuyển đổi thực.",
+    "baseline": false,
+    "recommendation": "Phương án khám phá; chưa chọn làm hướng mặc định.",
+    "sources": [
+      "Excel B1/B2: định hướng sản phẩm",
+      "Excel B3 hiện hành: phạm vi và hạn theo từng hạng mục",
+      "Prototype Home đã review 01/11/2026; không xác minh backend"
+    ],
+    "version": "v3"
+  }
+]

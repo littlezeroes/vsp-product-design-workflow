@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VSP × GreenSM — Integration Standards</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --ink: #0a0a0a;
+    --ink-2: #404040;
+    --ink-3: #737373;
+    --line: #e5e5e5;
+    --line-soft: #f0f0f0;
+    --green: #00b182;
+    --green-soft: #e5fcf6;
+    --red: #eb002b;
+    --amber: #eab308;
+    --blue: #155dfc;
+    --black: #080808;
+    --r-sm: 8px;
+    --r-md: 14px;
+    --r-lg: 24px;
+    --maxw: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 64px 32px 96px; }
+
+  /* HEADER */
+  header.hero {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 40px;
+    margin-bottom: 56px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--green);
+  }
+  .deck {
+    font-size: 18px;
+    color: var(--ink-2);
+    max-width: 780px;
+    margin: 0;
+  }
+  .meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+  .meta span strong { color: var(--ink); font-weight: 600; }
+
+  /* SECTIONS */
+  section { margin-bottom: 64px; }
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  h2 .num {
+    font-size: 14px;
+    color: var(--ink-3);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  h2 + .sub {
+    font-size: 15px;
+    color: var(--ink-3);
+    margin: 0 0 32px;
+    max-width: 640px;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 32px 0 8px;
+  }
+
+  /* TABLES */
+  .table-wrap {
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    background: var(--surface);
+    overflow: hidden;
+    margin: 24px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  thead th {
+    text-align: left;
+    background: var(--line-soft);
+    padding: 14px 16px;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-2);
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  tbody td {
+    padding: 16px;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #fbfbfb; }
+  .col-app { font-weight: 600; width: 16%; }
+  .col-app .sub { font-size: 12px; color: var(--ink-3); font-weight: 400; margin-top: 2px; }
+  .col-model { width: 16%; color: var(--ink-2); }
+  .col-evidence { font-size: 12.5px; color: var(--ink-3); width: 22%; }
+  .col-lesson { width: 20%; }
+  .col-standard { width: 14%; font-weight: 500; }
+
+  /* PATTERN CARDS */
+  .patterns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .pattern {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 24px;
+  }
+  .pattern .n {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .pattern h4 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .pattern p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .pattern .examples {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+  .pattern .examples strong { color: var(--ink-2); font-weight: 600; }
+
+  /* STANDARDS LIST */
+  .standards .table-wrap td:first-child {
+    font-weight: 600;
+    width: 8%;
+    font-variant-numeric: tabular-nums;
+    color: var(--green);
+  }
+  .standards .table-wrap td:nth-child(2) { font-weight: 600; width: 22%; }
+
+  /* PHASE 1 BAR */
+  .phase1 {
+    background: linear-gradient(180deg, var(--green-soft) 0%, var(--surface) 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 32px;
+    margin: 24px 0;
+  }
+  .phase1 h3 {
+    margin-top: 0;
+    color: var(--green);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .phase1 .row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    padding: 12px 0;
+    border-top: 1px solid var(--line-soft);
+    gap: 16px;
+  }
+  .phase1 .row:first-of-type { border-top: none; padding-top: 0; }
+  .phase1 .row .label { font-weight: 600; font-size: 14px; }
+  .phase1 .row .val { font-size: 14px; color: var(--ink-2); }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--ink);
+    color: white;
+    border-radius: var(--r-lg);
+    padding: 48px;
+    margin: 32px 0;
+  }
+  .callout .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .callout p {
+    font-size: 24px;
+    line-height: 1.4;
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .callout p em {
+    color: var(--green);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* APPENDIX */
+  .appendix {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+  .appendix h3 { font-size: 14px; color: var(--ink-2); margin-bottom: 12px; }
+  .appendix ul { padding-left: 20px; margin: 0; }
+  .appendix li { margin-bottom: 6px; line-height: 1.5; }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    background: var(--line-soft);
+    color: var(--ink-2);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 500;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+  .tag.green { background: var(--green-soft); color: var(--green); }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 32px; }
+    .wrap { padding: 40px 20px 64px; }
+    .callout { padding: 32px 24px; }
+    .callout p { font-size: 18px; }
+    table { font-size: 12.5px; }
+    tbody td, thead th { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Head of Design · Research Brief</div>
+  <h1>VSP standards khi tích hợp vào <em>GreenSM</em></h1>
+  <p class="deck">Benchmark 10 ride-hailing + wallet apps trên 6 thị trường. 5 pattern lặp lại. 12 standard bắt buộc. 1 minimum bar cho Phase 1.</p>
+  <div class="meta">
+    <span><strong>Scope</strong> · Wallet-as-payment-layer trong super-app</span>
+    <span><strong>Source</strong> · Q4/24 — Q1/26 industry data</span>
+    <span><strong>Audience</strong> · Vingroup / GreenSM stakeholders</span>
+  </div>
+</header>
+
+<!-- ============================================ -->
+<section id="benchmark">
+  <h2><span class="num">01</span> Benchmark — 10 apps, 6 markets</h2>
+  <p class="sub">Mọi app dưới đây đều bắt đầu là <em>job-to-be-done</em> (đi xe / giao đồ ăn / dịch vụ), payment chỉ là layer phục vụ job đó.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>App / Market</th>
+        <th>Payment model</th>
+        <th>Họ làm gì nổi bật</th>
+        <th>Evidence</th>
+        <th>Bài học cho VSP × GreenSM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-app">Uber<div class="sub">US + global</div></td>
+        <td class="col-model">Invisible card-on-file + multi-rail</td>
+        <td>User add payment 1 lần, ride xong tự charge. Payment không phải "flow" — là hạ tầng nền. Platform support 10+ method (card, Venmo, Paytm, iDEAL).</td>
+        <td class="col-evidence">Q4/25: 3.8B trips · 202M MAPCs · $54.1B gross bookings</td>
+        <td class="col-lesson">VSP không nên xuất hiện như <strong>"mở ví mới"</strong>. Phải behave như payment layer tự nhiên trong GreenSM.</td>
+      </tr>
+      <tr>
+        <td class="col-app">Uber Cash<div class="sub">US</div></td>
+        <td class="col-model">Stored value gắn với rides</td>
+        <td>Balance dùng cho Uber rides/services, không positioning là fintech app riêng.</td>
+        <td class="col-evidence">Uber Cash = ride credit</td>
+        <td class="col-lesson">Nếu VSP có balance/reward → gắn với "đi GreenSM nhanh hơn". Wallet không được là hero. Hero là <strong>ride experience</strong>.</td>
+      </tr>
+      <tr>
+        <td class="col-app">Uber localization<div class="sub">Mexico / Panama</div></td>
+        <td class="col-model">Card / cash / local wallet tùy thị trường</td>
+        <td>Không ép 1 payment model toàn cầu. Cash-heavy markets vẫn support cash để giảm barrier.</td>
+        <td class="col-evidence">NBER: cash option tác động mạnh tới demand, fares, miles ở nhóm thu nhập thấp</td>
+        <td class="col-lesson">VN không thể bê card-on-file kiểu Mỹ. Reuse <strong>linked bank, QR, e-wallet</strong> hành vi sẵn có.</td>
+      </tr>
+      <tr>
+        <td class="col-app">Lyft<div class="sub">US</div></td>
+        <td class="col-model">Multi-rail flexibility</td>
+        <td>Giảm friction bằng linh hoạt. Không force 1 method.</td>
+        <td class="col-evidence">2024: 828M rides (+17% YoY) · 24.7M active riders Q4/24</td>
+        <td class="col-lesson">VSP không nhất thiết "only VSP". Default smart layer + fallback rõ. <strong>Không block ride completion</strong> nếu VSP fail.</td>
+      </tr>
+      <tr>
+        <td class="col-app">Lyft × Cash App Pay<div class="sub">US</div></td>
+        <td class="col-model">Borrow existing trust</td>
+        <td>User không nhập card; chỉ link Cash App vào Lyft.</td>
+        <td class="col-evidence">Cash App 57M MAU · Lyft 23.7M active riders Q2/24</td>
+        <td class="col-lesson">Case gần VSP nhất. Nếu user đã trust GreenSM/Vingroup identity → VSP phải <strong>borrow trust đó</strong>, không bắt signup lại.</td>
+      </tr>
+      <tr>
+        <td class="col-app">Lyft Cash<div class="sub">US</div></td>
+        <td class="col-model">Prepaid ride balance</td>
+        <td>Load balance vào account cho rides. Budgeting tool, không super-wallet.</td>
+        <td class="col-evidence">Lyft Cash = ride budget</td>
+        <td class="col-lesson">Nếu VSP có top-up → name nó là <strong>"số dư đi xe"</strong>, không "tài khoản tổng hợp". Contextual naming.</td>
+      </tr>
+      <tr>
+        <td class="col-app">Grab<div class="sub">SEA</div></td>
+        <td class="col-model">Super app + GrabPay + reward loop</td>
+        <td>GrabPay trong Grab app, dùng cho Grab services. Earn GrabRewards <em>only with GrabPay</em>.</td>
+        <td class="col-evidence">Q4/24: On-Demand GMV $5.0B (+20% YoY) · Revenue $764M</td>
+        <td class="col-lesson">Reward phải <strong>instant</strong>: trả xong thấy benefit ngay, không chiến dịch xa xôi.</td>
+      </tr>
+      <tr>
+        <td class="col-app">GrabPay × Moca<div class="sub">Vietnam</div></td>
+        <td class="col-model">Wallet payment gắn ride convenience</td>
+        <td>Educate bằng pain point cụ thể: không cần tiền mặt, tiền lẻ, thanh toán nhanh hơn.</td>
+        <td class="col-evidence">Moca + Grab VN consumer education</td>
+        <td class="col-lesson">Copy VSP đi theo <strong>"thanh toán tự động / không cần tiền mặt"</strong>. Không nói "fintech ecosystem".</td>
+      </tr>
+      <tr>
+        <td class="col-app">Gojek / GoPay<div class="sub">Indonesia</div></td>
+        <td class="col-model">Ride → financial inclusion</td>
+        <td>Ride-hailing phổ cập GoPay cho driver + merchant. Two-sided marketplace.</td>
+        <td class="col-evidence">900K drivers · 125K+ merchants · 100M monthly tx · 50 thành phố</td>
+        <td class="col-lesson">VSP nên cover <strong>two-sided</strong>: rider payment + driver payout + incentives + refund + merchant.</td>
+      </tr>
+      <tr>
+        <td class="col-app">Careem<div class="sub">MENA</div></td>
+        <td class="col-model">Ride → Everything App + Careem Pay</td>
+        <td>Mở rộng từ ride-hailing sang food, bike, laundry, event. Pay theo sau habit.</td>
+        <td class="col-evidence">~50M users · Engineering doc super app pattern</td>
+        <td class="col-lesson">Phase 1 phải <strong>narrow</strong>: payment for mobility trước, finance expansion sau.</td>
+      </tr>
+      <tr>
+        <td class="col-app">Kakao T + Kakao Pay<div class="sub">Korea</div></td>
+        <td class="col-model">Mobility on shared identity</td>
+        <td>Thắng nhờ identity layer KakaoTalk/Kakao ecosystem. Payment không đứng riêng.</td>
+        <td class="col-evidence">96% taxi-hailing market (KFTC 2022) · 13.2M MAU</td>
+        <td class="col-lesson">Vingroup: GreenSM + VSP dùng <strong>shared ecosystem identity</strong> thay vì onboarding ví riêng.</td>
+      </tr>
+      <tr>
+        <td class="col-app">DiDi<div class="sub">China</div></td>
+        <td class="col-model">Ride trên Alipay/WeChat Pay</td>
+        <td>App ride-hailing không own wallet vì payment infra xã hội đã mạnh.</td>
+        <td class="col-evidence">WeChat/Alipay dominate daily commerce CN</td>
+        <td class="col-lesson">Nếu VSP chưa đủ trust, đừng force. <strong>Fallback rail + gradual adoption</strong>.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="patterns">
+  <h2><span class="num">02</span> 5 pattern lặp lại</h2>
+  <p class="sub">Cùng 12 case study → 5 hành vi chung. Đây là "tiền đề" của Phase 1 standards.</p>
+
+  <div class="patterns">
+    <div class="pattern">
+      <div class="n">1</div>
+      <h4>Job luôn đứng trên payment intent</h4>
+      <p>Uber, Lyft, Grab, Gojek, Careem, Kakao T, DiDi đều không bắt đầu bằng "mở ví". User mở app vì 1 job chính: đi xe, đặt đồ ăn. Payment chỉ làm job đó mượt hơn.</p>
+      <div class="examples"><strong>VSP:</strong> Không chen vào làm gián đoạn intent đi xe.</div>
+    </div>
+    <div class="pattern">
+      <div class="n">2</div>
+      <h4>Payment càng invisible càng tốt</h4>
+      <p>Uber benchmark rõ nhất: ride xong → tự charge. Lyft, DiDi tương tự. "Zero" không phải xóa bước kỹ thuật, mà xóa <em>cảm giác setup</em> khỏi nhận thức user.</p>
+      <div class="examples"><strong>VSP:</strong> Auto-provision khi user đủ điều kiện. UI chỉ show 1 confirm.</div>
+    </div>
+    <div class="pattern">
+      <div class="n">3</div>
+      <h4>Reuse trust có sẵn</h4>
+      <p>Lyft borrow Cash App. Kakao T borrow Kakao ecosystem. DiDi borrow Alipay/WeChat. Không app nào ép user signup lại từ đầu khi đã có identity ở ecosystem mẹ.</p>
+      <div class="examples"><strong>VSP:</strong> GreenSM session → VSP profile. Shared device trust. One-tap linking.</div>
+    </div>
+    <div class="pattern">
+      <div class="n">4</div>
+      <h4>Reward instant trong transaction</h4>
+      <p>Grab rõ nhất: GrabPay → earn GrabRewards. Reward không nằm trong campaign page xa xôi — gắn trực tiếp với payment.</p>
+      <div class="examples"><strong>VSP:</strong> Cashback, free cancellation, priority booking → ngay sau ride đầu.</div>
+    </div>
+    <div class="pattern">
+      <div class="n">5</div>
+      <h4>Finance expansion đi sau habit</h4>
+      <p>Grab, Gojek, Careem đều build daily behavior trước, mở fintech sau. Nhảy thẳng vào "đầu tư / bảo hiểm" Phase 1 → user thấy quá nặng.</p>
+      <div class="examples"><strong>VSP:</strong> Phase 1 = payment for mobility. Finance layer (sinh lời, đầu tư) → Phase 2+.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="standards" class="standards">
+  <h2><span class="num">03</span> 12 standard bắt buộc</h2>
+  <p class="sub">Đây là check-list khi engineering/design build VSP entry trong GreenSM. Tất cả phải pass mới được ship.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Standard</th>
+        <th>Nghĩa là gì</th>
+        <th>Tại sao bắt buộc</th>
+        <th>Áp vào VSP × GreenSM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01</td>
+        <td>Ride-first, wallet-second</td>
+        <td>Flow phục vụ booking/ride payment, không phục vụ onboarding ví.</td>
+        <td>Tất cả benchmark đều ride-first.</td>
+        <td>Entry trigger nằm trong payment context, không popup random ở Home.</td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>One intent per screen</td>
+        <td>User chỉ có 1 intent: bật thanh toán nhanh. Mỗi decision thêm = drop.</td>
+        <td>High urgency context (đi xe) → cognitive load phải thấp.</td>
+        <td>CTA duy nhất: <em>"Bật thanh toán tự động"</em> / <em>"Dùng V-Smart Pay"</em>.</td>
+      </tr>
+      <tr>
+        <td>03</td>
+        <td>Shared identity</td>
+        <td>GreenSM account / session / device trust reuse cho VSP.</td>
+        <td>Lyft × Cash App, Kakao T × Kakao Pay đều reuse.</td>
+        <td>Không signup VSP riêng nếu đã có GreenSM identity.</td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td>No app switching</td>
+        <td>Không đá user qua app/webview khác trừ khi bất khả kháng.</td>
+        <td>Redirect phá cảm giác seamless.</td>
+        <td>Consent/payment setup inline trong GreenSM.</td>
+      </tr>
+      <tr>
+        <td>05</td>
+        <td>Progressive KYC</td>
+        <td>Không bắt KYC full upfront nếu use case chưa cần.</td>
+        <td>Ride-hailing high urgency → KYC upfront = drop.</td>
+        <td>Chỉ KYC khi cần limit cao, cash-out, transfer, product tài chính.</td>
+      </tr>
+      <tr>
+        <td>06</td>
+        <td>Default fallback</td>
+        <td>VSP lỗi/chưa đủ điều kiện → user vẫn book/pay được.</td>
+        <td>Lyft/Uber luôn có nhiều payment rails.</td>
+        <td>Fallback: cash / card / bank / QR / existing GreenSM method.</td>
+      </tr>
+      <tr>
+        <td>07</td>
+        <td>Instant reward</td>
+        <td>Benefit phải thấy <em>trong chuyến này</em> hoặc <em>sau chuyến</em>.</td>
+        <td>Grab adoption nhờ instant GrabRewards.</td>
+        <td>Cashback, free cancel, priority booking khi dùng VSP.</td>
+      </tr>
+      <tr>
+        <td>08</td>
+        <td>Mobility language</td>
+        <td>Copy ngôn ngữ đi xe, không ngân hàng.</td>
+        <td>User GreenSM không vào app học fintech.</td>
+        <td>Tránh "liên kết ví/hệ sinh thái". Dùng <em>"chuyến sau nhanh hơn"</em>.</td>
+      </tr>
+      <tr>
+        <td>09</td>
+        <td>Clear payment state</td>
+        <td>User luôn biết chuyến đã thanh toán/chưa, bằng gì, lỗi gì.</td>
+        <td>Finance UX phải tạo trust.</td>
+        <td>Receipt, trạng thái, retry, refund, support phải cực rõ.</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Risk hidden, logged</td>
+        <td>Backend xử lý consent/risk/audit, UI không phơi hết.</td>
+        <td>Uber/Grab scale nhờ infra mạnh phía sau.</td>
+        <td>Consent log, device binding, fraud check chạy nền.</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Two-sided ready</td>
+        <td>Payment phải cover rider + driver + refund + incentive.</td>
+        <td>Gojek/Grab driver ecosystem là financial inclusion engine.</td>
+        <td>Roadmap có driver payout sau rider payment.</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Metric theo ride outcome</td>
+        <td>Đo bằng booking completion, payment success, default adoption, repeat ride.</td>
+        <td>Wallet metric (DAU, balance, top-up) gây mistake về priority.</td>
+        <td>North star = % ride dùng VSP làm default + repeat ride lift.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="phase1">
+  <h2><span class="num">04</span> Minimum bar — Phase 1</h2>
+  <p class="sub">Nếu define theo chuẩn Head of Product Design, đây là bar tối thiểu trước khi ship VSP into GreenSM.</p>
+
+  <div class="phase1">
+    <h3>What must be true before ship</h3>
+    <div class="row">
+      <div class="label">Entry point</div>
+      <div class="val">Chỉ trigger trong <strong>payment context</strong>: checkout / payment method / post-ride / reward moment. <em>Không popup random ở Home.</em></div>
+    </div>
+    <div class="row">
+      <div class="label">Copy</div>
+      <div class="val">Không nói "mở ví". Nói <strong>"thanh toán tự động"</strong>, <strong>"chuyến sau nhanh hơn"</strong>, <strong>"nhận ưu đãi khi thanh toán"</strong>.</div>
+    </div>
+    <div class="row">
+      <div class="label">Flow</div>
+      <div class="val">Tối đa <strong>1–2 bước visible</strong>. Anything backend tự làm được → auto-provision.</div>
+    </div>
+    <div class="row">
+      <div class="label">Identity</div>
+      <div class="val">GreenSM user = VSP-ready profile (nếu legal/compliance cho phép).</div>
+    </div>
+    <div class="row">
+      <div class="label">Consent</div>
+      <div class="val">Inline, gắn với action payment. Không tách thành legal onboarding wizard.</div>
+    </div>
+    <div class="row">
+      <div class="label">KYC</div>
+      <div class="val">Progressive. Không full KYC upfront cho low-risk payment.</div>
+    </div>
+    <div class="row">
+      <div class="label">Payment failure</div>
+      <div class="val">Có retry, fallback, explain rõ. Không để user stuck.</div>
+    </div>
+    <div class="row">
+      <div class="label">Success state</div>
+      <div class="val">Một success duy nhất: <em>"Đã sẵn sàng thanh toán cho chuyến đi"</em>. Không tách nhiều dialog.</div>
+    </div>
+    <div class="row">
+      <div class="label">Reward</div>
+      <div class="val">Benefit rõ ngay — cashback / ưu đãi / điểm thưởng — không campaign xa xôi.</div>
+    </div>
+    <div class="row">
+      <div class="label">Metric</div>
+      <div class="val">% user dùng VSP default + repeat ride lift. <em>Không phải</em> wallet DAU.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="summary">
+  <h2><span class="num">05</span> Chốt standard bằng 1 câu</h2>
+  <div class="callout">
+    <div class="label">North Star</div>
+    <p>User book GreenSM như bình thường, <em>payment bằng VSP diễn ra tự nhiên</em>, ít bước hơn payment hiện tại, có benefit ngay, không làm giảm booking completion, và sau vài chuyến — user xem <em>VSP như default payment behavior</em>.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<aside class="appendix">
+  <h3>Sources &amp; references</h3>
+  <ul>
+    <li>Uber Q4 2025 shareholder letter — 3.8B trips, 202M MAPCs, $54.1B gross bookings.</li>
+    <li>Uber Engineering — Platform Payment supports 10+ methods (cards, Venmo, Paytm, iDEAL).</li>
+    <li>NBER — Cash payment impact on ride-hailing demand in Mexico &amp; Panama.</li>
+    <li>Lyft 2024 annual review — 828M rides (+17% YoY), 24.7M active riders Q4/24.</li>
+    <li>Cash App quarterly metrics — 57M monthly transacting actives Q2/24.</li>
+    <li>Grab Q4 2024 report — On-Demand GMV $5.0B (+20% YoY), Revenue $764M.</li>
+    <li>UNSGSA / Gojek financial inclusion case — 900K drivers, 125K+ merchants, 100M monthly tx.</li>
+    <li>Careem Engineering — Super app architecture for 50M users (MENA).</li>
+    <li>KFTC / Kakao Mobility — 96% taxi-hailing market share Korea 2022, 13.2M MAU.</li>
+    <li>Kakao Q1 2025 financial filing — Kakao Pay + Mobility platform revenue growth.</li>
+  </ul>
+  <p style="margin-top:24px;font-size:12px;color:var(--ink-3);">Last updated · 2026-05-22 · Compiled from Q4/24–Q1/26 public filings, product blogs, regulator notices.</p>
+</aside>
+
+</div>
+</body>
+</html>

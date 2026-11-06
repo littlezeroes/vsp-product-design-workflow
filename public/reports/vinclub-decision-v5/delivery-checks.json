@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-01T15:43:07.789Z",
+  "pass": true,
+  "checks": [
+    {
+      "name": "report HTTP200",
+      "pass": true
+    },
+    {
+      "name": "report final images",
+      "pass": true
+    },
+    {
+      "name": "report desktop no overflow",
+      "pass": true
+    },
+    {
+      "name": "report mobile no overflow",
+      "pass": true
+    },
+    {
+      "name": "18 slides",
+      "pass": true
+    },
+    {
+      "name": "slide content in bounds",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "presentation controls",
+      "pass": true
+    },
+    {
+      "name": "PPTX exists",
+      "pass": true
+    },
+    {
+      "name": "old versions exist",
+      "pass": true
+    },
+    {
+      "name": "no runtime errors",
+      "pass": true,
+      "detail": []
+    }
+  ]
+}

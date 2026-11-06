@@ -1,0 +1,79 @@
+{
+  "generator": "GPT Image built-in imagegen",
+  "date": "2026-10-02",
+  "material": "Champagne titanium, porcelain, restrained ruby accent, softbox upper left, front three-quarter isometric camera",
+  "assets": [
+    {
+      "name": "car",
+      "source": "/Users/huykieu/.codex/generated_images/01a0fbc3-1ff6-7ac3-9b7f-bf178e77af2a/exec-eddf6da1-1ffb-414f-98d6-0721b4a5d9cb.png",
+      "output": "/vinclub-assets/icons/car.webp",
+      "prompt": "Use case: stylized-concept. A single premium 3D miniature electric taxi car service icon, isolated centered on genuinely transparent background. Champagne titanium body, porcelain white details, restrained ruby red accent, soft beveled sculpted forms, subtle optical glass windows. Consistent elevated front three-quarter isometric camera, studio softbox upper left, refined ambient shadow close to object. Luxury Vietnamese super-app icon, legible at 64px, generous empty margin, no text, no logos, no tile, no background."
+    },
+    {
+      "name": "food",
+      "source": "/Users/huykieu/.codex/generated_images/01a0fbc3-1ff6-7ac3-9b7f-bf178e77af2a/exec-e0724b7d-d610-4f33-8970-cd718a3d27c3.png",
+      "output": "/vinclub-assets/icons/food.webp",
+      "prompt": "Use case: stylized-concept. A single premium 3D miniature a fine dining cloche with a tiny ruby tomato and porcelain plate service icon, isolated centered on genuinely transparent background. Champagne titanium surfaces, porcelain white details, restrained ruby red accent, soft beveled sculpted forms, subtle optical glass windows. Consistent elevated front three-quarter isometric camera, studio softbox upper left, refined ambient shadow close to object. Luxury Vietnamese super-app icon, legible at 64px, generous empty margin, no text, no logos, no tile, no background."
+    },
+    {
+      "name": "medical",
+      "source": "/Users/huykieu/.codex/generated_images/01a0fbc3-1ff6-7ac3-9b7f-bf178e77af2a/exec-d92dd584-3b43-4e4e-866d-6ad4441f0353.png",
+      "output": "/vinclub-assets/icons/medical.webp",
+      "prompt": "Use case: stylized-concept. A single premium 3D miniature a sculpted medical cross with stethoscope service icon, isolated centered on genuinely transparent background. Champagne titanium surfaces, porcelain white details, restrained ruby red accent, soft beveled sculpted forms, subtle optical glass windows. Consistent elevated front three-quarter isometric camera, studio softbox upper left, refined ambient shadow close to object. Luxury Vietnamese super-app icon, legible at 64px, generous empty margin, no text, no logos, no tile, no background."
+    },
+    {
+      "name": "school",
+      "source": "/Users/huykieu/.codex/generated_images/01a0fbc3-1ff6-7ac3-9b7f-bf178e77af2a/exec-23804826-62d0-482d-9bef-9e08485292ef.png",
+      "output": "/vinclub-assets/icons/school.webp",
+      "prompt": "Use case: stylized-concept. A single premium 3D miniature an open book with graduation cap service icon, isolated centered on genuinely transparent background. Champagne titanium surfaces, porcelain white details, restrained ruby red accent, soft beveled sculpted forms, subtle optical glass windows. Consistent elevated front three-quarter isometric camera, studio softbox upper left, refined ambient shadow close to object. Luxury Vietnamese super-app icon, legible at 64px, generous empty margin, no text, no logos, no tile, no background."
+    },
+    {
+      "name": "hotel",
+      "source": "/Users/huykieu/.codex/generated_images/01a0fbc3-1ff6-7ac3-9b7f-bf178e77af2a/exec-9a505985-8431-45ee-9844-951f84e3a4cb.png",
+      "output": "/vinclub-assets/icons/hotel.webp",
+      "prompt": "Use case: stylized-concept. A single premium 3D miniature a miniature luxury resort building with palm service icon, isolated centered on genuinely transparent background. Champagne titanium surfaces, porcelain white details, restrained ruby red accent, soft beveled sculpted forms, subtle optical glass windows. Consistent elevated front three-quarter isometric camera, studio softbox upper left, refined ambient shadow close to object. Luxury Vietnamese super-app icon, legible at 64px, generous empty margin, no text, no logos, no tile, no background."
+    },
+    {
+      "name": "travel",
+      "source": "/Users/huykieu/.codex/generated_images/01a0fbc3-1ff6-7ac3-9b7f-bf178e77af2a/exec-8fdd9347-b5c9-4b20-9810-41acc28cbeff.png",
+      "output": "/vinclub-assets/icons/travel.webp",
+      "prompt": "Use case: stylized-concept. A single premium 3D miniature a miniature travel suitcase with palm leaf service icon, isolated centered on genuinely transparent background. Champagne titanium surfaces, porcelain white details, restrained ruby red accent, soft beveled sculpted forms, subtle optical glass windows. Consistent elevated front three-quarter isometric camera, studio softbox upper left, refined ambient shadow close to object. Luxury Vietnamese super-app icon, legible at 64px, generous empty margin, no text, no logos, no tile, no background."
+    },
+    {
+      "name": "flight",
+      "source": "/Users/huykieu/.codex/generated_images/01a0fbc3-1ff6-7ac3-9b7f-bf178e77af2a/exec-efd02ad9-1f9d-411c-88ca-e1b654246178.png",
+      "output": "/vinclub-assets/icons/flight.webp",
+      "prompt": "Use case: stylized-concept. A single premium 3D miniature a miniature passenger airplane service icon, isolated centered on genuinely transparent background. Champagne titanium surfaces, porcelain white details, restrained ruby red accent, soft beveled sculpted forms, subtle optical glass windows. Consistent elevated front three-quarter isometric camera, studio softbox upper left, refined ambient shadow close to object. Luxury Vietnamese super-app icon, legible at 64px, generous empty margin, no text, no logos, no tile, no background."
+    },
+    {
+      "name": "shopping",
+      "source": "/Users/huykieu/.codex/generated_images/01a0fbc3-1ff6-7ac3-9b7f-bf178e77af2a/exec-ec056221-3056-4653-824b-100b83bbb52f.png",
+      "output": "/vinclub-assets/icons/shopping.webp",
+      "prompt": "Use case: stylized-concept. A single premium 3D miniature a premium shopping bag with handles service icon, isolated centered on genuinely transparent background. Champagne titanium surfaces, porcelain white details, restrained ruby red accent, soft beveled sculpted forms, subtle optical glass windows. Consistent elevated front three-quarter isometric camera, studio softbox upper left, refined ambient shadow close to object. Luxury Vietnamese super-app icon, legible at 64px, generous empty margin, no text, no logos, no tile, no background."
+    },
+    {
+      "name": "payment",
+      "source": "/Users/huykieu/.codex/generated_images/01a0fbc3-1ff6-7ac3-9b7f-bf178e77af2a/exec-89a8c398-665c-40bc-92a6-e0ce34dba9f1.png",
+      "output": "/vinclub-assets/icons/payment.webp",
+      "prompt": "Use case: stylized-concept. A single premium 3D miniature a credit card and two coins service icon, isolated centered on genuinely transparent background. Champagne titanium surfaces, porcelain white details, restrained ruby red accent, soft beveled sculpted forms, subtle optical glass windows. Consistent elevated front three-quarter isometric camera, studio softbox upper left, refined ambient shadow close to object. Luxury Vietnamese super-app icon, legible at 64px, generous empty margin, no text, no logos, no tile, no background."
+    },
+    {
+      "name": "home",
+      "source": "/Users/huykieu/.codex/generated_images/01a0fbc3-1ff6-7ac3-9b7f-bf178e77af2a/exec-dbfc7fb0-007e-49fc-98d8-2d24e7d94f24.png",
+      "output": "/vinclub-assets/icons/home.webp",
+      "prompt": "Use case: stylized-concept. A single premium 3D miniature a miniature modern villa service icon, isolated centered on genuinely transparent background. Champagne titanium surfaces, porcelain white details, restrained ruby red accent, soft beveled sculpted forms, subtle optical glass windows. Consistent elevated front three-quarter isometric camera, studio softbox upper left, refined ambient shadow close to object. Luxury Vietnamese super-app icon, legible at 64px, generous empty margin, no text, no logos, no tile, no background."
+    },
+    {
+      "name": "shield",
+      "source": "/Users/huykieu/.codex/generated_images/01a0fbc3-1ff6-7ac3-9b7f-bf178e77af2a/exec-1507224e-a626-4eb0-baf1-05b30e79ba78.png",
+      "output": "/vinclub-assets/icons/shield.webp",
+      "prompt": "Use case: stylized-concept. A single premium 3D miniature a sculpted protective shield service icon, isolated centered on genuinely transparent background. Champagne titanium surfaces, porcelain white details, restrained ruby red accent, soft beveled sculpted forms, subtle optical glass windows. Consistent elevated front three-quarter isometric camera, studio softbox upper left, refined ambient shadow close to object. Luxury Vietnamese super-app icon, legible at 64px, generous empty margin, no text, no logos, no tile, no background."
+    },
+    {
+      "name": "assistant",
+      "source": "/Users/huykieu/.codex/generated_images/01a0fbc3-1ff6-7ac3-9b7f-bf178e77af2a/exec-3bf12007-a7c8-429f-b2b6-ae763d5176a8.png",
+      "output": "/vinclub-assets/icons/assistant.webp",
+      "prompt": "Use case: stylized-concept. A single premium 3D miniature an abstract luminous four-point assistant sparkle service icon, isolated centered on genuinely transparent background. Champagne titanium surfaces, porcelain white details, restrained ruby red accent, soft beveled sculpted forms, subtle optical glass windows. Consistent elevated front three-quarter isometric camera, studio softbox upper left, refined ambient shadow close to object. Luxury Vietnamese super-app icon, legible at 64px, generous empty margin, no text, no logos, no tile, no background."
+    }
+  ]
+}

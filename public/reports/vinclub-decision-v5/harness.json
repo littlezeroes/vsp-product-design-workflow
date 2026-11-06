@@ -1,0 +1,221 @@
+{
+  "generatedAt": "2026-11-01T15:40:19.294Z",
+  "type": "AUTOMATED_UI_QA_NOT_HUMAN_UT",
+  "checks": [
+    {
+      "name": "daily:Home sans primary",
+      "pass": true
+    },
+    {
+      "name": "daily:home indicator",
+      "pass": true
+    },
+    {
+      "name": "daily:tab semantics",
+      "pass": true
+    },
+    {
+      "name": "daily:named radii and smooth",
+      "pass": true
+    },
+    {
+      "name": "daily:touch targets>=44",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "daily:overflow 360",
+      "pass": true
+    },
+    {
+      "name": "daily:overflow 390",
+      "pass": true
+    },
+    {
+      "name": "daily:overflow 430",
+      "pass": true
+    },
+    {
+      "name": "spend:Home sans primary",
+      "pass": true
+    },
+    {
+      "name": "spend:home indicator",
+      "pass": true
+    },
+    {
+      "name": "spend:tab semantics",
+      "pass": true
+    },
+    {
+      "name": "spend:named radii and smooth",
+      "pass": true
+    },
+    {
+      "name": "spend:touch targets>=44",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "spend:overflow 360",
+      "pass": true
+    },
+    {
+      "name": "spend:overflow 390",
+      "pass": true
+    },
+    {
+      "name": "spend:overflow 430",
+      "pass": true
+    },
+    {
+      "name": "experience:Home sans primary",
+      "pass": true
+    },
+    {
+      "name": "experience:home indicator",
+      "pass": true
+    },
+    {
+      "name": "experience:tab semantics",
+      "pass": true
+    },
+    {
+      "name": "experience:named radii and smooth",
+      "pass": true
+    },
+    {
+      "name": "experience:touch targets>=44",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "experience:overflow 360",
+      "pass": true
+    },
+    {
+      "name": "experience:overflow 390",
+      "pass": true
+    },
+    {
+      "name": "experience:overflow 430",
+      "pass": true
+    },
+    {
+      "name": "daily:pointer entry not intercepted",
+      "pass": true
+    },
+    {
+      "name": "daily:claim produces entitlement",
+      "pass": true
+    },
+    {
+      "name": "daily:2 tickets discounted",
+      "pass": true
+    },
+    {
+      "name": "ticket:coupon off total",
+      "pass": true
+    },
+    {
+      "name": "ticket:retry succeeds with honest label",
+      "pass": true
+    },
+    {
+      "name": "ticket:find saved asset",
+      "pass": true
+    },
+    {
+      "name": "gift:cannot reclaim consumed reward",
+      "pass": true
+    },
+    {
+      "name": "gift:consumed leads to asset",
+      "pass": true
+    },
+    {
+      "name": "ticket:error preserves coupon",
+      "pass": true
+    },
+    {
+      "name": "ticket:explicit error retry",
+      "pass": true
+    },
+    {
+      "name": "quantity:3 tickets correct",
+      "pass": true
+    },
+    {
+      "name": "quantity:back to2",
+      "pass": true
+    },
+    {
+      "name": "lead:initial disabled",
+      "pass": true
+    },
+    {
+      "name": "lead:invalid phone remains disabled",
+      "pass": true
+    },
+    {
+      "name": "lead:valid form enabled",
+      "pass": true
+    },
+    {
+      "name": "lead:pending not confirmed",
+      "pass": true
+    },
+    {
+      "name": "lead:find request",
+      "pass": true
+    },
+    {
+      "name": "lead:no phone in stored session",
+      "pass": true
+    },
+    {
+      "name": "assets:empty state",
+      "pass": true
+    },
+    {
+      "name": "QR:no fake payment",
+      "pass": true
+    },
+    {
+      "name": "desktop:overflow",
+      "pass": true
+    },
+    {
+      "name": "motion:reduced transitions",
+      "pass": true
+    },
+    {
+      "name": "runtime:no errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "shots": [
+    "evidence/final-daily-home.png",
+    "evidence/final-spend-home.png",
+    "evidence/final-experience-home.png",
+    "evidence/daily-gift-before.png",
+    "evidence/daily-gift-after.png",
+    "evidence/ticket-success.png",
+    "evidence/ticket-owned.png",
+    "evidence/ticket-error.png",
+    "evidence/spend-ticket-summary.png",
+    "evidence/experience-form.png",
+    "evidence/experience-pending.png",
+    "evidence/experience-owned.png",
+    "evidence/assets-empty.png"
+  ],
+  "pass": true,
+  "passed": 47,
+  "total": 47,
+  "notes": [
+    "Prototype only: no payment, real ticket, reward engine or P&L lead submission.",
+    "Final source unchanged; V5 new route in vsp-ui.",
+    "Screenshots/shape checks validate rendering, not retention/conversion."
+  ]
+}

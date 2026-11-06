@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-01T14:48:05.075Z",
+  "checks": {
+    "galleryImages": true,
+    "galleryLinks": true,
+    "hubOverflowDesktop": true,
+    "hubOverflowMobile": true,
+    "slides26": true,
+    "slideOverflow": true,
+    "manifest100": true,
+    "imagesExist": true,
+    "previousVersionsPreserved": true,
+    "noPageErrors": true
+  },
+  "errors": [],
+  "pass": true,
+  "note": "Usability protocol prepared, no human UT performed. Repo-wide tsc has pre-existing errors outside this route; no tsc errors in vinclub-ia-lab."
+}

@@ -1,0 +1,109 @@
+.vc-daily-premium .ds-shell.ds-experience-mode .ds-stage{background:var(--secondary)}
+.vc-daily-premium .ds-shell.ds-experience-mode .ds-stage>.ds-scroll{position:relative;border-radius:0;overflow:hidden;background:transparent}
+.vc-daily-premium .ds-shell.ds-experience-mode .ds-stage>.ds-scroll>.ds-surface{position:absolute;inset:0;padding:0;min-height:0;border-radius:0;background:transparent}
+.dx-root{position:absolute;inset:0;overflow:hidden;--dx-top:55%;color:var(--foreground)}
+.dx-root[data-sheet=half]{--dx-top:43%}.dx-root[data-sheet=full]{--dx-top:132px}
+.dx-map{position:absolute;inset:0}.dx-map>.mini-city{height:100%;border-radius:0;background:var(--secondary)}
+.dx-map .mini-city-host,.dx-map .mini-city-labels,.dx-map .mini-city-poster{inset:0}
+.dx-map .mini-city[data-map-mode=city] .mini-city-labels{display:block}
+.dx-map .mini-city-controls,.dx-map .mini-city-caption{display:none}
+.dx-map .mini-city-host canvas{touch-action:none;opacity:0;transition:opacity .35s ease}.dx-map .mini-city[data-render-status=ready] canvas{opacity:1}
+.dx-map .mini-city-pin{font-size:10px!important;height:32px;backdrop-filter:blur(18px);box-shadow:0 4px 18px color-mix(in srgb,var(--foreground) 12%,transparent)}
+.dx-map .mini-city-pin-active{outline:none;color:var(--background)}.dx-map .mini-city-pin-active>span[aria-hidden=true]{background:var(--foreground)}
+.dx-status{position:absolute;inset:0 0 auto;z-index:3;pointer-events:none;background:linear-gradient(color-mix(in srgb,var(--background) 70%,transparent),transparent)}
+.dx-search{position:absolute;top:64px;left:0;right:0;z-index:4}
+.dx-search-field{display:flex;align-items:center;gap:8px;height:48px;padding:0 14px;background:color-mix(in srgb,var(--background) 90%,transparent);backdrop-filter:blur(24px);box-shadow:0 5px 22px color-mix(in srgb,var(--foreground) 10%,transparent)}
+.dx-search-field input{background:transparent;box-shadow:none;border:0;padding-left:0;height:44px;min-width:0;font-size:16px}.dx-search-field>svg{flex-shrink:0;color:var(--foreground-secondary)}
+.dx-tools{position:absolute;right:22px;top:142px;z-index:4;display:flex;flex-direction:column;gap:9px}.dx-tools button{width:38px;height:38px;padding:0;backdrop-filter:blur(18px);box-shadow:0 4px 16px color-mix(in srgb,var(--foreground) 10%,transparent)}
+.dx-sheet{position:absolute;top:var(--dx-top);bottom:0;left:0;right:0;z-index:6;overflow:hidden;display:flex;flex-direction:column;background:color-mix(in srgb,var(--background) 88%,transparent);backdrop-filter:blur(28px) saturate(1.1);box-shadow:0 -8px 35px color-mix(in srgb,var(--foreground) 12%,transparent);transition:top .5s cubic-bezier(.22,1,.36,1);animation:dx-sheet-enter .75s cubic-bezier(.22,1,.36,1) both}
+.dx-grabber{height:28px;min-height:28px;flex-shrink:0;width:100%;padding:0;touch-action:none}.vc-daily-premium .dx-grabber>span[aria-hidden=true]{background:transparent;box-shadow:none}.dx-grabber>span:last-child>span{display:block;width:36px;height:4px;border-radius:var(--radius-8);background:color-mix(in srgb,var(--foreground) 25%,transparent)}
+.dx-sheet-scroll{flex:1;overflow:auto;scrollbar-width:none;overscroll-behavior:contain;padding-bottom:188px}
+.dx-root:not(:has(.dx-detail)) .dx-sheet-scroll{padding-bottom:116px}
+.vc-daily-premium .dx-root .ds-experience-option{padding:10px 12px;border-radius:var(--radius-14)}
+.dx-sheet-scroll>section:first-child>div{padding-top:12px}.dx-eyebrow{font-size:9px;letter-spacing:1px}
+.dx-categories{display:flex;gap:7px;overflow:auto;scrollbar-width:none;padding-top:4px;padding-bottom:8px}
+.dx-categories button{font-size:10px;flex-shrink:0;padding:4px 9px}.dx-categories [aria-pressed=true]{color:var(--background)}.vc-daily-premium .dx-categories [aria-pressed=true]>span[aria-hidden=true]{background:var(--foreground)}
+.dx-choices{display:flex;flex-wrap:wrap;gap:8px;padding-top:16px}.dx-choices button{font-size:11px}
+.dx-mall-preview{position:relative;height:180px;overflow:hidden;background:var(--secondary)}.dx-mall-preview>img{object-fit:cover}.dx-mall-preview>button{position:absolute;left:12px;bottom:12px;z-index:1}
+.dx-stores{display:flex;flex-direction:column;gap:8px}.vc-daily-premium .dx-store{height:auto;padding:12px;white-space:normal}.dx-store>span:last-child{width:100%;justify-content:flex-start;gap:10px}
+.dx-ticket-options{display:flex;flex-wrap:wrap;gap:8px}.vc-daily-premium .dx-ticket-options [aria-pressed=true]{color:var(--background)}.vc-daily-premium .dx-ticket-options [aria-pressed=true]>span[aria-hidden=true]{background:var(--foreground)}
+.dx-ticket-receipt{background:var(--secondary)}
+.dx-sheet .dx-action{position:absolute;left:0;right:0;bottom:96px;z-index:8;padding-top:18px;padding-bottom:12px;background:linear-gradient(transparent,var(--background) 30%);backdrop-filter:blur(18px)}.dx-action button{font-size:13px}
+.vc-daily-premium .ds-experience-mode>.ds-bottom{background:transparent;z-index:50}
+@keyframes dx-sheet-enter{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.dx-sheet{transition:none;animation:none}.dx-map .mini-city-host canvas{transition:none}}
+
+.dx-sheet{border-bottom-left-radius:0;border-bottom-right-radius:0}
+
+/* Sheet and content share available space rather than covering each other. */
+.dx-root { --dx-top:62%; }
+.dx-root[data-sheet=half] { --dx-top:40%; }
+.dx-root[data-sheet=full] { --dx-top:min(124px,22%); }
+.dx-sheet { bottom:0;padding-bottom:96px;min-height:0;animation:none; }
+.dx-sheet[data-dragging=true] { transition:none;user-select:none; }
+.dx-grabber { height:32px;min-height:32px;cursor:grab; }
+.dx-sheet[data-dragging=true] .dx-grabber { cursor:grabbing; }
+.dx-sheet-scroll,.dx-root:not(:has(.dx-detail)) .dx-sheet-scroll { min-height:0;padding-bottom:24px;overflow-x:hidden;overflow-y:auto; }
+.dx-sheet-heading { display:flex;align-items:center;justify-content:space-between;gap:12px; }
+.dx-sheet-heading>div { min-width:0; }
+.dx-sheet-heading h1 { font-size:20px;line-height:26px; }
+.dx-expand { flex-shrink:0;width:32px;padding:0; }
+.dx-categories { min-height:44px; }
+.vc-daily-premium .dx-root .ds-experience-option { height:auto;min-height:80px;padding:12px;border-radius:var(--radius-14); }
+.vc-daily-premium .dx-root .ds-experience-option>span:last-child { display:flex;width:100%;min-width:0;gap:12px;justify-content:flex-start; }
+.dx-root .ds-experience-thumb { width:56px;height:56px;flex-shrink:0; }
+.dx-root .ds-experience-option .vc-service-icon { width:56px;height:56px;flex-shrink:0; }
+.dx-root .ds-experience-option>span:last-child>svg { flex-shrink:0; }
+.dx-root .ds-experience-options { gap:12px; }
+.dx-sheet .dx-action { position:relative;inset:auto;flex-shrink:0;padding-top:12px;padding-bottom:12px;background:var(--background);backdrop-filter:none; }
+@media(max-height:650px) { .dx-sheet { padding-bottom:88px; }.dx-root[data-sheet=peek] { --dx-top:48%; } }
+.vc-daily-premium .dx-root .ds-experience-option>span[aria-hidden=true] { border-radius:var(--radius-14); }
+
+/* Photo-led discovery: a horizontal journey rail and nearby service tiles. */
+.dx-root[data-sheet=half] { --dx-top:30%; }
+.dx-location { display:flex;align-items:center;gap:4px;font-size:11px;line-height:16px; }
+.dx-sheet-heading { align-items:flex-start; }
+.dx-sheet-heading h1 { font-size:24px;line-height:30px;letter-spacing:-.5px; }
+.dx-sheet-heading .dx-expand { margin-top:4px; }
+.dx-discovery-heading { display:flex;align-items:center;justify-content:space-between;gap:12px; }
+.dx-journey-rail { display:flex;gap:12px;overflow-x:auto;margin-right:-22px;padding:0 22px 4px 0;scrollbar-width:none;scroll-snap-type:x proximity; }
+.dx-journey-card { flex:0 0 236px;min-width:0;overflow:hidden;scroll-snap-align:start; }
+.dx-journey-art { position:relative;height:136px;overflow:hidden; }
+.dx-journey-art>img { object-fit:cover; }
+.dx-journey-tag { position:absolute;left:12px;top:12px;padding:4px 8px;font-size:10px;font-weight:500;background:color-mix(in srgb,var(--background) 92%,transparent);color:var(--foreground);backdrop-filter:blur(12px); }
+.dx-journey-copy { padding:12px; }
+.dx-journey-copy h3 { line-height:22px; }
+.vc-daily-premium .dx-root .dx-journey-link { background:transparent;font-size:12px;height:28px;min-height:28px;padding:0; }
+.vc-daily-premium .dx-root .dx-journey-link>span[aria-hidden=true] { background:transparent;box-shadow:none; }
+.dx-nearby-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px; }
+.dx-nearby-card { align-items:flex-start; }
+.dx-nearby-card>p { flex:1; }
+.vc-daily-premium .dx-root .dx-categories [aria-pressed=true] { color:var(--foreground); }
+.vc-daily-premium .dx-root .dx-categories [aria-pressed=true]>span[aria-hidden=true] { background:var(--secondary);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--foreground) 16%,transparent); }
+
+.dx-tools { top:128px;flex-direction:row;gap:8px; }
+.dx-heading-actions { display:flex;flex-direction:column;align-items:flex-end;gap:12px;flex-shrink:0; }
+.vc-daily-premium .dx-root .dx-ask-ai { height:48px;padding:8px 16px 8px 10px;font-size:14px; }
+.dx-ask-ai>span:last-child { gap:8px; }
+
+/* Keep sheet content behind the floating navigation; reserve space inside scrolling content. */
+.vc-daily-premium .ds-experience-mode .dx-sheet { padding-bottom:0; }
+.vc-daily-premium .ds-experience-mode .dx-sheet-scroll { padding-bottom:120px; }
+.vc-daily-premium .ds-experience-mode .dx-sheet:has(.dx-action) { padding-bottom:96px; }
+.vc-daily-premium .ds-experience-mode>.ds-bottom { position:absolute;left:0;right:0;bottom:0; }
+.vc-daily-premium .ds-shell.ds-experience-mode { position:relative; }
+
+/* Contextual pay-later discovery stays connected to the Vincom shopping journey. */
+.dx-paylater-card { position:relative;overflow:hidden;background:linear-gradient(135deg,var(--secondary),color-mix(in srgb,var(--daily-glass-gold) 10%,var(--background))); }
+.dx-paylater-copy { position:relative;z-index:1;max-width:calc(100% - 88px);padding:22px 0 22px 22px; }
+.dx-paylater-art { position:absolute;right:-4px;top:50%;transform:translateY(-50%);pointer-events:none; }
+.vc-daily-premium .dx-paylater-shop { height:32px;padding:0;font-size:12px; }
+.vc-daily-premium .dx-paylater-card button>span[aria-hidden=true]:first-child { background:transparent;box-shadow:none;backdrop-filter:none; }
+/* Shared overview title stays on one line in every experience surface. */
+.dx-sheet-heading:has(.dx-overview-title){display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 8px}.dx-sheet-heading:has(.dx-overview-title)>div:first-child{display:contents}.dx-sheet-heading:has(.dx-overview-title) .dx-location{grid-column:1;grid-row:1;align-self:center}.dx-sheet-heading:has(.dx-overview-title) .dx-heading-actions{grid-column:2;grid-row:1;flex-direction:row;align-items:center;gap:6px}.dx-sheet-heading h1.dx-overview-title{grid-column:1/-1;grid-row:2;white-space:nowrap;font-size:24px;line-height:30px;margin-top:0;letter-spacing:-.5px}
+
+/* Default map and information sheet each occupy half the screen. */
+.dx-root[data-sheet=peek] { --dx-top:70%; }
+.dx-root[data-sheet=half] { --dx-top:50%; }
+
+@media(max-width:350px) { .dx-sheet-heading h1.dx-overview-title { font-size:22px;line-height:28px; } }

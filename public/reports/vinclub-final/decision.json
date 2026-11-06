@@ -1,0 +1,287 @@
+{
+  "recommendation": "Chốt một Home theo StackHome gốc: hội viên/điểm → ví VinPay → hai sản phẩm tài chính → ưu đãi thương hiệu và quà → trải nghiệm lifestyle ảnh lớn → điều hướng gốc. Bổ sung hành trình vào đúng lớp và màn sâu; không dùng ba Home theo scenario làm phương án cuối.",
+  "whyNotV5": [
+    "V5 đọc sai hai thẻ tài chính Sinh lời/Vay nhanh thành hai shortcut quyền lợi; làm mất vai trò bán chéo VinPay.",
+    "Ba composition daily/spend/experience là ba tác vụ thử, không thay thế được một Home đủ kiến trúc đã chọn.",
+    "Phải trả lời tính năng mới đi đâu và tạo giá trị cho ai; đặt lại nhãn và tạo thêm tab chưa giải quyết điều đó.",
+    "Giữ phần hữu ích của V5: trạng thái tài sản sau nhận, checkout rõ và lead chờ xác nhận; đưa xuống các luồng thay vì thay kiến trúc Home."
+  ],
+  "retainedArchitecture": [
+    {
+      "layer": 1,
+      "name": "Hội viên và VPoint",
+      "purpose": "Biết hạng, điểm và quyền lợi đang có",
+      "entry": "Hội viên / Điểm"
+    },
+    {
+      "layer": 2,
+      "name": "Ví VinPay",
+      "purpose": "Xem tiền ví và mở thao tác thanh toán",
+      "entry": "Ví"
+    },
+    {
+      "layer": 3,
+      "name": "Hai sản phẩm tài chính",
+      "purpose": "Sinh lời và Vay nhanh với lợi ích cụ thể; số liệu nguồn là mẫu",
+      "entry": "Chi tiết từng sản phẩm VinPay"
+    },
+    {
+      "layer": 4,
+      "name": "Ưu đãi thương hiệu và rail quà",
+      "purpose": "Tìm ưu đãi, nhận/đổi và dùng quà; chiến dịch có thời hạn nằm tại đây",
+      "entry": "Ưu đãi / Voucher của tôi / sảnh chiến dịch"
+    },
+    {
+      "layer": 5,
+      "name": "Trải nghiệm lifestyle ảnh lớn",
+      "purpose": "Tạo hứng thú khám phá xe, điểm đến, sự kiện và O2O đúng nguồn cung",
+      "entry": "Chi tiết trải nghiệm / đặt vé / yêu cầu lịch"
+    },
+    {
+      "layer": 6,
+      "name": "Điều hướng gốc",
+      "items": [
+        "Trang chủ",
+        "Ưu đãi",
+        "QR",
+        "Sự kiện",
+        "Hạng"
+      ],
+      "purpose": "Giữ đường vào quen thuộc; không thay bằng tab tài sản/chợ/chat"
+    }
+  ],
+  "additions": [
+    {
+      "feature": "Hạng, quyền lợi, số dư và lịch sử VPoint",
+      "homeEntry": "Lớp 1: hạng + VPoint",
+      "destination": "Hội viên → Điểm / Quyền lợi / Tiến độ hạng",
+      "current": "Có bề mặt nguồn; B3 ghi hoàn thành hồ sơ hạng và sổ cái, chưa kiểm chứng production",
+      "feb2027": "B3 30/11/2026: lịch sử/hạn điểm, tiến độ hạng; 24/12: cấp quyền lợi và đối soát",
+      "end2027": "Mở rộng quyền lợi theo nguồn cung; không tự thêm tab",
+      "source": "SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.2.3, 3.2.1",
+      "commercialValue": "Thúc đẩy sử dụng và chi tiêu chéo; VPoint không phải tiền ví hay doanh thu",
+      "dependency": "Luật hạng, nguồn điểm, chống trùng và đối soát"
+    },
+    {
+      "feature": "Ví VinPay, liên kết ngân hàng, nạp/rút và lịch sử",
+      "homeEntry": "Lớp 2: ví độc lập với VPoint",
+      "destination": "Ví VinPay → nguồn tiền / giao dịch",
+      "current": "Có ví và đường kích hoạt trong nguồn; B3 ghi hoàn thành liên kết ngân hàng ở ví, không đồng nghĩa SDK trên VinClub đã xong",
+      "feb2027": "SDK trên VinClub hạn 24/12/2026",
+      "end2027": "Mở rộng kết nối theo nghiệm thu, giữ lớp ví",
+      "source": "SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.2.4.1, 1.2.4.4",
+      "commercialValue": "Nguồn tiền cho giao dịch; tiền nạp và số dư không phải doanh thu",
+      "dependency": "SDK, eKYC, sổ cái, trạng thái và tra soát"
+    },
+    {
+      "feature": "Sinh lời",
+      "homeEntry": "Lớp 3: thẻ tài chính Sinh lời",
+      "destination": "VinPay → chi tiết sản phẩm → điều kiện → đăng ký",
+      "current": "Source có saving; lợi suất 5,7%/năm là số mẫu. B3 ghi hoàn thành kích hoạt Sinh lời ở ví",
+      "feb2027": "Giữ thẻ và chuyển đúng sản phẩm khi VinPay hỗ trợ; không cam kết lãi suất hay tích hợp VinClub đã giao",
+      "end2027": "Tối ưu bán chéo theo dữ liệu đủ điều kiện; không tăng số thẻ mặc định",
+      "source": "ref-layouts.tsx PRODUCT_CASES; SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.2.4.3",
+      "commercialValue": "Bán chéo sản phẩm tài chính cho VinPay; cơ chế thu và bên hưởng cần hợp đồng",
+      "dependency": "Chủ thể cung cấp, điều khoản, lãi suất hiện hành, rủi ro, tích hợp"
+    },
+    {
+      "feature": "Vay nhanh / quyền lợi tín dụng",
+      "homeEntry": "Lớp 3: thẻ tài chính Vay nhanh",
+      "destination": "VinPay → chi tiết tín dụng → kiểm tra điều kiện / đăng ký",
+      "current": "Source có vay với hạn mức 50 triệu mẫu; B3 hiện hành không chốt ngày phát hành tín dụng",
+      "feb2027": "Giữ vai trò thẻ tài chính; chỉ cho đăng ký thật khi sản phẩm và đối tác đã sẵn sàng; không hứa duyệt",
+      "end2027": "Mở theo sản phẩm được chốt, chưa có hạn cam kết trong B3",
+      "source": "ref-layouts.tsx PRODUCT_CASES",
+      "commercialValue": "Bán chéo tín dụng; phí giới thiệu/chia sẻ doanh thu chưa xác nhận",
+      "dependency": "Đối tác cấp tín dụng, điều kiện, thẩm định, consent, lãi/phí và hỗ trợ"
+    },
+    {
+      "feature": "QR, hóa đơn, tiện ích, QR xuyên biên giới",
+      "homeEntry": "Lớp 2: Mở ví; lớp 6: QR",
+      "destination": "Ví → Thanh toán / Hóa đơn; QR → quét và xác nhận",
+      "current": "Điểm vào ví/QR có nguồn; readiness mỗi dịch vụ chưa kiểm chứng",
+      "feb2027": "QR + hóa đơn 31/12/2026; QR xuyên biên giới 28/02/2027",
+      "end2027": "Mở rộng mạng chấp nhận có kiểm soát; không tạo khối tiện ích mới trên Home",
+      "source": "SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.2.4.5–8",
+      "commercialValue": "Phí thanh toán chỉ theo hợp đồng xác nhận; TPV không phải doanh thu",
+      "dependency": "Mạng thanh toán, merchant, nguồn tiền, tra soát, phí và tỷ giá nếu có"
+    },
+    {
+      "feature": "Dùng VPoint khấu trừ tiền đơn",
+      "homeEntry": "Lớp 1: Điểm; lớp 4/5: món hoặc dịch vụ áp dụng",
+      "destination": "Chi tiết quyền lợi → đơn hàng → thanh toán",
+      "current": "B3 ghi Tiêu VPoint hoàn thành; cơ chế khấu trừ tích hợp đang có hạn riêng",
+      "feb2027": "Khấu trừ tại checkout hạn 28/02/2027; hiển thị điểm dùng được và số tiền còn lại",
+      "end2027": "Mở rộng từng đơn vị đủ đối soát, không gộp tiền ví với điểm",
+      "source": "SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.2.2.1; 1.2.3.6",
+      "commercialValue": "Tăng sử dụng quyền lợi và giao dịch; trừ điểm không tự là doanh thu",
+      "dependency": "Luật quy đổi, quyền kết hợp voucher, hoàn/hủy và quyết toán"
+    },
+    {
+      "feature": "Voucher, quà đã sở hữu và quà sinh nhật",
+      "homeEntry": "Lớp 4: rail ưu đãi thương hiệu + quà",
+      "destination": "Ưu đãi → Voucher của tôi / đổi quà / nơi sử dụng",
+      "current": "Nguồn có rail và quà; B3 ghi ví voucher hoàn thành; quà hằng ngày vẫn là demo",
+      "feb2027": "Đổi quà 30/11; quà sinh nhật hội viên cao cấp 31/12/2026; quà chào mừng 24/12",
+      "end2027": "Duy trì theo ngân sách và nguồn cung, không buộc quà hằng ngày thành quyền lợi vĩnh viễn",
+      "source": "SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.2.2.2, 1.3.1.2, 3.2.2.1, 4.4",
+      "commercialValue": "Tạo sử dụng tăng thêm; cần trừ chi phí tài trợ và vận hành",
+      "dependency": "Người chịu ngân sách, tồn, thể lệ, chống cấp trùng, xác nhận dùng"
+    },
+    {
+      "feature": "Vé sự kiện",
+      "homeEntry": "Lớp 5: card sự kiện; lớp 6: Sự kiện",
+      "destination": "Sự kiện → chi tiết / zone → đặt vé → vé của tôi",
+      "current": "Nguồn có tab Sự kiện; đặt vé thật chưa kiểm chứng",
+      "feb2027": "B3 hạn 31/12/2026, giai đoạn 1 theo zone; chỉ bật sự kiện có nguồn vé",
+      "end2027": "Mở rộng theo lịch và tồn của nhà cung cấp",
+      "source": "SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 2.1.2.1",
+      "commercialValue": "Doanh thu bán vé thuộc bên cung cấp; phần nền tảng hưởng theo thỏa thuận, chưa có tỷ lệ",
+      "dependency": "VP-OTA/Vinpearl/VinWonders/VEC, lịch, tồn, hoàn/hủy, phát hành vé"
+    },
+    {
+      "feature": "Sa bàn ảo, nhà mẫu, lái thử và lịch O2O",
+      "homeEntry": "Lớp 5: card lifestyle ảnh lớn đúng nội dung",
+      "destination": "Chi tiết trải nghiệm → khám phá / 3D nhẹ → yêu cầu lịch → theo dõi",
+      "current": "Nguồn có VinFast và nội dung nghỉ dưỡng Đảo Ngọc; ảnh nghỉ dưỡng không chứng minh dự án nhà ở hay sa bàn đã tích hợp",
+      "feb2027": "Khám phá 3D, trợ lý và lịch có hạn 31/12/2026 trong B3; lịch chỉ xác nhận khi P&L phản hồi",
+      "end2027": "Mở rộng theo dữ liệu dự án và hiệu năng; cư dân số chưa có hạn",
+      "source": "SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 2.2.1; ref-layouts.tsx FOR_YOU",
+      "commercialValue": "Lead được tiếp nhận, lịch và giao dịch P&L là các bước khác nhau; chưa xác nhận phí lead",
+      "dependency": "Dữ liệu 3D/giỏ hàng, consent, người nhận lead, SLA và phản hồi lịch"
+    },
+    {
+      "feature": "Mở Cửa Tết, nhiệm vụ và giới thiệu có chuyển đổi",
+      "homeEntry": "Lớp 4: card chiến dịch trong rail quà; lớp 5 chỉ khi có trải nghiệm liên quan",
+      "destination": "Sảnh chiến dịch → cửa → nhiệm vụ / quyền lợi → dịch vụ P&L",
+      "current": "Có hook quà mẫu; chiến dịch chưa được xem là triển khai",
+      "feb2027": "5 cửa 15/01–12/02; hoàn tất 19/02, tổng kết 26/02; referral 15/01/2027. Thứ tự có thể điều chỉnh",
+      "end2027": "Tái sử dụng cấu hình hạn 30/06/2027; không cố định khối Tết trên Home quanh năm",
+      "source": "SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.3.2, 1.3.3",
+      "commercialValue": "Tăng sử dụng chéo và lượt ghé xác thực; hiệu quả sau trừ thưởng, không lấy lượt mở app làm doanh thu",
+      "dependency": "Thể lệ, ngân sách từng P&L, chống gian lận, nguồn cung và đối soát kết quả"
+    },
+    {
+      "feature": "Gói ưu đãi liên P&L, gói gia đình và đặc quyền cao cấp",
+      "homeEntry": "Lớp 1: quyền lợi hạng; lớp 4: gói; lớp 5: trải nghiệm đặc quyền",
+      "destination": "Hội viên / Ưu đãi → cấu phần gói → mua / quản lý quyền sử dụng",
+      "current": "B3 hồ sơ hạng hoàn thành; chưa xác nhận gói đang bán",
+      "feb2027": "Gói cá nhân/nhóm, quản lý quyền lợi và đối soát gói hạn 31/12/2026; đặc quyền cao cấp phụ thuộc bộ phận Đặc quyền",
+      "end2027": "Mở theo nguồn cung và kết quả pilot; không suy ra có phí hội viên định kỳ",
+      "source": "SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 3.1, 3.3",
+      "commercialValue": "Bán chéo và phân bổ tiền gói cho P&L; cần tách nghĩa vụ cung ứng và phần nền tảng",
+      "dependency": "Giá so mua lẻ, hạn, công suất, quyền dùng nhóm, hỗ trợ và phân bổ doanh thu"
+    },
+    {
+      "feature": "Đối tác ngoài HST, affiliate và gian hàng Vincom",
+      "homeEntry": "Lớp 4: ưu đãi thương hiệu; lớp 5: tuyển chọn nội dung phù hợp",
+      "destination": "Ưu đãi → thương hiệu / gian hàng → đối tác hoặc đơn hàng",
+      "current": "Rail có thương hiệu mẫu; chưa chứng minh catalogue hay affiliate production",
+      "feb2027": "Merchant portal xác nhận dùng ưu đãi hạn 24/12/2026; marketplace/affiliate rộng chưa có hạn",
+      "end2027": "Mở từng đối tác sau khi khép kín attribution, xác nhận đơn và đối soát; không mặc định thêm tab Chợ",
+      "source": "SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 2.1.3, 2.1.4",
+      "commercialValue": "Affiliate chỉ có hoa hồng sau giao dịch đủ điều kiện theo hợp đồng; click chuyển đi chưa tạo thu nhập",
+      "dependency": "Hợp tác, catalogue, tồn, portal/hóa đơn, attribution, hủy/hoàn và đối soát"
+    },
+    {
+      "feature": "Chat, AI shopping, OA cộng đồng và cư dân số",
+      "homeEntry": "Giữ trong đích sâu của trải nghiệm/dịch vụ; không thêm Home block hoặc tab ở bản chốt",
+      "destination": "Chi tiết trải nghiệm / dịch vụ → hỗ trợ; cộng đồng nếu tích hợp được",
+      "current": "Chưa có bằng chứng triển khai trong baseline",
+      "feb2027": "Không cam kết trước 02/2027: Duhat chưa có kế hoạch SDK; AI marketplace và cư dân số chưa có hạn",
+      "end2027": "Hướng mở rộng có điều kiện, chưa phải cam kết cuối 2027; pilot nhỏ khi có dữ liệu và năng lực",
+      "source": "SHEET B3 hiện hành, /tmp/vinclub-strategy.txt 1.1, 2.1.1, 2.2.2",
+      "commercialValue": "Hỗ trợ giữ chân, chuyển đổi và giảm chi phí; chưa có nguồn thu độc lập được xác nhận",
+      "dependency": "SDK Duhat, kiểm duyệt, catalogue đúng, kiểm thử AI, consent, dữ liệu 3D/mobile"
+    }
+  ],
+  "moneyChapter": {
+    "financialVinPay": {
+      "role": "Ví, thanh toán, Sinh lời và tín dụng hỗ trợ giao dịch và bán chéo tài chính.",
+      "payerAndRecipient": "Khách hoặc đối tác chi trả theo hợp đồng từng sản phẩm; phần VinPay hưởng phải được chủ sản phẩm xác nhận.",
+      "recognition": "Số dư, nạp ví, TPV và hạn mức tín dụng không phải doanh thu. Lãi suất, phê duyệt và phí/chia sẻ doanh thu chưa xác nhận.",
+      "measure": "Tài khoản đủ điều kiện kích hoạt, giao dịch thành công, sử dụng sản phẩm và lợi nhuận đóng góp sau chi phí khi có dữ liệu."
+    },
+    "loyaltyPnL": {
+      "role": "Quyền lợi, vé, gói và O2O làm khách sử dụng dịch vụ P&L; đối tác ngoài có khả năng affiliate.",
+      "payerAndRecipient": "Khách trả tiền vé/gói/dịch vụ cho bên cung ứng; P&L/merchant tài trợ quyền lợi. Phần nền tảng chỉ tồn tại khi có thỏa thuận.",
+      "recognition": "Tách GMV khỏi doanh thu nền tảng; thưởng/voucher có chi phí và nghĩa vụ. Lead gửi khác lead được nhận, lịch hẹn và giao dịch.",
+      "measure": "Quyền lợi thực dùng, đơn được xác nhận sau hủy/hoàn, chi tiêu tăng thêm, lead được tiếp nhận và kết quả O2O."
+    },
+    "pilot": "Chọn một nhà cung cấp có đủ nguồn, giá, quyền lợi, thanh toán/tiếp nhận, hỗ trợ và đối soát; đo từ mở quyền lợi tới sử dụng hoặc lịch được xác nhận. Chưa có dữ liệu để hứa tăng conversion hay retention."
+  },
+  "philosophy": {
+    "product": "Khách mở Home thấy mình đang có gì, biết dùng ở đâu, rồi chọn dịch vụ theo nhu cầu. Quà nhận xong phải tìm lại và sử dụng được.",
+    "design": "Giữ phân cấp sáu lớp và hai thẻ tài chính. Rail dành cho lựa chọn nhanh; ảnh lớn dành cho khám phá. Điều kiện, số phải trả và trạng thái nằm tại màn quyết định.",
+    "business": "Tách giá trị tài chính VinPay với giá trị bán dịch vụ P&L. Chỉ gọi là doanh thu khi xác định ai trả, ai hưởng và điều kiện ghi nhận."
+  },
+  "evidenceBoundary": {
+    "source": "/Users/huykieu/Documents/vinpay-all/app/(vinclub)/vinclub-home/{hooks,ref-layouts}.tsx; /tmp/vinclub-strategy.txt SHEET B3 hiện hành",
+    "current": "Quan sát source và trạng thái tài liệu, chưa chứng minh production hay UT.",
+    "feb2027": "Chỉ lấy hạn ≤28/02/2027 từ B3 hiện hành, vẫn có điều kiện nghiệm thu.",
+    "end2027": "Tái sử dụng chiến dịch có hạn 30/06/2027; các mở rộng chưa có hạn không được gắn cam kết 31/12/2027.",
+    "priorError": "V5 nhầm hai sản phẩm thành hai dịch vụ; số lãi suất/hạn mức và tỷ lệ ưu đãi trong source là mẫu."
+  },
+  "slideOutline": [
+    {
+      "slide": 1,
+      "question": "Chốt phương án nào?",
+      "answer": "Một Home giữ sáu lớp của StackHome, nối tính năng mới vào hành trình sâu."
+    },
+    {
+      "slide": 2,
+      "question": "Source đã chọn điều gì?",
+      "answer": "Hạng/điểm, ví, hai thẻ tài chính, rail ưu đãi/quà, lifestyle ảnh lớn và năm tab gốc."
+    },
+    {
+      "slide": 3,
+      "question": "V5 sai ở đâu?",
+      "answer": "Thay hai sản phẩm tài chính bằng shortcut và biến ba tác vụ thử thành ba phương án Home."
+    },
+    {
+      "slide": 4,
+      "question": "Khách mở Home để làm gì?",
+      "answer": "Nhận diện quyền lợi và tiền đang có, dùng ưu đãi hoặc khám phá trải nghiệm theo nhu cầu."
+    },
+    {
+      "slide": 5,
+      "question": "Tính năng mới được đặt ở đâu?",
+      "answer": "Matrix Home entry → destination; không tự thêm khối/tab cho mỗi feature."
+    },
+    {
+      "slide": 6,
+      "question": "Luồng dùng quyền lợi kết thúc thế nào?",
+      "answer": "Điều kiện → tài sản → nơi dùng → checkout rõ → kết quả và tìm lại."
+    },
+    {
+      "slide": 7,
+      "question": "Trải nghiệm lớn dẫn tới hành động gì?",
+      "answer": "Tự khám phá → vé hoặc yêu cầu lịch → P&L tiếp nhận → theo dõi; ảnh nguồn đúng nội dung."
+    },
+    {
+      "slide": 8,
+      "question": "VinPay tạo giá trị tài chính ở đâu?",
+      "answer": "Ví/thanh toán/Sinh lời/tín dụng; phân biệt bán chéo với dòng tiền và doanh thu chưa xác nhận."
+    },
+    {
+      "slide": 9,
+      "question": "Loyalty đưa giá trị về P&L bằng cách nào?",
+      "answer": "Dùng quyền lợi, bán vé/gói, affiliate xác nhận và O2O có tiếp nhận; trừ ngân sách thưởng và chi phí."
+    },
+    {
+      "slide": 10,
+      "question": "Đến 02/2027 có thể hoàn tất những gì?",
+      "answer": "Các mục B3 có hạn và điều kiện nguồn cung/tích hợp; chiến dịch năm cửa có lịch mở, hoàn và tổng kết."
+    },
+    {
+      "slide": 11,
+      "question": "Cuối 2027 mở rộng theo điều kiện nào?",
+      "answer": "Tái dùng chiến dịch 30/06; marketplace/Chat/AI/cư dân số mở theo readiness, chưa gắn ngày cam kết."
+    },
+    {
+      "slide": 12,
+      "question": "Bằng chứng nào cho phép mở rộng?",
+      "answer": "Luồng chạy đúng, khách hiểu/dùng được, kết quả P&L xác nhận và kinh tế sau chi phí; UT/pilot chưa chạy phải ghi rõ."
+    }
+  ]
+}

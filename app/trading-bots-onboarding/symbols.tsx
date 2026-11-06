@@ -1,0 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {Plus,Plug,ChevronUp,ChevronRight,Shield,Mountain,Check,Lock,Diamond,ArrowUpFromLine,ArrowRight,Wifi,Battery,Signal,Activity,ChartColumn,FileText,Contrast} from 'lucide-react';
+import {css} from './native';
+export type SymbolViewProps={name:string};const icons:any={plus:Plus,powerplug:Plug,'chevron.up':ChevronUp,'chevron.right':ChevronRight,'shield.fill':Shield,'mountain.2.fill':Mountain,checkmark:Check,lock:Lock,'diamond.fill':Diamond,'square.and.arrow.up':ArrowUpFromLine,'arrow.right':ArrowRight,wifi:Wifi,'battery.100percent':Battery,cellularbars:Signal,'waveform.path.ecg.rectangle.fill':Activity,'chart.bar.doc.horizontal':ChartColumn,'doc.text':FileText,'circle.lefthalf.filled':Contrast};
+export function SymbolView({name,size,tintColor,weight,style}:any){const Icon=icons[name]||Activity;return <span style={{display:'flex',alignItems:'center',justifyContent:'center',...css(style)}}><Icon size={size} color={tintColor} strokeWidth={weight==='bold'?3:1.8}/></span>}

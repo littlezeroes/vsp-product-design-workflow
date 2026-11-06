@@ -1,0 +1,84 @@
+{
+  "reviewedAt": "2026-11-01",
+  "scope": "So sánh mô hình tổ chức dịch vụ và cơ chế kinh doanh từ nguồn chính thức. Pattern là diễn giải kiến trúc của nhóm phân tích, không khẳng định thứ tự tab hay giao diện hiện hành của từng ứng dụng.",
+  "competitors": [
+    {
+      "name": "Tata Neu",
+      "pattern": "Một cửa vào nhiều thương hiệu; điểm chung nối thanh toán, mua sắm và quyền lợi.",
+      "moneyModel": "Giao dịch thương mại và dịch vụ tài chính trong hệ sinh thái. Nguồn công khai đã đọc không xác nhận biểu phí của app; tổng chi tiêu và NeuCoins không phải doanh thu nền tảng.",
+      "learn": "Đặt VPoint cạnh dịch vụ có thể dùng; trình bày lợi ích mua chéo thay vì chỉ trưng số dư.",
+      "avoid": "Sao chép toàn bộ danh mục khi VinClub chưa có nguồn cung và kết nối tương ứng.",
+      "relevance": "Gần VinClub nhất ở bài toán hợp nhất thương hiệu, điểm và thanh toán.",
+      "evidence": "Tata Digital mô tả nền tảng kết hợp thanh toán, dịch vụ tài chính và commerce; loyalty dùng xuyên các thương hiệu tham gia.",
+      "sources": [
+        {"title": "Tata Digital — What we do", "url": "https://www.tatadigital.in/what-we-do", "accessed": "2026-11-01"},
+        {"title": "Tata Neu — nền tảng loyalty và danh mục", "url": "https://www.tataneu.com/v2/neuhealth", "accessed": "2026-11-01"}
+      ]
+    },
+    {
+      "name": "Grab",
+      "pattern": "Nhu cầu hằng ngày dẫn vào dịch vụ; thanh toán và thưởng hỗ trợ hoàn tất rồi quay lại.",
+      "moneyModel": "Phí dịch vụ và hoa hồng từ đối tác là nguồn thu chính theo báo cáo 2025. Giá trị chuyến / đơn không đồng nghĩa doanh thu Grab; không chuyển tỷ lệ phí sang VinClub.",
+      "learn": "Cho khách chọn việc cần làm trước; sau đó hiện ưu đãi và điểm tại đúng bước quyết định.",
+      "avoid": "Dùng chiến dịch và phần thưởng để che mất lối vào dịch vụ chính.",
+      "relevance": "Tham chiếu mạnh cho IA ưu tiên tác vụ, dùng thường xuyên và theo dõi đơn.",
+      "evidence": "Grab mô tả một ứng dụng cho giao vận, di chuyển và tài chính; GrabCoins gắn với mua / đặt dịch vụ.",
+      "sources": [
+        {"title": "Grab — Super App", "url": "https://www.grab.com/sg/about/superapp/", "accessed": "2026-11-01"},
+        {"title": "Grab — GrabRewards becomes GrabCoins", "url": "https://www.grab.com/inside-grab/stories/grabrewards-grabcoins-earn-savings-redeem/", "accessed": "2026-11-01"},
+        {"title": "Grab 2025 Form 20-F — báo cáo doanh thu", "url": "https://www.sec.gov/Archives/edgar/data/1855612/000185561226000020/ck0001855612-20251231.htm", "accessed": "2026-11-01"}
+      ]
+    },
+    {
+      "name": "Marriott Bonvoy",
+      "pattern": "Hội viên gắn với một hành trình cụ thể: tìm chỗ ở, đặt, chuẩn bị, sử dụng và quản lý quyền lợi.",
+      "moneyModel": "Đặt phòng tạo kinh doanh lưu trú; Marriott còn thu phí quản lý / nhượng quyền và phí liên quan theo hợp đồng. Điểm và hạng hỗ trợ giữ khách; không mặc định membership là gói thuê bao trả phí.",
+      "learn": "Đưa vé / gói / lịch hẹn đã có lên đúng lúc; cho khách thấy quyền lợi dùng được trong hành trình.",
+      "avoid": "Lấy mẫu khách sạn áp nguyên vào tất cả dịch vụ VinClub có vòng đời khác nhau.",
+      "relevance": "Phù hợp VinCare, gói liên P&L và quản lý dịch vụ đã mua.",
+      "evidence": "App hỗ trợ đặt và quản lý chuyến đi, check-in / key, tích và dùng điểm; báo cáo công ty tách phí khỏi doanh thu khách sạn.",
+      "sources": [
+        {"title": "Marriott Bonvoy — App features", "url": "https://traveler.marriott.com/travel-tips/marriott-bonvoy-app-features/", "accessed": "2026-11-01"},
+        {"title": "Marriott — Mobile app check-out", "url": "https://support.marriott.com/s/article/check-out-mobile-app", "accessed": "2026-11-01"},
+        {"title": "Marriott — 2026 Q1 fee revenues", "url": "https://marriott.gcs-web.com/static-files/c45750f3-48ae-47e4-9f43-2a8866366915", "accessed": "2026-11-01"}
+      ]
+    },
+    {
+      "name": "Weixin / WeChat",
+      "pattern": "Quan hệ và hội thoại là nền; mini program nối khách tới dịch vụ và thanh toán.",
+      "moneyModel": "Hệ sinh thái hỗ trợ marketing, thanh toán và dịch vụ doanh nghiệp. GMV mini program không phải doanh thu Tencent; không coi mọi giao dịch qua chat là khoản thu của app.",
+      "learn": "Giữ ngữ cảnh khi chuyển từ trò chuyện sang dịch vụ; đưa xác nhận và trạng thái trở lại hành trình.",
+      "avoid": "Chọn Chat làm trung tâm trước khi có SDK Duhat, cộng đồng hoạt động và nghiệp vụ phục vụ đủ tốt.",
+      "relevance": "Tham chiếu dài hạn cho cộng đồng / chat / mua chung; chưa phù hợp làm phụ thuộc bản 02/2027.",
+      "evidence": "Tencent công bố Weixin có messaging, Pay, Mini Programs và Search; báo cáo mô tả hệ sinh thái hỗ trợ marketing, payment và business services.",
+      "sources": [
+        {"title": "Tencent — Weixin & WeChat", "url": "https://www.tencent.com/products/weixin-wechat/", "accessed": "2026-11-01"},
+        {"title": "Tencent — 2025 interim report", "url": "https://static.www.tencent.com/uploads/2025/09/16/5a0b274dacf222d262734936c3508821.pdf", "accessed": "2026-11-01"}
+      ]
+    },
+    {
+      "name": "ShopBack",
+      "pattern": "Khám phá ưu đãi → sang trang đối tác → mua → theo dõi cashback được xác nhận.",
+      "moneyModel": "Merchant trả commission sau giao dịch thành công; ShopBack chia một phần cho khách bằng cashback. Tổng đơn hàng và cashback cấp cho khách khác phần doanh thu nền tảng giữ lại.",
+      "learn": "Nói rõ giao dịch thực hiện ở đâu; theo dõi trạng thái chờ xác nhận, đủ điều kiện và hủy / hoàn.",
+      "avoid": "Hiển thị thưởng như chắc chắn đã nhận khi đối tác chưa xác thực đơn.",
+      "relevance": "Phù hợp nhánh đối tác ngoài HST và chuyển giao giao dịch cho gian hàng.",
+      "evidence": "Nguồn merchant chính thức mô tả luồng referral, commission khi bán thành công và chia cashback.",
+      "sources": [
+        {"title": "ShopBack for Business — commission flow", "url": "https://business.shopback.com/sg/form", "accessed": "2026-11-01"},
+        {"title": "ShopBack Help — how ShopBack works", "url": "https://support.shopback.com.au/hc/en-gb/articles/43732946565267-Get-started-Set-up-your-ShopBack-account", "accessed": "2026-11-01"}
+      ]
+    }
+  ],
+  "recommendations": [
+    "Bản tháng 02/2027: kết hợp cách chọn tác vụ của Grab, điểm chung của Tata Neu và quản lý quyền lợi đã mua của Bonvoy.",
+    "Đối tác ngoài: học ShopBack ở việc công bố nơi mua và trạng thái chuyển đổi; không vẽ checkout nội bộ khi thực tế chỉ chuyển link.",
+    "Chat-first là phương án nghiên cứu dài hạn, chưa làm đường bắt buộc tới doanh thu khi SDK chưa có.",
+    "Triết lý ngắn: giúp khách tìm việc cần làm, thấy lợi ích đang có và hoàn tất giao dịch đúng chỗ."
+  ],
+  "limits": [
+    "Không benchmark hiệu suất hay đo usability của đối thủ.",
+    "Không xác minh thứ tự tab theo từng quốc gia / tài khoản; pattern là suy luận từ chức năng công bố.",
+    "Không dùng mức phí hoặc kết quả tài chính của đối thủ làm dự báo cho VinClub."
+  ]
+}

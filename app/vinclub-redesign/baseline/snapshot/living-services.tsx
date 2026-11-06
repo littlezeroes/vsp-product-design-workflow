@@ -1,0 +1,35 @@
+"use client";
+
+import { useState } from "react";
+import { Check, ShieldCheck, SlidersHorizontal, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { PaymentIcon } from "@/components/vinclub/daily-icons";
+import { Header } from "@/components/ui/header";
+import { Input } from "@/components/ui/input";
+import { FixedBottom } from "@/components/ui/fixed-bottom";
+import { Sheet, SheetContent, SheetTitle, SheetDescription } from "@/components/ui/sheet";
+
+export const livingServices = [
+  { id: "insurance", title: "An tâm trên mọi hành trình", product: "Bảo hiểm cho VinFast VF 8", asset: "Gợi ý cho chiếc VF 8 của bạn", category:"car", serviceIcon:"insurance", image: "insurance-3d.webp", alt: "SUV điện màu trắng trong khu dân cư, ảnh minh họa gói bảo hiểm xe", icon: ShieldCheck, description: "Tìm gói bảo vệ phù hợp với xe và nhu cầu sử dụng.", features: ["Tư vấn bảo hiểm vật chất xe", "Tìm hiểu phạm vi và điều kiện cứu hộ", "So sánh mức miễn thường, quyền lợi và phí"] },
+  { id: "smart-home", title: "Nhà hiểu bạn hơn mỗi ngày", product: "Nâng cấp nhà thông minh", asset: "Gợi ý cho căn hộ Ocean Park", category:"home", serviceIcon:"internet", image: "smart-home-3d.webp", alt: "Bảng điều khiển nhà thông minh trong phòng khách hiện đại, ảnh minh họa", icon: SlidersHorizontal, description: "Ánh sáng, rèm và an ninh kết nối trong một không gian.", features: ["Khảo sát thiết bị và hệ thống hiện có", "Thiết lập kịch bản ánh sáng và rèm", "Tư vấn điều khiển, cảm biến và an ninh"] },
+  {id:"appliances",category:"home",serviceIcon:"electricity",title:"Thiết bị gia dụng",product:"Thiết bị gia dụng cho căn hộ",asset:"Cho tổ ấm của bạn",image:"smart-home-3d.webp",alt:"",icon:SlidersHorizontal,description:"Máy lọc không khí, robot hút bụi và thiết bị bếp.",features:["Chọn thiết bị theo diện tích căn hộ","Tư vấn công suất và nhu cầu sử dụng","Tìm hiểu lắp đặt và bảo hành"]},
+  {id:"home-accessories",category:"home",serviceIcon:"internet",title:"Phụ kiện thông minh",product:"Phụ kiện nhà thông minh",asset:"Cho tổ ấm của bạn",image:"smart-home-3d.webp",alt:"",icon:SlidersHorizontal,description:"Cảm biến, ổ cắm và khóa cửa thông minh.",features:["Kiểm tra tương thích với hệ thống hiện có","Tư vấn cảm biến và khóa cửa","Tìm hiểu lắp đặt và bảo hành"]},
+  {id:"maintenance-plan",category:"car",serviceIcon:"bill",title:"Bảo dưỡng xe",product:"Bảo dưỡng VinFast VF 8",asset:"Cho chiếc xe của bạn",image:"insurance-3d.webp",alt:"",icon:ShieldCheck,description:"Chăm sóc định kỳ, kiểm tra xe và thay phụ kiện.",features:["Tư vấn lịch bảo dưỡng theo quãng đường","Kiểm tra hạng mục cần chăm sóc","Xác nhận chi phí và lịch với xưởng"]},
+  {id:"charging-accessories",category:"car",serviceIcon:"electricity",title:"Pin & phụ kiện sạc",product:"Thiết bị và phụ kiện sạc xe",asset:"Cho chiếc xe của bạn",image:"insurance-3d.webp",alt:"",icon:ShieldCheck,description:"Tìm bộ sạc và phụ kiện phù hợp với xe.",features:["Kiểm tra tương thích với VF 8","Tư vấn bộ sạc và điều kiện lắp đặt","Tìm hiểu dịch vụ pin và bảo hành"]},
+];
+export type LivingService = typeof livingServices[number];
+
+export function LivingServiceCard({ service, requested, onSelect, iconApproach=1 }: { service: LivingService; requested: boolean; onSelect: () => void; iconApproach?: number }) {
+  const titles: Record<string,string> = {insurance:"Bảo hiểm xe","smart-home":"Nhà thông minh",appliances:"Đồ gia dụng","home-accessories":"Phụ kiện nhà","maintenance-plan":"Bảo dưỡng xe","charging-accessories":"Pin & sạc"};
+  return <Button variant="secondary" className="ds-living-banner rounded-14 w-full" onClick={onSelect} aria-label={`${requested ? "Xem yêu cầu đã lưu" : "Tìm hiểu"}: ${service.product}`}><span className="ds-living-banner-content"><span className="ds-living-banner-icon"><PaymentIcon name={service.serviceIcon} approach={iconApproach} size={64}/></span><span className="ds-living-banner-copy"><span className="ds-living-banner-kicker">{requested ? "YÊU CẦU ĐÃ LƯU" : ""}</span><strong>{titles[service.id] ?? service.title}</strong></span></span></Button>;
+}
+
+export function LivingServiceSheet({ service, requested, onClose, onRequest }: { service: LivingService | null; requested: boolean; onClose: () => void; onRequest: (id: string) => void }) {
+  const [form,setForm] = useState(false);
+  const [name,setName] = useState("Minh Anh");
+  const [phone,setPhone] = useState("");
+  const valid = name.trim().length >= 2 && /^\+?\d{9,12}$/.test(phone.replace(/[\s.-]/g,""));
+  const close = () => {setForm(false);onClose();};
+  const proceed = () => {if(requested){close();return;}if(!form){setForm(true);return;}if(valid&&service)onRequest(service.id);};
+  return <Sheet open={!!service} onOpenChange={open=>{if(!open)close();}}><SheetContent side="bottom" showCloseButton={false} className="ds-action-sheet vc-daily-premium ds-living-service-sheet rounded-28 border-0 gap-0"><Header showStatusBar={false} title="Dịch vụ cho bạn" trailing={<Button variant="secondary" size="32" aria-label="Đóng gói dịch vụ" onClick={close}><X size={18}/></Button>}/>{service&&<section className="px-[22px] pt-[24px] pb-[12px]"><SheetTitle className="text-xl">{service.product}</SheetTitle><SheetDescription className="text-foreground-secondary mt-[12px]">{service.description}</SheetDescription>{requested ? <div className="pt-[24px] flex flex-col gap-[12px]"><Check size={32}/><p role="status" className="text-base font-medium">Yêu cầu tư vấn đã được lưu trong demo.</p><p className="text-sm text-foreground-secondary">Gói dịch vụ vẫn nằm trong Cá nhân để bạn xem lại.</p></div> : form ? <><label className="ds-plan-label">Họ và tên<Input value={name} onChange={e=>setName(e.target.value)} autoComplete="name"/></label><label className="ds-plan-label">Số điện thoại<Input type="tel" value={phone} onChange={e=>setPhone(e.target.value)} autoComplete="tel" placeholder="Số điện thoại nhận tư vấn"/></label><p className="text-xs text-foreground-secondary pt-[12px]">Nhập số điện thoại 9–12 chữ số. Thông tin chỉ dùng trong phiên demo.</p></> : <><div className="ds-personal-service-symbol mt-[24px]"><PaymentIcon name={service.serviceIcon} size={80}/></div><ul className="pt-[24px] flex flex-col gap-[12px]">{service.features.map(feature=><li className="text-sm flex gap-[8px] items-start" key={feature}><Check size={16} className="shrink-0 mt-[2px]"/>{feature}</li>)}</ul></>}<p className="text-xs text-foreground-secondary pt-[24px]">Gợi ý dịch vụ minh họa. Phí và điều kiện cần được đối tác xác nhận; chưa gửi yêu cầu thật.</p></section>}<FixedBottom className="relative inset-auto border-0 shadow-none pb-[8px]"><Button variant="primary" className="w-full" disabled={form&&!requested&&!valid} onClick={proceed}>{requested ? "Hoàn tất" : form ? "Lưu yêu cầu tư vấn demo" : "Nhận tư vấn gói phù hợp"}</Button>{form&&!requested&&<Button variant="secondary" className="w-full mt-[8px]" onClick={()=>setForm(false)}>Xem lại gói dịch vụ</Button>}<div className="w-[139px] h-[5px] bg-foreground rounded-full mx-auto mt-[12px]"/></FixedBottom></SheetContent></Sheet>;
+}

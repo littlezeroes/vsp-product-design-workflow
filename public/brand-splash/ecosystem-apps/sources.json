@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "vinfast",
+    "name": "VinFast",
+    "source": "https://apps.apple.com/vn/app/vinfast/id1592816336?uo=4",
+    "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e5/66/45/e56645ae-e55c-bca4-5333-2e161dba786f/AppIconVN-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg"
+  },
+  {
+    "slug": "vinhomes",
+    "name": "Vinhomes Resident",
+    "source": "https://apps.apple.com/vn/app/vinhomes-resident/id6450522818?uo=4",
+    "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/22/6e/89/226e8997-8de9-b327-3433-9051251c44ea/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg"
+  },
+  {
+    "slug": "vinmec",
+    "name": "MyVinmec",
+    "source": "https://apps.apple.com/vn/app/myvinmec/id1494832536?uo=4",
+    "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/92/f9/4e/92f94e4b-6b5e-2451-5143-ae556840af1c/AppIcon-0-0-1x_U007emarketing-0-11-0-sRGB-85-220.png/512x512bb.jpg"
+  },
+  {
+    "slug": "vinpearl",
+    "name": "MyVinpearl",
+    "source": "https://apps.apple.com/vn/app/myvinpearl/id1484921109?uo=4",
+    "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/6c/23/90/6c2390dd-5c22-d0d1-7849-a14e825bd24e/AppIcon-0-0-1x_U007emarketing-0-11-0-sRGB-85-220.png/512x512bb.jpg"
+  },
+  {
+    "slug": "vinwonders",
+    "name": "VinWonders: Theme Parks",
+    "source": "https://apps.apple.com/vn/app/vinwonders-theme-parks/id1590471592?uo=4",
+    "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/65/03/b5/6503b5f9-b7ba-a086-0efe-710fae185ac5/AppIcon-production-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg"
+  },
+  {
+    "slug": "xanhsm",
+    "name": "Green SM: Electric Mobility",
+    "source": "https://apps.apple.com/vn/app/green-sm-electric-mobility/id6446425595?uo=4",
+    "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d2/5f/62/d25f6238-28a0-047d-11ba-dbe052d94171/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg"
+  }
+]

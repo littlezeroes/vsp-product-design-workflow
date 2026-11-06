@@ -1,0 +1,20 @@
+{
+  "source": "blender/membership-cards/mp4",
+  "sourceSize": [
+    1920,
+    864
+  ],
+  "crop": {
+    "x": 652,
+    "y": 216,
+    "width": 616,
+    "height": 386
+  },
+  "playback": "One light sweep on reveal, hold final frame; reduced motion uses poster",
+  "tiers": [
+    "gold",
+    "silver",
+    "glass",
+    "obsidian"
+  ]
+}

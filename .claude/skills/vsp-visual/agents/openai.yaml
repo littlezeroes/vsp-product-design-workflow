@@ -1,0 +1,4 @@
+interface:
+  display_name: "VSP Visual"
+  short_description: "Thiết kế visual và kiểm tra final UI, slide VSP"
+  default_prompt: "Dùng $vsp-visual để hoàn thiện visual từ source và ảnh render, thống nhất final UI với slide."

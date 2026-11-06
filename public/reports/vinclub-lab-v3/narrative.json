@@ -1,0 +1,191 @@
+{
+  "version": "3",
+  "language": "vi",
+  "sampleDocument": "/Users/huykieu/Downloads/Báo cáo Sa bàn ảo Đảo Ngọc.docx",
+  "sampleReadScope": "Đã đọc toàn bộ đoạn văn và bảng 03 phiên bản trong word/document.xml.",
+  "adaptedStructure": [
+    "I. Giới thiệu bản dùng thử: hành trình → tác vụ → hình ảnh đối chiếu",
+    "II. Điều chỉnh: nêu thay đổi và lý do theo trải nghiệm",
+    "III. Kế hoạch: giới hạn hiện có và các phiên bản theo mục đích",
+    "IV. Nội dung cần quyết định",
+    "Phụ lục: hướng dẫn mở / nguồn / giới hạn"
+  ],
+  "notTransferred": [
+    "Không lặp lại các so sánh chất lượng AAA, thời gian phát triển hoặc ngân sách chưa được kiểm chứng.",
+    "Không lấy tỷ lệ chất lượng 90% / 80% trong mẫu làm thước đo cho UI.",
+    "Không khẳng định feedback hoặc usability test đã xảy ra."
+  ],
+  "slides": [
+    {
+      "id": "S01",
+      "title": "Mười cách tổ chức, một bài toán kinh doanh",
+      "takeaway": "Giúp khách tìm đúng dịch vụ, dùng đúng quyền lợi và hoàn tất hành động tạo giá trị.",
+      "bullets": [
+        "10 IA × 10 UI = 100 tổ hợp để khảo sát.",
+        "Giữ nguyên version hiện tại; V3 là không gian thử nghiệm.",
+        "Chưa có kết quả usability test với người dùng."
+      ],
+      "suggestedVisual": "Số 10 × 10 và đường dẫn demo"
+    },
+    {
+      "id": "S02",
+      "title": "Bắt đầu từ hành trình của khách",
+      "takeaway": "Từ mở app tới hành động thực, khách cần biết mình đi đâu tiếp theo.",
+      "bullets": [
+        "Xem điểm và quyền lợi đang có.",
+        "Chọn vé, gói hoặc trải nghiệm phù hợp.",
+        "Thanh toán hoặc gửi yêu cầu tư vấn; theo dõi kết quả."
+      ],
+      "suggestedVisual": "Hành trình 5 bước kèm 1 màn hình tiêu biểu"
+    },
+    {
+      "id": "S03",
+      "title": "Home hiện tại đang thiếu hai nơi chứa",
+      "takeaway": "Một nơi tìm dịch vụ, một nơi quản lý quyền lợi đã sở hữu.",
+      "bullets": [
+        "Sự kiện chưa chứa đủ sa bàn, lịch hẹn và gói.",
+        "Ưu đãi chưa nói rõ voucher đã nhận, gói đã mua.",
+        "Điểm và hạng cần đích quản lý riêng."
+      ],
+      "suggestedVisual": "Before / after IA; phần thêm tô đỏ"
+    },
+    {
+      "id": "S04",
+      "title": "Cái gì ra tiền?",
+      "takeaway": "Tách giao dịch bán, phí / hoa hồng và tác động hỗ trợ kinh doanh.",
+      "bullets": [
+        "Vé, gói và dịch vụ tạo giao dịch bán.",
+        "Đối tác / thanh toán tạo phí nếu có hợp đồng.",
+        "VPoint, chăm sóc, AI và chiến dịch hỗ trợ chuyển đổi; chưa tự là doanh thu."
+      ],
+      "suggestedVisual": "Ba dòng nguồn tiền, nhãn chủ thể VinClub / P&L"
+    },
+    {
+      "id": "S05",
+      "title": "Ba mốc không phải ba danh sách tính năng",
+      "takeaway": "Mỗi mốc mở thêm hành trình có thể vận hành.",
+      "bullets": [
+        "Hiện tại: baseline giao diện đã quan sát.",
+        "02/2027: phạm vi có hạn trong B3 và đích IA cần thiết.",
+        "Cuối 2027: kế thừa, tách rõ mở rộng chưa chốt hạn."
+      ],
+      "suggestedVisual": "Timeline ba cột; ghi hạn / phụ thuộc"
+    },
+    {
+      "id": "S06",
+      "title": "Mười IA khác nhau ở cách khách tìm đường",
+      "takeaway": "Đánh giá theo nhu cầu dẫn đường, không chỉ đổi tên tab.",
+      "bullets": [
+        "Mỗi IA có nguyên tắc nhóm, thứ tự ưu tiên và đối tượng chính.",
+        "Cùng kiểm tra bằng những tác vụ điểm, vé, gói, O2O, ví.",
+        "Chấm sơ bộ là đánh giá chuyên gia, chưa là kết quả người dùng."
+      ],
+      "suggestedVisual": "Ma trận 10 IA, nguyên tắc, nguồn tiền, rủi ro"
+    },
+    {
+      "id": "S07",
+      "title": "Mười UI trên mỗi IA kiểm tra cách trình bày",
+      "takeaway": "Một cấu trúc có nhiều cách đưa nội dung lên trước mắt khách.",
+      "bullets": [
+        "Khác thứ bậc, mật độ, cách nhóm và cách mở chi tiết.",
+        "Giữ nguyên nhiệm vụ / dữ liệu để so sánh công bằng.",
+        "Không tính đổi màu đơn thuần là một biến thể có ý nghĩa."
+      ],
+      "suggestedVisual": "Contact sheet 10 UI của một IA"
+    },
+    {
+      "id": "S08",
+      "title": "Lắp bằng Lego component",
+      "takeaway": "Dùng chung khối giúp thay bố cục mà giữ hành vi nhất quán.",
+      "bullets": [
+        "Header → Section → FixedBottom.",
+        "Tái dùng Button, Header, ItemList, TextField và các khối quyền lợi / dịch vụ.",
+        "Token, padding 22px và named radius giữ nhất quán."
+      ],
+      "suggestedVisual": "Sơ đồ blocks → 100 composition"
+    },
+    {
+      "id": "S09",
+      "title": "Đối thủ giải cùng bài toán theo cách nào?",
+      "takeaway": "Học nguyên tắc tổ chức; chọn cách phù hợp mô hình VinClub.",
+      "bullets": [
+        "Đối chiếu nhu cầu chính, cơ chế chuyển đổi, quản lý quyền lợi.",
+        "Mỗi nhận định đối thủ có nguồn chính thức và ngày truy cập.",
+        "Không suy ra tab hiện tại nếu nguồn chưa xác nhận."
+      ],
+      "suggestedVisual": "Bảng so sánh 5 đối thủ và điều nên học"
+    },
+    {
+      "id": "S10",
+      "title": "Triết lý đề xuất: quyền lợi dẫn tới sử dụng",
+      "takeaway": "Hiển thị giá trị khách đang có rồi đưa họ tới hành động tiếp theo.",
+      "bullets": [
+        "Thấy mình có gì.",
+        "Biết dùng ở đâu.",
+        "Làm xong và theo dõi được."
+      ],
+      "suggestedVisual": "Ba câu nguyên tắc kèm màn hình minh họa"
+    },
+    {
+      "id": "S11",
+      "title": "Chúng tôi đã kiểm tra gì?",
+      "takeaway": "Harness xác nhận phần kỹ thuật; người dùng xác nhận phần dễ hiểu.",
+      "bullets": [
+        "Tự động: mở 100 tổ hợp, điều hướng, kích thước, lỗi runtime.",
+        "Kiểm tra cấu trúc và một primary action cho từng màn.",
+        "Chưa công bố tỷ lệ hoàn thành hay thời gian người dùng khi chưa có phiên test."
+      ],
+      "suggestedVisual": "Bảng PASS / FAIL đọc từ harness-report; trạng thái chưa có bằng chứng ghi Chưa chạy"
+    },
+    {
+      "id": "S12",
+      "title": "Từ mười IA chọn ba hướng để kiểm chứng",
+      "takeaway": "Đưa ba hướng khác biệt vào thử nghiệm, tránh bắt một người thử cả 100 UI.",
+      "bullets": [
+        "Đánh giá sơ bộ: rõ ràng, chuyển đổi, giữ khách, khả thi.",
+        "Chọn ba hướng theo thế mạnh và phụ thuộc.",
+        "Counterbalance thứ tự; dùng cùng tác vụ và dữ liệu."
+      ],
+      "suggestedVisual": "Shortlist 3 IA, lý do chọn và rủi ro"
+    },
+    {
+      "id": "S13",
+      "title": "Kế hoạch tiếp theo",
+      "takeaway": "Chốt bằng bằng chứng nhiệm vụ, sau đó mới tối ưu hình thức.",
+      "bullets": [
+        "Sửa lỗi harness còn mở; lưu báo cáo từng vòng.",
+        "Chạy usability test với nhóm khách phù hợp.",
+        "Chọn IA / UI theo kết quả và khả năng cung ứng thực."
+      ],
+      "suggestedVisual": "Ba bước, owner và đầu ra"
+    },
+    {
+      "id": "S14",
+      "title": "Nội dung cần quyết định",
+      "takeaway": "Chọn mục tiêu kinh doanh và phạm vi, không chọn chỉ vì màn đẹp.",
+      "bullets": [
+        "Ưu tiên vé / gói hay lead O2O trong bản tháng 2?",
+        "Ba IA nào vào vòng kiểm chứng?",
+        "Nhánh nào cuối 2027 chưa đủ dữ liệu / nguồn cung?"
+      ],
+      "suggestedVisual": "Ba ô quyết định với trade-off"
+    },
+    {
+      "id": "S15",
+      "title": "Phụ lục: cách mở và cách đọc",
+      "takeaway": "Mỗi phương án có mã riêng để phản hồi và tái hiện.",
+      "bullets": [
+        "Mở gallery → chọn IA → chọn UI → chạy tác vụ.",
+        "Đọc UT plan và harness-report riêng.",
+        "Đỏ: cần bổ sung; xanh: cơ chế tạo tiền; chưa chốt hạn ghi rõ."
+      ],
+      "suggestedVisual": "Links gallery, UT, workflow, nguồn và version trước"
+    }
+  ],
+  "presentationRules": [
+    "Một slide một ý chính; 3 bullet ngắn tối đa.",
+    "Dùng ảnh hoặc sơ đồ thực của đầu ra; không thay bằng lời hứa.",
+    "Phân biệt dữ kiện tài liệu, đề xuất thiết kế và bằng chứng kiểm thử.",
+    "Kết quả harness được gắn sau khi có log; điểm chuyên gia không gọi là UT."
+  ]
+}

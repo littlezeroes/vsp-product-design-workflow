@@ -10,7 +10,7 @@ async function open(browser){
   const p=await ctx.newPage();
   p.on('pageerror',e=>console.log('PAGEERR',e.message));
   p.on('console',m=>{if(m.type()==='error')console.log('CONSOLE',m.text())});
-  await p.goto('file://'+path.join(ROOT,'comp/index.html'));
+  await p.goto('file://'+path.join(ROOT,'comp/'+(process.env.COMP||'index.html')));
   await p.evaluate(()=>window.ready);
   return p;
 }
@@ -27,7 +27,7 @@ async function renderRange(browser,from,to,out,tag){
   ff.stdin.end();await new Promise(r=>ff.on('close',r));await p.close();
 }
 (async()=>{
-  const browser=await chromium.launch({channel:'chrome',args:['--allow-file-access-from-files','--autoplay-policy=no-user-gesture-required']});
+  const browser=await chromium.launch({channel:'chrome',args:['--allow-file-access-from-files','--autoplay-policy=no-user-gesture-required','--enable-webgl','--ignore-gpu-blocklist','--enable-gpu-rasterization']});
   try{
     if(mode==='stills'){
       const p=await open(browser);const dir=path.join(ROOT,'review/stills');fs.mkdirSync(dir,{recursive:true});

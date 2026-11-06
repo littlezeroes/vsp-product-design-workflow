@@ -1,0 +1,21 @@
+[
+  {
+    "action": "Quét QR",
+    "changed": false,
+    "url": "http://localhost:3300/vinclub-home?embedded=1&skin=3&hook=1&style=8&pos=1&vinclubState=1&giftTone=1&giftCount=1&walletState=1&approach=stack&mode=light"
+  },
+  {
+    "action": "Product 1",
+    "changed": false,
+    "url": "http://localhost:3300/vinclub-home?embedded=1&skin=3&hook=1&style=8&pos=1&vinclubState=1&giftTone=1&giftCount=1&walletState=1&approach=stack&mode=light"
+  },
+  {
+    "action": "Product 2",
+    "changed": false,
+    "url": "http://localhost:3300/vinclub-home?embedded=1&skin=3&hook=1&style=8&pos=1&vinclubState=1&giftTone=1&giftCount=1&walletState=1&approach=stack&mode=light"
+  },
+  {
+    "action": "Dùng voucher",
+    "result": "Đã dùng"
+  }
+]

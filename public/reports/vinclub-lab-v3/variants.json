@@ -1,0 +1,902 @@
+[
+  {
+    "ia": "IA01",
+    "ui": 1,
+    "layout": "Danh sách rõ việc",
+    "difference": "Hàng dọc, đọc tuần tự.",
+    "url": "/vinclub-ia-lab?ia=1&ui=1",
+    "screenshot": "screens/IA01-UI01.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA01",
+    "ui": 2,
+    "layout": "Một việc nổi bật",
+    "difference": "Khối đầu lớn; lựa chọn sau gọn.",
+    "url": "/vinclub-ia-lab?ia=1&ui=2",
+    "screenshot": "screens/IA01-UI02.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA01",
+    "ui": 3,
+    "layout": "Lưới hai cột",
+    "difference": "Chọn bằng nhận diện nhóm.",
+    "url": "/vinclub-ia-lab?ia=1&ui=3",
+    "screenshot": "screens/IA01-UI03.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA01",
+    "ui": 4,
+    "layout": "Thẻ ngang",
+    "difference": "Thẻ vuốt có mép gợi ý.",
+    "url": "/vinclub-ia-lab?ia=1&ui=4",
+    "screenshot": "screens/IA01-UI04.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA01",
+    "ui": 5,
+    "layout": "Tóm tắt rồi chi tiết",
+    "difference": "Tài sản trước, dịch vụ sau.",
+    "url": "/vinclub-ia-lab?ia=1&ui=5",
+    "screenshot": "screens/IA01-UI05.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA01",
+    "ui": 6,
+    "layout": "Một điểm bắt đầu",
+    "difference": "Mở dần từng lựa chọn.",
+    "url": "/vinclub-ia-lab?ia=1&ui=6",
+    "screenshot": "screens/IA01-UI06.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA01",
+    "ui": 7,
+    "layout": "Tài sản và hành động",
+    "difference": "Phân biệt khối tài sản với dịch vụ.",
+    "url": "/vinclub-ia-lab?ia=1&ui=7",
+    "screenshot": "screens/IA01-UI07.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA01",
+    "ui": 8,
+    "layout": "Tạp chí dịch vụ",
+    "difference": "Lời dẫn lớn theo nhu cầu.",
+    "url": "/vinclub-ia-lab?ia=1&ui=8",
+    "screenshot": "screens/IA01-UI08.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA01",
+    "ui": 9,
+    "layout": "Theo trình tự",
+    "difference": "Đánh số nhóm để dẫn từng bước.",
+    "url": "/vinclub-ia-lab?ia=1&ui=9",
+    "screenshot": "screens/IA01-UI09.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA01",
+    "ui": 10,
+    "layout": "Tập trung rồi mở rộng",
+    "difference": "Hai nhóm mở sẵn, còn lại mở dần.",
+    "url": "/vinclub-ia-lab?ia=1&ui=10",
+    "screenshot": "screens/IA01-UI10.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA02",
+    "ui": 1,
+    "layout": "Danh sách rõ việc",
+    "difference": "Hàng dọc, đọc tuần tự.",
+    "url": "/vinclub-ia-lab?ia=2&ui=1",
+    "screenshot": "screens/IA02-UI01.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA02",
+    "ui": 2,
+    "layout": "Một việc nổi bật",
+    "difference": "Khối đầu lớn; lựa chọn sau gọn.",
+    "url": "/vinclub-ia-lab?ia=2&ui=2",
+    "screenshot": "screens/IA02-UI02.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA02",
+    "ui": 3,
+    "layout": "Lưới hai cột",
+    "difference": "Chọn bằng nhận diện nhóm.",
+    "url": "/vinclub-ia-lab?ia=2&ui=3",
+    "screenshot": "screens/IA02-UI03.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA02",
+    "ui": 4,
+    "layout": "Thẻ ngang",
+    "difference": "Thẻ vuốt có mép gợi ý.",
+    "url": "/vinclub-ia-lab?ia=2&ui=4",
+    "screenshot": "screens/IA02-UI04.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA02",
+    "ui": 5,
+    "layout": "Tóm tắt rồi chi tiết",
+    "difference": "Tài sản trước, dịch vụ sau.",
+    "url": "/vinclub-ia-lab?ia=2&ui=5",
+    "screenshot": "screens/IA02-UI05.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA02",
+    "ui": 6,
+    "layout": "Một điểm bắt đầu",
+    "difference": "Mở dần từng lựa chọn.",
+    "url": "/vinclub-ia-lab?ia=2&ui=6",
+    "screenshot": "screens/IA02-UI06.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA02",
+    "ui": 7,
+    "layout": "Tài sản và hành động",
+    "difference": "Phân biệt khối tài sản với dịch vụ.",
+    "url": "/vinclub-ia-lab?ia=2&ui=7",
+    "screenshot": "screens/IA02-UI07.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA02",
+    "ui": 8,
+    "layout": "Tạp chí dịch vụ",
+    "difference": "Lời dẫn lớn theo nhu cầu.",
+    "url": "/vinclub-ia-lab?ia=2&ui=8",
+    "screenshot": "screens/IA02-UI08.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA02",
+    "ui": 9,
+    "layout": "Theo trình tự",
+    "difference": "Đánh số nhóm để dẫn từng bước.",
+    "url": "/vinclub-ia-lab?ia=2&ui=9",
+    "screenshot": "screens/IA02-UI09.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA02",
+    "ui": 10,
+    "layout": "Tập trung rồi mở rộng",
+    "difference": "Hai nhóm mở sẵn, còn lại mở dần.",
+    "url": "/vinclub-ia-lab?ia=2&ui=10",
+    "screenshot": "screens/IA02-UI10.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA03",
+    "ui": 1,
+    "layout": "Danh sách rõ việc",
+    "difference": "Hàng dọc, đọc tuần tự.",
+    "url": "/vinclub-ia-lab?ia=3&ui=1",
+    "screenshot": "screens/IA03-UI01.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA03",
+    "ui": 2,
+    "layout": "Một việc nổi bật",
+    "difference": "Khối đầu lớn; lựa chọn sau gọn.",
+    "url": "/vinclub-ia-lab?ia=3&ui=2",
+    "screenshot": "screens/IA03-UI02.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA03",
+    "ui": 3,
+    "layout": "Lưới hai cột",
+    "difference": "Chọn bằng nhận diện nhóm.",
+    "url": "/vinclub-ia-lab?ia=3&ui=3",
+    "screenshot": "screens/IA03-UI03.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA03",
+    "ui": 4,
+    "layout": "Thẻ ngang",
+    "difference": "Thẻ vuốt có mép gợi ý.",
+    "url": "/vinclub-ia-lab?ia=3&ui=4",
+    "screenshot": "screens/IA03-UI04.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA03",
+    "ui": 5,
+    "layout": "Tóm tắt rồi chi tiết",
+    "difference": "Tài sản trước, dịch vụ sau.",
+    "url": "/vinclub-ia-lab?ia=3&ui=5",
+    "screenshot": "screens/IA03-UI05.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA03",
+    "ui": 6,
+    "layout": "Một điểm bắt đầu",
+    "difference": "Mở dần từng lựa chọn.",
+    "url": "/vinclub-ia-lab?ia=3&ui=6",
+    "screenshot": "screens/IA03-UI06.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA03",
+    "ui": 7,
+    "layout": "Tài sản và hành động",
+    "difference": "Phân biệt khối tài sản với dịch vụ.",
+    "url": "/vinclub-ia-lab?ia=3&ui=7",
+    "screenshot": "screens/IA03-UI07.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA03",
+    "ui": 8,
+    "layout": "Tạp chí dịch vụ",
+    "difference": "Lời dẫn lớn theo nhu cầu.",
+    "url": "/vinclub-ia-lab?ia=3&ui=8",
+    "screenshot": "screens/IA03-UI08.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA03",
+    "ui": 9,
+    "layout": "Theo trình tự",
+    "difference": "Đánh số nhóm để dẫn từng bước.",
+    "url": "/vinclub-ia-lab?ia=3&ui=9",
+    "screenshot": "screens/IA03-UI09.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA03",
+    "ui": 10,
+    "layout": "Tập trung rồi mở rộng",
+    "difference": "Hai nhóm mở sẵn, còn lại mở dần.",
+    "url": "/vinclub-ia-lab?ia=3&ui=10",
+    "screenshot": "screens/IA03-UI10.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA04",
+    "ui": 1,
+    "layout": "Danh sách rõ việc",
+    "difference": "Hàng dọc, đọc tuần tự.",
+    "url": "/vinclub-ia-lab?ia=4&ui=1",
+    "screenshot": "screens/IA04-UI01.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA04",
+    "ui": 2,
+    "layout": "Một việc nổi bật",
+    "difference": "Khối đầu lớn; lựa chọn sau gọn.",
+    "url": "/vinclub-ia-lab?ia=4&ui=2",
+    "screenshot": "screens/IA04-UI02.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA04",
+    "ui": 3,
+    "layout": "Lưới hai cột",
+    "difference": "Chọn bằng nhận diện nhóm.",
+    "url": "/vinclub-ia-lab?ia=4&ui=3",
+    "screenshot": "screens/IA04-UI03.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA04",
+    "ui": 4,
+    "layout": "Thẻ ngang",
+    "difference": "Thẻ vuốt có mép gợi ý.",
+    "url": "/vinclub-ia-lab?ia=4&ui=4",
+    "screenshot": "screens/IA04-UI04.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA04",
+    "ui": 5,
+    "layout": "Tóm tắt rồi chi tiết",
+    "difference": "Tài sản trước, dịch vụ sau.",
+    "url": "/vinclub-ia-lab?ia=4&ui=5",
+    "screenshot": "screens/IA04-UI05.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA04",
+    "ui": 6,
+    "layout": "Một điểm bắt đầu",
+    "difference": "Mở dần từng lựa chọn.",
+    "url": "/vinclub-ia-lab?ia=4&ui=6",
+    "screenshot": "screens/IA04-UI06.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA04",
+    "ui": 7,
+    "layout": "Tài sản và hành động",
+    "difference": "Phân biệt khối tài sản với dịch vụ.",
+    "url": "/vinclub-ia-lab?ia=4&ui=7",
+    "screenshot": "screens/IA04-UI07.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA04",
+    "ui": 8,
+    "layout": "Tạp chí dịch vụ",
+    "difference": "Lời dẫn lớn theo nhu cầu.",
+    "url": "/vinclub-ia-lab?ia=4&ui=8",
+    "screenshot": "screens/IA04-UI08.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA04",
+    "ui": 9,
+    "layout": "Theo trình tự",
+    "difference": "Đánh số nhóm để dẫn từng bước.",
+    "url": "/vinclub-ia-lab?ia=4&ui=9",
+    "screenshot": "screens/IA04-UI09.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA04",
+    "ui": 10,
+    "layout": "Tập trung rồi mở rộng",
+    "difference": "Hai nhóm mở sẵn, còn lại mở dần.",
+    "url": "/vinclub-ia-lab?ia=4&ui=10",
+    "screenshot": "screens/IA04-UI10.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA05",
+    "ui": 1,
+    "layout": "Danh sách rõ việc",
+    "difference": "Hàng dọc, đọc tuần tự.",
+    "url": "/vinclub-ia-lab?ia=5&ui=1",
+    "screenshot": "screens/IA05-UI01.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA05",
+    "ui": 2,
+    "layout": "Một việc nổi bật",
+    "difference": "Khối đầu lớn; lựa chọn sau gọn.",
+    "url": "/vinclub-ia-lab?ia=5&ui=2",
+    "screenshot": "screens/IA05-UI02.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA05",
+    "ui": 3,
+    "layout": "Lưới hai cột",
+    "difference": "Chọn bằng nhận diện nhóm.",
+    "url": "/vinclub-ia-lab?ia=5&ui=3",
+    "screenshot": "screens/IA05-UI03.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA05",
+    "ui": 4,
+    "layout": "Thẻ ngang",
+    "difference": "Thẻ vuốt có mép gợi ý.",
+    "url": "/vinclub-ia-lab?ia=5&ui=4",
+    "screenshot": "screens/IA05-UI04.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA05",
+    "ui": 5,
+    "layout": "Tóm tắt rồi chi tiết",
+    "difference": "Tài sản trước, dịch vụ sau.",
+    "url": "/vinclub-ia-lab?ia=5&ui=5",
+    "screenshot": "screens/IA05-UI05.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA05",
+    "ui": 6,
+    "layout": "Một điểm bắt đầu",
+    "difference": "Mở dần từng lựa chọn.",
+    "url": "/vinclub-ia-lab?ia=5&ui=6",
+    "screenshot": "screens/IA05-UI06.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA05",
+    "ui": 7,
+    "layout": "Tài sản và hành động",
+    "difference": "Phân biệt khối tài sản với dịch vụ.",
+    "url": "/vinclub-ia-lab?ia=5&ui=7",
+    "screenshot": "screens/IA05-UI07.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA05",
+    "ui": 8,
+    "layout": "Tạp chí dịch vụ",
+    "difference": "Lời dẫn lớn theo nhu cầu.",
+    "url": "/vinclub-ia-lab?ia=5&ui=8",
+    "screenshot": "screens/IA05-UI08.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA05",
+    "ui": 9,
+    "layout": "Theo trình tự",
+    "difference": "Đánh số nhóm để dẫn từng bước.",
+    "url": "/vinclub-ia-lab?ia=5&ui=9",
+    "screenshot": "screens/IA05-UI09.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA05",
+    "ui": 10,
+    "layout": "Tập trung rồi mở rộng",
+    "difference": "Hai nhóm mở sẵn, còn lại mở dần.",
+    "url": "/vinclub-ia-lab?ia=5&ui=10",
+    "screenshot": "screens/IA05-UI10.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA06",
+    "ui": 1,
+    "layout": "Danh sách rõ việc",
+    "difference": "Hàng dọc, đọc tuần tự.",
+    "url": "/vinclub-ia-lab?ia=6&ui=1",
+    "screenshot": "screens/IA06-UI01.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA06",
+    "ui": 2,
+    "layout": "Một việc nổi bật",
+    "difference": "Khối đầu lớn; lựa chọn sau gọn.",
+    "url": "/vinclub-ia-lab?ia=6&ui=2",
+    "screenshot": "screens/IA06-UI02.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA06",
+    "ui": 3,
+    "layout": "Lưới hai cột",
+    "difference": "Chọn bằng nhận diện nhóm.",
+    "url": "/vinclub-ia-lab?ia=6&ui=3",
+    "screenshot": "screens/IA06-UI03.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA06",
+    "ui": 4,
+    "layout": "Thẻ ngang",
+    "difference": "Thẻ vuốt có mép gợi ý.",
+    "url": "/vinclub-ia-lab?ia=6&ui=4",
+    "screenshot": "screens/IA06-UI04.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA06",
+    "ui": 5,
+    "layout": "Tóm tắt rồi chi tiết",
+    "difference": "Tài sản trước, dịch vụ sau.",
+    "url": "/vinclub-ia-lab?ia=6&ui=5",
+    "screenshot": "screens/IA06-UI05.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA06",
+    "ui": 6,
+    "layout": "Một điểm bắt đầu",
+    "difference": "Mở dần từng lựa chọn.",
+    "url": "/vinclub-ia-lab?ia=6&ui=6",
+    "screenshot": "screens/IA06-UI06.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA06",
+    "ui": 7,
+    "layout": "Tài sản và hành động",
+    "difference": "Phân biệt khối tài sản với dịch vụ.",
+    "url": "/vinclub-ia-lab?ia=6&ui=7",
+    "screenshot": "screens/IA06-UI07.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA06",
+    "ui": 8,
+    "layout": "Tạp chí dịch vụ",
+    "difference": "Lời dẫn lớn theo nhu cầu.",
+    "url": "/vinclub-ia-lab?ia=6&ui=8",
+    "screenshot": "screens/IA06-UI08.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA06",
+    "ui": 9,
+    "layout": "Theo trình tự",
+    "difference": "Đánh số nhóm để dẫn từng bước.",
+    "url": "/vinclub-ia-lab?ia=6&ui=9",
+    "screenshot": "screens/IA06-UI09.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA06",
+    "ui": 10,
+    "layout": "Tập trung rồi mở rộng",
+    "difference": "Hai nhóm mở sẵn, còn lại mở dần.",
+    "url": "/vinclub-ia-lab?ia=6&ui=10",
+    "screenshot": "screens/IA06-UI10.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA07",
+    "ui": 1,
+    "layout": "Danh sách rõ việc",
+    "difference": "Hàng dọc, đọc tuần tự.",
+    "url": "/vinclub-ia-lab?ia=7&ui=1",
+    "screenshot": "screens/IA07-UI01.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA07",
+    "ui": 2,
+    "layout": "Một việc nổi bật",
+    "difference": "Khối đầu lớn; lựa chọn sau gọn.",
+    "url": "/vinclub-ia-lab?ia=7&ui=2",
+    "screenshot": "screens/IA07-UI02.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA07",
+    "ui": 3,
+    "layout": "Lưới hai cột",
+    "difference": "Chọn bằng nhận diện nhóm.",
+    "url": "/vinclub-ia-lab?ia=7&ui=3",
+    "screenshot": "screens/IA07-UI03.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA07",
+    "ui": 4,
+    "layout": "Thẻ ngang",
+    "difference": "Thẻ vuốt có mép gợi ý.",
+    "url": "/vinclub-ia-lab?ia=7&ui=4",
+    "screenshot": "screens/IA07-UI04.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA07",
+    "ui": 5,
+    "layout": "Tóm tắt rồi chi tiết",
+    "difference": "Tài sản trước, dịch vụ sau.",
+    "url": "/vinclub-ia-lab?ia=7&ui=5",
+    "screenshot": "screens/IA07-UI05.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA07",
+    "ui": 6,
+    "layout": "Một điểm bắt đầu",
+    "difference": "Mở dần từng lựa chọn.",
+    "url": "/vinclub-ia-lab?ia=7&ui=6",
+    "screenshot": "screens/IA07-UI06.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA07",
+    "ui": 7,
+    "layout": "Tài sản và hành động",
+    "difference": "Phân biệt khối tài sản với dịch vụ.",
+    "url": "/vinclub-ia-lab?ia=7&ui=7",
+    "screenshot": "screens/IA07-UI07.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA07",
+    "ui": 8,
+    "layout": "Tạp chí dịch vụ",
+    "difference": "Lời dẫn lớn theo nhu cầu.",
+    "url": "/vinclub-ia-lab?ia=7&ui=8",
+    "screenshot": "screens/IA07-UI08.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA07",
+    "ui": 9,
+    "layout": "Theo trình tự",
+    "difference": "Đánh số nhóm để dẫn từng bước.",
+    "url": "/vinclub-ia-lab?ia=7&ui=9",
+    "screenshot": "screens/IA07-UI09.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA07",
+    "ui": 10,
+    "layout": "Tập trung rồi mở rộng",
+    "difference": "Hai nhóm mở sẵn, còn lại mở dần.",
+    "url": "/vinclub-ia-lab?ia=7&ui=10",
+    "screenshot": "screens/IA07-UI10.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA08",
+    "ui": 1,
+    "layout": "Danh sách rõ việc",
+    "difference": "Hàng dọc, đọc tuần tự.",
+    "url": "/vinclub-ia-lab?ia=8&ui=1",
+    "screenshot": "screens/IA08-UI01.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA08",
+    "ui": 2,
+    "layout": "Một việc nổi bật",
+    "difference": "Khối đầu lớn; lựa chọn sau gọn.",
+    "url": "/vinclub-ia-lab?ia=8&ui=2",
+    "screenshot": "screens/IA08-UI02.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA08",
+    "ui": 3,
+    "layout": "Lưới hai cột",
+    "difference": "Chọn bằng nhận diện nhóm.",
+    "url": "/vinclub-ia-lab?ia=8&ui=3",
+    "screenshot": "screens/IA08-UI03.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA08",
+    "ui": 4,
+    "layout": "Thẻ ngang",
+    "difference": "Thẻ vuốt có mép gợi ý.",
+    "url": "/vinclub-ia-lab?ia=8&ui=4",
+    "screenshot": "screens/IA08-UI04.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA08",
+    "ui": 5,
+    "layout": "Tóm tắt rồi chi tiết",
+    "difference": "Tài sản trước, dịch vụ sau.",
+    "url": "/vinclub-ia-lab?ia=8&ui=5",
+    "screenshot": "screens/IA08-UI05.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA08",
+    "ui": 6,
+    "layout": "Một điểm bắt đầu",
+    "difference": "Mở dần từng lựa chọn.",
+    "url": "/vinclub-ia-lab?ia=8&ui=6",
+    "screenshot": "screens/IA08-UI06.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA08",
+    "ui": 7,
+    "layout": "Tài sản và hành động",
+    "difference": "Phân biệt khối tài sản với dịch vụ.",
+    "url": "/vinclub-ia-lab?ia=8&ui=7",
+    "screenshot": "screens/IA08-UI07.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA08",
+    "ui": 8,
+    "layout": "Tạp chí dịch vụ",
+    "difference": "Lời dẫn lớn theo nhu cầu.",
+    "url": "/vinclub-ia-lab?ia=8&ui=8",
+    "screenshot": "screens/IA08-UI08.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA08",
+    "ui": 9,
+    "layout": "Theo trình tự",
+    "difference": "Đánh số nhóm để dẫn từng bước.",
+    "url": "/vinclub-ia-lab?ia=8&ui=9",
+    "screenshot": "screens/IA08-UI09.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA08",
+    "ui": 10,
+    "layout": "Tập trung rồi mở rộng",
+    "difference": "Hai nhóm mở sẵn, còn lại mở dần.",
+    "url": "/vinclub-ia-lab?ia=8&ui=10",
+    "screenshot": "screens/IA08-UI10.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA09",
+    "ui": 1,
+    "layout": "Danh sách rõ việc",
+    "difference": "Hàng dọc, đọc tuần tự.",
+    "url": "/vinclub-ia-lab?ia=9&ui=1",
+    "screenshot": "screens/IA09-UI01.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA09",
+    "ui": 2,
+    "layout": "Một việc nổi bật",
+    "difference": "Khối đầu lớn; lựa chọn sau gọn.",
+    "url": "/vinclub-ia-lab?ia=9&ui=2",
+    "screenshot": "screens/IA09-UI02.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA09",
+    "ui": 3,
+    "layout": "Lưới hai cột",
+    "difference": "Chọn bằng nhận diện nhóm.",
+    "url": "/vinclub-ia-lab?ia=9&ui=3",
+    "screenshot": "screens/IA09-UI03.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA09",
+    "ui": 4,
+    "layout": "Thẻ ngang",
+    "difference": "Thẻ vuốt có mép gợi ý.",
+    "url": "/vinclub-ia-lab?ia=9&ui=4",
+    "screenshot": "screens/IA09-UI04.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA09",
+    "ui": 5,
+    "layout": "Tóm tắt rồi chi tiết",
+    "difference": "Tài sản trước, dịch vụ sau.",
+    "url": "/vinclub-ia-lab?ia=9&ui=5",
+    "screenshot": "screens/IA09-UI05.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA09",
+    "ui": 6,
+    "layout": "Một điểm bắt đầu",
+    "difference": "Mở dần từng lựa chọn.",
+    "url": "/vinclub-ia-lab?ia=9&ui=6",
+    "screenshot": "screens/IA09-UI06.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA09",
+    "ui": 7,
+    "layout": "Tài sản và hành động",
+    "difference": "Phân biệt khối tài sản với dịch vụ.",
+    "url": "/vinclub-ia-lab?ia=9&ui=7",
+    "screenshot": "screens/IA09-UI07.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA09",
+    "ui": 8,
+    "layout": "Tạp chí dịch vụ",
+    "difference": "Lời dẫn lớn theo nhu cầu.",
+    "url": "/vinclub-ia-lab?ia=9&ui=8",
+    "screenshot": "screens/IA09-UI08.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA09",
+    "ui": 9,
+    "layout": "Theo trình tự",
+    "difference": "Đánh số nhóm để dẫn từng bước.",
+    "url": "/vinclub-ia-lab?ia=9&ui=9",
+    "screenshot": "screens/IA09-UI09.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA09",
+    "ui": 10,
+    "layout": "Tập trung rồi mở rộng",
+    "difference": "Hai nhóm mở sẵn, còn lại mở dần.",
+    "url": "/vinclub-ia-lab?ia=9&ui=10",
+    "screenshot": "screens/IA09-UI10.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA10",
+    "ui": 1,
+    "layout": "Danh sách rõ việc",
+    "difference": "Hàng dọc, đọc tuần tự.",
+    "url": "/vinclub-ia-lab?ia=10&ui=1",
+    "screenshot": "screens/IA10-UI01.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA10",
+    "ui": 2,
+    "layout": "Một việc nổi bật",
+    "difference": "Khối đầu lớn; lựa chọn sau gọn.",
+    "url": "/vinclub-ia-lab?ia=10&ui=2",
+    "screenshot": "screens/IA10-UI02.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA10",
+    "ui": 3,
+    "layout": "Lưới hai cột",
+    "difference": "Chọn bằng nhận diện nhóm.",
+    "url": "/vinclub-ia-lab?ia=10&ui=3",
+    "screenshot": "screens/IA10-UI03.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA10",
+    "ui": 4,
+    "layout": "Thẻ ngang",
+    "difference": "Thẻ vuốt có mép gợi ý.",
+    "url": "/vinclub-ia-lab?ia=10&ui=4",
+    "screenshot": "screens/IA10-UI04.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA10",
+    "ui": 5,
+    "layout": "Tóm tắt rồi chi tiết",
+    "difference": "Tài sản trước, dịch vụ sau.",
+    "url": "/vinclub-ia-lab?ia=10&ui=5",
+    "screenshot": "screens/IA10-UI05.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA10",
+    "ui": 6,
+    "layout": "Một điểm bắt đầu",
+    "difference": "Mở dần từng lựa chọn.",
+    "url": "/vinclub-ia-lab?ia=10&ui=6",
+    "screenshot": "screens/IA10-UI06.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA10",
+    "ui": 7,
+    "layout": "Tài sản và hành động",
+    "difference": "Phân biệt khối tài sản với dịch vụ.",
+    "url": "/vinclub-ia-lab?ia=10&ui=7",
+    "screenshot": "screens/IA10-UI07.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA10",
+    "ui": 8,
+    "layout": "Tạp chí dịch vụ",
+    "difference": "Lời dẫn lớn theo nhu cầu.",
+    "url": "/vinclub-ia-lab?ia=10&ui=8",
+    "screenshot": "screens/IA10-UI08.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA10",
+    "ui": 9,
+    "layout": "Theo trình tự",
+    "difference": "Đánh số nhóm để dẫn từng bước.",
+    "url": "/vinclub-ia-lab?ia=10&ui=9",
+    "screenshot": "screens/IA10-UI09.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  },
+  {
+    "ia": "IA10",
+    "ui": 10,
+    "layout": "Tập trung rồi mở rộng",
+    "difference": "Hai nhóm mở sẵn, còn lại mở dần.",
+    "url": "/vinclub-ia-lab?ia=10&ui=10",
+    "screenshot": "screens/IA10-UI10.png",
+    "componentContract": "VSP Header + Button + ItemListItem + SearchBar; Lego compositions use semantic tokens"
+  }
+]

@@ -1,0 +1,12 @@
+.vc-service-icon { object-fit: contain; flex-shrink: 0; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+button:hover .vc-service-icon { transform: translateY(-4px) rotate(-3deg); }
+.vc-membership-visual { position: relative; width: 100%; }
+.vc-membership-stage { position: relative; width: 100%; aspect-ratio: 616 / 386; overflow:hidden; border-radius:var(--radius-14); }
+.vc-membership-stage video, .vc-membership-stage canvas { display: block; width: 100%; height: 100%; object-fit: contain; }
+.vc-membership-toggle { margin-top: 8px; }
+.vc-card-lettering { position:absolute; inset:12% 9%; pointer-events:none; color:var(--color-white); display:flex; flex-direction:column; align-items:flex-start; }
+.vc-card-mark { font-family:Georgia,serif; font-style:italic; font-size:clamp(32px,5vw,72px); line-height:1; }
+.vc-card-name { font-family:Georgia,serif; font-size:clamp(18px,3vw,36px); margin-top:8px; }
+.vc-card-tier { font-size:9px; letter-spacing:.2em; margin-top:8px; }
+.vc-card-number { font-size:10px; letter-spacing:.15em; margin-top:auto; }
+@media (prefers-reduced-motion: reduce) { .vc-service-icon { transition: none; } button:hover .vc-service-icon { transform: none; } }
